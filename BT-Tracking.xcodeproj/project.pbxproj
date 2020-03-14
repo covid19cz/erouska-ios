@@ -60,8 +60,8 @@
 				8054C0B2241D492F008907B8 /* SceneDelegate.swift */,
 				8054C0B4241D492F008907B8 /* ViewController.swift */,
 				8054C0B6241D492F008907B8 /* Main.storyboard */,
-				8054C0B9241D4932008907B8 /* Assets.xcassets */,
 				8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */,
+				8054C0B9241D4932008907B8 /* Assets.xcassets */,
 				8054C0BE241D4932008907B8 /* Info.plist */,
 			);
 			path = "BT-Tracking";
