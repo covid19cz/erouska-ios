@@ -14,6 +14,14 @@ class FileController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
 
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setup()
+    }
+
     // MARK: - Setup
 
     private func setup() {

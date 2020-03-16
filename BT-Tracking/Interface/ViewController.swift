@@ -20,8 +20,6 @@ class ServiceController: UIViewController {
     private var advertiser: BTAdvertising?
     private var scanner: BTScannering?
 
-
-    private var data: Data?
     private var logText: String = "" {
         didSet {
             textView.text = logText
