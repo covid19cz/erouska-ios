@@ -17,7 +17,7 @@ protocol BTAdvertising: class {
     
 }
 
-class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
+final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
     private var peripheralManager: CBPeripheralManager! = nil
 
