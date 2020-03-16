@@ -11,8 +11,21 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private var rootWindow: UIWindow? = nil
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if #available(iOS 13, *) {
+            // using scene
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+            let window = UIWindow()
+            window.backgroundColor = .white
+            window.makeKeyAndVisible()
+            window.rootViewController = storyboard.instantiateInitialViewController()
+            self.rootWindow = window
+        }
+
         return true
     }
 
