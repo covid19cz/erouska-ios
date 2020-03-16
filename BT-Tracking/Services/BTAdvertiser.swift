@@ -33,9 +33,14 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             ]
         )
 
-        if #available(iOS 13.0, *) {
+        if #available(iOS 13.1, *) {
             if ![CBManagerAuthorization.allowedAlways, .restricted].contains(CBPeripheralManager.authorization) {
                 log("BTAdvertiser: Not authorized! \(CBPeripheralManager.authorization)")
+                return
+            }
+        } else if #available(iOS 13.0, *) {
+            if ![CBManagerAuthorization.allowedAlways, .restricted].contains(peripheralManager.authorization) {
+                log("BTAdvertiser: Not authorized! \(peripheralManager.authorization)")
                 return
             }
         }
