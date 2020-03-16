@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ServiceController.swift
 //  btraced
 //
 //  Created by Tomas Svoboda on 16/03/2020.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class ViewController: UIViewController {
+class ServiceController: UIViewController {
     
     // MARK: - Outlets
     
@@ -57,17 +57,17 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: BTScannerDelegate {
+extension ServiceController: BTScannerDelegate {
 
 }
 
-extension ViewController: LogDelegate {
+extension ServiceController: LogDelegate {
     func didLog(_ text: String) {
         logToView(text)
     }
 }
 
-private extension ViewController {
+private extension ServiceController {
     static var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .none

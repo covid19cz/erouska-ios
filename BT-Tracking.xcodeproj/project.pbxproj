@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		8054C0B3241D492F008907B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B2241D492F008907B8 /* SceneDelegate.swift */; };
-		8054C0B5241D492F008907B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B4241D492F008907B8 /* ViewController.swift */; };
 		8054C0B8241D492F008907B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Main.storyboard */; };
 		8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
@@ -17,13 +16,15 @@
 		8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CF241FE706008907B8 /* BTScanner.swift */; };
 		8054C0D2241FE720008907B8 /* BT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D1241FE720008907B8 /* BT.swift */; };
 		8054C0D4241FEA4F008907B8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D3241FEA4F008907B8 /* Log.swift */; };
+		8054C0D624200BEC008907B8 /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
+		8054C0D824200E7C008907B8 /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileController.swift */; };
+		8054C0DA24200E91008907B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8054C0AD241D492F008907B8 /* BT-Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8054C0B2241D492F008907B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8054C0B4241D492F008907B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8054C0B9241D4932008907B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8054C0BC241D4932008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -32,6 +33,9 @@
 		8054C0CF241FE706008907B8 /* BTScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTScanner.swift; sourceTree = "<group>"; };
 		8054C0D1241FE720008907B8 /* BT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BT.swift; sourceTree = "<group>"; };
 		8054C0D3241FEA4F008907B8 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		8054C0D524200BEC008907B8 /* SegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentController.swift; sourceTree = "<group>"; };
+		8054C0D724200E7C008907B8 /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
+		8054C0D924200E91008907B8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				8054C0B6241D492F008907B8 /* Main.storyboard */,
-				8054C0B4241D492F008907B8 /* ViewController.swift */,
+				8054C0D524200BEC008907B8 /* SegmentController.swift */,
+				8054C0D924200E91008907B8 /* ViewController.swift */,
+				8054C0D724200E7C008907B8 /* FileController.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -174,9 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8054C0D624200BEC008907B8 /* SegmentController.swift in Sources */,
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
 				8054C0D4241FEA4F008907B8 /* Log.swift in Sources */,
-				8054C0B5241D492F008907B8 /* ViewController.swift in Sources */,
+				8054C0DA24200E91008907B8 /* ViewController.swift in Sources */,
+				8054C0D824200E7C008907B8 /* FileController.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				8054C0B3241D492F008907B8 /* SceneDelegate.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,

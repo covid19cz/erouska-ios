@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IUm-47-3Id">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,22 +8,74 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Segment Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BT_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SegmentController" customModule="BT_Tracking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trace me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNZ-LO-KRH">
-                                <rect key="frame" x="140.5" y="60" width="133" height="41"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0a9-1W-El0">
-                                <rect key="frame" x="16" y="117" width="382" height="729"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVs-gu-sZx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <connections>
+                                    <segue destination="K92-Df-LB0" kind="embed" id="yDU-Zk-7rG"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GZ-5O-pSc">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <connections>
+                                    <segue destination="IHl-Dr-h7k" kind="embed" id="1Tq-ZT-hGZ"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fVs-gu-sZx" secondAttribute="bottom" id="3tt-WZ-X0V"/>
+                            <constraint firstItem="fVs-gu-sZx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8hp-lU-HiX"/>
+                            <constraint firstItem="0GZ-5O-pSc" firstAttribute="height" secondItem="fVs-gu-sZx" secondAttribute="height" id="JU2-w0-724"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fVs-gu-sZx" secondAttribute="trailing" id="KOT-cL-ojF"/>
+                            <constraint firstItem="0GZ-5O-pSc" firstAttribute="width" secondItem="fVs-gu-sZx" secondAttribute="width" id="Q0o-1T-57r"/>
+                            <constraint firstItem="0GZ-5O-pSc" firstAttribute="firstBaseline" secondItem="fVs-gu-sZx" secondAttribute="firstBaseline" id="ToO-2C-oTI"/>
+                            <constraint firstItem="fVs-gu-sZx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="df3-Oo-Ffm"/>
+                            <constraint firstItem="0GZ-5O-pSc" firstAttribute="centerX" secondItem="fVs-gu-sZx" secondAttribute="centerX" id="xD8-eM-75c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dhQ-ch-yky">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="nb7-Gf-WIE">
+                            <rect key="frame" x="113.5" y="5" width="187" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Live"/>
+                                <segment title="Background"/>
+                            </segments>
+                            <connections>
+                                <action selector="changeContainerAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="JCA-Jf-GMG"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftContainerView" destination="fVs-gu-sZx" id="cZa-OE-PCx"/>
+                        <outlet property="rightContainerView" destination="0GZ-5O-pSc" id="BAh-Vj-JG9"/>
+                        <outlet property="segmentControl" destination="nb7-Gf-WIE" id="gfs-ly-yes"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="138"/>
+        </scene>
+        <!--File Controller-->
+        <scene sceneID="MST-LO-IV9">
+            <objects>
+                <viewController id="IHl-Dr-h7k" customClass="FileController" customModule="BT_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NzK-sq-Gvv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h6I-JC-s2c">
+                                <rect key="frame" x="16" y="44" width="382" height="730"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -33,22 +85,92 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0a9-1W-El0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="7Vd-ux-ZhJ"/>
-                            <constraint firstItem="VNZ-LO-KRH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7cn-xe-AeE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0a9-1W-El0" secondAttribute="bottom" constant="16" id="JwN-RJ-Htb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0a9-1W-El0" secondAttribute="trailing" constant="16" id="Uht-0w-qVX"/>
-                            <constraint firstItem="0a9-1W-El0" firstAttribute="top" secondItem="VNZ-LO-KRH" secondAttribute="bottom" constant="16" id="ful-ix-Cqd"/>
-                            <constraint firstItem="VNZ-LO-KRH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="xEV-Mw-Ykl"/>
+                            <constraint firstItem="h6I-JC-s2c" firstAttribute="leading" secondItem="bpP-kS-OXR" secondAttribute="leading" constant="16" id="4as-9A-4yb"/>
+                            <constraint firstItem="bpP-kS-OXR" firstAttribute="bottom" secondItem="h6I-JC-s2c" secondAttribute="bottom" id="A3d-Dx-axJ"/>
+                            <constraint firstItem="bpP-kS-OXR" firstAttribute="trailing" secondItem="h6I-JC-s2c" secondAttribute="trailing" constant="16" id="PhR-cD-cfL"/>
+                            <constraint firstItem="h6I-JC-s2c" firstAttribute="top" secondItem="bpP-kS-OXR" secondAttribute="top" id="QNQ-Mc-loe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="bpP-kS-OXR"/>
                     </view>
+                    <navigationItem key="navigationItem" id="k2m-fX-1LA">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="M00-f1-jiZ">
+                            <rect key="frame" x="113.5" y="5" width="187" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Live"/>
+                                <segment title="Background"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
-                        <outlet property="textView" destination="0a9-1W-El0" id="Faq-i4-OPL"/>
+                        <outlet property="textView" destination="h6I-JC-s2c" id="pcd-j5-3aS"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yER-HS-htM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="138"/>
+            <point key="canvasLocation" x="1045" y="456"/>
+        </scene>
+        <!--Service Controller-->
+        <scene sceneID="v9N-Hz-b8A">
+            <objects>
+                <viewController id="K92-Df-LB0" customClass="ServiceController" customModule="BT_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M3F-KC-Vck">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kYy-oI-OZI">
+                                <rect key="frame" x="16" y="44" width="382" height="730"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="10"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kYy-oI-OZI" firstAttribute="top" secondItem="2Lj-1x-drl" secondAttribute="top" id="7OI-0N-WF8"/>
+                            <constraint firstItem="kYy-oI-OZI" firstAttribute="leading" secondItem="2Lj-1x-drl" secondAttribute="leading" constant="16" id="Iyg-nc-4qJ"/>
+                            <constraint firstItem="2Lj-1x-drl" firstAttribute="bottom" secondItem="kYy-oI-OZI" secondAttribute="bottom" id="R08-JS-PSv"/>
+                            <constraint firstItem="2Lj-1x-drl" firstAttribute="trailing" secondItem="kYy-oI-OZI" secondAttribute="trailing" constant="16" id="doy-Zh-etu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2Lj-1x-drl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="t2Y-Fr-FjT">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="9Dq-7I-ECU">
+                            <rect key="frame" x="113.5" y="5" width="187" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Live"/>
+                                <segment title="Background"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="kYy-oI-OZI" id="iXs-el-Vc4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HyG-9c-Zbf" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1045" y="-168"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qA7-HZ-Ima">
+            <objects>
+                <navigationController id="IUm-47-3Id" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pam-9W-OyY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Fe4-C4-Usb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vw8-EW-uWw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-799" y="138"/>
         </scene>
     </scenes>
 </document>
