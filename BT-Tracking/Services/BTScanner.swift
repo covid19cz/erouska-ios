@@ -54,8 +54,10 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     var isRunning: Bool {
         return centralManager.isScanning
     }
+    private var started: Bool = false
 
     func start() {
+        started = true
         guard !centralManager.isScanning, centralManager.state == .poweredOn else { return }
 
         centralManager.scanForPeripherals(
@@ -68,6 +70,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     }
 
     func stop() {
+        started = false
         guard centralManager.isScanning else { return }
 
         centralManager.stopScan()
@@ -79,6 +82,8 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         log("BTScanner: centralManagerDidUpdateState: \(central.state.rawValue)")
 
         guard central.state == .poweredOn else { return }
+
+        guard started else { return }
         start()
     }
 

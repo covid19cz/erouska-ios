@@ -51,8 +51,10 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     var isRunning: Bool {
         return peripheralManager.isAdvertising
     }
+    private var started: Bool = false
 
     func start() {
+        started = true
         guard !isRunning, peripheralManager.state == .poweredOn else { return }
 
         peripheralManager.startAdvertising([
@@ -65,6 +67,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     }
 
     func stop() {
+        started = false
         guard isRunning else { return }
 
         peripheralManager.stopAdvertising()
@@ -101,6 +104,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
         peripheralManager.add(transferService)
 
+        guard started else { return }
         start()
     }
 
