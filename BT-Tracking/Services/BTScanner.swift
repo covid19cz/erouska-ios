@@ -51,9 +51,13 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
 
     weak var delegate: BTScannerDelegate?
 
-    var isRunning: Bool = false
+    var isRunning: Bool {
+        return centralManager.isScanning
+    }
 
     func start() {
+        guard !centralManager.isScanning, centralManager.state == .poweredOn else { return }
+
         centralManager.scanForPeripherals(
             withServices: [BT.transferService.cbUUID],
             options: [
@@ -64,7 +68,9 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     }
 
     func stop() {
+        guard centralManager.isScanning else { return }
 
+        centralManager.stopScan()
     }
 
     // MARK: - CBCentralManagerDelegate
@@ -100,6 +106,10 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         log("BTScanner: Failed to connect to \(peripheral), error: \(error?.localizedDescription ?? "none")")
+    }
+
+    func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
+        log("BTScanner: connectionEventDidOccur \(peripheral), event: \(event)")
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {

@@ -53,11 +53,11 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     }
 
     func start() {
-        guard !isRunning else { return }
+        guard !isRunning, peripheralManager.state == .poweredOn else { return }
 
         peripheralManager.startAdvertising([
-            CBAdvertisementDataIsConnectable: false, // TODO: off, currently conenction is not implemented
-            CBAdvertisementDataLocalNameKey: BT.advertiserName,
+            //CBAdvertisementDataIsConnectable: true, // TODO: off, currently conenction is not implemented
+            CBAdvertisementDataLocalNameKey: BT.advertiserName.rawValue,
             CBAdvertisementDataServiceUUIDsKey : [BT.transferService.cbUUID]
         ])
 
@@ -100,6 +100,8 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         transferService.characteristics = [serviceBroadcast, uniqueBroadcast]
 
         peripheralManager.add(transferService)
+
+        start()
     }
 
     func peripheralManager(_ peripheral: CBPeripheralManager, willRestoreState dict: [String : Any]) {
