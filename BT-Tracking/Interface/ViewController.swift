@@ -70,7 +70,7 @@ extension ViewController: LogDelegate {
 private extension ViewController {
     static var formatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateStyle = .none
         formatter.timeStyle = .medium
         return formatter
     }()
