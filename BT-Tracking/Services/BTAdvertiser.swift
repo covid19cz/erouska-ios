@@ -58,7 +58,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         guard !isRunning, peripheralManager.state == .poweredOn else { return }
 
         peripheralManager.startAdvertising([
-            //CBAdvertisementDataIsConnectable: true, // TODO: off, currently conenction is not implemented
+            //CBAdvertisementDataIsConnectable: true, // TODO: off, currently connection is not implemented
             CBAdvertisementDataLocalNameKey: BT.advertiserName.rawValue,
             CBAdvertisementDataServiceUUIDsKey : [BT.transferService.cbUUID]
         ])

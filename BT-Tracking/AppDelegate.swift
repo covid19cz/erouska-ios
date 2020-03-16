@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = storyboard.instantiateInitialViewController()
             self.rootWindow = window
         }
-
         return true
     }
 

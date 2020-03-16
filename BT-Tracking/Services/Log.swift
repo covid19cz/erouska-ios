@@ -8,19 +8,6 @@
 
 import Foundation
 
-protocol LogDelegate: class {
-    func didLog(_ text: String)
-}
-
-struct Log {
-    weak static var delegate: LogDelegate?
-
-    static func log(_ text: String) {
-        delegate?.didLog(text)
-        print(text)
-    }
-}
-
 func log(_ text: String) {
-    Log.log(text)
+    FileLogger.shared.writeLog(text)
 }

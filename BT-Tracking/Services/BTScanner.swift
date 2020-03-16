@@ -189,8 +189,8 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
                 log("BTScanner: No data to process")
                 return
             }
-            // TODO: to delegate
-            // textView.text = String(data: someData, encoding: .utf8)
+            let text = String(data: someData, encoding: .utf8)
+            log(String(describing: text))
             peripheral.setNotifyValue(false, for: characteristic)
             centralManager.cancelPeripheralConnection(peripheral)
         }

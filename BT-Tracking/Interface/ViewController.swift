@@ -19,63 +19,41 @@ class ViewController: UIViewController {
 
     private var advertiser: BTAdvertising?
     private var scanner: BTScannering?
-
+    private var timer: Timer!
 
     private var data: Data?
-    private var logText: String = "" {
-        didSet {
-            textView.text = logText
-        }
-    }
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
+        setupTimer()
     }
     
     // MARK: - Setup
     
     private func setup() {
-        Log.delegate = self
-
         textView.text = ""
-
         if advertiser?.isRunning != true {
             advertiser = BTAdvertiser()
             advertiser?.start()
         }
-
         if scanner?.isRunning != true {
             scanner = BTScanner()
-            scanner?.delegate = self
             scanner?.start()
         }
     }
-
-}
-
-extension ViewController: BTScannerDelegate {
-
-}
-
-extension ViewController: LogDelegate {
-    func didLog(_ text: String) {
-        logToView(text)
+    
+    private func setupTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+            self?.textView.text = FileLogger.shared.getLog()
+        }
     }
-}
+    
+    // MARK: - Purge logs
 
-private extension ViewController {
-    static var formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .medium
-        return formatter
-    }()
-
-    private func logToView(_ text: String) {
-        logText += "\n" + Self.formatter.string(from: Date()) + " " + text
+    @IBAction func purgeLogs(_ sender: Any) {
+        FileLogger.shared.purgeLogs()
     }
 }
