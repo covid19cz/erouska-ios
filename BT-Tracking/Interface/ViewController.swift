@@ -16,6 +16,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     @IBOutlet weak var textView: UITextView!
     
     // MARK: - Properties
+
+    var advertiser: BTAdvertising?
     
     private var centralManager: CBCentralManager!
     private var discoveredPeripheral: CBPeripheral?
@@ -25,21 +27,30 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             textView.text = logText
         }
     }
-    
+
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
     }
     
     // MARK: - Setup
     
     private func setup() {
+        Log.delegate = self
+
         textView.text = ""
+
+        if advertiser?.isRunning != true {
+            advertiser = BTAdvertiser()
+            advertiser?.start()
+        }
+
         centralManager = CBCentralManager(delegate: self, queue: nil)
         if CBCentralManager.authorization != CBManagerAuthorization.allowedAlways {
-            log("Requesting Bluetooth authorization")
+            logToView("Requesting Bluetooth authorization")
         } else {
             scan()
         }
@@ -49,12 +60,12 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     private func scan() {
         centralManager.scanForPeripherals(withServices: [CB.transferService.cbUUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
-        log("Scanning started")
+        logToView("Scanning started")
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         discoveredPeripheral = nil
-        log("Peripheral disconnected")
+        logToView("Peripheral disconnected")
         // We're disconnected, so start scanning again
         scan()
     }
@@ -67,35 +78,35 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        log("Discovered \(String(describing: peripheral.name)) \(advertisementData) at \(RSSI)")
+        logToView("Discovered \(String(describing: peripheral.name)) \(advertisementData) at \(RSSI)")
         guard RSSI.intValue > -15 else {
-            log("RSSI range \(RSSI.intValue)")
+            logToView("RSSI range \(RSSI.intValue)")
             return
         }
         guard RSSI.intValue < -35 else {
-            log("RSSI range \(RSSI.intValue)")
+            logToView("RSSI range \(RSSI.intValue)")
             return
         }
-        log("Char \(String(describing: peripheral.services))")
+        logToView("Char \(String(describing: peripheral.services))")
         // Ok, it's in range - have we already seen it?
         if discoveredPeripheral != peripheral {
             // Save it
             discoveredPeripheral = peripheral
             // And connect
-            log("Connecting to peripheral \(peripheral)")
+            logToView("Connecting to peripheral \(peripheral)")
             centralManager.connect(peripheral, options: nil)
         }
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        log("Failed to connect to \(peripheral), \(String(describing: error?.localizedDescription))")
+        logToView("Failed to connect to \(peripheral), \(String(describing: error?.localizedDescription))")
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        log("Peripheral connected")
+        logToView("Peripheral connected")
         // Stop scanning
         centralManager.stopScan()
-        log("Scanning stopped")
+        logToView("Scanning stopped")
         // Clear
         data = nil
         // Discovery callbacks
@@ -108,7 +119,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         guard error == nil else {
-            log("Error discovering services: \(String(describing: error?.localizedDescription))")
+            logToView("Error discovering services: \(String(describing: error?.localizedDescription))")
             cleanup()
             return
         }
@@ -116,7 +127,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
         // Loop through the newly filled peripheral.services array, just in case there's more than one.
         guard let services = peripheral.services else {
-            log("No services to discover")
+            logToView("No services to discover")
             return
         }
         for service in services {
@@ -126,12 +137,12 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard error == nil else {
-            log("Error discovering characteristics \(String(describing: error?.localizedDescription))")
+            logToView("Error discovering characteristics \(String(describing: error?.localizedDescription))")
             cleanup()
             return
         }
         guard let characteristics = service.characteristics else {
-            log("No characteristics to subscribe")
+            logToView("No characteristics to subscribe")
             return
         }
         for characteristic in characteristics where characteristic.uuid == CB.transferCharacteristic.cbUUID {
@@ -141,17 +152,17 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         guard error == nil else {
-            log("Error discovering characteristics: \(String(describing: error?.localizedDescription))")
+            logToView("Error discovering characteristics: \(String(describing: error?.localizedDescription))")
             return
         }
         guard let charData = characteristic.value else {
-            log("No data in characteristic")
+            logToView("No data in characteristic")
             return
         }
         let stringFromData = String(data: charData, encoding: .utf8)
         if stringFromData == "EOM" {
             guard let someData = self.data else {
-                log("No data to process")
+                logToView("No data to process")
                 return
             }
             textView.text = String(data: someData, encoding: .utf8)
@@ -159,21 +170,21 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             centralManager.cancelPeripheralConnection(peripheral)
         }
         data?.append(charData)
-        log("Received: \(String(describing: stringFromData))")
+        logToView("Received: \(String(describing: stringFromData))")
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         guard error == nil else {
-            log("Error changing notification state: \(String(describing: error?.localizedDescription))")
+            logToView("Error changing notification state: \(String(describing: error?.localizedDescription))")
             return
         }
         guard characteristic.uuid == CB.transferCharacteristic.cbUUID else {
             return
         }
         if characteristic.isNotifying {
-            log("Notification began on \(characteristic)")
+            logToView("Notification began on \(characteristic)")
         } else {
-            log("Notification stoppped on \(characteristic). Disconnecting")
+            logToView("Notification stoppped on \(characteristic). Disconnecting")
             centralManager.cancelPeripheralConnection(peripheral)
         }
     }
@@ -197,9 +208,23 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
     
     // MARK: - Log
-    
-    private func log(_ text: String) {
-        logText += "\n" + Date().description + " " + text
-        print(text)
+}
+
+extension ViewController: LogDelegate {
+    func didLog(_ text: String) {
+        logToView(text)
+    }
+}
+
+private extension ViewController {
+    static var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .medium
+        return formatter
+    }()
+
+    private func logToView(_ text: String) {
+        logText += "\n" + Self.formatter.string(from: Date()) + " " + text
     }
 }
