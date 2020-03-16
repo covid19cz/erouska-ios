@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-enum CB: String {
+enum BT: String {
     case advertiserName = "Covid-19"
 
     case transferService = "F88F70C1-AADF-4A94-9FF2-35475EF57E21"

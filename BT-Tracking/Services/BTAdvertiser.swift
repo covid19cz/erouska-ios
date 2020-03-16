@@ -52,8 +52,8 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
         peripheralManager.startAdvertising([
             CBAdvertisementDataIsConnectable: false, // TODO: off, currently conenction is not implemented
-            CBAdvertisementDataLocalNameKey: CB.advertiserName,
-            CBAdvertisementDataServiceUUIDsKey : [CB.transferService.cbUUID]
+            CBAdvertisementDataLocalNameKey: BT.advertiserName,
+            CBAdvertisementDataServiceUUIDsKey : [BT.transferService.cbUUID]
         ])
 
         log("BTAdvertiser: started")
@@ -79,19 +79,19 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         log("BTAdvertiser: peripheralManager powered on")
 
         let serviceBroadcast = CBMutableCharacteristic(
-            type: CB.transferCharacteristic.cbUUID,
+            type: BT.transferCharacteristic.cbUUID,
             properties: .read,
             value: "test serviceBroadcast".data(using: .utf8),
             permissions: .readable)
 
         let uniqueBroadcast = CBMutableCharacteristic(
-              type: CB.broadcastCharacteristic.cbUUID,
+              type: BT.broadcastCharacteristic.cbUUID,
               properties: .read,
               value: "test service phone".data(using: .utf8),
               permissions: .readable)
 
 
-        let transferService = CBMutableService(type: CB.transferService.cbUUID, primary: true)
+        let transferService = CBMutableService(type: BT.transferService.cbUUID, primary: true)
         transferService.characteristics = [serviceBroadcast, uniqueBroadcast]
 
         peripheralManager.add(transferService)

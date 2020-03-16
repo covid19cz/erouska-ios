@@ -50,7 +50,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
 
     func start() {
         centralManager.scanForPeripherals(
-            withServices: [CB.transferService.cbUUID],
+            withServices: [BT.transferService.cbUUID],
             options: [
                 CBCentralManagerScanOptionAllowDuplicatesKey: false
             ]
@@ -108,7 +108,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         peripheral.delegate = self
 
         // Search only for services that match our UUID
-        peripheral.discoverServices([CB.transferService.cbUUID, CB.broadcastCharacteristic.cbUUID])
+        peripheral.discoverServices([BT.transferService.cbUUID, BT.broadcastCharacteristic.cbUUID])
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
@@ -134,7 +134,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         }
 
         for service in services {
-            peripheral.discoverCharacteristics([CB.transferCharacteristic.cbUUID], for: service)
+            peripheral.discoverCharacteristics([BT.transferCharacteristic.cbUUID], for: service)
         }
     }
 
@@ -148,7 +148,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
             log("BTScanner: No characteristics to subscribe")
             return
         }
-        for characteristic in characteristics where characteristic.uuid == CB.transferCharacteristic.cbUUID {
+        for characteristic in characteristics where characteristic.uuid == BT.transferCharacteristic.cbUUID {
             peripheral.setNotifyValue(true, for: characteristic)
         }
     }
@@ -184,7 +184,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
             return
         }
 
-        guard characteristic.uuid == CB.transferCharacteristic.cbUUID else {
+        guard characteristic.uuid == BT.transferCharacteristic.cbUUID else {
             return
         }
 
@@ -207,7 +207,7 @@ private extension BTScanner {
         guard let services = discoveredPeripheral?.services else { return }
         for service in services where service.characteristics != nil {
             guard let characteristics = service.characteristics else { return }
-            for characteristic in characteristics where characteristic.uuid == CB.transferCharacteristic.cbUUID {
+            for characteristic in characteristics where characteristic.uuid == BT.transferCharacteristic.cbUUID {
                 guard !characteristic.isNotifying else { return }
                 discoveredPeripheral?.setNotifyValue(false, for: characteristic)
             }
