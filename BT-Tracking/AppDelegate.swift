@@ -7,25 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private var allowBackgroundTask: Bool = false
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     private var inBackgroundStage: Bool = false
 
-    private var rootWindow: UIWindow? = nil
+    // MARK: - UIApplicationDelegate
+
+    var window: UIWindow? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         log("\n\n\n-START--------------------------------\n")
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-        let window = UIWindow()
-        window.backgroundColor = .white
-        window.makeKeyAndVisible()
-        window.rootViewController = storyboard.instantiateInitialViewController()
-        self.rootWindow = window
+        FirebaseApp.configure()
 
         return true
     }
@@ -49,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-BACKGROUND---------------------------\n")
 
         inBackgroundStage = true
+        
+        guard allowBackgroundTask else { return }
         backgroundTask = application.beginBackgroundTask(withName: "BT") {
             log("\n\n\n-EXPIRATION TASK---------------------------\n")
         }
