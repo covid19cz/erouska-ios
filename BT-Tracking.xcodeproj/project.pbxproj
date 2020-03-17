@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
-		8054C0B3241D492F008907B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B2241D492F008907B8 /* SceneDelegate.swift */; };
 		8054C0B8241D492F008907B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Main.storyboard */; };
 		8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
@@ -27,7 +26,6 @@
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		8054C0AD241D492F008907B8 /* BT-Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8054C0B2241D492F008907B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8054C0B9241D4932008907B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8054C0BC241D4932008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,7 +76,6 @@
 				8054C0DB2420AF4F008907B8 /* Others */,
 				8054C0CA241FE68B008907B8 /* Supporting Files */,
 				8054C0B9241D4932008907B8 /* Assets.xcassets */,
-				8054C0B2241D492F008907B8 /* SceneDelegate.swift */,
 				8054C0B0241D492F008907B8 /* AppDelegate.swift */,
 			);
 			path = "BT-Tracking";
@@ -203,7 +200,6 @@
 				8054C0DA24200E91008907B8 /* ServiceController.swift in Sources */,
 				8054C0D824200E7C008907B8 /* FileController.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
-				8054C0B3241D492F008907B8 /* SceneDelegate.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
