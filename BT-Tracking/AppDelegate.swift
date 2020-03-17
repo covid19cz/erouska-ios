@@ -12,7 +12,7 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private var allowBackgroundTask: Bool = false
+    private var allowBackgroundTask: Bool = true
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     private var inBackgroundStage: Bool = false
 
@@ -23,7 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         log("\n\n\n-START--------------------------------\n")
 
+        #if DEBUG
+        #else
         FirebaseApp.configure()
+        #endif
 
         return true
     }

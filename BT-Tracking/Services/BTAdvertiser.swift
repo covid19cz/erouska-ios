@@ -61,7 +61,6 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         guard !isRunning, peripheralManager.state == .poweredOn else { return }
 
         peripheralManager.startAdvertising([
-            //CBAdvertisementDataIsConnectable: true, // TODO: off, currently connection is not implemented
             CBAdvertisementDataLocalNameKey: BT.advertiserName.rawValue,
             CBAdvertisementDataServiceUUIDsKey : [BT.transferService.cbUUID]
         ])
@@ -100,7 +99,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         let uniqueBroadcast = CBMutableCharacteristic(
               type: BT.broadcastCharacteristic.cbUUID,
               properties: .read,
-              value: "test service phone".data(using: .utf8),
+              value: BTDeviceName.data(using: .utf8),
               permissions: .readable
         )
         self.uniqueBroadcast = uniqueBroadcast
@@ -140,7 +139,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
 
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
-        log("BTAdvertiser: peripheralManagerDidStartAdvertising, didReceiveRead: \(request)")
+        log("BTAdvertiser: didReceiveRead: \(request)")
 
         let characteristic: CBCharacteristic
 

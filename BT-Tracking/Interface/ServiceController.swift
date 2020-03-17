@@ -46,6 +46,7 @@ class ServiceController: UIViewController {
         }
         if scanner?.isRunning != true {
             scanner = BTScanner()
+            scanner?.delegate = self
             scanner?.start()
         }
     }
@@ -71,7 +72,7 @@ extension ServiceController: BTScannerDelegate {
 
 extension ServiceController: LogDelegate {
     func didLog(_ text: String) {
-        logToView(text)
+        //logToView(text)
     }
 }
 

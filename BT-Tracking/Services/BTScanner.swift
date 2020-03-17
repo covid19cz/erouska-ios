@@ -30,6 +30,8 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     private var discoveredPeripherals: [UUID: CBPeripheral] = [:]
     private var discoveredData: [UUID: Data] = [:]
 
+    private let acceptUUIDs = [BT.broadcastCharacteristic.cbUUID, BT.transferCharacteristic.cbUUID]
+
     override init() {
         super.init()
 
@@ -91,18 +93,14 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard discoveredPeripherals[peripheral.identifier] == nil else {
             // already registred
-            log("BTScanner: Update \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+            log("BTScanner: Update ]ID: \(peripheral.identifier.uuidString) at \(RSSI)")
             return
         }
         log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
         discoveredPeripherals[peripheral.identifier] = peripheral
         discoveredData[peripheral.identifier] = Data()
 
-        guard RSSI.intValue > -15 else {
-            log("BTScanner: RSSI range \(RSSI.intValue)")
-            return
-        }
-        guard RSSI.intValue < -35 else {
+        guard RSSI.intValue > -70, RSSI.intValue < -5 else {
             log("BTScanner: RSSI range \(RSSI.intValue)")
             return
         }
@@ -127,8 +125,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         log("BTScanner: Peripheral connected \(peripheral)")
 
         peripheral.delegate = self
-        peripheral.discoverServices([BT.broadcastCharacteristic.cbUUID])
-        // [BT.transferService.cbUUID, BT.broadcastCharacteristic.cbUUID]
+        peripheral.discoverServices([BT.transferService.cbUUID])
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
@@ -146,16 +143,16 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
             cleanup()
             return
         }
-        // Discover the characteristic we want...
 
+        // Discover the characteristic we want...
         // Loop through the newly filled peripheral.services array, just in case there's more than one.
-        guard let services = peripheral.services else {
+        guard let services = peripheral.services, !services.isEmpty else {
             log("BTScanner: No services to discover")
             return
         }
 
-        for service in services {
-            peripheral.discoverCharacteristics([BT.transferCharacteristic.cbUUID], for: service)
+        services.forEach {
+            peripheral.discoverCharacteristics([BT.broadcastCharacteristic.cbUUID], for: $0)
         }
     }
 
@@ -165,12 +162,15 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
             cleanup()
             return
         }
+
         guard let characteristics = service.characteristics else {
             log("BTScanner: No characteristics to subscribe")
             return
         }
-        for characteristic in characteristics where characteristic.uuid == BT.transferCharacteristic.cbUUID {
-            peripheral.setNotifyValue(true, for: characteristic)
+
+        for characteristic in characteristics where acceptUUIDs.contains(characteristic.uuid) {
+            log("BTScanner: readValue for \(characteristic.uuid)")
+            peripheral.readValue(for: characteristic)
         }
     }
 
@@ -185,23 +185,11 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         }
 
         let stringFromData = String(data: newData, encoding: .utf8)
-        if stringFromData == "EOM" { // TODO
-            guard let resultData = discoveredData[peripheral.identifier] else {
-                log("BTScanner: No data to process")
-                return
-            }
+        delegate?.didReadData(for: peripheral, data: newData)
 
-            delegate?.didReadData(for: peripheral, data: resultData)
-
-            let text = String(data: resultData, encoding: .utf8)
-            log("BTScanner: Result: \(String(describing: text))")
-
-            peripheral.setNotifyValue(false, for: characteristic)
-            centralManager.cancelPeripheralConnection(peripheral)
-            return
-        }
-        discoveredData[peripheral.identifier]?.append(newData)
-        log("BTScanner: Received: \(String(describing: stringFromData))")
+        peripheral.setNotifyValue(false, for: characteristic)
+        centralManager.cancelPeripheralConnection(peripheral)
+        log("BTScanner: Received: \(stringFromData ?? "none")")
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
@@ -210,7 +198,8 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
             return
         }
 
-        guard characteristic.uuid == BT.transferCharacteristic.cbUUID else {
+        guard acceptUUIDs.contains(characteristic.uuid) else {
+            log("BTScanner: Error not accepted characteristic: \(characteristic)")
             return
         }
 
@@ -241,7 +230,7 @@ private extension BTScanner {
 
         for service in services where service.characteristics != nil {
             guard let characteristics = service.characteristics else { return }
-            for characteristic in characteristics where characteristic.uuid == BT.transferCharacteristic.cbUUID {
+            for characteristic in characteristics where acceptUUIDs.contains(characteristic.uuid) {
                 guard !characteristic.isNotifying else { return }
                 peripheral.setNotifyValue(false, for: characteristic)
             }

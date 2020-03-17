@@ -55,7 +55,7 @@
                                 <action selector="changeContainerAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="JCA-Jf-GMG"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Clear Log" style="plain" id="yb6-JX-Kf7">
+                        <barButtonItem key="rightBarButtonItem" title="Clear Log" id="yb6-JX-Kf7">
                             <connections>
                                 <action selector="purgeLogs:" destination="BYZ-38-t0r" id="0Ut-e9-E3B"/>
                             </connections>
