@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0511B23455F4F3A87E13A855 /* Pods_BT_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */; };
 		8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		8054C0B8241D492F008907B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Main.storyboard */; };
 		8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
@@ -21,12 +22,28 @@
 		8054C0E12420EEFF008907B8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
 		8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4649848424201E4600A858A9 /* FileLogger.swift */; };
 		80BB473E2421137E00F552FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80BB473D2421137D00F552FC /* GoogleService-Info.plist */; };
+		80BB474924212A3C00F552FC /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
+		80BB474A24212A3C00F552FC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
+		80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */; };
+		80BB474C24212A3C00F552FC /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4649848424201E4600A858A9 /* FileLogger.swift */; };
+		80BB474D24212A3C00F552FC /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* ServiceController.swift */; };
+		80BB474E24212A3C00F552FC /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileController.swift */; };
+		80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
+		80BB475024212A3C00F552FC /* BTScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CF241FE706008907B8 /* BTScanner.swift */; };
+		80BB475124212A3C00F552FC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0DC2420AF63008907B8 /* App.swift */; };
+		80BB475224212A3C00F552FC /* BT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D1241FE720008907B8 /* BT.swift */; };
+		80BB475624212A3C00F552FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
+		80BB475724212A3C00F552FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80BB473D2421137D00F552FC /* GoogleService-Info.plist */; };
+		80BB475824212A3C00F552FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
+		80BB475924212A3C00F552FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Main.storyboard */; };
 		8CC5262959368789FD32958B /* Pods_BT_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BT_Tracking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
+		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		8054C0AD241D492F008907B8 /* BT-Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,9 +59,9 @@
 		8054C0DC2420AF63008907B8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		8054C0E02420EEFF008907B8 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		80BB473D2421137D00F552FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80BB475F24212A3C00F552FC /* BT-Tracking copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BT-Tracking copy-Info.plist"; path = "/Users/lukas/Projects/BT-Tracking/BT-Tracking copy-Info.plist"; sourceTree = "<absolute>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
-		BBBFDC007DBCF08E857258E8 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
-		E83D0363F74D759075992E13 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +70,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CC5262959368789FD32958B /* Pods_BT_Tracking.framework in Frameworks */,
+				0511B23455F4F3A87E13A855 /* Pods_BT_Tracking.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80BB475324212A3C00F552FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +87,8 @@
 		05740D8C6D5179F12E3E9CF4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BBBFDC007DBCF08E857258E8 /* Pods-BT-Tracking.debug.xcconfig */,
-				E83D0363F74D759075992E13 /* Pods-BT-Tracking.release.xcconfig */,
+				7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */,
+				415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -83,6 +108,7 @@
 				8054C0AE241D492F008907B8 /* Products */,
 				05740D8C6D5179F12E3E9CF4 /* Pods */,
 				5357F8D365121189A6E32250 /* Frameworks */,
+				80BB475F24212A3C00F552FC /* BT-Tracking copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				8054C0AD241D492F008907B8 /* BT-Tracking.app */,
+				80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,6 +198,23 @@
 			productReference = 8054C0AD241D492F008907B8 /* BT-Tracking.app */;
 			productType = "com.apple.product-type.application";
 		};
+		80BB474624212A3C00F552FC /* BT-Tracking Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80BB475B24212A3C00F552FC /* Build configuration list for PBXNativeTarget "BT-Tracking Mac" */;
+			buildPhases = (
+				80BB474824212A3C00F552FC /* Sources */,
+				80BB475324212A3C00F552FC /* Frameworks */,
+				80BB475524212A3C00F552FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BT-Tracking Mac";
+			productName = "BT-Tracking";
+			productReference = 80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,6 +244,7 @@
 			projectRoot = "";
 			targets = (
 				8054C0AC241D492F008907B8 /* BT-Tracking */,
+				80BB474624212A3C00F552FC /* BT-Tracking Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -213,6 +258,17 @@
 				80BB473E2421137E00F552FC /* GoogleService-Info.plist in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				8054C0B8241D492F008907B8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80BB475524212A3C00F552FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80BB475624212A3C00F552FC /* LaunchScreen.storyboard in Resources */,
+				80BB475724212A3C00F552FC /* GoogleService-Info.plist in Resources */,
+				80BB475824212A3C00F552FC /* Assets.xcassets in Resources */,
+				80BB475924212A3C00F552FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +331,23 @@
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80BB474824212A3C00F552FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80BB474924212A3C00F552FC /* SegmentController.swift in Sources */,
+				80BB474A24212A3C00F552FC /* Logger.swift in Sources */,
+				80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */,
+				80BB474C24212A3C00F552FC /* FileLogger.swift in Sources */,
+				80BB474D24212A3C00F552FC /* ServiceController.swift in Sources */,
+				80BB474E24212A3C00F552FC /* FileController.swift in Sources */,
+				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,
+				80BB475024212A3C00F552FC /* BTScanner.swift in Sources */,
+				80BB475124212A3C00F552FC /* App.swift in Sources */,
+				80BB475224212A3C00F552FC /* BT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +489,7 @@
 		};
 		8054C0C2241D4932008907B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBBFDC007DBCF08E857258E8 /* Pods-BT-Tracking.debug.xcconfig */;
+			baseConfigurationReference = 7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
@@ -438,7 +511,7 @@
 		};
 		8054C0C3241D4932008907B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E83D0363F74D759075992E13 /* Pods-BT-Tracking.release.xcconfig */;
+			baseConfigurationReference = 415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
@@ -455,6 +528,52 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		80BB475C24212A3C00F552FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_TEAM = N448G4S8S9;
+				INFOPLIST_FILE = "BT-Tracking copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		80BB475D24212A3C00F552FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_TEAM = N448G4S8S9;
+				INFOPLIST_FILE = "BT-Tracking copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -475,6 +594,15 @@
 			buildConfigurations = (
 				8054C0C2241D4932008907B8 /* Debug */,
 				8054C0C3241D4932008907B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80BB475B24212A3C00F552FC /* Build configuration list for PBXNativeTarget "BT-Tracking Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80BB475C24212A3C00F552FC /* Debug */,
+				80BB475D24212A3C00F552FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

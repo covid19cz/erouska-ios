@@ -7,7 +7,9 @@
 //
 
 import UIKit
+#if !targetEnvironment(macCatalyst)
 import Firebase
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,9 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         log("\n\n\n-START--------------------------------\n")
 
+        #if !targetEnvironment(macCatalyst)
+
         #if DEBUG
         #else
         FirebaseApp.configure()
+        #endif
+
         #endif
 
         return true
