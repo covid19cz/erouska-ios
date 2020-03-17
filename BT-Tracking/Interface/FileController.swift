@@ -24,6 +24,12 @@ class FileController: UIViewController {
         setup()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        textView.text = FileLogger.shared.getLog()
+    }
+
     // MARK: - Setup
 
     private func setup() {

@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var rootWindow: UIWindow? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        log("\n\n\n-START--------------------------------\n")
+
         if #available(iOS 13, *) {
             // using scene
         } else {
@@ -42,6 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        log("\n\n\n-FOREGROUND---------------------------\n")
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        log("\n\n\n-BACKGROUND---------------------------\n")
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        log("\n\n\n-END----------------------------------\n")
     }
 
 }
