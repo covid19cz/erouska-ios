@@ -193,12 +193,15 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
 
             delegate?.didReadData(for: peripheral, data: resultData)
 
+            let text = String(data: resultData, encoding: .utf8)
+            log("BTScanner: Result: \(String(describing: text))")
+
             peripheral.setNotifyValue(false, for: characteristic)
             centralManager.cancelPeripheralConnection(peripheral)
             return
         }
         discoveredData[peripheral.identifier]?.append(newData)
-        log("Received: \(String(describing: stringFromData))")
+        log("BTScanner: Received: \(String(describing: stringFromData))")
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {

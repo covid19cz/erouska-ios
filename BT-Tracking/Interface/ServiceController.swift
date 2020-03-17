@@ -40,15 +40,12 @@ class ServiceController: UIViewController {
         Log.delegate = self
 
         textView.text = ""
-
         if advertiser?.isRunning != true {
             advertiser = BTAdvertiser()
             advertiser?.start()
         }
-
         if scanner?.isRunning != true {
             scanner = BTScanner()
-            scanner?.delegate = self
             scanner?.start()
         }
     }

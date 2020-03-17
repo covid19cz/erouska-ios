@@ -15,6 +15,15 @@ class SegmentController: UIViewController {
     @IBOutlet private weak var leftContainerView: UIView!
     @IBOutlet private weak var rightContainerView: UIView!
 
+    private weak var leftController: ServiceController!
+    private weak var rightController: FileController!
+
+    // MARK: - Lifecycle
+
+    prep
+
+    // MARK: - Actions
+
     @IBAction private func changeContainerAction(_ sender: Any) {
         if leftContainerView.isHidden {
             rightContainerView.isHidden = true
@@ -24,4 +33,9 @@ class SegmentController: UIViewController {
             leftContainerView.isHidden = true
         }
     }
+
+    @IBAction private func purgeLogs(_ sender: Any) {
+        FileLogger.shared.purgeLogs()
+    }
+
 }

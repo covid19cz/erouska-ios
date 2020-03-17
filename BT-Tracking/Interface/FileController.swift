@@ -12,7 +12,9 @@ class FileController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet private weak var textView: UITextView!
+
+    private var timer: Timer?
 
     // MARK: - Lifecycle
 
@@ -26,6 +28,10 @@ class FileController: UIViewController {
 
     private func setup() {
         textView.text = ""
+
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+            self?.textView.text = FileLogger.shared.getLog()
+        }
     }
 
 }
