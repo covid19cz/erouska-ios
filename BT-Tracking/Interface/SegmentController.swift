@@ -20,7 +20,15 @@ class SegmentController: UIViewController {
 
     // MARK: - Lifecycle
 
-    prep
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        if let controller = segue.destination as? ServiceController {
+            leftController = controller
+        } else if let controller = segue.destination as? FileController {
+            rightController = controller
+        }
+    }
 
     // MARK: - Actions
 
@@ -36,6 +44,9 @@ class SegmentController: UIViewController {
 
     @IBAction private func purgeLogs(_ sender: Any) {
         FileLogger.shared.purgeLogs()
+
+        leftController.purgeLog()
+        rightController.purgeLog()
     }
 
 }

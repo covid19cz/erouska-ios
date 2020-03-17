@@ -34,4 +34,10 @@ class FileController: UIViewController {
         }
     }
 
+    // MARK: -
+
+    func purgeLog() {
+        textView.text = ""
+    }
+    
 }

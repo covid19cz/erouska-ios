@@ -50,6 +50,12 @@ class ServiceController: UIViewController {
         }
     }
 
+    // MARK: -
+
+    func purgeLog() {
+        logText = ""
+    }
+
 }
 
 extension ServiceController: BTScannerDelegate {
