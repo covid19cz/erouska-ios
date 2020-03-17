@@ -56,7 +56,14 @@ class ServiceController: UIViewController {
 }
 
 extension ServiceController: BTScannerDelegate {
+    func didFound(device: CBPeripheral) {
+        logToView("Found device: \(device.identifier.uuidString)")
+    }
 
+    func didReadData(for device: CBPeripheral, data: Data) {
+        let string = String(data: data, encoding: .utf8)
+        logToView("Read data: \(device.identifier.uuidString), \(string ?? "failed to decode")")
+    }
 }
 
 extension ServiceController: LogDelegate {

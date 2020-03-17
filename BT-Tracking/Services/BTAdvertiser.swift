@@ -21,6 +21,9 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
     private var peripheralManager: CBPeripheralManager! = nil
 
+    private var serviceBroadcast: CBCharacteristic?
+    private var uniqueBroadcast: CBCharacteristic?
+
     override init() {
         super.init()
 
@@ -90,14 +93,17 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             type: BT.transferCharacteristic.cbUUID,
             properties: .read,
             value: "test serviceBroadcast".data(using: .utf8),
-            permissions: .readable)
+            permissions: .readable
+        )
+        self.serviceBroadcast = serviceBroadcast
 
         let uniqueBroadcast = CBMutableCharacteristic(
               type: BT.broadcastCharacteristic.cbUUID,
               properties: .read,
               value: "test service phone".data(using: .utf8),
-              permissions: .readable)
-
+              permissions: .readable
+        )
+        self.uniqueBroadcast = uniqueBroadcast
 
         let transferService = CBMutableService(type: BT.transferService.cbUUID, primary: true)
         transferService.characteristics = [serviceBroadcast, uniqueBroadcast]
@@ -135,6 +141,26 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
         log("BTAdvertiser: peripheralManagerDidStartAdvertising, didReceiveRead: \(request)")
+
+        let characteristic: CBCharacteristic
+
+        if let uniqueBroadcast = uniqueBroadcast, request.characteristic.uuid == uniqueBroadcast.uuid {
+            characteristic = uniqueBroadcast
+        } else if let serviceBroadcast = serviceBroadcast, request.characteristic.uuid == serviceBroadcast.uuid {
+            characteristic = serviceBroadcast
+        } else {
+            peripheralManager.respond(to: request, withResult: .attributeNotFound)
+            return
+        }
+
+        guard let value = characteristic.value, request.offset <= value.count else {
+            peripheralManager.respond(to: request, withResult: .invalidOffset)
+            return
+        }
+
+        let range = request.offset...(value.count - request.offset)
+        request.value = characteristic.value?.subdata(in: range.lowerBound..<range.upperBound)
+        peripheral.respond(to: request, withResult: .success)
     }
 
 }

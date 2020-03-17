@@ -6,7 +6,7 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreBluetooth
 
 enum BT: String {
@@ -19,4 +19,10 @@ enum BT: String {
     var cbUUID: CBUUID {
         CBUUID(string: rawValue)
     }
+}
+
+var BTDeviceName: String {
+    let versionName = "SC19" // Stop covid 19
+    let version = "\(App.appVersion)_\(App.bundleBuild)"
+    return "\(versionName)/\(version);(\(UIDevice.current.systemName);\(UIDevice.current.systemVersion);Apple;\(UIDevice.current.model);"
 }

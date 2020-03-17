@@ -20,14 +20,15 @@ protocol BTScannering: class {
 }
 
 protocol BTScannerDelegate: class {
-
+    func didFound(device: CBPeripheral)
+    func didReadData(for device: CBPeripheral, data: Data)
 }
 
 final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPeripheralDelegate {
 
     private var centralManager: CBCentralManager! = nil
-    private var discoveredPeripheral: CBPeripheral?
-    private var data: Data?
+    private var discoveredPeripherals: [UUID: CBPeripheral] = [:]
+    private var discoveredData: [UUID: Data] = [:]
 
     override init() {
         super.init()
@@ -88,7 +89,15 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        log("BTScanner: Discovered \(String(describing: peripheral.name)) \(advertisementData) at \(RSSI)")
+        guard discoveredPeripherals[peripheral.identifier] == nil else {
+            // already registred
+            log("BTScanner: Update \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+            return
+        }
+        log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+        discoveredPeripherals[peripheral.identifier] = peripheral
+        discoveredData[peripheral.identifier] = Data()
+
         guard RSSI.intValue > -15 else {
             log("BTScanner: RSSI range \(RSSI.intValue)")
             return
@@ -99,18 +108,15 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         }
         log("BTScanner: Char \(String(describing: peripheral.services))")
 
-        // Ok, it's in range - have we already seen it?
-        if discoveredPeripheral != peripheral {
-            // Save it
-            discoveredPeripheral = peripheral
-            // And connect
-            log("BTScanner: Connecting to peripheral \(peripheral)")
-            centralManager.connect(peripheral, options: nil)
-        }
+        log("BTScanner: Connecting to peripheral \(peripheral)")
+        centralManager.connect(peripheral, options: nil)
     }
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         log("BTScanner: Failed to connect to \(peripheral), error: \(error?.localizedDescription ?? "none")")
+
+        cleanup(peripheral)
+        discoveredPeripherals.removeValue(forKey: peripheral.identifier)
     }
 
     func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
@@ -118,23 +124,18 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        log("BTScanner: Peripheral connected")
-        // Stop scanning
-        centralManager.stopScan()
-        log("BTScanner: Scanning stopped")
-        // Clear
-        data = nil
-        // Discovery callbacks
-        peripheral.delegate = self
+        log("BTScanner: Peripheral connected \(peripheral)")
 
-        // Search only for services that match our UUID
-        peripheral.discoverServices([BT.transferService.cbUUID, BT.broadcastCharacteristic.cbUUID])
+        peripheral.delegate = self
+        peripheral.discoverServices([BT.broadcastCharacteristic.cbUUID])
+        // [BT.transferService.cbUUID, BT.broadcastCharacteristic.cbUUID]
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        discoveredPeripheral = nil
         log("BTScanner: didDisconnectPeripheral: \(peripheral), error: \(error?.localizedDescription ?? "none")")
-        start()
+
+        cleanup(peripheral)
+        discoveredPeripherals.removeValue(forKey: peripheral.identifier)
     }
 
     // MARK: CBPeripheralDelegate
@@ -178,23 +179,25 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
             log("BTScanner: Error discovering characteristics: \(String(describing: error?.localizedDescription))")
             return
         }
-        guard let charData = characteristic.value else {
-            log("BTScanner:No data in characteristic")
+        guard let newData = characteristic.value else {
+            log("BTScanner: No data in characteristic")
             return
         }
 
-        let stringFromData = String(data: charData, encoding: .utf8)
-        if stringFromData == "EOM" {
-            guard let someData = self.data else {
+        let stringFromData = String(data: newData, encoding: .utf8)
+        if stringFromData == "EOM" { // TODO
+            guard let resultData = discoveredData[peripheral.identifier] else {
                 log("BTScanner: No data to process")
                 return
             }
-            // TODO: to delegate
-            // textView.text = String(data: someData, encoding: .utf8)
+
+            delegate?.didReadData(for: peripheral, data: resultData)
+
             peripheral.setNotifyValue(false, for: characteristic)
             centralManager.cancelPeripheralConnection(peripheral)
+            return
         }
-        data?.append(charData)
+        discoveredData[peripheral.identifier]?.append(newData)
         log("Received: \(String(describing: stringFromData))")
     }
 
@@ -219,18 +222,27 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
 }
 
 private extension BTScanner {
-    func cleanup() {
-        // Don't do anything if we're not connected
-        guard discoveredPeripheral?.state == .connected else { return }
 
+    func cleanup() {
+        for peripheral in discoveredPeripherals {
+            cleanup(peripheral.value)
+        }
+        discoveredPeripherals = [:]
+        discoveredData = [:]
+    }
+
+    func cleanup(_ peripheral: CBPeripheral) {
+        // Don't do anything if we're not connected
         // See if we are subscribed to a characteristic on the peripheral
-        guard let services = discoveredPeripheral?.services else { return }
+        guard peripheral.state == .connected, let services = peripheral.services else { return }
+
         for service in services where service.characteristics != nil {
             guard let characteristics = service.characteristics else { return }
             for characteristic in characteristics where characteristic.uuid == BT.transferCharacteristic.cbUUID {
                 guard !characteristic.isNotifying else { return }
-                discoveredPeripheral?.setNotifyValue(false, for: characteristic)
+                peripheral.setNotifyValue(false, for: characteristic)
             }
         }
     }
+
 }

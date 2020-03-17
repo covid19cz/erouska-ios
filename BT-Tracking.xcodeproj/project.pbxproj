@@ -19,6 +19,7 @@
 		8054C0D624200BEC008907B8 /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
 		8054C0D824200E7C008907B8 /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileController.swift */; };
 		8054C0DA24200E91008907B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* ViewController.swift */; };
+		8054C0DD2420AF63008907B8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0DC2420AF63008907B8 /* App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		8054C0D524200BEC008907B8 /* SegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentController.swift; sourceTree = "<group>"; };
 		8054C0D724200E7C008907B8 /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
 		8054C0D924200E91008907B8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8054C0DC2420AF63008907B8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				8054C0C9241FE66A008907B8 /* Interface */,
 				8054C0CC241FE6D5008907B8 /* Services */,
+				8054C0DB2420AF4F008907B8 /* Others */,
 				8054C0CA241FE68B008907B8 /* Supporting Files */,
 				8054C0B9241D4932008907B8 /* Assets.xcassets */,
 				8054C0B2241D492F008907B8 /* SceneDelegate.swift */,
@@ -107,6 +110,14 @@
 				8054C0D3241FEA4F008907B8 /* Log.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		8054C0DB2420AF4F008907B8 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				8054C0DC2420AF63008907B8 /* App.swift */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				8054C0B3241D492F008907B8 /* SceneDelegate.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
+				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
