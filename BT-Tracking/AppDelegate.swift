@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        
+
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -61,8 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
 
-            application.endBackgroundTask(self.backgroundTask)
-            self.backgroundTask = .invalid
+            DispatchQueue.main.async {
+                application.endBackgroundTask(self.backgroundTask)
+                self.backgroundTask = .invalid
+            }
         }
     }
 
