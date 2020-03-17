@@ -18,12 +18,16 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>We need Bluetooth to discover, connect and share information with other nearby devices to help fight against Coronavirus pandemy.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>We need Bluetooth to discover, connect and share information with other nearby devices to help fight against Coronavirus pandemy.</string>
+	<key>UIApplicationExitsOnSuspend</key>
+	<false/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
