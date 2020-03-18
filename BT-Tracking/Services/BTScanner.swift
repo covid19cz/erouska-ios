@@ -20,7 +20,9 @@ protocol BTScannering: class {
 }
 
 protocol BTScannerDelegate: class {
-    func didFound(device: CBPeripheral)
+    func didFound(device: CBPeripheral, RSSI: Int)
+    func didUpdate(device: CBPeripheral, RSSI: Int)
+
     func didReadData(for device: CBPeripheral, data: Data)
 }
 
@@ -93,10 +95,13 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard discoveredPeripherals[peripheral.identifier] == nil else {
             // already registred
-            log("BTScanner: Update ]ID: \(peripheral.identifier.uuidString) at \(RSSI)")
+            log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
+            delegate?.didUpdate(device: peripheral, RSSI: RSSI.intValue)
             return
         }
         log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+        delegate?.didFound(device: peripheral, RSSI: RSSI.intValue)
+
         discoveredPeripherals[peripheral.identifier] = peripheral
         discoveredData[peripheral.identifier] = Data()
 

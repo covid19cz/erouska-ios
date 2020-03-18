@@ -60,8 +60,12 @@ class ServiceController: UIViewController {
 }
 
 extension ServiceController: BTScannerDelegate {
-    func didFound(device: CBPeripheral) {
-        logToView("Found device: \(device.identifier.uuidString)")
+    func didFound(device: CBPeripheral, RSSI: Int) {
+        logToView("Found device: \(device.identifier.uuidString), signal: \(RSSI)")
+    }
+
+    func didUpdate(device: CBPeripheral, RSSI: Int) {
+        logToView("Updated device: \(device.identifier.uuidString), signal: \(RSSI)")
     }
 
     func didReadData(for device: CBPeripheral, data: Data) {
