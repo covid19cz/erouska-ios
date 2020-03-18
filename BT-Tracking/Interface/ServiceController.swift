@@ -62,21 +62,34 @@ class ServiceController: UIViewController {
 extension ServiceController: BTScannerDelegate {
     func didFound(device: CBPeripheral, RSSI: Int) {
         let text = "Found device: \(device.identifier.uuidString), signal: \(RSSI)"
-        log("\n" + text + "\n")
-        logToView(text)
+        localLog(text, notification: true)
     }
 
     func didUpdate(device: CBPeripheral, RSSI: Int) {
         let text = "Updated device: \(device.identifier.uuidString), signal: \(RSSI)"
-        log("\n" + text + "\n")
-        logToView(text)
+        localLog(text)
     }
 
     func didReadData(for device: CBPeripheral, data: Data) {
         let string = String(data: data, encoding: .utf8)
         let text = "Read data: \(device.identifier.uuidString), \(string ?? "failed to decode")"
+        localLog(text, notification: true)
+    }
+
+    private func localLog(_ text: String, notification: Bool = false) {
         log("\n" + text + "\n")
         logToView(text)
+
+        guard AppDelegate.inBackground, notification else { return }
+
+        let content = UNMutableNotificationContent()
+        content.title = "BT"
+        content.body = text
+        content.sound = .default
+
+        let request = UNNotificationRequest(identifier: "Scanning",  content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
     }
 }
 

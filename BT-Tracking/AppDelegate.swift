@@ -14,9 +14,15 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private var allowBackgroundTask: Bool = true
+    private var allowBackgroundTask: Bool = false
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
-    private var inBackgroundStage: Bool = false
+    private var inBackgroundStage: Bool = false {
+        didSet {
+            Self.inBackground = inBackgroundStage
+        }
+    }
+
+    private(set) static var inBackground: Bool = false
 
     // MARK: - UIApplicationDelegate
 
@@ -33,6 +39,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         #endif
+
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in
+            
+        }
+
+        let generalCategory = UNNotificationCategory(
+            identifier: "Scanning",
+            actions: [],
+            intentIdentifiers: [],
+            options: .customDismissAction
+        )
+
+        let center = UNUserNotificationCenter.current()
+        center.setNotificationCategories([generalCategory])
 
         return true
     }
