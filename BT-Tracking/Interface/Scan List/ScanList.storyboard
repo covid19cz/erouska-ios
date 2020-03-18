@@ -115,11 +115,13 @@
             </objects>
             <point key="canvasLocation" x="900.00000000000011" y="139.95535714285714"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Scanner-->
         <scene sceneID="ehe-sy-MJ1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PAK-Zz-ZV9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Scanner" image="wifi" catalog="system" id="6DT-HD-lpa"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="waq-tk-pgI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -134,4 +136,7 @@
             <point key="canvasLocation" x="-10.144927536231885" y="139.95535714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="wifi" catalog="system" width="64" height="46"/>
+    </resources>
 </document>
