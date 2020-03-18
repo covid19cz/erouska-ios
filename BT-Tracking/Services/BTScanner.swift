@@ -29,7 +29,7 @@ protocol BTScannerDelegate: class {
 final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPeripheralDelegate {
 
     var filterRSSIPower: Bool = false
-    private let allowedRSSIRange: ClosedRange<Int> = -70...(-5)
+    private let allowedRSSIRange: ClosedRange<Int> = -90...0
 
     private var centralManager: CBCentralManager! = nil
     private var discoveredPeripherals: [UUID: CBPeripheral] = [:]
