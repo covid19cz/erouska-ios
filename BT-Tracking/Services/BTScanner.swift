@@ -28,6 +28,9 @@ protocol BTScannerDelegate: class {
 
 final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPeripheralDelegate {
 
+    var filterRSSIPower: Bool = false
+    private let allowedRSSIRange: ClosedRange<Int> = -70...(-5)
+
     private var centralManager: CBCentralManager! = nil
     private var discoveredPeripherals: [UUID: CBPeripheral] = [:]
     private var discoveredData: [UUID: Data] = [:]
@@ -105,9 +108,11 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         discoveredPeripherals[peripheral.identifier] = peripheral
         discoveredData[peripheral.identifier] = Data()
 
-        guard RSSI.intValue > -70, RSSI.intValue < -5 else {
-            log("BTScanner: RSSI range \(RSSI.intValue)")
-            return
+        if filterRSSIPower {
+            guard allowedRSSIRange.contains(RSSI.intValue) else {
+                log("BTScanner: RSSI range \(RSSI.intValue)")
+                return
+            }
         }
         log("BTScanner: Char \(String(describing: peripheral.services))")
 

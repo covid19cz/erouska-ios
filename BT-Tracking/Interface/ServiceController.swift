@@ -61,16 +61,22 @@ class ServiceController: UIViewController {
 
 extension ServiceController: BTScannerDelegate {
     func didFound(device: CBPeripheral, RSSI: Int) {
-        logToView("Found device: \(device.identifier.uuidString), signal: \(RSSI)")
+        let text = "Found device: \(device.identifier.uuidString), signal: \(RSSI)"
+        log("\n" + text + "\n")
+        logToView(text)
     }
 
     func didUpdate(device: CBPeripheral, RSSI: Int) {
-        logToView("Updated device: \(device.identifier.uuidString), signal: \(RSSI)")
+        let text = "Updated device: \(device.identifier.uuidString), signal: \(RSSI)"
+        log("\n" + text + "\n")
+        logToView(text)
     }
 
     func didReadData(for device: CBPeripheral, data: Data) {
         let string = String(data: data, encoding: .utf8)
-        logToView("Read data: \(device.identifier.uuidString), \(string ?? "failed to decode")")
+        let text = "Read data: \(device.identifier.uuidString), \(string ?? "failed to decode")"
+        log("\n" + text + "\n")
+        logToView(text)
     }
 }
 
