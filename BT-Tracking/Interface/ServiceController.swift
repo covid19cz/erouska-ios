@@ -62,7 +62,12 @@ class ServiceController: UIViewController {
 extension ServiceController: BTScannerDelegate {
     func didFound(device: CBPeripheral, RSSI: Int) {
         let text = "Found device: \(device.identifier.uuidString), signal: \(RSSI)"
-        localLog(text, notification: true)
+
+        let content = UNMutableNotificationContent()
+        content.title = "Found device: \(device.identifier.uuidString)"
+        content.body = "Signal: \(RSSI)"
+
+        localLog(text, notification: content)
     }
 
     func didUpdate(device: CBPeripheral, RSSI: Int) {
@@ -73,21 +78,22 @@ extension ServiceController: BTScannerDelegate {
     func didReadData(for device: CBPeripheral, data: Data) {
         let string = String(data: data, encoding: .utf8)
         let text = "Read data: \(device.identifier.uuidString), \(string ?? "failed to decode")"
-        localLog(text, notification: true)
+
+        let content = UNMutableNotificationContent()
+        content.title = "Read data"
+        content.body = string ?? ""
+
+        localLog(text, notification: content)
     }
 
-    private func localLog(_ text: String, notification: Bool = false) {
+    private func localLog(_ text: String, notification: UNMutableNotificationContent? = nil) {
         log("\n" + text + "\n")
         logToView(text)
 
-        guard AppDelegate.inBackground, notification else { return }
+        guard AppDelegate.inBackground, let notification = notification else { return }
+        notification.sound = .none
 
-        let content = UNMutableNotificationContent()
-        content.title = "BT"
-        content.body = text
-        content.sound = .default
-
-        let request = UNNotificationRequest(identifier: "Scanning",  content: content, trigger: nil)
+        let request = UNNotificationRequest(identifier: "Scanning",  content: notification, trigger: nil)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 
     }
