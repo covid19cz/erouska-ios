@@ -162,7 +162,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         }
 
         services.forEach {
-            peripheral.discoverCharacteristics([BT.broadcastCharacteristic.cbUUID], for: $0)
+            peripheral.discoverCharacteristics([BT.broadcastCharacteristic.cbUUID], for: $0) // transferCharacteristic
         }
     }
 

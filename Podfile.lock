@@ -1,4 +1,5 @@
 PODS:
+  - Differentiator (4.0.1)
   - Firebase/Analytics (6.20.0):
     - Firebase/Core
   - Firebase/Core (6.20.0):
@@ -65,12 +66,26 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
+  - RxCocoa (5.1.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - RxCocoa
+  - RxDataSources
+  - RxSwift
 
 SPEC REPOS:
   trunk:
+    - Differentiator
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -83,8 +98,13 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
   FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
   FirebaseCore: ed0a24c758a57c2b88c5efa8e6a8195e868af589
@@ -97,7 +117,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  RxCocoa: 13d2a4d7546a34b8ececae8c281e4ea1dbb94f2b
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
+  RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
 
-PODFILE CHECKSUM: 4f7da6e140dbdc67ab635d86a24827c027285f79
+PODFILE CHECKSUM: 7c312c9bd098325cad540eb13656bd72835199c4
 
 COCOAPODS: 1.8.4
