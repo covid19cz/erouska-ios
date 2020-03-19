@@ -25,10 +25,20 @@
             </objects>
             <point key="canvasLocation" x="-701" y="138"/>
         </scene>
+        <!--Signup-->
+        <scene sceneID="vZS-fm-I9h">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Signup" id="8WZ-88-2j8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="phR-GU-koP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FvF-S0-iAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-949" y="-297"/>
+        </scene>
         <!--Segment Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SegmentController" customModule="BT_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SegmentController" customModule="BT_Tracking_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +101,7 @@
         <!--File Controller-->
         <scene sceneID="MST-LO-IV9">
             <objects>
-                <viewController id="IHl-Dr-h7k" customClass="FileController" customModule="BT_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IHl-Dr-h7k" customClass="FileController" customModule="BT_Tracking_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NzK-sq-Gvv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +146,7 @@
         <!--Service Controller-->
         <scene sceneID="v9N-Hz-b8A">
             <objects>
-                <viewController id="K92-Df-LB0" customClass="ServiceController" customModule="BT_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="K92-Df-LB0" customClass="ServiceController" customModule="BT_Tracking_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M3F-KC-Vck">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,6 +200,7 @@
                     <connections>
                         <segue destination="Zzq-tP-ajo" kind="relationship" relationship="viewControllers" id="nwe-Uf-Qky"/>
                         <segue destination="7gO-HW-zf0" kind="relationship" relationship="viewControllers" id="03P-U7-O9w"/>
+                        <segue destination="8WZ-88-2j8" kind="relationship" relationship="viewControllers" id="SWq-kL-u2j"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXz-yZ-hZd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

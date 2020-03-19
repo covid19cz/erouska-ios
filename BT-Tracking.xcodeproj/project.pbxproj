@@ -41,6 +41,9 @@
 		80BB475724212A3C00F552FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80BB473D2421137D00F552FC /* GoogleService-Info.plist */; };
 		80BB475824212A3C00F552FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		80BB475924212A3C00F552FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Main.storyboard */; };
+		80BB476224227C2500F552FC /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BB476124227C2500F552FC /* Signup.storyboard */; };
+		80BB47642422865B00F552FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
+		80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationController.swift */; };
 		8CC5262959368789FD32958B /* Pods_BT_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +57,7 @@
 		46F21CAA242245C100C01DFA /* ScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
 		46F21CAE2422597F00C01DFA /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
-		8054C0AD241D492F008907B8 /* BT-Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8054C0AD241D492F008907B8 /* Mobilní rouška.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobilní rouška.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8054C0B9241D4932008907B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +74,9 @@
 		80BB473D2421137D00F552FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BB475F24212A3C00F552FC /* BT-Tracking copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BT-Tracking copy-Info.plist"; path = "/Users/lukas/Projects/BT-Tracking/BT-Tracking copy-Info.plist"; sourceTree = "<absolute>"; };
+		80BB476124227C2500F552FC /* Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
+		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		80BB476524236ED100F552FC /* BluetoothActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivationController.swift; sourceTree = "<group>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,7 +169,7 @@
 		8054C0AE241D492F008907B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8054C0AD241D492F008907B8 /* BT-Tracking.app */,
+				8054C0AD241D492F008907B8 /* Mobilní rouška.app */,
 				80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */,
 			);
 			name = Products;
@@ -186,6 +192,7 @@
 		8054C0C9241FE66A008907B8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				80BB476024227C1400F552FC /* Signup */,
 				46F21CA3242243F400C01DFA /* Debug Screen */,
 				46F21CA2242243A300C01DFA /* Scan List */,
 			);
@@ -219,8 +226,18 @@
 			isa = PBXGroup;
 			children = (
 				8054C0DC2420AF63008907B8 /* App.swift */,
+				80BB47632422865B00F552FC /* Button.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		80BB476024227C1400F552FC /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				80BB476124227C2500F552FC /* Signup.storyboard */,
+				80BB476524236ED100F552FC /* BluetoothActivationController.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,7 +259,7 @@
 			);
 			name = "BT-Tracking";
 			productName = "BT-Tracking";
-			productReference = 8054C0AD241D492F008907B8 /* BT-Tracking.app */;
+			productReference = 8054C0AD241D492F008907B8 /* Mobilní rouška.app */;
 			productType = "com.apple.product-type.application";
 		};
 		80BB474624212A3C00F552FC /* BT-Tracking Mac */ = {
@@ -305,6 +322,7 @@
 				80BB473E2421137E00F552FC /* GoogleService-Info.plist in Resources */,
 				46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
+				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
 				8054C0B8241D492F008907B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +397,8 @@
 				8054C0D824200E7C008907B8 /* FileController.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
+				80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */,
+				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				46F21CAB242245C100C01DFA /* ScanCell.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				46F21CAF2422597F00C01DFA /* Scan.swift in Sources */,
@@ -547,7 +567,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = XQ7JZFRLZA;
+				DEVELOPMENT_TEAM = N448G4S8S9;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -555,7 +575,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mobilní rouška";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -569,7 +589,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = XQ7JZFRLZA;
+				DEVELOPMENT_TEAM = N448G4S8S9;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -577,7 +597,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mobilní rouška";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
