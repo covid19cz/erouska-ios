@@ -13,7 +13,7 @@ enum BT: String {
     case advertiserName = "Covid-19"
 
     case transferService = "1440dd68-67e4-11ea-bc55-0242ac130003"
-    case transferCharacteristic = "1A38B500-C8AB-4222-A9D4-1D5DB152D4C2"
+    case transferCharacteristic = "9472fbde-04ff-4fff-be1c-b9d3287e8f28"
     case broadcastCharacteristic = "08590F7E-DB05-467E-8757-72F6FAEB13D4"
 
     var cbUUID: CBUUID {

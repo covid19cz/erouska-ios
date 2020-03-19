@@ -9,6 +9,7 @@
 import RxSwift
 import RxCocoa
 import RxDataSources
+import FirebaseAuth
 
 class ScanListVC: UIViewController {
 
@@ -22,10 +23,26 @@ class ScanListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.largeTitleDisplayMode = .never
+
         setupTableView()
-//        bindClearButton()
+        // bindClearButton()
     }
-    
+
+    // MARK: - Actions
+
+    @IBAction func signOutAction(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+
+            let storyboard = UIStoryboard(name: "Signup", bundle: nil)
+            view.window?.rootViewController = storyboard.instantiateInitialViewController()
+        } catch {
+            show(error: error)
+        }
+    }
+
     // MARK: - TableView
     
     private func setupTableView() {

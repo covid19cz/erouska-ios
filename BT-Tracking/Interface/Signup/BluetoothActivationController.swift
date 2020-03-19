@@ -23,13 +23,7 @@ class BluetoothActivationController: UIViewController {
             case .allowedAlways:
                 performSegue(withIdentifier: "activation", sender: nil)
             default:
-                let alertController = UIAlertController(
-                    title: "Povolení bluetooth",
-                    message: "Musíte povolit bluetooth, aby aplikace mohla fungovat.",
-                    preferredStyle: .alert
-                )
-                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                present(alertController, animated: true, completion: nil)
+                showError(title: "Povolení bluetooth", message: "Musíte povolit bluetooth, aby aplikace mohla fungovat.")
             }
         } else {
             performSegue(withIdentifier: "activation", sender: nil)

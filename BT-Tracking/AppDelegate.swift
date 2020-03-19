@@ -9,6 +9,7 @@
 import UIKit
 #if !targetEnvironment(macCatalyst)
 import Firebase
+import FirebaseAuth
 #endif
 
 @UIApplicationMain
@@ -34,28 +35,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         log("\n\n\n-START--------------------------------\n")
 
+        let window = UIWindow()
+        window.backgroundColor = .white
+        window.makeKeyAndVisible()
+        self.window = window
+
+        let storyboard: UIStoryboard
         #if !targetEnvironment(macCatalyst)
 
-        #if DEBUG
-        #else
         FirebaseApp.configure()
-        #endif
+        Auth.auth().languageCode = "cs";
 
-        #endif
-
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in
-            
+        if Auth.auth().currentUser == nil {
+            storyboard = UIStoryboard(name: "Signup", bundle: nil)
+        } else {
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
         }
 
-        let generalCategory = UNNotificationCategory(
-            identifier: "Scanning",
-            actions: [],
-            intentIdentifiers: [],
-            options: .customDismissAction
-        )
+        #else
+        storyboard = UIStoryboard(name: "Main", bundle: nil)
+        #endif
 
-        let center = UNUserNotificationCenter.current()
-        center.setNotificationCategories([generalCategory])
+        window.rootViewController = storyboard.instantiateInitialViewController()
         
         scanner.scannerStoreDelegate = scannerStore
         scanner.start()

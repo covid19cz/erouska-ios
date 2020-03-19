@@ -20,6 +20,12 @@ class SegmentController: UIViewController {
 
     // MARK: - Lifecycle
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        navigationItem.largeTitleDisplayMode = .never
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 

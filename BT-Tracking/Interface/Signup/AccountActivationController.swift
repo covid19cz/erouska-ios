@@ -27,23 +27,47 @@ class AccountActivationControler: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-          phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in
 
-          isValid.bind(to: actionButton.rx.isEnabled).disposed(by: disposeBag)
+        }
+
+        let generalCategory = UNNotificationCategory(
+            identifier: "Scanning",
+            actions: [],
+            intentIdentifiers: [],
+            options: .customDismissAction
+        )
+
+        let center = UNUserNotificationCenter.current()
+        center.setNotificationCategories([generalCategory])
+
+        phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)
+
+        isValid.bind(to: actionButton.rx.isEnabled).disposed(by: disposeBag)
     }
 
     @IBAction func activateAcountAction(_ sender: Any) {
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber.value, uiDelegate: nil) { [weak self] verificationID, error in
+        #if DEBUG
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        #endif
+
+        PhoneAuthProvider.provider().verifyPhoneNumber("+420" + phoneNumber.value, uiDelegate: nil) { [weak self] verificationID, error in
             if let error = error {
-                let alertController = UIAlertController(
-                    title: "Chyba při aktivaci",
-                    message: error.localizedDescription,
-                    preferredStyle: .alert
-                )
-                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self?.present(alertController, animated: true, completion: nil)
+                self?.show(error: error, title: "Chyba při aktivaci")
+            } else if let verificationID = verificationID  {
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: "123456")
+                self?.signIn(with: credential)
+            }
+        }
+    }
+
+    private func signIn(with credential: PhoneAuthCredential) {
+        Auth.auth().signIn(with: credential) { [weak self] authResult, error in
+            if let error = error {
+                self?.show(error: error, title: "Chyba při aktivaci")
             } else {
-                // done
+                self?.performSegue(withIdentifier: "done", sender: nil)
             }
         }
     }
