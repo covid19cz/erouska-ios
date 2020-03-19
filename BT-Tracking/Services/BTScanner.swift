@@ -35,10 +35,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     var filterRSSIPower: Bool = false
     private let allowedRSSIRange: ClosedRange<Int> = -90...0
 
-    var continuousScanning: Bool = true
-
     private var centralManager: CBCentralManager! = nil
-
     private var discoveredPeripherals: [UUID: CBPeripheral] = [:]
     private var discoveredData: [UUID: Data] = [:]
 
@@ -80,7 +77,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         centralManager.scanForPeripherals(
             withServices: [BT.transferService.cbUUID],
             options: [
-                CBCentralManagerScanOptionAllowDuplicatesKey: continuousScanning
+                CBCentralManagerScanOptionAllowDuplicatesKey: true
             ]
         )
         log("BTScanner: Scanning started")
@@ -152,6 +149,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         log("BTScanner: didDisconnectPeripheral: \(peripheral), error: \(error?.localizedDescription ?? "none")")
 
         cleanup(peripheral)
+        discoveredPeripherals.removeValue(forKey: peripheral.identifier)
     }
 
     // MARK: CBPeripheralDelegate
