@@ -5,6 +5,8 @@ target 'BT-Tracking' do
 
   # Pods for BT-Tracking
   pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'

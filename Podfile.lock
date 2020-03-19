@@ -2,6 +2,9 @@ PODS:
   - Differentiator (4.0.1)
   - Firebase/Analytics (6.20.0):
     - Firebase/Core
+  - Firebase/Auth (6.20.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 6.5.0)
   - Firebase/Core (6.20.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.3.1)
@@ -16,6 +19,13 @@ PODS:
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (= 0.3.9011)
+  - FirebaseAuth (6.5.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseAuthInterop (1.1.0)
   - FirebaseCore (6.6.4):
     - FirebaseCoreDiagnostics (~> 1.2)
     - FirebaseCoreDiagnosticsInterop (~> 1.2)
@@ -60,6 +70,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.5.2):
     - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.3.1)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -79,6 +90,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - Firebase/Auth
   - RxCocoa
   - RxDataSources
   - RxSwift
@@ -88,6 +100,8 @@ SPEC REPOS:
     - Differentiator
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
@@ -96,6 +110,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
+    - GTMSessionFetcher
     - nanopb
     - PromisesObjC
     - RxCocoa
@@ -107,6 +122,8 @@ SPEC CHECKSUMS:
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
   FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
+  FirebaseAuth: 648892fd0afeb27ef97c1d2e667329855f1004bc
+  FirebaseAuthInterop: a0f37ae05833af156e72028f648d313f7e7592e9
   FirebaseCore: ed0a24c758a57c2b88c5efa8e6a8195e868af589
   FirebaseCoreDiagnostics: e9b4cd8ba60dee0f2d13347332e4b7898cca5b61
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
@@ -115,6 +132,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: a857c6a002d201b524dd4bc2ed7e7355ed07e785
   GoogleDataTransportCCTSupport: 32f75fbe904c82772fcbb6b6bd4525bfb6f2a862
   GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
+  GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   RxCocoa: 13d2a4d7546a34b8ececae8c281e4ea1dbb94f2b
@@ -122,6 +140,6 @@ SPEC CHECKSUMS:
   RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
 
-PODFILE CHECKSUM: 7c312c9bd098325cad540eb13656bd72835199c4
+PODFILE CHECKSUM: c02cd8dd6eef5e004d411c4cc0fde8f5cf953fa8
 
 COCOAPODS: 1.8.4

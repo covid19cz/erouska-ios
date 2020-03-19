@@ -262,7 +262,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
         <!--Aktivace-->
         <scene sceneID="vLC-jn-bpl">
             <objects>
-                <viewController id="BBC-aE-fuq" sceneMemberID="viewController">
+                <viewController id="BBC-aE-fuq" customClass="AccountActivationControler" customModule="Mobilní_rouška" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceh-zy-1BU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -293,7 +293,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Telefonní číslo (povinné)" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lga-hM-kAK">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefonní číslo (povinné)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lga-hM-kAK">
                                         <rect key="frame" x="0.0" y="280" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="9bG-7B-cj9"/>
@@ -320,6 +320,9 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                         <state key="normal" title="Dokončit aktivaci">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
+                                        <connections>
+                                            <action selector="activateAcountAction:" destination="BBC-aE-fuq" eventType="touchUpInside" id="wif-CC-haO"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1x-On-MfN" userLabel="Space View">
                                         <rect key="frame" x="0.0" y="708.5" width="374" height="5"/>
@@ -348,6 +351,10 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="actionButton" destination="H4n-ew-pkC" id="IKW-1O-qQD"/>
+                        <outlet property="phoneNumberTextField" destination="lga-hM-kAK" id="lzC-ec-aPx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fag-j7-7j9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -360,6 +367,6 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
         <image name="MinLogo" width="328" height="29.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aeu-ol-3ic"/>
+        <segue reference="dnP-Ct-dLH"/>
     </inferredMetricsTieBreakers>
 </document>
