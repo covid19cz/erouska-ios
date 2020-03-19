@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxRelay
+import RxKeyboard
 import FirebaseAuth
 import FirebaseFunctions
 
@@ -24,8 +25,9 @@ class AccountActivationControler: UIViewController {
 
     private lazy var functions = Functions.functions(region:"europe-west2")
 
-    @IBOutlet private var phoneNumberTextField: UITextField!
-    @IBOutlet private var actionButton: UIButton!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var actionButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +49,26 @@ class AccountActivationControler: UIViewController {
         phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)
 
         isValid.bind(to: actionButton.rx.isEnabled).disposed(by: disposeBag)
+
+        RxKeyboard.instance.visibleHeight.drive(onNext: { [weak self] keyboardVisibleHeight in
+            guard let self = self else { return }
+
+            self.view.setNeedsLayout()
+            UIView.animate(withDuration: 0.1) {
+                self.scrollView.contentInset.bottom = keyboardVisibleHeight
+                self.scrollView.scrollIndicatorInsets.bottom = keyboardVisibleHeight
+                self.view.layoutIfNeeded()
+            }
+        }).disposed(by: disposeBag)
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        phoneNumberTextField.becomeFirstResponder()
+    }
+
+    // MARK: - Actions
 
     @IBAction func activateAcountAction(_ sender: Any) {
         #if DEBUG

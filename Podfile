@@ -11,5 +11,6 @@ target 'BT-Tracking' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  pod 'RxKeyboard'
   
 end

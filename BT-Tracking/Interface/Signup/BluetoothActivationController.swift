@@ -10,25 +10,23 @@ import UIKit
 import CoreBluetooth
 
 class BluetoothActivationController: UIViewController {
+
+    private var peripheralManager: CBPeripheralManager?
     
     @IBAction func activateBluetoothAction(_ sender: Any) {
         if #available(iOS 13.0, *) {
-            let advertiser = AppDelegate.delegate.advertiser
-            advertiser.start()
-            
-            DispatchQueue.main.async {
-                switch advertiser.authorization {
-                case .allowedAlways:
-                    self.performSegue(withIdentifier: "activation", sender: nil)
-                default:
-                    self.showError(title: "Povolení bluetooth", message: "Musíte povolit bluetooth, aby aplikace mohla fungovat.")
-                }
-
-                advertiser.stop()
-            }
+            peripheralManager = CBPeripheralManager(
+                delegate: self,
+                queue: nil,
+                options: [:]
+            )
         } else {
-            performSegue(withIdentifier: "activation", sender: nil)
+            goToActivation()
         }
+    }
+
+    private func goToActivation() {
+        performSegue(withIdentifier: "activation", sender: nil)
     }
 
 }
@@ -36,7 +34,21 @@ class BluetoothActivationController: UIViewController {
 extension BluetoothActivationController: CBPeripheralManagerDelegate {
 
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-
+        if #available(iOS 13.0, *) {
+            if peripheral.state == .poweredOn {
+                goToActivation()
+            } else {
+                switch peripheral.authorization {
+                case .allowedAlways:
+                    self.goToActivation()
+                default:
+                    self.showError(title: "Povolení bluetooth", message: "Musíte povolit bluetooth, aby aplikace mohla fungovat.")
+                }
+            }
+        } else {
+            goToActivation()
+        }
+        peripheralManager = nil
     }
 
 }

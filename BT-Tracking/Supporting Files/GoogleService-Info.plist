@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1077972356575-q0iv1p8pcmleje91i5nft02m7ukib6p5.apps.googleusercontent.com</string>
+	<string>1077972356575-g0n4ouc5vuhs0iifu5157ufgv7durh16.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1077972356575-q0iv1p8pcmleje91i5nft02m7ukib6p5</string>
+	<string>com.googleusercontent.apps.1077972356575-g0n4ouc5vuhs0iifu5157ufgv7durh16</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1077972356575-7h2hb75p3a6uas0iv5suo60gk507jbbs.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyChJ_jWSssjOv_Yta28ksx_B2Vzf6CdfAQ</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.covid19cz.BT-Tracking</string>
+	<string>com.arat.BT-Tracking</string>
 	<key>PROJECT_ID</key>
 	<string>covid19cz</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1077972356575:ios:a531713795e392d261886a</string>
+	<string>1:1077972356575:ios:5c5c95c7c775f32561886a</string>
 	<key>DATABASE_URL</key>
 	<string>https://covid19cz.firebaseio.com</string>
 </dict>
