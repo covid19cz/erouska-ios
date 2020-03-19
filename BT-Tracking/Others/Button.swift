@@ -23,6 +23,12 @@ class RoundedButtonFilled: UIButton {
         setTitleColor(.white, for: .normal)
     }
 
+    override var isEnabled: Bool {
+        didSet {
+            backgroundColor = isEnabled ? .systemBlue : .systemGray
+        }
+    }
+
 }
 
 class RoundedButtonClear: UIButton {
