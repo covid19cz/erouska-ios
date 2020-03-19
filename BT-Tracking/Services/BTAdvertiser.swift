@@ -14,6 +14,9 @@ protocol BTAdvertising: class {
     var isRunning: Bool { get }
     func start()
     func stop()
+
+    @available(iOS 13.0, *)
+    var authorization: CBManagerAuthorization { get }
     
 }
 
@@ -24,6 +27,18 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     private var serviceBroadcast: CBCharacteristic?
     private var uniqueBroadcast: CBCharacteristic?
 
+    @available(iOS 13.0, *)
+    var authorization: CBManagerAuthorization {
+        if #available(iOS 13.1, *) {
+            return CBPeripheralManager.authorization
+        } else if #available(iOS 13.0, *) {
+            return peripheralManager.authorization
+        } else {
+            return .allowedAlways
+            //return peripheralManager.authorizationStatus
+        }
+    }
+
     override init() {
         super.init()
 
@@ -31,7 +46,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             delegate: self,
             queue: nil,
             options: [
-                // CBPeripheralManagerOptionShowPowerAlertKey: ?
+                CBPeripheralManagerOptionShowPowerAlertKey: true, // ask to turn on bluetooth
                 CBPeripheralManagerOptionRestoreIdentifierKey: true
             ]
         )

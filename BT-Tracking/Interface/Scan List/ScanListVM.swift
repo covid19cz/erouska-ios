@@ -14,13 +14,12 @@ class ScanListVM {
     
     // MARK: - Properties
     
-    private let scannerStore: ScannerStore!
+    private let scannerStore: ScannerStore
     
     // MARK: - Init
     
-    init() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        scannerStore = appDelegate.scannerStore
+    init(scannerStore: ScannerStore) {
+        self.scannerStore = scannerStore
     }
     
     // MARK: - Sections

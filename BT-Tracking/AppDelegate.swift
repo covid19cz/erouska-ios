@@ -24,9 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private(set) static var inBackground: Bool = false
-    
-    let scanner = BTScanner()
-    let scannerStore = ScannerStore()
+
+    // MARK: - Globals
+
+    static var delegate: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+
+    private(set) lazy var advertiser: BTAdvertising = BTAdvertiser()
+    private(set) lazy var scanner = BTScanner()
+    var scannerStore: ScannerStore {
+        let store = ScannerStore()
+        scanner.scannerStoreDelegate = store
+        return store
+    }
     
     // MARK: - UIApplicationDelegate
 
@@ -58,9 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window.rootViewController = storyboard.instantiateInitialViewController()
         
-        scanner.scannerStoreDelegate = scannerStore
-        scanner.start()
-
         return true
     }
     

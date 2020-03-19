@@ -13,17 +13,18 @@ class BluetoothActivationController: UIViewController {
     
     @IBAction func activateBluetoothAction(_ sender: Any) {
         if #available(iOS 13.0, *) {
-            let peripheralManager = CBPeripheralManager(
-                delegate: self,
-                queue: nil,
-                options: [:]
-            )
+            let advertiser = AppDelegate.delegate.advertiser
+            advertiser.start()
+            
+            DispatchQueue.main.async {
+                switch advertiser.authorization {
+                case .allowedAlways:
+                    self.performSegue(withIdentifier: "activation", sender: nil)
+                default:
+                    self.showError(title: "Povolení bluetooth", message: "Musíte povolit bluetooth, aby aplikace mohla fungovat.")
+                }
 
-            switch peripheralManager.authorization {
-            case .allowedAlways:
-                performSegue(withIdentifier: "activation", sender: nil)
-            default:
-                showError(title: "Povolení bluetooth", message: "Musíte povolit bluetooth, aby aplikace mohla fungovat.")
+                advertiser.stop()
             }
         } else {
             performSegue(withIdentifier: "activation", sender: nil)

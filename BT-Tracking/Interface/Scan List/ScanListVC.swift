@@ -17,7 +17,7 @@ class ScanListVC: UIViewController {
     
     private var dataSource: RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>!
     private let bag = DisposeBag()
-    private let viewModel = ScanListVM()
+    private let viewModel = ScanListVM(scannerStore: AppDelegate.delegate.scannerStore)
     
     // MARK: - Lifecycle
     
@@ -26,6 +26,7 @@ class ScanListVC: UIViewController {
 
         navigationItem.largeTitleDisplayMode = .never
 
+        setup()
         setupTableView()
         // bindClearButton()
     }
@@ -45,6 +46,16 @@ class ScanListVC: UIViewController {
     }
 
     // MARK: - TableView
+
+    private func setup() {
+        if AppDelegate.delegate.advertiser.isRunning != true {
+            AppDelegate.delegate.advertiser.start()
+        }
+
+        if AppDelegate.delegate.scanner.isRunning != true {
+            AppDelegate.delegate.scanner.start()
+        }
+    }
     
     private func setupTableView() {
         tableView.tableFooterView = UIView()

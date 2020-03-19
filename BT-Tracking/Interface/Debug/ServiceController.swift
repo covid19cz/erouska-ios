@@ -17,8 +17,8 @@ class ServiceController: UIViewController {
     
     // MARK: - Properties
 
-    private var advertiser: BTAdvertising?
-    private var scanner: BTScannering?
+    private var advertiser: BTAdvertising = AppDelegate.delegate.advertiser
+    private var scanner: BTScannering = AppDelegate.delegate.scanner
 
     private var logText: String = "" {
         didSet {
@@ -39,14 +39,14 @@ class ServiceController: UIViewController {
         Log.delegate = self
 
         textView.text = ""
-        if advertiser?.isRunning != true {
-            advertiser = BTAdvertiser()
-            advertiser?.start()
+
+        if advertiser.isRunning != true {
+            advertiser.start()
         }
-        if scanner?.isRunning != true {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            scanner = appDelegate.scanner
-            scanner?.delegate = self
+
+        if scanner.isRunning != true {
+            scanner.delegate = self
+            scanner.start()
         }
     }
 
