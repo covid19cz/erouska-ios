@@ -633,7 +633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = N448G4S8S9;
+				DEVELOPMENT_TEAM = 62884AX6G8;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = "BT-Tracking copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -641,7 +641,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking2";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -657,7 +657,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = N448G4S8S9;
+				DEVELOPMENT_TEAM = 62884AX6G8;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = "BT-Tracking copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -665,7 +665,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking2";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
