@@ -54,6 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard: UIStoryboard
         #if !targetEnvironment(macCatalyst)
 
+        #if DEBUG && TARGET_IPHONE_SIMULATOR
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        #endif
+
         FirebaseApp.configure()
         Auth.auth().languageCode = "cs";
 
@@ -114,6 +118,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         log("\n\n\n-END----------------------------------\n")
+    }
+
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        if Auth.auth().canHandle(url) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        #if DEBUG
+        Auth.auth().setAPNSToken(deviceToken, type: .sandbox)
+        #else
+        Auth.auth().setAPNSToken(deviceToken, type: .prod)
+        #endif
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if Auth.auth().canHandleNotification(notification) {
+            completionHandler(.noData)
+        } else {
+            completionHandler(.noData)
+        }
     }
 
 }

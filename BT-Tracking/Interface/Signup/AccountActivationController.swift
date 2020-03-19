@@ -74,9 +74,6 @@ class AccountActivationControler: UIViewController {
     // MARK: - Actions
 
     @IBAction func activateAcountAction(_ sender: Any) {
-        #if DEBUG && TARGET_IPHONE_SIMULATOR
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
-        #endif
         activityView.isHidden = false
 
         PhoneAuthProvider.provider().verifyPhoneNumber("+420" + phoneNumber.value, uiDelegate: nil) { [weak self] verificationID, error in
