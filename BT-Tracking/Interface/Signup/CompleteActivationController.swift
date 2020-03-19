@@ -47,8 +47,6 @@ class CompleteActivationController: UIViewController {
                 self.view.layoutIfNeeded()
             }
         }).disposed(by: disposeBag)
-
-        activityView.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
