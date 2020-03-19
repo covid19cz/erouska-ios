@@ -45,6 +45,7 @@
 		80BB47642422865B00F552FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
 		80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationController.swift */; };
 		80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationController.swift */; };
+		80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */; };
 		80E2FE1124239AE900ADF333 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E2FE1024239AE900ADF333 /* Main.storyboard */; };
 		8CC5262959368789FD32958B /* Pods_BT_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		80BB476524236ED100F552FC /* BluetoothActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivationController.swift; sourceTree = "<group>"; };
 		80BB476724238CBB00F552FC /* AccountActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationController.swift; sourceTree = "<group>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
+		80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationController.swift; sourceTree = "<group>"; };
 		80E2FE1024239AE900ADF333 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,6 +253,7 @@
 				80BB476124227C2500F552FC /* Signup.storyboard */,
 				80BB476524236ED100F552FC /* BluetoothActivationController.swift */,
 				80BB476724238CBB00F552FC /* AccountActivationController.swift */,
+				80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				8054C0DA24200E91008907B8 /* ServiceController.swift in Sources */,
 				46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */,
 				8054C0D824200E7C008907B8 /* FileController.swift in Sources */,
+				80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
 				80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */,

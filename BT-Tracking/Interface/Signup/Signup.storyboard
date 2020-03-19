@@ -43,16 +43,16 @@
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="MinLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xgx-Up-y98">
-                                        <rect key="frame" x="0.0" y="20" width="374" height="44.5"/>
+                                        <rect key="frame" x="0.0" y="20" width="374" height="236.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chráním sebe, chráním ostatní" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQp-0s-STi">
-                                        <rect key="frame" x="0.0" y="79.5" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="271.5" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAZ-5r-e2M">
-                                        <rect key="frame" x="0.0" y="115" width="374" height="203"/>
+                                        <rect key="frame" x="0.0" y="307" width="374" height="203"/>
                                         <string key="text">Tato aplikace vytváří seznam telefonů ve vašem okolí.
 
 Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.
@@ -63,7 +63,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFy-oa-dO1" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="333" width="374" height="242.5"/>
+                                        <rect key="frame" x="0.0" y="525" width="374" height="50.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m34-ff-402" customClass="RoundedButtonFilled" customModule="BT_Tracking" customModuleProvider="target">
@@ -177,7 +177,133 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q95-gy-dWf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2572" y="-225"/>
+            <point key="canvasLocation" x="3321" y="-225"/>
+        </scene>
+        <!--Dokončení aktivace-->
+        <scene sceneID="YpT-d0-CPf">
+            <objects>
+                <viewController id="q6P-fR-rVF" customClass="CompleteActivationController" customModule="BT_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="62b-SF-fPw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="e9a-R4-ZUK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QHa-3n-qmi">
+                                        <rect key="frame" x="0.0" y="20" width="414" height="842"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SLW-4k-Y4a">
+                                                <rect key="frame" x="16" y="0.0" width="382" height="377.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zsf-YK-IpP" userLabel="Space View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="5" id="LJQ-h2-XqH"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ActivationIlustration" translatesAutoresizingMaskIntoConstraints="NO" id="qQY-fQ-kH5">
+                                                        <rect key="frame" x="0.0" y="20" width="382" height="130"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zadejte potvrzovací kód s SMS zprávy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwR-Me-iUg">
+                                                        <rect key="frame" x="0.0" y="165" width="382" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SMS kód (povinné)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPz-6e-tCh">
+                                                        <rect key="frame" x="0.0" y="200.5" width="382" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="ezO-67-yb2"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" textContentType="one-time-code"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stisknutím tlačítka “Dokončit aktivaci” souhlasím s podmínkami zpracování osobních údajů." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lm-s8-Ng4">
+                                                        <rect key="frame" x="0.0" y="259.5" width="382" height="34"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Os-sD-glj" userLabel="Big Space View">
+                                                        <rect key="frame" x="0.0" y="308.5" width="382" height="10"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="10" id="gRk-ut-MO6"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDN-Uj-w2M" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="BT_Tracking" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="333.5" width="382" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="qyb-VU-W0a"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <state key="normal" title="Dokončit aktivaci">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="activateAcountAction:" destination="q6P-fR-rVF" eventType="touchUpInside" id="UYI-x1-KQV"/>
+                                                            <action selector="activateAcountAction:" destination="BBC-aE-fuq" eventType="touchUpInside" id="q2E-LN-Sng"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="5bL-2a-BSJ" firstAttribute="bottom" secondItem="SLW-4k-Y4a" secondAttribute="bottom" id="1co-a8-ct6"/>
+                                            <constraint firstItem="rtx-4A-QfV" firstAttribute="trailing" secondItem="SLW-4k-Y4a" secondAttribute="trailing" constant="16" id="PLk-Wy-XdS"/>
+                                            <constraint firstItem="SLW-4k-Y4a" firstAttribute="top" secondItem="5bL-2a-BSJ" secondAttribute="top" id="SJY-F0-YH7"/>
+                                            <constraint firstItem="SLW-4k-Y4a" firstAttribute="leading" secondItem="rtx-4A-QfV" secondAttribute="leading" constant="16" id="e93-QP-9rj"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="5bL-2a-BSJ"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="rtx-4A-QfV"/>
+                                    </scrollView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1c-Vs-7uN">
+                                        <rect key="frame" x="0.0" y="148.5" width="414" height="713.5"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cEy-Wn-8CS">
+                                                <rect key="frame" x="188.5" y="338.5" width="37" height="37"/>
+                                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="cEy-Wn-8CS" firstAttribute="centerX" secondItem="n1c-Vs-7uN" secondAttribute="centerX" id="N20-7s-Ntd"/>
+                                            <constraint firstItem="cEy-Wn-8CS" firstAttribute="centerY" secondItem="n1c-Vs-7uN" secondAttribute="centerY" id="vtK-L2-Fai"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="QHa-3n-qmi" firstAttribute="bottom" secondItem="hFb-1n-7OX" secondAttribute="bottom" id="1TA-f6-AF6"/>
+                                    <constraint firstItem="hFb-1n-7OX" firstAttribute="trailing" secondItem="n1c-Vs-7uN" secondAttribute="trailing" id="DhW-lO-e0G"/>
+                                    <constraint firstItem="n1c-Vs-7uN" firstAttribute="top" secondItem="hFb-1n-7OX" secondAttribute="top" id="ENA-O5-dfJ"/>
+                                    <constraint firstItem="hFb-1n-7OX" firstAttribute="bottom" secondItem="n1c-Vs-7uN" secondAttribute="bottom" id="Mf0-P4-7ln"/>
+                                    <constraint firstItem="QHa-3n-qmi" firstAttribute="top" secondItem="e9a-R4-ZUK" secondAttribute="top" constant="20" symbolic="YES" id="jC9-fT-p1L"/>
+                                    <constraint firstItem="n1c-Vs-7uN" firstAttribute="leading" secondItem="hFb-1n-7OX" secondAttribute="leading" id="l1S-Yd-vbl"/>
+                                    <constraint firstItem="QHa-3n-qmi" firstAttribute="leading" secondItem="hFb-1n-7OX" secondAttribute="leading" id="rex-tb-akZ"/>
+                                    <constraint firstItem="QHa-3n-qmi" firstAttribute="trailing" secondItem="hFb-1n-7OX" secondAttribute="trailing" id="s1n-7z-Z8J"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="hFb-1n-7OX"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="zIf-rI-ET1"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Dokončení aktivace" id="l3U-k0-Fod"/>
+                    <connections>
+                        <outlet property="actionButton" destination="vDN-Uj-w2M" id="y9l-aU-C2E"/>
+                        <outlet property="activityView" destination="n1c-Vs-7uN" id="vzT-Gn-AU4"/>
+                        <outlet property="scrollView" destination="QHa-3n-qmi" id="fmU-Zh-JJ5"/>
+                        <outlet property="smsCodeTextField" destination="XPz-6e-tCh" id="XVx-D3-VAx"/>
+                        <segue destination="Sea-sp-Fdp" kind="presentation" identifier="done" modalPresentationStyle="fullScreen" id="3rz-41-1PA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k9u-03-pOg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2723" y="-225"/>
         </scene>
         <!--Povolení Bluetooth-->
         <scene sceneID="aiw-yL-KMo">
@@ -281,7 +407,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                 <rect key="frame" x="0.0" y="20" width="414" height="842"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qAb-c8-Qaq">
-                                        <rect key="frame" x="16" y="0.0" width="382" height="457"/>
+                                        <rect key="frame" x="16" y="0.0" width="382" height="408"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjt-Vs-s53" userLabel="Space View">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="5"/>
@@ -314,26 +440,20 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done" textContentType="tel"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stisknutím tlačítka “Dokončit aktivaci” souhlasím s podmínkami zpracování osobních údajů." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0O-Bz-kHn">
-                                                <rect key="frame" x="0.0" y="339" width="382" height="34"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpA-Wd-wvo" userLabel="Big Space View">
-                                                <rect key="frame" x="0.0" y="388" width="382" height="10"/>
+                                                <rect key="frame" x="0.0" y="339" width="382" height="10"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="cif-vE-e6P"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4n-ew-pkC" customClass="RoundedButtonFilled" customModule="BT_Tracking" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="413" width="382" height="44"/>
+                                                <rect key="frame" x="0.0" y="364" width="382" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="WpZ-Vp-Azt"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <state key="normal" title="Dokončit aktivaci">
+                                                <state key="normal" title="Aktivovat">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
                                                 <connections>
@@ -352,7 +472,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                 <viewLayoutGuide key="contentLayoutGuide" id="Rfd-T7-R2J"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="28m-aI-7Il"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeQ-dB-icf" userLabel="Acitvi">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeQ-dB-icf">
                                 <rect key="frame" x="0.0" y="148.5" width="414" height="713.5"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-yr-MK2">
@@ -393,7 +513,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                         <outlet property="activityView" destination="zeQ-dB-icf" id="kTd-3f-m2u"/>
                         <outlet property="phoneNumberTextField" destination="lga-hM-kAK" id="lzC-ec-aPx"/>
                         <outlet property="scrollView" destination="YGO-et-vUI" id="WXu-O4-Gk0"/>
-                        <segue destination="Sea-sp-Fdp" kind="presentation" identifier="done" modalPresentationStyle="fullScreen" id="bDr-mw-M4N"/>
+                        <segue destination="q6P-fR-rVF" kind="show" identifier="verification" id="dVU-nF-SXz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fag-j7-7j9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
