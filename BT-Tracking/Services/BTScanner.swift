@@ -26,6 +26,10 @@ protocol BTScannerDelegate: class {
     func didReadData(for device: CBPeripheral, data: Data)
 }
 
+protocol BTScannerStoreDelegate: class {
+    func didFind(device: CBPeripheral, rssi: Int)
+}
+
 final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPeripheralDelegate {
 
     var filterRSSIPower: Bool = false
@@ -39,6 +43,8 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     private var discoveredData: [UUID: Data] = [:]
 
     private let acceptUUIDs = [BT.broadcastCharacteristic.cbUUID, BT.transferCharacteristic.cbUUID]
+    
+    var scannerStoreDelegate: BTScannerStoreDelegate?
 
     override init() {
         super.init()
@@ -107,6 +113,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         }
         log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
         delegate?.didFound(device: peripheral, RSSI: RSSI.intValue)
+        scannerStoreDelegate?.didFind(device: peripheral, rssi: RSSI.intValue)
 
         discoveredPeripherals[peripheral.identifier] = peripheral
         discoveredData[peripheral.identifier] = Data()

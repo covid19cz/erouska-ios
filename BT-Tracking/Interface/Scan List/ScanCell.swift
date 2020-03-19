@@ -19,7 +19,14 @@ class ScanCell: UITableViewCell {
     func configure(for scan: Scan) {
         nameLabel.text = scan.name
         identifierLabel.text = scan.identifier
-        dateLabel.text = scan.date.description
+        dateLabel.text = ScanCell.formatter.string(from: scan.date)
         rssiLabel.text = String(scan.rssi)
     }
+    
+    static var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .medium
+        return formatter
+    }()
 }
