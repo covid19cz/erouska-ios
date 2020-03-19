@@ -352,13 +352,31 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                 <viewLayoutGuide key="contentLayoutGuide" id="Rfd-T7-R2J"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="28m-aI-7Il"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeQ-dB-icf" userLabel="Acitvi">
+                                <rect key="frame" x="0.0" y="148.5" width="414" height="713.5"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-yr-MK2">
+                                        <rect key="frame" x="188.5" y="338.5" width="37" height="37"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Jm7-yr-MK2" firstAttribute="centerX" secondItem="zeQ-dB-icf" secondAttribute="centerX" id="B4g-LS-cD1"/>
+                                    <constraint firstItem="Jm7-yr-MK2" firstAttribute="centerY" secondItem="zeQ-dB-icf" secondAttribute="centerY" id="dfM-Rz-pZJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="0Iv-MJ-cGL" firstAttribute="trailing" secondItem="zeQ-dB-icf" secondAttribute="trailing" id="44G-gm-Zek"/>
                             <constraint firstItem="YGO-et-vUI" firstAttribute="leading" secondItem="0Iv-MJ-cGL" secondAttribute="leading" id="CFP-9S-IRh"/>
                             <constraint firstItem="YGO-et-vUI" firstAttribute="trailing" secondItem="0Iv-MJ-cGL" secondAttribute="trailing" id="LA2-6O-fFp"/>
                             <constraint firstItem="YGO-et-vUI" firstAttribute="top" secondItem="ceh-zy-1BU" secondAttribute="top" constant="20" symbolic="YES" id="MmT-fG-BBZ"/>
+                            <constraint firstItem="zeQ-dB-icf" firstAttribute="top" secondItem="0Iv-MJ-cGL" secondAttribute="top" id="PZ0-LH-8a7"/>
                             <constraint firstItem="YGO-et-vUI" firstAttribute="bottom" secondItem="0Iv-MJ-cGL" secondAttribute="bottom" id="VIt-fL-CIV"/>
+                            <constraint firstItem="0Iv-MJ-cGL" firstAttribute="bottom" secondItem="zeQ-dB-icf" secondAttribute="bottom" id="rvI-Ip-jxu"/>
+                            <constraint firstItem="zeQ-dB-icf" firstAttribute="leading" secondItem="0Iv-MJ-cGL" secondAttribute="leading" id="xfU-jO-oFP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Iv-MJ-cGL"/>
                     </view>
@@ -372,6 +390,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="H4n-ew-pkC" id="IKW-1O-qQD"/>
+                        <outlet property="activityView" destination="zeQ-dB-icf" id="kTd-3f-m2u"/>
                         <outlet property="phoneNumberTextField" destination="lga-hM-kAK" id="lzC-ec-aPx"/>
                         <outlet property="scrollView" destination="YGO-et-vUI" id="WXu-O4-Gk0"/>
                         <segue destination="Sea-sp-Fdp" kind="presentation" identifier="done" modalPresentationStyle="fullScreen" id="bDr-mw-M4N"/>

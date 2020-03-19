@@ -28,6 +28,7 @@ class AccountActivationControler: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     @IBOutlet private weak var actionButton: UIButton!
+    @IBOutlet private weak var activityView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,8 @@ class AccountActivationControler: UIViewController {
                 self.view.layoutIfNeeded()
             }
         }).disposed(by: disposeBag)
+
+        activityView.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -71,27 +74,34 @@ class AccountActivationControler: UIViewController {
     // MARK: - Actions
 
     @IBAction func activateAcountAction(_ sender: Any) {
-        #if DEBUG
+        #if DEBUG && TARGET_IPHONE_SIMULATOR
         Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         #endif
+        activityView.isHidden = false
 
         PhoneAuthProvider.provider().verifyPhoneNumber("+420" + phoneNumber.value, uiDelegate: nil) { [weak self] verificationID, error in
+            guard let self = self else { return }
+            self.activityView.isHidden = true
+
             if let error = error {
-                self?.show(error: error, title: "Chyba při aktivaci")
-                self?.cleanup()
+                self.show(error: error, title: "Chyba při aktivaci")
+                self.cleanup()
             } else if let verificationID = verificationID  {
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: "123456")
-                self?.signIn(with: credential)
+                self.signIn(with: credential)
             }
         }
     }
 
     private func signIn(with credential: PhoneAuthCredential) {
+        activityView.isHidden = false
+
         Auth.auth().signIn(with: credential) { [weak self] authResult, error in
             guard let self = self else { return }
 
             if let error = error {
+                self.activityView.isHidden = false
                 self.show(error: error, title: "Chyba při aktivaci")
                 self.cleanup()
             } else {
@@ -105,6 +115,7 @@ class AccountActivationControler: UIViewController {
 
                 self.functions.httpsCallable("createUser").call(data) { [weak self] result, error in
                     guard let self = self else { return }
+                    self.activityView.isHidden = false
 
                     if let error = error as NSError? {
                         self.show(error: error, title: "Chyba při aktivaci")
