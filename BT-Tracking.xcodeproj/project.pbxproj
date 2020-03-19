@@ -62,7 +62,7 @@
 		46F21CB3242270F700C01DFA /* ScannerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerStore.swift; sourceTree = "<group>"; };
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		8043C51A2423C6C600732179 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8054C0AD241D492F008907B8 /* BT-Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8054C0AD241D492F008907B8 /* Mobilní rouška.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobilní rouška.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Debug.storyboard; sourceTree = "<group>"; };
 		8054C0B9241D4932008907B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 		8054C0AE241D492F008907B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8054C0AD241D492F008907B8 /* BT-Tracking.app */,
+				8054C0AD241D492F008907B8 /* Mobilní rouška.app */,
 				80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */,
 			);
 			name = Products;
@@ -277,7 +277,7 @@
 			);
 			name = "BT-Tracking";
 			productName = "BT-Tracking";
-			productReference = 8054C0AD241D492F008907B8 /* BT-Tracking.app */;
+			productReference = 8054C0AD241D492F008907B8 /* Mobilní rouška.app */;
 			productType = "com.apple.product-type.application";
 		};
 		80BB474624212A3C00F552FC /* BT-Tracking Mac */ = {
@@ -597,7 +597,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking5";
-				PRODUCT_NAME = "BT-Tracking";
+				PRODUCT_NAME = "Mobilní rouška";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -619,7 +619,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking5";
-				PRODUCT_NAME = "BT-Tracking";
+				PRODUCT_NAME = "Mobilní rouška";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
