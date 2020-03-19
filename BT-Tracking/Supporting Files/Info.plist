@@ -26,13 +26,10 @@
 	<string>We need Bluetooth to discover, connect and share information with other nearby devices to help fight against Coronavirus pandemy.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>We need Bluetooth to discover, connect and share information with other nearby devices to help fight against Coronavirus pandemy.</string>
-	<key>UIApplicationExitsOnSuspend</key>
-	<false/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
-		<string>processing</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
