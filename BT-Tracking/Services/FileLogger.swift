@@ -10,13 +10,13 @@ import Foundation
 
 class FileLogger {
     
-    static let shared = FileLogger()
-    private var fileURL: URL!
+    static let shared = FileLogger()!
+
+    private var fileURL: URL
     
-    init() {
-        guard let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return }
-        let documentsURL = URL(fileURLWithPath: documents)
-        fileURL = documentsURL.appendingPathComponent("application.log")
+    init?() {
+        guard let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
+        self.fileURL = URL(fileURLWithPath: documents).appendingPathComponent("application.log")
     }
     
     func writeLog(_ text: String) {
@@ -30,8 +30,7 @@ class FileLogger {
     
     func getLog() -> String {
         do {
-            let text = try String(contentsOf: fileURL, encoding: .utf8)
-            return text
+            return try String(contentsOf: fileURL, encoding: .utf8)
         } catch {
             print("Unexpected error reading from log: \(error)")
             return ""
