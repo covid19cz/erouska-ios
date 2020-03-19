@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxRelay
 import FirebaseAuth
+import FirebaseFunctions
 
 class AccountActivationControler: UIViewController {
 
@@ -20,6 +21,8 @@ class AccountActivationControler: UIViewController {
         }
     }
     private var disposeBag = DisposeBag()
+
+    private lazy var functions = Functions.functions(region:"europe-west2")
 
     @IBOutlet private var phoneNumberTextField: UITextField!
     @IBOutlet private var actionButton: UIButton!
@@ -54,6 +57,7 @@ class AccountActivationControler: UIViewController {
         PhoneAuthProvider.provider().verifyPhoneNumber("+420" + phoneNumber.value, uiDelegate: nil) { [weak self] verificationID, error in
             if let error = error {
                 self?.show(error: error, title: "Chyba při aktivaci")
+                self?.cleanup()
             } else if let verificationID = verificationID  {
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: "123456")
@@ -64,12 +68,49 @@ class AccountActivationControler: UIViewController {
 
     private func signIn(with credential: PhoneAuthCredential) {
         Auth.auth().signIn(with: credential) { [weak self] authResult, error in
+            guard let self = self else { return }
+
             if let error = error {
-                self?.show(error: error, title: "Chyba při aktivaci")
+                self.show(error: error, title: "Chyba při aktivaci")
+                self.cleanup()
             } else {
-                self?.performSegue(withIdentifier: "done", sender: nil)
+                let data: [String: Any] = [
+                    "platform": "iOS",
+                    "platformVersion": UIDevice.current.systemVersion,
+                    "manufacturer": "Apple",
+                    "model": UIDevice.current.model,
+                    "locale": Locale.current.languageCode ?? ""
+                ]
+
+                self.functions.httpsCallable("createUser").call(data) { [weak self] result, error in
+                    guard let self = self else { return }
+
+                    if let error = error as NSError? {
+                        self.show(error: error, title: "Chyba při aktivaci")
+                        self.cleanup()
+                    } else if let result = result {
+                        if let BUID = (result.data as? [String: Any])?["buid"] as? String {
+                            UserDefaults.standard.set(BUID, forKey: "BUID")
+                            self.performSegue(withIdentifier: "done", sender: nil)
+                        } else {
+                            self.show(error: NSError(domain: FunctionsErrorDomain, code: 500, userInfo: nil), title: "Chyba při aktivaci")
+                            self.cleanup()
+                        }
+                    }
+
+                }
             }
         }
+    }
+
+    private func cleanup() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+
+        }
+
+        UserDefaults.resetStandardUserDefaults()
     }
 
 }

@@ -91,7 +91,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         let serviceBroadcast = CBMutableCharacteristic(
             type: BT.transferCharacteristic.cbUUID,
             properties: .read,
-            value: "test serviceBroadcast".data(using: .utf8), // ID device according to BE spec
+            value: (UserDefaults.standard.string(forKey: "BUID") ?? "").data(using: .utf8), // ID device according to BE spec
             permissions: .readable
         )
         self.serviceBroadcast = serviceBroadcast

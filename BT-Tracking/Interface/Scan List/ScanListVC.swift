@@ -35,6 +35,7 @@ class ScanListVC: UIViewController {
     @IBAction func signOutAction(_ sender: Any) {
         do {
             try Auth.auth().signOut()
+            UserDefaults.resetStandardUserDefaults()
 
             let storyboard = UIStoryboard(name: "Signup", bundle: nil)
             view.window?.rootViewController = storyboard.instantiateInitialViewController()
