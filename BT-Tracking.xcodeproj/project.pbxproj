@@ -48,6 +48,7 @@
 		80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */; };
 		80E2FE1124239AE900ADF333 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E2FE1024239AE900ADF333 /* Main.storyboard */; };
 		8CC5262959368789FD32958B /* Pods_BT_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */; };
+		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationController.swift; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		80E2FE1024239AE900ADF333 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				80BB476024227C1400F552FC /* Signup */,
 				46F21CA3242243F400C01DFA /* Debug */,
 				46F21CA2242243A300C01DFA /* Scan List */,
+				BD0191452424330200707341 /* Active */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -258,6 +261,14 @@
 				80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */,
 			);
 			path = Signup;
+			sourceTree = "<group>";
+		};
+		BD0191452424330200707341 /* Active */ = {
+			isa = PBXGroup;
+			children = (
+				BD0191462424331900707341 /* Active.storyboard */,
+			);
+			path = Active;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +353,7 @@
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
 				46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
+				BD0191472424331900707341 /* Active.storyboard in Resources */,
 				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
 				8054C0B8241D492F008907B8 /* Debug.storyboard in Resources */,
 				8043C51B2423C6C600732179 /* GoogleService-Info.plist in Resources */,
