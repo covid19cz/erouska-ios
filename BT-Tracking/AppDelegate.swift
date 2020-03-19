@@ -23,7 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private(set) static var inBackground: Bool = false
-
+    
+    let scanner = BTScanner()
+    let scannerStore = ScannerStore()
+    
     // MARK: - UIApplicationDelegate
 
     var window: UIWindow? = nil
@@ -53,6 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let center = UNUserNotificationCenter.current()
         center.setNotificationCategories([generalCategory])
+        
+        scanner.scannerStoreDelegate = scannerStore
+        scanner.start()
 
         return true
     }

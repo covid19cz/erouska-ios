@@ -12,15 +12,24 @@ import RxDataSources
 
 class ScanListVM {
     
+    // MARK: - Properties
+    
+    private let scannerStore: ScannerStore!
+    
+    // MARK: - Init
+    
+    init() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        scannerStore = appDelegate.scannerStore
+    }
+    
     // MARK: - Sections
     
     var sections: Driver<[SectionModel]> {
-        return Observable.just([
-                Scan(identifier: "1234-5678-ABCDE-FGHI", name: "BTLE device", date: Date(), rssi: -69),
-                Scan(identifier: "4321-5678-ABCDE-FGHI", name: "XX device", date: Date(), rssi: -69),
-                Scan(identifier: "4983-5678-ABCDE-FGHI", name: "ZZ device", date: Date() - 1234, rssi: -77),
-                Scan(identifier: "2343-5678-ABCDE-FGHI", name: "FF device", date: Date() - 23456, rssi: -44)
-            ])
+        return scannerStore.scans
+            .map { unsortedScans in
+                return unsortedScans.sorted(by: { scan0, scan1 in scan0.date > scan1.date })
+            }
             .map { [unowned self] scans -> [SectionModel] in
                 return self.section(from: scans)
             }

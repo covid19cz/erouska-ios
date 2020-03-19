@@ -30,7 +30,6 @@ class ServiceController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
     }
     
@@ -45,9 +44,9 @@ class ServiceController: UIViewController {
             advertiser?.start()
         }
         if scanner?.isRunning != true {
-            scanner = BTScanner()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            scanner = appDelegate.scanner
             scanner?.delegate = self
-            scanner?.start()
         }
     }
 
