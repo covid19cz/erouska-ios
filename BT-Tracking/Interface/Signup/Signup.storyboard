@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kfk-wA-RM9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kfk-wA-RM9">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="kfk-wA-RM9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -22,12 +22,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5lM-ms-2kO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1126" y="88"/>
+            <point key="canvasLocation" x="-1471" y="-31"/>
         </scene>
         <!--eRouška-->
         <scene sceneID="GJX-OU-pnd">
             <objects>
-                <viewController id="pNZ-IF-ibE" sceneMemberID="viewController">
+                <viewController id="pNZ-IF-ibE" customClass="FirstActiovationController" customModule="eRouška" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MCy-hW-ZTB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,7 +76,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
-                                            <segue destination="1ln-NW-njF" kind="show" id="Sxq-k8-aRa"/>
+                                            <action selector="continueAction:" destination="pNZ-IF-ibE" eventType="touchUpInside" id="YpN-Uo-LeZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-OA-pEZ" customClass="RoundedButtonClear" customModule="eRouška" customModuleProvider="target">
@@ -114,10 +114,14 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                     <navigationItem key="navigationItem" title="eRouška" id="wvN-BU-txe">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="NHD-52-HEh"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="1ln-NW-njF" kind="show" identifier="bluetooth" id="UA2-MZ-WsL"/>
+                        <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="r2A-Jx-jwc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzX-cU-3lD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-222" y="86"/>
+            <point key="canvasLocation" x="-526" y="-31"/>
         </scene>
         <!--TabBar-->
         <scene sceneID="v5k-Ze-k1w">
@@ -127,7 +131,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q95-gy-dWf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3306" y="86"/>
+            <point key="canvasLocation" x="2814" y="-31"/>
         </scene>
         <!--Dokončení aktivace-->
         <scene sceneID="YpT-d0-CPf">
@@ -247,7 +251,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9u-03-pOg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2543" y="87"/>
+            <point key="canvasLocation" x="2172" y="-31"/>
         </scene>
         <!--Povolení Bluetooth-->
         <scene sceneID="aiw-yL-KMo">
@@ -338,7 +342,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afB-yv-WOA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="88"/>
+            <point key="canvasLocation" x="385" y="-31"/>
         </scene>
         <!--Aktivace-->
         <scene sceneID="vLC-jn-bpl">
@@ -466,7 +470,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fag-j7-7j9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631" y="87"/>
+            <point key="canvasLocation" x="1252" y="-31"/>
         </scene>
         <!--Help-->
         <scene sceneID="xrM-rQ-Utw">
@@ -476,15 +480,16 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDw-LS-t63" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="781" y="695"/>
+            <point key="canvasLocation" x="384" y="536"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dFa-tE-tum"/>
+        <segue reference="r2A-Jx-jwc"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="ActivationIlustration" width="130" height="130"/>
         <image name="BluetoothIlustration" width="130" height="130"/>
         <image name="MinLogo" width="328" height="29.333333969116211"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="dFa-tE-tum"/>
-    </inferredMetricsTieBreakers>
 </document>
