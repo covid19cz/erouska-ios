@@ -76,9 +76,16 @@ extension ScanListVM {
                     return scan.id.uuidString
                 }
             }
+
+            var rsii: Int {
+                switch self {
+                case .scan(let scan):
+                    return scan.rssi
+                }
+            }
             
             static func == (lhs: Item, rhs: Item) -> Bool {
-                return lhs.identity == rhs.identity
+                return lhs.identity == rhs.identity && lhs.rsii == rhs.rsii
             }
         }
     }
