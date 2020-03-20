@@ -50,6 +50,7 @@
 		80E2FE1124239AE900ADF333 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E2FE1024239AE900ADF333 /* Main.storyboard */; };
 		8CC5262959368789FD32958B /* Pods_BT_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
+		BD650E352424DF0000FCA1ED /* DeviceScanRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD650E342424DF0000FCA1ED /* DeviceScanRealm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		80E2FE1024239AE900ADF333 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
+		BD650E342424DF0000FCA1ED /* DeviceScanRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceScanRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		46F21CAC2422595500C01DFA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BD650E332424DED400FCA1ED /* Storage */,
 				46F21CAD2422596300C01DFA /* Scaning */,
 			);
 			path = Model;
@@ -272,6 +275,14 @@
 				80BF9C252424D55800150108 /* SendReportController.swift */,
 			);
 			path = Active;
+			sourceTree = "<group>";
+		};
+		BD650E332424DED400FCA1ED /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				BD650E342424DF0000FCA1ED /* DeviceScanRealm.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +447,7 @@
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
 				80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */,
+				BD650E352424DF0000FCA1ED /* DeviceScanRealm.swift in Sources */,
 				80BF9C262424D55800150108 /* SendReportController.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,

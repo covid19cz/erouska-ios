@@ -13,4 +13,6 @@ target 'BT-Tracking' do
   pod 'RxDataSources'
   pod 'RxKeyboard'
   
+  pod 'RealmSwift'
+  
 end
