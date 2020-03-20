@@ -33,6 +33,8 @@ protocol BTScannerStoreDelegate: class {
 
 final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPeripheralDelegate {
 
+    var deviceUpdateLimit: TimeInterval = 4 // in seconds
+
     var filterRSSIPower: Bool = false
     private let allowedRSSIRange: ClosedRange<Int> = -90...0
 
@@ -40,6 +42,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     private var discoveredPeripherals: [UUID: CBPeripheral] = [:]
     private var discoveredDevices: [BTDevice] = []
     private var discoveredData: [UUID: Data] = [:]
+    private var discoveredRefresh: [UUID: TimeInterval] = [:]
 
     private let acceptUUIDs = [BT.broadcastCharacteristic.cbUUID, BT.transferCharacteristic.cbUUID]
     
@@ -87,6 +90,12 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
 
     func stop() {
         started = false
+
+        discoveredPeripherals.removeAll()
+        discoveredDevices.removeAll()
+        discoveredData.removeAll()
+        discoveredRefresh.removeAll()
+
         guard centralManager.isScanning else { return }
 
         centralManager.stopScan()
@@ -106,6 +115,13 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard discoveredPeripherals[peripheral.identifier] == nil else {
             // already registred
+            
+            // limit refresh
+            if let timeInterval = discoveredRefresh[peripheral.identifier], timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate {
+                return
+            }
+            discoveredRefresh[peripheral.identifier] = Date.timeIntervalSinceReferenceDate
+
             log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
             delegate?.didUpdate(device: peripheral, RSSI: RSSI.intValue)
 
