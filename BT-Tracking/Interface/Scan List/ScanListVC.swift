@@ -60,7 +60,7 @@ class ScanListVC: UIViewController {
     private func setupTableView() {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
-        tableView.rowHeight = 87.5
+        tableView.rowHeight = 100
 
         dataSource = RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
             
