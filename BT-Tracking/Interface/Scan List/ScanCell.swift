@@ -19,7 +19,7 @@ class ScanCell: UITableViewCell {
     @IBOutlet private weak var platformLabel: UILabel!
 
     func configure(for scan: DeviceScan) {
-        nameLabel.text = scan.name
+        nameLabel.text = scan.name + " buid: " + scan.buid
         identifierLabel.text = scan.bluetoothIdentifier
         dateLabel.text = ScanCell.formatter.string(from: scan.date)
         rssiLabel.text = String(scan.rssi)
