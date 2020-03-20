@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private(set) lazy var advertiser: BTAdvertising = BTAdvertiser()
-    private(set) lazy var scanner = BTScanner()
+    private(set) lazy var scanner: BTScannering = BTScanner()
     var scannerStore: ScannerStore {
         let store = ScannerStore()
         scanner.scannerStoreDelegate = store

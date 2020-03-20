@@ -11,7 +11,11 @@ import CoreBluetooth
 
 protocol BTScannering: class {
 
+    var deviceUpdateLimit: TimeInterval { get set } // default: 4, in seconds
+    var filterRSSIPower: Bool { get set } //  default: -90...0
+
     var delegate: BTScannerDelegate? { get set }
+    var scannerStoreDelegate: BTScannerStoreDelegate? { get set }
     
     var isRunning: Bool { get }
     func start()
@@ -33,11 +37,6 @@ protocol BTScannerStoreDelegate: class {
 
 final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPeripheralDelegate {
 
-    var deviceUpdateLimit: TimeInterval = 4 // in seconds
-
-    var filterRSSIPower: Bool = false
-    private let allowedRSSIRange: ClosedRange<Int> = -90...0
-
     private var centralManager: CBCentralManager! = nil
     private var discoveredPeripherals: [UUID: CBPeripheral] = [:]
     private var discoveredDevices: [BTDevice] = []
@@ -45,8 +44,6 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     private var discoveredRefresh: [UUID: TimeInterval] = [:]
 
     private let acceptUUIDs = [BT.broadcastCharacteristic.cbUUID, BT.transferCharacteristic.cbUUID]
-    
-    var scannerStoreDelegate: BTScannerStoreDelegate?
 
     override init() {
         super.init()
@@ -68,7 +65,13 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
 
     // MARK: - BTScannering
 
+    var deviceUpdateLimit: TimeInterval = 4 // in seconds
+
+    var filterRSSIPower: Bool = false
+    private let allowedRSSIRange: ClosedRange<Int> = -90...0
+
     weak var delegate: BTScannerDelegate?
+    weak var scannerStoreDelegate: BTScannerStoreDelegate?
 
     var isRunning: Bool {
         return centralManager.isScanning
@@ -115,7 +118,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard discoveredPeripherals[peripheral.identifier] == nil else {
             // already registred
-            
+
             // limit refresh
             if let timeInterval = discoveredRefresh[peripheral.identifier], timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate {
                 return
