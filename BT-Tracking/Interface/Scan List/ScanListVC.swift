@@ -63,7 +63,6 @@ class ScanListVC: UIViewController {
         tableView.rowHeight = 100
 
         dataSource = RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
-            
             switch row {
             case .scan(let scan):
                 let cell = tableView.dequeueReusableCell(withIdentifier: ScanCell.identifier, for: indexPath) as! ScanCell

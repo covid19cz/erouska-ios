@@ -27,6 +27,7 @@
 		8054C0DD2420AF63008907B8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0DC2420AF63008907B8 /* App.swift */; };
 		8054C0E12420EEFF008907B8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
 		8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4649848424201E4600A858A9 /* FileLogger.swift */; };
+		805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE9762424DE0E001A93B3 /* BTDevice.swift */; };
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
 		80BB474924212A3C00F552FC /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
 		80BB474A24212A3C00F552FC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
@@ -78,6 +79,7 @@
 		8054C0D924200E91008907B8 /* ServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceController.swift; sourceTree = "<group>"; };
 		8054C0DC2420AF63008907B8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		8054C0E02420EEFF008907B8 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		805BE9762424DE0E001A93B3 /* BTDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTDevice.swift; sourceTree = "<group>"; };
 		80799BEA2423B89A002B04C5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BB476124227C2500F552FC /* Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				46F21CA82422444600C01DFA /* ScanListVC.swift */,
 				46F21CA62422442D00C01DFA /* ScanListVM.swift */,
 				46F21CAA242245C100C01DFA /* ScanCell.swift */,
+				46F21CAE2422597F00C01DFA /* DeviceScan.swift */,
 			);
 			path = "Scan List";
 			sourceTree = "<group>";
@@ -140,22 +143,6 @@
 				8054C0D724200E7C008907B8 /* FileController.swift */,
 			);
 			path = Debug;
-			sourceTree = "<group>";
-		};
-		46F21CAC2422595500C01DFA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				46F21CAD2422596300C01DFA /* Scaning */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		46F21CAD2422596300C01DFA /* Scaning */ = {
-			isa = PBXGroup;
-			children = (
-				46F21CAE2422597F00C01DFA /* DeviceScan.swift */,
-			);
-			path = Scaning;
 			sourceTree = "<group>";
 		};
 		46F21CB524227E5D00C01DFA /* Stores */ = {
@@ -199,7 +186,6 @@
 				8054C0C9241FE66A008907B8 /* Interface */,
 				46F21CB524227E5D00C01DFA /* Stores */,
 				8054C0CC241FE6D5008907B8 /* Services */,
-				46F21CAC2422595500C01DFA /* Model */,
 				8054C0DB2420AF4F008907B8 /* Others */,
 				8054C0CA241FE68B008907B8 /* Supporting Files */,
 				8054C0B9241D4932008907B8 /* Assets.xcassets */,
@@ -235,11 +221,8 @@
 		8054C0CC241FE6D5008907B8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8054C0D1241FE720008907B8 /* BT.swift */,
-				8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */,
-				8054C0CF241FE706008907B8 /* BTScanner.swift */,
-				8054C0E02420EEFF008907B8 /* Logger.swift */,
-				4649848424201E4600A858A9 /* FileLogger.swift */,
+				805BE9742424DDDE001A93B3 /* Blue Tooth */,
+				805BE9752424DDE3001A93B3 /* Logger */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -252,6 +235,26 @@
 				80799BEA2423B89A002B04C5 /* Controller.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		805BE9742424DDDE001A93B3 /* Blue Tooth */ = {
+			isa = PBXGroup;
+			children = (
+				8054C0D1241FE720008907B8 /* BT.swift */,
+				805BE9762424DE0E001A93B3 /* BTDevice.swift */,
+				8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */,
+				8054C0CF241FE706008907B8 /* BTScanner.swift */,
+			);
+			path = "Blue Tooth";
+			sourceTree = "<group>";
+		};
+		805BE9752424DDE3001A93B3 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				8054C0E02420EEFF008907B8 /* Logger.swift */,
+				4649848424201E4600A858A9 /* FileLogger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		80BB476024227C1400F552FC /* Signup */ = {
@@ -441,6 +444,7 @@
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				46F21CAB242245C100C01DFA /* ScanCell.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
+				805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */,
 				46F21CAF2422597F00C01DFA /* DeviceScan.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
 			);

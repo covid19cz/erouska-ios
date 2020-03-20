@@ -92,17 +92,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         log("BTAdvertiser: stoped")
     }
 
-    // MARK: CBPeripheralManagerDelegate
-
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        // Opt out from any other state
-        if peripheral.state != .poweredOn {
-            log("BTAdvertiser: peripheralManager state \(peripheral.state)")
-            return
-        }
-
-        log("BTAdvertiser: peripheralManager powered on")
-
+    private func setupService() {
         let serviceBroadcast = CBMutableCharacteristic(
             type: BT.transferCharacteristic.cbUUID,
             properties: .read,
@@ -123,6 +113,20 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         transferService.characteristics = [serviceBroadcast, uniqueBroadcast]
 
         peripheralManager.add(transferService)
+    }
+
+    // MARK: CBPeripheralManagerDelegate
+
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+        // Opt out from any other state
+        if peripheral.state != .poweredOn {
+            log("BTAdvertiser: peripheralManager state \(peripheral.state)")
+            return
+        }
+
+        log("BTAdvertiser: peripheralManager powered on")
+
+        setupService()
 
         guard started else { return }
         start()
