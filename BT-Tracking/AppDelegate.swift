@@ -35,23 +35,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) lazy var scanner: BTScannering = BTScanner()
     var scannerStore: ScannerStore {
         let store = ScannerStore()
-        scanner.scannerStoreDelegate = store
+        scanner.add(delegate: store)
         return store
     }
-    
-    // MARK: - UIApplicationDelegate
 
-    var window: UIWindow? = nil
+    private func generalSetup() {
+        let generalCategory = UNNotificationCategory(
+            identifier: "Scanning",
+            actions: [],
+            intentIdentifiers: [],
+            options: .customDismissAction
+        )
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        log("\n\n\n-START--------------------------------\n")
+        let center = UNUserNotificationCenter.current()
+        center.setNotificationCategories([generalCategory])
 
-        let window = UIWindow()
-        window.backgroundColor = .white
-        window.makeKeyAndVisible()
-        self.window = window
-
-        let storyboard: UIStoryboard
         #if !targetEnvironment(macCatalyst)
 
         #if DEBUG && TARGET_IPHONE_SIMULATOR
@@ -60,6 +58,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
         Auth.auth().languageCode = "cs";
+
+        #endif
+    }
+
+    private func setupInterface() {
+        let window = UIWindow()
+        window.backgroundColor = .white
+        window.makeKeyAndVisible()
+        self.window = window
+
+        let storyboard: UIStoryboard
+        #if !targetEnvironment(macCatalyst)
 
         if Auth.auth().currentUser == nil {
             storyboard = UIStoryboard(name: "Signup", bundle: nil)
@@ -72,6 +82,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         window.rootViewController = storyboard.instantiateInitialViewController()
+    }
+    
+    // MARK: - UIApplicationDelegate
+
+    var window: UIWindow? = nil
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        log("\n\n\n-START--------------------------------\n")
+
+        generalSetup()
+        setupInterface()
         
         return true
     }

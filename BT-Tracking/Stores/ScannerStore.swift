@@ -11,7 +11,7 @@ import CoreBluetooth
 import RxSwift
 import RxCocoa
 
-class ScannerStore: BTScannerStoreDelegate {
+final class ScannerStore {
 
     let scans = BehaviorRelay<[DeviceScan]>(value: [])
 
@@ -26,6 +26,10 @@ class ScannerStore: BTScannerStoreDelegate {
             rssi: device.rssi
         )
     }
+
+}
+
+extension ScannerStore: BTScannerDelegate {
 
     func didFind(device: BTDevice) {
         let updatedScans = scans.value + [scan(from: device)]
