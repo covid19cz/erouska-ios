@@ -45,7 +45,6 @@ class ScannerStore: BTScannerStoreDelegate {
         try! realm.write {
             realm.add(storageData, update: .all)
         }
-        
         let updatedScans = scans.value + [device]
         scans.accept(updatedScans)
     }

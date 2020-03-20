@@ -61,11 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Auth.auth().languageCode = "cs";
 
-        if Auth.auth().currentUser == nil {
-            storyboard = UIStoryboard(name: "Signup", bundle: nil)
-        } else {
+//        if Auth.auth().currentUser == nil {
+//            storyboard = UIStoryboard(name: "Signup", bundle: nil)
+//        } else {
             storyboard = UIStoryboard(name: "Main", bundle: nil)
-        }
+//        }
 
         #else
         storyboard = UIStoryboard(name: "Main", bundle: nil)
