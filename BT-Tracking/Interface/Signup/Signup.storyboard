@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-1126" y="88"/>
         </scene>
-        <!--Mobilní rouška-->
+        <!--eRouška-->
         <scene sceneID="GJX-OU-pnd">
             <objects>
                 <viewController id="pNZ-IF-ibE" sceneMemberID="viewController">
@@ -66,7 +66,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                         <rect key="frame" x="0.0" y="441.33333333333326" width="343" height="50.333333333333314"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m34-ff-402" customClass="RoundedButtonFilled" customModule="Mobilní_rouška" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m34-ff-402" customClass="RoundedButtonFilled" customModule="eRouška" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="506.66666666666663" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="kXG-Uw-1h8"/>
@@ -79,7 +79,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                             <segue destination="1ln-NW-njF" kind="show" id="Sxq-k8-aRa"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-OA-pEZ" customClass="RoundedButtonClear" customModule="Mobilní_rouška" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-OA-pEZ" customClass="RoundedButtonClear" customModule="eRouška" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="565.66666666666663" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Moc-PC-mlB"/>
@@ -111,7 +111,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pGC-hL-Bwc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Mobilní rouška" id="wvN-BU-txe">
+                    <navigationItem key="navigationItem" title="eRouška" id="wvN-BU-txe">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="NHD-52-HEh"/>
                     </navigationItem>
                 </viewController>
@@ -184,7 +184,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
         <!--Dokončení aktivace-->
         <scene sceneID="YpT-d0-CPf">
             <objects>
-                <viewController id="q6P-fR-rVF" customClass="CompleteActivationController" customModule="Mobilní_rouška" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="q6P-fR-rVF" customClass="CompleteActivationController" customModule="eRouška" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="62b-SF-fPw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,7 +232,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                                     <constraint firstAttribute="height" constant="10" id="gRk-ut-MO6"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDN-Uj-w2M" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="Mobilní_rouška" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDN-Uj-w2M" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouška" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="333" width="339" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="qyb-VU-W0a"/>
@@ -304,7 +304,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
         <!--Povolení Bluetooth-->
         <scene sceneID="aiw-yL-KMo">
             <objects>
-                <viewController id="1ln-NW-njF" customClass="BluetoothActivationController" customModule="Mobilní_rouška" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1ln-NW-njF" customClass="BluetoothActivationController" customModule="eRouška" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2X2-Ep-DR3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -344,7 +344,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                         <rect key="frame" x="0.0" y="368.33333333333326" width="343" height="182.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-gP-OXF" customClass="RoundedButtonFilled" customModule="Mobilní_rouška" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-gP-OXF" customClass="RoundedButtonFilled" customModule="eRouška" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="565.66666666666663" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="NsZ-l0-DpP"/>
@@ -395,7 +395,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
         <!--Aktivace-->
         <scene sceneID="vLC-jn-bpl">
             <objects>
-                <viewController id="BBC-aE-fuq" customClass="AccountActivationControler" customModule="Mobilní_rouška" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BBC-aE-fuq" customClass="AccountActivationControler" customModule="eRouška" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceh-zy-1BU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -444,7 +444,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                                     <constraint firstAttribute="height" constant="10" id="cif-vE-e6P"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4n-ew-pkC" customClass="RoundedButtonFilled" customModule="Mobilní_rouška" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4n-ew-pkC" customClass="RoundedButtonFilled" customModule="eRouška" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="385.66666666666669" width="339" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="WpZ-Vp-Azt"/>
