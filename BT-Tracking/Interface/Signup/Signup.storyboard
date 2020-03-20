@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="kfk-wA-RM9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -53,11 +53,11 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAZ-5r-e2M">
                                         <rect key="frame" x="0.0" y="182.66666666666669" width="343" height="243.66666666666669"/>
-                                        <mutableString key="text">Tato aplikace vytváří seznam telefonů ve vašem okolí.
+                                        <string key="text">Tato aplikace vytváří seznam telefonů ve vašem okolí.
 
 Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.
 
-Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</mutableString>
+Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
         <!--Jak to funguje-->
         <scene sceneID="lDO-VT-CLk">
             <objects>
-                <viewController id="9IO-jk-zjL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Help" id="9IO-jk-zjL" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ojd-pe-mlj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -12,6 +12,7 @@
         <scene sceneID="cWO-yu-PwA">
             <objects>
                 <navigationController id="8pR-j1-IZY" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Gy-y2-tgV">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -59,13 +60,13 @@
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
-                                        <mutableString key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</mutableString>
+                                        <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43c-od-NVw">
                                         <rect key="frame" x="0.0" y="276.33333333333331" width="343" height="141.66666666666669"/>
-                                        <mutableString key="text">Váš telefon automaticky monitoruje okolí, stačí nechat aplikaci běžet.
+                                        <string key="text">Váš telefon automaticky monitoruje okolí, stačí nechat aplikaci běžet.
 
-Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na čísle 728 953 731. Vy jim pak pošlete anonymizovaný seznam telefonů, které byly ve vašem okolí, stisknutím tlačítka Kontaktovali mě hygienici.</mutableString>
+Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na čísle 728 953 731. Vy jim pak pošlete anonymizovaný seznam telefonů, které byly ve vašem okolí, stisknutím tlačítka Kontaktovali mě hygienici.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -84,7 +85,7 @@ Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na �
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
-                                            <segue destination="nhW-f5-HLn" kind="presentation" id="LeJ-qh-kka"/>
+                                            <segue destination="nsE-2c-3mf" kind="presentation" id="EX6-gb-pm2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0x-IP-jnH" customClass="RoundedButtonClear" customModule="Mobilní_rouška" customModuleProvider="target">
@@ -116,11 +117,16 @@ Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na �
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IN0-jh-QW1"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Active" image="sun.max" catalog="system" id="kPr-kL-XND"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Mobilní rouška" id="Jwh-Bn-MMw">
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="0xS-Qt-GE1"/>
+                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="0xS-Qt-GE1">
+                            <connections>
+                                <segue destination="Dzc-CC-6Gm" kind="show" id="PqX-CG-fyD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,7 +135,7 @@ Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na �
         <!--Zapnout Bluetooth-->
         <scene sceneID="OZ2-EW-p8m">
             <objects>
-                <viewController id="lNJ-f3-w0k" userLabel="Zapnout Bluetooth" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivateBluetooth" id="lNJ-f3-w0k" userLabel="Zapnout Bluetooth" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gUG-Xb-6tr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,16 +220,26 @@ Zapněte jej pomocí tlačítka "Zapnout Bluetooth". </string>
             </objects>
             <point key="canvasLocation" x="1217" y="1658"/>
         </scene>
+        <!--Help-->
+        <scene sceneID="Nlv-IK-lfr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Signup" referencedIdentifier="Help" id="Dzc-CC-6Gm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="c7q-J0-pM7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Pm-aT-WOD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2184" y="1354"/>
+        </scene>
         <!--Aplikace je aktivní-->
         <scene sceneID="6UM-zz-FrR">
             <objects>
-                <viewController id="nhW-f5-HLn" userLabel="Aplikace je aktivní" sceneMemberID="viewController">
+                <viewController id="nhW-f5-HLn" userLabel="Aplikace je aktivní" customClass="SendReportController" customModule="Mobilní_rouška" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fJS-Zc-Q1b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xW3-KI-5uN">
-                                <rect key="frame" x="16" y="0.0" width="343" height="675"/>
+                                <rect key="frame" x="16" y="56" width="343" height="619"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzy-Cg-tAN" userLabel="Space View">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="5"/>
@@ -245,7 +261,7 @@ Zapněte jej pomocí tlačítka "Zapnout Bluetooth". </string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXI-sf-rSq">
-                                        <rect key="frame" x="0.0" y="200.33333333333337" width="343" height="182.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="200.33333333333331" width="343" height="182.66666666666669"/>
                                         <string key="text">Děkujeme, že pomáháte bojovat proti šíření koronaviru. 
 
 Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.
@@ -257,11 +273,11 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hy
                                         <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHG-EE-9xE" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="398" width="343" height="139"/>
+                                        <rect key="frame" x="0.0" y="398" width="343" height="83"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJi-4c-2vt" customClass="RoundedButtonFilled" customModule="Mobilní_rouška" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="552" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="496" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Hfj-ZD-Hxk"/>
                                         </constraints>
@@ -269,16 +285,19 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hy
                                         <state key="normal" title="Zavřít aplikaci">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
+                                        <connections>
+                                            <action selector="closeAction" destination="nhW-f5-HLn" eventType="touchUpInside" id="d02-SI-0d2"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pc-xW-edW" userLabel="Space View">
-                                        <rect key="frame" x="0.0" y="611" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="555" width="343" height="44"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="w5v-Wp-nBg"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blq-GK-ybo" userLabel="Space View">
-                                        <rect key="frame" x="0.0" y="670" width="343" height="5"/>
+                                        <rect key="frame" x="0.0" y="614" width="343" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="DlO-16-nTp"/>
@@ -298,17 +317,41 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hy
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Mobilní rouška" id="oR6-de-BdQ">
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="Zih-qb-wU0"/>
+                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="Zih-qb-wU0">
+                            <connections>
+                                <segue destination="Dzc-CC-6Gm" kind="show" id="aUR-0C-1aK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bi5-pj-sc2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2121" y="893"/>
+            <point key="canvasLocation" x="3047" y="893"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iU4-My-Ued">
+            <objects>
+                <navigationController id="nsE-2c-3mf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qPD-EP-3XM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nhW-f5-HLn" kind="relationship" relationship="rootViewController" id="ZGW-cE-xS6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bzS-KJ-P1g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2185" y="893"/>
         </scene>
     </scenes>
     <resources>
         <image name="BluetoothOffIcon" width="130" height="130"/>
         <image name="ScanActiveIcon" width="130" height="130"/>
+        <image name="sun.max" catalog="system" width="64" height="62"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="PqX-CG-fyD"/>
+    </inferredMetricsTieBreakers>
 </document>
