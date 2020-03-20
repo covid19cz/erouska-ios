@@ -28,7 +28,6 @@ class ScanListVC: UIViewController {
 
         setup()
         setupTableView()
-        // bindClearButton()
     }
 
     // MARK: - Actions

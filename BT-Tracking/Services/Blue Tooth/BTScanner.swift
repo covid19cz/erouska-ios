@@ -105,15 +105,18 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         start()
     }
 
+    private func checkRefreshTime(UUID: UUID) -> Bool {
+        guard let timeInterval = discoveredRefresh[UUID] else { return false }
+        return timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate
+    }
+
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard discoveredPeripherals[peripheral.identifier] == nil else {
             // already registred
-            //log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)") // spam
 
             // limit refresh
-            if let timeInterval = discoveredRefresh[peripheral.identifier], timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate {
-                return
-            }
+            guard !checkRefreshTime(UUID: peripheral.identifier) else { return }
+            log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
             discoveredRefresh[peripheral.identifier] = Date.timeIntervalSinceReferenceDate
 
             // update device RSII or name
@@ -127,10 +130,14 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
             }
             return
         }
-        log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+
+        func logDiscovered() {
+            log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+        }
 
         if filterRSSIPower {
             guard allowedRSSIRange.contains(RSSI.intValue) else {
+                logDiscovered()
                 log("BTScanner: RSSI range \(RSSI.intValue)")
                 return
             }
@@ -160,6 +167,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 BUID = raw
             } else {
                 // ignore device without buid
+                 log("BTScanner: Ignored device wihtout name and buid: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
                 return
             }
 
@@ -192,6 +200,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
             discoveredData[peripheral.identifier] = Data()
         }
+        logDiscovered()
         discoveredPeripherals[peripheral.identifier] = peripheral
 
         log("BTScanner: Found \(device.platform) device \(device)")
@@ -262,7 +271,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         }
 
         for characteristic in characteristics where acceptUUIDs.contains(characteristic.uuid) {
-            log("BTScanner: readValue for \(characteristic.uuid)")
+            log("BTScanner: ReadValue for \(characteristic.uuid)")
             peripheral.readValue(for: characteristic)
         }
     }

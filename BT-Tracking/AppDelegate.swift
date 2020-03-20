@@ -112,7 +112,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        NSLog("we are in the background...")
         log("\n\n\n-BACKGROUND---------------------------\n")
 
         inBackgroundStage = true
