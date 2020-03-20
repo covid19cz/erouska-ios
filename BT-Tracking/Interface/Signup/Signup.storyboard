@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="sTO-yI-fiF">
-                                <rect key="frame" x="16" y="148.33333333333331" width="343" height="629.66666666666674"/>
+                                <rect key="frame" x="16" y="140" width="343" height="638"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsR-Wz-iRl" userLabel="Space View">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="5"/>
@@ -43,16 +43,16 @@
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="MinLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xgx-Up-y98">
-                                        <rect key="frame" x="0.0" y="19.999999999999993" width="343" height="112.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="20.000000000000007" width="343" height="120.66666666666669"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chráním sebe, chráním ostatní" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQp-0s-STi">
-                                        <rect key="frame" x="0.0" y="147.33333333333334" width="343" height="20.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="155.66666666666669" width="343" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAZ-5r-e2M">
-                                        <rect key="frame" x="0.0" y="182.66666666666669" width="343" height="243.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="191" width="343" height="243.66666666666663"/>
                                         <string key="text">Tato aplikace vytváří seznam telefonů ve vašem okolí.
 
 Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.
@@ -63,11 +63,11 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFy-oa-dO1" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="441.33333333333326" width="343" height="50.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="449.66666666666663" width="343" height="50.333333333333314"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m34-ff-402" customClass="RoundedButtonFilled" customModule="eRouška" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="506.66666666666663" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="515" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="kXG-Uw-1h8"/>
                                         </constraints>
@@ -80,7 +80,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-OA-pEZ" customClass="RoundedButtonClear" customModule="eRouška" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="565.66666666666663" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="574" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Moc-PC-mlB"/>
                                         </constraints>
@@ -89,11 +89,11 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
-                                            <segue destination="9IO-jk-zjL" kind="show" id="MS1-dA-zsb"/>
+                                            <segue destination="Tm2-1s-Hbj" kind="show" id="dFa-tE-tum"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kM3-rd-bJ4" userLabel="Space View">
-                                        <rect key="frame" x="0.0" y="624.66666666666663" width="343" height="5"/>
+                                        <rect key="frame" x="0.0" y="633" width="343" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="X5C-qf-4Ms"/>
@@ -117,59 +117,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzX-cU-3lD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-223.18840579710147" y="87.723214285714278"/>
-        </scene>
-        <!--Jak to funguje-->
-        <scene sceneID="lDO-VT-CLk">
-            <objects>
-                <viewController storyboardIdentifier="Help" id="9IO-jk-zjL" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ojd-pe-mlj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="X9Q-at-QJi">
-                                <rect key="frame" x="16" y="148.33333333333331" width="343" height="629.66666666666674"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezM-xj-gZE" userLabel="Space View">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="5" id="bpN-w2-nrX"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplikace pomocí technologie Bluetooth sleduje telefony, které se pohybují ve vašem okolí a také mají aplikaci nainstalovanou" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtO-R6-zuF">
-                                        <rect key="frame" x="0.0" y="20" width="343" height="86.333333333333329"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Následně zaznamená ID aplikací a bez vašeho souhlasu je nikam nezasílá." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7f5-Bn-CAo">
-                                        <rect key="frame" x="0.0" y="121.33333333333333" width="343" height="42.333333333333329"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqk-Kd-E9T" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="178.66666666666663" width="343" height="451"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="X9Q-at-QJi" firstAttribute="leading" secondItem="Ojd-pe-mlj" secondAttribute="leadingMargin" id="5xf-lk-pjO"/>
-                            <constraint firstItem="X9Q-at-QJi" firstAttribute="trailing" secondItem="Ojd-pe-mlj" secondAttribute="trailingMargin" id="Ap4-fR-A2b"/>
-                            <constraint firstItem="Wgu-rk-I3x" firstAttribute="bottom" secondItem="X9Q-at-QJi" secondAttribute="bottom" id="BXN-bY-elA"/>
-                            <constraint firstItem="X9Q-at-QJi" firstAttribute="top" secondItem="Wgu-rk-I3x" secondAttribute="top" id="b7K-pw-K3V"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Wgu-rk-I3x"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Jak to funguje" id="fBy-Er-I0m"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YgA-9B-4tG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="854" y="516"/>
+            <point key="canvasLocation" x="-222" y="86"/>
         </scene>
         <!--TabBar-->
         <scene sceneID="v5k-Ze-k1w">
@@ -179,7 +127,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q95-gy-dWf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3321" y="-225"/>
+            <point key="canvasLocation" x="3306" y="86"/>
         </scene>
         <!--Dokončení aktivace-->
         <scene sceneID="YpT-d0-CPf">
@@ -299,7 +247,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9u-03-pOg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2722.4000000000001" y="-225.36945812807883"/>
+            <point key="canvasLocation" x="2543" y="87"/>
         </scene>
         <!--Povolení Bluetooth-->
         <scene sceneID="aiw-yL-KMo">
@@ -380,7 +328,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="lIB-gt-iyC"/>
                         <barButtonItem key="rightBarButtonItem" title="Nápověda" id="tdL-Kj-Pcu">
                             <connections>
-                                <segue destination="9IO-jk-zjL" kind="show" id="aeu-ol-3ic"/>
+                                <segue destination="Tm2-1s-Hbj" kind="show" id="FLh-nf-xgs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -390,7 +338,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afB-yv-WOA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="-225"/>
+            <point key="canvasLocation" x="700" y="88"/>
         </scene>
         <!--Aktivace-->
         <scene sceneID="vLC-jn-bpl">
@@ -504,7 +452,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="Ifa-FJ-QZq"/>
                         <barButtonItem key="rightBarButtonItem" title="Nápověda" id="z0N-gl-bwU">
                             <connections>
-                                <segue destination="9IO-jk-zjL" kind="show" id="dnP-Ct-dLH"/>
+                                <segue destination="Tm2-1s-Hbj" kind="show" id="S39-Cf-beJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -518,7 +466,17 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fag-j7-7j9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1819" y="-225"/>
+            <point key="canvasLocation" x="1631" y="87"/>
+        </scene>
+        <!--Help-->
+        <scene sceneID="xrM-rQ-Utw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="Help" id="Tm2-1s-Hbj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="aFc-Qu-JYc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SDw-LS-t63" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="781" y="695"/>
         </scene>
     </scenes>
     <resources>
@@ -527,6 +485,6 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
         <image name="MinLogo" width="328" height="29.333333969116211"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MS1-dA-zsb"/>
+        <segue reference="dFa-tE-tum"/>
     </inferredMetricsTieBreakers>
 </document>
