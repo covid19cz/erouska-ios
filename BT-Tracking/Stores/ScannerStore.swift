@@ -11,21 +11,30 @@ import CoreBluetooth
 import RxSwift
 import RxCocoa
 import RealmSwift
+import RxRealm
 
 class ScannerStore: BTScannerStoreDelegate {
 
-    let scans = BehaviorRelay<[DeviceScan]>(value: [])
+    let scans: Observable<[DeviceScan]>
     let storedScans = BehaviorRelay<[DeviceScan]>(value: [])
     
     private let realm = try! Realm()
-    private var storedScansToken: NotificationToken!
+//    private var storedScansToken: NotificationToken!
+    private let scanObjects: Results<DeviceScanRealm>
+    private let bag = DisposeBag()
     
     init() {
-        storedScansToken = realm.objects(DeviceScanRealm.self).observe { [weak self] _ in
-            guard let self = self else { return }
-            let scans: [DeviceScan] = self.realm.objects(DeviceScanRealm.self).map { $0.toDeviceScan() }
-            self.storedScans.accept(scans)
-       }
+        scanObjects = realm.objects(DeviceScanRealm.self)
+        scans = Observable.array(from: scanObjects)
+            .map { scanned in
+                return scanned.map { $0.toDeviceScan() }
+            }
+//        bindRealm()
+//        storedScansToken = realm.objects(DeviceScanRealm.self).observe { [weak self] _ in
+//            guard let self = self else { return }
+//            let scans: [DeviceScan] = self.realm.objects(DeviceScanRealm.self).map { $0.toDeviceScan() }
+//            self.storedScans.accept(scans)
+//       }
     }
     
     func didFind(device: CBPeripheral, rssi: Int) {
@@ -45,7 +54,18 @@ class ScannerStore: BTScannerStoreDelegate {
         try! realm.write {
             realm.add(storageData, update: .all)
         }
-        let updatedScans = scans.value + [device]
-        scans.accept(updatedScans)
+//        let updatedScans = scans.value + [device]
+//        scans.accept(updatedScans)
     }
+    
+//    private func bindRealm() {
+//        Observable.array(from: scanObjects)
+//            .map { scanned in
+//                return scanned.map { $0.toDeviceScan() }
+//        }
+//        .subscribe(onNext: { scans in
+//            print("Scans count: \(scans.count)")
+//        })
+//        .disposed(by: bag)
+//    }
 }

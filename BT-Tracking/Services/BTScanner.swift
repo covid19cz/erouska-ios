@@ -149,7 +149,7 @@ final class BTScanner: NSObject, BTScannering, CBCentralManagerDelegate, CBPerip
         log("BTScanner: didDisconnectPeripheral: \(peripheral), error: \(error?.localizedDescription ?? "none")")
 
         cleanup(peripheral)
-        discoveredPeripherals.removeValue(forKey: peripheral.identifier)
+//        discoveredPeripherals.removeValue(forKey: peripheral.identifier)
     }
 
     // MARK: CBPeripheralDelegate
