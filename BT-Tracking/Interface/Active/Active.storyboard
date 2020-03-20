@@ -120,6 +120,7 @@ Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na �
                     <tabBarItem key="tabBarItem" title="Active" image="sun.max" catalog="system" id="kPr-kL-XND"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
+                        <barButtonItem key="backBarButtonItem" title="Zpět" id="45a-ir-C72"/>
                         <barButtonItem key="rightBarButtonItem" title="Nápověda" id="0xS-Qt-GE1">
                             <connections>
                                 <segue destination="Dzc-CC-6Gm" kind="show" id="PqX-CG-fyD"/>
@@ -213,6 +214,7 @@ Zapněte jej pomocí tlačítka "Zapnout Bluetooth". </string>
                         <viewLayoutGuide key="safeArea" id="5NC-48-V3r"/>
                     </view>
                     <navigationItem key="navigationItem" title="eRouška" id="Ws2-gU-gdL">
+                        <barButtonItem key="backBarButtonItem" title="Zpět" id="U1c-ze-RuX"/>
                         <barButtonItem key="rightBarButtonItem" title="Nápověda" id="2JB-bo-STP"/>
                     </navigationItem>
                 </viewController>
@@ -223,7 +225,7 @@ Zapněte jej pomocí tlačítka "Zapnout Bluetooth". </string>
         <!--Help-->
         <scene sceneID="Nlv-IK-lfr">
             <objects>
-                <viewControllerPlaceholder storyboardName="Signup" referencedIdentifier="Help" id="Dzc-CC-6Gm" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="Help" id="Dzc-CC-6Gm" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="c7q-J0-pM7"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Pm-aT-WOD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -317,6 +319,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hy
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="eRouška" id="oR6-de-BdQ">
+                        <barButtonItem key="backBarButtonItem" title="Zpět" id="jG7-r6-Mfw"/>
                         <barButtonItem key="rightBarButtonItem" title="Nápověda" id="Zih-qb-wU0">
                             <connections>
                                 <segue destination="Dzc-CC-6Gm" kind="show" id="aUR-0C-1aK"/>
@@ -352,6 +355,6 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hy
         <image name="sun.max" catalog="system" width="64" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aUR-0C-1aK"/>
+        <segue reference="PqX-CG-fyD"/>
     </inferredMetricsTieBreakers>
 </document>

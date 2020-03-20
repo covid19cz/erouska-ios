@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oH0-Ce-HUb">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Jak to funguje-->
+        <scene sceneID="y9a-NQ-Xyi">
+            <objects>
+                <viewController storyboardIdentifier="Help" id="oH0-Ce-HUb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xog-Dv-zXk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N85-Ma-cmj">
+                                <rect key="frame" x="16" y="0.0" width="288" height="480"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" distribution="equalSpacing" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="q2J-g6-7As">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="995"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5z7-yy-M3m" userLabel="Space View">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="eFS-yx-lSx"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplikace pomocí technologie Bluetooth sleduje telefony, které se pohybují ve vašem okolí a také mají aplikaci nainstalovanou" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsv-EZ-3qA">
+                                                <rect key="frame" x="0.0" y="19" width="288" height="86.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Následně zaznamená ID aplikací a bez vašeho souhlasu je nikam nezasílá." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HJ-mL-7yQ">
+                                                <rect key="frame" x="0.0" y="119.5" width="288" height="64.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ct6-8f-eOU" userLabel="Space View">
+                                                <rect key="frame" x="0.0" y="198" width="288" height="5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="Fej-KJ-8J6"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplikace pomocí technologie Bluetooth sleduje telefony, které se pohybují ve vašem okolí a také mají aplikaci nainstalovanou" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bU4-kA-RUq">
+                                                <rect key="frame" x="0.0" y="217" width="288" height="86.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Následně zaznamená ID aplikací a bez vašeho souhlasu je nikam nezasílá." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7Z-o6-ETB">
+                                                <rect key="frame" x="0.0" y="317.5" width="288" height="64.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lf2-xV-ai3" userLabel="Space View">
+                                                <rect key="frame" x="0.0" y="396" width="288" height="5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="q0z-e7-Fkb"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplikace pomocí technologie Bluetooth sleduje telefony, které se pohybují ve vašem okolí a také mají aplikaci nainstalovanou" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9i-xe-lzu">
+                                                <rect key="frame" x="0.0" y="415" width="288" height="86.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Následně zaznamená ID aplikací a bez vašeho souhlasu je nikam nezasílá." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49q-Lk-brK">
+                                                <rect key="frame" x="0.0" y="515.5" width="288" height="64.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNx-WC-9Wp" userLabel="Space View">
+                                                <rect key="frame" x="0.0" y="594" width="288" height="5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="C0v-al-4Nc"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplikace pomocí technologie Bluetooth sleduje telefony, které se pohybují ve vašem okolí a také mají aplikaci nainstalovanou" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdJ-7i-Wt0">
+                                                <rect key="frame" x="0.0" y="613" width="288" height="86.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Následně zaznamená ID aplikací a bez vašeho souhlasu je nikam nezasílá." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXP-bG-YHf">
+                                                <rect key="frame" x="0.0" y="713.5" width="288" height="64.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="554-ql-Kdg" userLabel="Space View">
+                                                <rect key="frame" x="0.0" y="792" width="288" height="5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="4dy-V6-AnG"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplikace pomocí technologie Bluetooth sleduje telefony, které se pohybují ve vašem okolí a také mají aplikaci nainstalovanou" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80T-ZX-rPK">
+                                                <rect key="frame" x="0.0" y="811" width="288" height="86.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Následně zaznamená ID aplikací a bez vašeho souhlasu je nikam nezasílá." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXh-Hb-td1">
+                                                <rect key="frame" x="0.0" y="911.5" width="288" height="64.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t6P-Un-P6w" userLabel="Space View">
+                                                <rect key="frame" x="0.0" y="990" width="288" height="5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="aKF-ib-hiW"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="q2J-g6-7As" firstAttribute="bottom" secondItem="6FT-wA-1ts" secondAttribute="bottom" id="alF-DZ-g8K"/>
+                                    <constraint firstItem="q2J-g6-7As" firstAttribute="top" secondItem="6FT-wA-1ts" secondAttribute="top" id="ipn-J0-VtE"/>
+                                    <constraint firstAttribute="trailing" secondItem="q2J-g6-7As" secondAttribute="trailing" id="k9S-Sk-NWp"/>
+                                    <constraint firstItem="q2J-g6-7As" firstAttribute="width" secondItem="N85-Ma-cmj" secondAttribute="width" id="lA7-C2-Y9K"/>
+                                    <constraint firstItem="q2J-g6-7As" firstAttribute="leading" secondItem="N85-Ma-cmj" secondAttribute="leading" id="tus-rJ-4CZ"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="6FT-wA-1ts"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="1Tr-qW-ma5"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="N85-Ma-cmj" firstAttribute="bottom" secondItem="xog-Dv-zXk" secondAttribute="bottom" id="FVA-kw-mLS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N85-Ma-cmj" secondAttribute="trailing" id="SY1-pe-49w"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="N85-Ma-cmj" secondAttribute="leading" id="gR9-n3-7aZ"/>
+                            <constraint firstItem="N85-Ma-cmj" firstAttribute="top" secondItem="xog-Dv-zXk" secondAttribute="top" id="wPc-HU-a0L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cua-aX-MiQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Jak to funguje" largeTitleDisplayMode="never" id="c2k-ON-LwA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWX-GS-jbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901.875" y="565"/>
+        </scene>
+    </scenes>
+</document>
