@@ -34,16 +34,18 @@ class ScanListVM {
             }
             .asDriver(onErrorJustReturn: [])
     }
+    
 }
 
 // MARK: - Sections helpers
 
 extension ScanListVM {
 
-    private func section(from scans: [Scan]) -> [SectionModel] {
+    private func section(from scans: [DeviceScan]) -> [SectionModel] {
         let items: [ScanListVM.Section.Item] = scans.map { .scan($0) }
         return [SectionModel(model: .scans, items: items)]
     }
+
 }
 
 // MARK: - Sections
@@ -66,7 +68,7 @@ extension ScanListVM {
         }
         
         enum Item: IdentifiableType, Equatable {
-            case scan(Scan)
+            case scan(DeviceScan)
 
             var identity: String {
                 switch self {
@@ -79,4 +81,5 @@ extension ScanListVM {
             }
         }
     }
+
 }

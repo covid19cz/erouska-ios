@@ -11,22 +11,26 @@ import UIKit
 class ScanCell: UITableViewCell {
 
     static let identifier = "scanCell"
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var identifierLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var rssiLabel: UILabel!
-    
-    func configure(for scan: Scan) {
+
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var identifierLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var rssiLabel: UILabel!
+    @IBOutlet private weak var platformLabel: UILabel!
+
+    func configure(for scan: DeviceScan) {
         nameLabel.text = scan.name
-        identifierLabel.text = scan.identifier
+        identifierLabel.text = scan.bluetoothIdentifier
         dateLabel.text = ScanCell.formatter.string(from: scan.date)
         rssiLabel.text = String(scan.rssi)
+        platformLabel.text = scan.platform.rawValue
     }
     
-    static var formatter: DateFormatter = {
+    private static var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .medium
         return formatter
     }()
+
 }
