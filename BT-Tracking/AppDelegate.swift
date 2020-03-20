@@ -32,26 +32,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private(set) lazy var advertiser: BTAdvertising = BTAdvertiser()
-    private(set) lazy var scanner = BTScanner()
+    private(set) lazy var scanner: BTScannering = BTScanner()
     var scannerStore: ScannerStore {
         let store = ScannerStore()
-        scanner.scannerStoreDelegate = store
+        scanner.add(delegate: store)
         return store
     }
-    
-    // MARK: - UIApplicationDelegate
 
-    var window: UIWindow? = nil
+    private func generalSetup() {
+        let generalCategory = UNNotificationCategory(
+            identifier: "Scanning",
+            actions: [],
+            intentIdentifiers: [],
+            options: .customDismissAction
+        )
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        log("\n\n\n-START--------------------------------\n")
+        let center = UNUserNotificationCenter.current()
+        center.setNotificationCategories([generalCategory])
 
-        let window = UIWindow()
-        window.backgroundColor = .white
-        window.makeKeyAndVisible()
-        self.window = window
-
-        let storyboard: UIStoryboard
         #if !targetEnvironment(macCatalyst)
 
         #if DEBUG && TARGET_IPHONE_SIMULATOR
@@ -61,17 +59,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Auth.auth().languageCode = "cs";
 
-//        if Auth.auth().currentUser == nil {
-//            storyboard = UIStoryboard(name: "Signup", bundle: nil)
-//        } else {
+        #endif
+    }
+
+    private func setupInterface() {
+        let window = UIWindow()
+        window.backgroundColor = .white
+        window.makeKeyAndVisible()
+        self.window = window
+
+        let storyboard: UIStoryboard
+        #if !targetEnvironment(macCatalyst)
+
+        if Auth.auth().currentUser == nil {
+            storyboard = UIStoryboard(name: "Signup", bundle: nil)
+        } else {
             storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        }
+        }
 
         #else
         storyboard = UIStoryboard(name: "Main", bundle: nil)
         #endif
 
         window.rootViewController = storyboard.instantiateInitialViewController()
+    }
+    
+    // MARK: - UIApplicationDelegate
+
+    var window: UIWindow? = nil
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        log("\n\n\n-START--------------------------------\n")
+
+        generalSetup()
+        setupInterface()
         
         return true
     }
@@ -91,7 +112,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        NSLog("we are in the background...")
         log("\n\n\n-BACKGROUND---------------------------\n")
 
         inBackgroundStage = true

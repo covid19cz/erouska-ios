@@ -11,7 +11,7 @@
         <!--Scanner-->
         <scene sceneID="z69-Sg-ixU">
             <objects>
-                <viewController id="B0q-VQ-qom" customClass="ScanListVC" customModule="Mobilní_rouška" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="B0q-VQ-qom" customClass="ScanListVC" customModule="eRouška" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p9j-Hn-a5d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="793"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="scanCell" rowHeight="122" id="zG1-we-EXI" customClass="ScanCell" customModule="Mobilní_rouška" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="scanCell" rowHeight="122" id="zG1-we-EXI" customClass="ScanCell" customModule="eRouška" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zG1-we-EXI" id="rzk-Ac-GQu">
@@ -91,7 +91,6 @@
                         <viewLayoutGuide key="safeArea" id="ixr-ke-Ld2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scanner" id="0vv-Mz-9al">
-                        <barButtonItem key="leftBarButtonItem" title="Clear" id="ldi-qV-cyk"/>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="QBZ-PI-Tes">
                             <connections>
                                 <action selector="signOutAction:" destination="B0q-VQ-qom" id="ETL-gM-q3F"/>

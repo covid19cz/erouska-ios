@@ -12,7 +12,7 @@ class FileLogger {
     
     static let shared = FileLogger()!
 
-    private var fileURL: URL
+    private(set) var fileURL: URL
     
     init?() {
         guard let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }

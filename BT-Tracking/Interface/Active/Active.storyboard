@@ -75,7 +75,7 @@ Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na �
                                         <rect key="frame" x="0.0" y="433" width="343" height="70"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-eb-fmL" customClass="RoundedButtonFilled" customModule="Mobilní_rouška" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-eb-fmL" customClass="RoundedButtonFilled" customModule="eRouška" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="518" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="DMf-Rt-tSx"/>
@@ -88,7 +88,7 @@ Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na �
                                             <segue destination="nsE-2c-3mf" kind="presentation" id="EX6-gb-pm2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0x-IP-jnH" customClass="RoundedButtonClear" customModule="Mobilní_rouška" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0x-IP-jnH" customClass="RoundedButtonClear" customModule="eRouška" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="577" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="bPU-qZ-bl0"/>
@@ -119,7 +119,7 @@ Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na �
                     </view>
                     <tabBarItem key="tabBarItem" title="Active" image="sun.max" catalog="system" id="kPr-kL-XND"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Mobilní rouška" id="Jwh-Bn-MMw">
+                    <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
                         <barButtonItem key="rightBarButtonItem" title="Nápověda" id="0xS-Qt-GE1">
                             <connections>
                                 <segue destination="Dzc-CC-6Gm" kind="show" id="PqX-CG-fyD"/>
@@ -176,7 +176,7 @@ Zapněte jej pomocí tlačítka "Zapnout Bluetooth". </string>
                                         <rect key="frame" x="0.0" y="317" width="343" height="279"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvE-Vc-1N4" customClass="RoundedButtonFilled" customModule="Mobilní_rouška" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvE-Vc-1N4" customClass="RoundedButtonFilled" customModule="eRouška" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="611" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="SbX-ah-CJp"/>
@@ -212,7 +212,7 @@ Zapněte jej pomocí tlačítka "Zapnout Bluetooth". </string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5NC-48-V3r"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Mobilní rouška" id="Ws2-gU-gdL">
+                    <navigationItem key="navigationItem" title="eRouška" id="Ws2-gU-gdL">
                         <barButtonItem key="rightBarButtonItem" title="Nápověda" id="2JB-bo-STP"/>
                     </navigationItem>
                 </viewController>
@@ -233,7 +233,7 @@ Zapněte jej pomocí tlačítka "Zapnout Bluetooth". </string>
         <!--Aplikace je aktivní-->
         <scene sceneID="6UM-zz-FrR">
             <objects>
-                <viewController id="nhW-f5-HLn" userLabel="Aplikace je aktivní" customClass="SendReportController" customModule="Mobilní_rouška" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nhW-f5-HLn" userLabel="Aplikace je aktivní" customClass="SendReportController" customModule="eRouška" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fJS-Zc-Q1b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +276,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hy
                                         <rect key="frame" x="0.0" y="398" width="343" height="83"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJi-4c-2vt" customClass="RoundedButtonFilled" customModule="Mobilní_rouška" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJi-4c-2vt" customClass="RoundedButtonFilled" customModule="eRouška" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="496" width="343" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Hfj-ZD-Hxk"/>
@@ -316,7 +316,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hy
                         <viewLayoutGuide key="safeArea" id="vAT-kJ-fhg"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Mobilní rouška" id="oR6-de-BdQ">
+                    <navigationItem key="navigationItem" title="eRouška" id="oR6-de-BdQ">
                         <barButtonItem key="rightBarButtonItem" title="Nápověda" id="Zih-qb-wU0">
                             <connections>
                                 <segue destination="Dzc-CC-6Gm" kind="show" id="aUR-0C-1aK"/>
@@ -352,6 +352,6 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hy
         <image name="sun.max" catalog="system" width="64" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PqX-CG-fyD"/>
+        <segue reference="aUR-0C-1aK"/>
     </inferredMetricsTieBreakers>
 </document>

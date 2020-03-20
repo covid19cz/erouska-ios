@@ -19,9 +19,9 @@ class DeviceScanRealm:Object {
     @objc dynamic var date = Date()
     @objc dynamic var rssi = 0
     
-    var platform: DeviceScan.Platform? {
+    var platform: BTDevice.Platform? {
         get {
-            DeviceScan.Platform.init(rawValue: _platform)
+            BTDevice.Platform.init(rawValue: _platform)
         }
         set {
             guard let platform = newValue else { return }
@@ -36,7 +36,7 @@ class DeviceScanRealm:Object {
     convenience init(device: DeviceScan) {
         self.init()
         
-        self.id = device.id
+        self.id = device.id.uuidString
         self.bluetoothIdentifier = device.bluetoothIdentifier
         self.buid = device.buid
         self.platform = device.platform
@@ -47,6 +47,7 @@ class DeviceScanRealm:Object {
     
     func toDeviceScan() -> DeviceScan {
         DeviceScan(
+            id: UUID(),
             bluetoothIdentifier: self.bluetoothIdentifier,
             buid: self.buid,
             platform: self.platform ?? .iOS, // Adding defuault `.iOS` rather then failing whole mapping

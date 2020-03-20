@@ -37,16 +37,6 @@ class AccountActivationControler: UIViewController {
 
         }
 
-        let generalCategory = UNNotificationCategory(
-            identifier: "Scanning",
-            actions: [],
-            intentIdentifiers: [],
-            options: .customDismissAction
-        )
-
-        let center = UNUserNotificationCenter.current()
-        center.setNotificationCategories([generalCategory])
-
         phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)
 
         isValid.bind(to: actionButton.rx.isEnabled).disposed(by: disposeBag)

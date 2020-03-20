@@ -45,9 +45,9 @@ class ServiceController: UIViewController {
         }
 
         if scanner.isRunning != true {
-            scanner.delegate = self
             scanner.start()
         }
+        scanner.add(delegate: self)
     }
 
     // MARK: -
@@ -59,30 +59,22 @@ class ServiceController: UIViewController {
 }
 
 extension ServiceController: BTScannerDelegate {
-    func didFound(device: CBPeripheral, RSSI: Int) {
-        let text = "Found device: \(device.identifier.uuidString), signal: \(RSSI)"
+    func didFind(device: BTDevice) {
+        let text = "Found device: \(device.bluetoothIdentifier.uuidString), buid: \(device.backendIdentifier ?? "unknown"), platform: \(device.platform), signal: \(device.rssi)"
 
+        #if DEBUG
         let content = UNMutableNotificationContent()
-        content.title = "Found device: \(device.identifier.uuidString)"
-        content.body = "Signal: \(RSSI)"
-
+        content.title = "Found device: \(device.bluetoothIdentifier.uuidString)"
+        content.body = "Signal: \(device.rssi), BUID: \(device.backendIdentifier ?? "unknown")"
         localLog(text, notification: content)
+        #else
+        localLog(text, notification: nil)
+        #endif
     }
 
-    func didUpdate(device: CBPeripheral, RSSI: Int) {
-        let text = "Updated device: \(device.identifier.uuidString), signal: \(RSSI)"
+    func didUpdate(device: BTDevice) {
+        let text = "Updated device: \(device.bluetoothIdentifier.uuidString), signal: \(device.rssi)"
         localLog(text)
-    }
-
-    func didReadData(for device: CBPeripheral, data: Data) {
-        let string = String(data: data, encoding: .utf8)
-        let text = "Read data: \(device.identifier.uuidString), \(string ?? "failed to decode")"
-
-        let content = UNMutableNotificationContent()
-        content.title = "Read data"
-        content.body = string ?? ""
-
-        localLog(text, notification: content)
     }
 
     private func localLog(_ text: String, notification: UNMutableNotificationContent? = nil) {
@@ -100,7 +92,7 @@ extension ServiceController: BTScannerDelegate {
 
 extension ServiceController: LogDelegate {
     func didLog(_ text: String) {
-        //logToView(text)
+        logToView(text)
     }
 }
 

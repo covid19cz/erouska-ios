@@ -28,7 +28,6 @@ class ScanListVC: UIViewController {
 
         setup()
         setupTableView()
-        // bindClearButton()
     }
 
     // MARK: - Actions
@@ -60,10 +59,9 @@ class ScanListVC: UIViewController {
     private func setupTableView() {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
-        tableView.rowHeight = 100
+        tableView.rowHeight = 120
 
         dataSource = RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
-            
             switch row {
             case .scan(let scan):
                 let cell = tableView.dequeueReusableCell(withIdentifier: ScanCell.identifier, for: indexPath) as! ScanCell
