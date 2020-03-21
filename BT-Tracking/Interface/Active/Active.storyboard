@@ -133,6 +133,7 @@ Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na �
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="shareButton" destination="z0x-IP-jnH" id="pcZ-ew-EIf"/>
+                        <segue destination="lNJ-f3-w0k" kind="presentation" identifier="bluetoothDisabled" animates="NO" modalPresentationStyle="fullScreen" id="biA-Cq-cFL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -142,7 +143,7 @@ Když budete označeni jako nakažení, kontaktuje vás hygienická stanice na �
         <!--Zapnout Bluetooth-->
         <scene sceneID="OZ2-EW-p8m">
             <objects>
-                <viewController storyboardIdentifier="ActivateBluetooth" id="lNJ-f3-w0k" userLabel="Zapnout Bluetooth" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivateBluetooth" id="lNJ-f3-w0k" userLabel="Zapnout Bluetooth" customClass="BluetoothDisabledController" customModule="eRouška" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gUG-Xb-6tr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,6 +193,9 @@ Zapněte jej pomocí tlačítka "Zapnout Bluetooth". </string>
                                         <state key="normal" title="Zapnout Bluetooth">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
+                                        <connections>
+                                            <action selector="turnOnBluetoothAction" destination="lNJ-f3-w0k" eventType="touchUpInside" id="jgW-Zu-PbE"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9o-ci-Qyn" userLabel="Space View">
                                         <rect key="frame" x="0.0" y="670" width="343" height="44"/>
