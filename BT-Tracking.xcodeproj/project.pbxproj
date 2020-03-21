@@ -57,6 +57,7 @@
 		BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppController.swift */; };
 		BD979AED242576CB004001ED /* BluetoothDisabledController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEC242576CB004001ED /* BluetoothDisabledController.swift */; };
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
+		BDBB00D824261D5C00871FE4 /* NSLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		BD979AEA242565AF004001ED /* ActiveAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppController.swift; sourceTree = "<group>"; };
 		BD979AEC242576CB004001ED /* BluetoothDisabledController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDisabledController.swift; sourceTree = "<group>"; };
 		BDB07FBF24254A8F00834E79 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
+		BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 				80BB47632422865B00F552FC /* Button.swift */,
 				80799BEA2423B89A002B04C5 /* Controller.swift */,
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
+				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */,
 				46F21CAF2422597F00C01DFA /* DeviceScan.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
+				BDBB00D824261D5C00871FE4 /* NSLayoutHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
