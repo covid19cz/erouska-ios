@@ -35,6 +35,11 @@ class ScanListVM {
             .asDriver(onErrorJustReturn: [])
     }
     
+    // MARK: - Clear stored records
+    
+    func clear() {
+        scannerStore.clear()
+    }
 }
 
 // MARK: - Sections helpers

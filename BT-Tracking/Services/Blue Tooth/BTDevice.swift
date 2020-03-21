@@ -17,9 +17,21 @@ struct BTDevice {
     let bluetoothIdentifier: UUID // CBPeripheral identifier
     let backendIdentifier: String? // buid
     let platform: Platform
-    let date: Date
+    var date: Date
     var name: String?
     var rssi: Int
+    
+    func toDeviceScan() -> DeviceScan {
+        DeviceScan(
+            id: self.id,
+            bluetoothIdentifier: self.bluetoothIdentifier.uuidString,
+            buid: self.backendIdentifier ?? "Unknown",
+            platform: self.platform,
+            name: self.name ?? "Unknown",
+            date: self.date,
+            rssi: self.rssi
+        )
+    }    
 }
 
 extension BTDevice: Equatable {

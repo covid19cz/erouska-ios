@@ -91,6 +91,11 @@
                         <viewLayoutGuide key="safeArea" id="ixr-ke-Ld2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scanner" id="0vv-Mz-9al">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="MzC-SB-VOH">
+                            <connections>
+                                <action selector="clear:" destination="B0q-VQ-qom" id="HAf-wZ-fGX"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="QBZ-PI-Tes">
                             <connections>
                                 <action selector="signOutAction:" destination="B0q-VQ-qom" id="ETL-gM-q3F"/>

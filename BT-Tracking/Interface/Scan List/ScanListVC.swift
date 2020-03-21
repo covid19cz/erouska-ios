@@ -43,7 +43,11 @@ class ScanListVC: UIViewController {
             show(error: error)
         }
     }
-
+    
+    @IBAction func clear(_ sender: Any) {
+        viewModel.clear()
+    }
+    
     // MARK: - TableView
 
     private func setup() {
