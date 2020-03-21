@@ -24,10 +24,12 @@ class ScannerStore {
     private let didFindSubject = PublishRelay<BTDevice>()
     private let didUpdateSubject = PublishRelay<BTDevice>()
     private let didReceive: Observable<BTDevice>
-    private let timer: Observable<Int> = Observable.timer(.seconds(0), period: .seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
-    private var period: Observable<Void> {
+    private let timer: Observable<Int> = Observable.timer(.seconds(0), period: .seconds(20), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+    private var period: BehaviorSubject<Void> {
         return BehaviorSubject<Void>(value: ())
     }
+    private var currentPeriod: BehaviorSubject<Void>?
+    private var devices = [BTDevice]()
     
     init() {
         didReceive = Observable.merge(didFindSubject.asObservable(), didUpdateSubject.asObservable())
@@ -40,23 +42,44 @@ class ScannerStore {
     }
     
     private func bindScanning() {
-        bindPeriod()
+        // Periods
+        currentPeriod = period
+        bind(newPeriod: currentPeriod)
         timer
+            .skip(1)
             .subscribe(onNext: { [weak self] _ in
-                self?.period.onCompleted()
+                self?.currentPeriod?.onCompleted()
+            })
+            .disposed(by: bag)
+        // Device scans
+        didReceive
+            .subscribe(onNext: { [weak self] device in
+                self?.devices.append(device)
             })
             .disposed(by: bag)
     }
     
-    private func bindPeriod() {
-        period
-            .subscribe(onNext: {
-                NSLog("YO onNext")
-            }, onCompleted: { [weak self] in
-                NSLog("YO onCompleted")
-                self?.bindPeriod()
+    private func bind(newPeriod: BehaviorSubject<Void>?) {
+        newPeriod?
+            .subscribe(onCompleted: { [unowned self] in
+                self.currentPeriod = self.period
+                self.bind(newPeriod: self.currentPeriod)
+                self.process(self.devices, at: Date())
+                self.devices.removeAll()
             })
             .disposed(by: bag)
+    }
+    
+    private func process(_ devices: [BTDevice], at date: Date) {
+        let grouped = Dictionary(grouping: devices, by: { $0.bluetoothIdentifier })
+        NSLog("\(grouped)")
+        let averaged = grouped.map { group -> BTDevice in
+            let average = Int(group.value.map{ $0.rssi }.average.rounded())
+            var device = group.value.first!
+            device.rssi = average
+            return device
+        }
+        NSLog("new record: \(averaged)")
     }
     
     private func scan(from device: BTDevice) -> DeviceScan {
@@ -155,3 +178,13 @@ extension ScannerStore: BTScannerDelegate {
 //        .disposed(by: bag)
 //    }
 //}
+
+extension Collection where Element: Numeric {
+    /// Returns the total sum of all elements in the array
+    var total: Element { reduce(0, +) }
+}
+
+extension Collection where Element: BinaryInteger {
+    /// Returns the average of all elements in the array
+    var average: Double { isEmpty ? 0 : Double(total) / Double(count) }
+}
