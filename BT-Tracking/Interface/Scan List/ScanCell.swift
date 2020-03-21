@@ -22,8 +22,8 @@ class ScanCell: UITableViewCell {
         nameLabel.text = scan.name + ", buid: " + scan.buid
         identifierLabel.text = scan.bluetoothIdentifier
         dateLabel.text = ScanCell.formatter.string(from: scan.date)
-        rssiLabel.text = String(scan.rssi)
-        platformLabel.text = scan.platform.rawValue + " db"
+        rssiLabel.text = String(scan.rssi)  + " db"
+        platformLabel.text = scan.platform.rawValue
     }
     
     private static var formatter: DateFormatter = {

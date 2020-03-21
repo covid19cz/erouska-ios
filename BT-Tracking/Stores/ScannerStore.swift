@@ -21,14 +21,44 @@ class ScannerStore {
     private let scanObjects: Results<DeviceScanRealm>
     private let bag = DisposeBag()
     
+    private let didFindSubject = PublishRelay<BTDevice>()
+    private let didUpdateSubject = PublishRelay<BTDevice>()
+    private let didReceive: Observable<BTDevice>
+    private let timer: Observable<Int> = Observable.timer(.seconds(0), period: .seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+    private var period: Observable<Void> {
+        return BehaviorSubject<Void>(value: ())
+    }
+    
     init() {
+        didReceive = Observable.merge(didFindSubject.asObservable(), didUpdateSubject.asObservable())
         scanObjects = realm.objects(DeviceScanRealm.self)
         scans = Observable.array(from: scanObjects)
             .map { scanned in
                 return scanned.map { $0.toDeviceScan() }
             }
+        bindScanning()
     }
-
+    
+    private func bindScanning() {
+        bindPeriod()
+        timer
+            .subscribe(onNext: { [weak self] _ in
+                self?.period.onCompleted()
+            })
+            .disposed(by: bag)
+    }
+    
+    private func bindPeriod() {
+        period
+            .subscribe(onNext: {
+                NSLog("YO onNext")
+            }, onCompleted: { [weak self] in
+                NSLog("YO onCompleted")
+                self?.bindPeriod()
+            })
+            .disposed(by: bag)
+    }
+    
     private func scan(from device: BTDevice) -> DeviceScan {
         return DeviceScan(
             id: device.id,
@@ -45,13 +75,15 @@ class ScannerStore {
 extension ScannerStore: BTScannerDelegate {
 
     func didFind(device: BTDevice) {
+        didFindSubject.accept(device)
 //        let updatedScans = scans.value + [scan(from: device)]
 //        scans.accept(updatedScans)
     }
 
     func didUpdate(device: BTDevice) {
-        let scan = self.scan(from: device)
-        let updatedScans: [DeviceScan]
+        didUpdateSubject.accept(device)
+//        let scan = self.scan(from: device)
+//        let updatedScans: [DeviceScan]
 //        if let oldIndex = scans.value.firstIndex(where: { $0.id == device.id }) {
 //            var updated = scans.value
 //            updated[oldIndex] = scan
@@ -62,6 +94,9 @@ extension ScannerStore: BTScannerDelegate {
 //        scans.accept(updatedScans)
     }
 }
+
+
+
 
 
 //class ScannerStore: BTScannerStoreDelegate {
