@@ -9,7 +9,7 @@
 import Foundation
 
 struct DeviceScan {
-    let id: UUID
+    let id: String
     let bluetoothIdentifier: String
     let buid: String
     let platform: BTDevice.Platform

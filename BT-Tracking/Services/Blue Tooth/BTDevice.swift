@@ -23,7 +23,7 @@ struct BTDevice {
     
     func toDeviceScan() -> DeviceScan {
         DeviceScan(
-            id: self.id,
+            id: UUID().uuidString, // self.id,
             bluetoothIdentifier: self.bluetoothIdentifier.uuidString,
             buid: self.backendIdentifier ?? "Unknown",
             platform: self.platform,

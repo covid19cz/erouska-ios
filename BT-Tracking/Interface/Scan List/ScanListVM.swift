@@ -78,7 +78,7 @@ extension ScanListVM {
             var identity: String {
                 switch self {
                 case .scan(let scan):
-                    return scan.id.uuidString
+                    return scan.id
                 }
             }
 

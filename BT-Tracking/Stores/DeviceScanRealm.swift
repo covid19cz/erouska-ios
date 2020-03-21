@@ -36,7 +36,7 @@ class DeviceScanRealm:Object {
     convenience init(device: DeviceScan) {
         self.init()
         
-        self.id = device.id.uuidString
+        self.id = device.id
         self.bluetoothIdentifier = device.bluetoothIdentifier
         self.buid = device.buid
         self.platform = device.platform
@@ -47,7 +47,7 @@ class DeviceScanRealm:Object {
     
     func toDeviceScan() -> DeviceScan {
         DeviceScan(
-            id: UUID(),
+            id: self.id,
             bluetoothIdentifier: self.bluetoothIdentifier,
             buid: self.buid,
             platform: self.platform ?? .iOS, // Adding defuault `.iOS` rather then failing whole mapping
