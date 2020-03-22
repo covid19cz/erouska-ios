@@ -289,8 +289,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         peripheral.setNotifyValue(false, for: characteristic)
         centralManager.cancelPeripheralConnection(peripheral)
 
-        let stringFromData = String(data: newData, encoding: .utf8)
-        log("BTScanner: Received: \(peripheral.identifier.uuidString) \(stringFromData ?? "none")")
+        let stringFromData = newData.hexEncodedString()
+        log("BTScanner: Received: \(peripheral.identifier.uuidString) \(stringFromData)")
 
         // set guid
         if let index = discoveredDevices.firstIndex(where: { $0.bluetoothIdentifier == peripheral.identifier }) {

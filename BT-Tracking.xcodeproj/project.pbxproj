@@ -238,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				805BE9742424DDDE001A93B3 /* Bluetooth */,
-				80C9CD732427C8C200DE1F98 /* Firebase */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 			);
 			path = Services;
@@ -297,13 +296,6 @@
 				80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */,
 			);
 			path = Signup;
-			sourceTree = "<group>";
-		};
-		80C9CD732427C8C200DE1F98 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Firebase;
 			sourceTree = "<group>";
 		};
 		BD0191452424330200707341 /* Active */ = {
