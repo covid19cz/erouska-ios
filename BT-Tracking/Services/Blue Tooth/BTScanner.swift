@@ -152,8 +152,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
             // find buid in service data
             if let serviceData = advertisementData["kCBAdvDataServiceData"] as? [CBUUID: Any],
-                let rawBUID = serviceData[CBUUID(string: "DD68")] as? Data,
-                let raw = String(bytes: rawBUID, encoding: .utf8) {
+                let rawBUID = serviceData[CBUUID(string: "DD68")] as? Data {
+                let raw = rawBUID.hexEncodedString()
 
                 // check if we already have this buid
                 if let oldIndex = discoveredDevices.firstIndex(where: { $0.backendIdentifier == raw }) {
