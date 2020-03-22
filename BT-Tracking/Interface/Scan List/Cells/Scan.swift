@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct DeviceScan {
+struct Scan {
     let id: UUID
+    
     let bluetoothIdentifier: String
     let buid: String
     let platform: BTDevice.Platform
