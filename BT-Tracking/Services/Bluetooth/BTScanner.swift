@@ -152,7 +152,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
             // find buid in service data
             if let serviceData = advertisementData["kCBAdvDataServiceData"] as? [CBUUID: Any],
-                let rawBUID = serviceData[CBUUID(string: "DD68")] as? Data {
+                let rawBUID = serviceData.first?.value as? Data {
                 let raw = rawBUID.hexEncodedString()
 
                 // check if we already have this buid
@@ -167,7 +167,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 BUID = raw
             } else {
                 // ignore device without buid
-                 log("BTScanner: Ignored device wihtout name and buid: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+                log("BTScanner: Ignored device wihtout name and buid: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
                 return
             }
 
