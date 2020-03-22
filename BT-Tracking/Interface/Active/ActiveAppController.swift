@@ -50,7 +50,7 @@ class ActiveAppController: UIViewController {
     }
     
     private func checkForBluetooth() {
-        if (UIApplication.shared.delegate as? AppDelegate)?.scanner.isRunning != true {
+        if !AppDelegate.delegate.scanner.isRunning {
             performSegue(withIdentifier: "bluetoothDisabled", sender: nil)
         }
     }

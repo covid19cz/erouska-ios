@@ -43,9 +43,7 @@ class BluetoothDisabledController: UIViewController {
     }
     
     private func checkForBluetooth() {
-        if bluetoothAuthorized
-            && (UIApplication.shared.delegate as? AppDelegate)?.scanner.isRunning == true
-        {
+        if bluetoothAuthorized, AppDelegate.delegate.scanner.isRunning {
             dismiss(animated: false)
         }
     }
