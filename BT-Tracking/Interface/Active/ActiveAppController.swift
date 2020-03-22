@@ -37,7 +37,7 @@ class ActiveAppController: UIViewController {
     @IBOutlet private weak var shareButton: UIButton!
 
     @IBAction func shareApp() {
-        let url = URL(string: "https://www.google.com")!
+        let url = URL(string: "https://covid19cz.page.link/share")!
         let shareContent = [url]
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = shareButton
