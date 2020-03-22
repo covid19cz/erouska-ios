@@ -13,8 +13,11 @@ import RxCocoa
 import RealmSwift
 import RxRealm
 
-class ScannerStore {
+private let scanningPeriod = 120
+private let scanningDelay = 0
 
+class ScannerStore {
+    
     let scans: Observable<[DeviceScan]>
     
     private let scanObjects: Results<DeviceScanRealm>
@@ -23,7 +26,7 @@ class ScannerStore {
     private let didFindSubject = PublishRelay<BTDevice>()
     private let didUpdateSubject = PublishRelay<BTDevice>()
     private let didReceive: Observable<BTDevice>
-    private let timer: Observable<Int> = Observable.timer(.seconds(0), period: .seconds(30), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+    private let timer: Observable<Int> = Observable.timer(.seconds(scanningDelay), period: .seconds(scanningPeriod), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
     private var period: BehaviorSubject<Void> {
         return BehaviorSubject<Void>(value: ())
     }
