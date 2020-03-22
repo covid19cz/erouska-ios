@@ -13,15 +13,15 @@ import RxCocoa
 
 final class ScannerStore {
 
-    let scans = BehaviorRelay<[DeviceScan]>(value: [])
+    let scans = BehaviorRelay<[Scan]>(value: [])
 
-    private func scan(from device: BTDevice) -> DeviceScan {
-        return DeviceScan(
+    private func scan(from device: BTDevice) -> Scan {
+        return Scan(
             id: device.id,
             bluetoothIdentifier: device.bluetoothIdentifier.uuidString,
-            buid: device.backendIdentifier ?? "Unknown",
+            buid: device.backendIdentifier ?? "neznámý",
             platform: device.platform,
-            name: device.name ?? "Unknown",
+            name: device.name ?? "neznámý",
             date: device.date,
             rssi: device.rssi
         )
@@ -38,7 +38,7 @@ extension ScannerStore: BTScannerDelegate {
 
     func didUpdate(device: BTDevice) {
         let scan = self.scan(from: device)
-        let updatedScans: [DeviceScan]
+        let updatedScans: [Scan]
         if let oldIndex = scans.value.firstIndex(where: { $0.id == device.id }) {
             var updated = scans.value
             updated[oldIndex] = scan
