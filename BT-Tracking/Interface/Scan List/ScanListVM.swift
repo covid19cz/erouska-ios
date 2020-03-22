@@ -26,6 +26,9 @@ class ScanListVM {
     
     var sections: Driver<[SectionModel]> {
         let current = scannerStore.currentScan
+            .map { unsortedScans in
+                return unsortedScans.sorted(by: { scan0, scan1 in scan0.buid < scan1.buid })
+            }
             .map { [unowned self] scans -> [SectionModel] in
                 return self.section(from: scans, for: .current)
             }
@@ -36,7 +39,7 @@ class ScanListVM {
             .map { [unowned self] scans -> [SectionModel] in
                 return self.section(from: scans, for: .log)
             }
-        return Observable.combineLatest(current, log) { currentSection, logSection -> [SectionModel] in
+        return Observable.combineLatest(current.startWith([]), log.startWith([])) { currentSection, logSection -> [SectionModel] in
                 return currentSection + logSection
             }
             .asDriver(onErrorJustReturn: [])

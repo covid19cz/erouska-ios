@@ -18,7 +18,7 @@ private let scanningDelay = 0
 
 class ScannerStore {
     
-    let currentScan = PublishRelay<[DeviceScan]>()
+    let currentScan = BehaviorRelay<[DeviceScan]>(value: [])
     let scans: Observable<[DeviceScan]>
     
     private let scanObjects: Results<DeviceScanRealm>
@@ -33,7 +33,6 @@ class ScannerStore {
     }
     private var currentPeriod: BehaviorSubject<Void>?
     private var devices = [BTDevice]()
-    private var currentDevices = [BTDevice]()
     
     init() {
         didReceive = Observable.merge(didFindSubject.asObservable(), didUpdateSubject.asObservable())
@@ -60,7 +59,7 @@ class ScannerStore {
         didReceive
             .subscribe(onNext: { [weak self] device in
                 self?.devices.append(device)
-                self?.updateCurrent()
+                self?.updateCurrent(at: Date())
             })
             .disposed(by: bag)
     }
@@ -89,15 +88,20 @@ class ScannerStore {
         deviceScans.forEach { addDeviceToStorage(device: $0) }
     }
     
-    private func updateCurrent() {
+    private func updateCurrent(at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.bluetoothIdentifier })
         let latestDevices = grouped
             .map { group -> BTDevice? in
-                let sorted = group.value.sorted(by: { $0.date < $1.date })
-                return sorted.last
+                let sorted = group.value.sorted(by: { $0.date > $1.date })
+                var last = sorted.last
+                last?.date = date
+                return last
             }
             .compactMap{ $0 }
-            .map { $0.toDeviceScan()}
+            .map { [unowned self] device -> DeviceScan in
+                let uuid = self.currentScan.value.first(where: { $0.bluetoothIdentifier == device.bluetoothIdentifier.uuidString })?.id
+                return device.toDeviceScan(with: uuid)
+            }
         currentScan.accept(latestDevices)
     }
     
