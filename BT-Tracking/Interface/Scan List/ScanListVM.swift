@@ -26,7 +26,6 @@ class ScanListVM {
     
     var sections: Driver<[SectionModel]> {
         let current = scannerStore.currentScan
-            .map { [$0] }
             .map { [unowned self] scans -> [SectionModel] in
                 return self.section(from: scans, for: .current)
             }

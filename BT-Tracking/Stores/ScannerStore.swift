@@ -18,7 +18,7 @@ private let scanningDelay = 0
 
 class ScannerStore {
     
-    let currentScan = PublishRelay<DeviceScan>()
+    let currentScan = PublishRelay<[DeviceScan]>()
     let scans: Observable<[DeviceScan]>
     
     private let scanObjects: Results<DeviceScanRealm>
@@ -33,6 +33,7 @@ class ScannerStore {
     }
     private var currentPeriod: BehaviorSubject<Void>?
     private var devices = [BTDevice]()
+    private var currentDevices = [BTDevice]()
     
     init() {
         didReceive = Observable.merge(didFindSubject.asObservable(), didUpdateSubject.asObservable())
@@ -59,7 +60,7 @@ class ScannerStore {
         didReceive
             .subscribe(onNext: { [weak self] device in
                 self?.devices.append(device)
-                self?.currentScan.accept(device.toDeviceScan())
+                self?.updateCurrent()
             })
             .disposed(by: bag)
     }
@@ -77,7 +78,6 @@ class ScannerStore {
     
     private func process(_ devices: [BTDevice], at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.bluetoothIdentifier })
-        NSLog("\(grouped)")
         let averaged = grouped.map { group -> BTDevice in
             let average = Int(group.value.map{ $0.rssi }.average.rounded())
             var device = group.value.first!
@@ -85,9 +85,20 @@ class ScannerStore {
             device.date = date
             return device
         }
-        NSLog("new record: \(averaged)")
         let deviceScans = averaged.map { $0.toDeviceScan() }
         deviceScans.forEach { addDeviceToStorage(device: $0) }
+    }
+    
+    private func updateCurrent() {
+        let grouped = Dictionary(grouping: devices, by: { $0.bluetoothIdentifier })
+        let latestDevices = grouped
+            .map { group -> BTDevice? in
+                let sorted = group.value.sorted(by: { $0.date < $1.date })
+                return sorted.last
+            }
+            .compactMap{ $0 }
+            .map { $0.toDeviceScan()}
+        currentScan.accept(latestDevices)
     }
     
     private func addDeviceToStorage(device: DeviceScan) {
