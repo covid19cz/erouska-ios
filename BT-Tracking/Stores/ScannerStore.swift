@@ -18,6 +18,7 @@ private let scanningDelay = 0
 
 class ScannerStore {
     
+    let currentScan = PublishRelay<DeviceScan>()
     let scans: Observable<[DeviceScan]>
     
     private let scanObjects: Results<DeviceScanRealm>
@@ -58,6 +59,7 @@ class ScannerStore {
         didReceive
             .subscribe(onNext: { [weak self] device in
                 self?.devices.append(device)
+                self?.currentScan.accept(device.toDeviceScan())
             })
             .disposed(by: bag)
     }

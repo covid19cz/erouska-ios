@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460684B924277C860016C570 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460684B824277C860016C570 /* SectionTitleCell.swift */; };
 		466B7FC924255B0C00A3143F /* DeviceScanRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B7FC824255B0C00A3143F /* DeviceScanRealm.swift */; };
 		46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F21CA42422442200C01DFA /* ScanList.storyboard */; };
 		46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA62422442D00C01DFA /* ScanListVM.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BT_Tracking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
+		460684B824277C860016C570 /* SectionTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		466B7FC824255B0C00A3143F /* DeviceScanRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceScanRealm.swift; path = "BT-Tracking/Stores/DeviceScanRealm.swift"; sourceTree = SOURCE_ROOT; };
 		46F21CA42422442200C01DFA /* ScanList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanList.storyboard; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				46F21CA82422444600C01DFA /* ScanListVC.swift */,
 				46F21CA62422442D00C01DFA /* ScanListVM.swift */,
 				46F21CAA242245C100C01DFA /* ScanCell.swift */,
+				460684B824277C860016C570 /* SectionTitleCell.swift */,
 				46F21CAE2422597F00C01DFA /* DeviceScan.swift */,
 			);
 			path = "Scan List";
@@ -454,6 +457,7 @@
 				805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */,
 				46F21CAF2422597F00C01DFA /* DeviceScan.swift in Sources */,
 				466B7FC924255B0C00A3143F /* DeviceScanRealm.swift in Sources */,
+				460684B924277C860016C570 /* SectionTitleCell.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,12 +25,20 @@ class ScanListVM {
     // MARK: - Sections
     
     var sections: Driver<[SectionModel]> {
-        return scannerStore.scans
+        let current = scannerStore.currentScan
+            .map { [$0] }
+            .map { [unowned self] scans -> [SectionModel] in
+                return self.section(from: scans, for: .current)
+            }
+        let log = scannerStore.scans
             .map { unsortedScans in
                 return unsortedScans.sorted(by: { scan0, scan1 in scan0.date > scan1.date })
             }
             .map { [unowned self] scans -> [SectionModel] in
-                return self.section(from: scans)
+                return self.section(from: scans, for: .log)
+            }
+        return Observable.combineLatest(current, log) { currentSection, logSection -> [SectionModel] in
+                return currentSection + logSection
             }
             .asDriver(onErrorJustReturn: [])
     }
@@ -46,11 +54,10 @@ class ScanListVM {
 
 extension ScanListVM {
 
-    private func section(from scans: [DeviceScan]) -> [SectionModel] {
+    private func section(from scans: [DeviceScan], for section: Section) -> [SectionModel] {
         let items: [ScanListVM.Section.Item] = scans.map { .scan($0) }
-        return [SectionModel(model: .scans, items: items)]
+        return [SectionModel(model: section, items: items)]
     }
-
 }
 
 // MARK: - Sections
@@ -60,11 +67,13 @@ extension ScanListVM {
     typealias SectionModel = AnimatableSectionModel<Section, Section.Item>
 
     enum Section: IdentifiableType, Equatable {
-        case scans
+        case current
+        case log
         
         var identity: String {
             switch self {
-            case .scans: return "scans"
+            case .current: return "Current"
+            case .log: return "History"
             }
         }
         
@@ -94,5 +103,4 @@ extension ScanListVM {
             }
         }
     }
-
 }
