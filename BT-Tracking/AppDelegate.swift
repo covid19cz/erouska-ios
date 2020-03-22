@@ -148,6 +148,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        return true
+    }
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         #if DEBUG
         Auth.auth().setAPNSToken(deviceToken, type: .sandbox)
