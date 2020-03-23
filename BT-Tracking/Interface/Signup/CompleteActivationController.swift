@@ -76,7 +76,7 @@ class CompleteActivationController: UIViewController {
             } else {
                 let data: [String: Any] = [
                     "platform": "iOS",
-                    "platformVersion": Device.identifier,
+                    "platformVersion": Device.current.description,
                     "manufacturer": "Apple",
                     "model": UIDevice.current.model,
                     "locale": Locale.current.languageCode ?? ""
