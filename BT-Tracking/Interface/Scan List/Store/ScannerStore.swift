@@ -138,13 +138,3 @@ extension ScannerStore {
     }
 
 }
-
-extension Collection where Element: Numeric {
-    /// Returns the total sum of all elements in the array
-    var total: Element { reduce(0, +) }
-}
-
-extension Collection where Element: BinaryInteger {
-    /// Returns the average of all elements in the array
-    var average: Double { isEmpty ? 0 : Double(total) / Double(count) }
-}

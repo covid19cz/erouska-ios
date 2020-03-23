@@ -56,4 +56,5 @@ class ScanRealm: Object {
             rssi: self.rssi
         )
     }
+    
 }
