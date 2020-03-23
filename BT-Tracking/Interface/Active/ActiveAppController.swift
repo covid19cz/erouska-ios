@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseStorage
 
 
 class ActiveAppController: UIViewController {
 
     @IBOutlet private weak var shareButton: UIButton!
-
     @IBOutlet private weak var activityView: UIView!
+
+    private var writer: CSVMakering?
 
     // MARK: -
 
@@ -91,7 +94,41 @@ class ActiveAppController: UIViewController {
 
     private func sendReport() {
         activityView.isHidden = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        createCSVFile()
+    }
+
+    private func createCSVFile() {
+        writer = CSVMaker()
+        writer?.createFile(callback: { [weak self] fileURL, error in
+            guard let self = self else { return }
+
+            if let fileURL = fileURL {
+                self.uploadCSVFile(fileURL: fileURL)
+            } else if let error = error {
+                self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkánímy")
+            }
+        })
+    }
+
+    private func uploadCSVFile(fileURL: URL) {
+        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")"
+        let fileName = "\(Int(Date().timeIntervalSince1970 * 1000)).csv"
+
+        let storage = Storage.storage()
+        let storageReference = storage.reference()
+        let fileReference = storageReference.child("\(path)/\(fileName)")
+        let metadata = StorageMetadata()
+        metadata.customMetadata = [
+            "version": "5",
+            "buid": UserDefaults.standard.string(forKey: "BUID") ?? ""
+        ]
+
+        fileReference.putFile(from: fileURL, metadata: metadata) { (metadata, error) in
+            if let error = error {
+                self.show(error: error, title: "Nepodařilo se nahrát setkání")
+                return
+            }
+
             self.activityView.isHidden = true
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }

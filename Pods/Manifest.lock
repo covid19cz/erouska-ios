@@ -1,4 +1,5 @@
 PODS:
+  - CSV.swift (2.4.3)
   - Differentiator (4.0.1)
   - Firebase/Analytics (6.20.0):
     - Firebase/Core
@@ -13,6 +14,9 @@ PODS:
   - Firebase/Functions (6.20.0):
     - Firebase/CoreOnly
     - FirebaseFunctions (~> 2.5.1)
+  - Firebase/Storage (6.20.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 3.6.0)
   - FirebaseAnalytics (6.3.1):
     - FirebaseCore (~> 6.6)
     - FirebaseInstallations (~> 1.1)
@@ -49,6 +53,10 @@ PODS:
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
     - PromisesObjC (~> 1.2)
+  - FirebaseStorage (3.6.0):
+    - FirebaseAuthInterop (~> 1.1)
+    - FirebaseCore (~> 6.6)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleAppMeasurement (6.3.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -107,9 +115,11 @@ PODS:
   - RxSwift (5.1.0)
 
 DEPENDENCIES:
+  - CSV.swift
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Functions
+  - Firebase/Storage
   - RealmSwift
   - RxCocoa
   - RxDataSources
@@ -119,6 +129,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - CSV.swift
     - Differentiator
     - Firebase
     - FirebaseAnalytics
@@ -129,6 +140,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnosticsInterop
     - FirebaseFunctions
     - FirebaseInstallations
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -146,6 +158,7 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
+  CSV.swift: d38741b349c067b4a6db42237cb0e2974d21ccac
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
   FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
@@ -156,6 +169,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseFunctions: 5af7c35d1c5e41608fecbb667eb6c4e672e318d0
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
+  FirebaseStorage: b43ee271294227e1a3225544b073f3b49b427f46
   GoogleAppMeasurement: c29d405ff76e18551b5d158eaba6753fda8c7542
   GoogleDataTransport: a857c6a002d201b524dd4bc2ed7e7355ed07e785
   GoogleDataTransportCCTSupport: 32f75fbe904c82772fcbb6b6bd4525bfb6f2a862
@@ -172,6 +186,6 @@ SPEC CHECKSUMS:
   RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
 
-PODFILE CHECKSUM: 6be107eb6d6ec17203ca2192cbeaf7d3b860e6bc
+PODFILE CHECKSUM: 679f44972a9d17ccb67e1bfdff55409265404465
 
 COCOAPODS: 1.9.1
