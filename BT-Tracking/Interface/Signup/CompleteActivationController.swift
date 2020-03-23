@@ -42,8 +42,9 @@ class CompleteActivationController: UIViewController {
 
             self.view.setNeedsLayout()
             UIView.animate(withDuration: 0.1) {
-                self.scrollView.contentInset.bottom = keyboardVisibleHeight
-                self.scrollView.scrollIndicatorInsets.bottom = keyboardVisibleHeight
+                let adjsutHomeIndicator = keyboardVisibleHeight - self.view.safeAreaInsets.bottom
+                self.scrollView.contentInset.bottom = adjsutHomeIndicator
+                self.scrollView.scrollIndicatorInsets.bottom = adjsutHomeIndicator
                 self.view.layoutIfNeeded()
             }
         }).disposed(by: disposeBag)
@@ -59,7 +60,8 @@ class CompleteActivationController: UIViewController {
 
     @IBAction func activateAcountAction(_ sender: Any) {
         activityView.isHidden = false
-
+        view.endEditing(true)
+        
         let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") ?? ""
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: smsCode.value)
 
