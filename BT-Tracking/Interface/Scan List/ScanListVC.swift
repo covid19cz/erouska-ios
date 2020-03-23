@@ -44,6 +44,12 @@ class ScanListVC: UIViewController, UITableViewDelegate {
         }
     }
 
+
+    @IBAction func clearAction(_ sender: Any) {
+        viewModel.clear()
+    }
+
+
     @IBAction func closeAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -85,6 +91,22 @@ class ScanListVC: UIViewController, UITableViewDelegate {
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: bag)
         
+        tableView.rx.setDelegate(self)
+            .disposed(by: bag)
+        
         dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
+    }
+    
+    // MARK: - TableView section header
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 29
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let datasourceSection = dataSource.sectionModels[section]
+        let cell = tableView.dequeueReusableCell(withIdentifier: SectionTitleCell.identifier, for: IndexPath(row: 0, section: section)) as! SectionTitleCell
+        cell.configure(for: datasourceSection.model.identity)
+        return cell.contentView
     }
 }
