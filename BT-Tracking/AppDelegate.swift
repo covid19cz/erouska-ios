@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 #endif
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,11 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private(set) lazy var advertiser: BTAdvertising = BTAdvertiser()
     private(set) lazy var scanner: BTScannering = BTScanner()
-    var scannerStore: ScannerStore {
+    lazy var scannerStore: ScannerStore = {
         let store = ScannerStore()
-        scanner.add(delegate: store)
+        AppDelegate.delegate.scanner.add(delegate: store)
         return store
-    }
+    }()
 
     private func generalSetup() {
         let generalCategory = UNNotificationCategory(
@@ -60,11 +61,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Auth.auth().languageCode = "cs";
 
         #endif
+
+        let configuration = Realm.Configuration(
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+
+            }
+        )
+
+        Realm.Configuration.defaultConfiguration = configuration
     }
 
     private func setupInterface() {
         let window = UIWindow()
-        window.backgroundColor = .white
+        window.backgroundColor = .black
         window.makeKeyAndVisible()
         self.window = window
 
@@ -74,11 +84,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Auth.auth().currentUser == nil {
             storyboard = UIStoryboard(name: "Signup", bundle: nil)
         } else {
-            storyboard = UIStoryboard(name: "Main", bundle: nil)
+            storyboard = UIStoryboard(name: "Active", bundle: nil)
         }
 
         #else
-        storyboard = UIStoryboard(name: "Main", bundle: nil)
+        storyboard = UIStoryboard(name: "Debug", bundle: nil)
         #endif
 
         window.rootViewController = storyboard.instantiateInitialViewController()

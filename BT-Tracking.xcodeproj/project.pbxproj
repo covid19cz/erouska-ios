@@ -12,9 +12,11 @@
 		46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA82422444600C01DFA /* ScanListVC.swift */; };
 		46F21CAF2422597F00C01DFA /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CAE2422597F00C01DFA /* Scan.swift */; };
 		46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CB3242270F700C01DFA /* ScannerStore.swift */; };
+		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
+		803C5B23242932BF00E49414 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
+		803C5B252429346500E49414 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
 		8043C51B2423C6C600732179 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8043C51A2423C6C600732179 /* GoogleService-Info.plist */; };
 		8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
-		8054C0B8241D492F008907B8 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
 		8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
 		8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */; };
@@ -29,9 +31,9 @@
 		805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE9762424DE0E001A93B3 /* BTDevice.swift */; };
 		805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE97824252AE6001A93B3 /* MulticastDelegate.swift */; };
 		807053532427BA2500DC1034 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
-		807053562427C58F00DC1034 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053552427C58F00DC1034 /* ScanCell.swift */; };
 		807053582427C5AA00DC1034 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053572427C5AA00DC1034 /* InfoCell.swift */; };
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
+		80AD970D2429318B00AEA661 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
 		80BB474924212A3C00F552FC /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
 		80BB474A24212A3C00F552FC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
 		80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */; };
@@ -51,7 +53,12 @@
 		80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationController.swift */; };
 		80BF9C262424D55800150108 /* SendReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportController.swift */; };
 		80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */; };
-		80E2FE1124239AE900ADF333 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E2FE1024239AE900ADF333 /* Main.storyboard */; };
+		80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB95D24290B6700E57601 /* ScanRealm.swift */; };
+		80ECB96324290C1000E57601 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96124290C1000E57601 /* ScanCell.swift */; };
+		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
+		80ECB96624290DA900E57601 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
+		80ECB96924291E2F00E57601 /* CSVWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96824291E2F00E57601 /* CSVWriter.swift */; };
+		80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* DataList.storyboard */; };
 		8CC5262959368789FD32958B /* Pods_BT_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 		BD979AE924255BD1004001ED /* FirstActiovationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActiovationController.swift */; };
@@ -71,8 +78,10 @@
 		46F21CAE2422597F00C01DFA /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		46F21CB3242270F700C01DFA /* ScannerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerStore.swift; sourceTree = "<group>"; };
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
+		803C5B22242932BF00E49414 /* DataListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVC.swift; sourceTree = "<group>"; };
+		803C5B242429346500E49414 /* DataListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVM.swift; sourceTree = "<group>"; };
 		8043C51A2423C6C600732179 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8054C0AD241D492F008907B8 /* eRouška.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eRouška.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8054C0AD241D492F008907B8 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Debug.storyboard; sourceTree = "<group>"; };
 		8054C0B9241D4932008907B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,9 +98,9 @@
 		805BE9762424DE0E001A93B3 /* BTDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTDevice.swift; sourceTree = "<group>"; };
 		805BE97824252AE6001A93B3 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		807053522427BA2500DC1034 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		807053552427C58F00DC1034 /* ScanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanCell.swift; path = "BT-Tracking/Interface/Scan List/ScanCell.swift"; sourceTree = SOURCE_ROOT; };
 		807053572427C5AA00DC1034 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		80799BEA2423B89A002B04C5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		80AD970C2429318B00AEA661 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BB476124227C2500F552FC /* Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
 		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -101,7 +110,12 @@
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 		80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationController.swift; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		80E2FE1024239AE900ADF333 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		80ECB95D24290B6700E57601 /* ScanRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanRealm.swift; sourceTree = "<group>"; };
+		80ECB96124290C1000E57601 /* ScanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
+		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
+		80ECB96524290DA900E57601 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		80ECB96824291E2F00E57601 /* CSVWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVWriter.swift; sourceTree = "<group>"; };
+		80ECB96B24292FB000E57601 /* DataList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DataList.storyboard; sourceTree = "<group>"; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
 		BD979AE824255BD1004001ED /* FirstActiovationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstActiovationController.swift; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppController.swift; sourceTree = "<group>"; };
@@ -141,6 +155,7 @@
 		46F21CA2242243A300C01DFA /* Scan List */ = {
 			isa = PBXGroup;
 			children = (
+				46F21CB524227E5D00C01DFA /* Store */,
 				807053542427C4E800DC1034 /* Cells */,
 				46F21CA42422442200C01DFA /* ScanList.storyboard */,
 				46F21CA82422444600C01DFA /* ScanListVC.swift */,
@@ -160,12 +175,14 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
-		46F21CB524227E5D00C01DFA /* Stores */ = {
+		46F21CB524227E5D00C01DFA /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				46F21CAE2422597F00C01DFA /* Scan.swift */,
+				80ECB95D24290B6700E57601 /* ScanRealm.swift */,
 				46F21CB3242270F700C01DFA /* ScannerStore.swift */,
 			);
-			path = Stores;
+			path = Store;
 			sourceTree = "<group>";
 		};
 		5357F8D365121189A6E32250 /* Frameworks */ = {
@@ -189,7 +206,7 @@
 		8054C0AE241D492F008907B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8054C0AD241D492F008907B8 /* eRouška.app */,
+				8054C0AD241D492F008907B8 /* eRouska.app */,
 				80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */,
 			);
 			name = Products;
@@ -199,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				8054C0C9241FE66A008907B8 /* Interface */,
-				46F21CB524227E5D00C01DFA /* Stores */,
 				8054C0CC241FE6D5008907B8 /* Services */,
 				8054C0DB2420AF4F008907B8 /* Others */,
 				8054C0CA241FE68B008907B8 /* Supporting Files */,
@@ -212,12 +228,12 @@
 		8054C0C9241FE66A008907B8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				80E2FE1024239AE900ADF333 /* Main.storyboard */,
 				80BB476024227C1400F552FC /* Signup */,
-				46F21CA3242243F400C01DFA /* Debug */,
-				46F21CA2242243A300C01DFA /* Scan List */,
 				BD0191452424330200707341 /* Active */,
+				46F21CA2242243A300C01DFA /* Scan List */,
+				80ECB96A24292F9600E57601 /* Data List */,
 				BDB07FBE24254A7B00834E79 /* Help */,
+				46F21CA3242243F400C01DFA /* Debug */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -238,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				805BE9742424DDDE001A93B3 /* Bluetooth */,
+				80ECB96724291E1B00E57601 /* CSV */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 			);
 			path = Services;
@@ -252,6 +269,7 @@
 				80799BEA2423B89A002B04C5 /* Controller.swift */,
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
+				80ECB96524290DA900E57601 /* Collection.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -279,9 +297,17 @@
 		807053542427C4E800DC1034 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				80ECB96224290C1000E57601 /* SectionTitleCell.swift */,
+				80ECB96124290C1000E57601 /* ScanCell.swift */,
 				807053572427C5AA00DC1034 /* InfoCell.swift */,
-				46F21CAE2422597F00C01DFA /* Scan.swift */,
-				807053552427C58F00DC1034 /* ScanCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		80AD970B2429317900AEA661 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				80AD970C2429318B00AEA661 /* DataCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -298,12 +324,31 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
+		80ECB96724291E1B00E57601 /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				80ECB96824291E2F00E57601 /* CSVWriter.swift */,
+			);
+			path = CSV;
+			sourceTree = "<group>";
+		};
+		80ECB96A24292F9600E57601 /* Data List */ = {
+			isa = PBXGroup;
+			children = (
+				80AD970B2429317900AEA661 /* Cells */,
+				80ECB96B24292FB000E57601 /* DataList.storyboard */,
+				803C5B22242932BF00E49414 /* DataListVC.swift */,
+				803C5B242429346500E49414 /* DataListVM.swift */,
+			);
+			path = "Data List";
+			sourceTree = "<group>";
+		};
 		BD0191452424330200707341 /* Active */ = {
 			isa = PBXGroup;
 			children = (
 				BD0191462424331900707341 /* Active.storyboard */,
-				80BF9C252424D55800150108 /* SendReportController.swift */,
 				BD979AEA242565AF004001ED /* ActiveAppController.swift */,
+				80BF9C252424D55800150108 /* SendReportController.swift */,
 				BD979AEC242576CB004001ED /* BluetoothDisabledController.swift */,
 			);
 			path = Active;
@@ -336,7 +381,7 @@
 			);
 			name = "BT-Tracking";
 			productName = "BT-Tracking";
-			productReference = 8054C0AD241D492F008907B8 /* eRouška.app */;
+			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
 			productType = "com.apple.product-type.application";
 		};
 		80BB474624212A3C00F552FC /* BT-Tracking Mac */ = {
@@ -396,13 +441,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */,
-				80E2FE1124239AE900ADF333 /* Main.storyboard in Resources */,
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
 				46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
 				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
-				8054C0B8241D492F008907B8 /* Debug.storyboard in Resources */,
+				80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */,
+				800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */,
 				8043C51B2423C6C600732179 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,9 +511,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				803C5B252429346500E49414 /* DataListVM.swift in Sources */,
 				BD979AE924255BD1004001ED /* FirstActiovationController.swift in Sources */,
 				8054C0D624200BEC008907B8 /* SegmentController.swift in Sources */,
 				80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */,
+				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
 				BD979AED242576CB004001ED /* BluetoothDisabledController.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */,
@@ -480,20 +527,25 @@
 				46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */,
 				8054C0DA24200E91008907B8 /* ServiceController.swift in Sources */,
 				46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */,
-				807053562427C58F00DC1034 /* ScanCell.swift in Sources */,
 				8054C0D824200E7C008907B8 /* FileController.swift in Sources */,
+				80ECB96924291E2F00E57601 /* CSVWriter.swift in Sources */,
 				80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
+				80ECB96324290C1000E57601 /* ScanCell.swift in Sources */,
 				80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */,
 				80BF9C262424D55800150108 /* SendReportController.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
+				80ECB96624290DA900E57601 /* Collection.swift in Sources */,
+				80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */,
 				46F21CAF2422597F00C01DFA /* Scan.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
+				80AD970D2429318B00AEA661 /* DataCell.swift in Sources */,
+				80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */,
 				BDBB00D824261D5C00871FE4 /* NSLayoutHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,7 +710,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -666,8 +718,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking6";
-				PRODUCT_NAME = "eRouška";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking5";
+				PRODUCT_NAME = eRouska;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -680,7 +732,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -688,8 +740,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking6";
-				PRODUCT_NAME = "eRouška";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking5";
+				PRODUCT_NAME = eRouska;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

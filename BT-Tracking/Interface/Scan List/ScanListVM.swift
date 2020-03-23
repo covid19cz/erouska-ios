@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class ScanListVM {
+final class ScanListVM {
     
     // MARK: - Properties
     
@@ -25,30 +25,49 @@ class ScanListVM {
     // MARK: - Sections
     
     var sections: Driver<[SectionModel]> {
-        return scannerStore.scans
+        let infoSection = SectionModel(
+            model: .info,
+            items: [Section.Item.info(UserDefaults.standard.string(forKey: "BUID"))]
+        )
+
+        let current = scannerStore.currentScan
+            .map { unsortedScans in
+                return unsortedScans.sorted(by: { scan0, scan1 in scan0.buid < scan1.buid })
+            }
+            .map { [unowned self] scans -> [SectionModel] in
+                return self.section(from: scans, for: .current)
+            }
+        let log = scannerStore.scans
             .map { unsortedScans in
                 return unsortedScans.sorted(by: { scan0, scan1 in scan0.date > scan1.date })
             }
             .map { [unowned self] scans -> [SectionModel] in
-                return self.section(from: scans)
+                return self.section(from: scans, for: .log)
             }
-            .asDriver(onErrorJustReturn: [])
+
+        return Observable.combineLatest(current.startWith([]), log.startWith([])) { currentSection, logSection -> [SectionModel] in
+            return [infoSection] + currentSection + logSection
+        }
+        .asDriver(onErrorJustReturn: [])
     }
     
+    // MARK: - Clear stored records
+    
+    func clear() {
+        scannerStore.clear()
+    }
 }
 
 // MARK: - Sections helpers
 
 extension ScanListVM {
 
-    private func section(from scans: [Scan]) -> [SectionModel] {
+    private func section(from scans: [Scan], for section: Section) -> [SectionModel] {
         let items: [ScanListVM.Section.Item] = scans.map { .scan($0) }
         return [
-            SectionModel(model: .info, items: [Section.Item.info(UserDefaults.standard.string(forKey: "BUID"))]),
-            SectionModel(model: .scans, items: items)
+            SectionModel(model: section, items: items)
         ]
     }
-
 }
 
 // MARK: - Sections
@@ -59,14 +78,17 @@ extension ScanListVM {
 
     enum Section: IdentifiableType, Equatable {
         case info
-        case scans
+        case current
+        case log
         
         var identity: String {
             switch self {
             case .info:
-                return "info"
-            case .scans:
-                return "scans"
+                return "Information"
+            case .current:
+                return "Current"
+            case .log:
+                return "History"
             }
         }
         
@@ -83,7 +105,7 @@ extension ScanListVM {
                 case .info:
                     return "buid"
                 case .scan(let scan):
-                    return scan.id.uuidString
+                    return scan.id
                 }
             }
 
@@ -101,5 +123,4 @@ extension ScanListVM {
             }
         }
     }
-
 }

@@ -62,6 +62,10 @@ class SegmentController: UIViewController {
         present(controller, animated: true, completion: nil)
     }
 
+    @IBAction private func closeAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
     private func pergeLogs() {
         FileLogger.shared.purgeLogs()
 

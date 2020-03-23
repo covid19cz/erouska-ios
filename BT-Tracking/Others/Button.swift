@@ -33,15 +33,30 @@ class RoundedButtonFilled: UIButton {
 
 class RoundedButtonClear: UIButton {
 
+    private var borderColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor(named: "ButtonBorder")?.resolvedColor(with: traitCollection).withAlphaComponent(0.12) ?? UIColor.clear
+        } else {
+            return UIColor(named: "ButtonBorder")?.withAlphaComponent(0.12) ?? UIColor.clear
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        layer.borderColor = borderColor.cgColor
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         layer.cornerRadius = 16
         layer.masksToBounds = true
-        layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.12).cgColor
+        
+        layer.borderColor = borderColor.cgColor
         layer.borderWidth = 1
 
-        backgroundColor = .white
+        backgroundColor = .clear
 
         titleLabel?.textAlignment = .center
         contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)

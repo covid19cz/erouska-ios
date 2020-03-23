@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class BluetoothDisabledController: UIViewController {
+final class BluetoothDisabledController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
