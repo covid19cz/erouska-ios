@@ -119,7 +119,7 @@ class ActiveAppController: UIViewController {
         let fileReference = storageReference.child("\(path)/\(fileName)")
         let metadata = StorageMetadata()
         metadata.customMetadata = [
-            "version": "5",
+            "version": "2",
             "buid": UserDefaults.standard.string(forKey: "BUID") ?? ""
         ]
 
