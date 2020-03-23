@@ -75,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             storyboard = UIStoryboard(name: "Signup", bundle: nil)
         } else {
             storyboard = UIStoryboard(name: "Active", bundle: nil)
+            _ = scannerStore
         }
 
         #else

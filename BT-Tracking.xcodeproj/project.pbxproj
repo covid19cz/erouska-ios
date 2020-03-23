@@ -220,9 +220,9 @@
 			children = (
 				80BB476024227C1400F552FC /* Signup */,
 				BD0191452424330200707341 /* Active */,
+				46F21CA2242243A300C01DFA /* Scan List */,
 				BDB07FBE24254A7B00834E79 /* Help */,
 				46F21CA3242243F400C01DFA /* Debug */,
-				46F21CA2242243A300C01DFA /* Scan List */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
