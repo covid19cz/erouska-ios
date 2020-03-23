@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 #endif
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -60,6 +61,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Auth.auth().languageCode = "cs";
 
         #endif
+
+        let configuration = Realm.Configuration(
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+
+            }
+        )
+
+        Realm.Configuration.defaultConfiguration = configuration
     }
 
     private func setupInterface() {

@@ -76,20 +76,22 @@ final class ScannerStore {
     }
     
     private func process(_ devices: [BTDevice], at date: Date) {
-        let grouped = Dictionary(grouping: devices, by: { $0.bluetoothIdentifier })
+        let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let averaged = grouped.map { group -> BTDevice in
             let average = Int(group.value.map{ $0.rssi }.average.rounded())
             var device = group.value.first!
             device.rssi = average
             device.date = date
+            device.backendIdentifier = group.value.first { $0.backendIdentifier != nil }?.backendIdentifier
             return device
         }
-        let deviceScans = averaged.map { $0.toScan() }
+
+        let deviceScans = averaged.filter { $0.backendIdentifier != nil }.map { $0.toScan() }
         deviceScans.forEach { addDeviceToStorage(device: $0) }
     }
     
     private func updateCurrent(at date: Date) {
-        let grouped = Dictionary(grouping: devices, by: { $0.bluetoothIdentifier })
+        let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let latestDevices = grouped
             .map { group -> BTDevice? in
                 let sorted = group.value.sorted(by: { $0.date > $1.date })
@@ -99,7 +101,7 @@ final class ScannerStore {
             }
             .compactMap{ $0 }
             .map { [unowned self] device -> Scan in
-                let uuid = self.currentScan.value.first(where: { $0.bluetoothIdentifier == device.bluetoothIdentifier.uuidString })?.id
+                let uuid = self.currentScan.value.first(where: { $0.deviceIdentifier == device.deviceIdentifier })?.id
                 return device.toScan(with: uuid)
             }
         currentScan.accept(latestDevices)
@@ -113,7 +115,7 @@ final class ScannerStore {
                 realm.add(storageData, update: .all)
             }
         } catch {
-            log("Realm: failed to write! \(error)")
+            log("Realm: Failed to write! \(error)")
         }
     }
 

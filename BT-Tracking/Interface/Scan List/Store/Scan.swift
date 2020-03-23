@@ -12,6 +12,7 @@ struct Scan {
     let id: String
     
     let bluetoothIdentifier: String
+    let deviceIdentifier: String
     let buid: String
     let platform: BTDevice.Platform
     let name: String

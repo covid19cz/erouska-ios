@@ -13,6 +13,7 @@ final class ScanRealm: Object {
     
     @objc dynamic var id = ""
     @objc dynamic var bluetoothIdentifier = ""
+    @objc dynamic var deviceIdentifier = ""
     @objc dynamic var buid = ""
     @objc dynamic var _platform = ""
     @objc dynamic var name = ""
@@ -38,6 +39,7 @@ final class ScanRealm: Object {
         
         self.id = device.id
         self.bluetoothIdentifier = device.bluetoothIdentifier
+        self.deviceIdentifier = device.deviceIdentifier
         self.buid = device.buid
         self.platform = device.platform
         self.name = device.name
@@ -49,6 +51,7 @@ final class ScanRealm: Object {
         Scan(
             id: self.id,
             bluetoothIdentifier: self.bluetoothIdentifier,
+            deviceIdentifier: self.deviceIdentifier,
             buid: self.buid,
             platform: self.platform ?? .iOS, // Adding defuault `.iOS` rather then failing whole mapping
             name: self.name,
