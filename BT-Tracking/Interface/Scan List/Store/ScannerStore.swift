@@ -7,16 +7,15 @@
 //
 
 import UIKit
-import CoreBluetooth
 import RxSwift
 import RxCocoa
-import RealmSwift
 import RxRealm
+import RealmSwift
 
-private let scanningPeriod = 1
+private let scanningPeriod = 60
 private let scanningDelay = 0
 
-class ScannerStore {
+final class ScannerStore {
     
     let currentScan = BehaviorRelay<[Scan]>(value: [])
     let scans: Observable<[Scan]>

@@ -10,8 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseStorage
 
-
-class ActiveAppController: UIViewController {
+final class ActiveAppController: UIViewController {
 
     @IBOutlet private weak var shareButton: UIButton!
     @IBOutlet private weak var activityView: UIView!

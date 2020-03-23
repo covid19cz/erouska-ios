@@ -35,10 +35,10 @@
             </objects>
             <point key="canvasLocation" x="1779" y="759"/>
         </scene>
-        <!--ScanList-->
+        <!--DataList-->
         <scene sceneID="DC3-Ek-JEO">
             <objects>
-                <viewControllerPlaceholder storyboardName="ScanList" id="Ecq-qf-QeQ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="DataList" id="Ecq-qf-QeQ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ph2-fL-JIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1772" y="1043"/>

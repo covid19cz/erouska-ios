@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SectionTitleCell: UITableViewCell {
+final class SectionTitleCell: UITableViewCell {
 
     static let identifier = "sectionTitleCell"
 

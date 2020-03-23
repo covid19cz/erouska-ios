@@ -11,7 +11,7 @@ import RxCocoa
 import RxDataSources
 import FirebaseAuth
 
-class ScanListVC: UIViewController, UITableViewDelegate {
+final class ScanListVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
 
@@ -105,8 +105,9 @@ class ScanListVC: UIViewController, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let datasourceSection = dataSource.sectionModels[section]
-        let cell = tableView.dequeueReusableCell(withIdentifier: SectionTitleCell.identifier, for: IndexPath(row: 0, section: section)) as! SectionTitleCell
-        cell.configure(for: datasourceSection.model.identity)
-        return cell.contentView
+        let cell = tableView.dequeueReusableCell(withIdentifier: SectionTitleCell.identifier, for: IndexPath(row: 0, section: section)) as? SectionTitleCell
+        cell?.configure(for: datasourceSection.model.identity)
+        return cell?.contentView ?? UIView()
     }
+
 }

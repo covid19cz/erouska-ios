@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class ScanRealm: Object {
+final class ScanRealm: Object {
     
     @objc dynamic var id = ""
     @objc dynamic var bluetoothIdentifier = ""

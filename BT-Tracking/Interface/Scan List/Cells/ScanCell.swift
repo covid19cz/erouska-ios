@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScanCell: UITableViewCell {
+final class ScanCell: UITableViewCell {
 
     static let identifier = "scanCell"
 

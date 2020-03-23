@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class ScanListVM {
+final class ScanListVM {
     
     // MARK: - Properties
     
