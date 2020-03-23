@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		460684B924277C860016C570 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460684B824277C860016C570 /* SectionTitleCell.swift */; };
-		466B7FC924255B0C00A3143F /* DeviceScanRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466B7FC824255B0C00A3143F /* DeviceScanRealm.swift */; };
 		46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F21CA42422442200C01DFA /* ScanList.storyboard */; };
 		46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA62422442D00C01DFA /* ScanListVM.swift */; };
 		46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA82422444600C01DFA /* ScanListVC.swift */; };
@@ -31,7 +29,6 @@
 		805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE9762424DE0E001A93B3 /* BTDevice.swift */; };
 		805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE97824252AE6001A93B3 /* MulticastDelegate.swift */; };
 		807053532427BA2500DC1034 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
-		807053562427C58F00DC1034 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053552427C58F00DC1034 /* ScanCell.swift */; };
 		807053582427C5AA00DC1034 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053572427C5AA00DC1034 /* InfoCell.swift */; };
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
 		80BB474924212A3C00F552FC /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
@@ -53,6 +50,9 @@
 		80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationController.swift */; };
 		80BF9C262424D55800150108 /* SendReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportController.swift */; };
 		80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */; };
+		80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB95D24290B6700E57601 /* ScanRealm.swift */; };
+		80ECB96324290C1000E57601 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96124290C1000E57601 /* ScanCell.swift */; };
+		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
 		8CC5262959368789FD32958B /* Pods_BT_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 		BD979AE924255BD1004001ED /* FirstActiovationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActiovationController.swift */; };
@@ -65,9 +65,7 @@
 /* Begin PBXFileReference section */
 		1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BT_Tracking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
-		460684B824277C860016C570 /* SectionTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
-		466B7FC824255B0C00A3143F /* DeviceScanRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceScanRealm.swift; path = "BT-Tracking/Stores/DeviceScanRealm.swift"; sourceTree = SOURCE_ROOT; };
 		46F21CA42422442200C01DFA /* ScanList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanList.storyboard; sourceTree = "<group>"; };
 		46F21CA62422442D00C01DFA /* ScanListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListVM.swift; sourceTree = "<group>"; };
 		46F21CA82422444600C01DFA /* ScanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListVC.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 		805BE9762424DE0E001A93B3 /* BTDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTDevice.swift; sourceTree = "<group>"; };
 		805BE97824252AE6001A93B3 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		807053522427BA2500DC1034 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		807053552427C58F00DC1034 /* ScanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanCell.swift; path = "BT-Tracking/Interface/Scan List/ScanCell.swift"; sourceTree = SOURCE_ROOT; };
 		807053572427C5AA00DC1034 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		80799BEA2423B89A002B04C5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +101,9 @@
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 		80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationController.swift; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		80ECB95D24290B6700E57601 /* ScanRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanRealm.swift; sourceTree = "<group>"; };
+		80ECB96124290C1000E57601 /* ScanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
+		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
 		BD979AE824255BD1004001ED /* FirstActiovationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstActiovationController.swift; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppController.swift; sourceTree = "<group>"; };
@@ -143,6 +143,7 @@
 		46F21CA2242243A300C01DFA /* Scan List */ = {
 			isa = PBXGroup;
 			children = (
+				46F21CB524227E5D00C01DFA /* Store */,
 				807053542427C4E800DC1034 /* Cells */,
 				46F21CA42422442200C01DFA /* ScanList.storyboard */,
 				46F21CA82422444600C01DFA /* ScanListVC.swift */,
@@ -162,13 +163,14 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
-		46F21CB524227E5D00C01DFA /* Stores */ = {
+		46F21CB524227E5D00C01DFA /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				46F21CAE2422597F00C01DFA /* Scan.swift */,
+				80ECB95D24290B6700E57601 /* ScanRealm.swift */,
 				46F21CB3242270F700C01DFA /* ScannerStore.swift */,
-				466B7FC824255B0C00A3143F /* DeviceScanRealm.swift */,
 			);
-			path = Stores;
+			path = Store;
 			sourceTree = "<group>";
 		};
 		5357F8D365121189A6E32250 /* Frameworks */ = {
@@ -202,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				8054C0C9241FE66A008907B8 /* Interface */,
-				46F21CB524227E5D00C01DFA /* Stores */,
 				8054C0CC241FE6D5008907B8 /* Services */,
 				8054C0DB2420AF4F008907B8 /* Others */,
 				8054C0CA241FE68B008907B8 /* Supporting Files */,
@@ -281,9 +282,9 @@
 		807053542427C4E800DC1034 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				80ECB96224290C1000E57601 /* SectionTitleCell.swift */,
+				80ECB96124290C1000E57601 /* ScanCell.swift */,
 				807053572427C5AA00DC1034 /* InfoCell.swift */,
-				46F21CAE2422597F00C01DFA /* Scan.swift */,
-				807053552427C58F00DC1034 /* ScanCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -481,20 +482,22 @@
 				46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */,
 				8054C0DA24200E91008907B8 /* ServiceController.swift in Sources */,
 				46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */,
-				807053562427C58F00DC1034 /* ScanCell.swift in Sources */,
 				8054C0D824200E7C008907B8 /* FileController.swift in Sources */,
 				80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
+				80ECB96324290C1000E57601 /* ScanCell.swift in Sources */,
 				80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */,
 				80BF9C262424D55800150108 /* SendReportController.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
+				80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */,
 				46F21CAF2422597F00C01DFA /* Scan.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
+				80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */,
 				BDBB00D824261D5C00871FE4 /* NSLayoutHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

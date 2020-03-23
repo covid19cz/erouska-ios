@@ -1,5 +1,5 @@
 //
-//  DeviceScanRealm.swift
+//  ScanRealm.swift
 //  BT-Tracking
 //
 //  Created by Jakub Skořepa on 20/03/2020.
@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class DeviceScanRealm:Object {
+class ScanRealm: Object {
     
     @objc dynamic var id = ""
     @objc dynamic var bluetoothIdentifier = ""
@@ -33,7 +33,7 @@ class DeviceScanRealm:Object {
         return "id"
     }
     
-    convenience init(device: DeviceScan) {
+    convenience init(device: Scan) {
         self.init()
         
         self.id = device.id
@@ -45,8 +45,8 @@ class DeviceScanRealm:Object {
         self.rssi = device.rssi
     }
     
-    func toDeviceScan() -> DeviceScan {
-        DeviceScan(
+    func toScan() -> Scan {
+        Scan(
             id: self.id,
             bluetoothIdentifier: self.bluetoothIdentifier,
             buid: self.buid,

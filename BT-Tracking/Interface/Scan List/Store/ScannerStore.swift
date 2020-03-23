@@ -18,10 +18,10 @@ private let scanningDelay = 0
 
 class ScannerStore {
     
-    let currentScan = BehaviorRelay<[DeviceScan]>(value: [])
-    let scans: Observable<[DeviceScan]>
+    let currentScan = BehaviorRelay<[Scan]>(value: [])
+    let scans: Observable<[Scan]>
     
-    private let scanObjects: Results<DeviceScanRealm>
+    private let scanObjects: Results<ScanRealm>
     private let bag = DisposeBag()
     
     private let didFindSubject = PublishRelay<BTDevice>()
@@ -37,10 +37,10 @@ class ScannerStore {
     init() {
         didReceive = Observable.merge(didFindSubject.asObservable(), didUpdateSubject.asObservable())
         let realm = try! Realm()
-        scanObjects = realm.objects(DeviceScanRealm.self)
+        scanObjects = realm.objects(ScanRealm.self)
         scans = Observable.array(from: scanObjects)
             .map { scanned in
-                return scanned.map { $0.toDeviceScan() }
+                return scanned.map { $0.toScan() }
             }
         bindScanning()
     }
@@ -55,6 +55,7 @@ class ScannerStore {
                 self?.currentPeriod?.onCompleted()
             })
             .disposed(by: bag)
+
         // Device scans
         didReceive
             .subscribe(onNext: { [weak self] device in
@@ -84,7 +85,7 @@ class ScannerStore {
             device.date = date
             return device
         }
-        let deviceScans = averaged.map { $0.toDeviceScan() }
+        let deviceScans = averaged.map { $0.toScan() }
         deviceScans.forEach { addDeviceToStorage(device: $0) }
     }
     
@@ -98,20 +99,21 @@ class ScannerStore {
                 return last
             }
             .compactMap{ $0 }
-            .map { [unowned self] device -> DeviceScan in
+            .map { [unowned self] device -> Scan in
                 let uuid = self.currentScan.value.first(where: { $0.bluetoothIdentifier == device.bluetoothIdentifier.uuidString })?.id
-                return device.toDeviceScan(with: uuid)
+                return device.toScan(with: uuid)
             }
         currentScan.accept(latestDevices)
     }
     
-    private func addDeviceToStorage(device: DeviceScan) {
-        let storageData = DeviceScanRealm(device: device)
+    private func addDeviceToStorage(device: Scan) {
+        let storageData = ScanRealm(device: device)
         let realm = try! Realm()
         try! realm.write {
             realm.add(storageData, update: .all)
         }
     }
+
 }
 
 extension ScannerStore: BTScannerDelegate {
@@ -123,6 +125,7 @@ extension ScannerStore: BTScannerDelegate {
     func didUpdate(device: BTDevice) {
         didUpdateSubject.accept(device)
     }
+
 }
 
 extension ScannerStore {
@@ -133,6 +136,7 @@ extension ScannerStore {
             realm.deleteAll()
         }
     }
+
 }
 
 extension Collection where Element: Numeric {

@@ -21,13 +21,13 @@ struct BTDevice {
     var name: String?
     var rssi: Int
     
-    func toDeviceScan(with uuid: String? = nil) -> DeviceScan {
-        DeviceScan(
+    func toScan(with uuid: String? = nil) -> Scan {
+        Scan(
             id: uuid ?? UUID().uuidString,
             bluetoothIdentifier: self.bluetoothIdentifier.uuidString,
-            buid: self.backendIdentifier ?? "Unknown",
+            buid: self.backendIdentifier ?? "neznámé",
             platform: self.platform,
-            name: self.name ?? "Unknown",
+            name: self.name ?? "neznámé",
             date: self.date,
             rssi: self.rssi
         )

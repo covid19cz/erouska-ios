@@ -25,6 +25,11 @@ class ScanListVM {
     // MARK: - Sections
     
     var sections: Driver<[SectionModel]> {
+        let infoSection = SectionModel(
+            model: .info,
+            items: [Section.Item.info(UserDefaults.standard.string(forKey: "BUID"))]
+        )
+
         let current = scannerStore.currentScan
             .map { unsortedScans in
                 return unsortedScans.sorted(by: { scan0, scan1 in scan0.buid < scan1.buid })
@@ -39,10 +44,11 @@ class ScanListVM {
             .map { [unowned self] scans -> [SectionModel] in
                 return self.section(from: scans, for: .log)
             }
+
         return Observable.combineLatest(current.startWith([]), log.startWith([])) { currentSection, logSection -> [SectionModel] in
-                return currentSection + logSection
-            }
-            .asDriver(onErrorJustReturn: [])
+            return [infoSection] + currentSection + logSection
+        }
+        .asDriver(onErrorJustReturn: [])
     }
     
     // MARK: - Clear stored records
@@ -59,7 +65,6 @@ extension ScanListVM {
     private func section(from scans: [Scan], for section: Section) -> [SectionModel] {
         let items: [ScanListVM.Section.Item] = scans.map { .scan($0) }
         return [
-            SectionModel(model: section, items: [Section.Item.info(UserDefaults.standard.string(forKey: "BUID"))]),
             SectionModel(model: section, items: items)
         ]
     }
