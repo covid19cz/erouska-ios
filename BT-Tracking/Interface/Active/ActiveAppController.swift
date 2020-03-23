@@ -29,6 +29,8 @@ final class ActiveAppController: UIViewController {
         if AppDelegate.delegate.advertiser.isRunning != true {
             AppDelegate.delegate.advertiser.start()
         }
+
+        _ = AppDelegate.delegate.scannerStore
     }
 
     override func viewDidAppear(_ animated: Bool) {

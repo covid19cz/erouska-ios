@@ -33,11 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private(set) lazy var advertiser: BTAdvertising = BTAdvertiser()
     private(set) lazy var scanner: BTScannering = BTScanner()
-    var scannerStore: ScannerStore {
+    lazy var scannerStore: ScannerStore = {
         let store = ScannerStore()
-        scanner.add(delegate: store)
+        AppDelegate.delegate.scanner.add(delegate: store)
         return store
-    }
+    }()
 
     private func generalSetup() {
         let generalCategory = UNNotificationCategory(
@@ -75,7 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             storyboard = UIStoryboard(name: "Signup", bundle: nil)
         } else {
             storyboard = UIStoryboard(name: "Active", bundle: nil)
-            _ = scannerStore
         }
 
         #else
