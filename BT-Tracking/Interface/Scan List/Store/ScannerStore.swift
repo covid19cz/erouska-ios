@@ -13,7 +13,7 @@ import RxCocoa
 import RealmSwift
 import RxRealm
 
-private let scanningPeriod = 120
+private let scanningPeriod = 1
 private let scanningDelay = 0
 
 class ScannerStore {
@@ -108,9 +108,13 @@ class ScannerStore {
     
     private func addDeviceToStorage(device: Scan) {
         let storageData = ScanRealm(device: device)
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(storageData, update: .all)
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(storageData, update: .all)
+            }
+        } catch {
+            log("Realm: failed to write! \(error)")
         }
     }
 
