@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oH0-Ce-HUb">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Jak to funguje-->
+        <scene sceneID="y9a-NQ-Xyi">
+            <objects>
+                <viewController storyboardIdentifier="Help" id="oH0-Ce-HUb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xog-Dv-zXk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N85-Ma-cmj">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="q2J-g6-7As">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="951"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFp-o1-KR0" userLabel="Space View">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="FXs-WQ-YlR"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="nz8-ty-gu3">
+                                                <rect key="frame" x="16" y="19" width="288" height="184"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplikace pomocí technologie Bluetooth sleduje telefony, které se pohybují ve vašem okolí a také mají aplikaci nainstalovanou" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsv-EZ-3qA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="86.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Následně zaznamená ID aplikací a bez vašeho souhlasu je nikam nezasílá." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HJ-mL-7yQ">
+                                                        <rect key="frame" x="0.0" y="100.5" width="288" height="64.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5z7-yy-M3m" userLabel="Space View">
+                                                        <rect key="frame" x="0.0" y="179" width="288" height="5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="5" id="eFS-yx-lSx"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="rHR-SY-gJP">
+                                                <rect key="frame" x="16" y="217" width="288" height="140"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K odeslání dat z aplikací dojde pouze v případě, že budete mít podezření na nákazu koronavirem" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6f-pm-DkT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="64.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data odesílejte až v momentě, kdy vás kontaktují vás hygienici." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIg-TW-PlQ">
+                                                        <rect key="frame" x="0.0" y="78.5" width="288" height="42.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxQ-I6-y3z" userLabel="Space View">
+                                                        <rect key="frame" x="0.0" y="135" width="288" height="5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="5" id="BlN-H4-sZU"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="W8I-sh-mkU">
+                                                <rect key="frame" x="16" y="371" width="288" height="228"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Co se děje s údaji o telefonech na seznamu osob, které jsem potkal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhP-Z7-MTR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="42.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZM-6x-PDH">
+                                                        <rect key="frame" x="0.0" y="56.5" width="288" height="152.5"/>
+                                                        <string key="text">Data jsou po celou dobu uchovávána ve vašem telefonu a nikam je neodesíláme. K odeslání dat dojde až ve chvíli, kdy  to bude nutné. Nejprve vás bude kontaktovat pracovník hygienické stanice a požádá vás k odeslání dat.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iza-7r-BHl" userLabel="Space View">
+                                                        <rect key="frame" x="0.0" y="223" width="288" height="5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="5" id="gVc-mB-K7Y"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="hik-Aj-Olh">
+                                                <rect key="frame" x="16" y="613" width="288" height="184"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplikace pomocí technologie Bluetooth sleduje telefony, které se pohybují ve vašem okolí a také mají aplikaci nainstalovanou" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03k-rr-aqb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="86.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Následně zaznamená ID aplikací a bez vašeho souhlasu je nikam nezasílá." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbY-MK-qrr">
+                                                        <rect key="frame" x="0.0" y="100.5" width="288" height="64.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y94-Ga-EdD" userLabel="Space View">
+                                                        <rect key="frame" x="0.0" y="179" width="288" height="5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="5" id="NVb-8Z-EKT"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="R7Q-mE-yUS">
+                                                <rect key="frame" x="16" y="811" width="288" height="140"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kdo aplikaci provozuje" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txn-NL-J0P">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aplikaci provozují dobrovolníci z několika českých firem pod záštitou a dohledem Ministerstva zdravotnictví České republiky." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-fB-Cmh">
+                                                        <rect key="frame" x="0.0" y="34.5" width="288" height="86.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wVO-IS-Z97" userLabel="Space View">
+                                                        <rect key="frame" x="0.0" y="135" width="288" height="5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="5" id="d86-oG-c9A"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="R7Q-mE-yUS" secondAttribute="trailing" id="6Zv-30-gyV"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="nz8-ty-gu3" secondAttribute="trailing" id="7dw-AR-7KP"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="W8I-sh-mkU" secondAttribute="trailing" id="MPs-lg-Ee6"/>
+                                            <constraint firstItem="rHR-SY-gJP" firstAttribute="leading" secondItem="q2J-g6-7As" secondAttribute="leadingMargin" id="QzN-xi-4m0"/>
+                                            <constraint firstItem="W8I-sh-mkU" firstAttribute="leading" secondItem="q2J-g6-7As" secondAttribute="leadingMargin" id="Upa-2R-rUd"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="hik-Aj-Olh" secondAttribute="trailing" id="a4l-Eo-NUv"/>
+                                            <constraint firstItem="R7Q-mE-yUS" firstAttribute="leading" secondItem="q2J-g6-7As" secondAttribute="leadingMargin" id="bnd-dA-g79"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="rHR-SY-gJP" secondAttribute="trailing" id="fcN-xV-1eW"/>
+                                            <constraint firstItem="hik-Aj-Olh" firstAttribute="leading" secondItem="q2J-g6-7As" secondAttribute="leadingMargin" id="lLI-rE-Ojr"/>
+                                            <constraint firstItem="nz8-ty-gu3" firstAttribute="leading" secondItem="q2J-g6-7As" secondAttribute="leadingMargin" id="tdy-5y-DFb"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="q2J-g6-7As" firstAttribute="bottom" secondItem="6FT-wA-1ts" secondAttribute="bottom" id="alF-DZ-g8K"/>
+                                    <constraint firstItem="q2J-g6-7As" firstAttribute="top" secondItem="6FT-wA-1ts" secondAttribute="top" id="ipn-J0-VtE"/>
+                                    <constraint firstAttribute="trailing" secondItem="q2J-g6-7As" secondAttribute="trailing" id="k9S-Sk-NWp"/>
+                                    <constraint firstItem="q2J-g6-7As" firstAttribute="width" secondItem="N85-Ma-cmj" secondAttribute="width" id="lA7-C2-Y9K"/>
+                                    <constraint firstItem="q2J-g6-7As" firstAttribute="leading" secondItem="N85-Ma-cmj" secondAttribute="leading" id="tus-rJ-4CZ"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="6FT-wA-1ts"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="1Tr-qW-ma5"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="N85-Ma-cmj" firstAttribute="bottom" secondItem="xog-Dv-zXk" secondAttribute="bottom" id="FVA-kw-mLS"/>
+                            <constraint firstItem="cua-aX-MiQ" firstAttribute="trailing" secondItem="N85-Ma-cmj" secondAttribute="trailing" id="IKg-XY-eNf"/>
+                            <constraint firstItem="N85-Ma-cmj" firstAttribute="leading" secondItem="cua-aX-MiQ" secondAttribute="leading" id="cEE-85-T6i"/>
+                            <constraint firstItem="N85-Ma-cmj" firstAttribute="top" secondItem="xog-Dv-zXk" secondAttribute="top" id="wPc-HU-a0L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cua-aX-MiQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Jak to funguje" largeTitleDisplayMode="never" id="c2k-ON-LwA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWX-GS-jbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901.875" y="565"/>
+        </scene>
+    </scenes>
+</document>

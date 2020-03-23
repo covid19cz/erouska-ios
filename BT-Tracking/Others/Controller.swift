@@ -14,14 +14,15 @@ extension UIViewController {
         showError(title: title, message: error.localizedDescription)
     }
 
-    func showError(title: String = "Chyba", message: String) {
+    func showError(title: String = "Chyba", message: String, okHandler: (() -> Void)? = nil, action: (title: String, handler: (() -> Void)?)? = nil) {
         let alertController = UIAlertController(
             title: title,
             message: message,
             preferredStyle: .alert
         )
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alertController, animated: true, completion: nil)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in okHandler?() }))
+        action.flatMap({ action in alertController.addAction(UIAlertAction(title: action.title, style: .default, handler: { _ in action.handler?() })) })
+        present(alertController, animated: true)
     }
 
 }

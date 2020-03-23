@@ -152,8 +152,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
             // find buid in service data
             if let serviceData = advertisementData["kCBAdvDataServiceData"] as? [CBUUID: Any],
-                let rawBUID = serviceData[CBUUID(string: "DD68")] as? Data,
-                let raw = String(bytes: rawBUID, encoding: .utf8) {
+                let rawBUID = serviceData.first?.value as? Data {
+                let raw = rawBUID.hexEncodedString()
 
                 // check if we already have this buid
                 if let oldIndex = discoveredDevices.firstIndex(where: { $0.backendIdentifier == raw }) {
@@ -167,7 +167,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 BUID = raw
             } else {
                 // ignore device without buid
-                 log("BTScanner: Ignored device wihtout name and buid: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+                log("BTScanner: Ignored device wihtout name and buid: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
                 return
             }
 
@@ -289,8 +289,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         peripheral.setNotifyValue(false, for: characteristic)
         centralManager.cancelPeripheralConnection(peripheral)
 
-        let stringFromData = String(data: newData, encoding: .utf8)
-        log("BTScanner: Received: \(peripheral.identifier.uuidString) \(stringFromData ?? "none")")
+        let stringFromData = newData.hexEncodedString()
+        log("BTScanner: Received: \(peripheral.identifier.uuidString) \(stringFromData)")
 
         // set guid
         if let index = discoveredDevices.firstIndex(where: { $0.bluetoothIdentifier == peripheral.identifier }) {

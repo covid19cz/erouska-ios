@@ -13,12 +13,12 @@ import FirebaseAuth
 
 class ScanListVC: UIViewController, UITableViewDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet private weak var tableView: UITableView!
+
     private var dataSource: RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>!
-    private let bag = DisposeBag()
     private let viewModel = ScanListVM(scannerStore: AppDelegate.delegate.scannerStore)
-    
+    private let bag = DisposeBag()
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -43,11 +43,18 @@ class ScanListVC: UIViewController, UITableViewDelegate {
             show(error: error)
         }
     }
-    
-    @IBAction func clear(_ sender: Any) {
+
+
+    @IBAction func clearAction(_ sender: Any) {
         viewModel.clear()
     }
-    
+
+
+    @IBAction func closeAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
+
     // MARK: - TableView
 
     private func setup() {
@@ -63,15 +70,21 @@ class ScanListVC: UIViewController, UITableViewDelegate {
     private func setupTableView() {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
-        tableView.rowHeight = 120
+        tableView.rowHeight = UITableView.automaticDimension
 
         dataSource = RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
+            let cell: UITableViewCell?
             switch row {
+            case .info(let buid):
+                let infoCell = tableView.dequeueReusableCell(withIdentifier: InfoCell.identifier, for: indexPath) as? InfoCell
+                infoCell?.configure(for: buid)
+                cell = infoCell
             case .scan(let scan):
-                let cell = tableView.dequeueReusableCell(withIdentifier: ScanCell.identifier, for: indexPath) as! ScanCell
-                cell.configure(for: scan)
-                return cell
+                let scanCell = tableView.dequeueReusableCell(withIdentifier: ScanCell.identifier, for: indexPath) as? ScanCell
+                scanCell?.configure(for: scan)
+                cell = scanCell
             }
+            return cell ?? UITableViewCell()
         })
         
         viewModel.sections

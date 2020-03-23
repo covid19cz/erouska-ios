@@ -46,8 +46,9 @@ class AccountActivationControler: UIViewController {
 
             self.view.setNeedsLayout()
             UIView.animate(withDuration: 0.1) {
-                self.scrollView.contentInset.bottom = keyboardVisibleHeight
-                self.scrollView.scrollIndicatorInsets.bottom = keyboardVisibleHeight
+                let adjsutHomeIndicator = keyboardVisibleHeight - self.view.safeAreaInsets.bottom
+                self.scrollView.contentInset.bottom = adjsutHomeIndicator
+                self.scrollView.scrollIndicatorInsets.bottom = adjsutHomeIndicator
                 self.view.layoutIfNeeded()
             }
         }).disposed(by: disposeBag)
@@ -63,6 +64,7 @@ class AccountActivationControler: UIViewController {
 
     @IBAction func activateAcountAction(_ sender: Any) {
         activityView.isHidden = false
+        view.endEditing(true)
 
         PhoneAuthProvider.provider().verifyPhoneNumber("+420" + phoneNumber.value, uiDelegate: nil) { [weak self] verificationID, error in
             guard let self = self else { return }

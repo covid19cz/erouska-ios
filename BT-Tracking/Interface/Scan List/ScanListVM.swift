@@ -56,9 +56,12 @@ class ScanListVM {
 
 extension ScanListVM {
 
-    private func section(from scans: [DeviceScan], for section: Section) -> [SectionModel] {
+    private func section(from scans: [Scan], for section: Section) -> [SectionModel] {
         let items: [ScanListVM.Section.Item] = scans.map { .scan($0) }
-        return [SectionModel(model: section, items: items)]
+        return [
+            SectionModel(model: section, items: [Section.Item.info(UserDefaults.standard.string(forKey: "BUID"))]),
+            SectionModel(model: section, items: items)
+        ]
     }
 }
 
@@ -69,13 +72,18 @@ extension ScanListVM {
     typealias SectionModel = AnimatableSectionModel<Section, Section.Item>
 
     enum Section: IdentifiableType, Equatable {
+        case info
         case current
         case log
         
         var identity: String {
             switch self {
-            case .current: return "Current"
-            case .log: return "History"
+            case .info:
+                return "Information"
+            case .current:
+                return "Current"
+            case .log:
+                return "History"
             }
         }
         
@@ -84,17 +92,22 @@ extension ScanListVM {
         }
         
         enum Item: IdentifiableType, Equatable {
-            case scan(DeviceScan)
+            case info(_ buid: String?)
+            case scan(Scan)
 
             var identity: String {
                 switch self {
+                case .info:
+                    return "buid"
                 case .scan(let scan):
                     return scan.id
                 }
             }
 
-            var rsii: Int {
+            var rsii: Int? {
                 switch self {
+                case .info:
+                    return nil
                 case .scan(let scan):
                     return scan.rssi
                 }

@@ -12,43 +12,89 @@ import CoreBluetooth
 class BluetoothActivationController: UIViewController {
 
     private var peripheralManager: CBPeripheralManager?
+
+    private var checkAfterBecomeActive: Bool = false
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard checkAfterBecomeActive else { return }
+        activateBluetoothAction()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+    }
     
-    @IBAction func activateBluetoothAction(_ sender: Any) {
-        if #available(iOS 13.0, *) {
-            peripheralManager = CBPeripheralManager(
-                delegate: self,
-                queue: nil,
-                options: [:]
-            )
-        } else {
-            goToActivation()
-        }
+    @IBAction func activateBluetoothAction() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+        
+        checkForBluetooth()
     }
 
     private func goToActivation() {
         performSegue(withIdentifier: "activation", sender: nil)
-    }
-
-}
-
-extension BluetoothActivationController: CBPeripheralManagerDelegate {
-
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        if #available(iOS 13.0, *) {
-            if peripheral.state == .poweredOn {
-                goToActivation()
-            } else {
-                switch peripheral.authorization {
-                case .allowedAlways:
-                    self.goToActivation()
-                default:
-                    self.showError(title: "Povolení bluetooth", message: "Musíte povolit bluetooth, aby aplikace mohla fungovat.")
-                }
-            }
-        } else {
-            goToActivation()
-        }
         peripheralManager = nil
     }
-
+    
+    @objc private func applicationDidBecomeActive() {
+        checkForBluetooth()
+    }
+    
+    private func checkForBluetooth() {
+        if bluetoothNotDetermined {
+            requestBluetoothPermission()
+            return
+        }
+        
+        if !bluetoothAuthorized {
+            showBluetoothPermissionError()
+            return
+        }
+        
+        goToActivation()
+    }
+    
+    private var bluetoothNotDetermined: Bool {
+        if #available(iOS 13.0, *) {
+            return CBCentralManager().authorization == .notDetermined
+        }
+        return CBPeripheralManager.authorizationStatus() == .notDetermined
+    }
+    
+    private var bluetoothAuthorized: Bool {
+        if #available(iOS 13.0, *) {
+            return CBCentralManager().authorization == .allowedAlways
+        }
+        return CBPeripheralManager.authorizationStatus() == .authorized
+    }
+    
+    private func requestBluetoothPermission() {
+        peripheralManager = CBPeripheralManager()
+    }
+    
+    private func showBluetoothPermissionError() {
+        showError(
+            title: "Zapněte Bluetooth",
+            message: "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.",
+            okHandler: { [weak self] in self?.showAppSettings() }
+        )
+    }
+    
+    private func showAppSettings() {
+        checkAfterBecomeActive = true
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(settingsURL)
+    }
 }
