@@ -8,8 +8,6 @@ target 'BT-Tracking' do
   pod 'Firebase/Functions'
   pod 'Firebase/Storage'
 
-  pod 'CSV.swift'
-
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
@@ -17,4 +15,9 @@ target 'BT-Tracking' do
   
   pod 'RealmSwift'
   pod "RxRealm"
+
+  pod 'CSV.swift'
+
+  pod 'DeviceKit'
+
 end

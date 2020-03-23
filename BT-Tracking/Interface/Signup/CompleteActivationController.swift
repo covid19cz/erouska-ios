@@ -12,6 +12,7 @@ import RxRelay
 import RxKeyboard
 import FirebaseAuth
 import FirebaseFunctions
+import DeviceKit
 
 class CompleteActivationController: UIViewController {
 
@@ -75,7 +76,7 @@ class CompleteActivationController: UIViewController {
             } else {
                 let data: [String: Any] = [
                     "platform": "iOS",
-                    "platformVersion": UIDevice.current.systemVersion,
+                    "platformVersion": Device.identifier,
                     "manufacturer": "Apple",
                     "model": UIDevice.current.model,
                     "locale": Locale.current.languageCode ?? ""
