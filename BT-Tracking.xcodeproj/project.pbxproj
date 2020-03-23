@@ -12,9 +12,9 @@
 		46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA82422444600C01DFA /* ScanListVC.swift */; };
 		46F21CAF2422597F00C01DFA /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CAE2422597F00C01DFA /* Scan.swift */; };
 		46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CB3242270F700C01DFA /* ScannerStore.swift */; };
+		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
 		8043C51B2423C6C600732179 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8043C51A2423C6C600732179 /* GoogleService-Info.plist */; };
 		8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
-		8054C0B8241D492F008907B8 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
 		8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
 		8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */; };
@@ -51,7 +51,6 @@
 		80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationController.swift */; };
 		80BF9C262424D55800150108 /* SendReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportController.swift */; };
 		80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */; };
-		80E2FE1124239AE900ADF333 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E2FE1024239AE900ADF333 /* Main.storyboard */; };
 		8CC5262959368789FD32958B /* Pods_BT_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 		BD979AE924255BD1004001ED /* FirstActiovationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActiovationController.swift */; };
@@ -72,7 +71,7 @@
 		46F21CB3242270F700C01DFA /* ScannerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerStore.swift; sourceTree = "<group>"; };
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		8043C51A2423C6C600732179 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8054C0AD241D492F008907B8 /* eRouška.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eRouška.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8054C0AD241D492F008907B8 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Debug.storyboard; sourceTree = "<group>"; };
 		8054C0B9241D4932008907B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,7 +100,6 @@
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 		80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationController.swift; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		80E2FE1024239AE900ADF333 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
 		BD979AE824255BD1004001ED /* FirstActiovationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstActiovationController.swift; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppController.swift; sourceTree = "<group>"; };
@@ -189,7 +187,7 @@
 		8054C0AE241D492F008907B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8054C0AD241D492F008907B8 /* eRouška.app */,
+				8054C0AD241D492F008907B8 /* eRouska.app */,
 				80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */,
 			);
 			name = Products;
@@ -212,12 +210,11 @@
 		8054C0C9241FE66A008907B8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				80E2FE1024239AE900ADF333 /* Main.storyboard */,
 				80BB476024227C1400F552FC /* Signup */,
-				46F21CA3242243F400C01DFA /* Debug */,
-				46F21CA2242243A300C01DFA /* Scan List */,
 				BD0191452424330200707341 /* Active */,
 				BDB07FBE24254A7B00834E79 /* Help */,
+				46F21CA3242243F400C01DFA /* Debug */,
+				46F21CA2242243A300C01DFA /* Scan List */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -302,8 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				BD0191462424331900707341 /* Active.storyboard */,
-				80BF9C252424D55800150108 /* SendReportController.swift */,
 				BD979AEA242565AF004001ED /* ActiveAppController.swift */,
+				80BF9C252424D55800150108 /* SendReportController.swift */,
 				BD979AEC242576CB004001ED /* BluetoothDisabledController.swift */,
 			);
 			path = Active;
@@ -336,7 +333,7 @@
 			);
 			name = "BT-Tracking";
 			productName = "BT-Tracking";
-			productReference = 8054C0AD241D492F008907B8 /* eRouška.app */;
+			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
 			productType = "com.apple.product-type.application";
 		};
 		80BB474624212A3C00F552FC /* BT-Tracking Mac */ = {
@@ -396,13 +393,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */,
-				80E2FE1124239AE900ADF333 /* Main.storyboard in Resources */,
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
 				46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
 				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
-				8054C0B8241D492F008907B8 /* Debug.storyboard in Resources */,
+				800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */,
 				8043C51B2423C6C600732179 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,7 +663,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking5";
-				PRODUCT_NAME = "eRouška";
+				PRODUCT_NAME = eRouska;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -689,7 +685,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking5";
-				PRODUCT_NAME = "eRouška";
+				PRODUCT_NAME = eRouska;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

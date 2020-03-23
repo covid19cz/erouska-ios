@@ -13,6 +13,15 @@ class BluetoothActivationController: UIViewController {
 
     private var peripheralManager: CBPeripheralManager?
 
+    private var checkAfterBecomeActive: Bool = false
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard checkAfterBecomeActive else { return }
+        activateBluetoothAction()
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
@@ -77,13 +86,15 @@ class BluetoothActivationController: UIViewController {
     
     private func showBluetoothPermissionError() {
         showError(
-            title: "Povolení bluetooth",
-            message: "Musíte povolit bluetooth, aby aplikace mohla fungovat.",
+            title: "Zapněte Bluetooth",
+            message: "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.",
             okHandler: { [weak self] in self?.showAppSettings() }
         )
     }
     
     private func showAppSettings() {
-        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        checkAfterBecomeActive = true
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(settingsURL)
     }
 }

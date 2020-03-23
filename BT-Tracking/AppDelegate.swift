@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func setupInterface() {
         let window = UIWindow()
-        window.backgroundColor = .white
+        window.backgroundColor = .black
         window.makeKeyAndVisible()
         self.window = window
 
@@ -74,11 +74,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Auth.auth().currentUser == nil {
             storyboard = UIStoryboard(name: "Signup", bundle: nil)
         } else {
-            storyboard = UIStoryboard(name: "Main", bundle: nil)
+            storyboard = UIStoryboard(name: "Active", bundle: nil)
         }
 
         #else
-        storyboard = UIStoryboard(name: "Main", bundle: nil)
+        storyboard = UIStoryboard(name: "Debug", bundle: nil)
         #endif
 
         window.rootViewController = storyboard.instantiateInitialViewController()

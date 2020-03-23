@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scanner-->
+        <!--Debug Scanner-->
         <scene sceneID="z69-Sg-ixU">
             <objects>
                 <viewController id="B0q-VQ-qom" customClass="ScanListVC" customModule="eRouška" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,7 +139,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ixr-ke-Ld2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Scanner" id="0vv-Mz-9al">
+                    <navigationItem key="navigationItem" title="Debug Scanner" id="0vv-Mz-9al">
+                        <barButtonItem key="leftBarButtonItem" title="Zavřít" id="BzB-Mx-eus">
+                            <connections>
+                                <action selector="closeAction:" destination="B0q-VQ-qom" id="goh-Gh-Ggm"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="QBZ-PI-Tes">
                             <connections>
                                 <action selector="signOutAction:" destination="B0q-VQ-qom" id="ETL-gM-q3F"/>
