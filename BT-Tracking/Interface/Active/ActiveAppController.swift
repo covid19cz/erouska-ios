@@ -96,6 +96,14 @@ final class ActiveAppController: UIViewController {
     }
 
     private func sendReport() {
+        guard AppSettings.lastUploadDate + (15 * 60 * 60) < Date() else {
+            showError(
+                title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
+                message: ""
+            )
+            return
+        }
+
         activityView.isHidden = false
         createCSVFile()
     }
@@ -108,6 +116,7 @@ final class ActiveAppController: UIViewController {
             if let result = result {
                 self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata)
             } else if let error = error {
+                self.activityView.isHidden = true
                 self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkánímy")
             }
         })
@@ -124,12 +133,13 @@ final class ActiveAppController: UIViewController {
         storageMetadata.customMetadata = metadata
 
         fileReference.putFile(from: fileURL, metadata: storageMetadata) { (metadata, error) in
+            self.activityView.isHidden = true
+
             if let error = error {
                 self.show(error: error, title: "Nepodařilo se nahrát setkání")
                 return
             }
-
-            self.activityView.isHidden = true
+            AppSettings.lastUploadDate = Date()
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
     }

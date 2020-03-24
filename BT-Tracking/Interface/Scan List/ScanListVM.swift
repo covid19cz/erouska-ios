@@ -27,7 +27,7 @@ final class ScanListVM {
     var sections: Driver<[SectionModel]> {
         let infoSection = SectionModel(
             model: .info,
-            items: [Section.Item.info(UserDefaults.standard.string(forKey: "BUID"))]
+            items: [Section.Item.info(AppSettings.BUID)]
         )
 
         let current = scannerStore.currentScan

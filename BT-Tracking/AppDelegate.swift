@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard: UIStoryboard
         #if !targetEnvironment(macCatalyst)
 
-        if Auth.auth().currentUser == nil || UserDefaults.standard.string(forKey: "BUID") == nil {
+        if Auth.auth().currentUser == nil || AppSettings.BUID == nil {
             try? Auth.auth().signOut()
             storyboard = UIStoryboard(name: "Signup", bundle: nil)
         } else {

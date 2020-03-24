@@ -66,7 +66,7 @@ final class CSVMaker: CSVMakering {
 
         let metadata = [
             "version": "3",
-            "buid": UserDefaults.standard.string(forKey: "BUID") ?? ""
+            "buid": AppSettings.BUID ?? ""
         ]
 
         callback(Result(fileURL, metadata), nil)

@@ -96,7 +96,7 @@ class CompleteActivationController: UIViewController {
                         self.navigationController?.popViewController(animated: true)
                     } else if let result = result {
                         if let BUID = (result.data as? [String: Any])?["buid"] as? String {
-                            UserDefaults.standard.set(BUID, forKey: "BUID")
+                            AppSettings.BUID = BUID
                             self.performSegue(withIdentifier: "done", sender: nil)
                         } else {
                             self.show(error: NSError(domain: FunctionsErrorDomain, code: 500, userInfo: nil), title: "Chyba při aktivaci")
