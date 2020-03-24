@@ -89,7 +89,7 @@ final class ScannerStore {
 
             device.backendIdentifier = backendIdentifier
 
-            let RSIIs = group.value.map{ $0.rssi }
+            let RSIIs = group.value.map { $0.rssi }
             let averageRssi = Int(RSIIs.average.rounded())
             var medianRssi: Int = 0
             if let median = RSIIs.median() {
@@ -112,7 +112,7 @@ final class ScannerStore {
                 last?.date = date
                 return last
             }
-            .compactMap{ $0 }
+            .compactMap { $0 }
             .map { [unowned self] device -> Scan in
                 let uuid = self.currentScan.value.first(where: { $0.deviceIdentifier == device.deviceIdentifier })?.id
                 return device.toScan(with: uuid)
