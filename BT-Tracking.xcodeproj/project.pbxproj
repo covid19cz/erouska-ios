@@ -33,6 +33,7 @@
 		807053532427BA2500DC1034 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
 		807053582427C5AA00DC1034 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053572427C5AA00DC1034 /* InfoCell.swift */; };
 		8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDBF242A613F001D9DCD /* AppSettings.swift */; };
+		8075EDC3242A6E93001D9DCD /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDC2242A6E93001D9DCD /* ContactsController.swift */; };
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
 		80AD970D2429318B00AEA661 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
 		80BB474924212A3C00F552FC /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
@@ -101,6 +102,7 @@
 		807053522427BA2500DC1034 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		807053572427C5AA00DC1034 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		8075EDBF242A613F001D9DCD /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		8075EDC2242A6E93001D9DCD /* ContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
 		80799BEA2423B89A002B04C5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		80AD970C2429318B00AEA661 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		80BB475E24212A3C00F552FC /* BT-Tracking Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BT-Tracking Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,6 +355,7 @@
 				BD979AEA242565AF004001ED /* ActiveAppController.swift */,
 				80BF9C252424D55800150108 /* SendReportController.swift */,
 				BD979AEC242576CB004001ED /* BluetoothDisabledController.swift */,
+				8075EDC2242A6E93001D9DCD /* ContactsController.swift */,
 			);
 			path = Active;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
 				BD979AED242576CB004001ED /* BluetoothDisabledController.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */,
+				8075EDC3242A6E93001D9DCD /* ContactsController.swift in Sources */,
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
