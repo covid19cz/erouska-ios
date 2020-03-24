@@ -78,8 +78,12 @@ final class ScannerStore {
     private func process(_ devices: [BTDevice], at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let averaged = grouped.map { group -> BTDevice in
-            let average = Int(group.value.map{ $0.rssi }.average.rounded())
             var device = group.value.first!
+            let rssis = group.value.map{ $0.rssi }
+            let average = Int(rssis.average.rounded())
+            if let median = rssis.median() {
+                device.median = Int(median.rounded())
+            }
             device.rssi = average
             device.date = date
             device.backendIdentifier = group.value.first { $0.backendIdentifier != nil }?.backendIdentifier
@@ -141,5 +145,4 @@ extension ScannerStore {
             realm.deleteAll()
         }
     }
-
 }

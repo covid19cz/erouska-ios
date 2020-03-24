@@ -17,3 +17,16 @@ extension Collection where Element: BinaryInteger {
     /// Returns the average of all elements in the array
     var average: Double { isEmpty ? 0 : Double(total) / Double(count) }
 }
+
+extension Array where Element == Int {
+    func median() -> Double? {
+        guard count > 0  else { return nil }
+
+        let sortedArray = self.sorted()
+        if count % 2 != 0 {
+            return Double(sortedArray[count/2])
+        } else {
+            return Double(sortedArray[count/2] + sortedArray[count/2 - 1]) / 2.0
+        }
+    }
+}

@@ -19,6 +19,7 @@ final class ScanRealm: Object {
     @objc dynamic var name = ""
     @objc dynamic var date = Date()
     @objc dynamic var rssi = 0
+    @objc dynamic var median = 0
     
     var platform: BTDevice.Platform? {
         get {
@@ -45,6 +46,7 @@ final class ScanRealm: Object {
         self.name = device.name
         self.date = device.date
         self.rssi = device.rssi
+        self.median = device.median ?? 0
     }
     
     func toScan() -> Scan {
@@ -56,7 +58,8 @@ final class ScanRealm: Object {
             platform: self.platform ?? .iOS, // Adding defuault `.iOS` rather then failing whole mapping
             name: self.name,
             date: self.date,
-            rssi: self.rssi
+            rssi: self.rssi,
+            median: self.median
         )
     }
     
