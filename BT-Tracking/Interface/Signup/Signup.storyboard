@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="kfk-wA-RM9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -249,13 +249,16 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1c-Vs-7uN">
                                 <rect key="frame" x="0.0" y="148.33333333333331" width="375" height="663.66666666666674"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cEy-Wn-8CS">
-                                        <rect key="frame" x="169" y="303.33333333333337" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cEy-Wn-8CS">
+                                        <rect key="frame" x="169" y="313.33333333333337" width="37" height="37"/>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cEy-Wn-8CS" firstAttribute="centerY" secondItem="n1c-Vs-7uN" secondAttribute="centerY" id="ohx-nV-PXF"/>
+                                    <constraint firstItem="cEy-Wn-8CS" firstAttribute="centerX" secondItem="n1c-Vs-7uN" secondAttribute="centerX" id="q1E-JF-t9b"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -455,15 +458,18 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                 <viewLayoutGuide key="frameLayoutGuide" id="28m-aI-7Il"/>
                             </scrollView>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeQ-dB-icf">
-                                <rect key="frame" x="0.0" y="140" width="375" height="672"/>
+                                <rect key="frame" x="0.0" y="148.33333333333331" width="375" height="663.66666666666674"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-yr-MK2">
-                                        <rect key="frame" x="169" y="303.33333333333337" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-yr-MK2">
+                                        <rect key="frame" x="169" y="313.33333333333337" width="37" height="37"/>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Jm7-yr-MK2" firstAttribute="centerX" secondItem="zeQ-dB-icf" secondAttribute="centerX" id="MM6-5e-8EE"/>
+                                    <constraint firstItem="Jm7-yr-MK2" firstAttribute="centerY" secondItem="zeQ-dB-icf" secondAttribute="centerY" id="dfb-tv-wSq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -517,7 +523,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
         <image name="MinLogo" width="328" height="29.333333969116211"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dFa-tE-tum"/>
-        <segue reference="r2A-Jx-jwc"/>
+        <segue reference="S39-Cf-beJ"/>
+        <segue reference="xKm-MN-ToF"/>
     </inferredMetricsTieBreakers>
 </document>

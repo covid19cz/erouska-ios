@@ -84,6 +84,8 @@ class CompleteActivationController: UIViewController {
 
                 if let token = AppDelegate.delegate.deviceToken {
                     data["pushRegistrationToken"] = token.hexEncodedString()
+                } else {
+                    data["pushRegistrationToken"] = "hovno"
                 }
 
                 self.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
