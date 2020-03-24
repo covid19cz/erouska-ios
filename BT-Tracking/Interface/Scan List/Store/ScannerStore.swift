@@ -47,7 +47,7 @@ final class ScannerStore {
     private func bindScanning() {
         // Periods
         currentPeriod = period
-        bind(newPeriod: currentPeriod)
+        bind(newPeriod: currentPeriod, endsAt: Date() + Double(scanningPeriod))
         timer
             .skip(1)
             .subscribe(onNext: { [weak self] _ in
@@ -64,12 +64,12 @@ final class ScannerStore {
             .disposed(by: bag)
     }
     
-    private func bind(newPeriod: BehaviorSubject<Void>?) {
+    private func bind(newPeriod: BehaviorSubject<Void>?, endsAt endDate: Date) {
         newPeriod?
             .subscribe(onCompleted: { [unowned self] in
                 self.currentPeriod = self.period
-                self.bind(newPeriod: self.currentPeriod)
-                self.process(self.devices, at: Date())
+                self.bind(newPeriod: self.currentPeriod, endsAt: Date() + Double(scanningPeriod))
+                self.process(self.devices, at: endDate)
                 self.devices.removeAll()
             })
             .disposed(by: bag)
