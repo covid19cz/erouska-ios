@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppDelegate.delegate.scanner.add(delegate: store)
         return store
     }()
+    private(set) var deviceToken: Data?
 
     private func generalSetup() {
         let generalCategory = UNNotificationCategory(
@@ -81,7 +82,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard: UIStoryboard
         #if !targetEnvironment(macCatalyst)
 
-        if Auth.auth().currentUser == nil {
+        if Auth.auth().currentUser == nil || UserDefaults.standard.string(forKey: "BUID") == nil {
+            try? Auth.auth().signOut()
             storyboard = UIStoryboard(name: "Signup", bundle: nil)
         } else {
             storyboard = UIStoryboard(name: "Active", bundle: nil)
@@ -168,6 +170,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         Auth.auth().setAPNSToken(deviceToken, type: .prod)
         #endif
+
+        self.deviceToken = deviceToken
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

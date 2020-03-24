@@ -70,25 +70,30 @@ class CompleteActivationController: UIViewController {
             guard let self = self else { return }
 
             if let error = error {
-                self.activityView.isHidden = false
+                self.activityView.isHidden = true
                 self.show(error: error, title: "Chyba při aktivaci")
                 self.cleanup()
             } else {
-                let data: [String: Any] = [
+                var data: [String: Any] = [
                     "platform": "iOS",
-                    "platformVersion": Device.current.description,
+                    "platformVersion": UIDevice.current.systemVersion,
                     "manufacturer": "Apple",
-                    "model": UIDevice.current.model,
-                    "locale": Locale.current.languageCode ?? ""
+                    "model": Device.current.description,
+                    "locale": "\(Locale.current.languageCode ?? "cs")_\(Locale.current.regionCode ?? "CZ")",
                 ]
 
-                self.functions.httpsCallable("createUser").call(data) { [weak self] result, error in
+                if let token = AppDelegate.delegate.deviceToken {
+                    data["pushRegistrationToken"] = token.hexEncodedString()
+                }
+
+                self.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
                     guard let self = self else { return }
-                    self.activityView.isHidden = false
+                    self.activityView.isHidden = true
 
                     if let error = error as NSError? {
                         self.show(error: error, title: "Chyba při aktivaci")
                         self.cleanup()
+                        self.navigationController?.popViewController(animated: true)
                     } else if let result = result {
                         if let BUID = (result.data as? [String: Any])?["buid"] as? String {
                             UserDefaults.standard.set(BUID, forKey: "BUID")

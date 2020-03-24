@@ -12,7 +12,8 @@ import CSV
 
 protocol CSVMakering {
 
-    typealias Callback = (_ fileURL: URL?, _ error: Error?) -> Void
+    typealias Result = (fileURL: URL, metadata: [String: String])
+    typealias Callback = (_ result: Result?, _ error: Error?) -> Void
 
     func createFile(callback: @escaping Callback)
 
@@ -44,7 +45,7 @@ final class CSVMaker: CSVMakering {
         let realm: Realm
         do {
             csv = try CSVWriter(stream: stream)
-            try csv.write(row: ["buid", "timestampStart", "timestampEnd", "minRssi", "maxRssi", "avgRssi", "medRssi"])
+            try csv.write(row: ["buid", "timestampStart", "timestampEnd", "avgRssi", "medRssi"])
             
             realm = try Realm()
         } catch {
@@ -60,15 +61,19 @@ final class CSVMaker: CSVMakering {
                 scan.buid,
                 String(scan.date.timeIntervalSince1970),
                 String(scan.date.timeIntervalSince1970),
-                String(0),
                 signal,
-                String(0),
                 signal
             ])
         }
 
         csv.stream.close()
-        callback(fileURL, nil)
+
+        let metadata = [
+            "version": "3",
+            "buid": UserDefaults.standard.string(forKey: "BUID") ?? ""
+        ]
+
+        callback(Result(fileURL, metadata), nil)
     }
 
 }
