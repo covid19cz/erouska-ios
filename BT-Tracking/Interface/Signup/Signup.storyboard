@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="kfk-wA-RM9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -157,16 +157,6 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
             </objects>
             <point key="canvasLocation" x="-527.20000000000005" y="-31.03448275862069"/>
         </scene>
-        <!--Active-->
-        <scene sceneID="v5k-Ze-k1w">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Active" id="Sea-sp-Fdp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="reu-L7-rlN"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q95-gy-dWf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2814" y="-31"/>
-        </scene>
         <!--Dokončení aktivace-->
         <scene sceneID="YpT-d0-CPf">
             <objects>
@@ -280,7 +270,6 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                         <outlet property="activityView" destination="n1c-Vs-7uN" id="vzT-Gn-AU4"/>
                         <outlet property="scrollView" destination="QHa-3n-qmi" id="fmU-Zh-JJ5"/>
                         <outlet property="smsCodeTextField" destination="XPz-6e-tCh" id="XVx-D3-VAx"/>
-                        <segue destination="Sea-sp-Fdp" kind="presentation" identifier="done" modalPresentationStyle="fullScreen" id="3rz-41-1PA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9u-03-pOg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
