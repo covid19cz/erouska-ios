@@ -11,7 +11,7 @@ import CoreBluetooth
 
 protocol BTScannering: class {
 
-    var deviceUpdateLimit: TimeInterval { get set } // default: 2, in seconds
+    var deviceUpdateLimit: TimeInterval { get set } // default: 3, in seconds
     var filterRSSIPower: Bool { get set } //  default: -90...0
 
     func add(delegate: BTScannerDelegate)
@@ -58,7 +58,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
     // MARK: - BTScannering
 
-    var deviceUpdateLimit: TimeInterval = 2 // in seconds
+    var deviceUpdateLimit: TimeInterval = 3 // in seconds
 
     var filterRSSIPower: Bool = false
     private let allowedRSSIRange: ClosedRange<Int> = -90...0

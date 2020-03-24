@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Scan {
+struct Scan: Equatable {
     let id: String
     
     let bluetoothIdentifier: String

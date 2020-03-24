@@ -77,16 +77,11 @@ final class ScannerStore {
     
     private func process(_ devices: [BTDevice], at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
-        let averaged = grouped.map { group -> ScanRealm in
+        let averaged = grouped.map { group -> ScanRealm? in
             guard var device = group.value.first,
                 let backendIdentifier = group.value.first(where: { $0.backendIdentifier != nil })?.backendIdentifier,
                 let startDate = group.value.first?.date,
-                let endDate = group.value.last?.date else {
-                    let empty = ScanRealm()
-                    empty.buid = ""
-                    return empty
-            }
-
+                let endDate = group.value.last?.date else { return nil }
             device.backendIdentifier = backendIdentifier
 
             let RSIIs = group.value.map { $0.rssi }
@@ -98,19 +93,14 @@ final class ScannerStore {
 
             return ScanRealm(device: device, avargeRssi: averageRssi, medianRssi: medianRssi, startDate: startDate, endDate: endDate)
         }
-
-        let data = averaged.filter() { $0.buid != "" }
-        data.forEach { addDeviceToStorage(data: $0) }
+        averaged.compactMap { $0 }.forEach { addDeviceToStorage(data: $0) }
     }
     
     private func updateCurrent(at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let latestDevices = grouped
             .map { group -> BTDevice? in
-                let sorted = group.value.sorted(by: { $0.date > $1.date })
-                var last = sorted.last
-                last?.date = date
-                return last
+                return group.value.sorted(by: { $0.date > $1.date }).first
             }
             .compactMap { $0 }
             .map { [unowned self] device -> Scan in
