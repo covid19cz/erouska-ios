@@ -18,5 +18,5 @@ struct Scan {
     let name: String
     let date: Date
     let rssi: Int
-    let median: Int?
+    let medianRssi: Int?
 }

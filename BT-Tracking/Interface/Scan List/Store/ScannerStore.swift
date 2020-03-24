@@ -77,21 +77,30 @@ final class ScannerStore {
     
     private func process(_ devices: [BTDevice], at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
-        let averaged = grouped.map { group -> BTDevice in
-            var device = group.value.first!
-            let rssis = group.value.map{ $0.rssi }
-            let average = Int(rssis.average.rounded())
-            if let median = rssis.median() {
-                device.median = Int(median.rounded())
+        let averaged = grouped.map { group -> ScanRealm in
+            guard var device = group.value.first,
+                let backendIdentifier = group.value.first(where: { $0.backendIdentifier != nil })?.backendIdentifier,
+                let startDate = group.value.first?.date,
+                let endDate = group.value.last?.date else {
+                    let empty = ScanRealm()
+                    empty.buid = ""
+                    return empty
             }
-            device.rssi = average
-            device.date = date
-            device.backendIdentifier = group.value.first { $0.backendIdentifier != nil }?.backendIdentifier
-            return device
+
+            device.backendIdentifier = backendIdentifier
+
+            let RSIIs = group.value.map{ $0.rssi }
+            let averageRssi = Int(RSIIs.average.rounded())
+            var medianRssi: Int = 0
+            if let median = RSIIs.median() {
+                medianRssi = Int(median.rounded())
+            }
+
+            return ScanRealm(device: device, avargeRssi: averageRssi, medianRssi: medianRssi, startDate: startDate, endDate: endDate)
         }
 
-        let deviceScans = averaged.filter { $0.backendIdentifier != nil }.map { $0.toScan() }
-        deviceScans.forEach { addDeviceToStorage(device: $0) }
+        let data = averaged.filter() { $0.buid != "" }
+        data.forEach { addDeviceToStorage(data: $0) }
     }
     
     private func updateCurrent(at date: Date) {
@@ -111,12 +120,11 @@ final class ScannerStore {
         currentScan.accept(latestDevices)
     }
     
-    private func addDeviceToStorage(device: Scan) {
-        let storageData = ScanRealm(device: device)
+    private func addDeviceToStorage(data: ScanRealm) {
         do {
             let realm = try Realm()
             try realm.write {
-                realm.add(storageData, update: .all)
+                realm.add(data, update: .all)
             }
         } catch {
             log("Realm: Failed to write! \(error)")

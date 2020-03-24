@@ -11,7 +11,7 @@ import CoreBluetooth
 
 protocol BTScannering: class {
 
-    var deviceUpdateLimit: TimeInterval { get set } // default: 4, in seconds
+    var deviceUpdateLimit: TimeInterval { get set } // default: 2, in seconds
     var filterRSSIPower: Bool { get set } //  default: -90...0
 
     func add(delegate: BTScannerDelegate)
@@ -58,7 +58,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
     // MARK: - BTScannering
 
-    var deviceUpdateLimit: TimeInterval = 4 // in seconds
+    var deviceUpdateLimit: TimeInterval = 2 // in seconds
 
     var filterRSSIPower: Bool = false
     private let allowedRSSIRange: ClosedRange<Int> = -90...0
@@ -124,6 +124,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 var device = discoveredDevices[index]
                 device.rssi = RSSI.intValue
                 device.name = peripheral.name ?? device.name
+                device.date = Date()
                 discoveredDevices[index] = device
 
                 invoke(invocation: { $0.didUpdate(device: device) })
@@ -176,7 +177,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 bluetoothIdentifier: peripheral.identifier,
                 backendIdentifier: BUID,
                 platform: .android,
-                date: replaceDevice?.date ?? Date(),
+                date: Date(),
                 name: peripheral.name ?? replaceDevice?.name,
                 rssi: RSSI.intValue
             )
@@ -300,7 +301,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 bluetoothIdentifier: peripheral.identifier,
                 backendIdentifier: stringFromData,
                 platform: .iOS,
-                date: oldDevice.date,
+                date: Date(),
                 name: peripheral.name ?? oldDevice.name,
                 rssi: oldDevice.rssi
             )

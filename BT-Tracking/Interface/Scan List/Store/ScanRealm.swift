@@ -16,10 +16,11 @@ final class ScanRealm: Object {
     @objc dynamic var deviceIdentifier = ""
     @objc dynamic var buid = ""
     @objc dynamic var _platform = ""
-    @objc dynamic var name = ""
-    @objc dynamic var date = Date()
-    @objc dynamic var rssi = 0
-    @objc dynamic var median = 0
+    @objc dynamic var name: String?
+    @objc dynamic var startDate = Date()
+    @objc dynamic var endDate = Date()
+    @objc dynamic var avargeRssi = 0
+    @objc dynamic var medianRssi = 0
     
     var platform: BTDevice.Platform? {
         get {
@@ -35,18 +36,20 @@ final class ScanRealm: Object {
         return "id"
     }
     
-    convenience init(device: Scan) {
+    convenience init(device: BTDevice, avargeRssi: Int, medianRssi: Int, startDate: Date, endDate: Date) {
         self.init()
         
-        self.id = device.id
-        self.bluetoothIdentifier = device.bluetoothIdentifier
+        self.id = device.id.uuidString
+        self.bluetoothIdentifier = device.bluetoothIdentifier.uuidString
         self.deviceIdentifier = device.deviceIdentifier
-        self.buid = device.buid
+        self.buid = device.backendIdentifier ?? ""
         self.platform = device.platform
         self.name = device.name
-        self.date = device.date
-        self.rssi = device.rssi
-        self.median = device.median ?? 0
+
+        self.startDate = startDate
+        self.endDate = endDate
+        self.avargeRssi = avargeRssi
+        self.medianRssi = medianRssi
     }
     
     func toScan() -> Scan {
@@ -56,10 +59,10 @@ final class ScanRealm: Object {
             deviceIdentifier: self.deviceIdentifier,
             buid: self.buid,
             platform: self.platform ?? .iOS, // Adding defuault `.iOS` rather then failing whole mapping
-            name: self.name,
-            date: self.date,
-            rssi: self.rssi,
-            median: self.median
+            name: self.name ?? "neznámé",
+            date: self.startDate,
+            rssi: self.avargeRssi,
+            medianRssi: self.medianRssi
         )
     }
     
