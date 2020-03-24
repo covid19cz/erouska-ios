@@ -109,6 +109,15 @@ extension ScanListVM {
                 }
             }
 
+            var object: Any {
+                switch self {
+                case .info:
+                    return "buid"
+                case .scan(let scan):
+                    return scan
+                }
+            }
+
             var rsii: Int? {
                 switch self {
                 case .info:
@@ -119,7 +128,11 @@ extension ScanListVM {
             }
             
             static func == (lhs: Item, rhs: Item) -> Bool {
-                return lhs.identity == rhs.identity && lhs.rsii == rhs.rsii
+                if let l = lhs.object as? Scan, let r = rhs.object as? Scan {
+                    return l == r
+                } else {
+                    return lhs.identity == rhs.identity
+                }
             }
         }
     }

@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         let configuration = Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
 
             }

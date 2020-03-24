@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Scan {
+struct Scan: Equatable {
     let id: String
     
     let bluetoothIdentifier: String
@@ -18,4 +18,5 @@ struct Scan {
     let name: String
     let date: Date
     let rssi: Int
+    let medianRssi: Int?
 }
