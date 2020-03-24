@@ -42,8 +42,10 @@ final class ActiveAppController: UIViewController {
             name: UIApplication.didBecomeActiveNotification,
             object: nil
         )
-        
+
+        #if !targetEnvironment(simulator)
         checkForBluetooth()
+        #endif
     }
     
     override func viewWillDisappear(_ animated: Bool) {
