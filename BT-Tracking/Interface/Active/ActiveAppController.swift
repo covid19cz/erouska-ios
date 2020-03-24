@@ -100,31 +100,28 @@ final class ActiveAppController: UIViewController {
 
     private func createCSVFile() {
         writer = CSVMaker()
-        writer?.createFile(callback: { [weak self] fileURL, error in
+        writer?.createFile(callback: { [weak self] result, error in
             guard let self = self else { return }
 
-            if let fileURL = fileURL {
-                self.uploadCSVFile(fileURL: fileURL)
+            if let result = result {
+                self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata)
             } else if let error = error {
                 self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkánímy")
             }
         })
     }
 
-    private func uploadCSVFile(fileURL: URL) {
+    private func uploadCSVFile(fileURL: URL, metadata: [String: String]) {
         let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")"
         let fileName = "\(Int(Date().timeIntervalSince1970 * 1000)).csv"
 
         let storage = Storage.storage()
         let storageReference = storage.reference()
         let fileReference = storageReference.child("\(path)/\(fileName)")
-        let metadata = StorageMetadata()
-        metadata.customMetadata = [
-            "version": "2",
-            "buid": UserDefaults.standard.string(forKey: "BUID") ?? ""
-        ]
+        let storageMetadata = StorageMetadata()
+        storageMetadata.customMetadata = metadata
 
-        fileReference.putFile(from: fileURL, metadata: metadata) { (metadata, error) in
+        fileReference.putFile(from: fileURL, metadata: storageMetadata) { (metadata, error) in
             if let error = error {
                 self.show(error: error, title: "Nepodařilo se nahrát setkání")
                 return
