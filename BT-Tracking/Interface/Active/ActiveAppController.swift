@@ -12,7 +12,7 @@ import FirebaseAuth
 final class ActiveAppController: UIViewController {
 
     @IBOutlet private weak var shareButton: UIButton!
-    @IBOutlet private weak var activityView: UIView!
+    @IBOutlet private weak var disableBluetoothView: UIView!
 
     // MARK: -
 
@@ -77,9 +77,7 @@ final class ActiveAppController: UIViewController {
     }
     
     private func checkForBluetooth() {
-        if !AppDelegate.delegate.advertiser.isRunning {
-            performSegue(withIdentifier: "bluetoothDisabled", sender: nil)
-        }
+        disableBluetoothView.isHidden = AppDelegate.delegate.advertiser.isRunning
     }
 
 }
