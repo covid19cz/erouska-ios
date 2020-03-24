@@ -27,6 +27,7 @@ struct BTDevice {
     var date: Date
     var name: String?
     var rssi: Int
+    var medianRssi: Int?
     
     func toScan(with uuid: String? = nil) -> Scan {
         Scan(
@@ -37,7 +38,8 @@ struct BTDevice {
             platform: self.platform,
             name: self.name ?? "neznámé",
             date: self.date,
-            rssi: self.rssi
+            rssi: self.rssi,
+            medianRssi: self.medianRssi
         )
     }    
 }

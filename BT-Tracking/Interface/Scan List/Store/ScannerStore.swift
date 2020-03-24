@@ -77,29 +77,32 @@ final class ScannerStore {
     
     private func process(_ devices: [BTDevice], at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
-        let averaged = grouped.map { group -> BTDevice in
-            let average = Int(group.value.map{ $0.rssi }.average.rounded())
-            var device = group.value.first!
-            device.rssi = average
-            device.date = date
-            device.backendIdentifier = group.value.first { $0.backendIdentifier != nil }?.backendIdentifier
-            return device
-        }
+        let averaged = grouped.map { group -> ScanRealm? in
+            guard var device = group.value.first,
+                let backendIdentifier = group.value.first(where: { $0.backendIdentifier != nil })?.backendIdentifier,
+                let startDate = group.value.first?.date,
+                let endDate = group.value.last?.date else { return nil }
+            device.backendIdentifier = backendIdentifier
 
-        let deviceScans = averaged.filter { $0.backendIdentifier != nil }.map { $0.toScan() }
-        deviceScans.forEach { addDeviceToStorage(device: $0) }
+            let RSIIs = group.value.map { $0.rssi }
+            let averageRssi = Int(RSIIs.average.rounded())
+            var medianRssi: Int = 0
+            if let median = RSIIs.median() {
+                medianRssi = Int(median.rounded())
+            }
+
+            return ScanRealm(device: device, avargeRssi: averageRssi, medianRssi: medianRssi, startDate: startDate, endDate: endDate)
+        }
+        averaged.compactMap { $0 }.forEach { addDeviceToStorage(data: $0) }
     }
     
     private func updateCurrent(at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let latestDevices = grouped
             .map { group -> BTDevice? in
-                let sorted = group.value.sorted(by: { $0.date > $1.date })
-                var last = sorted.last
-                last?.date = date
-                return last
+                return group.value.sorted(by: { $0.date > $1.date }).first
             }
-            .compactMap{ $0 }
+            .compactMap { $0 }
             .map { [unowned self] device -> Scan in
                 let uuid = self.currentScan.value.first(where: { $0.deviceIdentifier == device.deviceIdentifier })?.id
                 return device.toScan(with: uuid)
@@ -107,12 +110,11 @@ final class ScannerStore {
         currentScan.accept(latestDevices)
     }
     
-    private func addDeviceToStorage(device: Scan) {
-        let storageData = ScanRealm(device: device)
+    private func addDeviceToStorage(data: ScanRealm) {
         do {
             let realm = try Realm()
             try realm.write {
-                realm.add(storageData, update: .all)
+                realm.add(data, update: .all)
             }
         } catch {
             log("Realm: Failed to write! \(error)")
@@ -141,5 +143,4 @@ extension ScannerStore {
             realm.deleteAll()
         }
     }
-
 }

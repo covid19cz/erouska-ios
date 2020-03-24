@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         let configuration = Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
 
             }
@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard: UIStoryboard
         #if !targetEnvironment(macCatalyst)
 
-        if Auth.auth().currentUser == nil || UserDefaults.standard.string(forKey: "BUID") == nil {
+        if Auth.auth().currentUser == nil || AppSettings.BUID == nil {
             try? Auth.auth().signOut()
             storyboard = UIStoryboard(name: "Signup", bundle: nil)
         } else {

@@ -53,24 +53,20 @@ final class CSVMaker: CSVMakering {
             return
         }
 
-        let scanObjects = realm.objects(ScanRealm.self)
-        for scan in scanObjects {
-            let signal = String(scan.rssi)
-
+        realm.objects(ScanRealm.self).forEach() { scan in
             try? csv.write(row: [
                 scan.buid,
-                String(scan.date.timeIntervalSince1970),
-                String(scan.date.timeIntervalSince1970),
-                signal,
-                signal
+                String(scan.startDate.timeIntervalSince1970),
+                String(scan.endDate.timeIntervalSince1970),
+                String(scan.avargeRssi),
+                String(scan.medianRssi)
             ])
         }
-
         csv.stream.close()
 
         let metadata = [
             "version": "3",
-            "buid": UserDefaults.standard.string(forKey: "BUID") ?? ""
+            "buid": AppSettings.BUID ?? ""
         ]
 
         callback(Result(fileURL, metadata), nil)
