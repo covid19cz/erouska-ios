@@ -13,12 +13,15 @@ class Button: UIButton {
     enum Style {
         case filled
         case clear
+        case disabled
 
         var backgroundColor: UIColor {
             switch self {
             case .filled:
                 return .systemBlue
             case .clear:
+                return .clear
+            case .disabled:
                 return .clear
             }
         }
@@ -29,6 +32,8 @@ class Button: UIButton {
                 return .white
             case .clear:
                 return .systemBlue
+            case .disabled:
+                return .systemGray
             }
         }
 
@@ -49,7 +54,23 @@ class Button: UIButton {
 
     var style: Style = .filled {
         didSet {
+            if !isEnabled, style != .disabled {
+                oldStyle = style
+                style = .disabled
+            }
             style.setup(with: self, borderColor: borderColor)
+        }
+    }
+
+    private var oldStyle: Style = .filled
+
+    override var isEnabled: Bool {
+        get {
+            super.isEnabled
+        }
+        set {
+            super.isEnabled = newValue
+            style = !newValue ? .disabled : oldStyle
         }
     }
 
@@ -57,7 +78,7 @@ class Button: UIButton {
         switch style {
         case .filled:
             return nil
-        case .clear:
+        case .clear, .disabled:
             if #available(iOS 13.0, *) {
                 return UIColor(named: "ButtonBorder")?.resolvedColor(with: traitCollection).withAlphaComponent(0.12) ?? UIColor.clear
             } else {

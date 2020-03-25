@@ -279,6 +279,7 @@
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
 				80ECB96524290DA900E57601 /* Collection.swift */,
+				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 				80B94556242B96560052CD9F /* NavigationController.swift */,
 			);
 			path = Others;
@@ -357,7 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				BD0191462424331900707341 /* Active.storyboard */,
-				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 				BD979AEA242565AF004001ED /* ActiveAppController.swift */,
 				80B94554242B7B460052CD9F /* ActiveAppViewModel.swift */,
 				80BF9C252424D55800150108 /* SendReportController.swift */,

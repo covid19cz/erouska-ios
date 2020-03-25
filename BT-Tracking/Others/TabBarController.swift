@@ -8,14 +8,13 @@
 
 import UIKit
 
-
 class TabBarController: UITabBarController {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return .all
         } else {
-            return .portraitUpsideDown
+            return .portrait
         }
     }
 

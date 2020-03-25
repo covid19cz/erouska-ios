@@ -14,7 +14,7 @@ class NavigationController: UINavigationController {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return .all
         } else {
-            return .portraitUpsideDown
+            return .portrait
         }
     }
 
