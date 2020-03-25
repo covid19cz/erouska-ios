@@ -19,6 +19,15 @@ struct AppSettings {
         }
     }
 
+    static var state: ActiveAppViewModel.State? {
+        get {
+            return ActiveAppViewModel.State(rawValue: UserDefaults.standard.string(forKey: "AppState") ?? "")
+        }
+        set {
+            UserDefaults.standard.setValue(newValue?.rawValue, forKey: "AppState")
+        }
+    }
+
     static var lastUploadDate: Date {
         get {
             let rawValue = UserDefaults.standard.double(forKey: "UploadDate")

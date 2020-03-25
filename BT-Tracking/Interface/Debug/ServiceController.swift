@@ -28,6 +28,10 @@ class ServiceController: UIViewController {
 
     // MARK: - Lifecycle
 
+    deinit {
+        scanner.remove(delegate: self)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -40,13 +44,6 @@ class ServiceController: UIViewController {
 
         textView.text = ""
 
-        if advertiser.isRunning != true {
-            advertiser.start()
-        }
-
-        if scanner.isRunning != true {
-            scanner.start()
-        }
         scanner.add(delegate: self)
     }
 
