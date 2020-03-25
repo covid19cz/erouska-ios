@@ -39,7 +39,7 @@ final class ScanRealm: Object {
     convenience init(device: BTDevice, avargeRssi: Int, medianRssi: Int, startDate: Date, endDate: Date) {
         self.init()
         
-        self.id = device.id.uuidString
+        self.id = UUID().uuidString
         self.bluetoothIdentifier = device.bluetoothIdentifier.uuidString
         self.deviceIdentifier = device.deviceIdentifier
         self.buid = device.backendIdentifier ?? ""
