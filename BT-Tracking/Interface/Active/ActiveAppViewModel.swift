@@ -81,6 +81,15 @@ final class ActiveAppViewModel {
             }
         }
 
+        var actionStyle: Button.Style {
+            switch self {
+            case .enabled:
+                return .clear
+            default:
+                return .filled
+            }
+        }
+
     }
 
     private(set) var state: State

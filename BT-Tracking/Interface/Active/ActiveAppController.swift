@@ -24,7 +24,7 @@ final class ActiveAppController: UIViewController {
     @IBOutlet weak var headLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var actionButton: Button!
 
     // MARK: -
 
@@ -132,6 +132,7 @@ private extension ActiveAppController {
         headLabel.textColor = viewModel.state.color
         titleLabel.text = viewModel.state.title
         textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber ?? "")
+        actionButton.style = viewModel.state.actionStyle
         actionButton.setTitle(viewModel.state.actionTitle, for: .normal)
     }
 
