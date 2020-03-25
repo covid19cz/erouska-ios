@@ -204,11 +204,17 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" textContentType="one-time-code"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-QV-15W">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-QV-15W">
                                                 <rect key="frame" x="0.0" y="281.33333333333337" width="339" height="30"/>
-                                                <state key="normal" title="Znovu odeslat SMS (30)">
-                                                    <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Znovu odeslat SMS">
+                                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="resendSmsCode" destination="q6P-fR-rVF" eventType="touchUpInside" id="UAq-ph-3T6"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDN-Uj-w2M" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="326.33333333333337" width="339" height="44"/>
@@ -286,6 +292,8 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                         <outlet property="activityView" destination="n1c-Vs-7uN" id="vzT-Gn-AU4"/>
                         <outlet property="scrollView" destination="QHa-3n-qmi" id="fmU-Zh-JJ5"/>
                         <outlet property="smsCodeTextField" destination="XPz-6e-tCh" id="XVx-D3-VAx"/>
+                        <outlet property="smsResendButton" destination="7Sv-QV-15W" id="h8F-cB-cRb"/>
+                        <outlet property="titleLabel" destination="EwR-Me-iUg" id="GYC-lK-RoV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9u-03-pOg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

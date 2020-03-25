@@ -15,14 +15,19 @@ import FirebaseFunctions
 
 class AccountActivationControler: UIViewController {
 
+    struct AuthData {
+        let verificationID: String
+        let phoneNumber: String
+    }
+
     enum PhoneValidator {
-        case prefix, number
+        case prefix, number, smsCode
 
         var charcterSet: CharacterSet {
             switch self {
             case .prefix:
                 return CharacterSet(charactersIn: "+0123456789")
-            case .number:
+            case .number, .smsCode:
                 return CharacterSet(charactersIn: "0123456789")
             }
         }
@@ -33,6 +38,8 @@ class AccountActivationControler: UIViewController {
                 return 2...5
             case .number:
                 return 9...10
+            case .smsCode:
+                return 6...6
             }
         }
 
@@ -97,6 +104,14 @@ class AccountActivationControler: UIViewController {
         phoneNumberTextField.becomeFirstResponder()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        guard let destination = segue.destination as? CompleteActivationController,
+            let authData = sender as? AuthData else { return }
+        destination.authData = authData
+    }
+
     // MARK: - Actions
 
     @IBAction func activateAcountAction(_ sender: Any) {
@@ -115,7 +130,8 @@ class AccountActivationControler: UIViewController {
         activityView.isHidden = false
         view.endEditing(true)
 
-        PhoneAuthProvider.provider().verifyPhoneNumber(phonePrefix.value + phoneNumber.value, uiDelegate: nil) { [weak self] verificationID, error in
+        let phone = phonePrefix.value + phoneNumber.value
+        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self] verificationID, error in
             guard let self = self else { return }
             self.activityView.isHidden = true
 
@@ -123,8 +139,7 @@ class AccountActivationControler: UIViewController {
                 self.show(error: error, title: "Chyba při aktivaci")
                 self.cleanup()
             } else if let verificationID = verificationID  {
-                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                self.performSegue(withIdentifier: "verification", sender: nil)
+                self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
             }
         }
     }
