@@ -204,20 +204,8 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" textContentType="one-time-code"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-QV-15W">
-                                                <rect key="frame" x="0.0" y="281.33333333333337" width="339" height="30"/>
-                                                <state key="normal" title="Znovu odeslat SMS">
-                                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <state key="disabled">
-                                                    <color key="titleColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="resendSmsCode" destination="q6P-fR-rVF" eventType="touchUpInside" id="UAq-ph-3T6"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDN-Uj-w2M" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="326.33333333333337" width="339" height="44"/>
+                                                <rect key="frame" x="0.0" y="281.33333333333337" width="339" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="qyb-VU-W0a"/>
                                                 </constraints>
@@ -228,6 +216,19 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                                 <connections>
                                                     <action selector="activateAcountAction:" destination="q6P-fR-rVF" eventType="touchUpInside" id="UYI-x1-KQV"/>
                                                     <action selector="activateAcountAction:" destination="BBC-aE-fuq" eventType="touchUpInside" id="q2E-LN-Sng"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-QV-15W">
+                                                <rect key="frame" x="0.0" y="340.33333333333337" width="339" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="Znovu odeslat SMS">
+                                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="resendSmsCode" destination="q6P-fR-rVF" eventType="touchUpInside" id="UAq-ph-3T6"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Os-sD-glj" userLabel="Big Space View">

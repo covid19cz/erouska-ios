@@ -94,6 +94,12 @@ class AccountActivationControler: UIViewController {
                 self.scrollView.contentInset.bottom = adjsutHomeIndicator
                 self.scrollView.scrollIndicatorInsets.bottom = adjsutHomeIndicator
                 self.view.layoutIfNeeded()
+
+                DispatchQueue.main.async {
+                    let height = (self.scrollView.frame.height - adjsutHomeIndicator)
+                    let contentSize = self.scrollView.contentSize
+                    self.scrollView.scrollRectToVisible(CGRect(x: 0, y: contentSize.height - height, width: contentSize.width, height: height), animated: true)
+                }
             }
         }).disposed(by: disposeBag)
     }
@@ -115,11 +121,17 @@ class AccountActivationControler: UIViewController {
     // MARK: - Actions
 
     @IBAction func activateAcountAction(_ sender: Any) {
+        guard !confirmedPrivacy else {
+            activate()
+            return
+        }
+
         showError(
             title: "Pokračováním v aktivaci souhlasíte, aby Ministerstvo zdravotnictví pracovalo s telefonním číslem a údaji o setkání s jinými uživateli aplikace podle podmínek zpracování za účelem epidemiologického šetření.",
             message: "Souhlas můžete  odvolat a pokud nesouhlasíte, nepokračujte v aktivaci.",
             okTitle: "Ano, souhlasím",
             okHandler: { [weak self] in
+                self?.confirmedPrivacy = true
                 self?.activate()
             },
             action: (title: "Ne, nesouhlasím", handler: nil)

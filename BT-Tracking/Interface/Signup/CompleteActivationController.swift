@@ -58,6 +58,12 @@ class CompleteActivationController: UIViewController {
                 self.scrollView.contentInset.bottom = adjsutHomeIndicator
                 self.scrollView.scrollIndicatorInsets.bottom = adjsutHomeIndicator
                 self.view.layoutIfNeeded()
+
+                DispatchQueue.main.async {
+                    let height = (self.scrollView.frame.height - adjsutHomeIndicator)
+                    let contentSize = self.scrollView.contentSize
+                    self.scrollView.scrollRectToVisible(CGRect(x: 0, y: contentSize.height - height, width: contentSize.width, height: height), animated: true)
+                }
             }
         }).disposed(by: disposeBag)
     }
@@ -71,11 +77,11 @@ class CompleteActivationController: UIViewController {
     // MARK: - Actions
 
     @IBAction private func activateAcountAction(_ sender: Any) {
+        guard let authData = authData else { return }
         activityView.isHidden = false
         view.endEditing(true)
-        
-        let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") ?? ""
-        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: smsCode.value)
+
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: authData.verificationID, verificationCode: smsCode.value)
 
         Auth.auth().signIn(with: credential) { [weak self] authResult, error in
             guard let self = self else { return }
@@ -84,7 +90,11 @@ class CompleteActivationController: UIViewController {
                 let error = rawError as NSError
                 self.activityView.isHidden = true
 
-                if error.code == AuthErrorCode.sessionExpired.rawValue {
+                if error.code == AuthErrorCode.invalidVerificationCode.rawValue {
+                    self.smsCodeTextField.text = ""
+                    self.showError(title: "Ověřovací kód není správně zadaný.", message: "")
+                } else if error.code == AuthErrorCode.sessionExpired.rawValue {
+                    self.smsCodeTextField.text = ""
                     self.showError(
                         title: "Vypršela platnost ověřovacího kódu",
                         message: "Nechte si odeslat nový ověřovací kód a zadejte ho do 3 minut.",
@@ -94,7 +104,6 @@ class CompleteActivationController: UIViewController {
                         },
                         action: (title: "Ne", handler: { [weak self] in
                             self?.smsCodeTextField.becomeFirstResponder()
-                            self?.smsResendButton.isEnabled = true
                         })
                     )
                 } else {
