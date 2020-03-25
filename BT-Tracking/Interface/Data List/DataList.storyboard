@@ -29,7 +29,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT4-6k-Vcq">
                                                     <rect key="frame" x="20" y="16" width="374" height="87"/>
-                                                    <string key="text">Následující data jsou údaje o styku s dalšími telefony. Neobsahují žádné polohové ani osobní údaje. Odeslat hygienikům je můžete pouze vy na jejich žádost:</string>
+                                                    <string key="text">Následující data jsou veškeré záznamy o měření signálu okolních telefonů s eRouškou. Neobsahují vaší polohu ani osobní údaje a odeslat hygienikům je můžete pouze vy.</string>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
