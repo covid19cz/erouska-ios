@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import CoreBluetooth
 
 final class ActiveAppController: UIViewController {
 
@@ -77,7 +78,11 @@ final class ActiveAppController: UIViewController {
     }
     
     private func checkForBluetooth() {
-        disableBluetoothView.isHidden = AppDelegate.delegate.advertiser.isRunning
+        if #available(iOS 13.0, *) {
+            disableBluetoothView.isHidden = AppDelegate.delegate.advertiser.authorization == .allowedAlways
+        } else {
+            disableBluetoothView.isHidden = CBPeripheralManager.authorizationStatus() == .authorized
+        }
     }
 
 }
