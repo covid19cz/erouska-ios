@@ -29,8 +29,6 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.largeTitleDisplayMode = .never
-
         setupTableView()
     }
 
@@ -66,6 +64,10 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     // MARK: - Actions
+
+    @IBAction func clearDataAction() {
+        showError(title: "TODO", message: "")
+    }
 
     @IBAction func sendReportAction() {
         let controller = UIAlertController(

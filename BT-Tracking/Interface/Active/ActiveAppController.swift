@@ -12,23 +12,31 @@ import CoreBluetooth
 
 final class ActiveAppController: UIViewController {
 
-    @IBOutlet private weak var shareButton: UIButton!
-    @IBOutlet private weak var disableBluetoothView: UIView!
+    private var viewModel = ActiveAppViewModel(bluetoothActive: true)
+    private var lastBluetoothState: Bool = true // true enabled
+
+    private let advertiser: BTAdvertising = AppDelegate.delegate.advertiser
+    private let scanner: BTScannering = AppDelegate.delegate.scanner
+
+    // MARK: - Outlets
+
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var headLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var actionButton: Button!
 
     // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if AppDelegate.delegate.scanner.isRunning != true {
-            AppDelegate.delegate.scanner.start()
-        }
+        _ = AppDelegate.delegate.scannerStore // start scanner store
 
-        if AppDelegate.delegate.advertiser.isRunning != true {
-            AppDelegate.delegate.advertiser.start()
-        }
+        checkForBluetooth()
 
-        _ = AppDelegate.delegate.scannerStore
+        updateScanner()
+        updateInterface()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -58,17 +66,26 @@ final class ActiveAppController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func shareAppAction() {
+    @IBAction private func shareAppAction() {
         let url = URL(string: "https://covid19cz.page.link/share")!
         let shareContent = [url]
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = shareButton
+        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         
         present(activityViewController, animated: true, completion: nil)
     }
 
-    @IBAction func changeScanningAction() {
-        showError(title: "TODO", message: "")
+    @IBAction private func changeScanningAction() {
+        switch viewModel.state {
+        case .enabled:
+            AppSettings.state = .paused
+        case .paused:
+            AppSettings.state = .enabled
+        case .disabled:
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            return
+        }
+        updateViewModel()
     }
 
     // MARK: -
@@ -76,13 +93,59 @@ final class ActiveAppController: UIViewController {
     @objc private func applicationDidBecomeActive() {
         checkForBluetooth()
     }
-    
-    private func checkForBluetooth() {
-        if #available(iOS 13.0, *) {
-            disableBluetoothView.isHidden = AppDelegate.delegate.advertiser.authorization == .allowedAlways
-        } else {
-            disableBluetoothView.isHidden = CBPeripheralManager.authorizationStatus() == .authorized
+
+}
+
+private extension ActiveAppController {
+
+    func updateViewModel() {
+        viewModel = ActiveAppViewModel(bluetoothActive: lastBluetoothState)
+
+        updateScanner()
+        updateInterface()
+    }
+
+    func updateScanner() {
+        switch viewModel.state {
+        case .enabled:
+            if advertiser.isRunning != true {
+                advertiser.start()
+            }
+
+            if scanner.isRunning != true {
+                scanner.start()
+            }
+        case .disabled, .paused:
+            if advertiser.isRunning == true {
+                advertiser.stop()
+            }
+
+            if scanner.isRunning == true {
+                scanner.stop()
+            }
         }
+    }
+
+    func updateInterface() {
+        imageView.image = viewModel.state.image
+        headLabel.text = viewModel.state.head
+        headLabel.textColor = viewModel.state.color
+        titleLabel.text = viewModel.state.title
+        textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber ?? "")
+        actionButton.style = viewModel.state.actionStyle
+        actionButton.setTitle(viewModel.state.actionTitle, for: .normal)
+    }
+
+    func checkForBluetooth() {
+        let state: Bool
+        if #available(iOS 13.0, *) {
+            state = AppDelegate.delegate.advertiser.authorization == .allowedAlways
+        } else {
+            state = CBPeripheralManager.authorizationStatus() == .authorized
+        }
+        guard lastBluetoothState != state else { return }
+        lastBluetoothState = state
+        updateViewModel()
     }
 
 }

@@ -26,7 +26,6 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
 
         navigationItem.largeTitleDisplayMode = .never
 
-        setup()
         setupTableView()
     }
 
@@ -56,16 +55,6 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
 
 
     // MARK: - TableView
-
-    private func setup() {
-        if AppDelegate.delegate.advertiser.isRunning != true {
-            AppDelegate.delegate.advertiser.start()
-        }
-
-        if AppDelegate.delegate.scanner.isRunning != true {
-            AppDelegate.delegate.scanner.start()
-        }
-    }
     
     private func setupTableView() {
         tableView.tableFooterView = UIView()
