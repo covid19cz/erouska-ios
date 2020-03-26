@@ -10,7 +10,7 @@ import UIKit
 
 class DeleteDataVC: UIViewController {
 
-    private let viewModel = DeleteDataVM(scannerStore: AppDelegate.delegate.scannerStore)
+    private let viewModel = DeleteDataVM(scannerStore: AppDelegate.shared.scannerStore)
 
     // MARK: - Life cycle
     

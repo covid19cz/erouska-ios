@@ -11,7 +11,6 @@ import RxSwift
 import RxRelay
 import RxKeyboard
 import FirebaseAuth
-import FirebaseFunctions
 
 class AccountActivationControler: UIViewController {
 
@@ -61,8 +60,6 @@ class AccountActivationControler: UIViewController {
     }
     private var disposeBag = DisposeBag()
     private var confirmedPrivacy: Bool = false
-
-    private lazy var functions = Functions.functions(region:"europe-west2")
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var phonePrefixTextField: UITextField!

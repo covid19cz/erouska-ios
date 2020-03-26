@@ -10,6 +10,7 @@ import UIKit
 #if !targetEnvironment(macCatalyst)
 import Firebase
 import FirebaseAuth
+import FirebaseFunctions
 #endif
 import RealmSwift
 
@@ -28,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Globals
 
-    static var delegate: AppDelegate {
+    static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
@@ -36,10 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) lazy var scanner: BTScannering = BTScanner()
     lazy var scannerStore: ScannerStore = {
         let store = ScannerStore()
-        AppDelegate.delegate.scanner.add(delegate: store)
+        AppDelegate.shared.scanner.add(delegate: store)
         return store
     }()
     private(set) var deviceToken: Data?
+
+    #if !targetEnvironment(macCatalyst)
+    private(set) lazy var functions = Functions.functions(region:"europe-west2")
+    #endif
 
     private func generalSetup() {
         let generalCategory = UNNotificationCategory(
@@ -173,8 +178,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         Auth.auth().setAPNSToken(deviceToken, type: .prod)
         #endif
-
         self.deviceToken = deviceToken
+
+        // update token on server
+        guard let buid = AppSettings.BUID else { return }
+        let data: [String: Any] = [
+            "buid": buid,
+            "pushRegistrationToken": deviceToken.hexEncodedString()
+        ]
+
+        functions.httpsCallable("changePushToken").call(data) { result, error in
+            if let error = error {
+                log("AppDelegate: Failed to change push token \(error.localizedDescription)")
+            }
+        }
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

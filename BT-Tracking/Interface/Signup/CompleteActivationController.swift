@@ -11,7 +11,6 @@ import RxSwift
 import RxRelay
 import RxKeyboard
 import FirebaseAuth
-import FirebaseFunctions
 import DeviceKit
 
 class CompleteActivationController: UIViewController {
@@ -25,8 +24,6 @@ class CompleteActivationController: UIViewController {
         }
     }
     private var disposeBag = DisposeBag()
-
-    private lazy var functions = Functions.functions(region:"europe-west2")
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -119,13 +116,13 @@ class CompleteActivationController: UIViewController {
                     "locale": "\(Locale.current.languageCode ?? "cs")_\(Locale.current.regionCode ?? "CZ")",
                 ]
 
-                if let token = AppDelegate.delegate.deviceToken {
+                if let token = AppDelegate.shared.deviceToken {
                     data["pushRegistrationToken"] = token.hexEncodedString()
                 } else {
                     data["pushRegistrationToken"] = "hovno"
                 }
 
-                self.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
+                AppDelegate.shared.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
                     guard let self = self else { return }
                     self.activityView.isHidden = true
 
@@ -138,9 +135,9 @@ class CompleteActivationController: UIViewController {
                             AppSettings.BUID = BUID
 
                             let storyboard = UIStoryboard(name: "Active", bundle: nil)
-                            AppDelegate.delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+                            AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
                         } else {
-                            self.show(error: NSError(domain: FunctionsErrorDomain, code: 500, userInfo: nil), title: "Chyba při aktivaci")
+                            self.show(error: NSError(domain: AuthErrorDomain, code: 500, userInfo: nil), title: "Chyba při aktivaci")
                             self.cleanup()
                         }
                     }
