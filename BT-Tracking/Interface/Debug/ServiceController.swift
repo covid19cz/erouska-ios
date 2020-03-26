@@ -17,8 +17,8 @@ class ServiceController: UIViewController {
     
     // MARK: - Properties
 
-    private var advertiser: BTAdvertising = AppDelegate.delegate.advertiser
-    private var scanner: BTScannering = AppDelegate.delegate.scanner
+    private var advertiser: BTAdvertising = AppDelegate.shared.advertiser
+    private var scanner: BTScannering = AppDelegate.shared.scanner
 
     private var logText: String = "" {
         didSet {

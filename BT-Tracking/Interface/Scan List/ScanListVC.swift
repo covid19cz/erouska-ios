@@ -16,7 +16,7 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
     @IBOutlet private weak var tableView: UITableView!
 
     private var dataSource: RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>!
-    private let viewModel = ScanListVM(scannerStore: AppDelegate.delegate.scannerStore)
+    private let viewModel = ScanListVM(scannerStore: AppDelegate.shared.scannerStore)
     private let bag = DisposeBag()
 
     // MARK: - Lifecycle
