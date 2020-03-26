@@ -169,7 +169,7 @@ extension ScannerStore: BTScannerDelegate {
 
 extension ScannerStore {
     
-    func clear() {
+    func deleteAllData() {
         do {
             let realm = try Realm()
             try realm.write {
