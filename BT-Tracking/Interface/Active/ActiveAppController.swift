@@ -49,9 +49,7 @@ final class ActiveAppController: UIViewController {
             object: nil
         )
 
-        #if !targetEnvironment(simulator)
         checkForBluetooth()
-        #endif
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -127,6 +125,8 @@ private extension ActiveAppController {
     }
 
     func updateInterface() {
+        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
+
         imageView.image = viewModel.state.image
         headLabel.text = viewModel.state.head
         headLabel.textColor = viewModel.state.color
