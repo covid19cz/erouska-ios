@@ -346,9 +346,9 @@
                                 <segue destination="COq-qZ-W3U" kind="presentation" modalPresentationStyle="fullScreen" id="HhG-rR-RDQ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Hyd-G1-y0w">
+                        <barButtonItem key="rightBarButtonItem" title="Sdílet aplikaci" id="Pfj-dc-ty6">
                             <connections>
-                                <action selector="shareAppAction" destination="SLc-31-c7B" id="Ab7-Q1-sBh"/>
+                                <action selector="shareAppAction" destination="SLc-31-c7B" id="7Q8-CQ-HVr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
