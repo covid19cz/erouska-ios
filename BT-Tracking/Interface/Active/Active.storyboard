@@ -32,7 +32,7 @@
         <scene sceneID="cWO-yu-PwA">
             <objects>
                 <navigationController id="8pR-j1-IZY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="eRouška" image="wifi" catalog="system" id="VoJ-0E-pnm"/>
+                    <tabBarItem key="tabBarItem" title="eRouška" id="VoJ-0E-pnm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9Gy-y2-tgV">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -79,7 +79,7 @@
         <scene sceneID="n01-Tj-cda">
             <objects>
                 <navigationController id="v9g-l9-1nr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kontakty" image="phone" catalog="system" id="UZH-Dl-Ge4"/>
+                    <tabBarItem key="tabBarItem" title="Kontakty" id="UZH-Dl-Ge4"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iGG-Be-Xf5">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -367,7 +367,5 @@
     </scenes>
     <resources>
         <image name="ScanActiveIcon" width="130" height="130"/>
-        <image name="phone" catalog="system" width="128" height="115"/>
-        <image name="wifi" catalog="system" width="128" height="92"/>
     </resources>
 </document>

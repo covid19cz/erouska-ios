@@ -11,6 +11,16 @@ import SafariServices
 
 class ContactsController: UIViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        if #available(iOS 13, *) {
+            navigationController?.tabBarItem.image = UIImage(systemName: "dphone")
+        } else {
+            navigationController?.tabBarItem.image = UIImage(named: "phone")?.resize(toWidth: 26)
+        }
+    }
+
     @IBAction private func importantContactsAction() {
         openURL(URL: URL(string: "https://koronavirus.mzcr.cz/dulezite-kontakty-odkazy/")!)
     }

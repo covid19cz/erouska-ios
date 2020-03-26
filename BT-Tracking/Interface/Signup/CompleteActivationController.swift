@@ -190,7 +190,7 @@ class CompleteActivationController: UIViewController {
     private func updateResendTitle() {
         guard !smsResendButton.isEnabled else { return }
         UIView.performWithoutAnimation {
-            self.smsResendButton.setTitle("Znovu odeslat SMS \(Int(resendSeconds))", for: .disabled)
+            self.smsResendButton.setTitle("Znovu odeslat SMS (\(Int(resendSeconds)))", for: .disabled)
         }
     }
 

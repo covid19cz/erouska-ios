@@ -12,7 +12,7 @@
         <scene sceneID="waf-un-FBq">
             <objects>
                 <navigationController storyboardIdentifier="HelpNavigation" id="6bN-Zl-0VE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Nápověda" image="questionmark.circle" catalog="system" id="lZM-Dl-kdl"/>
+                    <tabBarItem key="tabBarItem" title="Nápověda" id="lZM-Dl-kdl"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Ezo-1a-DRH">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -29,7 +29,7 @@
         <!--Jak to funguje-->
         <scene sceneID="y9a-NQ-Xyi">
             <objects>
-                <viewController storyboardIdentifier="Help" id="oH0-Ce-HUb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Help" id="oH0-Ce-HUb" customClass="HelpController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xog-Dv-zXk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -425,7 +425,4 @@
             <point key="canvasLocation" x="1924" y="565"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
-    </resources>
 </document>

@@ -148,7 +148,7 @@
         <scene sceneID="Tfn-xI-ecm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dcd-UM-9Nt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Moje Data" image="doc.plaintext" catalog="system" id="02c-Vw-4z2"/>
+                    <tabBarItem key="tabBarItem" title="Moje Data" id="02c-Vw-4z2"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qag-Ae-DEK">
@@ -287,6 +287,5 @@ Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech os
     </scenes>
     <resources>
         <image name="ScanActiveIcon" width="130" height="130"/>
-        <image name="doc.plaintext" catalog="system" width="115" height="128"/>
     </resources>
 </document>
