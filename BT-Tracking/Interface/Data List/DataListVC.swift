@@ -71,10 +71,6 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     // MARK: - Actions
 
-    @IBAction func clearDataAction() {
-        showError(title: "TODO", message: "")
-    }
-
     @IBAction func sendReportAction() {
         let controller = UIAlertController(
             title: "Byli jste požádáni o odeslání seznamu telefonů, se kterými jste se setkali?",
