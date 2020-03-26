@@ -189,7 +189,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         functions.httpsCallable("changePushToken").call(data) { result, error in
             if let error = error {
-                log("AppDelegate: Filed to change push token \(error.localizedDescription)")
+                log("AppDelegate: Failed to change push token \(error.localizedDescription)")
             }
         }
     }
