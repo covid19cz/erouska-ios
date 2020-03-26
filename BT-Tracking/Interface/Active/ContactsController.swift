@@ -15,7 +15,7 @@ class ContactsController: UIViewController {
         super.viewDidLoad()
 
         if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "dphone")
+            navigationController?.tabBarItem.image = UIImage(systemName: "phone")
         } else {
             navigationController?.tabBarItem.image = UIImage(named: "phone")?.resize(toWidth: 26)
         }
