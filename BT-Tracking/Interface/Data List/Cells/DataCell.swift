@@ -14,10 +14,12 @@ final class DataCell: UITableViewCell {
 
     @IBOutlet private weak var buidLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var RSIILabel: UILabel!
 
     func configure(for scan: Scan) {
         buidLabel.text = scan.buid
         dateLabel.text = Self.formatter.string(from: scan.date)
+        RSIILabel.text = String(scan.rssi) + " dB"
     }
 
     private static var formatter: DateFormatter = {
