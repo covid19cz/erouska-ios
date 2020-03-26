@@ -71,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
 
         Realm.Configuration.defaultConfiguration = configuration
+        scannerStore.deleteOldRecordsIfNeeded()
     }
 
     private func setupInterface() {
@@ -117,6 +118,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             backgroundTask = .invalid
         }
         inBackgroundStage = false
+        
+        scannerStore.deleteOldRecordsIfNeeded()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

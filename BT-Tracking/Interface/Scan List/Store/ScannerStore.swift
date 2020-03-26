@@ -14,6 +14,9 @@ import RealmSwift
 
 private let scanningPeriod = 60
 private let scanningDelay = 0
+private let lastPurgeDateKey = "lastDataPurgeDate"
+private let dataPurgeCheckInterval: TimeInterval = 1 * 86400 // 1 day   ... for testing set to 60 seconds for example
+private let dataPurgeInterval: TimeInterval = 14 * 86400 // 14 days   ... for testing se to 300 seconds for example and see data older then 5 minutes being deleted
 
 final class ScannerStore {
     
@@ -71,6 +74,7 @@ final class ScannerStore {
                 self.bind(newPeriod: self.currentPeriod, endsAt: Date() + Double(scanningPeriod))
                 self.process(self.devices, at: endDate)
                 self.devices.removeAll()
+                self.deleteOldRecordsIfNeeded()
             })
             .disposed(by: bag)
     }
@@ -121,6 +125,35 @@ final class ScannerStore {
         }
     }
 
+    func deleteOldRecordsIfNeeded() {
+        guard let lastPurgeDate = UserDefaults.standard.object(forKey: lastPurgeDateKey) as? Date else {
+            storeLastPurgeDate()
+            return
+        }
+        if lastPurgeDate + dataPurgeCheckInterval > Date() {
+            return
+        }
+        deleteOldRecords()
+    }
+    
+    private func deleteOldRecords() {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                let cutOffDate = NSDate().addingTimeInterval(-dataPurgeInterval)
+                let predicate = NSPredicate(format: "startDate < %@", cutOffDate)
+                let oldObjects = realm.objects(ScanRealm.self).filter(predicate)
+                realm.delete(oldObjects)
+                storeLastPurgeDate()
+            }
+        } catch {
+            log("Realm: Failed to delete! \(error)")
+        }
+    }
+    
+    private func storeLastPurgeDate() {
+        UserDefaults.standard.set(Date(), forKey: lastPurgeDateKey)
+    }
 }
 
 extension ScannerStore: BTScannerDelegate {
@@ -132,15 +165,18 @@ extension ScannerStore: BTScannerDelegate {
     func didUpdate(device: BTDevice) {
         didUpdateSubject.accept(device)
     }
-
 }
 
 extension ScannerStore {
     
     func clear() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch {
+            log("Realm: Failed to delete! \(error)")
         }
     }
 }
