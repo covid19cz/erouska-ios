@@ -12,11 +12,11 @@ import RxCocoa
 import RxRealm
 import RealmSwift
 
-private let scanningPeriod = 15
+private let scanningPeriod = 60
 private let scanningDelay = 0
 private let lastPurgeDateKey = "lastDataPurgeDate"
 private let dataPurgeCheckInterval: TimeInterval = 1 * 86400 // 1 day   ... for testing set to 60 seconds for example
-private let dataPurgeInterval: TimeInterval = 14 * 86400 // 14 days   ... for testing se tot 300 seconds for example and see data being deleted older then 5 minutes
+private let dataPurgeInterval: TimeInterval = 14 * 86400 // 14 days   ... for testing se to 300 seconds for example and see data older then 5 minutes being deleted
 
 final class ScannerStore {
     
@@ -125,7 +125,7 @@ final class ScannerStore {
         }
     }
 
-    private func deleteOldRecordsIfNeeded() {
+    func deleteOldRecordsIfNeeded() {
         guard let lastPurgeDate = UserDefaults.standard.object(forKey: lastPurgeDateKey) as? Date else {
             storeLastPurgeDate()
             return
