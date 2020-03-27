@@ -11,8 +11,12 @@ import CoreBluetooth
 
 protocol BTScannering: class {
 
-    var deviceUpdateLimit: TimeInterval { get set } // default: 3, in seconds
-    var filterRSSIPower: Bool { get set } //  default: -90...0
+    /// default: 3, in seconds
+    var deviceUpdateLimit: TimeInterval { get set }
+    /// default: -90...0, in RSSI
+    var filterRSSIPower: Bool { get set }
+    /// default: 60, in seconds
+    var fetchBUIDRetry: TimeInterval { get set }
 
     func add(delegate: BTScannerDelegate)
     func remove(delegate: BTScannerDelegate)
@@ -35,6 +39,9 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     private var discoveredDevices: [BTDevice] = []
     private var discoveredData: [UUID: Data] = [:]
     private var discoveredRefresh: [UUID: TimeInterval] = [:]
+
+    private var retryBUID: [UUID: TimeInterval] = [:]
+
 
     private let acceptUUIDs = [BT.broadcastCharacteristic.cbUUID, BT.transferCharacteristic.cbUUID]
 
@@ -62,6 +69,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
     var filterRSSIPower: Bool = false
     private let allowedRSSIRange: ClosedRange<Int> = -90...0
+
+    var fetchBUIDRetry: TimeInterval = 60
 
     var isRunning: Bool {
         return centralManager.isScanning
@@ -110,6 +119,10 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         return timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate
     }
 
+    func checkDeviceType(peripheral: CBPeripheral, advertisementData: [String : Any]) -> BTDevice.Platform {
+        return advertisementData["kCBAdvDataServiceData"] == nil ? .iOS : .android
+    }
+
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard discoveredPeripherals[peripheral.identifier] == nil else {
             // already registred
@@ -120,33 +133,50 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
             discoveredRefresh[peripheral.identifier] = Date.timeIntervalSinceReferenceDate
 
             // update device RSII or name
-            if let index = discoveredDevices.firstIndex(where: { $0.bluetoothIdentifier == peripheral.identifier }) {
-                var device = discoveredDevices[index]
-                device.rssi = RSSI.intValue
-                device.name = peripheral.name ?? device.name
-                device.date = Date()
-                discoveredDevices[index] = device
+            guard let index = discoveredDevices.firstIndex(where: { $0.bluetoothIdentifier == peripheral.identifier }) else { return }
 
-                invoke(invocation: { $0.didUpdate(device: device) })
+            var device = discoveredDevices[index]
+            device.rssi = RSSI.intValue
+            device.name = peripheral.name ?? device.name
+            device.date = Date()
+
+            // try to get again BUID
+            if let retry = retryBUID[peripheral.identifier], retry + 60 < Date().timeIntervalSince1970 {
+                log("BTScanner: Trying get again BUID for: \(peripheral.identifier.uuidString) with data: \(advertisementData)")
+                switch device.platform {
+                case .android:
+                    if let serviceData = advertisementData["kCBAdvDataServiceData"] as? [CBUUID: Any],
+                        let rawBUID = serviceData.first?.value as? Data {
+                        let raw = rawBUID.hexEncodedString()
+                        device.backendIdentifier = raw
+                    }
+                case .iOS:
+                    centralManager.connect(peripheral, options: nil)
+                }
+                retryBUID.removeValue(forKey: peripheral.identifier)
             }
-            return
-        }
 
-        func logDiscovered() {
-            log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+            discoveredDevices[index] = device
+
+            invoke(invocation: { $0.didUpdate(device: device) })
+
+            return
         }
 
         if filterRSSIPower {
             guard allowedRSSIRange.contains(RSSI.intValue) else {
-                logDiscovered()
+                log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
                 log("BTScanner: RSSI range \(RSSI.intValue)")
                 return
             }
         }
-        let device: BTDevice
 
-        // get BUID for android if not, we try to look as andorid
-        if advertisementData["kCBAdvDataServiceData"] != nil {
+        let device: BTDevice
+        let platform = checkDeviceType(peripheral: peripheral, advertisementData: advertisementData)
+
+        switch platform {
+        case .android:
+            // get BUID for android if not, we try to look as andorid
             // probably android
             var BUID: String?
             var replaceDevice: BTDevice?
@@ -176,7 +206,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 id: replaceDevice?.id ?? UUID(),
                 bluetoothIdentifier: peripheral.identifier,
                 backendIdentifier: BUID,
-                platform: .android,
+                platform: platform,
                 date: Date(),
                 name: peripheral.name ?? replaceDevice?.name,
                 rssi: RSSI.intValue
@@ -187,13 +217,13 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 invoke() { $0.didUpdate(device: device) }
                 return
             }
-        } else {
+        case .iOS:
             // probably iOS
             device = BTDevice(
                 id: UUID(),
                 bluetoothIdentifier: peripheral.identifier,
                 backendIdentifier: nil,
-                platform: .iOS,
+                platform: platform,
                 date: Date(),
                 name: peripheral.name,
                 rssi: RSSI.intValue
@@ -201,7 +231,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
             discoveredData[peripheral.identifier] = Data()
         }
-        logDiscovered()
+
+        log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
         discoveredPeripherals[peripheral.identifier] = peripheral
 
         log("BTScanner: Found \(device.platform) device \(device)")
@@ -211,6 +242,10 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         if device.platform == .iOS, device.backendIdentifier == nil {
             log("BTScanner: Connecting to peripheral \(peripheral)")
             centralManager.connect(peripheral, options: nil)
+        } else if device.platform == .android, device.backendIdentifier == nil {
+            // try retry for android device
+            log("BTScanner: Retry to get BUID for android peripheral \(peripheral)")
+            retryBUID[peripheral.identifier] = Date().timeIntervalSince1970
         }
     }
 
@@ -250,7 +285,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         // Discover the characteristic we want...
         // Loop through the newly filled peripheral.services array, just in case there's more than one.
         guard let services = peripheral.services, !services.isEmpty else {
-            log("BTScanner: No services to discover")
+            retryBUID[peripheral.identifier] = Date().timeIntervalSince1970
+            log("BTScanner: No services to discover, will try retry in \(fetchBUIDRetry)")
             return
         }
 
