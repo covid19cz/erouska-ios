@@ -146,7 +146,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         let device: BTDevice
 
         // get BUID for android if not, we try to look as andorid
-        if peripheral.name == nil || advertisementData["kCBAdvDataServiceData"] != nil {
+        if advertisementData["kCBAdvDataServiceData"] != nil {
             // probably android
             var BUID: String?
             var replaceDevice: BTDevice?
