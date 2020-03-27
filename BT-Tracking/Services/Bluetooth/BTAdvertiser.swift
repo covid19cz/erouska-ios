@@ -115,6 +115,11 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         peripheralManager.add(transferService)
     }
 
+    private func setupAppleService() {
+        let transferService = CBMutableService(type: BT.appleService.cbUUID, primary: false)
+        peripheralManager.add(transferService)
+    }
+
     // MARK: CBPeripheralManagerDelegate
 
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
@@ -154,6 +159,10 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
     func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
         log("BTAdvertiser: didAddService: \(service), error: \(error?.localizedDescription ?? "none")")
+
+        if service.isPrimary == true {
+            setupAppleService()
+        }
     }
 
 

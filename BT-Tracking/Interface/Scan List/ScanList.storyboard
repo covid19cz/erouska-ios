@@ -192,7 +192,7 @@
         <scene sceneID="ehe-sy-MJ1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PAK-Zz-ZV9" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Scanner" image="wifi" catalog="system" id="6DT-HD-lpa"/>
+                    <tabBarItem key="tabBarItem" title="Scanner" id="6DT-HD-lpa"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="waq-tk-pgI">
@@ -209,7 +209,4 @@
             <point key="canvasLocation" x="-10.144927536231885" y="139.95535714285714"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="wifi" catalog="system" width="128" height="92"/>
-    </resources>
 </document>

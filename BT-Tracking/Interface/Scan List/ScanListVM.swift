@@ -54,7 +54,7 @@ final class ScanListVM {
     // MARK: - Clear stored records
     
     func clear() {
-        scannerStore.clear()
+        scannerStore.deleteAllData()
     }
 }
 

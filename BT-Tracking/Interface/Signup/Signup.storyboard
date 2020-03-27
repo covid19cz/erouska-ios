@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="kfk-wA-RM9" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -448,7 +448,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
                                                             <constraint firstAttribute="height" constant="44" id="9bG-7B-cj9"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done" textContentType="tel"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -548,7 +548,7 @@ Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechn
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="utZ-G0-Rhr"/>
+        <segue reference="S39-Cf-beJ"/>
         <segue reference="xKm-MN-ToF"/>
     </inferredMetricsTieBreakers>
     <resources>

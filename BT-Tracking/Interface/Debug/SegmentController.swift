@@ -23,6 +23,12 @@ class SegmentController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if #available(iOS 13, *) {
+            navigationController?.tabBarItem.image = UIImage(systemName: "doc.plaintext")
+        } else {
+            navigationController?.tabBarItem.image = UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
+        }
+        
         navigationItem.largeTitleDisplayMode = .never
     }
 

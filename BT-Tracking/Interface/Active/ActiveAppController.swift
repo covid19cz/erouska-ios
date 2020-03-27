@@ -15,8 +15,8 @@ final class ActiveAppController: UIViewController {
     private var viewModel = ActiveAppViewModel(bluetoothActive: true)
     private var lastBluetoothState: Bool = true // true enabled
 
-    private let advertiser: BTAdvertising = AppDelegate.delegate.advertiser
-    private let scanner: BTScannering = AppDelegate.delegate.scanner
+    private let advertiser: BTAdvertising = AppDelegate.shared.advertiser
+    private let scanner: BTScannering = AppDelegate.shared.scanner
 
     // MARK: - Outlets
 
@@ -31,7 +31,7 @@ final class ActiveAppController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _ = AppDelegate.delegate.scannerStore // start scanner store
+        _ = AppDelegate.shared.scannerStore // start scanner store
 
         checkForBluetooth()
 
@@ -49,9 +49,7 @@ final class ActiveAppController: UIViewController {
             object: nil
         )
 
-        #if !targetEnvironment(simulator)
         checkForBluetooth()
-        #endif
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -127,6 +125,8 @@ private extension ActiveAppController {
     }
 
     func updateInterface() {
+        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
+
         imageView.image = viewModel.state.image
         headLabel.text = viewModel.state.head
         headLabel.textColor = viewModel.state.color
@@ -139,7 +139,7 @@ private extension ActiveAppController {
     func checkForBluetooth() {
         let state: Bool
         if #available(iOS 13.0, *) {
-            state = AppDelegate.delegate.advertiser.authorization == .allowedAlways
+            state = AppDelegate.shared.advertiser.authorization == .allowedAlways
         } else {
             state = CBPeripheralManager.authorizationStatus() == .authorized
         }

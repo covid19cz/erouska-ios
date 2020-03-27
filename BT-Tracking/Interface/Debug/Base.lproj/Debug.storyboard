@@ -12,7 +12,7 @@
         <scene sceneID="HqD-uC-ArJ">
             <objects>
                 <navigationController id="7gO-HW-zf0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Debug" image="function" catalog="system" id="7ff-dh-s2J"/>
+                    <tabBarItem key="tabBarItem" title="Debug" id="7ff-dh-s2J"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p92-rc-GMb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -220,7 +220,4 @@
             <point key="canvasLocation" x="-941" y="-469"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="function" catalog="system" width="128" height="70"/>
-    </resources>
 </document>
