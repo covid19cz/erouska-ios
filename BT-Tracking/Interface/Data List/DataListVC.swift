@@ -48,8 +48,9 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
             let cell: UITableViewCell?
             switch row {
-            case .header:
-                let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
+            case .header(let scansCount):
+                let headerCell = tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath) as? DataHeaderCell
+                headerCell?.configure(with: scansCount)
                 cell = headerCell
             case .data(let scan):
                 let scanCell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
@@ -87,6 +88,17 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             )
         }))
         controller.preferredAction = controller.actions.first
+        present(controller, animated: true, completion: nil)
+    }
+
+    @IBAction func infoButtonAction() {
+        let controller = UIAlertController(
+            title: "Jedná se veškeré záznamy o měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
+            message: nil,
+            preferredStyle: .alert
+        )
+        controller.addAction(UIAlertAction(title: "Zavřít", style: .default, handler: nil))
+
         present(controller, animated: true, completion: nil)
     }
 
