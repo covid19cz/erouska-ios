@@ -6,11 +6,10 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import SafariServices
+import UIKit
 
 final class ContactsController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,5 +43,4 @@ final class ContactsController: UIViewController {
         let controller = SFSafariViewController(url: URL)
         present(controller, animated: true, completion: nil)
     }
-
 }
