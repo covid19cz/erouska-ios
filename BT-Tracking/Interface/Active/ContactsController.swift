@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class ContactsController: UIViewController {
+final class ContactsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
