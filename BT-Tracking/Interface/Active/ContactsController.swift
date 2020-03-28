@@ -26,7 +26,7 @@ class ContactsController: UIViewController {
     }
 
     @IBAction private func faqAction() {
-        openURL(URL: URL(string: "https://koronavirus.mzcr.cz/otazky-odpovedi/")!)
+        openURL(URL: URL(string: "https://koronavirus.mzcr.cz/otazky-a-odpovedi/")!)
     }
 
     @IBAction private func call1212Action() {
