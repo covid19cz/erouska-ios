@@ -1,5 +1,5 @@
 //
-//  SegmentController.swift
+//  LogSegmentController.swift
 //  BT-Tracking
 //
 //  Created by Lukáš Foldýna on 16/03/2020.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class SegmentController: UIViewController {
+class LogSegmentController: UIViewController {
 
     @IBOutlet private weak var segmentControl: UISegmentedControl!
 
     @IBOutlet private weak var leftContainerView: UIView!
     @IBOutlet private weak var rightContainerView: UIView!
 
-    private weak var leftController: ServiceController!
-    private weak var rightController: FileController!
+    private weak var leftController: LogController!
+    private weak var rightController: FileLogController!
 
     // MARK: - Lifecycle
 
@@ -35,9 +35,9 @@ class SegmentController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 
-        if let controller = segue.destination as? ServiceController {
+        if let controller = segue.destination as? LogController {
             leftController = controller
-        } else if let controller = segue.destination as? FileController {
+        } else if let controller = segue.destination as? FileLogController {
             rightController = controller
         }
     }

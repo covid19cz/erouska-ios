@@ -25,9 +25,9 @@
 		8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */; };
 		8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CF241FE706008907B8 /* BTScanner.swift */; };
 		8054C0D2241FE720008907B8 /* BT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D1241FE720008907B8 /* BT.swift */; };
-		8054C0D624200BEC008907B8 /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
-		8054C0D824200E7C008907B8 /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileController.swift */; };
-		8054C0DA24200E91008907B8 /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* ServiceController.swift */; };
+		8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* LogSegmentController.swift */; };
+		8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileLogController.swift */; };
+		8054C0DA24200E91008907B8 /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* LogController.swift */; };
 		8054C0DD2420AF63008907B8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0DC2420AF63008907B8 /* App.swift */; };
 		8054C0E12420EEFF008907B8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
 		8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4649848424201E4600A858A9 /* FileLogger.swift */; };
@@ -43,12 +43,12 @@
 		80AD970D2429318B00AEA661 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
 		80B94555242B7B460052CD9F /* ActiveAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppViewModel.swift */; };
 		80B94557242B96560052CD9F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
-		80BB474924212A3C00F552FC /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
+		80BB474924212A3C00F552FC /* LogSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* LogSegmentController.swift */; };
 		80BB474A24212A3C00F552FC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
 		80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */; };
 		80BB474C24212A3C00F552FC /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4649848424201E4600A858A9 /* FileLogger.swift */; };
-		80BB474D24212A3C00F552FC /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* ServiceController.swift */; };
-		80BB474E24212A3C00F552FC /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileController.swift */; };
+		80BB474D24212A3C00F552FC /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* LogController.swift */; };
+		80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileLogController.swift */; };
 		80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		80BB475024212A3C00F552FC /* BTScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CF241FE706008907B8 /* BTScanner.swift */; };
 		80BB475124212A3C00F552FC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0DC2420AF63008907B8 /* App.swift */; };
@@ -102,9 +102,9 @@
 		8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTAdvertiser.swift; sourceTree = "<group>"; };
 		8054C0CF241FE706008907B8 /* BTScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTScanner.swift; sourceTree = "<group>"; };
 		8054C0D1241FE720008907B8 /* BT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BT.swift; sourceTree = "<group>"; };
-		8054C0D524200BEC008907B8 /* SegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentController.swift; sourceTree = "<group>"; };
-		8054C0D724200E7C008907B8 /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
-		8054C0D924200E91008907B8 /* ServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceController.swift; sourceTree = "<group>"; };
+		8054C0D524200BEC008907B8 /* LogSegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSegmentController.swift; sourceTree = "<group>"; };
+		8054C0D724200E7C008907B8 /* FileLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogController.swift; sourceTree = "<group>"; };
+		8054C0D924200E91008907B8 /* LogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
 		8054C0DC2420AF63008907B8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		8054C0E02420EEFF008907B8 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		805BE9762424DE0E001A93B3 /* BTDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTDevice.swift; sourceTree = "<group>"; };
@@ -345,9 +345,9 @@
 		80A47E7E24309F1B001E5A79 /* Log List */ = {
 			isa = PBXGroup;
 			children = (
-				8054C0D524200BEC008907B8 /* SegmentController.swift */,
-				8054C0D924200E91008907B8 /* ServiceController.swift */,
-				8054C0D724200E7C008907B8 /* FileController.swift */,
+				8054C0D524200BEC008907B8 /* LogSegmentController.swift */,
+				8054C0D924200E91008907B8 /* LogController.swift */,
+				8054C0D724200E7C008907B8 /* FileLogController.swift */,
 			);
 			path = "Log List";
 			sourceTree = "<group>";
@@ -564,7 +564,7 @@
 			files = (
 				803C5B252429346500E49414 /* DataListVM.swift in Sources */,
 				BD979AE924255BD1004001ED /* FirstActiovationController.swift in Sources */,
-				8054C0D624200BEC008907B8 /* SegmentController.swift in Sources */,
+				8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */,
 				80631A96242CA27800EB0B6C /* HelpController.swift in Sources */,
 				80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */,
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
@@ -580,10 +580,10 @@
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
-				8054C0DA24200E91008907B8 /* ServiceController.swift in Sources */,
+				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
 				46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
-				8054C0D824200E7C008907B8 /* FileController.swift in Sources */,
+				8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */,
 				80ECB96924291E2F00E57601 /* CSVWriter.swift in Sources */,
 				80B94555242B7B460052CD9F /* ActiveAppViewModel.swift in Sources */,
 				5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */,
@@ -614,12 +614,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80BB474924212A3C00F552FC /* SegmentController.swift in Sources */,
+				80BB474924212A3C00F552FC /* LogSegmentController.swift in Sources */,
 				80BB474A24212A3C00F552FC /* Logger.swift in Sources */,
 				80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */,
 				80BB474C24212A3C00F552FC /* FileLogger.swift in Sources */,
-				80BB474D24212A3C00F552FC /* ServiceController.swift in Sources */,
-				80BB474E24212A3C00F552FC /* FileController.swift in Sources */,
+				80BB474D24212A3C00F552FC /* LogController.swift in Sources */,
+				80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */,
 				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,
 				80BB475024212A3C00F552FC /* BTScanner.swift in Sources */,
 				80BB475124212A3C00F552FC /* App.swift in Sources */,
