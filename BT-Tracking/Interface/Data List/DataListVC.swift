@@ -103,7 +103,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     private func sendReport() {
-        guard AppSettings.lastUploadDate + (15 * 60) < Date() else {
+        guard (AppSettings.lastUploadDate ?? Date.distantPast) + (15 * 60) < Date() else {
             showError(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
                 message: ""
@@ -116,13 +116,16 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     private func createCSVFile() {
-        writer = CSVMaker()
+        AppSettings.lastUploadDate = Date()
+
+        writer = CSVMaker(fromDate: AppSettings.lastUploadDate)
         writer?.createFile(callback: { [weak self] result, error in
             guard let self = self else { return }
 
             if let result = result {
                 self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata)
             } else if let error = error {
+                AppSettings.lastUploadDate = nil
                 self.activityView.isHidden = true
                 self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkánímy")
             }
@@ -143,10 +146,10 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             self.activityView.isHidden = true
 
             if let error = error {
+                AppSettings.lastUploadDate = nil
                 self.show(error: error, title: "Nepodařilo se nahrát setkání")
                 return
             }
-            AppSettings.lastUploadDate = Date()
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
     }
