@@ -13,6 +13,7 @@ import FirebaseAuth
 import FirebaseFunctions
 #endif
 import RealmSwift
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return store
     }()
     private(set) var deviceToken: Data?
+    private let locationManager = CLLocationManager()
 
     #if !targetEnvironment(macCatalyst)
     private(set) lazy var functions = Functions.functions(region:"europe-west2")
@@ -79,6 +81,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         scannerStore.deleteOldRecordsIfNeeded()
     }
 
+    private func setupGeolocation() {
+//        locationManager.requestAlwaysAuthorization()
+        locationManager.delegate = self
+        if !CLLocationManager.significantLocationChangeMonitoringAvailable() {
+            // The device does not support this service.
+            return
+        }
+        locationManager.startMonitoringSignificantLocationChanges()
+    }
+
     private func setupInterface() {
         let window = UIWindow()
         window.backgroundColor = .black
@@ -110,6 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-START--------------------------------\n")
 
         generalSetup()
+        setupGeolocation()
         setupInterface()
         
         return true
@@ -202,4 +215,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation]) {
+        // TODO: Start Bluetooth
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+       if let error = error as? CLError, error.code == .denied {
+          // Location updates are not authorized.
+          manager.stopMonitoringSignificantLocationChanges()
+          return
+       }
+       // Notify the user of any errors.
+    }
 }

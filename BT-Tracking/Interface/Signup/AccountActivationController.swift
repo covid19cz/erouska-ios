@@ -11,6 +11,7 @@ import RxSwift
 import RxRelay
 import RxKeyboard
 import FirebaseAuth
+import CoreLocation
 
 class AccountActivationControler: UIViewController {
 
@@ -60,6 +61,7 @@ class AccountActivationControler: UIViewController {
     }
     private var disposeBag = DisposeBag()
     private var confirmedPrivacy: Bool = false
+    private let locationManager = CLLocationManager()
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var phonePrefixTextField: UITextField!
@@ -76,6 +78,8 @@ class AccountActivationControler: UIViewController {
           completionHandler: {_, _ in }
         )
         UIApplication.shared.registerForRemoteNotifications()
+
+        locationManager.requestAlwaysAuthorization()
 
         phonePrefixTextField.rx.text.orEmpty.bind(to: phonePrefix).disposed(by: disposeBag)
         phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)

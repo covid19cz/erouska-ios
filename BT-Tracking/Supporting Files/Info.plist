@@ -57,10 +57,17 @@
 	<string>We need Bluetooth to discover, connect and share information with other nearby devices to help fight against Coronavirus pandemy.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>We need Bluetooth to discover, connect and share information with other nearby devices to help fight against Coronavirus pandemy.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need background location services to restart Bluetooth searching</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need background location services to restart Bluetooth searching</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need background location services to restart Bluetooth searching</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
