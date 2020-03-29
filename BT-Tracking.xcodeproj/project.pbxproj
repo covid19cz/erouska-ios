@@ -201,7 +201,7 @@
 			children = (
 				807053542427C4E800DC1034 /* Cells */,
 				46F21CA2242243A300C01DFA /* Scan List */,
-				80A47E7E24309F1B001E5A79 /* Log */,
+				80A47E7E24309F1B001E5A79 /* Log List */,
 				8054C0B6241D492F008907B8 /* Debug.storyboard */,
 			);
 			path = Debug;
@@ -342,14 +342,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		80A47E7E24309F1B001E5A79 /* Log */ = {
+		80A47E7E24309F1B001E5A79 /* Log List */ = {
 			isa = PBXGroup;
 			children = (
 				8054C0D524200BEC008907B8 /* SegmentController.swift */,
 				8054C0D924200E91008907B8 /* ServiceController.swift */,
 				8054C0D724200E7C008907B8 /* FileController.swift */,
 			);
-			path = Log;
+			path = "Log List";
 			sourceTree = "<group>";
 		};
 		80AD970B2429317900AEA661 /* Cells */ = {
