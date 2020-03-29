@@ -75,6 +75,7 @@
 		BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppController.swift */; };
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
 		BDBB00D824261D5C00871FE4 /* NSLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */; };
+		C4E1A1B524311D3800108325 /* RemoteConfigValueKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteConfigValueKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +141,7 @@
 		BD979AEA242565AF004001ED /* ActiveAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppController.swift; sourceTree = "<group>"; };
 		BDB07FBF24254A8F00834E79 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutHelper.swift; sourceTree = "<group>"; };
+		C4E1A1B424311D3800108325 /* RemoteConfigValueKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigValueKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,15 +301,16 @@
 			isa = PBXGroup;
 			children = (
 				8054C0DC2420AF63008907B8 /* App.swift */,
-				807053522427BA2500DC1034 /* Data.swift */,
 				80BB47632422865B00F552FC /* Button.swift */,
-				80799BEA2423B89A002B04C5 /* Controller.swift */,
-				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
-				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
 				80ECB96524290DA900E57601 /* Collection.swift */,
-				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
-				80B94556242B96560052CD9F /* NavigationController.swift */,
+				80799BEA2423B89A002B04C5 /* Controller.swift */,
+				807053522427BA2500DC1034 /* Data.swift */,
 				80631A97242CAB5000EB0B6C /* Image.swift */,
+				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
+				80B94556242B96560052CD9F /* NavigationController.swift */,
+				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
+				C4E1A1B424311D3800108325 /* RemoteConfigValueKey.swift */,
+				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */,
+				C4E1A1B524311D3800108325 /* RemoteConfigValueKey.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
