@@ -10,7 +10,6 @@
 		46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */; };
 		46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */; };
 		46A0D531242CEB9500FAE9EA /* DeleteDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */; };
-		46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F21CA42422442200C01DFA /* ScanList.storyboard */; };
 		46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA62422442D00C01DFA /* ScanListVM.swift */; };
 		46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA82422444600C01DFA /* ScanListVC.swift */; };
 		46F21CAF2422597F00C01DFA /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CAE2422597F00C01DFA /* Scan.swift */; };
@@ -85,7 +84,6 @@
 		46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnregisterUser.storyboard; sourceTree = "<group>"; };
 		46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataVC.swift; sourceTree = "<group>"; };
 		46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataVM.swift; sourceTree = "<group>"; };
-		46F21CA42422442200C01DFA /* ScanList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanList.storyboard; sourceTree = "<group>"; };
 		46F21CA62422442D00C01DFA /* ScanListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListVM.swift; sourceTree = "<group>"; };
 		46F21CA82422444600C01DFA /* ScanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListVC.swift; sourceTree = "<group>"; };
 		46F21CAE2422597F00C01DFA /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
@@ -192,9 +190,6 @@
 		46F21CA2242243A300C01DFA /* Scan List */ = {
 			isa = PBXGroup;
 			children = (
-				46F21CB524227E5D00C01DFA /* Store */,
-				807053542427C4E800DC1034 /* Cells */,
-				46F21CA42422442200C01DFA /* ScanList.storyboard */,
 				46F21CA82422444600C01DFA /* ScanListVC.swift */,
 				46F21CA62422442D00C01DFA /* ScanListVM.swift */,
 			);
@@ -204,10 +199,10 @@
 		46F21CA3242243F400C01DFA /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				807053542427C4E800DC1034 /* Cells */,
+				46F21CA2242243A300C01DFA /* Scan List */,
+				80A47E7E24309F1B001E5A79 /* Log */,
 				8054C0B6241D492F008907B8 /* Debug.storyboard */,
-				8054C0D524200BEC008907B8 /* SegmentController.swift */,
-				8054C0D924200E91008907B8 /* ServiceController.swift */,
-				8054C0D724200E7C008907B8 /* FileController.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -267,12 +262,11 @@
 			children = (
 				80BB476024227C1400F552FC /* Signup */,
 				BD0191452424330200707341 /* Active */,
-				46F21CA2242243A300C01DFA /* Scan List */,
 				80ECB96A24292F9600E57601 /* Data List */,
 				BDB07FBE24254A7B00834E79 /* Help */,
-				46F21CA3242243F400C01DFA /* Debug */,
 				46A0D528242CC29A00FAE9EA /* Unregister User */,
 				46A0D52B242CC5A800FAE9EA /* Delete Data */,
+				46F21CA3242243F400C01DFA /* Debug */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -293,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				805BE9742424DDDE001A93B3 /* Bluetooth */,
+				46F21CB524227E5D00C01DFA /* Store */,
 				80ECB96724291E1B00E57601 /* CSV */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
@@ -345,6 +340,16 @@
 				807053572427C5AA00DC1034 /* InfoCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		80A47E7E24309F1B001E5A79 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				8054C0D524200BEC008907B8 /* SegmentController.swift */,
+				8054C0D924200E91008907B8 /* ServiceController.swift */,
+				8054C0D724200E7C008907B8 /* FileController.swift */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 		80AD970B2429317900AEA661 /* Cells */ = {
@@ -489,7 +494,6 @@
 				BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */,
 				46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */,
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
-				46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
 				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
