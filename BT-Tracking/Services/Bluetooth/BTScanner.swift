@@ -133,7 +133,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
             // limit refresh
             guard !checkRefreshTime(UUID: peripheral.identifier) else {
-                log("Check refresh time guarded")
+                //log("Check refresh time guarded")
                 return
             }
             log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
