@@ -42,7 +42,6 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
     private var retryBUID: [UUID: TimeInterval] = [:]
 
-
     private let acceptUUIDs = [BT.broadcastCharacteristic.cbUUID, BT.transferCharacteristic.cbUUID]
 
     override init() {
@@ -66,6 +65,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     // MARK: - BTScannering
 
     var deviceUpdateLimit: TimeInterval = 3 // in seconds
+    private var reportedBackground: Bool = false
 
     var filterRSSIPower: Bool = false
     private let allowedRSSIRange: ClosedRange<Int> = -90...0
@@ -117,9 +117,13 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     private func checkRefreshTime(UUID: UUID) -> Bool {
         guard let timeInterval = discoveredRefresh[UUID] else { return false }
         guard !AppDelegate.inBackground else {
-            log("Background refresh limit Disabled")
+            if !reportedBackground {
+                log("Background refresh limit Disabled")
+            }
+            reportedBackground = true
             return false
         }
+        reportedBackground = false
         return timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate
     }
 
