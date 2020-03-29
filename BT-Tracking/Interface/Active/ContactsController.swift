@@ -6,11 +6,10 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import SafariServices
+import UIKit
 
-class ContactsController: UIViewController {
-
+final class ContactsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +25,7 @@ class ContactsController: UIViewController {
     }
 
     @IBAction private func faqAction() {
-        openURL(URL: URL(string: "https://koronavirus.mzcr.cz/otazky-odpovedi/")!)
+        openURL(URL: URL(string: "https://koronavirus.mzcr.cz/otazky-a-odpovedi/")!)
     }
 
     @IBAction private func call1212Action() {
@@ -44,5 +43,4 @@ class ContactsController: UIViewController {
         let controller = SFSafariViewController(url: URL)
         present(controller, animated: true, completion: nil)
     }
-
 }
