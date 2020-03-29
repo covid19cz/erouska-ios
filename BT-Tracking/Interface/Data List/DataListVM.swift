@@ -51,7 +51,7 @@ class DataListVM {
 extension DataListVM {
 
     private func section(from scans: [Scan]) -> [SectionModel] {
-        let header = DataListVM.Section.Item.header(scans.count)
+        let header = DataListVM.Section.Item.header(Dictionary(grouping: scans, by: { $0.buid }).count)
         let items: [DataListVM.Section.Item] = scans.map { .data($0) }
         return [
             SectionModel(model: .list, items: [header] + items)
