@@ -116,25 +116,24 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     private func createCSVFile() {
-        AppSettings.lastUploadDate = Date()
+        let fileDate = Date()
 
         writer = CSVMaker(fromDate: AppSettings.lastUploadDate)
         writer?.createFile(callback: { [weak self] result, error in
             guard let self = self else { return }
 
             if let result = result {
-                self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata)
+                self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata, fileDate: fileDate)
             } else if let error = error {
-                AppSettings.lastUploadDate = nil
                 self.activityView.isHidden = true
                 self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkánímy")
             }
         })
     }
 
-    private func uploadCSVFile(fileURL: URL, metadata: [String: String]) {
-        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")"
-        let fileName = "\(Int(Date().timeIntervalSince1970 * 1000)).csv"
+    private func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
+        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(AppSettings.BUID ?? "")"
+        let fileName = "\(Int(fileDate.timeIntervalSince1970 * 1000)).csv"
 
         let storage = Storage.storage()
         let storageReference = storage.reference()
@@ -146,10 +145,10 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             self.activityView.isHidden = true
 
             if let error = error {
-                AppSettings.lastUploadDate = nil
                 self.show(error: error, title: "Nepodařilo se nahrát setkání")
                 return
             }
+            AppSettings.lastUploadDate = fileDate
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
     }
