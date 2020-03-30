@@ -15,8 +15,7 @@ import RealmSwift
 class DataListVM {
 
     // MARK: - Properties
-
-    let onSegmentedControl = PublishSubject<Int>()
+    let selectedSegmentIndex = PublishRelay<Int>()
 
     private let scans: Observable<[Scan]>
     private let scanObjects: Results<ScanRealm>
@@ -31,18 +30,19 @@ class DataListVM {
             .map { scanned in
                 return scanned.map { $0.toScan() }
             }
-
-        onSegmentedControl
-            .subscribe(onNext: { [weak self] index in
-                // TODO: Change data in tableView
-                print("onSegmentedControl selected index: \(index)")
-            }).disposed(by: bag)
     }
 
     // MARK: - Sections
 
     var sections: Driver<[SectionModel]> {
-        return scans
+        return Observable.combineLatest(scans, selectedSegmentIndex)
+            .map { unfilteredScans, selectedSegmentIndex -> [Scan] in
+                return unfilteredScans.filter { scan in
+                    guard let medianRssi = scan.medianRssi else { return false }
+                    let medianRssiPoint = AppSettings.medianRssiPoint
+                    return selectedSegmentIndex == 0 ? (medianRssi < medianRssiPoint) : (medianRssi > medianRssiPoint)
+                }
+            }
             .map { unsortedScans in
                 return unsortedScans.sorted(by: { scan0, scan1 in scan0.date > scan1.date })
             }

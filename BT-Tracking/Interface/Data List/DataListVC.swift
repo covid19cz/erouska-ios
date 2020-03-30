@@ -36,6 +36,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         }
         
         setupTableView()
+        viewModel.selectedSegmentIndex.accept(0)
     }
 
     // MARK: - TableView
@@ -72,7 +73,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     // MARK: - Actions
     @IBAction private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        viewModel.onSegmentedControl.onNext(sender.selectedSegmentIndex)
+        viewModel.selectedSegmentIndex.accept(sender.selectedSegmentIndex)
     }
 
     @IBAction private func sendReportAction() {

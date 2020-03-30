@@ -11,6 +11,7 @@ import Foundation
 struct AppSettings {
 
     static let firebaseRegion = "europe-west1"
+    static let medianRssiPoint = 30
 
     static var BUID: String? {
         get {
