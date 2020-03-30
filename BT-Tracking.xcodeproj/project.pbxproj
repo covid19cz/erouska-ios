@@ -182,15 +182,6 @@
 			path = "Unregister User";
 			sourceTree = "<group>";
 		};
-		46A0D52B242CC5A800FAE9EA /* Delete Data */ = {
-			isa = PBXGroup;
-			children = (
-				46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */,
-				46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */,
-			);
-			path = "Delete Data";
-			sourceTree = "<group>";
-		};
 		46F21CA2242243A300C01DFA /* Scan List */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,7 +268,6 @@
 				80ECB96A24292F9600E57601 /* Data List */,
 				BDB07FBE24254A7B00834E79 /* Help */,
 				46A0D528242CC29A00FAE9EA /* Unregister User */,
-				46A0D52B242CC5A800FAE9EA /* Delete Data */,
 				46F21CA3242243F400C01DFA /* Debug */,
 			);
 			path = Interface;
@@ -400,6 +390,8 @@
 				80ECB96B24292FB000E57601 /* DataList.storyboard */,
 				803C5B22242932BF00E49414 /* DataListVC.swift */,
 				803C5B242429346500E49414 /* DataListVM.swift */,
+				46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */,
+				46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */,
 			);
 			path = "Data List";
 			sourceTree = "<group>";

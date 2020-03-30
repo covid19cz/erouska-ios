@@ -86,6 +86,18 @@ final class ActiveAppController: UIViewController {
         updateViewModel()
     }
 
+    @IBAction private func moreAction() {
+        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        controller.addAction(UIAlertAction(title: "Zrušit registraci", style: .default, handler: { [weak self] _ in
+            self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
+        }))
+        controller.addAction(UIAlertAction(title: "O aplikaci", style: .default, handler: { [weak self] _ in
+            self?.performSegue(withIdentifier: "about", sender: nil)
+        }))
+        controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel, handler: nil))
+        present(controller, animated: true, completion: nil)
+    }
+
     // MARK: -
     
     @objc private func applicationDidBecomeActive() {
