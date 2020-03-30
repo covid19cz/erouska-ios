@@ -39,8 +39,7 @@ class DataListVM {
             .map { unfilteredScans, selectedSegmentIndex -> [Scan] in
                 return unfilteredScans.filter { scan in
                     guard let medianRssi = scan.medianRssi else { return false }
-                    let medianRssiPoint = AppSettings.medianRssiPoint
-                    return selectedSegmentIndex == 0 ? (medianRssi < medianRssiPoint) : true
+                    return selectedSegmentIndex == 0 ? (medianRssi < AppSettings.medianRssiPoint) : true
                 }
             }
             .map { unsortedScans in
