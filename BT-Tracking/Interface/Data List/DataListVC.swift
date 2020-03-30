@@ -71,8 +71,11 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     // MARK: - Actions
+    @IBAction private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        viewModel.onSegmentedControl.onNext(sender.selectedSegmentIndex)
+    }
 
-    @IBAction func sendReportAction() {
+    @IBAction private func sendReportAction() {
         let controller = UIAlertController(
             title: "Byli jste požádáni o odeslání seznamu telefonů, se kterými jste se setkali?",
             message: "",
@@ -91,7 +94,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         present(controller, animated: true, completion: nil)
     }
 
-    @IBAction func infoButtonAction() {
+    @IBAction private func infoButtonAction() {
         let controller = UIAlertController(
             title: "Jedná se veškeré záznamy o měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
             message: nil,

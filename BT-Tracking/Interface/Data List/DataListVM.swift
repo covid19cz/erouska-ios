@@ -16,6 +16,8 @@ class DataListVM {
 
     // MARK: - Properties
 
+    let onSegmentedControl = PublishSubject<Int>()
+
     private let scans: Observable<[Scan]>
     private let scanObjects: Results<ScanRealm>
     private let bag = DisposeBag()
@@ -29,6 +31,12 @@ class DataListVM {
             .map { scanned in
                 return scanned.map { $0.toScan() }
             }
+
+        onSegmentedControl
+            .subscribe(onNext: { [weak self] index in
+                // TODO: Change data in tableView
+                print("onSegmentedControl selected index: \(index)")
+            }).disposed(by: bag)
     }
 
     // MARK: - Sections
