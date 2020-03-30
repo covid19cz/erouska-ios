@@ -48,8 +48,9 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
             let cell: UITableViewCell?
             switch row {
-            case .header:
-                let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
+            case .header(let scansCount):
+                let headerCell = tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath) as? DataHeaderCell
+                headerCell?.configure(with: scansCount)
                 cell = headerCell
             case .data(let scan):
                 let scanCell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
@@ -90,8 +91,19 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         present(controller, animated: true, completion: nil)
     }
 
+    @IBAction func infoButtonAction() {
+        let controller = UIAlertController(
+            title: "Jedná se veškeré záznamy o měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
+            message: nil,
+            preferredStyle: .alert
+        )
+        controller.addAction(UIAlertAction(title: "Zavřít", style: .default, handler: nil))
+
+        present(controller, animated: true, completion: nil)
+    }
+
     private func sendReport() {
-        guard AppSettings.lastUploadDate + (15 * 60) < Date() else {
+        guard (AppSettings.lastUploadDate ?? Date.distantPast) + (15 * 60) < Date() else {
             showError(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
                 message: ""
@@ -104,12 +116,14 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     private func createCSVFile() {
-        writer = CSVMaker()
+        let fileDate = Date()
+
+        writer = CSVMaker(fromDate: AppSettings.lastUploadDate)
         writer?.createFile(callback: { [weak self] result, error in
             guard let self = self else { return }
 
             if let result = result {
-                self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata)
+                self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata, fileDate: fileDate)
             } else if let error = error {
                 self.activityView.isHidden = true
                 self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkánímy")
@@ -117,9 +131,9 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         })
     }
 
-    private func uploadCSVFile(fileURL: URL, metadata: [String: String]) {
-        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")"
-        let fileName = "\(Int(Date().timeIntervalSince1970 * 1000)).csv"
+    private func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
+        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(AppSettings.BUID ?? "")"
+        let fileName = "\(Int(fileDate.timeIntervalSince1970 * 1000)).csv"
 
         let storage = Storage.storage()
         let storageReference = storage.reference()
@@ -134,7 +148,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
                 self.show(error: error, title: "Nepodařilo se nahrát setkání")
                 return
             }
-            AppSettings.lastUploadDate = Date()
+            AppSettings.lastUploadDate = fileDate
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
     }

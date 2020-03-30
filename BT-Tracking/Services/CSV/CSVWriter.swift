@@ -15,6 +15,8 @@ protocol CSVMakering {
     typealias Result = (fileURL: URL, metadata: [String: String])
     typealias Callback = (_ result: Result?, _ error: Error?) -> Void
 
+    var fromDate: Date? { get }
+
     func createFile(callback: @escaping Callback)
 
 }
@@ -29,10 +31,12 @@ b5e446a423330ca0e143,1584897450231,1584897452256,0,-74,0,-75
 final class CSVMaker: CSVMakering {
 
     private(set) var fileURL: URL
+    private(set) var fromDate: Date?
 
-    init?() {
+    init?(fromDate: Date?) {
         guard let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
         self.fileURL = URL(fileURLWithPath: documents).appendingPathComponent("db.csv")
+        self.fromDate = fromDate
     }
 
     func createFile(callback: @escaping Callback) {
@@ -53,7 +57,7 @@ final class CSVMaker: CSVMakering {
             return
         }
 
-        realm.objects(ScanRealm.self).forEach() { scan in
+        realm.objects(ScanRealm.self).filter("timestampStart >= \(fromDate?.timeIntervalSince1970 ?? 0)").forEach() { scan in
             try? csv.write(row: [
                 scan.buid,
                 String(scan.startDate.timeIntervalSince1970),

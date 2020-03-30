@@ -51,9 +51,10 @@ class DataListVM {
 extension DataListVM {
 
     private func section(from scans: [Scan]) -> [SectionModel] {
+        let header = DataListVM.Section.Item.header(scanObjects.distinct(by: ["buid"]).count)
         let items: [DataListVM.Section.Item] = scans.map { .data($0) }
         return [
-            SectionModel(model: .list, items: [.header] + items)
+            SectionModel(model: .list, items: [header] + items)
         ]
     }
 
@@ -80,7 +81,7 @@ extension DataListVM {
         }
 
         enum Item: IdentifiableType, Equatable {
-            case header
+            case header(Int)
             case data(Scan)
 
             var identity: String {

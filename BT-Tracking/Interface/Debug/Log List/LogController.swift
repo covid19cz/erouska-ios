@@ -1,5 +1,5 @@
 //
-//  ServiceController.swift
+//  LogController.swift
 //  btraced
 //
 //  Created by Tomas Svoboda on 16/03/2020.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class ServiceController: UIViewController {
+class LogController: UIViewController {
     
     // MARK: - Outlets
     
@@ -55,7 +55,7 @@ class ServiceController: UIViewController {
 
 }
 
-extension ServiceController: BTScannerDelegate {
+extension LogController: BTScannerDelegate {
     func didFind(device: BTDevice) {
         let text = "Found device: \(device.bluetoothIdentifier.uuidString), buid: \(device.backendIdentifier ?? "unknown"), platform: \(device.platform), signal: \(device.rssi)"
 
@@ -87,13 +87,13 @@ extension ServiceController: BTScannerDelegate {
     }
 }
 
-extension ServiceController: LogDelegate {
+extension LogController: LogDelegate {
     func didLog(_ text: String) {
         logToView(text)
     }
 }
 
-private extension ServiceController {
+private extension LogController {
     static var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .none

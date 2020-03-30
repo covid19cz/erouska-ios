@@ -24,6 +24,12 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if #available(iOS 13, *) {
+            navigationController?.tabBarItem.image = UIImage(systemName: "wifi")
+        } else {
+            navigationController?.tabBarItem.image = UIImage(named: "wifi")?.resize(toWidth: 30)
+        }
+
         navigationItem.largeTitleDisplayMode = .never
 
         setupTableView()

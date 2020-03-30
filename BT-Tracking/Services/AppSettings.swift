@@ -10,6 +10,8 @@ import Foundation
 
 struct AppSettings {
 
+    static let firebaseRegion = "europe-west1"
+
     static var BUID: String? {
         get {
             return UserDefaults.standard.string(forKey: "BUID")
@@ -28,14 +30,14 @@ struct AppSettings {
         }
     }
 
-    static var lastUploadDate: Date {
+    static var lastUploadDate: Date? {
         get {
             let rawValue = UserDefaults.standard.double(forKey: "UploadDate")
             let time = TimeInterval(rawValue)
             return Date(timeIntervalSince1970: time)
         }
         set {
-            UserDefaults.standard.set(newValue.timeIntervalSince1970, forKey: "UploadDate")
+            UserDefaults.standard.set(newValue?.timeIntervalSince1970, forKey: "UploadDate")
         }
     }
 

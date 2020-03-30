@@ -42,7 +42,6 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
     private var retryBUID: [UUID: TimeInterval] = [:]
 
-
     private let acceptUUIDs = [BT.broadcastCharacteristic.cbUUID, BT.transferCharacteristic.cbUUID]
 
     override init() {
@@ -66,6 +65,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     // MARK: - BTScannering
 
     var deviceUpdateLimit: TimeInterval = 3 // in seconds
+    private var reportedBackground: Bool = false
 
     var filterRSSIPower: Bool = false
     private let allowedRSSIRange: ClosedRange<Int> = -90...0
@@ -116,6 +116,14 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
     private func checkRefreshTime(UUID: UUID) -> Bool {
         guard let timeInterval = discoveredRefresh[UUID] else { return false }
+        guard !AppDelegate.inBackground else {
+            if !reportedBackground {
+                log("Background refresh limit Disabled")
+            }
+            reportedBackground = true
+            return false
+        }
+        reportedBackground = false
         return timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate
     }
 
@@ -128,12 +136,18 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
             // already registred
 
             // limit refresh
-            guard !checkRefreshTime(UUID: peripheral.identifier) else { return }
+            guard !checkRefreshTime(UUID: peripheral.identifier) else {
+                //log("Check refresh time guarded")
+                return
+            }
             log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
             discoveredRefresh[peripheral.identifier] = Date.timeIntervalSinceReferenceDate
 
             // update device RSII or name
-            guard let index = discoveredDevices.firstIndex(where: { $0.bluetoothIdentifier == peripheral.identifier }) else { return }
+            guard let index = discoveredDevices.firstIndex(where: { $0.bluetoothIdentifier == peripheral.identifier }) else {
+                log("Update device RSSI or name guarded")
+                return
+            }
 
             var device = discoveredDevices[index]
             device.rssi = RSSI.intValue
@@ -149,6 +163,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                         let rawBUID = serviceData.first?.value as? Data {
                         let raw = rawBUID.hexEncodedString()
                         device.backendIdentifier = raw
+                    } else {
+                        log("Skipping Android case")
                     }
                 case .iOS:
                     centralManager.connect(peripheral, options: nil)

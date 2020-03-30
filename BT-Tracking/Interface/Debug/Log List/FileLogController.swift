@@ -1,5 +1,5 @@
 //
-//  FileController.swift
+//  FileLogController.swift
 //  BT-Tracking
 //
 //  Created by Lukáš Foldýna on 16/03/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FileController: UIViewController {
+class FileLogController: UIViewController {
 
     // MARK: - Outlets
 

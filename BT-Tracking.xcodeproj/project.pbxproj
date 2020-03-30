@@ -10,11 +10,11 @@
 		46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */; };
 		46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */; };
 		46A0D531242CEB9500FAE9EA /* DeleteDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */; };
-		46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F21CA42422442200C01DFA /* ScanList.storyboard */; };
 		46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA62422442D00C01DFA /* ScanListVM.swift */; };
 		46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA82422444600C01DFA /* ScanListVC.swift */; };
 		46F21CAF2422597F00C01DFA /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CAE2422597F00C01DFA /* Scan.swift */; };
 		46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CB3242270F700C01DFA /* ScannerStore.swift */; };
+		5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
 		803C5B23242932BF00E49414 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		803C5B252429346500E49414 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
@@ -25,9 +25,9 @@
 		8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */; };
 		8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CF241FE706008907B8 /* BTScanner.swift */; };
 		8054C0D2241FE720008907B8 /* BT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D1241FE720008907B8 /* BT.swift */; };
-		8054C0D624200BEC008907B8 /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
-		8054C0D824200E7C008907B8 /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileController.swift */; };
-		8054C0DA24200E91008907B8 /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* ServiceController.swift */; };
+		8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* LogSegmentController.swift */; };
+		8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileLogController.swift */; };
+		8054C0DA24200E91008907B8 /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* LogController.swift */; };
 		8054C0DD2420AF63008907B8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0DC2420AF63008907B8 /* App.swift */; };
 		8054C0E12420EEFF008907B8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
 		8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4649848424201E4600A858A9 /* FileLogger.swift */; };
@@ -43,12 +43,12 @@
 		80AD970D2429318B00AEA661 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
 		80B94555242B7B460052CD9F /* ActiveAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppViewModel.swift */; };
 		80B94557242B96560052CD9F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
-		80BB474924212A3C00F552FC /* SegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* SegmentController.swift */; };
+		80BB474924212A3C00F552FC /* LogSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D524200BEC008907B8 /* LogSegmentController.swift */; };
 		80BB474A24212A3C00F552FC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
 		80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */; };
 		80BB474C24212A3C00F552FC /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4649848424201E4600A858A9 /* FileLogger.swift */; };
-		80BB474D24212A3C00F552FC /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* ServiceController.swift */; };
-		80BB474E24212A3C00F552FC /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileController.swift */; };
+		80BB474D24212A3C00F552FC /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D924200E91008907B8 /* LogController.swift */; };
+		80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileLogController.swift */; };
 		80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		80BB475024212A3C00F552FC /* BTScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CF241FE706008907B8 /* BTScanner.swift */; };
 		80BB475124212A3C00F552FC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0DC2420AF63008907B8 /* App.swift */; };
@@ -84,11 +84,11 @@
 		46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnregisterUser.storyboard; sourceTree = "<group>"; };
 		46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataVC.swift; sourceTree = "<group>"; };
 		46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataVM.swift; sourceTree = "<group>"; };
-		46F21CA42422442200C01DFA /* ScanList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanList.storyboard; sourceTree = "<group>"; };
 		46F21CA62422442D00C01DFA /* ScanListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListVM.swift; sourceTree = "<group>"; };
 		46F21CA82422444600C01DFA /* ScanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListVC.swift; sourceTree = "<group>"; };
 		46F21CAE2422597F00C01DFA /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		46F21CB3242270F700C01DFA /* ScannerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerStore.swift; sourceTree = "<group>"; };
+		5EE9D814242F74F5002F833C /* DataHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHeaderCell.swift; sourceTree = "<group>"; };
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		803C5B22242932BF00E49414 /* DataListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVC.swift; sourceTree = "<group>"; };
 		803C5B242429346500E49414 /* DataListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVM.swift; sourceTree = "<group>"; };
@@ -102,9 +102,9 @@
 		8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTAdvertiser.swift; sourceTree = "<group>"; };
 		8054C0CF241FE706008907B8 /* BTScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTScanner.swift; sourceTree = "<group>"; };
 		8054C0D1241FE720008907B8 /* BT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BT.swift; sourceTree = "<group>"; };
-		8054C0D524200BEC008907B8 /* SegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentController.swift; sourceTree = "<group>"; };
-		8054C0D724200E7C008907B8 /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
-		8054C0D924200E91008907B8 /* ServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceController.swift; sourceTree = "<group>"; };
+		8054C0D524200BEC008907B8 /* LogSegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSegmentController.swift; sourceTree = "<group>"; };
+		8054C0D724200E7C008907B8 /* FileLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogController.swift; sourceTree = "<group>"; };
+		8054C0D924200E91008907B8 /* LogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
 		8054C0DC2420AF63008907B8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		8054C0E02420EEFF008907B8 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		805BE9762424DE0E001A93B3 /* BTDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTDevice.swift; sourceTree = "<group>"; };
@@ -190,9 +190,6 @@
 		46F21CA2242243A300C01DFA /* Scan List */ = {
 			isa = PBXGroup;
 			children = (
-				46F21CB524227E5D00C01DFA /* Store */,
-				807053542427C4E800DC1034 /* Cells */,
-				46F21CA42422442200C01DFA /* ScanList.storyboard */,
 				46F21CA82422444600C01DFA /* ScanListVC.swift */,
 				46F21CA62422442D00C01DFA /* ScanListVM.swift */,
 			);
@@ -202,10 +199,10 @@
 		46F21CA3242243F400C01DFA /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				807053542427C4E800DC1034 /* Cells */,
+				46F21CA2242243A300C01DFA /* Scan List */,
+				80A47E7E24309F1B001E5A79 /* Log List */,
 				8054C0B6241D492F008907B8 /* Debug.storyboard */,
-				8054C0D524200BEC008907B8 /* SegmentController.swift */,
-				8054C0D924200E91008907B8 /* ServiceController.swift */,
-				8054C0D724200E7C008907B8 /* FileController.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -265,12 +262,11 @@
 			children = (
 				80BB476024227C1400F552FC /* Signup */,
 				BD0191452424330200707341 /* Active */,
-				46F21CA2242243A300C01DFA /* Scan List */,
 				80ECB96A24292F9600E57601 /* Data List */,
 				BDB07FBE24254A7B00834E79 /* Help */,
-				46F21CA3242243F400C01DFA /* Debug */,
 				46A0D528242CC29A00FAE9EA /* Unregister User */,
 				46A0D52B242CC5A800FAE9EA /* Delete Data */,
+				46F21CA3242243F400C01DFA /* Debug */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -291,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				805BE9742424DDDE001A93B3 /* Bluetooth */,
+				46F21CB524227E5D00C01DFA /* Store */,
 				80ECB96724291E1B00E57601 /* CSV */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
@@ -345,10 +342,21 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		80A47E7E24309F1B001E5A79 /* Log List */ = {
+			isa = PBXGroup;
+			children = (
+				8054C0D524200BEC008907B8 /* LogSegmentController.swift */,
+				8054C0D924200E91008907B8 /* LogController.swift */,
+				8054C0D724200E7C008907B8 /* FileLogController.swift */,
+			);
+			path = "Log List";
+			sourceTree = "<group>";
+		};
 		80AD970B2429317900AEA661 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				80AD970C2429318B00AEA661 /* DataCell.swift */,
+				5EE9D814242F74F5002F833C /* DataHeaderCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -486,7 +494,6 @@
 				BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */,
 				46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */,
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
-				46F21CA52422442200C01DFA /* ScanList.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
 				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
@@ -557,7 +564,7 @@
 			files = (
 				803C5B252429346500E49414 /* DataListVM.swift in Sources */,
 				BD979AE924255BD1004001ED /* FirstActiovationController.swift in Sources */,
-				8054C0D624200BEC008907B8 /* SegmentController.swift in Sources */,
+				8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */,
 				80631A96242CA27800EB0B6C /* HelpController.swift in Sources */,
 				80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */,
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
@@ -573,12 +580,13 @@
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
-				8054C0DA24200E91008907B8 /* ServiceController.swift in Sources */,
+				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
 				46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
-				8054C0D824200E7C008907B8 /* FileController.swift in Sources */,
+				8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */,
 				80ECB96924291E2F00E57601 /* CSVWriter.swift in Sources */,
 				80B94555242B7B460052CD9F /* ActiveAppViewModel.swift in Sources */,
+				5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */,
 				80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
@@ -606,12 +614,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80BB474924212A3C00F552FC /* SegmentController.swift in Sources */,
+				80BB474924212A3C00F552FC /* LogSegmentController.swift in Sources */,
 				80BB474A24212A3C00F552FC /* Logger.swift in Sources */,
 				80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */,
 				80BB474C24212A3C00F552FC /* FileLogger.swift in Sources */,
-				80BB474D24212A3C00F552FC /* ServiceController.swift in Sources */,
-				80BB474E24212A3C00F552FC /* FileController.swift in Sources */,
+				80BB474D24212A3C00F552FC /* LogController.swift in Sources */,
+				80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */,
 				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,
 				80BB475024212A3C00F552FC /* BTScanner.swift in Sources */,
 				80BB475124212A3C00F552FC /* App.swift in Sources */,
@@ -762,7 +770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -784,7 +792,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
