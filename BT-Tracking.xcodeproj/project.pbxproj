@@ -63,6 +63,7 @@
 		80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationController.swift */; };
 		80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationController.swift */; };
 		80BF9C262424D55800150108 /* SendReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportController.swift */; };
+		80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
 		80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */; };
 		80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB95D24290B6700E57601 /* ScanRealm.swift */; };
@@ -129,6 +130,7 @@
 		80BB476524236ED100F552FC /* BluetoothActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivationController.swift; sourceTree = "<group>"; };
 		80BB476724238CBB00F552FC /* AccountActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationController.swift; sourceTree = "<group>"; };
 		80BF9C252424D55800150108 /* SendReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportController.swift; sourceTree = "<group>"; };
+		80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterUserVC.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 		80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */,
+				80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */,
 			);
 			path = "Unregister User";
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				803C5B252429346500E49414 /* DataListVM.swift in Sources */,
+				80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */,
 				BD979AE924255BD1004001ED /* FirstActiovationController.swift in Sources */,
 				8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */,
 				80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */,
