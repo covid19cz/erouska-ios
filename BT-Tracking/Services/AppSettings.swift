@@ -10,6 +10,8 @@ import Foundation
 
 struct AppSettings {
 
+    static let firebaseRegion = "europe-west1"
+
     static var BUID: String? {
         get {
             return UserDefaults.standard.string(forKey: "BUID")

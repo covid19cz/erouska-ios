@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) var deviceToken: Data?
 
     #if !targetEnvironment(macCatalyst)
-    private(set) lazy var functions = Functions.functions(region:"europe-west2")
+    private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
     #endif
 
     private func generalSetup() {
