@@ -34,9 +34,9 @@ struct BTDevice {
             id: uuid ?? UUID().uuidString,
             bluetoothIdentifier: self.bluetoothIdentifier.uuidString,
             deviceIdentifier: self.deviceIdentifier,
-            buid: self.backendIdentifier ?? "neznámé",
+            buid: self.backendIdentifier ?? "unknown",
             platform: self.platform,
-            name: self.name ?? "neznámé",
+            name: self.name ?? self.platform.rawValue,
             date: self.date,
             rssi: self.rssi,
             medianRssi: self.medianRssi

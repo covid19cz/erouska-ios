@@ -16,14 +16,12 @@ final class ScanCell: UITableViewCell {
     @IBOutlet private weak var identifierLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var rssiLabel: UILabel!
-    @IBOutlet private weak var platformLabel: UILabel!
 
     func configure(for scan: Scan) {
-        nameLabel.text = scan.name + ", buid: " + scan.buid
-        identifierLabel.text = scan.bluetoothIdentifier
+        nameLabel.text = scan.name == scan.platform.rawValue ? scan.name : scan.platform.rawValue + " - " + scan.name
+        identifierLabel.text = "BT: " + scan.bluetoothIdentifier
         dateLabel.text = ScanCell.formatter.string(from: scan.date)
-        rssiLabel.text = String(scan.rssi)  + " dB"
-        platformLabel.text = scan.platform.rawValue
+        rssiLabel.text = String(scan.rssi)  + " dB, BUID: " + scan.buid
     }
     
     private static var formatter: DateFormatter = {
