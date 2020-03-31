@@ -72,7 +72,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     private var reportedBackground: Bool = false
 
     var filterRSSIPower: Bool = false
-    private let allowedRSSIRange: ClosedRange<Int> = -90...0
+    private let allowedRSSIRange: ClosedRange<Int> = -100...0
 
     var fetchBUIDRetry: TimeInterval = 60
 

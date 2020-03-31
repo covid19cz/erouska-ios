@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 extension UIViewController {
 
@@ -23,6 +24,11 @@ extension UIViewController {
         alertController.addAction(UIAlertAction(title: okTitle, style: .cancel, handler: { _ in okHandler?() }))
         action.flatMap({ action in alertController.addAction(UIAlertAction(title: action.title, style: .default, handler: { _ in action.handler?() })) })
         present(alertController, animated: true)
+    }
+
+    func openURL(URL: URL) {
+        let controller = SFSafariViewController(url: URL)
+        present(controller, animated: true, completion: nil)
     }
 
 }

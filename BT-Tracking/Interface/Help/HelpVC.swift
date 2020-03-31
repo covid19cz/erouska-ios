@@ -58,4 +58,12 @@ class HelpVC: UIViewController, UITableViewDelegate {
 
         dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
     }
+
+    // MARK: - Actions
+
+    @IBAction private func aboutAction() {
+        guard let url = URL(string: RemoteValues.aboutLink) else { return }
+        openURL(URL: url)
+    }
+
 }

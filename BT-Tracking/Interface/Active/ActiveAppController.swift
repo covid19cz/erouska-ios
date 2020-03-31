@@ -105,7 +105,8 @@ final class ActiveAppController: UIViewController {
             self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
         }))
         controller.addAction(UIAlertAction(title: "O aplikaci", style: .default, handler: { [weak self] _ in
-            self?.performSegue(withIdentifier: "about", sender: nil)
+            guard let url = URL(string: RemoteValues.aboutLink) else { return }
+            self?.openURL(URL: url)
         }))
         controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel, handler: nil))
         present(controller, animated: true, completion: nil)

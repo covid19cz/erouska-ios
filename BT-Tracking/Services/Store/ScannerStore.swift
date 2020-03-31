@@ -12,14 +12,21 @@ import RxCocoa
 import RxRealm
 import RealmSwift
 
-private let scanningPeriod = 60
-private let scanningDelay = 0
-private let lastPurgeDateKey = "lastDataPurgeDate"
-private let dataPurgeCheckInterval: TimeInterval = 1 * 86400 // 1 day   ... for testing set to 60 seconds for example
-private let dataPurgeInterval: TimeInterval = 14 * 86400 // 14 days   ... for testing se to 300 seconds for example and see data older then 5 minutes being deleted
-
 final class ScannerStore {
-    
+
+    /// default 60
+    private let scanningPeriod: Int
+    /// default 0
+    private let scanningDelay: Int
+
+    private let lastPurgeDateKey = "lastDataPurgeDate"
+
+    /// 1 day... for testing set to 60 seconds for example
+    private let dataPurgeCheckInterval: TimeInterval = 1 * 86400
+
+    /// 14 days... for testing se to 300 seconds for example and see data older then 5 minutes being deleted
+    private let dataPurgeInterval: TimeInterval
+
     let currentScan = BehaviorRelay<[Scan]>(value: [])
     let scans: Observable<[Scan]>
     let appTermination = PublishSubject<Void>()
@@ -30,14 +37,19 @@ final class ScannerStore {
     private let didFindSubject = PublishRelay<BTDevice>()
     private let didUpdateSubject = PublishRelay<BTDevice>()
     private let didReceive: Observable<BTDevice>
-    private let timer: Observable<Int> = Observable.timer(.seconds(scanningDelay), period: .seconds(scanningPeriod), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+    private let timer: Observable<Int>
     private var period: BehaviorSubject<Void> {
         return BehaviorSubject<Void>(value: ())
     }
     private var currentPeriod: BehaviorSubject<Void>?
     private var devices = [BTDevice]()
     
-    init() {
+    init(scanningPeriod: Int = 60, scanningDelay: Int = 0, dataPurgeInterval: TimeInterval = 14 * 86400) {
+        self.scanningPeriod = scanningPeriod
+        self.scanningDelay = scanningDelay
+        self.dataPurgeInterval = dataPurgeInterval
+        self.timer = Observable.timer(.seconds(scanningDelay), period: .seconds(scanningPeriod), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+
         didReceive = Observable.merge(didFindSubject.asObservable(), didUpdateSubject.asObservable())
         let realm = try! Realm()
         scanObjects = realm.objects(ScanRealm.self)

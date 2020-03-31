@@ -90,7 +90,7 @@
                     <navigationItem key="navigationItem" title="Jak to funguje" id="c2k-ON-LwA">
                         <barButtonItem key="rightBarButtonItem" title="O aplikaci" id="jdD-iU-eUi">
                             <connections>
-                                <segue destination="7BP-PQ-rzg" kind="show" id="qep-dn-oRA"/>
+                                <action selector="aboutAction" destination="oH0-Ce-HUb" id="5W2-g0-A9s"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
