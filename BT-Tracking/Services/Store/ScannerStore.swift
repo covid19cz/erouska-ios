@@ -17,7 +17,7 @@ final class ScannerStore {
     /// default 60
     private let scanningPeriod: Int
     /// default 0
-    private let scanningDelay: Int
+    private let scanningDelay: Int = 0
 
     private let lastPurgeDateKey = "lastDataPurgeDate"
 
@@ -44,9 +44,8 @@ final class ScannerStore {
     private var currentPeriod: BehaviorSubject<Void>?
     private var devices = [BTDevice]()
     
-    init(scanningPeriod: Int = 60, scanningDelay: Int = 0, dataPurgeInterval: TimeInterval = 14 * 86400) {
+    init(scanningPeriod: Int = 60, dataPurgeInterval: TimeInterval = 14 * 86400) {
         self.scanningPeriod = scanningPeriod
-        self.scanningDelay = scanningDelay
         self.dataPurgeInterval = dataPurgeInterval
         self.timer = Observable.timer(.seconds(scanningDelay), period: .seconds(scanningPeriod), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
 
