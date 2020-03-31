@@ -62,6 +62,7 @@
 		80BB47642422865B00F552FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
 		80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationController.swift */; };
 		80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationController.swift */; };
+		80BE18B4243391F500C4A9E6 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
 		80BF9C262424D55800150108 /* SendReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportController.swift */; };
 		80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
@@ -298,6 +299,7 @@
 				80ECB96724291E1B00E57601 /* CSV */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
+				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -314,7 +316,6 @@
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 				80B94556242B96560052CD9F /* NavigationController.swift */,
 				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
-				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
 				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 			);
 			path = Others;
@@ -631,6 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80BB474924212A3C00F552FC /* LogSegmentController.swift in Sources */,
+				80BE18B4243391F500C4A9E6 /* RemoteValues.swift in Sources */,
 				80BB474A24212A3C00F552FC /* Logger.swift in Sources */,
 				80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */,
 				80BB474C24212A3C00F552FC /* FileLogger.swift in Sources */,

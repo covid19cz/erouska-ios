@@ -108,7 +108,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     private func sendReport() {
-        guard (AppSettings.lastUploadDate ?? Date.distantPast) + (15 * 60) < Date() else {
+        guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
             showError(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
                 message: ""
