@@ -68,7 +68,7 @@ final class ActiveAppViewModel {
         var title: String {
             switch self {
             case .enabled:
-                return "Aplikace pracuje na pozadí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle."
+                return "Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle."
             case .paused:
                 return "Aplikace je aktuálně pozastavená a nesbírá žádná data o vašem okolí."
             case .disabled:
@@ -79,7 +79,7 @@ final class ActiveAppViewModel {
         var text: String {
             switch self {
             case .enabled:
-                return "Když budete označeni jako nakažení, kontaktujeme vás na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, které byly ve vašem okolí v sekci Moje data."
+                return "Když budete označeni jako nakažení, kontaktujeme vás na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, který naleznete v sekci Moje data."
             case .paused:
                 return "Spusťte znovu sběr dat a chraňte vás i vaše okolí. Nezapomínejte na to v momentě, kdy opouštíte svůj domov."
             case .disabled:

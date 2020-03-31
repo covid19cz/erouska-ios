@@ -79,7 +79,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     @IBAction private func sendReportAction() {
         let controller = UIAlertController(
             title: "Byli jste požádáni o odeslání seznamu telefonů, se kterými jste se setkali?",
-            message: "",
+            message: "S odeslanými daty bude Ministerstvo zdravotnictví a jemu podřízení hygienici pracovat na základě vašeho souhlasu podle podmínek zpracování.",
             preferredStyle: .alert
         )
         controller.addAction(UIAlertAction(title: "Ano, odeslat", style: .default, handler: { _ in
@@ -97,7 +97,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     @IBAction private func infoButtonAction() {
         let controller = UIAlertController(
-            title: "Jedná se veškeré záznamy o měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
+            title: "Jedná se o veškeré záznamy o měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
             message: nil,
             preferredStyle: .alert
         )
