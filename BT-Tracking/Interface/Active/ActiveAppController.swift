@@ -73,6 +73,16 @@ final class ActiveAppController: UIViewController {
 
     // MARK: - Actions
 
+    func pauseScanning() {
+        AppSettings.state = .paused
+        updateViewModel()
+    }
+
+    func resumeScanning() {
+        AppSettings.state = .enabled
+        updateViewModel()
+    }
+
     @IBAction private func shareAppAction() {
         let url = URL(string: "https://covid19cz.page.link/share")!
         let shareContent = [url]

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DeleteDataVC: UIViewController {
+final class DeleteDataVC: UIViewController {
 
     private let viewModel = DeleteDataVM(scannerStore: AppDelegate.shared.scannerStore)
 
@@ -28,7 +28,14 @@ class DeleteDataVC: UIViewController {
     
     // MARK: - Action
     
-    @IBAction func deleteAllData(_ sender: Any) {
+    @IBAction private func deleteAllData(_ sender: Any) {
         viewModel.deleteAllData()
+
+        let controller = (tabBarController?.viewControllers?.first as? UINavigationController)?.topViewController as? ActiveAppController
+        controller?.pauseScanning()
+
+        showError(title: "Všechna data jsme odstranili a eRoušku pozastavili", message: "", okHandler: { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        })
     }
 }
