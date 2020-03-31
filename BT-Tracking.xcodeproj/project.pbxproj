@@ -63,6 +63,7 @@
 		80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationController.swift */; };
 		80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationController.swift */; };
 		80BE18B4243391F500C4A9E6 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
+		80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80BE18BF2433C18200C4A9E6 /* Localizable.strings */; };
 		80BF9C262424D55800150108 /* SendReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportController.swift */; };
 		80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
@@ -131,6 +132,8 @@
 		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		80BB476524236ED100F552FC /* BluetoothActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivationController.swift; sourceTree = "<group>"; };
 		80BB476724238CBB00F552FC /* AccountActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationController.swift; sourceTree = "<group>"; };
+		80BE18C02433C18200C4A9E6 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		80BE18C22433C18800C4A9E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80BF9C252424D55800150108 /* SendReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportController.swift; sourceTree = "<group>"; };
 		80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterUserVC.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -282,6 +285,7 @@
 		8054C0CA241FE68B008907B8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				80BE18BF2433C18200C4A9E6 /* Localizable.strings */,
 				80D5F7E62424B1540010EF51 /* README.md */,
 				80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */,
 				8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */,
@@ -487,6 +491,7 @@
 			knownRegions = (
 				en,
 				Base,
+				cs,
 			);
 			mainGroup = 8054C0A4241D492F008907B8;
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
@@ -509,6 +514,7 @@
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
+				80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */,
 				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
 				80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */,
 				800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */,
@@ -662,6 +668,15 @@
 				8054C0BC241D4932008907B8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		80BE18BF2433C18200C4A9E6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80BE18C02433C18200C4A9E6 /* cs */,
+				80BE18C22433C18800C4A9E6 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
