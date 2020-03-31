@@ -11,8 +11,9 @@ import RxSwift
 import RxRelay
 import RxKeyboard
 import FirebaseAuth
+import SafariServices
 
-class AccountActivationControler: UIViewController {
+final class AccountActivationControler: UIViewController {
 
     struct AuthData {
         let verificationID: String
@@ -59,7 +60,6 @@ class AccountActivationControler: UIViewController {
         }
     }
     private var disposeBag = DisposeBag()
-    private var confirmedPrivacy: Bool = false
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var phonePrefixTextField: UITextField!
@@ -92,6 +92,8 @@ class AccountActivationControler: UIViewController {
                 self.scrollView.scrollIndicatorInsets.bottom = adjsutHomeIndicator
                 self.view.layoutIfNeeded()
 
+                guard keyboardVisibleHeight > 0 else { return }
+
                 DispatchQueue.main.async {
                     let height = (self.scrollView.frame.height - adjsutHomeIndicator)
                     let contentSize = self.scrollView.contentSize
@@ -117,25 +119,7 @@ class AccountActivationControler: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func activateAcountAction(_ sender: Any) {
-        guard !confirmedPrivacy else {
-            activate()
-            return
-        }
-
-        showError(
-            title: "Pokračováním v aktivaci souhlasíte, aby Ministerstvo zdravotnictví pracovalo s telefonním číslem a údaji o setkání s jinými uživateli aplikace podle podmínek zpracování za účelem epidemiologického šetření.",
-            message: "Souhlas můžete  odvolat a pokud nesouhlasíte, nepokračujte v aktivaci.",
-            okTitle: "Ano, souhlasím",
-            okHandler: { [weak self] in
-                self?.confirmedPrivacy = true
-                self?.activate()
-            },
-            action: (title: "Ne, nesouhlasím", handler: nil)
-        )
-    }
-
-    private func activate() {
+    @IBAction private func activateAcountAction() {
         activityView.isHidden = false
         view.endEditing(true)
 
@@ -153,7 +137,16 @@ class AccountActivationControler: UIViewController {
         }
     }
 
-    private func cleanup() {
+    @IBAction private func privacyURLAction() {
+        let controller = SFSafariViewController(url: URL(string: "https://www.mzcr.cz")!)
+        present(controller, animated: true, completion: nil)
+    }
+
+}
+
+private extension AccountActivationControler {
+
+    func cleanup() {
         do {
             try Auth.auth().signOut()
         } catch {

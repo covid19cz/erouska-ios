@@ -9,9 +9,23 @@
 import UIKit
 import CoreBluetooth
 
-class BluetoothActivationController: UIViewController {
+final class BluetoothActivationController: UIViewController {
 
     private var peripheralManager: CBPeripheralManager?
+
+    private var bluetoothNotDetermined: Bool {
+        if #available(iOS 13.0, *) {
+            return CBCentralManager().authorization == .notDetermined
+        }
+        return CBPeripheralManager.authorizationStatus() == .notDetermined
+    }
+
+    private var bluetoothAuthorized: Bool {
+        if #available(iOS 13.0, *) {
+            return CBCentralManager().authorization == .allowedAlways
+        }
+        return CBPeripheralManager.authorizationStatus() == .authorized
+    }
 
     private var checkAfterBecomeActive: Bool = false
 
@@ -31,8 +45,10 @@ class BluetoothActivationController: UIViewController {
             object: nil
         )
     }
+
+    // MARK: - Actions
     
-    @IBAction func activateBluetoothAction() {
+    @IBAction private func activateBluetoothAction() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(applicationDidBecomeActive),
@@ -43,58 +59,49 @@ class BluetoothActivationController: UIViewController {
         checkForBluetooth()
     }
 
-    private func goToActivation() {
-        performSegue(withIdentifier: "activation", sender: nil)
-        peripheralManager = nil
-    }
-    
     @objc private func applicationDidBecomeActive() {
         checkForBluetooth()
     }
-    
-    private func checkForBluetooth() {
+
+}
+
+private extension BluetoothActivationController {
+
+    func goToActivation() {
+        performSegue(withIdentifier: "activation", sender: nil)
+        peripheralManager = nil
+    }
+
+    func checkForBluetooth() {
         if bluetoothNotDetermined {
             requestBluetoothPermission()
             return
         }
-        
+
         if !bluetoothAuthorized {
             showBluetoothPermissionError()
             return
         }
-        
+
         goToActivation()
     }
-    
-    private var bluetoothNotDetermined: Bool {
-        if #available(iOS 13.0, *) {
-            return CBCentralManager().authorization == .notDetermined
-        }
-        return CBPeripheralManager.authorizationStatus() == .notDetermined
-    }
-    
-    private var bluetoothAuthorized: Bool {
-        if #available(iOS 13.0, *) {
-            return CBCentralManager().authorization == .allowedAlways
-        }
-        return CBPeripheralManager.authorizationStatus() == .authorized
-    }
-    
-    private func requestBluetoothPermission() {
+
+    func requestBluetoothPermission() {
         peripheralManager = CBPeripheralManager()
     }
-    
-    private func showBluetoothPermissionError() {
+
+    func showBluetoothPermissionError() {
         showError(
             title: "Zapněte Bluetooth",
             message: "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.",
             okHandler: { [weak self] in self?.showAppSettings() }
         )
     }
-    
-    private func showAppSettings() {
+
+    func showAppSettings() {
         checkAfterBecomeActive = true
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(settingsURL)
     }
+
 }
