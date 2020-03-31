@@ -13,7 +13,7 @@ import RxKeyboard
 import FirebaseAuth
 import DeviceKit
 
-class CompleteActivationController: UIViewController {
+final class CompleteActivationController: UIViewController {
 
     var authData: AccountActivationControler.AuthData?
 
@@ -55,6 +55,8 @@ class CompleteActivationController: UIViewController {
                 self.scrollView.contentInset.bottom = adjsutHomeIndicator
                 self.scrollView.scrollIndicatorInsets.bottom = adjsutHomeIndicator
                 self.view.layoutIfNeeded()
+
+                guard keyboardVisibleHeight > 0 else { return }
 
                 DispatchQueue.main.async {
                     let height = (self.scrollView.frame.height - adjsutHomeIndicator)

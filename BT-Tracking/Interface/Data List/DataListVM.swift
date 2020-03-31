@@ -15,6 +15,7 @@ import RealmSwift
 class DataListVM {
 
     // MARK: - Properties
+    let selectedSegmentIndex = PublishRelay<Int>()
 
     private let scans: Observable<[Scan]>
     private let scanObjects: Results<ScanRealm>
@@ -34,7 +35,13 @@ class DataListVM {
     // MARK: - Sections
 
     var sections: Driver<[SectionModel]> {
-        return scans
+        return Observable.combineLatest(scans, selectedSegmentIndex)
+            .map { unfilteredScans, selectedSegmentIndex -> [Scan] in
+                return unfilteredScans.filter { scan in
+                    guard let medianRssi = scan.medianRssi else { return false }
+                    return selectedSegmentIndex == 0 ? (medianRssi >= AppSettings.medianRssiPoint) : true
+                }
+            }
             .map { unsortedScans in
                 return unsortedScans.sorted(by: { scan0, scan1 in scan0.date > scan1.date })
             }

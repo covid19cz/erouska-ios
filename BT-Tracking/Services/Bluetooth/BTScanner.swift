@@ -21,6 +21,10 @@ protocol BTScannering: class {
     func add(delegate: BTScannerDelegate)
     func remove(delegate: BTScannerDelegate)
 
+    var state: CBManagerState { get }
+    typealias UpdateState = (_ state: CBManagerState) -> Void
+    var didUpdateState: UpdateState? { get set }
+
     var isRunning: Bool { get }
     func start()
     func stop()
@@ -77,6 +81,11 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     }
     private var started: Bool = false
 
+    var state: CBManagerState {
+        return centralManager.state
+    }
+    var didUpdateState: UpdateState?
+
     func start() {
         started = true
         guard !centralManager.isScanning, centralManager.state == .poweredOn else { return }
@@ -107,6 +116,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         log("BTScanner: centralManagerDidUpdateState: \(central.state.rawValue)")
+
+        didUpdateState?(central.state)
 
         guard central.state == .poweredOn else { return }
 

@@ -14,9 +14,12 @@ final class DataHeaderCell: UITableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var infoButton: UIButton!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
 
     func configure(with numberOfScans: Int) {
         titleLabel.text = "Za poslednich 14 dní jste potkali \(numberOfScans) uživatelů aplikace eRouška"
+        segmentedControl.setTitle("Blízka setkaní", forSegmentAt: 0)
+        segmentedControl.setTitle("Všechna data", forSegmentAt: 1)
 
         if #available(iOS 13, *) {
             let image = UIImage(systemName: "questionmark.circle")

@@ -76,7 +76,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         guard !isRunning, peripheralManager.state == .poweredOn else { return }
 
         peripheralManager.startAdvertising([
-            CBAdvertisementDataLocalNameKey: BT.advertiserName.rawValue,
+            // CBAdvertisementDataLocalNameKey: BT.advertiserName.rawValue, disabled for sthorter BT packet
             CBAdvertisementDataServiceUUIDsKey : [BT.transferService.cbUUID]
         ])
 

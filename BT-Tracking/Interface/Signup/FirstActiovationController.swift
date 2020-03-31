@@ -8,29 +8,28 @@
 
 import UIKit
 import CoreBluetooth
+import SafariServices
 
-class FirstActiovationController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
+final class FirstActiovationController: UIViewController {
 
-    @IBAction func continueAction(_ sender: UIButton) {
+    @IBAction private func continueAction() {
         if bluetoothAuthorized  {
             performSegue(withIdentifier: "activation", sender: nil)
         } else {
             performSegue(withIdentifier: "bluetooth", sender: nil)
         }
     }
-    
+
+    @IBAction private func auditsURLAction(_ sender: Any) {
+        let controller = SFSafariViewController(url: URL(string: "https://www.erouska.cz")!)
+        present(controller, animated: true, completion: nil)
+    }
+
     private var bluetoothAuthorized: Bool {
         if #available(iOS 13.0, *) {
             return CBCentralManager().authorization == .allowedAlways
         }
         return CBPeripheralManager.authorizationStatus() == .authorized
     }
+
 }

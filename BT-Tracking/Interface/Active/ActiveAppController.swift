@@ -33,6 +33,15 @@ final class ActiveAppController: UIViewController {
 
         _ = AppDelegate.shared.scannerStore // start scanner store
 
+        AppDelegate.shared.scanner.didUpdateState = { [weak self] state in
+            guard let self = self else { return }
+            if state == .poweredOff, self.viewModel.state != .disabled {
+                self.checkForBluetooth()
+            } else if state == .poweredOn, self.viewModel.state == .disabled {
+                self.checkForBluetooth()
+            }
+        }
+
         checkForBluetooth()
 
         updateScanner()
@@ -80,10 +89,26 @@ final class ActiveAppController: UIViewController {
         case .paused:
             AppSettings.state = .enabled
         case .disabled:
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            if AppDelegate.shared.scanner.state == .poweredOff {
+                UIApplication.shared.open(URL(string: "App-Prefs::root=Settings&path=Bluetooth")!)
+            } else {
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }
             return
         }
         updateViewModel()
+    }
+
+    @IBAction private func moreAction() {
+        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        controller.addAction(UIAlertAction(title: "Zrušit registraci", style: .default, handler: { [weak self] _ in
+            self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
+        }))
+        controller.addAction(UIAlertAction(title: "O aplikaci", style: .default, handler: { [weak self] _ in
+            self?.performSegue(withIdentifier: "about", sender: nil)
+        }))
+        controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel, handler: nil))
+        present(controller, animated: true, completion: nil)
     }
 
     // MARK: -
@@ -137,12 +162,17 @@ private extension ActiveAppController {
     }
 
     func checkForBluetooth() {
-        let state: Bool
+        var state: Bool
         if #available(iOS 13.0, *) {
             state = AppDelegate.shared.advertiser.authorization == .allowedAlways
         } else {
             state = CBPeripheralManager.authorizationStatus() == .authorized
         }
+
+        if AppDelegate.shared.scanner.state == .poweredOff {
+            state = false
+        }
+
         guard lastBluetoothState != state else { return }
         lastBluetoothState = state
         updateViewModel()
