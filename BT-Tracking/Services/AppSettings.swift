@@ -12,6 +12,8 @@ struct AppSettings {
 
     static let firebaseRegion = "europe-west1"
 
+    static let smsExpiration: TimeInterval = 15 * 60
+
     static var BUID: String? {
         get {
             return UserDefaults.standard.string(forKey: "BUID")
