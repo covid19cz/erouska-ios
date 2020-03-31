@@ -22,7 +22,8 @@ final class ScannerStore {
     
     let currentScan = BehaviorRelay<[Scan]>(value: [])
     let scans: Observable<[Scan]>
-    
+    let appTermination = PublishSubject<Void>()
+
     private let scanObjects: Results<ScanRealm>
     private let bag = DisposeBag()
     
@@ -45,6 +46,7 @@ final class ScannerStore {
                 return scanned.map { $0.toScan() }
             }
         bindScanning()
+        bindAppTerminate()
     }
     
     private func bindScanning() {
@@ -69,14 +71,26 @@ final class ScannerStore {
     
     private func bind(newPeriod: BehaviorSubject<Void>?, endsAt endDate: Date) {
         newPeriod?
-            .subscribe(onCompleted: { [unowned self] in
-                self.currentPeriod = self.period
-                self.bind(newPeriod: self.currentPeriod, endsAt: Date() + Double(scanningPeriod))
-                self.process(self.devices, at: endDate)
-                self.devices.removeAll()
-                self.deleteOldRecordsIfNeeded()
+            .subscribe(onCompleted: { [weak self] in
+                self?.processPeriod(with: endDate)
             })
             .disposed(by: bag)
+    }
+    
+    private func bindAppTerminate() {
+        appTermination
+            .subscribe(onNext: { [weak self] in
+                self?.processPeriod(with: Date())
+            })
+            .disposed(by: bag)
+    }
+    
+    private func processPeriod(with endDate: Date) {
+        self.currentPeriod = self.period
+        self.bind(newPeriod: self.currentPeriod, endsAt: Date() + Double(scanningPeriod))
+        self.process(self.devices, at: endDate)
+        self.devices.removeAll()
+        self.deleteOldRecordsIfNeeded()
     }
     
     private func process(_ devices: [BTDevice], at date: Date) {

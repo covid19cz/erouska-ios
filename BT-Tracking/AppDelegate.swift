@@ -158,6 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+        scannerStore.appTermination.onNext(())
         log("\n\n\n-END----------------------------------\n")
     }
 
