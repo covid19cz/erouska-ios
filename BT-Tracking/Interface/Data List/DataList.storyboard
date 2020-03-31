@@ -372,16 +372,18 @@ Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech os
                                 <rect key="frame" x="20" y="140" width="374" height="653"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-lw-NdS">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="108.5"/>
-                                        <string key="text">Opravdu chcete smazat naměřená nebo odeslaná data?
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="174.5"/>
+                                        <string key="text">Opravdu chcete smazat všechna naměřená data?
 
-Hygienici tak přijdou o možnost využít vaše kontakty v případě, že budete nakažen.</string>
+Hygienici tak přijdou o možnost využít vaše kontakty v případě, že budete nakažen.
+
+Po smazání dat dojde k automatickému pozastavení eRoušky.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0v1-rS-iZ4">
-                                        <rect key="frame" x="0.0" y="123.5" width="374" height="470.5"/>
+                                        <rect key="frame" x="0.0" y="189.5" width="374" height="404.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjq-uQ-dSM" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">

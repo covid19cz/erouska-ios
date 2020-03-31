@@ -78,7 +78,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     @IBAction private func sendReportAction() {
         let controller = UIAlertController(
-            title: "Byli jste požádáni o odeslání seznamu telefonů, se kterými jste se setkali?",
+            title: "Požádal vás pracovník hygienické stanice o zaslání seznamu telefonů, se kterými jste se setkali?",
             message: "S odeslanými daty bude Ministerstvo zdravotnictví a jemu podřízení hygienici pracovat na základě vašeho souhlasu podle podmínek zpracování.",
             preferredStyle: .alert
         )
@@ -87,7 +87,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         }))
         controller.addAction(UIAlertAction(title: "Ne", style: .cancel, handler: { _ in
             self.showError(
-                title: "Sdílejte data jen v případě, že vás o to poprosí hygienik a vyzve vás k zaslání dat. To se stane jen v případě, že budete v okruhu lidí nakažených koronavirem.",
+                title: "Sdílejte data jen v případě, že vás pracovník hygienické stnaice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu",
                 message: ""
             )
         }))
@@ -97,7 +97,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     @IBAction private func infoButtonAction() {
         let controller = UIAlertController(
-            title: "Jedná se o veškeré záznamy o měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
+            title: "Jedná se o veškeré záznamy měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
             message: nil,
             preferredStyle: .alert
         )
