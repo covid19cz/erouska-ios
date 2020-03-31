@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 import RxKeyboard
 import FirebaseAuth
-import SafariServices
+import DeviceKit
 
 final class AccountActivationControler: UIViewController {
 
@@ -106,6 +106,7 @@ final class AccountActivationControler: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        guard Device.current.diagonal != 4 else { return }
         phoneNumberTextField.becomeFirstResponder()
     }
 
@@ -138,8 +139,8 @@ final class AccountActivationControler: UIViewController {
     }
 
     @IBAction private func privacyURLAction() {
-        let controller = SFSafariViewController(url: URL(string: "https://www.mzcr.cz")!)
-        present(controller, animated: true, completion: nil)
+        guard let url = URL(string: RemoteValues.termsAndConditionsLink) else { return }
+        openURL(URL: url)
     }
 
 }

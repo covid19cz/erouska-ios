@@ -95,19 +95,20 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         present(controller, animated: true, completion: nil)
     }
 
-    @IBAction private func infoButtonAction() {
+    @IBAction private func infoButtonAction(sender: Any?) {
         let controller = UIAlertController(
             title: "Jedná se o veškeré záznamy měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
             message: nil,
             preferredStyle: .alert
         )
         controller.addAction(UIAlertAction(title: "Zavřít", style: .default, handler: nil))
+        controller.popoverPresentationController?.sourceView = sender as? UIView
 
         present(controller, animated: true, completion: nil)
     }
 
     private func sendReport() {
-        guard (AppSettings.lastUploadDate ?? Date.distantPast) + (15 * 60) < Date() else {
+        guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
             showError(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
                 message: ""
