@@ -25,8 +25,7 @@ final class ContactsController: UIViewController {
     }
 
     @IBAction private func faqAction() {
-        let remoteConfigValue = AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.faqLink)
-        if let url = URL(string: remoteConfigValue) {
+        if let url = URL(string: RemoteValues.faqLink) {
             openURL(URL: url)
         }
     }

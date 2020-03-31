@@ -1,5 +1,5 @@
 //
-//  RemoteConfigValueKey.swift
+//  RemoteValues.swift
 //  BT-Tracking
 //
 //  Created by Stanislav Kasprik on 29/03/2020.
@@ -8,4 +8,10 @@
 
 enum RemoteConfigValueKey: String {
     case faqLink
+}
+
+struct RemoteValues {
+    static var faqLink: String {
+        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.faqLink)
+    }
 }
