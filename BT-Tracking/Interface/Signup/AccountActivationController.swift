@@ -130,7 +130,8 @@ final class AccountActivationControler: UIViewController {
             self.activityView.isHidden = true
 
             if let error = error {
-                self.show(error: error, title: "Chyba při aktivaci")
+                log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
+                self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
                 self.cleanup()
             } else if let verificationID = verificationID  {
                 self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
