@@ -95,13 +95,14 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         present(controller, animated: true, completion: nil)
     }
 
-    @IBAction private func infoButtonAction() {
+    @IBAction private func infoButtonAction(sender: Any?) {
         let controller = UIAlertController(
             title: "Jedná se veškeré záznamy o měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
             message: nil,
             preferredStyle: .alert
         )
         controller.addAction(UIAlertAction(title: "Zavřít", style: .default, handler: nil))
+        controller.popoverPresentationController?.sourceView = sender as? UIView
 
         present(controller, animated: true, completion: nil)
     }

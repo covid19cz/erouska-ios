@@ -99,7 +99,7 @@ final class ActiveAppController: UIViewController {
         updateViewModel()
     }
 
-    @IBAction private func moreAction() {
+    @IBAction private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Zrušit registraci", style: .default, handler: { [weak self] _ in
             self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
@@ -109,6 +109,7 @@ final class ActiveAppController: UIViewController {
             self?.openURL(URL: url)
         }))
         controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel, handler: nil))
+        controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true, completion: nil)
     }
 
