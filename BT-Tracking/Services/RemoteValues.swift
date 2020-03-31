@@ -70,6 +70,7 @@ enum RemoteConfigValueKey: String {
     case proclamationLink
     case termsAndConditionsLink
     case aboutLink
+    case homepageLink
 
     case emergencyNumber
 }
@@ -90,6 +91,7 @@ struct RemoteValues {
         .proclamationLink: "https://koronavirus.mzcr.cz",
         .termsAndConditionsLink: "https://koronavirus.mzcr.cz",
         .aboutLink: "http://erouska.cz",
+        .homepageLink: "http://erouska.cz",
 
         .emergencyNumber: 1212
     ]
@@ -144,9 +146,14 @@ struct RemoteValues {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.termsAndConditionsLink)
     }
 
-    /// Odkaz na tým
+    /// Odkaz na tým - erouska.cz/tym
     static var aboutLink: String {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.aboutLink)
+    }
+
+    /// Homepage - erouska.cz
+    static var homepageLink: String {
+        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.homepageLink)
     }
 
     /// nouzové číslo - 1212

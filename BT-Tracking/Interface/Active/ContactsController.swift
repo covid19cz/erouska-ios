@@ -39,7 +39,7 @@ final class ContactsController: UIViewController {
     }
 
     @IBAction private func webAction() {
-        guard let url = URL(string: "http://erouska.cz") else { return }
+        guard let url = URL(string: RemoteValues.homepageLink) else { return }
         openURL(URL: url)
     }
 
