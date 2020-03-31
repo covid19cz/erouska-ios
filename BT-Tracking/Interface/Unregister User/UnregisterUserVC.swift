@@ -33,7 +33,6 @@ final class UnregisterUserVC: UIViewController {
             if let error = error as NSError? {
                 Log.log("deleteUser request failed with error: \(error.localizedDescription)")
                 self.show(error: error, title: "Chyba při zrušení registrace")
-                self.scannerStore.deleteAllData()
                 return
             }
 
