@@ -369,7 +369,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="ellipsis.circle.fill" id="aAa-9L-bkG">
                                 <connections>
-                                    <action selector="moreAction" destination="SLc-31-c7B" id="JTF-BJ-qn5"/>
+                                    <action selector="moreActionWithSender:" destination="SLc-31-c7B" id="zr6-Iy-Ztd"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Sdílet aplikaci" id="Pfj-dc-ty6">

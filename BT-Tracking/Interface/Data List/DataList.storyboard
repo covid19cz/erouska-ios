@@ -44,7 +44,7 @@
                                                         <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="infoButtonAction" destination="xGP-gf-Asp" eventType="touchUpInside" id="gbQ-mQ-VfX"/>
+                                                        <action selector="infoButtonActionWithSender:" destination="xGP-gf-Asp" eventType="touchUpInside" id="dKc-Fg-84g"/>
                                                     </connections>
                                                 </button>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YQx-Z1-9BV">
