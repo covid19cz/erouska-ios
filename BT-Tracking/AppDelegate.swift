@@ -64,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         FirebaseApp.configure()
+        setupFirebaseRemoteConfig()
         Auth.auth().languageCode = "cs";
 
         #endif
@@ -201,5 +202,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler(.noData)
         }
     }
+}
 
+// Firebase Remote Config
+
+extension AppDelegate {
+    func setupFirebaseRemoteConfig() {
+        setupDefaultValues()
+        fetchRemoteValues()
+    }
+
+    private func setupDefaultValues() {
+        let defaults: [String: Any?] = [
+            RemoteConfigValueKey.faqLink.rawValue: "https://koronavirus.mzcr.cz/otazky-a-odpovedi/"
+        ]
+        RemoteConfig.remoteConfig().setDefaults(defaults as? [String: NSObject])
+    }
+
+    private func fetchRemoteValues() {
+        #if DEBUG
+        let fetchDuration: TimeInterval = 0
+        #else
+        let fetchDuration: TimeInterval = 3600
+        #endif
+        RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { _, error in
+            if let error = error {
+                print("AppDelegate: Got an error fetching remote values \(error)")
+                return
+            }
+            RemoteConfig.remoteConfig().activate()
+            print("AppDelegate: Retrieved values from the Firebase Remote Config!")
+        }
+    }
+
+    func remoteConfigString(forKey key: RemoteConfigValueKey) -> String {
+        return RemoteConfig.remoteConfig()[key.rawValue].stringValue ?? ""
+    }
 }

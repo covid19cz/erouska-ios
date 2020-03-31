@@ -25,7 +25,9 @@ final class ContactsController: UIViewController {
     }
 
     @IBAction private func faqAction() {
-        openURL(URL: URL(string: "https://koronavirus.mzcr.cz/otazky-a-odpovedi/")!)
+        if let url = URL(string: RemoteValues.faqLink) {
+            openURL(URL: url)
+        }
     }
 
     @IBAction private func call1212Action() {
