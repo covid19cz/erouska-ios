@@ -41,4 +41,10 @@ struct AppSettings {
         }
     }
 
+    static func deleteAllData() {
+        AppSettings.BUID = nil
+        AppSettings.state = nil
+        AppSettings.lastUploadDate = nil
+    }
+
 }
