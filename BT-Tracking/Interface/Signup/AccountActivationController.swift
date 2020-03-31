@@ -12,6 +12,7 @@ import RxRelay
 import RxKeyboard
 import FirebaseAuth
 import SafariServices
+import DeviceKit
 
 final class AccountActivationControler: UIViewController {
 
@@ -106,6 +107,7 @@ final class AccountActivationControler: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        guard Device.current.diagonal != 4 else { return }
         phoneNumberTextField.becomeFirstResponder()
     }
 
