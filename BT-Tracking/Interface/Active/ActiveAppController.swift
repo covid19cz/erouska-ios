@@ -84,7 +84,7 @@ final class ActiveAppController: UIViewController {
     }
 
     @IBAction private func shareAppAction() {
-        let url = URL(string: "https://covid19cz.page.link/share")!
+        guard let url = URL(string: RemoteValues.shareAppDynamicLink) else { return }
         let shareContent = [url]
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
@@ -99,11 +99,15 @@ final class ActiveAppController: UIViewController {
         case .paused:
             AppSettings.state = .enabled
         case .disabled:
+            let url: URL?
             if AppDelegate.shared.scanner.state == .poweredOff {
-                UIApplication.shared.open(URL(string: "App-Prefs::root=Settings&path=Bluetooth")!)
+                url = URL(string: "App-Prefs::root=Settings&path=Bluetooth")
             } else {
-                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                url = URL(string: UIApplication.openSettingsURLString)
             }
+
+            guard let URL = url else { return }
+            UIApplication.shared.open(URL)
             return
         }
         updateViewModel()
