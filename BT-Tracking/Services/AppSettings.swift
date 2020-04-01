@@ -11,7 +11,8 @@ import Foundation
 struct AppSettings {
 
     static let firebaseRegion = "europe-west1"
-    static let medianRssiPoint = -30
+
+    static let smsExpiration: TimeInterval = 15 * 60
 
     static var BUID: String? {
         get {
@@ -40,6 +41,12 @@ struct AppSettings {
         set {
             UserDefaults.standard.set(newValue?.timeIntervalSince1970, forKey: "UploadDate")
         }
+    }
+
+    static func deleteAllData() {
+        AppSettings.BUID = nil
+        AppSettings.state = nil
+        AppSettings.lastUploadDate = nil
     }
 
 }

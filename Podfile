@@ -7,6 +7,7 @@ target 'BT-Tracking' do
   pod 'Firebase/Auth'
   pod 'Firebase/Functions'
   pod 'Firebase/Storage'
+  pod 'Firebase/RemoteConfig'
 
   pod 'RxSwift'
   pod 'RxCocoa'

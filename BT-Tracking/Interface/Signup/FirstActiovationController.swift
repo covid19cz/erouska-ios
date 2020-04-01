@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreBluetooth
-import SafariServices
 
 final class FirstActiovationController: UIViewController {
 
@@ -21,8 +20,8 @@ final class FirstActiovationController: UIViewController {
     }
 
     @IBAction private func auditsURLAction(_ sender: Any) {
-        let controller = SFSafariViewController(url: URL(string: "https://www.erouska.cz")!)
-        present(controller, animated: true, completion: nil)
+        guard let url = URL(string: RemoteValues.proclamationLink) else { return }
+        openURL(URL: url)
     }
 
     private var bluetoothAuthorized: Bool {

@@ -12,31 +12,43 @@ import RxCocoa
 import RxRealm
 import RealmSwift
 
-private let scanningPeriod = 60
-private let scanningDelay = 0
-private let lastPurgeDateKey = "lastDataPurgeDate"
-private let dataPurgeCheckInterval: TimeInterval = 1 * 86400 // 1 day   ... for testing set to 60 seconds for example
-private let dataPurgeInterval: TimeInterval = 14 * 86400 // 14 days   ... for testing se to 300 seconds for example and see data older then 5 minutes being deleted
-
 final class ScannerStore {
-    
+
+    /// default 60
+    private let scanningPeriod: Int
+    /// default 0
+    private let scanningDelay: Int = 0
+
+    private let lastPurgeDateKey = "lastDataPurgeDate"
+
+    /// 1 day... for testing set to 60 seconds for example
+    private let dataPurgeCheckInterval: TimeInterval = 1 * 86400
+
+    /// 14 days... for testing se to 300 seconds for example and see data older then 5 minutes being deleted
+    private let dataPurgeInterval: TimeInterval
+
     let currentScan = BehaviorRelay<[Scan]>(value: [])
     let scans: Observable<[Scan]>
-    
+    let appTermination = PublishSubject<Void>()
+
     private let scanObjects: Results<ScanRealm>
     private let bag = DisposeBag()
     
     private let didFindSubject = PublishRelay<BTDevice>()
     private let didUpdateSubject = PublishRelay<BTDevice>()
     private let didReceive: Observable<BTDevice>
-    private let timer: Observable<Int> = Observable.timer(.seconds(scanningDelay), period: .seconds(scanningPeriod), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+    private let timer: Observable<Int>
     private var period: BehaviorSubject<Void> {
         return BehaviorSubject<Void>(value: ())
     }
     private var currentPeriod: BehaviorSubject<Void>?
     private var devices = [BTDevice]()
     
-    init() {
+    init(scanningPeriod: Int = 60, dataPurgeInterval: TimeInterval = 14 * 86400) {
+        self.scanningPeriod = scanningPeriod
+        self.dataPurgeInterval = dataPurgeInterval
+        self.timer = Observable.timer(.seconds(scanningDelay), period: .seconds(scanningPeriod), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+
         didReceive = Observable.merge(didFindSubject.asObservable(), didUpdateSubject.asObservable())
         let realm = try! Realm()
         scanObjects = realm.objects(ScanRealm.self)
@@ -45,6 +57,7 @@ final class ScannerStore {
                 return scanned.map { $0.toScan() }
             }
         bindScanning()
+        bindAppTerminate()
     }
     
     private func bindScanning() {
@@ -69,14 +82,26 @@ final class ScannerStore {
     
     private func bind(newPeriod: BehaviorSubject<Void>?, endsAt endDate: Date) {
         newPeriod?
-            .subscribe(onCompleted: { [unowned self] in
-                self.currentPeriod = self.period
-                self.bind(newPeriod: self.currentPeriod, endsAt: Date() + Double(scanningPeriod))
-                self.process(self.devices, at: endDate)
-                self.devices.removeAll()
-                self.deleteOldRecordsIfNeeded()
+            .subscribe(onCompleted: { [weak self] in
+                self?.processPeriod(with: endDate)
             })
             .disposed(by: bag)
+    }
+    
+    private func bindAppTerminate() {
+        appTermination
+            .subscribe(onNext: { [weak self] in
+                self?.processPeriod(with: Date())
+            })
+            .disposed(by: bag)
+    }
+    
+    private func processPeriod(with endDate: Date) {
+        self.currentPeriod = self.period
+        self.bind(newPeriod: self.currentPeriod, endsAt: Date() + Double(scanningPeriod))
+        self.process(self.devices, at: endDate)
+        self.devices.removeAll()
+        self.deleteOldRecordsIfNeeded()
     }
     
     private func process(_ devices: [BTDevice], at date: Date) {

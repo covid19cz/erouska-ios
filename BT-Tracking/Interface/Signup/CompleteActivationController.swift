@@ -25,20 +25,23 @@ final class CompleteActivationController: UIViewController {
     }
     private var disposeBag = DisposeBag()
 
+    private var subtitle: String = ""
+
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet private weak var smsCodeTextField: UITextField!
     @IBOutlet private weak var actionButton: Button!
     @IBOutlet private weak var activityView: UIView!
-    @IBOutlet private weak var smsResendButton: UIButton!
 
-    private var resendSeconds: TimeInterval = 0
-    private var resendTimer: Timer?
+    private var expirationSeconds: TimeInterval = 0
+    private var expirationTimer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        startResendTimer()
+        subtitle = subtitleLabel.text ?? ""
+        startExpirationTimer()
 
         titleLabel.text = titleLabel.text?.replacingOccurrences(of: "%@", with: authData?.phoneNumber ?? "")
 
@@ -163,34 +166,42 @@ final class CompleteActivationController: UIViewController {
                 self.cleanup()
             } else if let verificationID = verificationID  {
                 self.authData = AccountActivationControler.AuthData(verificationID: verificationID, phoneNumber: phone)
-                self.startResendTimer()
+                self.startExpirationTimer()
                 self.smsCodeTextField.becomeFirstResponder()
             }
         }
     }
 
-    private func startResendTimer() {
-        smsResendButton.isEnabled = false
-        resendSeconds = 30
-        updateResendTitle()
+    private func startExpirationTimer() {
+        expirationSeconds = AppSettings.smsExpiration
+        updateExpirationTitle()
 
-        resendTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            self.resendSeconds -= 1
+        expirationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            self.expirationSeconds -= 1
+            self.updateExpirationTitle()
 
-            if self.resendSeconds == 0 {
-                self.resendTimer?.invalidate()
-                self.smsResendButton.isEnabled = true
-            } else {
-                self.updateResendTitle()
+            if self.expirationSeconds == 0 {
+                self.expirationTimer?.invalidate()
+                self.showError(
+                    title: "Vypršela platnost ověřovacího kódu",
+                    message: "Zkontrolujte telefonní číslo a nechte si odeslat nový ověřovací kód.",
+                    okHandler: {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                )
             }
         })
     }
 
-    private func updateResendTitle() {
-        guard !smsResendButton.isEnabled else { return }
-        UIView.performWithoutAnimation {
-            self.smsResendButton.setTitle("Znovu odeslat SMS (\(Int(resendSeconds)))", for: .disabled)
-        }
+    private func updateExpirationTitle() {
+        let date = Date(timeIntervalSince1970: expirationSeconds)
+        subtitleLabel.text = subtitle.replacingOccurrences(of: "%@", with: dateForamtter.string(from: date))
+    }
+
+    private var dateForamtter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "m:ss"
+        return dateFormatter
     }
 
     private func cleanup() {

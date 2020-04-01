@@ -6,7 +6,6 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import SafariServices
 import UIKit
 
 final class ContactsController: UIViewController {
@@ -21,26 +20,27 @@ final class ContactsController: UIViewController {
     }
 
     @IBAction private func importantContactsAction() {
-        openURL(URL: URL(string: "https://koronavirus.mzcr.cz/dulezite-kontakty-odkazy/")!)
+        if let url = URL(string: RemoteValues.importantLink) {
+            openURL(URL: url)
+        }
     }
 
     @IBAction private func faqAction() {
-        openURL(URL: URL(string: "https://koronavirus.mzcr.cz/otazky-a-odpovedi/")!)
+        if let url = URL(string: RemoteValues.faqLink) {
+            openURL(URL: url)
+        }
     }
 
     @IBAction private func call1212Action() {
-        guard let url = URL(string: "tel:1212") else { return }
+        guard let url = URL(string: "tel:\(RemoteValues.emergencyPhonenumber)") else { return }
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
 
     @IBAction private func webAction() {
-        openURL(URL: URL(string: "http://erouska.cz")!)
+        guard let url = URL(string: RemoteValues.homepageLink) else { return }
+        openURL(URL: url)
     }
 
-    private func openURL(URL: URL) {
-        let controller = SFSafariViewController(url: URL)
-        present(controller, animated: true, completion: nil)
-    }
 }

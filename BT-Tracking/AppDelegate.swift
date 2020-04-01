@@ -36,7 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) lazy var advertiser: BTAdvertising = BTAdvertiser()
     private(set) lazy var scanner: BTScannering = BTScanner()
     lazy var scannerStore: ScannerStore = {
-        let store = ScannerStore()
+        let store = ScannerStore(
+            scanningPeriod: RemoteValues.collectionSeconds,
+            dataPurgeInterval: RemoteValues.persistDataDays
+        )
         AppDelegate.shared.scanner.add(delegate: store)
         return store
     }()
@@ -64,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         FirebaseApp.configure()
+        setupFirebaseRemoteConfig()
         Auth.auth().languageCode = "cs";
 
         #endif
@@ -157,6 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+        scannerStore.appTermination.onNext(())
         log("\n\n\n-END----------------------------------\n")
     }
 
@@ -201,5 +206,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler(.noData)
         }
     }
-
 }

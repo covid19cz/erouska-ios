@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 import RxKeyboard
 import FirebaseAuth
-import SafariServices
+import DeviceKit
 
 final class AccountActivationControler: UIViewController {
 
@@ -106,6 +106,7 @@ final class AccountActivationControler: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        guard Device.current.diagonal != 4 else { return }
         phoneNumberTextField.becomeFirstResponder()
     }
 
@@ -129,7 +130,8 @@ final class AccountActivationControler: UIViewController {
             self.activityView.isHidden = true
 
             if let error = error {
-                self.show(error: error, title: "Chyba při aktivaci")
+                log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
+                self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
                 self.cleanup()
             } else if let verificationID = verificationID  {
                 self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
@@ -138,8 +140,8 @@ final class AccountActivationControler: UIViewController {
     }
 
     @IBAction private func privacyURLAction() {
-        let controller = SFSafariViewController(url: URL(string: "https://www.mzcr.cz")!)
-        present(controller, animated: true, completion: nil)
+        guard let url = URL(string: RemoteValues.termsAndConditionsLink) else { return }
+        openURL(URL: url)
     }
 
 }

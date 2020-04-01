@@ -57,7 +57,12 @@ final class CSVMaker: CSVMakering {
             return
         }
 
-        realm.objects(ScanRealm.self).filter("timestampStart >= \(fromDate?.timeIntervalSince1970 ?? 0)").forEach() { scan in
+        var data = realm.objects(ScanRealm.self)
+        if let fromDate = fromDate {
+            data = data.filter("startDate >= %@", fromDate)
+        }
+
+        data.forEach() { scan in
             try? csv.write(row: [
                 scan.buid,
                 String(scan.startDate.timeIntervalSince1970),

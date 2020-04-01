@@ -14,6 +14,7 @@
 		46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA82422444600C01DFA /* ScanListVC.swift */; };
 		46F21CAF2422597F00C01DFA /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CAE2422597F00C01DFA /* Scan.swift */; };
 		46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CB3242270F700C01DFA /* ScannerStore.swift */; };
+		5E110F9C2433C4AD0059712A /* UnregisterFinishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */; };
 		5ED9B2322432517300A24703 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED9B2312432517300A24703 /* HelpVM.swift */; };
 		5ED9B237243252DC00A24703 /* HelpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED9B236243252DC00A24703 /* HelpCell.swift */; };
 		5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
@@ -62,6 +63,8 @@
 		80BB47642422865B00F552FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
 		80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationController.swift */; };
 		80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationController.swift */; };
+		80BE18B4243391F500C4A9E6 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
+		80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80BE18BF2433C18200C4A9E6 /* Localizable.strings */; };
 		80BF9C262424D55800150108 /* SendReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportController.swift */; };
 		80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
@@ -78,6 +81,7 @@
 		BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppController.swift */; };
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
 		BDBB00D824261D5C00871FE4 /* NSLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */; };
+		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +95,7 @@
 		46F21CA82422444600C01DFA /* ScanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListVC.swift; sourceTree = "<group>"; };
 		46F21CAE2422597F00C01DFA /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		46F21CB3242270F700C01DFA /* ScannerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerStore.swift; sourceTree = "<group>"; };
+		5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterFinishVC.swift; sourceTree = "<group>"; };
 		5ED9B2312432517300A24703 /* HelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVM.swift; sourceTree = "<group>"; };
 		5ED9B236243252DC00A24703 /* HelpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCell.swift; sourceTree = "<group>"; };
 		5EE9D814242F74F5002F833C /* DataHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHeaderCell.swift; sourceTree = "<group>"; };
@@ -129,6 +134,8 @@
 		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		80BB476524236ED100F552FC /* BluetoothActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivationController.swift; sourceTree = "<group>"; };
 		80BB476724238CBB00F552FC /* AccountActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationController.swift; sourceTree = "<group>"; };
+		80BE18C02433C18200C4A9E6 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		80BE18C22433C18800C4A9E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80BF9C252424D55800150108 /* SendReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportController.swift; sourceTree = "<group>"; };
 		80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterUserVC.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -146,6 +153,7 @@
 		BD979AEA242565AF004001ED /* ActiveAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppController.swift; sourceTree = "<group>"; };
 		BDB07FBF24254A8F00834E79 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutHelper.swift; sourceTree = "<group>"; };
+		C4E1A1B424311D3800108325 /* RemoteValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +189,7 @@
 			children = (
 				46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */,
 				80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */,
+				5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */,
 			);
 			path = "Unregister User";
 			sourceTree = "<group>";
@@ -279,6 +288,7 @@
 		8054C0CA241FE68B008907B8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				80BE18BF2433C18200C4A9E6 /* Localizable.strings */,
 				80D5F7E62424B1540010EF51 /* README.md */,
 				80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */,
 				8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */,
@@ -296,6 +306,7 @@
 				80ECB96724291E1B00E57601 /* CSV */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
+				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -304,15 +315,15 @@
 			isa = PBXGroup;
 			children = (
 				8054C0DC2420AF63008907B8 /* App.swift */,
-				807053522427BA2500DC1034 /* Data.swift */,
 				80BB47632422865B00F552FC /* Button.swift */,
-				80799BEA2423B89A002B04C5 /* Controller.swift */,
-				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
-				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
 				80ECB96524290DA900E57601 /* Collection.swift */,
-				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
-				80B94556242B96560052CD9F /* NavigationController.swift */,
+				80799BEA2423B89A002B04C5 /* Controller.swift */,
+				807053522427BA2500DC1034 /* Data.swift */,
 				80631A97242CAB5000EB0B6C /* Image.swift */,
+				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
+				80B94556242B96560052CD9F /* NavigationController.swift */,
+				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
+				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -483,6 +494,7 @@
 			knownRegions = (
 				en,
 				Base,
+				cs,
 			);
 			mainGroup = 8054C0A4241D492F008907B8;
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
@@ -505,6 +517,7 @@
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
+				80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */,
 				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
 				80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */,
 				800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */,
@@ -587,6 +600,7 @@
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */,
+				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
@@ -615,6 +629,7 @@
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */,
 				46F21CAF2422597F00C01DFA /* Scan.swift in Sources */,
+				5E110F9C2433C4AD0059712A /* UnregisterFinishVC.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
 				80AD970D2429318B00AEA661 /* DataCell.swift in Sources */,
 				80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */,
@@ -627,6 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80BB474924212A3C00F552FC /* LogSegmentController.swift in Sources */,
+				80BE18B4243391F500C4A9E6 /* RemoteValues.swift in Sources */,
 				80BB474A24212A3C00F552FC /* Logger.swift in Sources */,
 				80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */,
 				80BB474C24212A3C00F552FC /* FileLogger.swift in Sources */,
@@ -656,6 +672,15 @@
 				8054C0BC241D4932008907B8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		80BE18BF2433C18200C4A9E6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80BE18C02433C18200C4A9E6 /* cs */,
+				80BE18C22433C18800C4A9E6 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -782,7 +807,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -804,7 +829,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

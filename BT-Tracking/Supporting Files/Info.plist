@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>cs</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -72,9 +72,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>We need Bluetooth to discover, connect and share information with other nearby devices to help fight against Coronavirus pandemy.</string>
+	<string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>We need Bluetooth to discover, connect and share information with other nearby devices to help fight against Coronavirus pandemy.</string>
+	<string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
