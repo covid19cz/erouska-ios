@@ -12,6 +12,9 @@ PODS:
     - FirebaseAnalytics (= 6.3.1)
   - Firebase/CoreOnly (6.20.0):
     - FirebaseCore (= 6.6.4)
+  - Firebase/Crashlytics (6.20.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.0.0-beta.5)
   - Firebase/Functions (6.20.0):
     - Firebase/CoreOnly
     - FirebaseFunctions (~> 2.5.1)
@@ -54,6 +57,11 @@ PODS:
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 0.3.901)
   - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseCrashlytics (4.0.0-beta.5):
+    - FirebaseAnalyticsInterop (~> 1.2)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.1)
+    - PromisesObjC (~> 1.2)
   - FirebaseFunctions (2.5.1):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
@@ -142,6 +150,7 @@ DEPENDENCIES:
   - DeviceKit
   - Firebase/Analytics
   - Firebase/Auth
+  - Firebase/Crashlytics
   - Firebase/Functions
   - Firebase/RemoteConfig
   - Firebase/Storage
@@ -166,6 +175,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
+    - FirebaseCrashlytics
     - FirebaseFunctions
     - FirebaseInstallations
     - FirebaseInstanceID
@@ -201,6 +211,7 @@ SPEC CHECKSUMS:
   FirebaseCore: ed0a24c758a57c2b88c5efa8e6a8195e868af589
   FirebaseCoreDiagnostics: e9b4cd8ba60dee0f2d13347332e4b7898cca5b61
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseCrashlytics: 7c95218730d1debf493e987233c7b41dd7ba1329
   FirebaseFunctions: 5af7c35d1c5e41608fecbb667eb6c4e672e318d0
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 7ee0d6777013bb952f377b41965bf132b6a075be
@@ -223,6 +234,6 @@ SPEC CHECKSUMS:
   RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
 
-PODFILE CHECKSUM: 00cfece377c13272400e12d8f86703d65cf5889b
+PODFILE CHECKSUM: 31434b75e052fb198740fdcfbc1affacefe4e7d4
 
 COCOAPODS: 1.9.1
