@@ -97,7 +97,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     @IBAction private func infoButtonAction(sender: Any?) {
         let controller = UIAlertController(
-            title: "Jedná se o veškeré záznamy měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
+            title: "Jedná se o veškeré záznamy měření signálu okolních telefonů s aplikací eRouška za posledních \(RemoteValues.persistDataDays) dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
             message: nil,
             preferredStyle: .alert
         )
