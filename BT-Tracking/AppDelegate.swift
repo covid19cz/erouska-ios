@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Realm.Configuration.defaultConfiguration = configuration
 
-        if AppSettings.BUID != nil {
+        if Auth.isLoggedIn {
             scannerStore.deleteOldRecordsIfNeeded()
         }
     }
@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard: UIStoryboard
         #if !targetEnvironment(macCatalyst)
 
-        if Auth.auth().currentUser == nil || AppSettings.BUID == nil {
+        if !Auth.isLoggedIn {
             try? Auth.auth().signOut()
             storyboard = UIStoryboard(name: "Signup", bundle: nil)
         } else {
@@ -138,7 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         inBackgroundStage = false
 
-        if AppSettings.BUID != nil {
+        if Auth.isLoggedIn {
             scannerStore.deleteOldRecordsIfNeeded()
         }
     }
