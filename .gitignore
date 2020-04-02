@@ -89,3 +89,5 @@ fastlane/test_output
 
 iOSInjectionProject/
 xcschememanagement.plist
+/BT-Tracking.xcodeproj/xcshareddata
+xcshareddata

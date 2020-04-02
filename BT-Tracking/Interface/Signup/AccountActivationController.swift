@@ -37,7 +37,7 @@ final class AccountActivationControler: UIViewController {
             case .prefix:
                 return 2...5
             case .number:
-                return 9...10
+                return 9...9
             case .smsCode:
                 return 6...6
             }
@@ -131,7 +131,11 @@ final class AccountActivationControler: UIViewController {
 
             if let error = error {
                 log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
-                self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
+                if (error as NSError).code == AuthErrorCode.tooManyRequests.rawValue {
+                    self.showError(title: "Telefonní číslo jsme dočasně zablokovali", message: "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu.")
+                } else {
+                    self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
+                }
                 self.cleanup()
             } else if let verificationID = verificationID  {
                 self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
@@ -142,6 +146,29 @@ final class AccountActivationControler: UIViewController {
     @IBAction private func privacyURLAction() {
         guard let url = URL(string: RemoteValues.termsAndConditionsLink) else { return }
         openURL(URL: url)
+    }
+
+}
+
+extension AccountActivationControler: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+
+        let oldString = NSString(string: text)
+        let candidate = oldString.replacingCharacters(in: range, with: string)
+
+        let limit: Int
+        if textField == phonePrefixTextField {
+            limit = PhoneValidator.prefix.rangeLimit.upperBound
+        } else if textField == phoneNumberTextField {
+            limit = PhoneValidator.number.rangeLimit.upperBound
+        } else {
+            return true
+        }
+        guard candidate.count <= limit else { return false }
+
+        return true
     }
 
 }

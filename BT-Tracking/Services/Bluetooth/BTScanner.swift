@@ -51,7 +51,13 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     override init() {
         super.init()
 
-        centralManager = CBCentralManager(delegate: self, queue: nil)
+        centralManager = CBCentralManager(
+            delegate: self,
+            queue: nil,
+            options: [
+                CBCentralManagerOptionShowPowerAlertKey: false,
+            ]
+        )
 
         if #available(iOS 13.1, *) {
             if ![CBManagerAuthorization.allowedAlways, .restricted].contains(CBCentralManager.authorization) {
@@ -74,7 +80,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     var filterRSSIPower: Bool = false
     private let allowedRSSIRange: ClosedRange<Int> = -100...0
 
-    var fetchBUIDRetry: TimeInterval = 60
+    var fetchBUIDRetry: TimeInterval = 30
 
     var isRunning: Bool {
         return centralManager.isScanning
@@ -156,7 +162,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
             // update device RSII or name
             guard let index = discoveredDevices.firstIndex(where: { $0.bluetoothIdentifier == peripheral.identifier }) else {
-                log("Update device RSSI or name guarded")
+                log("BTScanner: Update device RSSI or name guarded")
                 return
             }
 
@@ -168,19 +174,24 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
             // try to get again BUID
             if let retry = retryBUID[peripheral.identifier], retry + 60 < Date().timeIntervalSince1970 {
                 log("BTScanner: Trying get again BUID for: \(peripheral.identifier.uuidString) with data: \(advertisementData)")
-                switch device.platform {
+
+                let platform = checkDeviceType(peripheral: peripheral, advertisementData: advertisementData)
+                switch platform {
                 case .android:
                     if let serviceData = advertisementData["kCBAdvDataServiceData"] as? [CBUUID: Any],
                         let rawBUID = serviceData.first?.value as? Data {
                         let raw = rawBUID.hexEncodedString()
                         device.backendIdentifier = raw
+                        retryBUID.removeValue(forKey: peripheral.identifier)
                     } else {
-                        log("Skipping Android case")
+                        log("BTScanner: No luck trying next time")
+                        retryBUID[peripheral.identifier] = Date().timeIntervalSince1970
                     }
                 case .iOS:
+                    retryBUID.removeValue(forKey: peripheral.identifier)
                     centralManager.connect(peripheral, options: nil)
                 }
-                retryBUID.removeValue(forKey: peripheral.identifier)
+                device.platform = platform
             }
 
             discoveredDevices[index] = device
@@ -305,7 +316,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         guard error == nil else {
             log("BTScanner: Error discovering services: \(String(describing: error?.localizedDescription))")
-            cleanup()
+            cleanup(peripheral)
             return
         }
 
@@ -313,6 +324,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         // Loop through the newly filled peripheral.services array, just in case there's more than one.
         guard let services = peripheral.services, !services.isEmpty else {
             retryBUID[peripheral.identifier] = Date().timeIntervalSince1970
+            cleanup(peripheral)
             log("BTScanner: No services to discover, will try retry in \(fetchBUIDRetry)")
             return
         }
@@ -325,7 +337,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard error == nil else {
             log("BTScanner: Error discovering characteristics \(String(describing: error?.localizedDescription))")
-            cleanup()
+            cleanup(peripheral)
             return
         }
 

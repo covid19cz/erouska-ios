@@ -172,15 +172,37 @@ final class CompleteActivationController: UIViewController {
         }
     }
 
-    private func startExpirationTimer() {
-        expirationSeconds = AppSettings.smsExpiration
+}
+
+extension CompleteActivationController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+
+        let oldString = NSString(string: text)
+        let candidate = oldString.replacingCharacters(in: range, with: string)
+
+        let limit: Int
+        if textField == smsCodeTextField {
+            limit = AccountActivationControler.PhoneValidator.smsCode.rangeLimit.upperBound
+        } else {
+            return true
+        }
+        guard candidate.count <= limit else { return false }
+
+        return true
+    }
+
+}
+
+private extension CompleteActivationController {
+
+    func startExpirationTimer() {
+        expirationSeconds = Date.timeIntervalSinceReferenceDate + RemoteValues.smsTimeoutSeconds
         updateExpirationTitle()
 
         expirationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            self.expirationSeconds -= 1
-            self.updateExpirationTitle()
-
-            if self.expirationSeconds == 0 {
+            if self.expirationSeconds - Date.timeIntervalSinceReferenceDate <= 0 {
                 self.expirationTimer?.invalidate()
                 self.showError(
                     title: "Vypršela platnost ověřovacího kódu",
@@ -189,22 +211,24 @@ final class CompleteActivationController: UIViewController {
                         self.navigationController?.popViewController(animated: true)
                     }
                 )
+                return
             }
+            self.updateExpirationTitle()
         })
     }
 
-    private func updateExpirationTitle() {
-        let date = Date(timeIntervalSince1970: expirationSeconds)
+    func updateExpirationTitle() {
+        let date = Date(timeIntervalSinceReferenceDate: expirationSeconds - Date.timeIntervalSinceReferenceDate)
         subtitleLabel.text = subtitle.replacingOccurrences(of: "%@", with: dateForamtter.string(from: date))
     }
 
-    private var dateForamtter: DateFormatter {
+    var dateForamtter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "m:ss"
         return dateFormatter
     }
 
-    private func cleanup() {
+    func cleanup() {
         do {
             try Auth.auth().signOut()
         } catch {

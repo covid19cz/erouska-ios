@@ -17,9 +17,9 @@ final class DataHeaderCell: UITableViewCell {
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
 
     func configure(with numberOfScans: Int) {
-        titleLabel.text = "Za poslednich 14 dní jste potkali \(numberOfScans) uživatelů aplikace eRouška"
-        segmentedControl.setTitle("Blízka setkaní", forSegmentAt: 0)
-        segmentedControl.setTitle("Všechna data", forSegmentAt: 1)
+        titleLabel.text = closeEncountersText(for: numberOfScans, days: RemoteValues.persistDataDays)
+        segmentedControl.setTitle("Blízka setkání", forSegmentAt: 0)
+        segmentedControl.setTitle("Vše", forSegmentAt: 1)
 
         if #available(iOS 13, *) {
             let image = UIImage(systemName: "questionmark.circle")
@@ -29,6 +29,14 @@ final class DataHeaderCell: UITableViewCell {
                 .resize(toWidth: 19)?
                 .withRenderingMode(.alwaysTemplate)
             infoButton.setImage(image, for: .normal)
+        }
+    }
+    
+    private func closeEncountersText(for count: Int, days: Int) -> String {
+        switch count {
+        case 0: return "Za posledních \(days) dní jste nepotkali žádné uživatele aplikace eRouška"
+        case 1...4: return "Za posledních \(days) dní jste potkali \(count) uživatele aplikace eRouška"
+        default: return "Za posledních \(days) dní jste potkali \(count) uživatelů aplikace eRouška"
         }
     }
 }

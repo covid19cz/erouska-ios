@@ -90,9 +90,9 @@ final class ActiveAppViewModel {
         var actionTitle: String {
             switch self {
             case .enabled:
-                return "Pozastavit sbírání dat"
+                return "Pozastavit eRoušku"
             case .paused:
-                return "Spustit sbírání dat"
+                return "Spustit eRoušku"
             case .disabled:
                 return "Zapnout Bluetooth"
             }
