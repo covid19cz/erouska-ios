@@ -85,7 +85,14 @@ final class ActiveAppController: UIViewController {
 
     @IBAction private func shareAppAction() {
         guard let url = URL(string: RemoteValues.shareAppDynamicLink) else { return }
-        let shareContent = [url]
+
+        let message = """
+        Ahoj, používám aplikaci Mobilní rouška. Nainstaluj si ji taky a společně pomožme zastavit šíření koronaviru.
+        Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené.
+        Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na \(url).
+        """
+
+        let shareContent: [Any] = [message]
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         
@@ -117,6 +124,9 @@ final class ActiveAppController: UIViewController {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Zrušit registraci", style: .default, handler: { [weak self] _ in
             self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
+        }))
+        controller.addAction(UIAlertAction(title: "Debug", style: .default, handler: { [weak self] _ in
+            self?.performSegue(withIdentifier: "debug", sender: nil)
         }))
         controller.addAction(UIAlertAction(title: "O aplikaci", style: .default, handler: { [weak self] _ in
             guard let url = URL(string: RemoteValues.aboutLink) else { return }

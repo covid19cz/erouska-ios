@@ -73,7 +73,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmF-TW-MLe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1790" y="875"/>
+            <point key="canvasLocation" x="1790" y="893"/>
         </scene>
         <!--DataList-->
         <scene sceneID="DC3-Ek-JEO">
@@ -367,11 +367,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="45a-ir-C72"/>
-                        <barButtonItem key="leftBarButtonItem" title="Debug" id="1hI-gJ-gPR">
-                            <connections>
-                                <segue destination="COq-qZ-W3U" kind="presentation" modalPresentationStyle="fullScreen" id="HhG-rR-RDQ"/>
-                            </connections>
-                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="ellipsis.circle.fill" id="aAa-9L-bkG">
                                 <connections>
@@ -393,6 +388,7 @@
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
                         <segue destination="9hf-6g-rJd" kind="show" identifier="about" id="HIc-6B-7ma"/>
                         <segue destination="CTE-1d-tWg" kind="show" identifier="unregisterUser" id="65U-zW-nvS"/>
+                        <segue destination="COq-qZ-W3U" kind="presentation" modalPresentationStyle="fullScreen" id="yt5-bI-DFw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
