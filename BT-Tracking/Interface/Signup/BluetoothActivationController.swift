@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-final class BluetoothActivationController: UIViewController {
+final class BluetoothActivationController: UIViewController, CBPeripheralManagerDelegate {
 
     private var peripheralManager: CBPeripheralManager?
 
@@ -63,6 +63,12 @@ final class BluetoothActivationController: UIViewController {
         checkForBluetooth()
     }
 
+    // MARK: - CBPeripheralManagerDelegate
+
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+
+    }
+
 }
 
 private extension BluetoothActivationController {
@@ -87,7 +93,13 @@ private extension BluetoothActivationController {
     }
 
     func requestBluetoothPermission() {
-        peripheralManager = CBPeripheralManager()
+        peripheralManager = CBPeripheralManager(
+            delegate: self,
+            queue: nil,
+            options: [
+                CBPeripheralManagerOptionShowPowerAlertKey: false,
+            ]
+        )
     }
 
     func showBluetoothPermissionError() {
