@@ -217,11 +217,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Background fetch
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        backgroundTask = application.beginBackgroundTask (expirationHandler: { [unowned self] in
+            log("AppDelegate background: Background task expired")
+            application.endBackgroundTask(self.backgroundTask)
+            self.backgroundTask = .invalid
+        })
         fetchRemoteConfig()
-            .subscribe(onSuccess: { _ in
+            .subscribe(onSuccess: { [unowned self] _ in
+                log("AppDelegate background: Remote config updated")
                 completionHandler(.newData)
-            }, onError: { error in
+                application.endBackgroundTask(self.backgroundTask)
+                self.backgroundTask = .invalid
+            }, onError: { [unowned self] error in
+                log("AppDelegate background: Remote config error")
                 completionHandler(.failed)
+                application.endBackgroundTask(self.backgroundTask)
+                self.backgroundTask = .invalid
             })
             .disposed(by: bag)
     }
