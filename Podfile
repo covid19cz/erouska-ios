@@ -22,4 +22,6 @@ target 'BT-Tracking' do
 
   pod 'DeviceKit'
 
+  pod "ReachabilitySwift"
+
 end
