@@ -115,7 +115,7 @@ struct RemoteValues {
 
     /// timeout na automatické ověření SMS, default = 20
     static var smsTimeoutSeconds: TimeInterval {
-        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.waitingSeconds))
+        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.smsTimeoutSeconds))
     }
 
     /// doba mezi uploady, v minutách, číslo, default = 15min
