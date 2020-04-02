@@ -26,6 +26,7 @@ final class UnregisterUserVC: UIViewController {
 
     @IBAction private func unregisterAction() {
         activityView.isHidden = false
+        
         AppDelegate.shared.functions.httpsCallable("deleteUser").call() { [weak self] result, error in
             guard let self = self else { return }
             self.activityView.isHidden = true

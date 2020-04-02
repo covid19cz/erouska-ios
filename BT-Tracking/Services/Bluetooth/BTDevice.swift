@@ -14,20 +14,37 @@ struct BTDevice {
     }
 
     let id: UUID
-    var deviceIdentifier: String {
-        if platform == .android {
-            return backendIdentifier ?? bluetoothIdentifier.uuidString
-        } else {
-            return bluetoothIdentifier.uuidString
-        }
-    }
+    var deviceIdentifier: String
     let bluetoothIdentifier: UUID // CBPeripheral identifier, on android is very random
     var backendIdentifier: String? // buid
-    let platform: Platform
+    var platform: Platform
     var date: Date
     var name: String?
     var rssi: Int
     var medianRssi: Int?
+
+    init(id: UUID,
+         bluetoothIdentifier: UUID,
+         backendIdentifier: String? = nil,
+         platform: BTDevice.Platform,
+         date: Date,
+         name: String? = nil,
+         rssi: Int,
+         medianRssi: Int? = nil) {
+        self.id = id
+        if platform == .android {
+            self.deviceIdentifier = backendIdentifier ?? bluetoothIdentifier.uuidString
+        } else {
+            self.deviceIdentifier = bluetoothIdentifier.uuidString
+        }
+        self.bluetoothIdentifier = bluetoothIdentifier
+        self.backendIdentifier = backendIdentifier
+        self.platform = platform
+        self.date = date
+        self.name = name
+        self.rssi = rssi
+        self.medianRssi = medianRssi
+    }
     
     func toScan(with uuid: String? = nil) -> Scan {
         Scan(
