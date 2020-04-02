@@ -38,12 +38,6 @@ class HelpVM {
 
             Požádejte také své okolí o instalaci aplikace, popřípadě jim s jejich souhlasem rovnou pomozte s instalací. Čím více lidí z vašeho přímého okolí bude aplikaci využívat, tím lépe se budete navzájem chránit.
             """,
-            "02eRouška potřebuje běžet i když s ní právě nepracujete":
-            """
-            Váš telefon automaticky vypíná některé aplikace pokud s nimi nepracujete, kvůli úspoře baterie.
-
-            Povolte běh aplikace na pozadí v nastavení telefonu. Návod pro svůj telefon najdete zde.
-            """,
             "03Jak se eRouška liší od jiných podobných aplikací?":
             """
             Aplikace eRouška místo určení vaší polohy využívá princip mapování ostatních zařízení s aplikací eRouška v okolí využitím technologie Bluetooth. Tyto informace jsou anonymizované. Zapsaná informace vypadá např. takto: 31.3.2020 od 12:15 do 13:15 byla ve vaší blízkosti aplikace s identifikátorem ID 29091. Z dat aplikace eRouška nelze zjistit kdy a kde jste se pohybovali. Aplikace tedy funguje také tam, kde není signál GPS, např. v garážích, metru atd.

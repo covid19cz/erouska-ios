@@ -115,19 +115,23 @@ struct RemoteValues {
 
     /// timeout na automatické ověření SMS, default = 20
     static var smsTimeoutSeconds: TimeInterval {
-        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.waitingSeconds))
+        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.smsTimeoutSeconds))
     }
 
     /// doba mezi uploady, v minutách, číslo, default = 15min
     static var uploadWaitingMinutes: TimeInterval {
         return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.uploadWaitingMinutes) * 60 * 60)
     }
-
-    /// počet dní, jak dlouho se mají držet data v telefonu, default = 14
-    static var persistDataDays: TimeInterval {
-        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.uploadWaitingMinutes) * 60 * 60 * 24)
+    
+    /// počet dní, jak dlouho se mají držet data v telefonu ve dnech, default = 14
+    static var persistDataDays: Int {
+        return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.persistDataDays)
     }
-
+    
+    static var persistDataInterval: TimeInterval {
+        return TimeInterval(persistDataDays * 60 * 60 * 24)
+    }
+    
     /// odkaz na FAQ - vede z obrazovky Kontakty
     static var faqLink: String {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.faqLink)

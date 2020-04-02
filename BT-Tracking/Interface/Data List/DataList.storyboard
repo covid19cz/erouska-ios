@@ -21,10 +21,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="headerCell" id="hrm-hi-eTh" customClass="DataHeaderCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="152.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="197.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hrm-hi-eTh" id="ef2-pf-HFK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="152.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="197.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Za poslednich 14 dní jste potkali x uživatelů aplikace eRouška" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT4-6k-Vcq">
@@ -47,8 +47,14 @@
                                                         <action selector="infoButtonActionWithSender:" destination="xGP-gf-Asp" eventType="touchUpInside" id="dKc-Fg-84g"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone při zhasnutém displeji méně účinné." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPO-Vq-SuA">
+                                                    <rect key="frame" x="20" y="61" width="374" height="38"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YQx-Z1-9BV">
-                                                    <rect key="frame" x="20" y="74" width="374" height="32.5"/>
+                                                    <rect key="frame" x="20" y="119" width="374" height="32.5"/>
                                                     <segments>
                                                         <segment title="First"/>
                                                         <segment title="Second"/>
@@ -57,48 +63,53 @@
                                                         <action selector="segmentedControlValueChanged:" destination="xGP-gf-Asp" eventType="valueChanged" id="uxA-eT-6Gp"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7qt-kI-e8T">
-                                                    <rect key="frame" x="20" y="125.5" width="374" height="16"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7qt-kI-e8T">
+                                                    <rect key="frame" x="20" y="170.5" width="374" height="16"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUW-Iz-u7t">
-                                                            <rect key="frame" x="0.0" y="0.0" width="153.5" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Datum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ddb-lD-lb4">
+                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Datum a čas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXY-Vj-Hwr">
-                                                            <rect key="frame" x="163.5" y="0.0" width="157" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Čas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXY-Vj-Hwr" userLabel="Čas">
+                                                            <rect key="frame" x="96" y="0.0" width="86" height="16"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUW-Iz-u7t">
+                                                            <rect key="frame" x="192" y="0.0" width="86" height="16"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="RSSI" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vs9-H1-vvU" userLabel="RSII Label">
-                                                            <rect key="frame" x="314" y="0.0" width="60" height="16"/>
+                                                            <rect key="frame" x="288" y="0.0" width="86" height="16"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="vXY-Vj-Hwr" firstAttribute="width" secondItem="7qt-kI-e8T" secondAttribute="width" multiplier="0.42" id="dEl-yu-k7z"/>
-                                                        <constraint firstItem="Vs9-H1-vvU" firstAttribute="width" secondItem="7qt-kI-e8T" secondAttribute="width" multiplier="0.16" id="fUR-5P-mWR"/>
-                                                        <constraint firstItem="IUW-Iz-u7t" firstAttribute="width" secondItem="7qt-kI-e8T" secondAttribute="width" multiplier="0.41" id="v1h-6I-YJz"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="oPO-Vq-SuA" firstAttribute="top" secondItem="xT4-6k-Vcq" secondAttribute="bottom" constant="7" id="1wG-zh-u1t"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="7qt-kI-e8T" secondAttribute="bottom" id="34U-Or-CIR"/>
                                                 <constraint firstItem="0ZF-5h-68x" firstAttribute="leading" secondItem="xT4-6k-Vcq" secondAttribute="trailing" constant="16" id="5st-0a-67G"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0ZF-5h-68x" secondAttribute="trailing" id="8qz-B0-gG5"/>
                                                 <constraint firstItem="0ZF-5h-68x" firstAttribute="centerY" secondItem="xT4-6k-Vcq" secondAttribute="centerY" id="IDm-eH-KVD"/>
                                                 <constraint firstItem="7qt-kI-e8T" firstAttribute="leading" secondItem="ef2-pf-HFK" secondAttribute="leadingMargin" id="IdL-YL-8QN"/>
+                                                <constraint firstItem="oPO-Vq-SuA" firstAttribute="trailing" secondItem="0ZF-5h-68x" secondAttribute="trailing" id="Pe7-xo-CRp"/>
+                                                <constraint firstItem="oPO-Vq-SuA" firstAttribute="leading" secondItem="xT4-6k-Vcq" secondAttribute="leading" id="Qhx-N0-YFA"/>
                                                 <constraint firstItem="xT4-6k-Vcq" firstAttribute="leading" secondItem="ef2-pf-HFK" secondAttribute="leadingMargin" id="UoG-0h-QjH"/>
                                                 <constraint firstItem="7qt-kI-e8T" firstAttribute="top" secondItem="YQx-Z1-9BV" secondAttribute="bottom" constant="20" id="XlF-6N-WUv"/>
                                                 <constraint firstItem="YQx-Z1-9BV" firstAttribute="leading" secondItem="ef2-pf-HFK" secondAttribute="leadingMargin" id="YRd-2f-ixb"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="YQx-Z1-9BV" secondAttribute="trailing" id="baH-7F-nW4"/>
+                                                <constraint firstItem="YQx-Z1-9BV" firstAttribute="top" secondItem="oPO-Vq-SuA" secondAttribute="bottom" constant="20" id="oJH-ks-zaQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="7qt-kI-e8T" secondAttribute="trailing" id="ow4-ti-BFj"/>
                                                 <constraint firstItem="xT4-6k-Vcq" firstAttribute="top" secondItem="ef2-pf-HFK" secondAttribute="topMargin" constant="5" id="tEL-Mk-9Gx"/>
-                                                <constraint firstItem="YQx-Z1-9BV" firstAttribute="top" secondItem="xT4-6k-Vcq" secondAttribute="bottom" constant="20" id="w0M-Dh-2C5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -107,52 +118,55 @@
                                             <outlet property="titleLabel" destination="xT4-6k-Vcq" id="YXT-hg-IOD"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dataCell" id="ZTP-8c-BcD" customClass="DataCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="180.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dataCell" id="gyz-SA-gkM" customClass="DataCell" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="225.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZTP-8c-BcD" id="nOL-Mb-15K">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gyz-SA-gkM" id="sSF-XW-LSp">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dYS-sf-cuX">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-Y9-ugX">
                                                     <rect key="frame" x="20" y="11" width="374" height="16"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOg-py-3re">
-                                                            <rect key="frame" x="0.0" y="0.0" width="153.5" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTx-fv-BBa">
+                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="16"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gpf-fz-Npe">
+                                                            <rect key="frame" x="96" y="0.0" width="86" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odA-Vk-Dhd">
+                                                            <rect key="frame" x="192" y="0.0" width="86" height="16"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmp-Ni-Bb6">
-                                                            <rect key="frame" x="163.5" y="0.0" width="157" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="-20 dB" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szl-9k-8Bk" userLabel="RSII Label">
+                                                            <rect key="frame" x="288" y="0.0" width="86" height="16"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="-20 dB" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWE-oO-qoh" userLabel="RSII Label">
-                                                            <rect key="frame" x="314" y="0.0" width="60" height="16"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="Nmp-Ni-Bb6" firstAttribute="width" secondItem="dYS-sf-cuX" secondAttribute="width" multiplier="0.42" id="5BS-0s-a2F"/>
-                                                        <constraint firstItem="jOg-py-3re" firstAttribute="width" secondItem="dYS-sf-cuX" secondAttribute="width" multiplier="0.41" id="9HU-Hf-VVQ"/>
-                                                        <constraint firstItem="wWE-oO-qoh" firstAttribute="width" secondItem="dYS-sf-cuX" secondAttribute="width" multiplier="0.16" id="Qg7-hv-8n1"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="dYS-sf-cuX" secondAttribute="trailing" id="Tx0-Wj-V0c"/>
-                                                <constraint firstItem="dYS-sf-cuX" firstAttribute="top" secondItem="nOL-Mb-15K" secondAttribute="topMargin" id="gPC-PV-Q1b"/>
-                                                <constraint firstItem="dYS-sf-cuX" firstAttribute="leading" secondItem="nOL-Mb-15K" secondAttribute="leadingMargin" id="tgv-8G-Ibn"/>
+                                                <constraint firstItem="2Wa-Y9-ugX" firstAttribute="top" secondItem="sSF-XW-LSp" secondAttribute="topMargin" id="3cn-iY-ntT"/>
+                                                <constraint firstItem="2Wa-Y9-ugX" firstAttribute="leading" secondItem="sSF-XW-LSp" secondAttribute="leadingMargin" id="bKf-bz-5Lk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2Wa-Y9-ugX" secondAttribute="trailing" id="wI7-cH-Ma8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="RSSILabel" destination="wWE-oO-qoh" id="Oy7-EW-dKZ"/>
-                                            <outlet property="buidLabel" destination="jOg-py-3re" id="fek-u6-4ig"/>
-                                            <outlet property="dateLabel" destination="Nmp-Ni-Bb6" id="DJ2-mQ-gxt"/>
+                                            <outlet property="RSSILabel" destination="Szl-9k-8Bk" id="tfY-af-ia6"/>
+                                            <outlet property="buidLabel" destination="odA-Vk-Dhd" id="zut-bc-3R5"/>
+                                            <outlet property="dateLabel" destination="TTx-fv-BBa" id="e2V-ra-9UW"/>
+                                            <outlet property="timeLabel" destination="gpf-fz-Npe" id="Bv6-rk-SEY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -290,16 +304,16 @@
                                         <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ee-su-jfJ">
-                                        <rect key="frame" x="0.0" y="267.5" width="374" height="152.5"/>
+                                        <rect key="frame" x="0.0" y="267.5" width="374" height="130.5"/>
                                         <string key="text">Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.
 
-Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.</string>
+Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygieniků.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-fY-ke2" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="435" width="374" height="189"/>
+                                        <rect key="frame" x="0.0" y="413" width="374" height="211"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sR-Eb-tvx" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">

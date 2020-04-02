@@ -79,6 +79,7 @@
 	<array>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
+		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

@@ -51,7 +51,13 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     override init() {
         super.init()
 
-        centralManager = CBCentralManager(delegate: self, queue: nil)
+        centralManager = CBCentralManager(
+            delegate: self,
+            queue: nil,
+            options: [
+                CBCentralManagerOptionShowPowerAlertKey: false,
+            ]
+        )
 
         if #available(iOS 13.1, *) {
             if ![CBManagerAuthorization.allowedAlways, .restricted].contains(CBCentralManager.authorization) {

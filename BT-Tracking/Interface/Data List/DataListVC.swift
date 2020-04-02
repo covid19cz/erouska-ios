@@ -12,6 +12,7 @@ import RxCocoa
 import RxDataSources
 import FirebaseAuth
 import FirebaseStorage
+import Reachability
 
 final class DataListVC: UIViewController, UITableViewDelegate {
 
@@ -97,7 +98,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     @IBAction private func infoButtonAction(sender: Any?) {
         let controller = UIAlertController(
-            title: "Jedná se o veškeré záznamy měření signálu okolních telefonů s aplikací eRouška za posledních 14 dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
+            title: "Jedná se o veškeré záznamy měření signálu okolních telefonů s aplikací eRouška za posledních \(RemoteValues.persistDataDays) dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
             message: nil,
             preferredStyle: .alert
         )
@@ -112,6 +113,14 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             showError(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
                 message: ""
+            )
+            return
+        }
+
+        guard let connection = try? Reachability().connection, connection != .unavailable else {
+            showError(
+                title: "Nepodařilo se nám odeslat data",
+                message: "Zkontrolujte připojení k internetu a zkuste to znovu"
             )
             return
         }
@@ -146,11 +155,17 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         let storageMetadata = StorageMetadata()
         storageMetadata.customMetadata = metadata
 
-        fileReference.putFile(from: fileURL, metadata: storageMetadata) { (metadata, error) in
+        fileReference.putFile(from: fileURL, metadata: storageMetadata) { [weak self] (metadata, error) in
+            guard let self = self else { return }
             self.activityView.isHidden = true
 
             if let error = error {
-                self.show(error: error, title: "Nepodařilo se nahrát setkání")
+                log("FirebaseUpload: Error \(error.localizedDescription)")
+
+                self.showError(
+                    title: "Nepodařilo se nám odeslat data",
+                    message: "Zkontrolujte připojení k internetu a zkuste to znovu"
+                )
                 return
             }
             AppSettings.lastUploadDate = fileDate

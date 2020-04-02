@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OJ0-iS-rc2">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="helpCell" id="n7u-K0-ZII" customClass="HelpCell" customModule="eRouska" customModuleProvider="target">
@@ -83,7 +83,7 @@
                             <constraint firstItem="cua-aX-MiQ" firstAttribute="trailing" secondItem="OJ0-iS-rc2" secondAttribute="trailing" id="5qG-0w-qNb"/>
                             <constraint firstItem="cua-aX-MiQ" firstAttribute="bottom" secondItem="OJ0-iS-rc2" secondAttribute="bottom" id="VlY-kH-aQc"/>
                             <constraint firstItem="OJ0-iS-rc2" firstAttribute="leading" secondItem="cua-aX-MiQ" secondAttribute="leading" id="gwS-S7-6bf"/>
-                            <constraint firstItem="OJ0-iS-rc2" firstAttribute="top" secondItem="cua-aX-MiQ" secondAttribute="top" id="s1S-pN-eKN"/>
+                            <constraint firstItem="OJ0-iS-rc2" firstAttribute="top" secondItem="xog-Dv-zXk" secondAttribute="top" id="s1S-pN-eKN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cua-aX-MiQ"/>
                     </view>
