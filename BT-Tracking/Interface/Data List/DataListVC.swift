@@ -12,6 +12,7 @@ import RxCocoa
 import RxDataSources
 import FirebaseAuth
 import FirebaseStorage
+import Reachability
 
 final class DataListVC: UIViewController, UITableViewDelegate {
 
@@ -116,6 +117,14 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             return
         }
 
+        guard let connection = try? Reachability().connection, connection != .unavailable else {
+            showError(
+                title: "Nepodařilo se nám odeslat data",
+                message: "Zkontrolujte připojení k internetu a zkuste to znovu"
+            )
+            return
+        }
+
         activityView.isHidden = false
         createCSVFile()
     }
@@ -146,11 +155,17 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         let storageMetadata = StorageMetadata()
         storageMetadata.customMetadata = metadata
 
-        fileReference.putFile(from: fileURL, metadata: storageMetadata) { (metadata, error) in
+        fileReference.putFile(from: fileURL, metadata: storageMetadata) { [weak self] (metadata, error) in
+            guard let self = self else { return }
             self.activityView.isHidden = true
 
             if let error = error {
-                self.show(error: error, title: "Nepodařilo se nahrát setkání")
+                log("FirebaseUpload: Error \(error.localizedDescription)")
+
+                self.showError(
+                    title: "Nepodařilo se nám odeslat data",
+                    message: "Zkontrolujte připojení k internetu a zkuste to znovu"
+                )
                 return
             }
             AppSettings.lastUploadDate = fileDate
