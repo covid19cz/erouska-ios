@@ -388,7 +388,7 @@
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
                         <segue destination="9hf-6g-rJd" kind="show" identifier="about" id="HIc-6B-7ma"/>
                         <segue destination="CTE-1d-tWg" kind="show" identifier="unregisterUser" id="65U-zW-nvS"/>
-                        <segue destination="COq-qZ-W3U" kind="presentation" modalPresentationStyle="fullScreen" id="yt5-bI-DFw"/>
+                        <segue destination="COq-qZ-W3U" kind="presentation" identifier="debug" modalPresentationStyle="fullScreen" id="yt5-bI-DFw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
