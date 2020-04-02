@@ -198,14 +198,11 @@ extension CompleteActivationController: UITextFieldDelegate {
 private extension CompleteActivationController {
 
     func startExpirationTimer() {
-        expirationSeconds = AppSettings.smsExpiration
+        expirationSeconds = Date.timeIntervalSinceReferenceDate + RemoteValues.smsTimeoutSeconds
         updateExpirationTitle()
 
         expirationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            self.expirationSeconds -= 1
-            self.updateExpirationTitle()
-
-            if self.expirationSeconds == 0 {
+            if self.expirationSeconds - Date.timeIntervalSinceReferenceDate <= 0 {
                 self.expirationTimer?.invalidate()
                 self.showError(
                     title: "Vypršela platnost ověřovacího kódu",
@@ -214,12 +211,14 @@ private extension CompleteActivationController {
                         self.navigationController?.popViewController(animated: true)
                     }
                 )
+                return
             }
+            self.updateExpirationTitle()
         })
     }
 
     func updateExpirationTitle() {
-        let date = Date(timeIntervalSince1970: expirationSeconds)
+        let date = Date(timeIntervalSinceReferenceDate: expirationSeconds - Date.timeIntervalSinceReferenceDate)
         subtitleLabel.text = subtitle.replacingOccurrences(of: "%@", with: dateForamtter.string(from: date))
     }
 
