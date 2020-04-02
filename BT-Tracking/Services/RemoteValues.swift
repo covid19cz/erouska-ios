@@ -123,11 +123,6 @@ struct RemoteValues {
         return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.uploadWaitingMinutes) * 60 * 60)
     }
 
-    /// počet dní, jak dlouho se mají držet data v telefonu jako TimeInterval, tedy v sekundách, default = 14 * 86400
-    static var persistDataInterval: TimeInterval {
-        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.persistDataDays) * 60 * 60 * 24)
-    }
-
     /// počet dní, jak dlouho se mají držet data v telefonu ve dnech, default = 14
     static var persistDataDays: Int {
         return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.persistDataDays)
