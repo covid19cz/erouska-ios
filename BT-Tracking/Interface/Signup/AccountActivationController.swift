@@ -37,7 +37,7 @@ final class AccountActivationControler: UIViewController {
             case .prefix:
                 return 2...5
             case .number:
-                return 9...10
+                return 9...9
             case .smsCode:
                 return 6...6
             }
