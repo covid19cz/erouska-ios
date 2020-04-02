@@ -14,19 +14,27 @@ final class DataCell: UITableViewCell {
 
     @IBOutlet private weak var buidLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var RSSILabel: UILabel!
 
     func configure(for scan: Scan) {
-        buidLabel.text = scan.buid
-        dateLabel.text = Self.formatter.string(from: scan.date)
+        buidLabel.text = String(scan.buid.prefix(6)) + "..."
+        dateLabel.text = Self.dateFormatter.string(from: scan.date)
+        timeLabel.text = Self.timeFormatter.string(from: scan.date)
         RSSILabel.text = String(scan.rssi) + " dB"
     }
 
-    private static var formatter: DateFormatter = {
+    private static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
-        formatter.timeStyle = .medium
+        formatter.timeStyle = .none
         return formatter
     }()
 
+    private static var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .medium
+        return formatter
+    }()
 }
