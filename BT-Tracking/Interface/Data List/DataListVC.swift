@@ -123,7 +123,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     private func createCSVFile() {
         let fileDate = Date()
 
-        writer = CSVMaker(fromDate: AppSettings.lastUploadDate)
+        writer = CSVMaker(fromDate: nil) // AppSettings.lastUploadDate, set to last upload date, if we want increment upload
         writer?.createFile(callback: { [weak self] result, error in
             guard let self = self else { return }
 
