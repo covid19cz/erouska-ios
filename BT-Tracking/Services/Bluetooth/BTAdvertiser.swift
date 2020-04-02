@@ -46,7 +46,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             delegate: self,
             queue: nil,
             options: [
-                CBPeripheralManagerOptionShowPowerAlertKey: true, // ask to turn on bluetooth
+                //CBPeripheralManagerOptionShowPowerAlertKey: true, // ask to turn on bluetooth
                 CBPeripheralManagerOptionRestoreIdentifierKey: true
             ]
         )
