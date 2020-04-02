@@ -480,7 +480,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = Covid19CZ;
 				TargetAttributes = {
 					8054C0AC241D492F008907B8 = {

@@ -131,7 +131,11 @@ final class AccountActivationControler: UIViewController {
 
             if let error = error {
                 log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
-                self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
+                if (error as NSError).code == AuthErrorCode.tooManyRequests.rawValue {
+                    self.showError(title: "Telefonní číslo jsme dočasně zablokovali", message: "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu.")
+                } else {
+                    self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
+                }
                 self.cleanup()
             } else if let verificationID = verificationID  {
                 self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
