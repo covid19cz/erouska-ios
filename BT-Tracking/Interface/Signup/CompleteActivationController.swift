@@ -172,7 +172,32 @@ final class CompleteActivationController: UIViewController {
         }
     }
 
-    private func startExpirationTimer() {
+}
+
+extension CompleteActivationController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+
+        let oldString = NSString(string: text)
+        let candidate = oldString.replacingCharacters(in: range, with: string)
+
+        let limit: Int
+        if textField == smsCodeTextField {
+            limit = AccountActivationControler.PhoneValidator.smsCode.rangeLimit.upperBound
+        } else {
+            return true
+        }
+        guard candidate.count <= limit else { return false }
+
+        return true
+    }
+
+}
+
+private extension CompleteActivationController {
+
+    func startExpirationTimer() {
         expirationSeconds = AppSettings.smsExpiration
         updateExpirationTitle()
 
@@ -193,18 +218,18 @@ final class CompleteActivationController: UIViewController {
         })
     }
 
-    private func updateExpirationTitle() {
+    func updateExpirationTitle() {
         let date = Date(timeIntervalSince1970: expirationSeconds)
         subtitleLabel.text = subtitle.replacingOccurrences(of: "%@", with: dateForamtter.string(from: date))
     }
 
-    private var dateForamtter: DateFormatter {
+    var dateForamtter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "m:ss"
         return dateFormatter
     }
 
-    private func cleanup() {
+    func cleanup() {
         do {
             try Auth.auth().signOut()
         } catch {

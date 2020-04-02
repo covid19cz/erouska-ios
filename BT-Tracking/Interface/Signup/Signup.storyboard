@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kfk-wA-RM9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kfk-wA-RM9">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -228,6 +228,9 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" textContentType="one-time-code"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="q6P-fR-rVF" id="o3i-CH-Pmm"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YD5-0q-PE2" userLabel="Space View">
                                                 <rect key="frame" x="0.0" y="316.66666666666663" width="339" height="10"/>
@@ -462,6 +465,9 @@ Nemusíte se obávat, aplikace vaši polohu nikdy nesleduje ani neukládá.</str
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BBC-aE-fuq" id="fIY-34-5mY"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefonní číslo (povinné)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lga-hM-kAK">
                                                         <rect key="frame" x="60" y="0.0" width="279" height="44"/>
@@ -470,6 +476,9 @@ Nemusíte se obávat, aplikace vaši polohu nikdy nesleduje ani neukládá.</str
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BBC-aE-fuq" id="gsF-W0-MCo"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -588,13 +597,13 @@ Nemusíte se obávat, aplikace vaši polohu nikdy nesleduje ani neukládá.</str
             <point key="canvasLocation" x="339" y="538"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="utZ-G0-Rhr"/>
+        <segue reference="xKm-MN-ToF"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="ActivationIlustration" width="130" height="130"/>
         <image name="BluetoothIlustration" width="130" height="130"/>
         <image name="MinLogo" width="328" height="29.333333969116211"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="FLh-nf-xgs"/>
-        <segue reference="xKm-MN-ToF"/>
-    </inferredMetricsTieBreakers>
 </document>

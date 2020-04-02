@@ -150,6 +150,29 @@ final class AccountActivationControler: UIViewController {
 
 }
 
+extension AccountActivationControler: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+
+        let oldString = NSString(string: text)
+        let candidate = oldString.replacingCharacters(in: range, with: string)
+
+        let limit: Int
+        if textField == phonePrefixTextField {
+            limit = PhoneValidator.prefix.rangeLimit.upperBound
+        } else if textField == phoneNumberTextField {
+            limit = PhoneValidator.number.rangeLimit.upperBound
+        } else {
+            return true
+        }
+        guard candidate.count <= limit else { return false }
+
+        return true
+    }
+
+}
+
 private extension AccountActivationControler {
 
     func cleanup() {
