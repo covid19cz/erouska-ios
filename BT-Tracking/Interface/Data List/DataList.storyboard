@@ -214,11 +214,6 @@
                             <constraint firstItem="fgp-uY-jGu" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="l15-98-E0f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bDv-0K-1Gq"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="fgp-uY-jGu"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Moje data" id="Alq-cw-sQ5">
