@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var scannerStore: ScannerStore = {
         let store = ScannerStore(
             scanningPeriod: RemoteValues.collectionSeconds,
-            dataPurgeInterval: RemoteValues.persistDataDays
+            dataPurgeInterval: RemoteValues.persistDataInterval
         )
         AppDelegate.shared.scanner.add(delegate: store)
         return store
