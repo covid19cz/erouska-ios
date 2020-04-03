@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private(set) static var inBackground: Bool = false
     private let bag = DisposeBag()
-
+    private var backgroundFetch: UIBackgroundTaskIdentifier?
+    
     // MARK: - Globals
 
     static var shared: AppDelegate {
@@ -222,24 +223,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Background fetch
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        backgroundTask = application.beginBackgroundTask (expirationHandler: { [unowned self] in
+        backgroundFetch = application.beginBackgroundTask (expirationHandler: { [weak self] in
             log("AppDelegate background: Background task expired")
-            application.endBackgroundTask(self.backgroundTask)
-            self.backgroundTask = .invalid
+            application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
+            self?.backgroundFetch = nil
         })
         fetchRemoteConfig()
-            .subscribe(onSuccess: { [unowned self] _ in
+            .subscribe(onSuccess: { [weak self] _ in
                 log("AppDelegate background: Remote config updated")
-                application.endBackgroundTask(self.backgroundTask)
-                self.backgroundTask = .invalid
-            }, onError: { [unowned self] error in
+                completionHandler(.newData)
+                application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
+                self?.backgroundFetch = nil
+                log("AppDelegate background: newData")
+            }, onError: { [weak self] error in
                 log("AppDelegate background: Remote config error")
-                application.endBackgroundTask(self.backgroundTask)
-                self.backgroundTask = .invalid
+                completionHandler(.failed)
+                application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
+                self?.backgroundFetch = nil
+                log("AppDelegate background: failed")
             })
             .disposed(by: bag)
-        log("AppDelegate background: newData")
-        completionHandler(.newData)
     }
     
     private func fetchRemoteConfig() -> Single<Void> {
