@@ -39,6 +39,12 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
 
     @IBAction func signOutAction(_ sender: Any) {
         do {
+            AppDelegate.shared.advertiser.stop()
+            AppDelegate.shared.scanner.stop()
+            AppDelegate.shared.scannerStore.deleteAllData()
+            
+            AppSettings.deleteAllData()
+
             try Auth.auth().signOut()
             UserDefaults.resetStandardUserDefaults()
 

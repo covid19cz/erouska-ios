@@ -179,18 +179,23 @@ extension CompleteActivationController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
 
-        let oldString = NSString(string: text)
-        let candidate = oldString.replacingCharacters(in: range, with: string)
-
-        let limit: Int
+        let type: AccountActivationControler.PhoneValidator
         if textField == smsCodeTextField {
-            limit = AccountActivationControler.PhoneValidator.smsCode.rangeLimit.upperBound
+            type = .smsCode
         } else {
             return true
         }
-        guard candidate.count <= limit else { return false }
 
-        return true
+        let candidate = NSString(string: text).replacingCharacters(in: range, with: string)
+        let check = type.checkChange(text, candidate)
+        if check.result {
+            return true
+        }
+        DispatchQueue.main.async {
+            textField.text = check.edited ?? text
+            textField.sendActions(for: .valueChanged)
+        }
+        return false
     }
 
 }

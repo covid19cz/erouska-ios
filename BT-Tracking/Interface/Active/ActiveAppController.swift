@@ -157,21 +157,11 @@ private extension ActiveAppController {
     func updateScanner() {
         switch viewModel.state {
         case .enabled:
-            if advertiser.isRunning != true {
-                advertiser.start()
-            }
-
-            if scanner.isRunning != true {
-                scanner.start()
-            }
+            advertiser.start()
+            scanner.start()
         case .disabled, .paused:
-            if advertiser.isRunning == true {
-                advertiser.stop()
-            }
-
-            if scanner.isRunning == true {
-                scanner.stop()
-            }
+            advertiser.stop()
+            scanner.stop()
         }
     }
 

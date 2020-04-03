@@ -14,8 +14,6 @@ final class UnregisterUserVC: UIViewController {
     @IBOutlet private weak var activityView: UIView!
     @IBOutlet private weak var textLabel: UILabel!
 
-    private let scannerStore: ScannerStore = AppDelegate.shared.scannerStore
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,7 +36,11 @@ final class UnregisterUserVC: UIViewController {
             }
 
             Log.log("deleteUser request success finished")
-            self.scannerStore.deleteAllData()
+
+            AppDelegate.shared.advertiser.stop()
+            AppDelegate.shared.scanner.stop()
+            AppDelegate.shared.scannerStore.deleteAllData()
+
             AppSettings.deleteAllData()
 
             self.performSegue(withIdentifier: "finish", sender: nil)
