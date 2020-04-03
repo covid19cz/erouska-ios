@@ -44,11 +44,21 @@ final class AccountActivationControler: UIViewController {
         }
 
         func validate(_ text: String) -> Bool {
-            guard rangeLimit.contains(text.count) else { return false }
+            guard rangeLimit.contains(text.count), text == filtred(text) else { return false }
+            return true
+        }
 
+        func filtred(_ text: String) -> String {
             let set = charcterSet.inverted
-            let filtered = text.components(separatedBy: set).joined()
-            return filtered == text
+            return text.components(separatedBy: set).joined()
+        }
+
+        func checkChange(_ oldString: String, _ newString: String) -> (result: Bool, edited: String?) {
+            guard newString.count <= rangeLimit.upperBound else {
+                let text = String(filtred(newString).prefix(rangeLimit.upperBound))
+                return (result: false, edited: oldString == text ? nil : text)
+            }
+            return (result: true, edited: nil)
         }
     }
 
@@ -155,20 +165,25 @@ extension AccountActivationControler: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
 
-        let oldString = NSString(string: text)
-        let candidate = oldString.replacingCharacters(in: range, with: string)
-
-        let limit: Int
+        let type: PhoneValidator
         if textField == phonePrefixTextField {
-            limit = PhoneValidator.prefix.rangeLimit.upperBound
+            type = .prefix
         } else if textField == phoneNumberTextField {
-            limit = PhoneValidator.number.rangeLimit.upperBound
+            type = .number
         } else {
             return true
         }
-        guard candidate.count <= limit else { return false }
-
-        return true
+        
+        let candidate = NSString(string: text).replacingCharacters(in: range, with: string)
+        let check = type.checkChange(text, candidate)
+        if check.result {
+            return true
+        }
+        DispatchQueue.main.async {
+            textField.text = check.edited ?? text
+            textField.sendActions(for: .valueChanged)
+        }
+        return false
     }
 
 }
