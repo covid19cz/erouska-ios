@@ -61,7 +61,7 @@ enum RemoteConfigValueKey: String {
     case waitingSeconds
     case criticalExpositionRssi
 
-    case smsTimeoutSeconds
+    case smsErrorTimeoutSeconds
     case uploadWaitingMinutes
     case persistDataDays
 
@@ -83,7 +83,7 @@ struct RemoteValues {
         .waitingSeconds: 0,
         .criticalExpositionRssi: -75,
 
-        .smsTimeoutSeconds: 20,
+        .smsErrorTimeoutSeconds: 15 * 60,
         .uploadWaitingMinutes: 15,
         .persistDataDays: 14,
 
@@ -114,8 +114,8 @@ struct RemoteValues {
     }
 
     /// timeout na automatické ověření SMS, default = 20
-    static var smsTimeoutSeconds: TimeInterval {
-        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.smsTimeoutSeconds))
+    static var smsErrorTimeoutSeconds: TimeInterval {
+        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.smsErrorTimeoutSeconds))
     }
 
     /// doba mezi uploady, v minutách, číslo, default = 15min
