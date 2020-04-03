@@ -203,7 +203,7 @@ extension CompleteActivationController: UITextFieldDelegate {
 private extension CompleteActivationController {
 
     func startExpirationTimer() {
-        expirationSeconds = Date.timeIntervalSinceReferenceDate + RemoteValues.smsTimeoutSeconds
+        expirationSeconds = Date.timeIntervalSinceReferenceDate + RemoteValues.smsErrorTimeoutSeconds
         updateExpirationTitle()
 
         expirationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
