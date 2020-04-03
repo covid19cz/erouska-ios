@@ -1,16 +1,27 @@
 {
   "images" : [
     {
+      "filename" : "icon-bluetooth.png",
       "idiom" : "universal",
-      "filename" : "BluetoothOffIcon.pdf"
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icon-bluetooth@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icon-bluetooth@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "original",
-    "preserves-vector-representation" : true
+    "preserves-vector-representation" : true,
+    "template-rendering-intent" : "original"
   }
 }

@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "icon-phones.png",
       "idiom" : "universal",
-      "filename" : "icon-phones 1.png",
       "scale" : "1x"
     },
     {
+      "filename" : "icon-phones@2x.png",
       "idiom" : "universal",
-      "filename" : "icon-phones 1@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "icon-phones@3x.png",
       "idiom" : "universal",
-      "filename" : "icon-phones 1@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
