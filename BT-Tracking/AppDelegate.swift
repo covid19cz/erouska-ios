@@ -230,16 +230,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fetchRemoteConfig()
             .subscribe(onSuccess: { [unowned self] _ in
                 log("AppDelegate background: Remote config updated")
-                completionHandler(.newData)
                 application.endBackgroundTask(self.backgroundTask)
                 self.backgroundTask = .invalid
             }, onError: { [unowned self] error in
                 log("AppDelegate background: Remote config error")
-                completionHandler(.failed)
                 application.endBackgroundTask(self.backgroundTask)
                 self.backgroundTask = .invalid
             })
             .disposed(by: bag)
+        log("AppDelegate background: newData")
+        completionHandler(.newData)
     }
     
     private func fetchRemoteConfig() -> Single<Void> {
