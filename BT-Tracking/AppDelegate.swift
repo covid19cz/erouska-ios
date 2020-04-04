@@ -152,6 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-BACKGROUND---------------------------\n")
 
         inBackgroundStage = true
+        scannerStore.appTermination.onNext(())
         
         guard allowBackgroundTask else { return }
         backgroundTask = application.beginBackgroundTask(withName: "BT") {
