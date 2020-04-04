@@ -79,7 +79,7 @@ final class ActiveAppViewModel {
         var text: String {
             switch self {
             case .enabled:
-                return "Když budete označeni jako nakažení, kontaktujeme vás na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, který naleznete v sekci Moje data."
+                return "Při podezření na nákazu vás budeme kontaktovat na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, který naleznete v sekci Moje data."
             case .paused:
                 return "Spusťte znovu sběr dat a chraňte vás i vaše okolí. Nezapomínejte na to v momentě, kdy opouštíte svůj domov."
             case .disabled:

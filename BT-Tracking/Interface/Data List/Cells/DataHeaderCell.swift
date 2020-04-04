@@ -18,8 +18,8 @@ final class DataHeaderCell: UITableViewCell {
 
     func configure(with numberOfScans: Int) {
         titleLabel.text = closeEncountersText(for: numberOfScans, days: RemoteValues.persistDataDays)
-        segmentedControl.setTitle("Blízka setkání", forSegmentAt: 0)
-        segmentedControl.setTitle("Vše", forSegmentAt: 1)
+        segmentedControl.setTitle("Vše", forSegmentAt: 0)
+        segmentedControl.setTitle("Blízka setkání", forSegmentAt: 1)
 
         if #available(iOS 13, *) {
             let image = UIImage(systemName: "questionmark.circle")

@@ -43,7 +43,7 @@ final class CompleteActivationController: UIViewController {
         subtitle = subtitleLabel.text ?? ""
         startExpirationTimer()
 
-        titleLabel.text = titleLabel.text?.replacingOccurrences(of: "%@", with: authData?.phoneNumber ?? "")
+        titleLabel.text = titleLabel.text?.replacingOccurrences(of: "%@", with: authData?.phoneNumber.phoneFormatted ?? "")
 
         smsCodeTextField.rx.text.orEmpty.bind(to: smsCode).disposed(by: disposeBag)
 
