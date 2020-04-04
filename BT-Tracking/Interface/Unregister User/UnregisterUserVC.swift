@@ -17,7 +17,7 @@ final class UnregisterUserVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textLabel.text = textLabel.text?.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber ?? "")
+        textLabel.text = textLabel.text?.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
     }
 
     // MARK: - Actions

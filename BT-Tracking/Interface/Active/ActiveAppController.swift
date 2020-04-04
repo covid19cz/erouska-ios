@@ -172,7 +172,7 @@ private extension ActiveAppController {
         headLabel.text = viewModel.state.head
         headLabel.textColor = viewModel.state.color
         titleLabel.text = viewModel.state.title
-        textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber ?? "")
+        textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
         actionButton.style = viewModel.state.actionStyle
         actionButton.setTitle(viewModel.state.actionTitle, for: .normal)
     }
