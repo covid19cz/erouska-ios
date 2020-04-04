@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oH0-Ce-HUb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16095" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oH0-Ce-HUb">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16084.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -134,7 +134,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3C-qN-glf">
                                                         <rect key="frame" x="0.0" y="34.333333333333329" width="343" height="218.33333333333337"/>
-                                                        <string key="text">Aplikaci jsme vyvíjeli s důrazem na bezpečnost a ochranu soukromí, abychom jí bez obav mohli používat i my. Anonymizovaná data o Bluetooth zařízeních, které jste potkali, bez vašeho vědomí nikam neodesíláme. Aplikace nepoužívá vaší polohu a z nasbíraných dat nelze zjistit, kde jste se pohybovali. Věříme, že se nám společně podaří epidemii zastavit, tým Mobilní roušky.</string>
+                                                        <mutableString key="text">Aplikaci jsme vyvíjeli s důrazem na bezpečnost a ochranu soukromí, abychom jí bez obav mohli používat i my. Anonymizovaná data o Bluetooth zařízeních, které jste potkali, bez vašeho vědomí nikam neodesíláme. Aplikace nepoužívá vaší polohu a z nasbíraných dat nelze zjistit, kde jste se pohybovali. Věříme, že se nám společně podaří epidemii zastavit, tým eRoušky.</mutableString>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
