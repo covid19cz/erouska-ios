@@ -114,6 +114,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupBackgroundMode(for application: UIApplication) {
         application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        UIDevice.current.isProximityMonitoringEnabled = true
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     // MARK: - UIApplicationDelegate
