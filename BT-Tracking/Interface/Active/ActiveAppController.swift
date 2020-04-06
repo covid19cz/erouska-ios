@@ -17,7 +17,6 @@ final class ActiveAppController: UIViewController {
 
     private let advertiser: BTAdvertising = AppDelegate.shared.advertiser
     private let scanner: BTScannering = AppDelegate.shared.scanner
-    private let backgroundModeAlertShownKey = "backgroundModeAlertShown"
     
     // MARK: - Outlets
 
@@ -195,8 +194,8 @@ private extension ActiveAppController {
     }
 
     func checkBackgroundModeIfNeeded() {
-        guard !UserDefaults.standard.bool(forKey: backgroundModeAlertShownKey), UIApplication.shared.backgroundRefreshStatus == .denied else { return }
-        UserDefaults.standard.set(true, forKey: backgroundModeAlertShownKey)
+        guard !AppSettings.backgroundModeAlertShown, UIApplication.shared.backgroundRefreshStatus == .denied else { return }
+        AppSettings.backgroundModeAlertShown = true
         let controller = UIAlertController(
             title: "Aktualizace na pozadí",
             message: "eRouška se potřebuje sama spustit i na pozadí, například po restartování telefonu, abyste na to nemuseli myslet vy.\n\nPovolte možnost 'Aktualizace na pozadí' v nastavení aplikace.",
