@@ -31,7 +31,7 @@ struct AppSettings {
         }
     }
 
-    static let TUIDRotation: Int = 1 * 60
+    static let TUIDRotation: Int = 60 * 60
 
     static var state: ActiveAppViewModel.State? {
         get {
