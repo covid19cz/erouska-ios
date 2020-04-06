@@ -12,6 +12,8 @@ struct AppSettings {
 
     static let firebaseRegion = "europe-west1"
 
+    static let backgroundModeAlertShownKey = "backgroundModeAlertShown"
+
     static var BUID: String? {
         get {
             return UserDefaults.standard.string(forKey: "BUID")
@@ -52,12 +54,21 @@ struct AppSettings {
             UserDefaults.standard.set(newValue?.timeIntervalSince1970, forKey: "UploadDate")
         }
     }
+    
+    static var backgroundModeAlertShown: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: backgroundModeAlertShownKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: backgroundModeAlertShownKey)
+        }
+    }
 
     static func deleteAllData() {
         AppSettings.BUID = nil
         AppSettings.TUIDs = nil
         AppSettings.state = nil
         AppSettings.lastUploadDate = nil
+        AppSettings.backgroundModeAlertShown = false
     }
-
 }
