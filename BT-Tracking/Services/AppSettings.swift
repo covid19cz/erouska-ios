@@ -11,7 +11,7 @@ import Foundation
 struct AppSettings {
 
     static let firebaseRegion = "europe-west1"
-    static let smsExpiration: TimeInterval = 15 * 60
+
     static let backgroundModeAlertShownKey = "backgroundModeAlertShown"
 
     static var BUID: String? {
@@ -22,6 +22,18 @@ struct AppSettings {
             UserDefaults.standard.set(newValue, forKey: "BUID")
         }
     }
+
+    static var TUIDs: [String]? {
+        get {
+            return UserDefaults.standard.stringArray(forKey: "TUIDs")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "TUIDs")
+            AppDelegate.shared.resetAdvertising()
+        }
+    }
+
+    static let TUIDRotation: Int = 60 * 60
 
     static var state: ActiveAppViewModel.State? {
         get {
@@ -54,6 +66,7 @@ struct AppSettings {
 
     static func deleteAllData() {
         AppSettings.BUID = nil
+        AppSettings.TUIDs = nil
         AppSettings.state = nil
         AppSettings.lastUploadDate = nil
         AppSettings.backgroundModeAlertShown = false

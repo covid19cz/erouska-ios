@@ -11,7 +11,7 @@ import FirebaseAuth
 extension Auth {
 
     static var isLoggedIn: Bool {
-        return AppSettings.BUID != nil && Self.auth().currentUser != nil
+        return AppSettings.BUID != nil && AppSettings.TUIDs != nil && Self.auth().currentUser != nil
     }
 }
 
