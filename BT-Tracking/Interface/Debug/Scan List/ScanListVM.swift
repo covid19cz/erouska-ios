@@ -27,7 +27,7 @@ final class ScanListVM {
     var sections: Driver<[SectionModel]> {
         let infoSection = SectionModel(
             model: .info,
-            items: [Section.Item.info(AppSettings.BUID, AppDelegate.shared.advertiser.currentID)]
+            items: [Section.Item.info(AppSettings.BUID)]
         )
 
         let current = scannerStore.currentScan
@@ -97,7 +97,7 @@ extension ScanListVM {
         }
         
         enum Item: IdentifiableType, Equatable {
-            case info(_ buid: String?, _ tuid: String?)
+            case info(_ buid: String?)
             case scan(Scan)
 
             var identity: String {

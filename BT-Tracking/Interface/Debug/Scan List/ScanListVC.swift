@@ -33,8 +33,9 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
         navigationItem.largeTitleDisplayMode = .never
 
         AppDelegate.shared.advertiser.didChangeID = { [weak self] in
-            self?.viewModel = ScanListVM(scannerStore: AppDelegate.shared.scannerStore)
-            self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self?.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            }
         }
 
         setupTableView()
@@ -81,9 +82,9 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
         dataSource = RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
             let cell: UITableViewCell?
             switch row {
-            case .info(let buid, let tuid):
+            case .info(let buid):
                 let infoCell = tableView.dequeueReusableCell(withIdentifier: InfoCell.identifier, for: indexPath) as? InfoCell
-                infoCell?.configure(for: buid, tuid: tuid)
+                infoCell?.configure(for: buid, tuid: AppDelegate.shared.advertiser.currentID)
                 cell = infoCell
             case .scan(let scan):
                 let scanCell = tableView.dequeueReusableCell(withIdentifier: ScanCell.identifier, for: indexPath) as? ScanCell

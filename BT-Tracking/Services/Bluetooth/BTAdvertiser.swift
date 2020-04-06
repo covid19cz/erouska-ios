@@ -71,7 +71,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             .skip(1)
             .subscribe(onNext: { [weak self] _ in
                 guard self?.isRunning == true else { return }
-                self?.pickNewDeviceID()
+                self?.rotateDeviceID()
                 self?.didChangeID?()
             })
             .disposed(by: bag)
@@ -167,7 +167,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         let randomIndex = Int.random(in: 0..<TUIDs.count)
         let randomID = TUIDs[randomIndex]
 
-        if currentID == nil || currentID == randomID {
+        if currentID == nil || currentID != randomID {
             currentID = randomID
         } else {
             pickNewDeviceID()
