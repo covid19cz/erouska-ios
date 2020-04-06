@@ -37,6 +37,7 @@
 		805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE9762424DE0E001A93B3 /* BTDevice.swift */; };
 		805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE97824252AE6001A93B3 /* MulticastDelegate.swift */; };
 		80610BD024363D7B00E031C8 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80610BCF24363D7B00E031C8 /* Auth.swift */; };
+		80610BD9243B13AE00E031C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80610BD8243B13AE00E031C8 /* String.swift */; };
 		80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A95242CA27800EB0B6C /* HelpVC.swift */; };
 		80631A98242CAB5000EB0B6C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A97242CAB5000EB0B6C /* Image.swift */; };
 		807053532427BA2500DC1034 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
@@ -121,6 +122,7 @@
 		805BE9762424DE0E001A93B3 /* BTDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTDevice.swift; sourceTree = "<group>"; };
 		805BE97824252AE6001A93B3 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		80610BCF24363D7B00E031C8 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		80610BD8243B13AE00E031C8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		80631A95242CA27800EB0B6C /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		80631A97242CAB5000EB0B6C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		807053522427BA2500DC1034 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -317,16 +319,17 @@
 			isa = PBXGroup;
 			children = (
 				8054C0DC2420AF63008907B8 /* App.swift */,
+				80610BCF24363D7B00E031C8 /* Auth.swift */,
 				80BB47632422865B00F552FC /* Button.swift */,
 				80ECB96524290DA900E57601 /* Collection.swift */,
 				80799BEA2423B89A002B04C5 /* Controller.swift */,
+				80610BD8243B13AE00E031C8 /* String.swift */,
 				807053522427BA2500DC1034 /* Data.swift */,
 				80631A97242CAB5000EB0B6C /* Image.swift */,
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 				80B94556242B96560052CD9F /* NavigationController.swift */,
 				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
 				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
-				80610BCF24363D7B00E031C8 /* Auth.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				8075EDC3242A6E93001D9DCD /* ContactsController.swift in Sources */,
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
+				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
