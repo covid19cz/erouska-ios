@@ -33,29 +33,10 @@ final class DataHeaderCell: UITableViewCell {
     }
     
     private func closeEncountersText(for count: Int, days: Int) -> String {
-        
-        enum CloseEncounters {
-            case none, option1, option2
-            
-            func text(for count: Int, days: Int) -> String {
-                switch self {
-                case .none: return "Za posledních \(days) dní jste nepotkali žádné uživatele aplikace eRouška"
-                case .option1: return "Za posledních \(days) dní jste potkali \(count) uživatele aplikace eRouška"
-                case .option2: return "Za posledních \(days) dní jste potkali \(count) uživatelů aplikace eRouška"
-                }
-            }
+        switch count {
+        case 0: return "Za posledních \(days) dní jste nepotkali žádné uživatele aplikace eRouška"
+        case 1...4: return "Za posledních \(days) dní jste potkali \(count) uživatele aplikace eRouška"
+        default: return "Za posledních \(days) dní jste potkali \(count) uživatelů aplikace eRouška"
         }
-        
-        func closeEncounts(for count: Int) -> CloseEncounters {
-            switch (count, count % 10, count % 100) {
-            case (0, _, _): return .none
-            case (11...19, _, _): return .option2
-            case (_, _, 11...19): return .option2
-            case (_, 1...4, _): return .option1
-            default: return .option2
-            }
-        }
-        
-        return closeEncounts(for: count).text(for: count, days: days)
     }
 }
