@@ -12,14 +12,21 @@ struct AppSettings {
 
     static let firebaseRegion = "europe-west1"
 
-    static let smsExpiration: TimeInterval = 15 * 60
-
     static var BUID: String? {
         get {
             return UserDefaults.standard.string(forKey: "BUID")
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "BUID")
+        }
+    }
+
+    static var TUIDs: [String]? {
+        get {
+            return UserDefaults.standard.object(forKey: "TUIDs") as? [String]
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "TUIDs")
         }
     }
 
@@ -45,6 +52,7 @@ struct AppSettings {
 
     static func deleteAllData() {
         AppSettings.BUID = nil
+        AppSettings.TUIDs = nil
         AppSettings.state = nil
         AppSettings.lastUploadDate = nil
     }

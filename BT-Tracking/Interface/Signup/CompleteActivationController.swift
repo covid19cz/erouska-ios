@@ -124,7 +124,7 @@ final class CompleteActivationController: UIViewController {
                 if let token = AppDelegate.shared.deviceToken {
                     data["pushRegistrationToken"] = token.hexEncodedString()
                 } else {
-                    data["pushRegistrationToken"] = "hovno"
+                    data["pushRegistrationToken"] = "xyz"
                 }
 
                 AppDelegate.shared.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
@@ -135,9 +135,11 @@ final class CompleteActivationController: UIViewController {
                         self.show(error: error, title: "Chyba při aktivaci")
                         self.cleanup()
                         self.navigationController?.popViewController(animated: true)
-                    } else if let result = result {
-                        if let BUID = (result.data as? [String: Any])?["buid"] as? String {
+                    } else if let result = result?.data as? [String: Any] {
+                        if let BUID = result["buid"] as? String,
+                            let TUIDs = result["tuid"] as? [String] {
                             AppSettings.BUID = BUID
+                            AppSettings.TUIDs = TUIDs
 
                             let storyboard = UIStoryboard(name: "Active", bundle: nil)
                             AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
