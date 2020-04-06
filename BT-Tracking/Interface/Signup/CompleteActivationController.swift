@@ -137,7 +137,7 @@ final class CompleteActivationController: UIViewController {
                         self.navigationController?.popViewController(animated: true)
                     } else if let result = result?.data as? [String: Any] {
                         if let BUID = result["buid"] as? String,
-                            let TUIDs = result["tuid"] as? [String] {
+                            let TUIDs = result["tuids"] as? [String] {
                             AppSettings.BUID = BUID
                             AppSettings.TUIDs = TUIDs
 

@@ -23,12 +23,15 @@ struct AppSettings {
 
     static var TUIDs: [String]? {
         get {
-            return UserDefaults.standard.object(forKey: "TUIDs") as? [String]
+            return UserDefaults.standard.stringArray(forKey: "TUIDs")
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "TUIDs")
+            AppDelegate.shared.resetAdvertising()
         }
     }
+
+    static let TUIDRotation: Int = 1 * 60
 
     static var state: ActiveAppViewModel.State? {
         get {

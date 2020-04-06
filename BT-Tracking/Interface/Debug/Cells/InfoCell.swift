@@ -13,10 +13,12 @@ final class InfoCell: UITableViewCell {
     static let identifier = "infoCell"
 
     @IBOutlet private weak var buidLabel: UILabel!
+    @IBOutlet private weak var tuidLabel: UILabel!
     @IBOutlet private weak var infoLabel: UILabel!
 
-    func configure(for buid: String?) {
+    func configure(for buid: String?, tuid: String?) {
         buidLabel.text = buid ?? "nepřidělen"
+        tuidLabel.text = tuid ?? "nepřidělen"
         infoLabel.text = "Verze \(App.appVersion)(\(App.bundleBuild))"
     }
 
