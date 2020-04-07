@@ -49,7 +49,7 @@ final class CSVMaker: CSVMakering {
         let realm: Realm
         do {
             csv = try CSVWriter(stream: stream)
-            try csv.write(row: ["buid", "timestampStart", "timestampEnd", "avgRssi", "medRssi"])
+            try csv.write(row: ["tuid", "timestampStart", "timestampEnd", "avgRssi", "medRssi"])
             
             realm = try Realm()
         } catch {
@@ -75,7 +75,7 @@ final class CSVMaker: CSVMakering {
 
         let metadata = [
             "version": "3",
-            "buid": AppSettings.BUID ?? ""
+            "buid": KeychainService.BUID ?? ""
         ]
 
         callback(Result(fileURL, metadata), nil)

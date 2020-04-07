@@ -246,13 +246,13 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="infoCell" id="khj-qB-6dm" customClass="InfoCell" customModule="BT_Tracking_Mac" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="84.5" width="414" height="64"/>
+                                        <rect key="frame" x="0.0" y="84.5" width="414" height="89.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="khj-qB-6dm" id="WhS-MQ-I3l">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZRO-FO-DOf">
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZRO-FO-DOf" userLabel="Stack View Top">
                                                     <rect key="frame" x="20" y="11" width="374" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgq-9p-RLu">
@@ -269,8 +269,25 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="F0n-V9-evX" userLabel="Stack View Middle">
+                                                    <rect key="frame" x="20" y="36.5" width="374" height="20.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txk-y4-BLS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKu-V2-lau">
+                                                            <rect key="frame" x="56" y="0.0" width="318" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0 (7)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twr-8V-bRs">
-                                                    <rect key="frame" x="20" y="36.5" width="374" height="16.5"/>
+                                                    <rect key="frame" x="20" y="62" width="374" height="16.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -279,20 +296,24 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="twr-8V-bRs" secondAttribute="trailing" id="5fC-DN-I4z"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ZRO-FO-DOf" secondAttribute="trailing" id="7ON-U0-6zr"/>
+                                                <constraint firstItem="F0n-V9-evX" firstAttribute="top" secondItem="ZRO-FO-DOf" secondAttribute="bottom" constant="5" id="9v7-X3-Hxp"/>
+                                                <constraint firstItem="twr-8V-bRs" firstAttribute="top" secondItem="F0n-V9-evX" secondAttribute="bottom" constant="5" id="DAh-sS-BJr"/>
                                                 <constraint firstItem="ZRO-FO-DOf" firstAttribute="top" secondItem="WhS-MQ-I3l" secondAttribute="topMargin" id="E3C-Ak-Lhk"/>
                                                 <constraint firstItem="twr-8V-bRs" firstAttribute="bottom" secondItem="WhS-MQ-I3l" secondAttribute="bottomMargin" id="EDT-V4-Veq"/>
                                                 <constraint firstItem="ZRO-FO-DOf" firstAttribute="leading" secondItem="WhS-MQ-I3l" secondAttribute="leadingMargin" id="Mih-on-tTb"/>
-                                                <constraint firstItem="twr-8V-bRs" firstAttribute="top" secondItem="ZRO-FO-DOf" secondAttribute="bottom" constant="5" id="U3Y-Nq-inc"/>
+                                                <constraint firstItem="F0n-V9-evX" firstAttribute="leading" secondItem="WhS-MQ-I3l" secondAttribute="leadingMargin" id="NJj-3o-OIE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="F0n-V9-evX" secondAttribute="trailing" id="cva-Wk-U9f"/>
                                                 <constraint firstItem="twr-8V-bRs" firstAttribute="leading" secondItem="WhS-MQ-I3l" secondAttribute="leadingMargin" id="oIO-mv-1pQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="buidLabel" destination="qqS-fW-akg" id="Hsp-q7-PcM"/>
+                                            <outlet property="buidLabel" destination="qqS-fW-akg" id="ekJ-ub-zFx"/>
                                             <outlet property="infoLabel" destination="twr-8V-bRs" id="yGV-is-P0l"/>
+                                            <outlet property="tuidLabel" destination="YKu-V2-lau" id="Suz-DL-Gxu"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="scanCell" id="KSr-fO-O4W" customClass="ScanCell" customModule="BT_Tracking_Mac" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="148.5" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="174" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KSr-fO-O4W" id="GmB-6F-DY4">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>

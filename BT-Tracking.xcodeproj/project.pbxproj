@@ -20,6 +20,7 @@
 		5ED9B237243252DC00A24703 /* HelpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED9B236243252DC00A24703 /* HelpCell.swift */; };
 		5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
+		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		803C5B23242932BF00E49414 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		803C5B252429346500E49414 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
 		8043C51B2423C6C600732179 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8043C51A2423C6C600732179 /* GoogleService-Info.plist */; };
@@ -104,6 +105,7 @@
 		5ED9B236243252DC00A24703 /* HelpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCell.swift; sourceTree = "<group>"; };
 		5EE9D814242F74F5002F833C /* DataHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHeaderCell.swift; sourceTree = "<group>"; };
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
+		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		803C5B22242932BF00E49414 /* DataListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVC.swift; sourceTree = "<group>"; };
 		803C5B242429346500E49414 /* DataListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVM.swift; sourceTree = "<group>"; };
 		8043C51A2423C6C600732179 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				80ECB96724291E1B00E57601 /* CSV */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
+				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
 			);
 			path = Services;
@@ -628,6 +631,7 @@
 				8075EDC3242A6E93001D9DCD /* ContactsController.swift in Sources */,
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
+				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */,

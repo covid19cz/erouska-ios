@@ -16,7 +16,7 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
     @IBOutlet private weak var tableView: UITableView!
 
     private var dataSource: RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>!
-    private let viewModel = ScanListVM(scannerStore: AppDelegate.shared.scannerStore)
+    private var viewModel = ScanListVM(scannerStore: AppDelegate.shared.scannerStore)
     private let bag = DisposeBag()
 
     // MARK: - Lifecycle
@@ -31,6 +31,12 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
         }
 
         navigationItem.largeTitleDisplayMode = .never
+
+        AppDelegate.shared.advertiser.didChangeID = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            }
+        }
 
         setupTableView()
     }
@@ -78,7 +84,7 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
             switch row {
             case .info(let buid):
                 let infoCell = tableView.dequeueReusableCell(withIdentifier: InfoCell.identifier, for: indexPath) as? InfoCell
-                infoCell?.configure(for: buid)
+                infoCell?.configure(for: buid, tuid: AppDelegate.shared.advertiser.currentID)
                 cell = infoCell
             case .scan(let scan):
                 let scanCell = tableView.dequeueReusableCell(withIdentifier: ScanCell.identifier, for: indexPath) as? ScanCell

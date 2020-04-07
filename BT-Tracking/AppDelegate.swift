@@ -37,7 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
-    private(set) lazy var advertiser: BTAdvertising = BTAdvertiser()
+    private(set) lazy var advertiser: BTAdvertising = BTAdvertiser(
+        TUIDs: KeychainService.TUIDs ?? [],
+        IDRotation: AppSettings.TUIDRotation
+    )
     private(set) lazy var scanner: BTScannering = BTScanner()
     lazy var scannerStore: ScannerStore = {
         let store = ScannerStore(
@@ -53,70 +56,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
     #endif
 
-    private func generalSetup() {
-        let generalCategory = UNNotificationCategory(
-            identifier: "Scanning",
-            actions: [],
-            intentIdentifiers: [],
-            options: .customDismissAction
+    // MARK: - Public
+
+    func resetAdvertising() {
+        let wasRunning = advertiser.isRunning
+        advertiser.stop()
+        advertiser = BTAdvertiser(
+            TUIDs: KeychainService.TUIDs ?? [],
+            IDRotation: AppSettings.TUIDRotation
         )
 
-        let center = UNUserNotificationCenter.current()
-        center.setNotificationCategories([generalCategory])
-
-        #if !targetEnvironment(macCatalyst)
-
-        #if DEBUG && TARGET_IPHONE_SIMULATOR
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
-        #endif
-
-        FirebaseApp.configure()
-        setupFirebaseRemoteConfig()
-        Auth.auth().languageCode = "cs";
-
-        #endif
-
-        let configuration = Realm.Configuration(
-            schemaVersion: 3,
-            migrationBlock: { migration, oldSchemaVersion in
-
-            }
-        )
-
-        Realm.Configuration.defaultConfiguration = configuration
-
-        if Auth.isLoggedIn {
-            scannerStore.deleteOldRecordsIfNeeded()
+        if wasRunning {
+            advertiser.start()
         }
-    }
-
-    private func setupInterface() {
-        let window = UIWindow()
-        window.backgroundColor = .black
-        window.makeKeyAndVisible()
-        self.window = window
-
-        let storyboard: UIStoryboard
-        #if !targetEnvironment(macCatalyst)
-
-        if !Auth.isLoggedIn {
-            try? Auth.auth().signOut()
-            storyboard = UIStoryboard(name: "Signup", bundle: nil)
-        } else {
-            storyboard = UIStoryboard(name: "Active", bundle: nil)
-        }
-
-        #else
-        storyboard = UIStoryboard(name: "Debug", bundle: nil)
-        #endif
-
-        window.rootViewController = storyboard.instantiateInitialViewController()
-    }
-    
-    private func setupBackgroundMode(for application: UIApplication) {
-        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
-        UIDevice.current.isProximityMonitoringEnabled = true
-        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     // MARK: - UIApplicationDelegate
@@ -203,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.deviceToken = deviceToken
 
         // update token on server
-        guard let buid = AppSettings.BUID else { return }
+        guard let buid = KeychainService.BUID else { return }
         let data: [String: Any] = [
             "buid": buid,
             "pushRegistrationToken": deviceToken.hexEncodedString()
@@ -248,8 +200,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             .disposed(by: bag)
     }
+
+}
+
+private extension AppDelegate {
+
+    func generalSetup() {
+        let generalCategory = UNNotificationCategory(
+            identifier: "Scanning",
+            actions: [],
+            intentIdentifiers: [],
+            options: .customDismissAction
+        )
+
+        let center = UNUserNotificationCenter.current()
+        center.setNotificationCategories([generalCategory])
+
+        #if !targetEnvironment(macCatalyst)
+
+        #if DEBUG && TARGET_IPHONE_SIMULATOR
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        #endif
+
+        FirebaseApp.configure()
+        setupFirebaseRemoteConfig()
+        Auth.auth().languageCode = "cs";
+
+        #endif
+
+        let configuration = Realm.Configuration(
+            schemaVersion: 3,
+            migrationBlock: { migration, oldSchemaVersion in
+
+            }
+        )
+
+        Realm.Configuration.defaultConfiguration = configuration
+
+        if Auth.isLoggedIn {
+            scannerStore.deleteOldRecordsIfNeeded()
+        }
+    }
     
-    private func fetchRemoteConfig() -> Single<Void> {
+    func setupInterface() {
+        let window = UIWindow()
+        window.backgroundColor = .black
+        window.makeKeyAndVisible()
+        self.window = window
+
+        let storyboard: UIStoryboard
+        #if !targetEnvironment(macCatalyst)
+
+        if !Auth.isLoggedIn {
+            try? Auth.auth().signOut()
+            storyboard = UIStoryboard(name: "Signup", bundle: nil)
+        } else {
+            storyboard = UIStoryboard(name: "Active", bundle: nil)
+        }
+
+        #else
+        storyboard = UIStoryboard(name: "Debug", bundle: nil)
+        #endif
+
+        window.rootViewController = storyboard.instantiateInitialViewController()
+    }
+
+    func setupBackgroundMode(for application: UIApplication) {
+        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        UIDevice.current.isProximityMonitoringEnabled = true
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+
+    func fetchRemoteConfig() -> Single<Void> {
         return Single<Void>.create { single in
             RemoteConfig.remoteConfig().fetch(withExpirationDuration: 1800) { _, error in
                 if let error = error {
@@ -264,4 +286,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return Disposables.create()
         }
     }
+
 }
