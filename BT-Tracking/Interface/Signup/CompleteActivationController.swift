@@ -138,8 +138,8 @@ final class CompleteActivationController: UIViewController {
                     } else if let result = result?.data as? [String: Any] {
                         if let BUID = result["buid"] as? String,
                             let TUIDs = result["tuids"] as? [String] {
-                            AppSettings.BUID = BUID
-                            AppSettings.TUIDs = TUIDs
+                            KeychainService.BUID = BUID
+                            KeychainService.TUIDs = TUIDs
 
                             let storyboard = UIStoryboard(name: "Active", bundle: nil)
                             AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()

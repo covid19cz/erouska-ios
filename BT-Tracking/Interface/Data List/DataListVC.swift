@@ -146,7 +146,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     private func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
-        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(AppSettings.BUID ?? "")"
+        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(KeychainService.BUID ?? "")"
         let fileName = "\(Int(fileDate.timeIntervalSince1970 * 1000)).csv"
 
         let storage = Storage.storage()
