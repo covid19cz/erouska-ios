@@ -27,8 +27,7 @@ struct KeychainService {
 
     static var TUIDs: [String]? {
         get {
-            let values: [String]? = arrayValue(for: .TUIDs)
-            return values
+            return arrayValue(for: .TUIDs)
         }
         set {
             if let values = newValue {
