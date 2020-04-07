@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class NotificationPermissionController: UIViewController {
     
@@ -16,14 +17,16 @@ class NotificationPermissionController: UIViewController {
         requestPermission()
     }
     
-    // MARK: - Permission request
+    // MARK: - Request permission
     
     private func requestPermission() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(
             options: authOptions,
             completionHandler: { [weak self] _, _ in
-                self?.performSegue(withIdentifier: "activation", sender: nil)
+                DispatchQueue.main.async { [weak self] in
+                    self?.performSegue(withIdentifier: "activation", sender: nil)
+                }
         })
         UIApplication.shared.registerForRemoteNotifications()
     }

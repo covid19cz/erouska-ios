@@ -179,6 +179,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     <connections>
                         <segue destination="1ln-NW-njF" kind="show" identifier="bluetooth" id="UA2-MZ-WsL"/>
                         <segue destination="1qZ-bG-yib" kind="show" identifier="notification" id="LBz-k7-fXB"/>
+                        <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="p0J-jR-yfg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzX-cU-3lD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -411,7 +412,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afB-yv-WOA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426" y="-31"/>
+            <point key="canvasLocation" x="-415" y="-31"/>
         </scene>
         <!--Telefonní číslo-->
         <scene sceneID="vLC-jn-bpl">
@@ -647,7 +648,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
-                                            <action selector="activateBluetoothAction" destination="1qZ-bG-yib" eventType="touchUpInside" id="2by-ZJ-rDb"/>
                                             <action selector="continueAction:" destination="1qZ-bG-yib" eventType="touchUpInside" id="T56-gg-drm"/>
                                         </connections>
                                     </button>
@@ -688,8 +688,9 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LBz-k7-fXB"/>
+        <segue reference="9If-5K-v2Z"/>
         <segue reference="HJI-Y5-Kpb"/>
+        <segue reference="kyL-aQ-rgP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ActivationIlustration" width="130" height="130"/>
