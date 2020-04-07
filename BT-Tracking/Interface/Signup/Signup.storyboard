@@ -22,7 +22,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5lM-ms-2kO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1471" y="-31"/>
+            <point key="canvasLocation" x="-2270" y="-31"/>
         </scene>
         <!--eRouška-->
         <scene sceneID="GJX-OU-pnd">
@@ -178,12 +178,13 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </navigationItem>
                     <connections>
                         <segue destination="1ln-NW-njF" kind="show" identifier="bluetooth" id="UA2-MZ-WsL"/>
-                        <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="r2A-Jx-jwc"/>
+                        <segue destination="1qZ-bG-yib" kind="show" identifier="notification" id="LBz-k7-fXB"/>
+                        <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="p0J-jR-yfg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzX-cU-3lD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-527.20000000000005" y="-31.03448275862069"/>
+            <point key="canvasLocation" x="-1326" y="-31"/>
         </scene>
         <!--Ověřovací kód-->
         <scene sceneID="YpT-d0-CPf">
@@ -349,22 +350,20 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-hR-Czd">
-                                        <rect key="frame" x="0.0" y="222.33333333333334" width="343" height="108.33333333333334"/>
-                                        <string key="text">Bluetooth nikdy nevypínejte, aby aplikace mohla správně fungovat.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth nikdy nevypínejte, aby aplikace mohla správně fungovat." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-hR-Czd">
+                                        <rect key="frame" x="0.0" y="222.33333333333334" width="343" height="42.333333333333343"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhz-zk-obE">
-                                        <rect key="frame" x="0.0" y="345.66666666666663" width="343" height="130.33333333333337"/>
-                                        <string key="text">Nasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyzve pracovník hygienické stanice.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyzve pracovník hygienické stanice." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhz-zk-obE">
+                                        <rect key="frame" x="0.0" y="279.66666666666663" width="343" height="64.333333333333314"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-GQ-ith" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="491.00000000000006" width="343" height="59.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="359" width="343" height="191.66666666666663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-gP-OXF" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
@@ -408,12 +407,12 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="xKm-MN-ToF"/>
+                        <segue destination="1qZ-bG-yib" kind="show" identifier="notification" id="9If-5K-v2Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afB-yv-WOA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="-31"/>
+            <point key="canvasLocation" x="-415" y="-31"/>
         </scene>
         <!--Telefonní číslo-->
         <scene sceneID="vLC-jn-bpl">
@@ -594,14 +593,109 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
             </objects>
             <point key="canvasLocation" x="339" y="538"/>
         </scene>
+        <!--Ověření-->
+        <scene sceneID="J9c-t7-uW3">
+            <objects>
+                <viewController id="1qZ-bG-yib" customClass="NotificationPermissionController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QIH-fQ-XIa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Sni-1T-sWI">
+                                <rect key="frame" x="16" y="148.33333333333331" width="343" height="629.66666666666674"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJk-0s-VtT" userLabel="Space View">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="5" id="bwd-68-9DJ"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notification" translatesAutoresizingMaskIntoConstraints="NO" id="H91-jt-ooM">
+                                        <rect key="frame" x="0.0" y="20" width="343" height="130"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Potřebujeme ověřit, že nejste robot" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhY-my-yM8">
+                                        <rect key="frame" x="0.0" y="164.99999999999997" width="343" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oH6-oS-6ZX">
+                                        <rect key="frame" x="0.0" y="200.33333333333334" width="343" height="86.333333333333343"/>
+                                        <string key="text">Aby eRouška chránila vás i vaše blízké, musí ji používat jen reální lidé. Proto vás potřebujeme ověřit jednoduchým testem, který proběhne bez vašeho zásahu.</string>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I71-6U-z9V">
+                                        <rect key="frame" x="0.0" y="301.66666666666663" width="343" height="108.33333333333331"/>
+                                        <string key="text">Stačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.</string>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sje-GQ-Tfa" userLabel="Big Space View">
+                                        <rect key="frame" x="0.0" y="425" width="343" height="125.66666666666663"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzc-3p-o5r" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="565.66666666666663" width="343" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ApL-EF-RGU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <state key="normal" title="Pokračovat">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueAction:" destination="1qZ-bG-yib" eventType="touchUpInside" id="T56-gg-drm"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIX-a6-Wc7" userLabel="Space View">
+                                        <rect key="frame" x="0.0" y="624.66666666666663" width="343" height="5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="5" id="JKW-dh-Ez6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sni-1T-sWI" secondAttribute="trailing" id="Aem-we-O0Y"/>
+                            <constraint firstItem="Sni-1T-sWI" firstAttribute="leading" secondItem="QIH-fQ-XIa" secondAttribute="leadingMargin" id="Oek-Ed-5HE"/>
+                            <constraint firstItem="Sni-1T-sWI" firstAttribute="top" secondItem="aVm-Eb-DDN" secondAttribute="top" id="Qg4-b8-RGD"/>
+                            <constraint firstItem="aVm-Eb-DDN" firstAttribute="bottom" secondItem="Sni-1T-sWI" secondAttribute="bottom" id="cpn-BN-Iag"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aVm-Eb-DDN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Ověření" id="Ia5-ZL-73y">
+                        <barButtonItem key="backBarButtonItem" title="Zpět" id="AGe-uz-MAj"/>
+                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="zNr-NV-ndm">
+                            <connections>
+                                <segue destination="Tm2-1s-Hbj" kind="show" id="HJI-Y5-Kpb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="kyL-aQ-rgP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mDi-qM-VD8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="455" y="-31"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="utZ-G0-Rhr"/>
-        <segue reference="xKm-MN-ToF"/>
+        <segue reference="9If-5K-v2Z"/>
+        <segue reference="HJI-Y5-Kpb"/>
+        <segue reference="kyL-aQ-rgP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ActivationIlustration" width="130" height="130"/>
         <image name="BluetoothIlustration" width="130" height="130"/>
         <image name="MinLogo" width="328" height="29.333333969116211"/>
+        <image name="Notification" width="130" height="130"/>
     </resources>
 </document>

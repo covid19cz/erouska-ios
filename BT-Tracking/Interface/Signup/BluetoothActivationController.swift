@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import UserNotifications
 
 final class BluetoothActivationController: UIViewController, CBPeripheralManagerDelegate {
 
@@ -73,11 +74,21 @@ final class BluetoothActivationController: UIViewController, CBPeripheralManager
 
 private extension BluetoothActivationController {
 
-    func goToActivation() {
-        performSegue(withIdentifier: "activation", sender: nil)
-        peripheralManager = nil
+    func continueOnboarding() {
+        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
+            DispatchQueue.main.async { [weak self] in
+                if settings.authorizationStatus == .authorized {
+                    // Already authorized
+                    self?.performSegue(withIdentifier: "activation", sender: nil)
+                } else {
+                    // Request authorization
+                    self?.performSegue(withIdentifier: "notification", sender: nil)
+                }
+                self?.peripheralManager = nil
+            }
+        }
     }
-
+    
     func checkForBluetooth() {
         if bluetoothNotDetermined {
             requestBluetoothPermission()
@@ -89,7 +100,7 @@ private extension BluetoothActivationController {
             return
         }
 
-        goToActivation()
+        continueOnboarding()
     }
 
     func requestBluetoothPermission() {
