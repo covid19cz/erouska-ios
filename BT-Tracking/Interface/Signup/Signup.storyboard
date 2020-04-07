@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="kfk-wA-RM9" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -672,7 +672,11 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </view>
                     <navigationItem key="navigationItem" title="Ověření" id="Ia5-ZL-73y">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="AGe-uz-MAj"/>
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="zNr-NV-ndm"/>
+                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="zNr-NV-ndm">
+                            <connections>
+                                <segue destination="Tm2-1s-Hbj" kind="show" id="HJI-Y5-Kpb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="kyL-aQ-rgP"/>
@@ -685,7 +689,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LBz-k7-fXB"/>
-        <segue reference="dFa-tE-tum"/>
+        <segue reference="HJI-Y5-Kpb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ActivationIlustration" width="130" height="130"/>

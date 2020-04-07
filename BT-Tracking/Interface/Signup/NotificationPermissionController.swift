@@ -9,14 +9,22 @@
 import UIKit
 
 class NotificationPermissionController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     // MARK: - Action
     
     @IBAction func continueAction(_ sender: Any) {
-        performSegue(withIdentifier: "activation", sender: nil)
+        requestPermission()
+    }
+    
+    // MARK: - Permission request
+    
+    private func requestPermission() {
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { [weak self] _, _ in
+                self?.performSegue(withIdentifier: "activation", sender: nil)
+        })
+        UIApplication.shared.registerForRemoteNotifications()
     }
 }
