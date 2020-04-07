@@ -631,7 +631,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                         <rect key="frame" x="0.0" y="301.66666666666663" width="343" height="108.33333333333331"/>
                                         <string key="text">Stačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sje-GQ-Tfa" userLabel="Big Space View">
