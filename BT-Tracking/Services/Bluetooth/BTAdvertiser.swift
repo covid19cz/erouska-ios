@@ -8,39 +8,70 @@
 
 import Foundation
 import CoreBluetooth
+import RxSwift
 
 protocol BTAdvertising: class {
+
+    init(TUIDs: [String], IDRotation: Int)
+
+    @available(iOS 13.0, *)
+    var authorization: CBManagerAuthorization { get }
+
+    var currentID: String? { get }
+    typealias IDChangeCallback = () -> Void
+    var didChangeID: IDChangeCallback? { get set }
 
     var isRunning: Bool { get }
     func start()
     func stop()
-
-    @available(iOS 13.0, *)
-    var authorization: CBManagerAuthorization { get }
     
 }
 
 final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
+    private let bag = DisposeBag()
+
+    // Advertising ID
+    private let TUIDs: [String]
+    private(set) var currentID: String?
+    var didChangeID: IDChangeCallback?
+
+    private let IDRotationTimer: Observable<Int>
+
+    // Brodcasting
     private var peripheralManager: CBPeripheralManager! = nil
 
     private var serviceBroadcast: CBCharacteristic?
     private var uniqueBroadcast: CBCharacteristic?
+    private var service: CBMutableService?
 
     @available(iOS 13.0, *)
     var authorization: CBManagerAuthorization {
         if #available(iOS 13.1, *) {
             return CBPeripheralManager.authorization
-        } else if #available(iOS 13.0, *) {
-            return peripheralManager.authorization
         } else {
-            return .allowedAlways
-            //return peripheralManager.authorizationStatus
+            return peripheralManager.authorization
         }
     }
 
-    override init() {
+    init(TUIDs: [String], IDRotation: Int) {
+        self.TUIDs = TUIDs
+        self.IDRotationTimer = Observable.timer(
+            .seconds(0),
+            period: .seconds(IDRotation),
+            scheduler: ConcurrentDispatchQueueScheduler(qos: .background)
+        )
+
         super.init()
+
+        IDRotationTimer
+            .skip(1)
+            .subscribe(onNext: { [weak self] _ in
+                guard self?.isRunning == true else { return }
+                self?.rotateDeviceID()
+                self?.didChangeID?()
+            })
+            .disposed(by: bag)
 
         peripheralManager = CBPeripheralManager(
             delegate: self,
@@ -93,14 +124,23 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     }
 
     private func setupService() {
+        pickNewDeviceID()
+        let transferService = CBMutableService(type: BT.transferService.cbUUID, primary: true)
+        transferService.characteristics = setupCharacteristic()
+        peripheralManager.add(transferService)
+        service = transferService
+    }
+
+    private func setupCharacteristic() -> [CBMutableCharacteristic] {
         let serviceBroadcast = CBMutableCharacteristic(
             type: BT.transferCharacteristic.cbUUID,
             properties: .read,
-            value: AppSettings.BUID?.hexData, // ID device according to BE spec
+            value: currentID?.hexData, // ID device according to BE spec
             permissions: .readable
         )
         self.serviceBroadcast = serviceBroadcast
 
+        #if DEBUG
         let uniqueBroadcast = CBMutableCharacteristic(
               type: BT.broadcastCharacteristic.cbUUID,
               properties: .read,
@@ -109,15 +149,35 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         )
         self.uniqueBroadcast = uniqueBroadcast
 
-        let transferService = CBMutableService(type: BT.transferService.cbUUID, primary: true)
-        transferService.characteristics = [serviceBroadcast, uniqueBroadcast]
-
-        peripheralManager.add(transferService)
+        return [serviceBroadcast, uniqueBroadcast]
+        #else
+        return [serviceBroadcast]
+        #endif
     }
 
-    private func setupAppleService() {
-        let transferService = CBMutableService(type: BT.appleService.cbUUID, primary: false)
-        peripheralManager.add(transferService)
+    private func rotateDeviceID() {
+        pickNewDeviceID()
+        log("BTAdvertiser: Did rotate to ID: \(currentID ?? "error")")
+
+        guard let service = service else { return }
+
+        DispatchQueue.main.async {
+            service.characteristics = self.setupCharacteristic()
+            self.peripheralManager.removeAllServices()
+
+            self.peripheralManager.add(service)
+        }
+    }
+
+    private func pickNewDeviceID() {
+        let randomIndex = Int.random(in: 0..<TUIDs.count)
+        let randomID = TUIDs[randomIndex]
+
+        if currentID == nil || currentID != randomID {
+            currentID = randomID
+        } else {
+            pickNewDeviceID()
+        }
     }
 
     // MARK: CBPeripheralManagerDelegate
@@ -159,10 +219,6 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
     func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
         log("BTAdvertiser: didAddService: \(service), error: \(error?.localizedDescription ?? "none")")
-
-        if service.isPrimary == true {
-            setupAppleService()
-        }
     }
 
 

@@ -17,7 +17,7 @@ final class ActiveAppController: UIViewController {
 
     private let advertiser: BTAdvertising = AppDelegate.shared.advertiser
     private let scanner: BTScannering = AppDelegate.shared.scanner
-
+    
     // MARK: - Outlets
 
     @IBOutlet weak var imageView: UIImageView!
@@ -59,6 +59,7 @@ final class ActiveAppController: UIViewController {
         )
 
         checkForBluetooth()
+        checkBackgroundModeIfNeeded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -192,4 +193,24 @@ private extension ActiveAppController {
         updateViewModel()
     }
 
+    func checkBackgroundModeIfNeeded() {
+        guard !AppSettings.backgroundModeAlertShown, UIApplication.shared.backgroundRefreshStatus == .denied else { return }
+        AppSettings.backgroundModeAlertShown = true
+        let controller = UIAlertController(
+            title: "Aktualizace na pozadí",
+            message: "eRouška se potřebuje sama spustit i na pozadí, například po restartování telefonu, abyste na to nemuseli myslet vy.\n\nPovolte možnost 'Aktualizace na pozadí' v nastavení aplikace.",
+            preferredStyle: .alert
+        )
+        controller.addAction(UIAlertAction(title: "Upravit nastavení", style: .default, handler: { [weak self] _ in
+            self?.openSettings()
+        }))
+        controller.addAction(UIAlertAction(title: "Zavřít", style: .default, handler: nil))
+        controller.preferredAction = controller.actions.first
+        present(controller, animated: true)
+    }
+    
+    private func openSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
+        UIApplication.shared.open(settingsUrl)
+    }
 }

@@ -83,8 +83,8 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             message: "S odeslanými daty bude Ministerstvo zdravotnictví a jemu podřízení hygienici pracovat na základě vašeho souhlasu podle podmínek zpracování.",
             preferredStyle: .alert
         )
-        controller.addAction(UIAlertAction(title: "Ano, odeslat", style: .default, handler: { _ in
-            self.sendReport()
+        controller.addAction(UIAlertAction(title: "Ano, odeslat", style: .default, handler: { [weak self] _ in
+            self?.sendReport()
         }))
         controller.addAction(UIAlertAction(title: "Ne", style: .cancel, handler: { _ in
             self.showError(
@@ -146,7 +146,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     private func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
-        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(AppSettings.BUID ?? "")"
+        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(KeychainService.BUID ?? "")"
         let fileName = "\(Int(fileDate.timeIntervalSince1970 * 1000)).csv"
 
         let storage = Storage.storage()

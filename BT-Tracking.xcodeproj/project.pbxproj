@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4657C454243BD03D009E0E85 /* NotificationPermissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657C453243BD03D009E0E85 /* NotificationPermissionController.swift */; };
 		46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */; };
 		46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */; };
 		46A0D531242CEB9500FAE9EA /* DeleteDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */; };
@@ -19,6 +20,7 @@
 		5ED9B237243252DC00A24703 /* HelpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED9B236243252DC00A24703 /* HelpCell.swift */; };
 		5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
+		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		803C5B23242932BF00E49414 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		803C5B252429346500E49414 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
 		8043C51B2423C6C600732179 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8043C51A2423C6C600732179 /* GoogleService-Info.plist */; };
@@ -37,6 +39,7 @@
 		805BE9772424DE0E001A93B3 /* BTDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE9762424DE0E001A93B3 /* BTDevice.swift */; };
 		805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE97824252AE6001A93B3 /* MulticastDelegate.swift */; };
 		80610BD024363D7B00E031C8 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80610BCF24363D7B00E031C8 /* Auth.swift */; };
+		80610BD9243B13AE00E031C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80610BD8243B13AE00E031C8 /* String.swift */; };
 		80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A95242CA27800EB0B6C /* HelpVC.swift */; };
 		80631A98242CAB5000EB0B6C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A97242CAB5000EB0B6C /* Image.swift */; };
 		807053532427BA2500DC1034 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
@@ -89,6 +92,7 @@
 		1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BT_Tracking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
+		4657C453243BD03D009E0E85 /* NotificationPermissionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionController.swift; sourceTree = "<group>"; };
 		46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnregisterUser.storyboard; sourceTree = "<group>"; };
 		46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataVC.swift; sourceTree = "<group>"; };
 		46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataVM.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 		5ED9B236243252DC00A24703 /* HelpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCell.swift; sourceTree = "<group>"; };
 		5EE9D814242F74F5002F833C /* DataHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHeaderCell.swift; sourceTree = "<group>"; };
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
+		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		803C5B22242932BF00E49414 /* DataListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVC.swift; sourceTree = "<group>"; };
 		803C5B242429346500E49414 /* DataListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVM.swift; sourceTree = "<group>"; };
 		8043C51A2423C6C600732179 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		805BE9762424DE0E001A93B3 /* BTDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTDevice.swift; sourceTree = "<group>"; };
 		805BE97824252AE6001A93B3 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		80610BCF24363D7B00E031C8 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		80610BD8243B13AE00E031C8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		80631A95242CA27800EB0B6C /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		80631A97242CAB5000EB0B6C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		807053522427BA2500DC1034 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -308,6 +314,7 @@
 				80ECB96724291E1B00E57601 /* CSV */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
+				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
 			);
 			path = Services;
@@ -317,16 +324,17 @@
 			isa = PBXGroup;
 			children = (
 				8054C0DC2420AF63008907B8 /* App.swift */,
+				80610BCF24363D7B00E031C8 /* Auth.swift */,
 				80BB47632422865B00F552FC /* Button.swift */,
 				80ECB96524290DA900E57601 /* Collection.swift */,
 				80799BEA2423B89A002B04C5 /* Controller.swift */,
+				80610BD8243B13AE00E031C8 /* String.swift */,
 				807053522427BA2500DC1034 /* Data.swift */,
 				80631A97242CAB5000EB0B6C /* Image.swift */,
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 				80B94556242B96560052CD9F /* NavigationController.swift */,
 				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
 				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
-				80610BCF24363D7B00E031C8 /* Auth.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -386,6 +394,7 @@
 				80BB476124227C2500F552FC /* Signup.storyboard */,
 				BD979AE824255BD1004001ED /* FirstActiovationController.swift */,
 				80BB476524236ED100F552FC /* BluetoothActivationController.swift */,
+				4657C453243BD03D009E0E85 /* NotificationPermissionController.swift */,
 				80BB476724238CBB00F552FC /* AccountActivationController.swift */,
 				80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */,
 			);
@@ -616,11 +625,14 @@
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
 				46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */,
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
+				4657C454243BD03D009E0E85 /* NotificationPermissionController.swift in Sources */,
 				80631A98242CAB5000EB0B6C /* Image.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */,
 				8075EDC3242A6E93001D9DCD /* ContactsController.swift in Sources */,
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
+				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
+				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
@@ -831,7 +843,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -853,7 +865,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

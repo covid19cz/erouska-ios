@@ -80,13 +80,6 @@ final class AccountActivationControler: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(
-          options: authOptions,
-          completionHandler: {_, _ in }
-        )
-        UIApplication.shared.registerForRemoteNotifications()
-
         phonePrefixTextField.rx.text.orEmpty.bind(to: phonePrefix).disposed(by: disposeBag)
         phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)
 

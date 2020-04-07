@@ -4,7 +4,6 @@ target 'BT-Tracking' do
   use_frameworks!
 
   pod 'Firebase/Crashlytics'
-  pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Functions'
   pod 'Firebase/Storage'
