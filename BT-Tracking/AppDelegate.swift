@@ -37,7 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
-    private(set) lazy var advertiser: BTAdvertising = BTAdvertiser(TUIDs: AppSettings.TUIDs ?? [], IDRotation: AppSettings.TUIDRotation)
+    private(set) lazy var advertiser: BTAdvertising = BTAdvertiser(
+        TUIDs: KeychainService.TUIDs ?? [],
+        IDRotation: AppSettings.TUIDRotation
+    )
     private(set) lazy var scanner: BTScannering = BTScanner()
     lazy var scannerStore: ScannerStore = {
         let store = ScannerStore(
@@ -58,7 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func resetAdvertising() {
         let wasRunning = advertiser.isRunning
         advertiser.stop()
-        advertiser = BTAdvertiser(TUIDs: AppSettings.TUIDs ?? [], IDRotation: AppSettings.TUIDRotation)
+        advertiser = BTAdvertiser(
+            TUIDs: KeychainService.TUIDs ?? [],
+            IDRotation: AppSettings.TUIDRotation
+        )
+
         if wasRunning {
             advertiser.start()
         }
@@ -148,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.deviceToken = deviceToken
 
         // update token on server
-        guard let buid = AppSettings.BUID else { return }
+        guard let buid = KeychainService.BUID else { return }
         let data: [String: Any] = [
             "buid": buid,
             "pushRegistrationToken": deviceToken.hexEncodedString()

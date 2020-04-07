@@ -49,11 +49,8 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     var authorization: CBManagerAuthorization {
         if #available(iOS 13.1, *) {
             return CBPeripheralManager.authorization
-        } else if #available(iOS 13.0, *) {
-            return peripheralManager.authorization
         } else {
-            return .allowedAlways
-            //return peripheralManager.authorizationStatus
+            return peripheralManager.authorization
         }
     }
 

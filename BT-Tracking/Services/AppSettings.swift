@@ -14,25 +14,6 @@ struct AppSettings {
 
     static let backgroundModeAlertShownKey = "backgroundModeAlertShown"
 
-    static var BUID: String? {
-        get {
-            return UserDefaults.standard.string(forKey: "BUID")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "BUID")
-        }
-    }
-
-    static var TUIDs: [String]? {
-        get {
-            return UserDefaults.standard.stringArray(forKey: "TUIDs")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "TUIDs")
-            AppDelegate.shared.resetAdvertising()
-        }
-    }
-
     static let TUIDRotation: Int = 60 * 60
 
     static var state: ActiveAppViewModel.State? {
@@ -65,8 +46,9 @@ struct AppSettings {
     }
 
     static func deleteAllData() {
-        AppSettings.BUID = nil
-        AppSettings.TUIDs = nil
+        KeychainService.BUID = nil
+        KeychainService.TUIDs = nil
+        
         AppSettings.state = nil
         AppSettings.lastUploadDate = nil
         AppSettings.backgroundModeAlertShown = false
