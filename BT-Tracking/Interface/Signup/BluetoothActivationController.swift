@@ -74,7 +74,7 @@ final class BluetoothActivationController: UIViewController, CBPeripheralManager
 private extension BluetoothActivationController {
 
     func goToActivation() {
-        performSegue(withIdentifier: "activation", sender: nil)
+        performSegue(withIdentifier: "notification", sender: nil)
         peripheralManager = nil
     }
 

@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseFunctions
+import FirebaseRemoteConfig
 #endif
 import RealmSwift
 import RxSwift

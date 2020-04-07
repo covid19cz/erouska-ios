@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4657C454243BD03D009E0E85 /* NotificationPermissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657C453243BD03D009E0E85 /* NotificationPermissionController.swift */; };
 		46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */; };
 		46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */; };
 		46A0D531242CEB9500FAE9EA /* DeleteDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */; };
@@ -90,6 +91,7 @@
 		1CD7988E40794677C8502523 /* Pods_BT_Tracking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BT_Tracking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
+		4657C453243BD03D009E0E85 /* NotificationPermissionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionController.swift; sourceTree = "<group>"; };
 		46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnregisterUser.storyboard; sourceTree = "<group>"; };
 		46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataVC.swift; sourceTree = "<group>"; };
 		46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataVM.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				80BB476124227C2500F552FC /* Signup.storyboard */,
 				BD979AE824255BD1004001ED /* FirstActiovationController.swift */,
 				80BB476524236ED100F552FC /* BluetoothActivationController.swift */,
+				4657C453243BD03D009E0E85 /* NotificationPermissionController.swift */,
 				80BB476724238CBB00F552FC /* AccountActivationController.swift */,
 				80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */,
 			);
@@ -619,6 +622,7 @@
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
 				46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */,
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
+				4657C454243BD03D009E0E85 /* NotificationPermissionController.swift in Sources */,
 				80631A98242CAB5000EB0B6C /* Image.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */,
 				8075EDC3242A6E93001D9DCD /* ContactsController.swift in Sources */,

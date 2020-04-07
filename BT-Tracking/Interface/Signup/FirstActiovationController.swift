@@ -13,7 +13,7 @@ final class FirstActiovationController: UIViewController {
 
     @IBAction private func continueAction() {
         if bluetoothAuthorized  {
-            performSegue(withIdentifier: "activation", sender: nil)
+            performSegue(withIdentifier: "notification", sender: nil)
         } else {
             performSegue(withIdentifier: "bluetooth", sender: nil)
         }
