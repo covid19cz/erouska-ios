@@ -20,9 +20,13 @@ final class ActiveAppController: UIViewController {
     
     // MARK: - Outlets
 
+    @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var headLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tipsLabel: UILabel!
+    @IBOutlet weak var firstTipLabel: UILabel!
+    @IBOutlet weak var secondTipLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var actionButton: Button!
 
@@ -167,10 +171,18 @@ private extension ActiveAppController {
     func updateInterface() {
         navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
 
+        guard mainStackView.arrangedSubviews.count >= 4 else { return }
+        let isHiddenArrangedSubview = viewModel.state != .enabled
+        mainStackView.arrangedSubviews[2].isHidden = isHiddenArrangedSubview
+        mainStackView.arrangedSubviews[3].isHidden = isHiddenArrangedSubview
+        mainStackView.arrangedSubviews[4].isHidden = isHiddenArrangedSubview
         imageView.image = viewModel.state.image
         headLabel.text = viewModel.state.head
         headLabel.textColor = viewModel.state.color
         titleLabel.text = viewModel.state.title
+        tipsLabel.text = viewModel.state.tips
+        firstTipLabel.text = viewModel.state.firstTip
+        secondTipLabel.text = viewModel.state.secondTip
         textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
         actionButton.style = viewModel.state.actionStyle
         actionButton.setTitle(viewModel.state.actionTitle, for: .normal)

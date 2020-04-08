@@ -57,9 +57,9 @@ final class ActiveAppViewModel {
         var head: String {
             switch self {
             case .enabled:
-                return "Aplikace je aktivní"
+                return "eRouška je aktivní"
             case .paused:
-                return "Aplikace je pozastavená"
+                return "eRouška je pozastavená"
             case .disabled:
                 return "Zapněte Bluetooth"
             }
@@ -68,12 +68,24 @@ final class ActiveAppViewModel {
         var title: String {
             switch self {
             case .enabled:
-                return "Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle."
+                return "Na místech s větší koncentrací lidí nechte aplikaci spuštěnou při zapnuté obrazovce. Rozpoznáme tak lépe ostatní eRoušky v okolí."
             case .paused:
                 return "Aplikace je aktuálně pozastavená a nesbírá žádná data o vašem okolí."
             case .disabled:
                 return "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí."
             }
+        }
+        
+        var tips: String {
+            return "Tipy pro snížení spotřeby baterie"
+        }
+        
+        var firstTip: String {
+            return "Na stole otočte telefon obrazovkou dolů. Obrazovka automaticky zhasne."
+        }
+        
+        var secondTip: String {
+            return "Do kapsy dávejte telefon nabíjecím konektorem nahoru. Zakrytá obrazovka automaticky zhasne."
         }
 
         var text: String {
@@ -118,5 +130,4 @@ final class ActiveAppViewModel {
             state = (AppSettings.state == .disabled ? .enabled : AppSettings.state) ?? .enabled
         }
     }
-
 }
