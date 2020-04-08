@@ -36,7 +36,8 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     private(set) var currentID: String?
     var didChangeID: IDChangeCallback?
 
-    private let IDRotationTimer: Observable<Int>
+    private let IDRotation: Int
+    private var IDRotationTimer: Observable<Int>
 
     // Brodcasting
     private var peripheralManager: CBPeripheralManager! = nil
@@ -56,6 +57,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
     init(TUIDs: [String], IDRotation: Int) {
         self.TUIDs = TUIDs
+        self.IDRotation = IDRotation
         self.IDRotationTimer = Observable.timer(
             .seconds(0),
             period: .seconds(IDRotation),
@@ -63,15 +65,6 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         )
 
         super.init()
-
-        IDRotationTimer
-            .skip(1)
-            .subscribe(onNext: { [weak self] _ in
-                guard self?.isRunning == true else { return }
-                self?.rotateDeviceID()
-                self?.didChangeID?()
-            })
-            .disposed(by: bag)
 
         peripheralManager = CBPeripheralManager(
             delegate: self,
@@ -111,6 +104,15 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             CBAdvertisementDataServiceUUIDsKey : [BT.transferService.cbUUID]
         ])
 
+        IDRotationTimer
+            .skip(1)
+            .subscribe(onNext: { [weak self] _ in
+                guard self?.isRunning == true else { return }
+                self?.rotateDeviceID()
+                self?.didChangeID?()
+            })
+            .disposed(by: bag)
+
         log("BTAdvertiser: started")
     }
 
@@ -119,6 +121,12 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         guard isRunning else { return }
 
         peripheralManager.stopAdvertising()
+
+        IDRotationTimer = Observable.timer(
+            .seconds(0),
+            period: .seconds(IDRotation),
+            scheduler: ConcurrentDispatchQueueScheduler(qos: .background)
+        )
 
         log("BTAdvertiser: stoped")
     }
@@ -170,6 +178,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     }
 
     private func pickNewDeviceID() {
+        guard !TUIDs.isEmpty else { return }
         let randomIndex = Int.random(in: 0..<TUIDs.count)
         let randomID = TUIDs[randomIndex]
 
