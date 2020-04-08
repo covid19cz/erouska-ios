@@ -18,7 +18,8 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var activityView: UIView!
-
+    @IBOutlet weak var infoButton: UIBarButtonItem!
+    
     private var dataSource: RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>!
     private let viewModel = DataListVM()
     private let bag = DisposeBag()

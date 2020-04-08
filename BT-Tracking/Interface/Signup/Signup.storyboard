@@ -51,7 +51,8 @@
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="MinLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xgx-Up-y98">
                                                         <rect key="frame" x="0.0" y="0.0" width="328" height="29.333333333333332"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Díky eRoušce ochráníte sebe  i ostatní ve svém okolí" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQp-0s-STi">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Díky eRoušce ochráníte sebe 
+i ostatní ve svém okolí" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQp-0s-STi">
                                                         <rect key="frame" x="0.0" y="44.333333333333343" width="343" height="42.333333333333343"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
@@ -689,8 +690,8 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9If-5K-v2Z"/>
-        <segue reference="S39-Cf-beJ"/>
+        <segue reference="LBz-k7-fXB"/>
+        <segue reference="HJI-Y5-Kpb"/>
         <segue reference="kyL-aQ-rgP"/>
     </inferredMetricsTieBreakers>
     <resources>
