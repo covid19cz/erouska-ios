@@ -75,6 +75,7 @@ final class AccountActivationControler: UIViewController {
     @IBOutlet private weak var phonePrefixTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     @IBOutlet private weak var actionButton: UIButton!
+    @IBOutlet private weak var permissionSwitch: UISwitch!
     @IBOutlet private weak var activityView: UIView!
 
     override func viewDidLoad() {
@@ -100,7 +101,8 @@ final class AccountActivationControler: UIViewController {
                 DispatchQueue.main.async {
                     let height = (self.scrollView.frame.height - adjsutHomeIndicator)
                     let contentSize = self.scrollView.contentSize
-                    self.scrollView.scrollRectToVisible(CGRect(x: 0, y: contentSize.height - height, width: contentSize.width, height: height), animated: true)
+                    guard contentSize.height - height > -60 else { return }
+                    self.scrollView.scrollRectToVisible(CGRect(x: 0, y: (contentSize.height - height), width: contentSize.width, height: height), animated: true)
                 }
             }
         }).disposed(by: disposeBag)
@@ -124,6 +126,14 @@ final class AccountActivationControler: UIViewController {
     // MARK: - Actions
 
     @IBAction private func activateAcountAction() {
+        guard permissionSwitch.isOn else {
+            self.showError(
+                title: "Souhlas s podmínkami zpracování je nezbytný pro aktivaci aplikace. Bez vašeho souhlasu nemůže aplikace fungovat.",
+                message: ""
+            )
+            return
+        }
+
         activityView.isHidden = false
         view.endEditing(true)
 

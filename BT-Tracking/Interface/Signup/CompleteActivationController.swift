@@ -64,6 +64,7 @@ final class CompleteActivationController: UIViewController {
                 DispatchQueue.main.async {
                     let height = (self.scrollView.frame.height - adjsutHomeIndicator)
                     let contentSize = self.scrollView.contentSize
+                    guard contentSize.height - height > -60 else { return }
                     self.scrollView.scrollRectToVisible(CGRect(x: 0, y: contentSize.height - height, width: contentSize.width, height: height), animated: true)
                 }
             }
