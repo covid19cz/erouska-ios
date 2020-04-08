@@ -190,16 +190,18 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Moje data" id="Alq-cw-sQ5">
-                        <barButtonItem key="leftBarButtonItem" image="questionmark.circle" catalog="system" style="plain" id="Kr6-V8-Cct">
-                            <connections>
-                                <action selector="infoButtonActionWithSender:" destination="xGP-gf-Asp" id="SAl-NY-btp"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Smazat data" id="3kd-J2-YfH">
-                            <connections>
-                                <segue destination="Qab-Pf-r3c" kind="show" id="Q8e-Iy-QM9"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="info" style="plain" id="Kr6-V8-Cct">
+                                <connections>
+                                    <action selector="infoButtonActionWithSender:" destination="xGP-gf-Asp" id="SAl-NY-btp"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Smazat data" id="3kd-J2-YfH">
+                                <connections>
+                                    <segue destination="Qab-Pf-r3c" kind="show" id="Q8e-Iy-QM9"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -413,6 +415,6 @@ Po smazání dat dojde k automatickému pozastavení eRoušky.</string>
     </scenes>
     <resources>
         <image name="ScanActiveIcon" width="130" height="130"/>
-        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
+        <image name="info" width="20" height="20"/>
     </resources>
 </document>
