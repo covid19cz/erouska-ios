@@ -29,7 +29,8 @@ final class ActiveAppController: UIViewController {
     @IBOutlet weak var secondTipLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var actionButton: Button!
-
+    @IBOutlet weak var cardView: UIView!
+    
     // MARK: -
 
     override func viewDidLoad() {
@@ -50,6 +51,11 @@ final class ActiveAppController: UIViewController {
 
         updateScanner()
         updateInterface()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        layoutCardView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -223,5 +229,22 @@ private extension ActiveAppController {
     private func openSettings() {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
         UIApplication.shared.open(settingsUrl)
+    }
+    
+    private func layoutCardView() {
+        cardView.layoutIfNeeded()
+        // Card shape
+        cardView.layer.cornerRadius = 9.0
+        // Shadow
+        let shadowPath = UIBezierPath(roundedRect: cardView.bounds, cornerRadius: 9.0)
+        if #available(iOS 13.0, *) {
+            cardView.layer.shadowColor = UIColor.label.withAlphaComponent(0.25).cgColor
+        } else {
+            cardView.layer.shadowColor = UIColor.black.withAlphaComponent(0.25).cgColor
+        }
+        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        cardView.layer.shadowRadius = 2.0
+        cardView.layer.shadowOpacity = 1.0
+        cardView.layer.shadowPath = shadowPath.cgPath
     }
 }
