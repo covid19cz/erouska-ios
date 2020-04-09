@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BTDevice {
+struct BTScanUpdate {
     enum Platform: String {
         case iOS, android = "Android"
     }
@@ -26,7 +26,7 @@ struct BTDevice {
     init(id: UUID,
          bluetoothIdentifier: UUID,
          backendIdentifier: String? = nil,
-         platform: BTDevice.Platform,
+         platform: BTScanUpdate.Platform,
          date: Date,
          name: String? = nil,
          rssi: Int,
@@ -61,7 +61,7 @@ struct BTDevice {
     }    
 }
 
-extension BTDevice: Equatable {
+extension BTScanUpdate: Equatable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.backendIdentifier == rhs.backendIdentifier
     }

@@ -56,7 +56,7 @@ class LogController: UIViewController {
 }
 
 extension LogController: BTScannerDelegate {
-    func didFind(device: BTDevice) {
+    func didFind(device: BTScanUpdate) {
         let text = "Found device: \(device.bluetoothIdentifier.uuidString), buid: \(device.backendIdentifier ?? "unknown"), platform: \(device.platform), signal: \(device.rssi)"
 
         #if DEBUG
@@ -69,7 +69,7 @@ extension LogController: BTScannerDelegate {
         #endif
     }
 
-    func didUpdate(device: BTDevice) {
+    func didUpdate(device: BTScanUpdate) {
         let text = "Updated device: \(device.bluetoothIdentifier.uuidString), signal: \(device.rssi)"
         localLog(text)
     }
