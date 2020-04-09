@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16095" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oH0-Ce-HUb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oH0-Ce-HUb">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16084.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OJ0-iS-rc2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="helpCell" id="n7u-K0-ZII" customClass="HelpCell" customModule="eRouska" customModuleProvider="target">
@@ -80,14 +80,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="cua-aX-MiQ" firstAttribute="top" secondItem="OJ0-iS-rc2" secondAttribute="top" id="02r-z9-HeD"/>
                             <constraint firstItem="cua-aX-MiQ" firstAttribute="trailing" secondItem="OJ0-iS-rc2" secondAttribute="trailing" id="5qG-0w-qNb"/>
                             <constraint firstItem="cua-aX-MiQ" firstAttribute="bottom" secondItem="OJ0-iS-rc2" secondAttribute="bottom" id="VlY-kH-aQc"/>
                             <constraint firstItem="OJ0-iS-rc2" firstAttribute="leading" secondItem="cua-aX-MiQ" secondAttribute="leading" id="gwS-S7-6bf"/>
-                            <constraint firstItem="OJ0-iS-rc2" firstAttribute="top" secondItem="xog-Dv-zXk" secondAttribute="top" id="s1S-pN-eKN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cua-aX-MiQ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Jak to funguje" id="c2k-ON-LwA">
+                    <navigationItem key="navigationItem" title="Jak to funguje" largeTitleDisplayMode="always" id="c2k-ON-LwA">
                         <barButtonItem key="rightBarButtonItem" title="O aplikaci" id="jdD-iU-eUi">
                             <connections>
                                 <action selector="aboutAction" destination="oH0-Ce-HUb" id="5W2-g0-A9s"/>
@@ -134,7 +134,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3C-qN-glf">
                                                         <rect key="frame" x="0.0" y="34.333333333333329" width="343" height="218.33333333333337"/>
-                                                        <mutableString key="text">Aplikaci jsme vyvíjeli s důrazem na bezpečnost a ochranu soukromí, abychom jí bez obav mohli používat i my. Anonymizovaná data o Bluetooth zařízeních, které jste potkali, bez vašeho vědomí nikam neodesíláme. Aplikace nepoužívá vaší polohu a z nasbíraných dat nelze zjistit, kde jste se pohybovali. Věříme, že se nám společně podaří epidemii zastavit, tým eRoušky.</mutableString>
+                                                        <string key="text">Aplikaci jsme vyvíjeli s důrazem na bezpečnost a ochranu soukromí, abychom jí bez obav mohli používat i my. Anonymizovaná data o Bluetooth zařízeních, které jste potkali, bez vašeho vědomí nikam neodesíláme. Aplikace nepoužívá vaší polohu a z nasbíraných dat nelze zjistit, kde jste se pohybovali. Věříme, že se nám společně podaří epidemii zastavit, tým eRoušky.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
