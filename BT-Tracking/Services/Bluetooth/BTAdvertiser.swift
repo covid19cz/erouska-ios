@@ -91,7 +91,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     // MARK: - BTAdvertising
 
     var isRunning: Bool {
-        return peripheralManager.isAdvertising
+        return peripheralManager.isAdvertising && started
     }
     private var started: Bool = false
 
