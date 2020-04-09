@@ -20,6 +20,7 @@ class HelpVC: UIViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupTabBar()
         setupTableView()
     }
