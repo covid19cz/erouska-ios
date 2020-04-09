@@ -102,11 +102,11 @@ final class ActiveAppViewModel {
         var actionTitle: String {
             switch self {
             case .enabled:
-                return "Pozastavit eRoušku"
+                return "Pozastavit"
             case .paused:
-                return "Spustit eRoušku"
+                return "Spustit"
             case .disabled:
-                return "Zapnout Bluetooth"
+                return "Zapnout"
             }
         }
 
@@ -118,7 +118,6 @@ final class ActiveAppViewModel {
                 return .filled
             }
         }
-
     }
 
     private(set) var state: State

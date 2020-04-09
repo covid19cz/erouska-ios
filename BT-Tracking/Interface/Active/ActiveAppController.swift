@@ -184,7 +184,6 @@ private extension ActiveAppController {
         firstTipLabel.text = viewModel.state.firstTip
         secondTipLabel.text = viewModel.state.secondTip
         textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
-        actionButton.style = viewModel.state.actionStyle
         actionButton.setTitle(viewModel.state.actionTitle, for: .normal)
     }
 
