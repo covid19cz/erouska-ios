@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icon-ok 1.png",
+      "filename" : "icon-ok-small.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icon-ok 1@2x.png",
+      "filename" : "icon-ok-small@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icon-ok 1@3x.png",
+      "filename" : "icon-ok-small@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
