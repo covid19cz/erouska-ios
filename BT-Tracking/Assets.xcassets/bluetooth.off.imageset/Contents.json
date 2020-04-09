@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icon-bluetooth.png",
+      "filename" : "bluetooth_off.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icon-bluetooth@2x.png",
+      "filename" : "bluetooth_off@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icon-bluetooth@3x.png",
+      "filename" : "bluetooth_off@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,9 +19,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "preserves-vector-representation" : true,
-    "template-rendering-intent" : "original"
   }
 }
