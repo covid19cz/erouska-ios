@@ -432,6 +432,7 @@
                     <size key="freeformSize" width="375" height="860"/>
                     <connections>
                         <outlet property="actionButton" destination="UDA-eb-fmL" id="ZBv-1y-h9d"/>
+                        <outlet property="actionButtonWidthConstraint" destination="hHl-s3-yn0" id="fKm-lg-qoS"/>
                         <outlet property="cardView" destination="S6s-Qx-Qlh" id="jMg-jX-DaZ"/>
                         <outlet property="firstTipLabel" destination="XD8-Ge-3oY" id="Qak-rD-hDL"/>
                         <outlet property="headLabel" destination="jq8-JX-g6N" id="NVv-Mg-JGG"/>
