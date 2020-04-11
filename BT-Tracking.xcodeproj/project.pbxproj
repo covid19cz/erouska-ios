@@ -15,7 +15,6 @@
 		46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA82422444600C01DFA /* ScanListVC.swift */; };
 		46F21CAF2422597F00C01DFA /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CAE2422597F00C01DFA /* Scan.swift */; };
 		46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CB3242270F700C01DFA /* ScannerStore.swift */; };
-		46F5CDA324411EDE000089CA /* Help2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F5CDA224411EDE000089CA /* Help2VC.swift */; };
 		5E110F9C2433C4AD0059712A /* UnregisterFinishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */; };
 		5EA3C7B52442038E009BBF38 /* HelpMarkdownBackup.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EA3C7B42442038E009BBF38 /* HelpMarkdownBackup.strings */; };
 		5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
@@ -100,7 +99,6 @@
 		46F21CA82422444600C01DFA /* ScanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanListVC.swift; sourceTree = "<group>"; };
 		46F21CAE2422597F00C01DFA /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		46F21CB3242270F700C01DFA /* ScannerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerStore.swift; sourceTree = "<group>"; };
-		46F5CDA224411EDE000089CA /* Help2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help2VC.swift; sourceTree = "<group>"; };
 		5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterFinishVC.swift; sourceTree = "<group>"; };
 		5EA3C7B42442038E009BBF38 /* HelpMarkdownBackup.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = HelpMarkdownBackup.strings; sourceTree = "<group>"; };
 		5EE9D814242F74F5002F833C /* DataHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHeaderCell.swift; sourceTree = "<group>"; };
@@ -232,14 +230,6 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
-		46F5CDA124411E37000089CA /* Help 2 */ = {
-			isa = PBXGroup;
-			children = (
-				46F5CDA224411EDE000089CA /* Help2VC.swift */,
-			);
-			path = "Help 2";
-			sourceTree = "<group>";
-		};
 		5357F8D365121189A6E32250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,7 +277,6 @@
 				BD0191452424330200707341 /* Active */,
 				80ECB96A24292F9600E57601 /* Data List */,
 				BDB07FBE24254A7B00834E79 /* Help */,
-				46F5CDA124411E37000089CA /* Help 2 */,
 				46A0D528242CC29A00FAE9EA /* Unregister User */,
 				46F21CA3242243F400C01DFA /* Debug */,
 			);
@@ -625,7 +614,6 @@
 				80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */,
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
 				46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */,
-				46F5CDA324411EDE000089CA /* Help2VC.swift in Sources */,
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
 				4657C454243BD03D009E0E85 /* NotificationPermissionController.swift in Sources */,
 				80631A98242CAB5000EB0B6C /* Image.swift in Sources */,
