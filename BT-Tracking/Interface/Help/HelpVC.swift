@@ -45,7 +45,7 @@ private extension HelpVC {
     }
 
     func showContent() {
-        let markdownParser = MarkdownParser()
+        let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 16))
         var helpMarkdown = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
         helpMarkdown = helpMarkdown.replacingOccurrences(of: "([Android](https://github.com/covid19cz/erouska-android), [iOS](https://github.com/covid19cz/erouska-ios))", with: "pro [Android](https://github.com/covid19cz/erouska-android) a [iOS](https://github.com/covid19cz/erouska-ios)")
         helpMarkdown = helpMarkdown.replacingOccurrences(of: "[iOS](https://github.com/covid19cz/erouska-ios))", with: "[iOS](https://github.com/covid19cz/erouska-ios) )")
