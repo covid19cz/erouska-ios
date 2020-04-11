@@ -177,6 +177,17 @@ struct RemoteValues {
 
     /// Help markdown
     static var helpMarkdown: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.helpMarkdown)
+        let helpMarkdown = AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.helpMarkdown)
+
+        if !helpMarkdown.isEmpty {
+            return helpMarkdown
+        } else {
+            guard
+                let path = Bundle.main.url(forResource: "HelpMarkdownBackup", withExtension: "strings", subdirectory: nil),
+                let dict = NSDictionary(contentsOf: path),
+                let helpMarkdownBackup = dict.value(forKey: "helpMarkdownBackup") as? String
+            else { return "" }
+            return helpMarkdownBackup
+        }
     }
 }

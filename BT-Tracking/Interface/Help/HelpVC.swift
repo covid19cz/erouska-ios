@@ -8,24 +8,31 @@
 
 import RxSwift
 import RxCocoa
-import RxDataSources
+import MarkdownKit
 
-class HelpVC: UIViewController, UITableViewDelegate {
+class HelpVC: UIViewController {
 
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var textView: UITextView!
 
-    private var dataSource: RxTableViewSectionedAnimatedDataSource<HelpVM.SectionModel>!
-    private let viewModel = HelpVM()
     private let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTabBar()
-        setupTableView()
+        setupTextView()
+        showContent()
     }
 
-    private func setupTabBar() {
+    // MARK: - Actions
+    @IBAction private func aboutAction() {
+        guard let url = URL(string: RemoteValues.aboutLink) else { return }
+        openURL(URL: url)
+    }
+}
+
+private extension HelpVC {
+    func setupTabBar() {
         if #available(iOS 13, *) {
             navigationController?.tabBarItem.image = UIImage(systemName: "questionmark.circle")
         } else {
@@ -33,38 +40,13 @@ class HelpVC: UIViewController, UITableViewDelegate {
         }
     }
 
-    // MARK: - TableView
-    private func setupTableView() {
-        tableView.tableFooterView = UIView()
-        tableView.allowsSelection = false
-        tableView.rowHeight = UITableView.automaticDimension
-
-        dataSource = RxTableViewSectionedAnimatedDataSource<HelpVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
-            let cell: UITableViewCell?
-            switch row {
-            case .main(let data):
-                let helpCell = tableView.dequeueReusableCell(withIdentifier: HelpCell.identifier, for: indexPath) as? HelpCell
-                helpCell?.configure(data: data)
-                cell = helpCell
-            }
-            return cell ?? UITableViewCell()
-        })
-
-        viewModel.sections
-            .drive(tableView.rx.items(dataSource: dataSource))
-            .disposed(by: bag)
-
-        tableView.rx.setDelegate(self)
-            .disposed(by: bag)
-
-        dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
+    func setupTextView() {
+        textView.textContainerInset = UIEdgeInsets(top: 30, left: 16, bottom: 16, right: 16)
     }
 
-    // MARK: - Actions
-
-    @IBAction private func aboutAction() {
-        guard let url = URL(string: RemoteValues.aboutLink) else { return }
-        openURL(URL: url)
+    func showContent() {
+        let markdownParser = MarkdownParser()
+        let helpMarkdown = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
+        textView.attributedText = markdownParser.parse(helpMarkdown)
     }
-
 }
