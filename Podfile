@@ -23,4 +23,5 @@ target 'BT-Tracking' do
 
   pod "ReachabilitySwift"
 
+  pod "MarkdownKit"
 end
