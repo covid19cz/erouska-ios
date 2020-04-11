@@ -89,7 +89,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         }))
         controller.addAction(UIAlertAction(title: "Ne", style: .cancel, handler: { _ in
             self.showError(
-                title: "Sdílejte data jen v případě, že vás pracovník hygienické stnaice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu",
+                title: "Sdílejte data jen v případě, že vás pracovník hygienické stanice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu",
                 message: ""
             )
         }))
@@ -141,7 +141,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
                 self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata, fileDate: fileDate)
             } else if let error = error {
                 self.activityView.isHidden = true
-                self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkánímy")
+                self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkáními")
             }
         })
     }

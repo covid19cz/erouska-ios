@@ -99,7 +99,7 @@ final class ActiveAppController: UIViewController {
         guard let url = URL(string: RemoteValues.shareAppDynamicLink) else { return }
 
         let message = """
-        Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomožme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na \(url).
+        Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na \(url).
         """
 
         let shareContent: [Any] = [message]
