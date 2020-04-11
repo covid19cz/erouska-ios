@@ -45,16 +45,6 @@
             </objects>
             <point key="canvasLocation" x="314" y="893"/>
         </scene>
-        <!--About-->
-        <scene sceneID="dcr-GE-HRj">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="About" id="9hf-6g-rJd" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="He0-5H-sNr"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="svb-ZK-gT7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1794" y="986"/>
-        </scene>
         <!--UnregisterUser-->
         <scene sceneID="Qin-eM-KuC">
             <objects>
@@ -442,7 +432,6 @@
                         <outlet property="textLabel" destination="ANQ-eO-rpO" id="Tkh-MA-V6M"/>
                         <outlet property="tipsLabel" destination="VfP-oF-dXd" id="Fpd-UO-nXw"/>
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
-                        <segue destination="9hf-6g-rJd" kind="show" identifier="about" id="HIc-6B-7ma"/>
                         <segue destination="CTE-1d-tWg" kind="show" identifier="unregisterUser" id="65U-zW-nvS"/>
                         <segue destination="COq-qZ-W3U" kind="presentation" identifier="debug" modalPresentationStyle="fullScreen" id="yt5-bI-DFw"/>
                     </connections>

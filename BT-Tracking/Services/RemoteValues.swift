@@ -99,8 +99,18 @@ struct RemoteValues {
 
         .emergencyNumber: 1212,
         
-        .helpMarkdown: ""
+        .helpMarkdown: helpMarkdownBackup
     ]
+
+    private static var helpMarkdownBackup: String {
+        guard
+            let path = Bundle.main.url(forResource: "HelpMarkdownBackup", withExtension: "strings", subdirectory: nil),
+            let dict = NSDictionary(contentsOf: path),
+            let helpMarkdownBackup = dict.value(forKey: "helpMarkdownBackup") as? String
+        else { return "" }
+
+        return helpMarkdownBackup
+    }
 
     /// doba scanování v sekundách, default = 120
     static var collectionSeconds: Int {
@@ -177,17 +187,6 @@ struct RemoteValues {
 
     /// Help markdown
     static var helpMarkdown: String {
-        let helpMarkdown = AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.helpMarkdown)
-
-        if !helpMarkdown.isEmpty {
-            return helpMarkdown
-        } else {
-            guard
-                let path = Bundle.main.url(forResource: "HelpMarkdownBackup", withExtension: "strings", subdirectory: nil),
-                let dict = NSDictionary(contentsOf: path),
-                let helpMarkdownBackup = dict.value(forKey: "helpMarkdownBackup") as? String
-            else { return "" }
-            return helpMarkdownBackup
-        }
+        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.helpMarkdown)
     }
 }
