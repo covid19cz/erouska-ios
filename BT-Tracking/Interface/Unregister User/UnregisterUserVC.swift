@@ -35,6 +35,7 @@ final class UnregisterUserVC: UIViewController {
                 return
             }
 
+            FileLogger.shared.purgeLogs()
             Log.log("deleteUser request success finished")
 
             AppDelegate.shared.advertiser.stop()
