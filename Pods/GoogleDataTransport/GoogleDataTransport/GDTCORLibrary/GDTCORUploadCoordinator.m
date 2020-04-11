@@ -177,9 +177,10 @@ static NSString *const ktargetToInFlightPackagesKey =
   GDTCORUploadCoordinator *sharedCoordinator = [GDTCORUploadCoordinator sharedInstance];
   dispatch_sync(sharedCoordinator->_coordinationQueue, ^{
     @try {
+      NSSet *classes =
+          [NSSet setWithObjects:[NSMutableDictionary class], [GDTCORUploadPackage class], nil];
       sharedCoordinator->_targetToInFlightPackages =
-          [aDecoder decodeObjectOfClass:[NSMutableDictionary class]
-                                 forKey:ktargetToInFlightPackagesKey];
+          [aDecoder decodeObjectOfClasses:classes forKey:ktargetToInFlightPackagesKey];
 
     } @catch (NSException *exception) {
       sharedCoordinator->_targetToInFlightPackages = [NSMutableDictionary dictionary];
@@ -230,6 +231,7 @@ static NSString *const ktargetToInFlightPackagesKey =
     if (targetToInFlightPackages) {
       [targetToInFlightPackages removeObjectForKey:targetNumber];
     }
+    NSSet<GDTCOREvent *> *packageEvents = [package.events copy];
     if (registrar) {
       id<GDTCORPrioritizer> prioritizer = registrar.targetToPrioritizer[targetNumber];
       if (!prioritizer) {
@@ -237,11 +239,11 @@ static NSString *const ktargetToInFlightPackagesKey =
                        @"A prioritizer should be registered for this target: %@", targetNumber);
       }
       if ([prioritizer respondsToSelector:@selector(packageDelivered:successful:)]) {
-        [prioritizer packageDelivered:package successful:successful];
+        [prioritizer packageDelivered:[package copy] successful:successful];
       }
     }
-    if (package.events != nil) {
-      [self.storage removeEvents:package.events];
+    if (successful && packageEvents.count) {
+      [self.storage removeEvents:packageEvents];
     }
   });
 }

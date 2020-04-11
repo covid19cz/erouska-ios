@@ -43,12 +43,12 @@ pb_bytes_array_t *GDTCCTEncodeString(NSString *string) {
 }
 
 pb_bytes_array_t *GDTCCTEncodeData(NSData *data) {
-  pb_bytes_array_t *pbBytes = malloc(PB_BYTES_ARRAY_T_ALLOCSIZE(data.length));
-  if (pbBytes != NULL) {
-    memcpy(pbBytes->bytes, [data bytes], data.length);
-    pbBytes->size = (pb_size_t)data.length;
+  pb_bytes_array_t *pbBytesArray = calloc(1, PB_BYTES_ARRAY_T_ALLOCSIZE(data.length));
+  if (pbBytesArray != NULL) {
+    [data getBytes:pbBytesArray->bytes length:data.length];
+    pbBytesArray->size = (pb_size_t)data.length;
   }
-  return pbBytes;
+  return pbBytesArray;
 }
 
 #pragma mark - CCT object constructors
@@ -78,7 +78,7 @@ gdt_cct_BatchedLogRequest GDTCCTConstructBatchedLogRequest(
     NSDictionary<NSString *, NSSet<GDTCOREvent *> *> *logMappingIDToLogSet) {
   gdt_cct_BatchedLogRequest batchedLogRequest = gdt_cct_BatchedLogRequest_init_default;
   NSUInteger numberOfLogRequests = logMappingIDToLogSet.count;
-  gdt_cct_LogRequest *logRequests = malloc(sizeof(gdt_cct_LogRequest) * numberOfLogRequests);
+  gdt_cct_LogRequest *logRequests = calloc(numberOfLogRequests, sizeof(gdt_cct_LogRequest));
   if (logRequests == NULL) {
     return batchedLogRequest;
   }
@@ -111,7 +111,7 @@ gdt_cct_LogRequest GDTCCTConstructLogRequest(int32_t logSource,
   logRequest.has_log_source = 1;
   logRequest.client_info = GDTCCTConstructClientInfo();
   logRequest.has_client_info = 1;
-  logRequest.log_event = malloc(sizeof(gdt_cct_LogEvent) * logSet.count);
+  logRequest.log_event = calloc(logSet.count, sizeof(gdt_cct_LogEvent));
   if (logRequest.log_event == NULL) {
     return logRequest;
   }
@@ -148,7 +148,13 @@ gdt_cct_LogEvent GDTCCTConstructLogEvent(GDTCOREvent *event) {
     logEvent.has_network_connection_info = 1;
   }
   NSError *error;
-  NSData *extensionBytes = [NSData dataWithContentsOfURL:event.fileURL options:0 error:&error];
+  NSData *extensionBytes;
+  if (event.fileURL) {
+    extensionBytes = [NSData dataWithContentsOfURL:event.fileURL options:0 error:&error];
+  } else {
+    GDTCORLogError(GDTCORMCEFileReadError, @"%@", @"An event's fileURL property was nil.");
+    return logEvent;
+  }
   if (error) {
     GDTCORLogError(GDTCORMCEGeneralError,
                    @"There was an error reading extension bytes from disk: %@", error);
