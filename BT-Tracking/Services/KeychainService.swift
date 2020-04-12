@@ -38,7 +38,6 @@ struct KeychainService {
             AppDelegate.shared.resetAdvertising()
         }
     }
-
 }
 
 private extension KeychainService {
@@ -148,5 +147,4 @@ private extension KeychainService {
         }
         return nil
     }
-
 }
