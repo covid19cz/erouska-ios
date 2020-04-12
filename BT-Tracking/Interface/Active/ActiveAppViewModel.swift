@@ -70,9 +70,9 @@ final class ActiveAppViewModel {
             case .enabled:
                 return "Na místech s větší koncentrací lidí nechte aplikaci spuštěnou při zapnuté obrazovce. Rozpoznáme tak lépe ostatní eRoušky v okolí."
             case .paused:
-                return "Aplikace je aktuálně pozastavená a nesbírá žádná data o vašem okolí."
+                return "Aplikace je aktuálně pozastavená a nesbírá žádná data o vašem okolí.\n\nSpusťte znovu sběr dat a chraňte vás i vaše okolí. Nezapomínejte na to v momentě, kdy opouštíte svůj domov."
             case .disabled:
-                return "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí."
+                return "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout\"."
             }
         }
         
@@ -93,9 +93,9 @@ final class ActiveAppViewModel {
             case .enabled:
                 return "Při podezření na nákazu vás budeme kontaktovat na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, který naleznete v sekci Moje data."
             case .paused:
-                return "Spusťte znovu sběr dat a chraňte vás i vaše okolí. Nezapomínejte na to v momentě, kdy opouštíte svůj domov."
+                return ""
             case .disabled:
-                return "Zapněte jej pomocí tlačítka \"Zapnout Bluetooth\"."
+                return ""
             }
         }
 

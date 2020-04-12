@@ -30,6 +30,7 @@ final class ActiveAppController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var actionButton: Button!
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var actionButtonWidthConstraint: NSLayoutConstraint!
     
     // MARK: -
 
@@ -98,7 +99,7 @@ final class ActiveAppController: UIViewController {
         guard let url = URL(string: RemoteValues.shareAppDynamicLink) else { return }
 
         let message = """
-        Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomožme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na \(url).
+        Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na \(url).
         """
 
         let shareContent: [Any] = [message]
@@ -191,6 +192,12 @@ private extension ActiveAppController {
         secondTipLabel.text = viewModel.state.secondTip
         textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
         actionButton.setTitle(viewModel.state.actionTitle, for: .normal)
+        // Apply element size fix for iPhone SE size screens only
+        cardView.layoutIfNeeded()
+        if cardView.bounds.width <= 288 {
+            actionButtonWidthConstraint.constant = viewModel.state == .enabled ? 120 : 100
+            actionButton.layoutIfNeeded()
+        }
     }
 
     func checkForBluetooth() {
