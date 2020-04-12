@@ -49,6 +49,17 @@ private extension HelpVC {
         var helpMarkdown = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
         helpMarkdown = helpMarkdown.replacingOccurrences(of: "([Android](https://github.com/covid19cz/erouska-android), [iOS](https://github.com/covid19cz/erouska-ios))", with: "pro [Android](https://github.com/covid19cz/erouska-android) a [iOS](https://github.com/covid19cz/erouska-ios)")
         helpMarkdown = helpMarkdown.replacingOccurrences(of: "[iOS](https://github.com/covid19cz/erouska-ios))", with: "[iOS](https://github.com/covid19cz/erouska-ios) )")
-        textView.attributedText = markdownParser.parse(helpMarkdown)
+
+        let attributedText = NSMutableAttributedString(attributedString: markdownParser.parse(helpMarkdown))
+        var textColor: UIColor {
+            if #available(iOS 13.0, *) {
+                return .label
+            } else {
+                return .black
+            }
+        }
+        attributedText.addAttribute(.foregroundColor, value: textColor, range: NSMakeRange(0, attributedText.length))
+
+        textView.attributedText = attributedText
     }
 }
