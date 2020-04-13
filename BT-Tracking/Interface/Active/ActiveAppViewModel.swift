@@ -122,7 +122,21 @@ final class ActiveAppViewModel {
 
     private(set) var state: State
 
+    func cardShadowColor(traitCollection: UITraitCollection) -> CGColor {
+        if #available(iOS 13.0, *) {
+            return UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+        } else {
+            return UIColor.black.withAlphaComponent(0.2).cgColor
+        }
+    }
+
+    let advertiser: BTAdvertising = AppDelegate.shared.advertiser
+    let scanner: BTScannering = AppDelegate.shared.scanner
+    var lastBluetoothState: Bool // true enabled
+
     init(bluetoothActive: Bool) {
+        self.lastBluetoothState = bluetoothActive
+
         if !bluetoothActive {
             state = .disabled
         } else {
