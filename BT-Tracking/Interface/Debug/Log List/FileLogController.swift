@@ -30,6 +30,10 @@ final class FileLogController: UIViewController {
         textView.text = FileLogger.shared.getLog()
     }
 
+    deinit {
+        timer?.invalidate()
+    }
+
     // MARK: - Setup
 
     private func setup() {
