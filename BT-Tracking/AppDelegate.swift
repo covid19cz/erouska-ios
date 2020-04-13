@@ -78,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         log("\n\n\n-START--------------------------------\n")
 
+        clearKeychainIfNeeded()
         generalSetup()
         setupInterface()
         setupBackgroundMode(for: application)
@@ -242,7 +243,7 @@ private extension AppDelegate {
         }
     }
     
-    func setupInterface() {
+    private func setupInterface() {
         let window = UIWindow()
         window.backgroundColor = .black
         window.makeKeyAndVisible()
@@ -265,10 +266,17 @@ private extension AppDelegate {
         window.rootViewController = storyboard.instantiateInitialViewController()
     }
 
-    func setupBackgroundMode(for application: UIApplication) {
+    private func setupBackgroundMode(for application: UIApplication) {
         application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         UIDevice.current.isProximityMonitoringEnabled = true
         UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
+    private func clearKeychainIfNeeded() {
+        guard !AppSettings.appFirstTimeLaunched else { return }
+        AppSettings.appFirstTimeLaunched = true
+        KeychainService.BUID = nil
+        KeychainService.TUIDs = nil
     }
 
     func fetchRemoteConfig() -> Single<Void> {
