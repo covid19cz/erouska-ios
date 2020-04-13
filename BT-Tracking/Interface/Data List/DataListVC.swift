@@ -160,6 +160,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             guard let self = self else { return }
             self.activityView.isHidden = true
 
+            self.writer?.deleteFile()
             if let error = error {
                 log("FirebaseUpload: Error \(error.localizedDescription)")
 

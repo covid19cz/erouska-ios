@@ -18,7 +18,7 @@ protocol CSVMakering {
     var fromDate: Date? { get }
 
     func createFile(callback: @escaping Callback)
-
+    func deleteFile()
 }
 
 /*
@@ -80,4 +80,11 @@ final class CSVMaker: CSVMakering {
         callback(Result(fileURL, metadata), nil)
     }
 
+    func deleteFile() {
+        do {
+            try FileManager.default.removeItem(at: fileURL)
+        } catch let error as NSError {
+            print("Could not clear temp file CSVMaker: \(error)")
+        }
+    }
 }
