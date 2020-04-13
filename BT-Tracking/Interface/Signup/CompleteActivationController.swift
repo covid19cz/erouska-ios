@@ -15,12 +15,12 @@ import DeviceKit
 
 final class CompleteActivationController: UIViewController {
 
-    var authData: AccountActivationControler.AuthData?
+    var authData: AccountActivationController.AuthData?
 
     private var smsCode = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
         smsCode.asObservable().map { phoneNumber -> Bool in
-            AccountActivationControler.PhoneValidator.smsCode.validate(phoneNumber)
+            AccountActivationController.PhoneValidator.smsCode.validate(phoneNumber)
         }
     }
     private var disposeBag = DisposeBag()
@@ -168,7 +168,7 @@ final class CompleteActivationController: UIViewController {
                 self.show(error: error, title: "Chyba při aktivaci")
                 self.cleanup()
             } else if let verificationID = verificationID  {
-                self.authData = AccountActivationControler.AuthData(verificationID: verificationID, phoneNumber: phone)
+                self.authData = AccountActivationController.AuthData(verificationID: verificationID, phoneNumber: phone)
                 self.startExpirationTimer()
                 self.smsCodeTextField.becomeFirstResponder()
             }
@@ -182,7 +182,7 @@ extension CompleteActivationController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
 
-        let type: AccountActivationControler.PhoneValidator
+        let type: AccountActivationController.PhoneValidator
         if textField == smsCodeTextField {
             type = .smsCode
         } else {
