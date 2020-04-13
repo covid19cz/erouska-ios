@@ -17,8 +17,7 @@ final class LogController: UIViewController {
     
     // MARK: - Properties
 
-    private var advertiser: BTAdvertising = AppDelegate.shared.advertiser
-    private var scanner: BTScannering = AppDelegate.shared.scanner
+    private let scanner: BTScannering = AppDelegate.shared.scanner
 
     private var logText: String = "" {
         didSet {
