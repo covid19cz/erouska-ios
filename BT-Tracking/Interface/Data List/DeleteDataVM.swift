@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DeleteDataVM {
+final class DeleteDataVM {
     
     // MARK: - Properties
     

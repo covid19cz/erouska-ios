@@ -101,11 +101,11 @@ class Button: UIButton {
 
 }
 
-class RoundedButtonFilled: Button {
+final class RoundedButtonFilled: Button {
 
 }
 
-class MainScanningButton: Button {
+final class MainScanningButton: Button {
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -118,7 +118,7 @@ class MainScanningButton: Button {
     }
 }
 
-class RoundedButtonClear: Button {
+final class RoundedButtonClear: Button {
 
     override func awakeFromNib() {
         style = .clear

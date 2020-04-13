@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UnregisterFinishVC: UIViewController {
+final class UnregisterFinishVC: UIViewController {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var closeButton: RoundedButtonFilled!

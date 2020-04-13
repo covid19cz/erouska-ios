@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FileLogController: UIViewController {
+final class FileLogController: UIViewController {
 
     // MARK: - Outlets
 

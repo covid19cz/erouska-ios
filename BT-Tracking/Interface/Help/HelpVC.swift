@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import MarkdownKit
 
-class HelpVC: UIViewController {
+final class HelpVC: UIViewController {
 
     @IBOutlet private weak var textView: UITextView!
 

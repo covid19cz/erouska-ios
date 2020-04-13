@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class LogController: UIViewController {
+final class LogController: UIViewController {
     
     // MARK: - Outlets
     

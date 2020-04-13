@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogSegmentController: UIViewController {
+final class LogSegmentController: UIViewController {
 
     @IBOutlet private weak var segmentControl: UISegmentedControl!
 
