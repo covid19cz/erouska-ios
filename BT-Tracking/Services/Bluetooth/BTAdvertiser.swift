@@ -164,17 +164,9 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     }
 
     private func rotateDeviceID() {
-        pickNewDeviceID()
+        peripheralManager.removeAllServices()
+        setupService()
         log("BTAdvertiser: Did rotate to ID: \(currentID ?? "error")")
-
-        guard let service = service else { return }
-
-        DispatchQueue.main.async {
-            service.characteristics = self.setupCharacteristic()
-            self.peripheralManager.removeAllServices()
-
-            self.peripheralManager.add(service)
-        }
     }
 
     private func pickNewDeviceID() {
