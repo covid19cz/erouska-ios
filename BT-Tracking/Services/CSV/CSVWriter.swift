@@ -34,8 +34,7 @@ final class CSVMaker: CSVMakering {
     private(set) var fromDate: Date?
 
     init?(fromDate: Date?) {
-        guard let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
-        self.fileURL = URL(fileURLWithPath: documents).appendingPathComponent("db.csv")
+        self.fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("db.csv")
         self.fromDate = fromDate
     }
 

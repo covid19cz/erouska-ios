@@ -177,7 +177,7 @@ struct RemoteValues {
     }
 
     static var shareAppDynamicLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.shareAppDynamicLink)
+        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// nouzové číslo - 1212
