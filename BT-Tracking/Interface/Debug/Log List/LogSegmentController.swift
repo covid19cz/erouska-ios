@@ -64,7 +64,7 @@ final class LogSegmentController: UIViewController {
         controller.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
             self.pergeLogs()
         }))
-        controller.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        controller.addAction(UIAlertAction(title: "No", style: .cancel))
         present(controller, animated: true, completion: nil)
     }
 

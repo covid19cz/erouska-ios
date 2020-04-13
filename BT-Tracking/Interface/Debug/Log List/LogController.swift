@@ -81,7 +81,7 @@ extension LogController: BTScannerDelegate {
         notification.sound = .none
 
         let request = UNNotificationRequest(identifier: "Scanning",  content: notification, trigger: nil)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        UNUserNotificationCenter.current().add(request)
 
     }
 }
