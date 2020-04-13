@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UnregisterFinishVC: UIViewController {
+final class UnregisterFinishVC: UIViewController {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var closeButton: RoundedButtonFilled!
@@ -17,7 +17,7 @@ class UnregisterFinishVC: UIViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = nil
         navigationItem.hidesBackButton = true
-        titleLabel.text = "Registace vašeho telefonního čísla jsme zrušili"
+        titleLabel.text = "Registaci vašeho telefonního čísla jsme zrušili"
         closeButton.setTitle("Zavřit", for: .normal)
     }
 

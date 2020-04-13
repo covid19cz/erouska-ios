@@ -12,7 +12,7 @@ import RxDataSources
 import RxRealm
 import RealmSwift
 
-class DataListVM {
+final class DataListVM {
 
     // MARK: - Properties
     let selectedSegmentIndex = PublishRelay<Int>()
