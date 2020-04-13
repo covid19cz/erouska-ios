@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class NotificationPermissionController: UIViewController {
+final class NotificationPermissionController: UIViewController {
     
     // MARK: - Action
     

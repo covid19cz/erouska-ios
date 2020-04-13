@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogSegmentController: UIViewController {
+final class LogSegmentController: UIViewController {
 
     @IBOutlet private weak var segmentControl: UISegmentedControl!
 
@@ -64,7 +64,7 @@ class LogSegmentController: UIViewController {
         controller.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
             self.pergeLogs()
         }))
-        controller.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        controller.addAction(UIAlertAction(title: "No", style: .cancel))
         present(controller, animated: true, completion: nil)
     }
 

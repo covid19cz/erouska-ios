@@ -142,7 +142,7 @@ final class ActiveAppController: UIViewController {
             guard let url = URL(string: RemoteValues.aboutLink) else { return }
             self?.openURL(URL: url)
         }))
-        controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel, handler: nil))
+        controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true, completion: nil)
     }
@@ -228,7 +228,7 @@ private extension ActiveAppController {
         controller.addAction(UIAlertAction(title: "Upravit nastavení", style: .default, handler: { [weak self] _ in
             self?.openSettings()
         }))
-        controller.addAction(UIAlertAction(title: "Zavřít", style: .default, handler: nil))
+        controller.addAction(UIAlertAction(title: "Zavřít", style: .default))
         controller.preferredAction = controller.actions.first
         present(controller, animated: true)
     }

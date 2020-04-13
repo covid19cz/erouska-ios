@@ -34,7 +34,7 @@ final class ContactsController: UIViewController {
     @IBAction private func call1212Action() {
         guard let url = URL(string: "tel:\(RemoteValues.emergencyPhonenumber)") else { return }
         if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url)
         }
     }
 
