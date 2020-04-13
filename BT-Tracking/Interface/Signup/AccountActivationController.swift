@@ -13,7 +13,7 @@ import RxKeyboard
 import FirebaseAuth
 import DeviceKit
 
-final class AccountActivationControler: UIViewController {
+final class AccountActivationController: UIViewController {
 
     struct AuthData {
         let verificationID: String
@@ -23,7 +23,7 @@ final class AccountActivationControler: UIViewController {
     enum PhoneValidator {
         case prefix, number, smsCode
 
-        var charcterSet: CharacterSet {
+        var characterSet: CharacterSet {
             switch self {
             case .prefix:
                 return CharacterSet(charactersIn: "+0123456789")
@@ -44,18 +44,18 @@ final class AccountActivationControler: UIViewController {
         }
 
         func validate(_ text: String) -> Bool {
-            guard rangeLimit.contains(text.count), text == filtred(text) else { return false }
+            guard rangeLimit.contains(text.count), text == filtered(text) else { return false }
             return true
         }
 
-        func filtred(_ text: String) -> String {
-            let set = charcterSet.inverted
+        func filtered(_ text: String) -> String {
+            let set = characterSet.inverted
             return text.components(separatedBy: set).joined()
         }
 
         func checkChange(_ oldString: String, _ newString: String) -> (result: Bool, edited: String?) {
             guard newString.count <= rangeLimit.upperBound else {
-                let text = String(filtred(newString).prefix(rangeLimit.upperBound))
+                let text = String(filtered(newString).prefix(rangeLimit.upperBound))
                 return (result: false, edited: oldString == text ? nil : text)
             }
             return (result: true, edited: nil)
@@ -163,7 +163,7 @@ final class AccountActivationControler: UIViewController {
 
 }
 
-extension AccountActivationControler: UITextFieldDelegate {
+extension AccountActivationController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
@@ -191,7 +191,7 @@ extension AccountActivationControler: UITextFieldDelegate {
 
 }
 
-private extension AccountActivationControler {
+private extension AccountActivationController {
 
     func cleanup() {
         do {
