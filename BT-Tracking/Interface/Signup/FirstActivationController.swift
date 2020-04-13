@@ -1,5 +1,5 @@
 //
-//  FirstActiovationController.swift
+//  FirstActivationController.swift
 //  BT-Tracking
 //
 //  Created by Jakub Skořepa on 20/03/2020.
@@ -10,7 +10,7 @@ import UIKit
 import CoreBluetooth
 import UserNotifications
 
-final class FirstActiovationController: UIViewController {
+final class FirstActivationController: UIViewController {
     
     @IBAction private func continueAction() {
         if bluetoothAuthorized {
