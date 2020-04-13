@@ -117,8 +117,8 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     }
 
     func stop() {
-        started = false
         guard isRunning else { return }
+        started = false
 
         peripheralManager.stopAdvertising()
 
