@@ -91,3 +91,6 @@ iOSInjectionProject/
 xcschememanagement.plist
 /BT-Tracking.xcodeproj/xcshareddata
 xcshareddata
+
+# DS_Store
+**/.DS_Store

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FileLogger {
+final class FileLogger {
     
     static let shared = FileLogger()!
 
