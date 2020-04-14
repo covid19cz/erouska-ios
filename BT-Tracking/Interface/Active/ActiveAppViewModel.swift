@@ -46,11 +46,11 @@ final class ActiveAppViewModel {
         var image: UIImage? {
             switch self {
             case .enabled:
-                return UIImage(named: "scan.active")
+                return UIImage(named: "ScanActive")
             case .paused:
-                return UIImage(named: "bluetooth.paused")
+                return UIImage(named: "BluetoothPaused")
             case .disabled:
-                return UIImage(named: "bluetooth.off")
+                return UIImage(named: "BluetoothOff")
             }
         }
 
@@ -122,7 +122,21 @@ final class ActiveAppViewModel {
 
     private(set) var state: State
 
+    func cardShadowColor(traitCollection: UITraitCollection) -> CGColor {
+        if #available(iOS 13.0, *) {
+            return UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+        } else {
+            return UIColor.black.withAlphaComponent(0.2).cgColor
+        }
+    }
+
+    let advertiser: BTAdvertising = AppDelegate.shared.advertiser
+    let scanner: BTScannering = AppDelegate.shared.scanner
+    var lastBluetoothState: Bool // true enabled
+
     init(bluetoothActive: Bool) {
+        self.lastBluetoothState = bluetoothActive
+
         if !bluetoothActive {
             state = .disabled
         } else {
