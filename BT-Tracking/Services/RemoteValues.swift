@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if !targetEnvironment(macCatalyst)
 import FirebaseRemoteConfig
+#endif
 
 extension AppDelegate {
 

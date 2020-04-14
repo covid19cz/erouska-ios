@@ -53,17 +53,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f12-AJ-vPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1830" y="782"/>
-        </scene>
-        <!--TabBar-->
-        <scene sceneID="nWX-t6-zaV">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Debug" referencedIdentifier="TabBar" id="COq-qZ-W3U" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="aH1-eo-Prs"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bmF-TW-MLe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1790" y="893"/>
+            <point key="canvasLocation" x="1804" y="893"/>
         </scene>
         <!--DataList-->
         <scene sceneID="DC3-Ek-JEO">
@@ -457,7 +447,6 @@
                         <outletCollection property="activeInfoViews" destination="ldG-Ym-Pd8" collectionClass="NSMutableArray" id="rLE-97-vC9"/>
                         <outletCollection property="activeInfoViews" destination="7l3-kB-L1x" collectionClass="NSMutableArray" id="B6L-a7-mLN"/>
                         <segue destination="CTE-1d-tWg" kind="show" identifier="unregisterUser" id="65U-zW-nvS"/>
-                        <segue destination="COq-qZ-W3U" kind="presentation" identifier="debug" modalPresentationStyle="fullScreen" id="yt5-bI-DFw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

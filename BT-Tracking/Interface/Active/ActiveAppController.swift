@@ -142,6 +142,13 @@ final class ActiveAppController: UIViewController {
         present(controller, animated: true, completion: nil)
     }
 
+    private func debugAction() {
+        let storyboard = UIStoryboard(name: "Debug", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true, completion: nil)
+    }
+
     // MARK: -
     
     @objc private func applicationDidBecomeActive() {
