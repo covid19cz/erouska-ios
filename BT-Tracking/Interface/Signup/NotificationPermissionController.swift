@@ -21,7 +21,7 @@ final class NotificationPermissionController: UIViewController {
 
         buttonsView.connect(with: scrollView)
     }
-    
+
     // MARK: - Action
     
     @IBAction func continueAction(_ sender: Any) {

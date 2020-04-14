@@ -13,11 +13,15 @@ class ButtonsBackgroundView: UIView {
 
     static var TopOffset: CGFloat = -44
 
+    static var BottomMargin: CGFloat = 16
+
     var isGradientHidden: Bool = false {
         didSet {
             gradientView?.isHidden = isGradientHidden
         }
     }
+
+    var defaultContentInset: UIEdgeInsets = .zero
 
     private weak var gradientView: GradientView?
     private let disposeBag = DisposeBag()
@@ -36,11 +40,16 @@ class ButtonsBackgroundView: UIView {
 
     private func setup() {
         backgroundColor = .clear
+        clipsToBounds = false
         
         let gradientView = GradientView()
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         gradientView.isUserInteractionEnabled = false
-        insertSubview(gradientView, at: 0)
+        if subviews.isEmpty {
+            addSubview(gradientView)
+        } else {
+            insertSubview(gradientView, at: 0)
+        }
         self.gradientView = gradientView
 
         gradientView.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -51,20 +60,28 @@ class ButtonsBackgroundView: UIView {
         let bottomView = UIView()
         bottomView.backgroundColor = gradientView.backgroundColor
         bottomView.translatesAutoresizingMaskIntoConstraints = false
-        insertSubview(bottomView, at: 1)
+        insertSubview(bottomView, belowSubview: gradientView)
 
         bottomView.topAnchor.constraint(equalTo: gradientView.bottomAnchor).isActive = true
-        bottomView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        bottomView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Self.BottomMargin).isActive = true
         bottomView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         bottomView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
 
+    func resetInsets(in scrollView: UIScrollView) {
+        scrollView.contentInset = defaultContentInset
+        scrollView.scrollIndicatorInsets = defaultContentInset
+    }
+
     func connect(with scrollView: UIScrollView) {
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height + Self.TopOffset, right: 0)
-        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        defaultContentInset.bottom = frame.height + Self.TopOffset
+        scrollView.contentInset = defaultContentInset
+        scrollView.scrollIndicatorInsets = defaultContentInset
+
         scrollView.rx.contentOffset.asDriver().drive(onNext: { [weak self] offset in
             guard let self = self else { return }
-            let hideGradient = offset.y - scrollView.adjustedContentInset.top + scrollView.bounds.height + 16 >= scrollView.contentSize.height
+            let bottomContentOffsetDiff = scrollView.contentInset.bottom - self.defaultContentInset.bottom
+            let hideGradient = offset.y - scrollView.adjustedContentInset.top + scrollView.bounds.height + Self.BottomMargin - bottomContentOffsetDiff >= scrollView.contentSize.height
             self.isGradientHidden = hideGradient
         }).disposed(by: disposeBag)
     }

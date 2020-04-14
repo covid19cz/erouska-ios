@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxRelay
-import RxKeyboard
 import FirebaseAuth
 import DeviceKit
 
@@ -20,14 +19,18 @@ final class CompleteActivationController: UIViewController {
     private var smsCode = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
         smsCode.asObservable().map { phoneNumber -> Bool in
-            AccountActivationController.PhoneValidator.smsCode.validate(phoneNumber)
+            InputValidation.smsCode.validate(phoneNumber)
         }
     }
+    private var keyboardHandler: KeyboardHandler!
     private var disposeBag = DisposeBag()
 
     private var subtitle: String = ""
 
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet private weak var smsCodeTextField: UITextField!
@@ -36,45 +39,38 @@ final class CompleteActivationController: UIViewController {
 
     private var expirationSeconds: TimeInterval = 0
     private var expirationTimer: Timer?
+    private var firstAppear: Bool = true
+
+    deinit {
+        expirationTimer?.invalidate()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        subtitle = subtitleLabel.text ?? ""
-        startExpirationTimer()
+        keyboardHandler = KeyboardHandler(in: view, scrollView: scrollView, buttonsView: buttonsView, buttonsBottomConstraint: buttonsBottomConstraint)
+
+        buttonsView.connect(with: scrollView)
+        buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
 
         titleLabel.text = titleLabel.text?.replacingOccurrences(of: "%@", with: authData?.phoneNumber.phoneFormatted ?? "")
+
+        subtitle = subtitleLabel.text ?? ""
+        startExpirationTimer()
 
         smsCodeTextField.rx.text.orEmpty.bind(to: smsCode).disposed(by: disposeBag)
 
         isValid.bind(to: actionButton.rx.isEnabled).disposed(by: disposeBag)
-
-        RxKeyboard.instance.visibleHeight.drive(onNext: { [weak self] keyboardVisibleHeight in
-            guard let self = self else { return }
-
-            self.view.setNeedsLayout()
-            UIView.animate(withDuration: 0.1) {
-                let adjsutHomeIndicator = keyboardVisibleHeight - self.view.safeAreaInsets.bottom
-                self.scrollView.contentInset.bottom = adjsutHomeIndicator
-                self.scrollView.scrollIndicatorInsets.bottom = adjsutHomeIndicator
-                self.view.layoutIfNeeded()
-
-                guard keyboardVisibleHeight > 0 else { return }
-
-                DispatchQueue.main.async {
-                    let height = (self.scrollView.frame.height - adjsutHomeIndicator)
-                    let contentSize = self.scrollView.contentSize
-                    guard contentSize.height - height > -60 else { return }
-                    self.scrollView.scrollRectToVisible(CGRect(x: 0, y: contentSize.height - height, width: contentSize.width, height: height), animated: true)
-                }
-            }
-        }).disposed(by: disposeBag)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        smsCodeTextField.becomeFirstResponder()
+        if firstAppear {
+            keyboardHandler.setup()
+            smsCodeTextField.becomeFirstResponder()
+            firstAppear = false
+        }
     }
 
     // MARK: - Actions
@@ -180,25 +176,14 @@ final class CompleteActivationController: UIViewController {
 extension CompleteActivationController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return true }
-
-        let type: AccountActivationController.PhoneValidator
+        let type: InputValidation
         if textField == smsCodeTextField {
-            type = .smsCode
+             type = .smsCode
         } else {
-            return true
+             return true
         }
 
-        let candidate = NSString(string: text).replacingCharacters(in: range, with: string)
-        let check = type.checkChange(text, candidate)
-        if check.result {
-            return true
-        }
-        DispatchQueue.main.async {
-            textField.text = check.edited ?? text
-            textField.sendActions(for: .valueChanged)
-        }
-        return false
+        return validateTextChange(with: type, textField: textField, changeCharactersIn: range, newString: string)
     }
 
 }
