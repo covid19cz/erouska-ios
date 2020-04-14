@@ -11,6 +11,19 @@ import CoreBluetooth
 import UserNotifications
 
 final class FirstActivationController: UIViewController {
+
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+
+    // MARK: -
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        buttonsView.connect(with: scrollView)
+    }
+
+    // MARK: - Actions
     
     @IBAction private func continueAction() {
         if bluetoothAuthorized {

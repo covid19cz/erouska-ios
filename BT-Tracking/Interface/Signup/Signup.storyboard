@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="kfk-wA-RM9" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,26 +32,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="sTO-yI-fiF">
-                                <rect key="frame" x="0.0" y="148.33333333333331" width="375" height="629.66666666666674"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIo-ag-AlX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIo-ag-AlX">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="496.66666666666669"/>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFR-VR-jwr">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="499.66666666666669"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rEK-Os-kQ7">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="505.66666666666669"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7QL-Gs-rG9">
+                                                <rect key="frame" x="16" y="10" width="343" height="489.66666666666669"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="MinLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xgx-Up-y98">
-                                                        <rect key="frame" x="15" y="7.9999999999999982" width="345" height="29.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="29.333333333333332"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Díky eRoušce ochráníte sebe  i ostatní ve svém okolí" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQp-0s-STi">
-                                                        <rect key="frame" x="15" y="52.333333333333314" width="345" height="42.333333333333343"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Díky eRoušce ochráníte sebe  i ostatní ve svém okolí" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQp-0s-STi">
+                                                        <rect key="frame" x="0.0" y="44.333333333333329" width="343" height="42.333333333333329"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAZ-5r-e2M">
-                                                        <rect key="frame" x="15" y="109.66666666666667" width="345" height="243.66666666666663"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAZ-5r-e2M">
+                                                        <rect key="frame" x="0.0" y="101.66666666666667" width="343" height="243.66666666666663"/>
                                                         <string key="text">Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.
 
 Pokud se u majitele kteréhokoliv z nich potvrdí nákaza koronavirem, telefonicky vás kontaktuje pracovník hygienické stanice.
@@ -62,14 +62,14 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVM-Zq-YWv">
-                                                        <rect key="frame" x="15" y="368.33333333333326" width="345" height="86.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="360.33333333333331" width="343" height="86.333333333333314"/>
                                                         <string key="text">Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní údaje bez vašeho vědomí. Odešlete je vy sami a pouze hygienikům.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypD-bH-0Pq">
-                                                        <rect key="frame" x="15" y="469.66666666666663" width="345" height="28"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypD-bH-0Pq">
+                                                        <rect key="frame" x="0.0" y="461.66666666666669" width="343" height="28"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                         <state key="normal" title="Více o nezávislých auditech"/>
                                                         <connections>
@@ -77,22 +77,36 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="15" bottom="0.0" trailing="15"/>
                                             </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="rEK-Os-kQ7" firstAttribute="leading" secondItem="oIo-ag-AlX" secondAttribute="leading" id="GZG-5r-1SE"/>
-                                            <constraint firstItem="rEK-Os-kQ7" firstAttribute="top" secondItem="oIo-ag-AlX" secondAttribute="top" id="V7f-lz-59g"/>
-                                            <constraint firstItem="rEK-Os-kQ7" firstAttribute="width" secondItem="oIo-ag-AlX" secondAttribute="width" id="Zfk-jp-mjm"/>
-                                            <constraint firstAttribute="trailing" secondItem="rEK-Os-kQ7" secondAttribute="trailing" id="frC-GV-6zz"/>
-                                            <constraint firstAttribute="bottom" secondItem="rEK-Os-kQ7" secondAttribute="bottom" id="glz-Qw-N7c"/>
+                                            <constraint firstAttribute="bottom" secondItem="7QL-Gs-rG9" secondAttribute="bottom" id="SV5-xv-3fw"/>
+                                            <constraint firstItem="7QL-Gs-rG9" firstAttribute="leading" secondItem="sFR-VR-jwr" secondAttribute="leadingMargin" id="UaA-pL-UbV"/>
+                                            <constraint firstItem="7QL-Gs-rG9" firstAttribute="top" secondItem="sFR-VR-jwr" secondAttribute="top" constant="10" id="Vh0-Yc-ffo"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="7QL-Gs-rG9" secondAttribute="trailing" id="dej-Zv-9bd"/>
                                         </constraints>
-                                    </scrollView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ytd-Xk-0qb">
-                                        <rect key="frame" x="0.0" y="511.66666666666663" width="375" height="118"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sFR-VR-jwr" firstAttribute="trailing" secondItem="IWC-kz-4Wo" secondAttribute="trailing" id="BXv-Kh-cI0"/>
+                                    <constraint firstItem="sFR-VR-jwr" firstAttribute="leading" secondItem="IWC-kz-4Wo" secondAttribute="leading" id="CsH-GM-r5B"/>
+                                    <constraint firstItem="sFR-VR-jwr" firstAttribute="width" secondItem="KYL-Y1-Djl" secondAttribute="width" id="ETE-qQ-nLN"/>
+                                    <constraint firstItem="sFR-VR-jwr" firstAttribute="centerX" secondItem="KYL-Y1-Djl" secondAttribute="centerX" id="bHO-E7-Tmm"/>
+                                    <constraint firstItem="IWC-kz-4Wo" firstAttribute="top" secondItem="sFR-VR-jwr" secondAttribute="top" id="e6D-Gm-1bK"/>
+                                    <constraint firstItem="sFR-VR-jwr" firstAttribute="bottom" secondItem="IWC-kz-4Wo" secondAttribute="bottom" id="kd9-KY-0Uj"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="IWC-kz-4Wo"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="KYL-Y1-Djl"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajD-o4-CZf" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="643" width="375" height="169"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ytd-Xk-0qb">
+                                        <rect key="frame" x="16" y="50" width="343" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m34-ff-402" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="0.0" width="345" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="kXG-Uw-1h8"/>
                                                 </constraints>
@@ -105,7 +119,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-OA-pEZ" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="59" width="345" height="44"/>
+                                                <rect key="frame" x="0.0" y="59" width="343" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Moc-PC-mlB"/>
                                                 </constraints>
@@ -118,17 +132,27 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="15" bottom="15" trailing="15"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ytd-Xk-0qb" firstAttribute="top" secondItem="ajD-o4-CZf" secondAttribute="top" constant="50" id="2HK-hM-Vs3"/>
+                                    <constraint firstAttribute="bottom" secondItem="ytd-Xk-0qb" secondAttribute="bottom" constant="16" id="Ky9-4y-WjS"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="ytd-Xk-0qb" secondAttribute="trailing" id="dxA-4h-v1o"/>
+                                    <constraint firstItem="ytd-Xk-0qb" firstAttribute="leading" secondItem="ajD-o4-CZf" secondAttribute="leadingMargin" id="vtb-og-hUJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="sTO-yI-fiF" firstAttribute="leading" secondItem="MCy-hW-ZTB" secondAttribute="leading" id="DvK-jr-Mdv"/>
-                            <constraint firstItem="sTO-yI-fiF" firstAttribute="top" secondItem="pGC-hL-Bwc" secondAttribute="top" id="S9v-Fa-Zk1"/>
-                            <constraint firstAttribute="trailing" secondItem="sTO-yI-fiF" secondAttribute="trailing" id="bFK-gu-kJD"/>
-                            <constraint firstItem="pGC-hL-Bwc" firstAttribute="bottom" secondItem="sTO-yI-fiF" secondAttribute="bottom" id="g4V-hy-v7A"/>
+                            <constraint firstItem="oIo-ag-AlX" firstAttribute="top" secondItem="MCy-hW-ZTB" secondAttribute="top" id="4ri-Gg-2VD"/>
+                            <constraint firstItem="ajD-o4-CZf" firstAttribute="trailing" secondItem="pGC-hL-Bwc" secondAttribute="trailing" id="KOf-lt-Fqd"/>
+                            <constraint firstItem="pGC-hL-Bwc" firstAttribute="bottom" secondItem="oIo-ag-AlX" secondAttribute="bottom" id="MLF-5I-rR0"/>
+                            <constraint firstItem="oIo-ag-AlX" firstAttribute="leading" secondItem="pGC-hL-Bwc" secondAttribute="leading" id="NwW-HX-KPu"/>
+                            <constraint firstAttribute="bottom" secondItem="ajD-o4-CZf" secondAttribute="bottom" id="Tuc-uW-Kez"/>
+                            <constraint firstItem="oIo-ag-AlX" firstAttribute="trailing" secondItem="pGC-hL-Bwc" secondAttribute="trailing" id="Z7q-aX-gTm"/>
+                            <constraint firstItem="ajD-o4-CZf" firstAttribute="leading" secondItem="pGC-hL-Bwc" secondAttribute="leading" id="eEJ-Fe-6mK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pGC-hL-Bwc"/>
                     </view>
@@ -136,6 +160,8 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="NHD-52-HEh"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonsView" destination="ajD-o4-CZf" id="tE3-QP-CeP"/>
+                        <outlet property="scrollView" destination="oIo-ag-AlX" id="n8t-fj-b3A"/>
                         <segue destination="1ln-NW-njF" kind="show" identifier="bluetooth" id="UA2-MZ-WsL"/>
                         <segue destination="1qZ-bG-yib" kind="show" identifier="notification" id="LBz-k7-fXB"/>
                         <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="p0J-jR-yfg"/>
@@ -157,25 +183,22 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                 <rect key="frame" x="0.0" y="148.33333333333331" width="375" height="629.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SLW-4k-Y4a">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="363.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="218.66666666666666"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ActivationIlustration" translatesAutoresizingMaskIntoConstraints="NO" id="jlD-cc-qTC">
-                                                <rect key="frame" x="16" y="8" width="343" height="130"/>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Na telefonní číslo %@ jsme vám zaslali SMS s ověřovacím kódem." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwR-Me-iUg">
-                                                <rect key="frame" x="16" y="152.99999999999997" width="343" height="42.333333333333343"/>
+                                                <rect key="frame" x="16" y="8" width="343" height="42.333333333333336"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platnost kódu vyprší za %@." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzS-um-5Af">
-                                                <rect key="frame" x="16" y="210.33333333333334" width="343" height="20.333333333333343"/>
+                                                <rect key="frame" x="16" y="65.333333333333314" width="343" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ověřovací kód(povinné)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPz-6e-tCh">
-                                                <rect key="frame" x="16" y="245.66666666666663" width="343" height="44"/>
+                                                <rect key="frame" x="16" y="100.66666666666666" width="343" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="ezO-67-yb2"/>
                                                 </constraints>
@@ -186,7 +209,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDN-Uj-w2M" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="304.66666666666663" width="343" height="44"/>
+                                                <rect key="frame" x="16" y="159.66666666666666" width="343" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="qyb-VU-W0a"/>
                                                 </constraints>
@@ -268,84 +291,98 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XyH-Fx-vMi">
-                                <rect key="frame" x="0.0" y="148.33333333333331" width="375" height="629.66666666666674"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDW-qM-yre">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDW-qM-yre">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="555.66666666666663"/>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cNY-7b-57Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Qn1-el-dqh">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="332"/>
+                                                <rect key="frame" x="16" y="10" width="343" height="324"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BluetoothIlustration" translatesAutoresizingMaskIntoConstraints="NO" id="8tj-Yx-jqc">
-                                                        <rect key="frame" x="15" y="8" width="345" height="130"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
                                                         <gestureRecognizers/>
                                                         <connections>
                                                             <outletCollection property="gestureRecognizers" destination="acM-N8-p7L" appends="YES" id="aph-mg-3wa"/>
                                                         </connections>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eRouška pro správné fungování potřebuje používat Bluetooth" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-ie-U39">
-                                                        <rect key="frame" x="15" y="152.99999999999997" width="345" height="42.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="145" width="343" height="42.333333333333343"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth nikdy nevypínejte, aby aplikace mohla správně fungovat." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-hR-Czd">
-                                                        <rect key="frame" x="15" y="210.33333333333334" width="345" height="42.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="202.33333333333334" width="343" height="42.333333333333343"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyzve pracovník hygienické stanice." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhz-zk-obE">
-                                                        <rect key="frame" x="15" y="267.66666666666663" width="345" height="64.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="259.66666666666669" width="343" height="64.333333333333314"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="15" bottom="0.0" trailing="15"/>
                                             </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="Qn1-el-dqh" firstAttribute="leading" secondItem="EDW-qM-yre" secondAttribute="leading" id="RaX-nt-dLM"/>
-                                            <constraint firstItem="Qn1-el-dqh" firstAttribute="width" secondItem="EDW-qM-yre" secondAttribute="width" id="S1t-T8-SDn"/>
-                                            <constraint firstItem="Qn1-el-dqh" firstAttribute="top" secondItem="EDW-qM-yre" secondAttribute="top" id="oh5-nT-PwG"/>
-                                            <constraint firstAttribute="trailing" secondItem="Qn1-el-dqh" secondAttribute="trailing" id="qqK-s1-fFW"/>
-                                            <constraint firstAttribute="bottom" secondItem="Qn1-el-dqh" secondAttribute="bottom" id="u99-gd-Vp3"/>
+                                            <constraint firstItem="Qn1-el-dqh" firstAttribute="top" secondItem="cNY-7b-57Z" secondAttribute="top" constant="10" id="R6b-W3-gTd"/>
+                                            <constraint firstItem="Qn1-el-dqh" firstAttribute="leading" secondItem="cNY-7b-57Z" secondAttribute="leadingMargin" id="SQN-wa-GoY"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Qn1-el-dqh" secondAttribute="trailing" id="UXm-Gf-fIh"/>
+                                            <constraint firstAttribute="bottom" secondItem="Qn1-el-dqh" secondAttribute="bottom" constant="16" id="o0Z-kx-eNv"/>
                                         </constraints>
-                                    </scrollView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="l2B-ga-l1H">
-                                        <rect key="frame" x="0.0" y="570.66666666666663" width="375" height="59"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-gP-OXF" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="0.0" width="345" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="NsZ-l0-DpP"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <state key="normal" title="Povolit Bluetooth">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="activateBluetoothAction" destination="1ln-NW-njF" eventType="touchUpInside" id="Ve1-Yg-SgF"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="15" bottom="15" trailing="15"/>
-                                    </stackView>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="EDW-qM-yre" firstAttribute="leading" secondItem="XyH-Fx-vMi" secondAttribute="leading" id="pqs-Mj-KYt"/>
-                                    <constraint firstAttribute="trailing" secondItem="EDW-qM-yre" secondAttribute="trailing" id="tEn-s3-Wqn"/>
+                                    <constraint firstItem="cNY-7b-57Z" firstAttribute="width" secondItem="NgQ-Sr-M5p" secondAttribute="width" id="8Z4-Oi-Gkk"/>
+                                    <constraint firstItem="9di-gC-zlM" firstAttribute="top" secondItem="cNY-7b-57Z" secondAttribute="top" id="ECg-gR-roe"/>
+                                    <constraint firstItem="cNY-7b-57Z" firstAttribute="leading" secondItem="9di-gC-zlM" secondAttribute="leading" id="JCM-4k-H2g"/>
+                                    <constraint firstItem="cNY-7b-57Z" firstAttribute="centerX" secondItem="NgQ-Sr-M5p" secondAttribute="centerX" id="NDK-td-IpQ"/>
+                                    <constraint firstItem="cNY-7b-57Z" firstAttribute="bottom" secondItem="9di-gC-zlM" secondAttribute="bottom" id="of6-c6-DQn"/>
+                                    <constraint firstItem="cNY-7b-57Z" firstAttribute="trailing" secondItem="9di-gC-zlM" secondAttribute="trailing" id="vRn-4T-CHB"/>
                                 </constraints>
-                            </stackView>
+                                <viewLayoutGuide key="contentLayoutGuide" id="9di-gC-zlM"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="NgQ-Sr-M5p"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="meA-hx-Fcs" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="668" width="375" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-gP-OXF" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="50" width="343" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="NsZ-l0-DpP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <state key="normal" title="Povolit Bluetooth">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="activateBluetoothAction" destination="1ln-NW-njF" eventType="touchUpInside" id="Ve1-Yg-SgF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="TnQ-gP-OXF" secondAttribute="bottom" constant="16" id="WBc-hD-3d0"/>
+                                    <constraint firstItem="TnQ-gP-OXF" firstAttribute="leading" secondItem="meA-hx-Fcs" secondAttribute="leadingMargin" id="Wwj-n1-ZpN"/>
+                                    <constraint firstItem="TnQ-gP-OXF" firstAttribute="top" secondItem="meA-hx-Fcs" secondAttribute="top" constant="50" id="Xc1-OP-n0l"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="TnQ-gP-OXF" secondAttribute="trailing" id="mFH-3A-fFn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="7py-gj-5H7" firstAttribute="bottom" secondItem="XyH-Fx-vMi" secondAttribute="bottom" id="AYb-cg-aE5"/>
-                            <constraint firstItem="XyH-Fx-vMi" firstAttribute="leading" secondItem="2X2-Ep-DR3" secondAttribute="leading" id="Ftk-rG-GIs"/>
-                            <constraint firstAttribute="trailing" secondItem="XyH-Fx-vMi" secondAttribute="trailing" id="Yew-zu-Ehv"/>
-                            <constraint firstItem="XyH-Fx-vMi" firstAttribute="top" secondItem="7py-gj-5H7" secondAttribute="top" id="hkD-kQ-Fm1"/>
+                            <constraint firstItem="7py-gj-5H7" firstAttribute="trailing" secondItem="meA-hx-Fcs" secondAttribute="trailing" id="8Lc-n9-o9P"/>
+                            <constraint firstItem="EDW-qM-yre" firstAttribute="leading" secondItem="7py-gj-5H7" secondAttribute="leading" id="Hv3-4U-bp7"/>
+                            <constraint firstItem="EDW-qM-yre" firstAttribute="trailing" secondItem="7py-gj-5H7" secondAttribute="trailing" id="fxe-iy-kfA"/>
+                            <constraint firstItem="meA-hx-Fcs" firstAttribute="leading" secondItem="7py-gj-5H7" secondAttribute="leading" id="o6A-eh-k90"/>
+                            <constraint firstItem="EDW-qM-yre" firstAttribute="top" secondItem="2X2-Ep-DR3" secondAttribute="top" id="oCf-iG-sy0"/>
+                            <constraint firstItem="meA-hx-Fcs" firstAttribute="bottom" secondItem="7py-gj-5H7" secondAttribute="bottom" id="toP-Jj-owl"/>
+                            <constraint firstItem="7py-gj-5H7" firstAttribute="bottom" secondItem="EDW-qM-yre" secondAttribute="bottom" id="ygS-Mh-ybI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7py-gj-5H7"/>
                     </view>
@@ -358,6 +395,8 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonsView" destination="meA-hx-Fcs" id="cPj-x7-plV"/>
+                        <outlet property="scrollView" destination="EDW-qM-yre" id="SGi-Jk-4LN"/>
                         <segue destination="1qZ-bG-yib" kind="show" identifier="notification" id="9If-5K-v2Z"/>
                     </connections>
                 </viewController>
@@ -540,77 +579,95 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Sni-1T-sWI">
-                                <rect key="frame" x="0.0" y="148.33333333333331" width="375" height="629.66666666666674"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28z-zE-f3s">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28z-zE-f3s">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="555.66666666666663"/>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uZb-wK-VQT">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="416"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2Pk-8H-zPD">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="398"/>
+                                                <rect key="frame" x="16" y="10" width="343" height="390"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notification" translatesAutoresizingMaskIntoConstraints="NO" id="H91-jt-ooM">
-                                                        <rect key="frame" x="15" y="8" width="345" height="130"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Potřebujeme ověřit, že nejste robot" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhY-my-yM8">
-                                                        <rect key="frame" x="15" y="152.99999999999997" width="345" height="20.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="145" width="343" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oH6-oS-6ZX">
-                                                        <rect key="frame" x="15" y="188.33333333333334" width="345" height="86.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="180.33333333333334" width="343" height="86.333333333333343"/>
                                                         <string key="text">Aby eRouška chránila vás i vaše blízké, musí ji používat jen reální lidé. Proto vás potřebujeme ověřit jednoduchým testem, který proběhne bez vašeho zásahu.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I71-6U-z9V">
-                                                        <rect key="frame" x="15" y="289.66666666666663" width="345" height="108.33333333333331"/>
+                                                        <rect key="frame" x="0.0" y="281.66666666666669" width="343" height="108.33333333333331"/>
                                                         <string key="text">Stačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="15" bottom="0.0" trailing="15"/>
                                             </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="2Pk-8H-zPD" firstAttribute="leading" secondItem="28z-zE-f3s" secondAttribute="leading" id="QTH-Km-HXi"/>
-                                            <constraint firstItem="2Pk-8H-zPD" firstAttribute="top" secondItem="28z-zE-f3s" secondAttribute="top" id="ZfN-0o-FBG"/>
-                                            <constraint firstItem="2Pk-8H-zPD" firstAttribute="width" secondItem="28z-zE-f3s" secondAttribute="width" id="ce1-YP-ozG"/>
-                                            <constraint firstAttribute="trailing" secondItem="2Pk-8H-zPD" secondAttribute="trailing" id="fWp-MP-EHM"/>
-                                            <constraint firstAttribute="bottom" secondItem="2Pk-8H-zPD" secondAttribute="bottom" id="oLa-49-ZDe"/>
+                                            <constraint firstItem="2Pk-8H-zPD" firstAttribute="leading" secondItem="uZb-wK-VQT" secondAttribute="leadingMargin" id="P1p-a1-5hA"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="2Pk-8H-zPD" secondAttribute="trailing" id="dvZ-Te-h8h"/>
+                                            <constraint firstItem="2Pk-8H-zPD" firstAttribute="top" secondItem="uZb-wK-VQT" secondAttribute="top" constant="10" id="gGb-Sp-B02"/>
+                                            <constraint firstAttribute="bottom" secondItem="2Pk-8H-zPD" secondAttribute="bottom" constant="16" id="gX1-pA-xPB"/>
                                         </constraints>
-                                    </scrollView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8lQ-hp-7BO">
-                                        <rect key="frame" x="0.0" y="570.66666666666663" width="375" height="59"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzc-3p-o5r" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="0.0" width="345" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="ApL-EF-RGU"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <state key="normal" title="Pokračovat">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="continueAction:" destination="1qZ-bG-yib" eventType="touchUpInside" id="T56-gg-drm"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="15" bottom="15" trailing="15"/>
-                                    </stackView>
+                                    </view>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="uZb-wK-VQT" firstAttribute="leading" secondItem="QK9-Ba-oCx" secondAttribute="leading" id="8KQ-Ui-hkx"/>
+                                    <constraint firstItem="uZb-wK-VQT" firstAttribute="centerX" secondItem="lOW-DS-Gif" secondAttribute="centerX" id="9go-rl-DZh"/>
+                                    <constraint firstItem="uZb-wK-VQT" firstAttribute="top" secondItem="QK9-Ba-oCx" secondAttribute="top" id="Hsr-WR-2fr"/>
+                                    <constraint firstItem="uZb-wK-VQT" firstAttribute="width" secondItem="lOW-DS-Gif" secondAttribute="width" id="XXN-KA-tHz"/>
+                                    <constraint firstItem="uZb-wK-VQT" firstAttribute="trailing" secondItem="QK9-Ba-oCx" secondAttribute="trailing" id="Z4y-w6-nPN"/>
+                                    <constraint firstItem="uZb-wK-VQT" firstAttribute="bottom" secondItem="QK9-Ba-oCx" secondAttribute="bottom" id="cq8-0Z-D4d"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="QK9-Ba-oCx"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="lOW-DS-Gif"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BMQ-37-LtV" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="668" width="375" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzc-3p-o5r" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="50" width="343" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ApL-EF-RGU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <state key="normal" title="Pokračovat">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueAction:" destination="1qZ-bG-yib" eventType="touchUpInside" id="T56-gg-drm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bzc-3p-o5r" firstAttribute="leading" secondItem="BMQ-37-LtV" secondAttribute="leadingMargin" id="P4e-Wl-Hj5"/>
+                                    <constraint firstAttribute="bottom" secondItem="bzc-3p-o5r" secondAttribute="bottom" constant="16" id="Zke-a8-QHl"/>
+                                    <constraint firstItem="bzc-3p-o5r" firstAttribute="top" secondItem="BMQ-37-LtV" secondAttribute="top" constant="50" id="hC5-Jx-eBy"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="bzc-3p-o5r" secondAttribute="trailing" id="mMY-uA-soH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Sni-1T-sWI" secondAttribute="trailing" id="Aem-we-O0Y"/>
-                            <constraint firstItem="Sni-1T-sWI" firstAttribute="leading" secondItem="QIH-fQ-XIa" secondAttribute="leading" id="Oek-Ed-5HE"/>
-                            <constraint firstItem="Sni-1T-sWI" firstAttribute="top" secondItem="aVm-Eb-DDN" secondAttribute="top" id="Qg4-b8-RGD"/>
-                            <constraint firstItem="aVm-Eb-DDN" firstAttribute="bottom" secondItem="Sni-1T-sWI" secondAttribute="bottom" id="cpn-BN-Iag"/>
+                            <constraint firstItem="BMQ-37-LtV" firstAttribute="leading" secondItem="aVm-Eb-DDN" secondAttribute="leading" id="4R9-gw-qH1"/>
+                            <constraint firstItem="aVm-Eb-DDN" firstAttribute="bottom" secondItem="28z-zE-f3s" secondAttribute="bottom" id="I8e-3Q-rEH"/>
+                            <constraint firstItem="aVm-Eb-DDN" firstAttribute="trailing" secondItem="28z-zE-f3s" secondAttribute="trailing" id="JCz-IO-Oti"/>
+                            <constraint firstItem="aVm-Eb-DDN" firstAttribute="bottom" secondItem="BMQ-37-LtV" secondAttribute="bottom" id="XTX-X7-B5D"/>
+                            <constraint firstItem="28z-zE-f3s" firstAttribute="top" secondItem="QIH-fQ-XIa" secondAttribute="top" id="jR1-w6-yH0"/>
+                            <constraint firstItem="28z-zE-f3s" firstAttribute="leading" secondItem="aVm-Eb-DDN" secondAttribute="leading" id="ubV-xs-jes"/>
+                            <constraint firstItem="aVm-Eb-DDN" firstAttribute="trailing" secondItem="BMQ-37-LtV" secondAttribute="trailing" id="w7M-cq-2uM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aVm-Eb-DDN"/>
                     </view>
@@ -623,6 +680,8 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonsView" destination="BMQ-37-LtV" id="X7l-oz-Q9C"/>
+                        <outlet property="scrollView" destination="28z-zE-f3s" id="sE5-TL-fk5"/>
                         <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="kyL-aQ-rgP"/>
                     </connections>
                 </viewController>
@@ -632,12 +691,11 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LBz-k7-fXB"/>
-        <segue reference="dFa-tE-tum"/>
-        <segue reference="p0J-jR-yfg"/>
+        <segue reference="9If-5K-v2Z"/>
+        <segue reference="FLh-nf-xgs"/>
+        <segue reference="kyL-aQ-rgP"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="ActivationIlustration" width="130" height="130"/>
         <image name="BluetoothIlustration" width="130" height="130"/>
         <image name="MinLogo" width="328" height="29.333333969116211"/>
         <image name="Notification" width="130" height="130"/>

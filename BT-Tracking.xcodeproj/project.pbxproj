@@ -57,7 +57,6 @@
 		80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D724200E7C008907B8 /* FileLogController.swift */; };
 		80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		80BB475024212A3C00F552FC /* BTScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CF241FE706008907B8 /* BTScanner.swift */; };
-		80BB475124212A3C00F552FC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0DC2420AF63008907B8 /* App.swift */; };
 		80BB475224212A3C00F552FC /* BT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0D1241FE720008907B8 /* BT.swift */; };
 		80BB475624212A3C00F552FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
 		80BB475824212A3C00F552FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
@@ -68,6 +67,8 @@
 		80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationController.swift */; };
 		80BE18B4243391F500C4A9E6 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
 		80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80BE18BF2433C18200C4A9E6 /* Localizable.strings */; };
+		80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FC52445CCAC00D0C810 /* GradientView.swift */; };
+		80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */; };
 		80BF9C262424D55800150108 /* SendReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportController.swift */; };
 		80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
@@ -83,7 +84,7 @@
 		BD979AE924255BD1004001ED /* FirstActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActivationController.swift */; };
 		BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppController.swift */; };
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
-		BDBB00D824261D5C00871FE4 /* NSLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */; };
+		BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +143,8 @@
 		80BB476724238CBB00F552FC /* AccountActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationController.swift; sourceTree = "<group>"; };
 		80BE18C02433C18200C4A9E6 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80BE18C22433C18800C4A9E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		80BE3FC52445CCAC00D0C810 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsBackgroundView.swift; sourceTree = "<group>"; };
 		80BF9C252424D55800150108 /* SendReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportController.swift; sourceTree = "<group>"; };
 		80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterUserVC.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -158,7 +161,7 @@
 		BD979AE824255BD1004001ED /* FirstActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstActivationController.swift; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppController.swift; sourceTree = "<group>"; };
 		BDB07FBF24254A8F00834E79 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
-		BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutHelper.swift; sourceTree = "<group>"; };
+		BDBB00D724261D5C00871FE4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		C4E1A1B424311D3800108325 /* RemoteValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,7 +265,7 @@
 			children = (
 				8054C0C9241FE66A008907B8 /* Interface */,
 				8054C0CC241FE6D5008907B8 /* Services */,
-				8054C0DB2420AF4F008907B8 /* Others */,
+				8054C0DB2420AF4F008907B8 /* Extensions */,
 				8054C0CA241FE68B008907B8 /* Supporting Files */,
 				8054C0B9241D4932008907B8 /* Assets.xcassets */,
 				8054C0B0241D492F008907B8 /* AppDelegate.swift */,
@@ -310,23 +313,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		8054C0DB2420AF4F008907B8 /* Others */ = {
+		8054C0DB2420AF4F008907B8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8054C0DC2420AF63008907B8 /* App.swift */,
-				80610BCF24363D7B00E031C8 /* Auth.swift */,
-				80BB47632422865B00F552FC /* Button.swift */,
-				80ECB96524290DA900E57601 /* Collection.swift */,
-				80799BEA2423B89A002B04C5 /* Controller.swift */,
-				80610BD8243B13AE00E031C8 /* String.swift */,
-				807053522427BA2500DC1034 /* Data.swift */,
-				80631A97242CAB5000EB0B6C /* Image.swift */,
-				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
-				80B94556242B96560052CD9F /* NavigationController.swift */,
-				BDBB00D724261D5C00871FE4 /* NSLayoutHelper.swift */,
-				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
+				80BE3FC72445CCD700D0C810 /* Base */,
+				80BE3FC82445CCF900D0C810 /* UIKit */,
+				80BE3FC92445CD0B00D0C810 /* Others */,
 			);
-			path = Others;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		805BE9742424DDDE001A93B3 /* Bluetooth */ = {
@@ -389,6 +383,41 @@
 				80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */,
 			);
 			path = Signup;
+			sourceTree = "<group>";
+		};
+		80BE3FC72445CCD700D0C810 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8054C0DC2420AF63008907B8 /* App.swift */,
+				80610BD8243B13AE00E031C8 /* String.swift */,
+				807053522427BA2500DC1034 /* Data.swift */,
+				80631A97242CAB5000EB0B6C /* Image.swift */,
+				80ECB96524290DA900E57601 /* Collection.swift */,
+				BDBB00D724261D5C00871FE4 /* Layout.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		80BE3FC82445CCF900D0C810 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				80BB47632422865B00F552FC /* Button.swift */,
+				80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */,
+				80BE3FC52445CCAC00D0C810 /* GradientView.swift */,
+				80799BEA2423B89A002B04C5 /* Controller.swift */,
+				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
+				80B94556242B96560052CD9F /* NavigationController.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		80BE3FC92445CD0B00D0C810 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				80610BCF24363D7B00E031C8 /* Auth.swift */,
+				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 		80ECB96724291E1B00E57601 /* CSV */ = {
@@ -622,6 +651,7 @@
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
+				80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */,
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */,
@@ -647,6 +677,7 @@
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
 				46A0D531242CEB9500FAE9EA /* DeleteDataVM.swift in Sources */,
 				80ECB96624290DA900E57601 /* Collection.swift in Sources */,
+				80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */,
 				80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */,
 				80610BD024363D7B00E031C8 /* Auth.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
@@ -657,7 +688,7 @@
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
 				80AD970D2429318B00AEA661 /* DataCell.swift in Sources */,
 				80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */,
-				BDBB00D824261D5C00871FE4 /* NSLayoutHelper.swift in Sources */,
+				BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,7 +705,6 @@
 				80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */,
 				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,
 				80BB475024212A3C00F552FC /* BTScanner.swift in Sources */,
-				80BB475124212A3C00F552FC /* App.swift in Sources */,
 				80BB475224212A3C00F552FC /* BT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
