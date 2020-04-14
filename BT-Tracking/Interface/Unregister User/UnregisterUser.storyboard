@@ -111,7 +111,7 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fjy-5T-lyh">
                                 <rect key="frame" x="16" y="365" width="382" height="166.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="scan.active" translatesAutoresizingMaskIntoConstraints="NO" id="vBp-M6-JBt">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ScanActive" translatesAutoresizingMaskIntoConstraints="NO" id="vBp-M6-JBt">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="130" id="6eK-l4-jTF" customClass="LayoutConstraintHelper" customModule="eRouska" customModuleProvider="target">
@@ -185,6 +185,6 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
         </scene>
     </scenes>
     <resources>
-        <image name="scan.active" width="48" height="48"/>
+        <image name="ScanActive" width="48" height="48"/>
     </resources>
 </document>

@@ -109,8 +109,9 @@ final class MainScanningButton: Button {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         if #available(iOS 13.0, *) {
-            backgroundColor = UIColor.quaternaryLabel
+            backgroundColor = UIColor.systemGray6
         } else {
             backgroundColor = UIColor(red: 237/255.0, green: 238/255.0, blue: 240/255.0, alpha: 1)
         }

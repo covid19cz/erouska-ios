@@ -30,6 +30,8 @@ final class DeleteDataVM {
     
     func deleteAllData() {
         scannerStore.deleteAllData()
+        #if !PROD
         FileLogger.shared.purgeLogs()
+        #endif
     }
 }

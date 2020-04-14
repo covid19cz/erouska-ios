@@ -16,15 +16,31 @@ final class HelpVC: UIViewController {
 
     private let bag = DisposeBag()
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        setupTabBar()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupTabBar()
-        setupTextView()
         showContent()
     }
 
+    override func viewLayoutMarginsDidChange() {
+        super.viewLayoutMarginsDidChange()
+
+        textView.textContainerInset = UIEdgeInsets(
+            top: 16,
+            left: view.layoutMargins.left,
+            bottom: 16,
+            right: view.layoutMargins.right
+        )
+    }
+
     // MARK: - Actions
+
     @IBAction private func aboutAction() {
         guard let url = URL(string: RemoteValues.aboutLink) else { return }
         openURL(URL: url)
@@ -40,12 +56,9 @@ private extension HelpVC {
         }
     }
 
-    func setupTextView() {
-        textView.textContainerInset = UIEdgeInsets(top: 30, left: 16, bottom: 16, right: 16)
-    }
-
     func showContent() {
-        let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 16))
+        let markdownParser = MarkdownParser(font: UIFont.preferredFont(forTextStyle: .body))
+        markdownParser.list.indicator = "•"
         var helpMarkdown = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
         helpMarkdown = helpMarkdown.replacingOccurrences(of: "([Android](https://github.com/covid19cz/erouska-android), [iOS](https://github.com/covid19cz/erouska-ios))", with: "pro [Android](https://github.com/covid19cz/erouska-android) a [iOS](https://github.com/covid19cz/erouska-ios)")
         helpMarkdown = helpMarkdown.replacingOccurrences(of: "[iOS](https://github.com/covid19cz/erouska-ios))", with: "[iOS](https://github.com/covid19cz/erouska-ios) )")

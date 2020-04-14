@@ -13,24 +13,21 @@ import CoreBluetooth
 final class ActiveAppController: UIViewController {
 
     private var viewModel = ActiveAppViewModel(bluetoothActive: true)
-    private var lastBluetoothState: Bool = true // true enabled
-
-    private let advertiser: BTAdvertising = AppDelegate.shared.advertiser
-    private let scanner: BTScannering = AppDelegate.shared.scanner
     
     // MARK: - Outlets
 
-    @IBOutlet weak var mainStackView: UIStackView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var headLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tipsLabel: UILabel!
-    @IBOutlet weak var firstTipLabel: UILabel!
-    @IBOutlet weak var secondTipLabel: UILabel!
-    @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var actionButton: Button!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var actionButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var mainStackView: UIStackView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var headLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var tipsLabel: UILabel!
+    @IBOutlet private weak var firstTipLabel: UILabel!
+    @IBOutlet private weak var secondTipLabel: UILabel!
+    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private var activeInfoViews: [UIView]!
+    @IBOutlet private weak var actionButton: Button! 
+    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
     
     // MARK: -
 
@@ -39,7 +36,7 @@ final class ActiveAppController: UIViewController {
 
         _ = AppDelegate.shared.scannerStore // start scanner store
 
-        AppDelegate.shared.scanner.didUpdateState = { [weak self] state in
+        viewModel.scanner.didUpdateState = { [weak self] state in
             guard let self = self else { return }
             if state == .poweredOff, self.viewModel.state != .disabled {
                 self.checkForBluetooth()
@@ -56,7 +53,15 @@ final class ActiveAppController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
         layoutCardView()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
+        cardView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -112,22 +117,12 @@ final class ActiveAppController: UIViewController {
     @IBAction private func changeScanningAction() {
         switch viewModel.state {
         case .enabled:
-            AppSettings.state = .paused
+            pauseScanning()
         case .paused:
-            AppSettings.state = .enabled
+            resumeScanning()
         case .disabled:
-            let url: URL?
-            if AppDelegate.shared.scanner.state == .poweredOff {
-                url = URL(string: "App-Prefs::root=Settings&path=Bluetooth")
-            } else {
-                url = URL(string: UIApplication.openSettingsURLString)
-            }
-
-            guard let URL = url else { return }
-            UIApplication.shared.open(URL)
-            return
+            openBluetoothSettings()
         }
-        updateViewModel()
     }
 
     @IBAction private func moreAction(sender: Any?) {
@@ -135,15 +130,24 @@ final class ActiveAppController: UIViewController {
         controller.addAction(UIAlertAction(title: "Zrušit registraci", style: .default, handler: { [weak self] _ in
             self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
         }))
+        #if !PROD
         controller.addAction(UIAlertAction(title: "Debug", style: .default, handler: { [weak self] _ in
-            self?.performSegue(withIdentifier: "debug", sender: nil)
+            self?.debugAction()
         }))
+        #endif
         controller.addAction(UIAlertAction(title: "O aplikaci", style: .default, handler: { [weak self] _ in
             guard let url = URL(string: RemoteValues.aboutLink) else { return }
             self?.openURL(URL: url)
         }))
         controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
+        present(controller, animated: true, completion: nil)
+    }
+
+    private func debugAction() {
+        let storyboard = UIStoryboard(name: "Debug", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
+        controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true, completion: nil)
     }
 
@@ -158,7 +162,7 @@ final class ActiveAppController: UIViewController {
 private extension ActiveAppController {
 
     func updateViewModel() {
-        viewModel = ActiveAppViewModel(bluetoothActive: lastBluetoothState)
+        viewModel = ActiveAppViewModel(bluetoothActive: viewModel.lastBluetoothState)
 
         updateScanner()
         updateInterface()
@@ -167,22 +171,19 @@ private extension ActiveAppController {
     func updateScanner() {
         switch viewModel.state {
         case .enabled:
-            advertiser.start()
-            scanner.start()
+            viewModel.advertiser.start()
+            viewModel.scanner.start()
         case .disabled, .paused:
-            advertiser.stop()
-            scanner.stop()
+            viewModel.advertiser.stop()
+            viewModel.scanner.stop()
         }
     }
 
     func updateInterface() {
         navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
 
-        guard mainStackView.arrangedSubviews.count >= 4 else { return }
-        let isHiddenArrangedSubview = viewModel.state != .enabled
-        mainStackView.arrangedSubviews[2].isHidden = isHiddenArrangedSubview
-        mainStackView.arrangedSubviews[3].isHidden = isHiddenArrangedSubview
-        mainStackView.arrangedSubviews[4].isHidden = isHiddenArrangedSubview
+        let isActive = viewModel.state != .enabled
+        activeInfoViews.forEach { $0.isHidden = isActive }
         imageView.image = viewModel.state.image
         headLabel.text = viewModel.state.head
         headLabel.textColor = viewModel.state.color
@@ -192,28 +193,42 @@ private extension ActiveAppController {
         secondTipLabel.text = viewModel.state.secondTip
         textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
         actionButton.setTitle(viewModel.state.actionTitle, for: .normal)
+
         // Apply element size fix for iPhone SE size screens only
         cardView.layoutIfNeeded()
         if cardView.bounds.width <= 288 {
-            actionButtonWidthConstraint.constant = viewModel.state == .enabled ? 120 : 100
+            actionButtonWidthConstraint.constant = viewModel.state == .enabled ? 110 : 100
             actionButton.layoutIfNeeded()
         }
+    }
+
+    func layoutCardView() {
+        cardView.layoutIfNeeded()
+
+        // Card shape
+        cardView.layer.cornerRadius = 9.0
+
+        // Card shadow
+        cardView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cardView.layer.shadowRadius = 2
+        cardView.layer.shadowOpacity = 1
     }
 
     func checkForBluetooth() {
         var state: Bool
         if #available(iOS 13.0, *) {
-            state = AppDelegate.shared.advertiser.authorization == .allowedAlways
+            state = viewModel.advertiser.authorization == .allowedAlways
         } else {
             state = CBPeripheralManager.authorizationStatus() == .authorized
         }
 
-        if AppDelegate.shared.scanner.state == .poweredOff {
+        if viewModel.scanner.state == .poweredOff {
             state = false
         }
 
-        guard lastBluetoothState != state else { return }
-        lastBluetoothState = state
+        guard viewModel.lastBluetoothState != state else { return }
+        viewModel.lastBluetoothState = state
         updateViewModel()
     }
 
@@ -233,25 +248,21 @@ private extension ActiveAppController {
         present(controller, animated: true)
     }
     
-    private func openSettings() {
+    func openSettings() {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
         UIApplication.shared.open(settingsUrl)
     }
-    
-    private func layoutCardView() {
-        cardView.layoutIfNeeded()
-        // Card shape
-        cardView.layer.cornerRadius = 9.0
-        // Shadow
-        let shadowPath = UIBezierPath(roundedRect: cardView.bounds, cornerRadius: 9.0)
-        if #available(iOS 13.0, *) {
-            cardView.layer.shadowColor = UIColor.label.withAlphaComponent(0.25).cgColor
+
+    func openBluetoothSettings() {
+        let url: URL?
+        if viewModel.scanner.state == .poweredOff {
+            url = URL(string: "App-Prefs::root=Settings&path=Bluetooth")
         } else {
-            cardView.layer.shadowColor = UIColor.black.withAlphaComponent(0.25).cgColor
+            url = URL(string: UIApplication.openSettingsURLString)
         }
-        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        cardView.layer.shadowRadius = 2.0
-        cardView.layer.shadowOpacity = 1.0
-        cardView.layer.shadowPath = shadowPath.cgPath
+
+        guard let URL = url else { return }
+        UIApplication.shared.open(URL)
     }
+
 }
