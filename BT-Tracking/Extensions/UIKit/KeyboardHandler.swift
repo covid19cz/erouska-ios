@@ -6,12 +6,11 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxKeyboard
+import RxSwift
+import UIKit
 
 struct KeyboardHandler {
-
     let view: UIView
     let scrollView: UIScrollView
     let buttonsView: ButtonsBackgroundView
@@ -50,9 +49,8 @@ struct KeyboardHandler {
                 let height = (self.scrollView.frame.height - adjustedHeight)
                 let contentSize = self.scrollView.contentSize
                 guard contentSize.height - height > -60 else { return }
-                self.scrollView.scrollRectToVisible(CGRect(x: 0, y: (contentSize.height - height), width: contentSize.width, height: height), animated: true)
+                self.scrollView.scrollRectToVisible(CGRect(x: 0, y: contentSize.height - height, width: contentSize.width, height: height), animated: true)
             }
         }, completion: nil)
     }
-
 }

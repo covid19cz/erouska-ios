@@ -6,29 +6,28 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
-import FirebaseAuth
 import CoreBluetooth
+import FirebaseAuth
+import UIKit
 
 final class ActiveAppController: UIViewController {
-
     private var viewModel = ActiveAppViewModel(bluetoothActive: true)
-    
+
     // MARK: - Outlets
 
-    @IBOutlet private weak var mainStackView: UIStackView!
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var headLabel: UILabel!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var tipsLabel: UILabel!
-    @IBOutlet private weak var firstTipLabel: UILabel!
-    @IBOutlet private weak var secondTipLabel: UILabel!
-    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private var mainStackView: UIStackView!
+    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var headLabel: UILabel!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var tipsLabel: UILabel!
+    @IBOutlet private var firstTipLabel: UILabel!
+    @IBOutlet private var secondTipLabel: UILabel!
+    @IBOutlet private var textLabel: UILabel!
     @IBOutlet private var activeInfoViews: [UIView]!
-    @IBOutlet private weak var actionButton: Button! 
-    @IBOutlet private weak var cardView: UIView!
-    @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
-    
+    @IBOutlet private var actionButton: Button!
+    @IBOutlet private var cardView: UIView!
+    @IBOutlet private var actionButtonWidthConstraint: NSLayoutConstraint!
+
     // MARK: -
 
     override func viewDidLoad() {
@@ -50,7 +49,7 @@ final class ActiveAppController: UIViewController {
         updateScanner()
         updateInterface()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -66,26 +65,24 @@ final class ActiveAppController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(applicationDidBecomeActive),
             name: UIApplication.didBecomeActiveNotification,
-            object: nil
-        )
+            object: nil)
 
         checkForBluetooth()
         checkBackgroundModeIfNeeded()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         NotificationCenter.default.removeObserver(
             self,
             name: UIApplication.didBecomeActiveNotification,
-            object: nil
-        )
+            object: nil)
     }
 
     // MARK: - Actions
@@ -110,7 +107,7 @@ final class ActiveAppController: UIViewController {
         let shareContent: [Any] = [message]
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?.last ?? navigationItem.rightBarButtonItem
-        
+
         present(activityViewController, animated: true, completion: nil)
     }
 
@@ -152,15 +149,13 @@ final class ActiveAppController: UIViewController {
     }
 
     // MARK: -
-    
+
     @objc private func applicationDidBecomeActive() {
         checkForBluetooth()
     }
-
 }
 
 private extension ActiveAppController {
-
     func updateViewModel() {
         viewModel = ActiveAppViewModel(bluetoothActive: viewModel.lastBluetoothState)
 
@@ -238,8 +233,7 @@ private extension ActiveAppController {
         let controller = UIAlertController(
             title: "Aktualizace na pozadí",
             message: "eRouška se potřebuje sama spustit i na pozadí, například po restartování telefonu, abyste na to nemuseli myslet vy.\n\nPovolte možnost 'Aktualizace na pozadí' v nastavení aplikace.",
-            preferredStyle: .alert
-        )
+            preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: "Upravit nastavení", style: .default, handler: { [weak self] _ in
             self?.openSettings()
         }))
@@ -247,7 +241,7 @@ private extension ActiveAppController {
         controller.preferredAction = controller.actions.first
         present(controller, animated: true)
     }
-    
+
     func openSettings() {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
         UIApplication.shared.open(settingsUrl)
@@ -264,5 +258,4 @@ private extension ActiveAppController {
         guard let URL = url else { return }
         UIApplication.shared.open(URL)
     }
-
 }

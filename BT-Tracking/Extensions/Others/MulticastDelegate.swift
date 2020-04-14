@@ -1,7 +1,7 @@
 import Foundation
 
 // https://stackoverflow.com/questions/41552754/swift-create-a-multi-function-multicast-delegate
-class MulticastDelegate <T>: NSObject {
+class MulticastDelegate<T>: NSObject {
     internal let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
 
     func add(delegate: T) {
@@ -23,10 +23,10 @@ class MulticastDelegate <T>: NSObject {
     }
 }
 
-func += <T: AnyObject> (left: MulticastDelegate<T>, right: T) {
+func += <T: AnyObject>(left: MulticastDelegate<T>, right: T) {
     left.add(delegate: right)
 }
 
-func -= <T: AnyObject> (left: MulticastDelegate<T>, right: T) {
+func -= <T: AnyObject>(left: MulticastDelegate<T>, right: T) {
     left.remove(delegate: right)
 }

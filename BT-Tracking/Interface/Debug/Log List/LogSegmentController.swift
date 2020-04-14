@@ -9,11 +9,10 @@
 import UIKit
 
 final class LogSegmentController: UIViewController {
+    @IBOutlet private var segmentControl: UISegmentedControl!
 
-    @IBOutlet private weak var segmentControl: UISegmentedControl!
-
-    @IBOutlet private weak var leftContainerView: UIView!
-    @IBOutlet private weak var rightContainerView: UIView!
+    @IBOutlet private var leftContainerView: UIView!
+    @IBOutlet private var rightContainerView: UIView!
 
     private weak var leftController: LogController!
     private weak var rightController: FileLogController!
@@ -28,7 +27,7 @@ final class LogSegmentController: UIViewController {
         } else {
             navigationController?.tabBarItem.image = UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
         }
-        
+
         navigationItem.largeTitleDisplayMode = .never
     }
 
@@ -78,5 +77,4 @@ final class LogSegmentController: UIViewController {
         leftController.purgeLog()
         rightController.purgeLog()
     }
-
 }

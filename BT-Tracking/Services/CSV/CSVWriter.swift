@@ -6,12 +6,11 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
+import CSV
 import Foundation
 import RealmSwift
-import CSV
 
 protocol CSVMakering {
-
     typealias Result = (fileURL: URL, metadata: [String: String])
     typealias Callback = (_ result: Result?, _ error: Error?) -> Void
 
@@ -22,19 +21,18 @@ protocol CSVMakering {
 }
 
 /*
-buid,timestampStart,timestampEnd,minRssi,maxRssi,avgRssi,medRssi
-b5e446a423330ca0e143,1584896543951,1584896587921,0,-38,0,-63
-b5e446a423330ca0e143,1584896663553,1584896686886,0,-63,0,-68
-b5e446a423330ca0e143,1584897450231,1584897452256,0,-74,0,-75
-*/
+ buid,timestampStart,timestampEnd,minRssi,maxRssi,avgRssi,medRssi
+ b5e446a423330ca0e143,1584896543951,1584896587921,0,-38,0,-63
+ b5e446a423330ca0e143,1584896663553,1584896686886,0,-63,0,-68
+ b5e446a423330ca0e143,1584897450231,1584897452256,0,-74,0,-75
+ */
 
 final class CSVMaker: CSVMakering {
-
     private(set) var fileURL: URL
     private(set) var fromDate: Date?
 
     init?(fromDate: Date?) {
-        self.fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("db.csv")
+        fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("db.csv")
         self.fromDate = fromDate
     }
 
@@ -49,7 +47,7 @@ final class CSVMaker: CSVMakering {
         do {
             csv = try CSVWriter(stream: stream)
             try csv.write(row: ["tuid", "timestampStart", "timestampEnd", "avgRssi", "medRssi"])
-            
+
             realm = try Realm()
         } catch {
             callback(nil, error)
@@ -61,7 +59,7 @@ final class CSVMaker: CSVMakering {
             data = data.filter("startDate >= %@", fromDate)
         }
 
-        data.forEach() { scan in
+        data.forEach { scan in
             try? csv.write(row: [
                 scan.buid,
                 String(scan.startDate.timeIntervalSince1970),

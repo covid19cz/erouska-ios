@@ -51,7 +51,6 @@ enum InputValidation {
 }
 
 extension UITextFieldDelegate {
-
     func validateTextChange(with type: InputValidation, textField: UITextField, changeCharactersIn range: NSRange, newString string: String) -> Bool {
         guard let text = textField.text else { return true }
 
@@ -66,5 +65,4 @@ extension UITextFieldDelegate {
         }
         return false
     }
-
 }

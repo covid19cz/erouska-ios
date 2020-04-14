@@ -9,7 +9,6 @@
 import UIKit
 
 final class ActiveAppViewModel {
-
     enum State: String {
         case enabled
         case paused
@@ -75,17 +74,17 @@ final class ActiveAppViewModel {
                 return "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout\"."
             }
         }
-        
+
         var tips: String {
-            return "Tipy pro snížení spotřeby baterie"
+            "Tipy pro snížení spotřeby baterie"
         }
-        
+
         var firstTip: String {
-            return "Na stole otočte telefon obrazovkou dolů. Obrazovka automaticky zhasne."
+            "Na stole otočte telefon obrazovkou dolů. Obrazovka automaticky zhasne."
         }
-        
+
         var secondTip: String {
-            return "Do kapsy dávejte telefon nabíjecím konektorem nahoru. Zakrytá obrazovka automaticky zhasne."
+            "Do kapsy dávejte telefon nabíjecím konektorem nahoru. Zakrytá obrazovka automaticky zhasne."
         }
 
         var text: String {
@@ -135,7 +134,7 @@ final class ActiveAppViewModel {
     var lastBluetoothState: Bool // true enabled
 
     init(bluetoothActive: Bool) {
-        self.lastBluetoothState = bluetoothActive
+        lastBluetoothState = bluetoothActive
 
         if !bluetoothActive {
             state = .disabled

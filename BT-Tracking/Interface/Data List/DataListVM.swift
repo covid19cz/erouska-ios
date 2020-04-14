@@ -6,15 +6,15 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import RxSwift
+import RealmSwift
 import RxCocoa
 import RxDataSources
 import RxRealm
-import RealmSwift
+import RxSwift
 
 final class DataListVM {
-
     // MARK: - Properties
+
     let selectedSegmentIndex = PublishRelay<Int>()
 
     private let scans: Observable<[Scan]>
@@ -28,35 +28,33 @@ final class DataListVM {
         scanObjects = realm.objects(ScanRealm.self)
         scans = Observable.array(from: scanObjects)
             .map { scanned in
-                return scanned.map { $0.toScan() }
+                scanned.map { $0.toScan() }
             }
     }
 
     // MARK: - Sections
 
     var sections: Driver<[SectionModel]> {
-        return Observable.combineLatest(scans, selectedSegmentIndex)
+        Observable.combineLatest(scans, selectedSegmentIndex)
             .map { unfilteredScans, selectedSegmentIndex -> [Scan] in
-                return unfilteredScans.filter { scan in
+                unfilteredScans.filter { scan in
                     guard let medianRssi = scan.medianRssi else { return false }
                     return selectedSegmentIndex == 0 ? true : (medianRssi >= RemoteValues.criticalExpositionRssi)
                 }
             }
             .map { unsortedScans in
-                return unsortedScans.sorted(by: { scan0, scan1 in scan0.date > scan1.date })
+                unsortedScans.sorted(by: { scan0, scan1 in scan0.date > scan1.date })
             }
             .map { [unowned self] scans -> [SectionModel] in
-                return self.section(from: scans)
+                self.section(from: scans)
             }
             .asDriver(onErrorJustReturn: [])
     }
-
 }
 
 // MARK: - Sections helpers
 
 extension DataListVM {
-
     private func section(from scans: [Scan]) -> [SectionModel] {
         let header = DataListVM.Section.Item.header(scanObjects.distinct(by: ["buid"]).count)
         let items: [DataListVM.Section.Item] = scans.map { .data($0) }
@@ -64,13 +62,11 @@ extension DataListVM {
             SectionModel(model: .list, items: [header] + items)
         ]
     }
-
 }
 
 // MARK: - Sections
 
 extension DataListVM {
-
     typealias SectionModel = AnimatableSectionModel<Section, Section.Item>
 
     enum Section: IdentifiableType, Equatable {
@@ -83,8 +79,8 @@ extension DataListVM {
             }
         }
 
-        static func == (lhs: Section, rhs: Section) -> Bool {
-            return lhs.identity == rhs.identity
+        static func ==(lhs: Section, rhs: Section) -> Bool {
+            lhs.identity == rhs.identity
         }
 
         enum Item: IdentifiableType, Equatable {
@@ -95,7 +91,7 @@ extension DataListVM {
                 switch self {
                 case .header:
                     return "header"
-                case .data(let scan):
+                case let .data(scan):
                     return scan.id
                 }
             }
@@ -104,15 +100,14 @@ extension DataListVM {
                 switch self {
                 case .header:
                     return nil
-                case .data(let scan):
+                case let .data(scan):
                     return scan.date
                 }
             }
 
-            static func == (lhs: Item, rhs: Item) -> Bool {
-                return lhs.identity == rhs.identity && lhs.date == rhs.date
+            static func ==(lhs: Item, rhs: Item) -> Bool {
+                lhs.identity == rhs.identity && lhs.date == rhs.date
             }
         }
     }
-
 }

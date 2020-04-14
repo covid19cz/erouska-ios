@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 final class ScanRealm: Object {
-    
     @objc dynamic var id = ""
     @objc dynamic var bluetoothIdentifier = ""
     @objc dynamic var deviceIdentifier = ""
@@ -21,49 +20,47 @@ final class ScanRealm: Object {
     @objc dynamic var endDate = Date()
     @objc dynamic var avargeRssi = 0
     @objc dynamic var medianRssi = 0
-    
+
     var platform: BTDevice.Platform? {
         get {
-            BTDevice.Platform.init(rawValue: _platform)
+            BTDevice.Platform(rawValue: _platform)
         }
         set {
             guard let platform = newValue else { return }
             _platform = platform.rawValue
         }
     }
-    
+
     override class func primaryKey() -> String {
-        return "id"
+        "id"
     }
-    
+
     convenience init(device: BTDevice, avargeRssi: Int, medianRssi: Int, startDate: Date, endDate: Date) {
         self.init()
-        
-        self.id = UUID().uuidString
-        self.bluetoothIdentifier = device.bluetoothIdentifier.uuidString
-        self.deviceIdentifier = device.deviceIdentifier
-        self.buid = device.backendIdentifier ?? ""
-        self.platform = device.platform
-        self.name = device.name
+
+        id = UUID().uuidString
+        bluetoothIdentifier = device.bluetoothIdentifier.uuidString
+        deviceIdentifier = device.deviceIdentifier
+        buid = device.backendIdentifier ?? ""
+        platform = device.platform
+        name = device.name
 
         self.startDate = startDate
         self.endDate = endDate
         self.avargeRssi = avargeRssi
         self.medianRssi = medianRssi
     }
-    
+
     func toScan() -> Scan {
         Scan(
-            id: self.id,
-            bluetoothIdentifier: self.bluetoothIdentifier,
-            deviceIdentifier: self.deviceIdentifier,
-            buid: self.buid,
-            platform: self.platform ?? .iOS, // Adding defuault `.iOS` rather then failing whole mapping
-            name: self.name ?? "neznámé",
-            date: self.startDate,
-            rssi: self.avargeRssi,
-            medianRssi: self.medianRssi
-        )
+            id: id,
+            bluetoothIdentifier: bluetoothIdentifier,
+            deviceIdentifier: deviceIdentifier,
+            buid: buid,
+            platform: platform ?? .iOS, // Adding defuault `.iOS` rather then failing whole mapping
+            name: name ?? "neznámé",
+            date: startDate,
+            rssi: avargeRssi,
+            medianRssi: medianRssi)
     }
-    
 }

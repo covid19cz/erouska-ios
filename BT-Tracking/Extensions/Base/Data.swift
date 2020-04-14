@@ -10,7 +10,6 @@ import Foundation
 
 // https://stackoverflow.com/questions/39075043/how-to-convert-data-to-hex-string-in-swift
 extension Data {
-
     struct HexEncodingOptions: OptionSet {
         let rawValue: Int
         static let upperCase = HexEncodingOptions(rawValue: 1 << 0)
@@ -20,7 +19,6 @@ extension Data {
         let format = options.contains(.upperCase) ? "%02hhX" : "%02hhx"
         return map { String(format: format, $0) }.joined()
     }
-    
 }
 
 extension String {
@@ -28,12 +26,12 @@ extension String {
         // Convert 0 ... 9, a ... f, A ...F to their decimal value,
         // return nil for all other input characters
         func decodeNibble(u: UInt16) -> UInt8? {
-            switch(u) {
-            case 0x30 ... 0x39:
+            switch u {
+            case 0x30...0x39:
                 return UInt8(u - 0x30)
-            case 0x41 ... 0x46:
+            case 0x41...0x46:
                 return UInt8(u - 0x41 + 10)
-            case 0x61 ... 0x66:
+            case 0x61...0x66:
                 return UInt8(u - 0x61 + 10)
             default:
                 return nil

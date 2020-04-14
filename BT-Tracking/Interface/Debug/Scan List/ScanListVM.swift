@@ -6,53 +6,51 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import RxSwift
 import RxCocoa
 import RxDataSources
+import RxSwift
 
 final class ScanListVM {
-    
     // MARK: - Properties
-    
+
     private let scannerStore: ScannerStore
-    
+
     // MARK: - Init
-    
+
     init(scannerStore: ScannerStore) {
         self.scannerStore = scannerStore
     }
-    
+
     // MARK: - Sections
-    
+
     var sections: Driver<[SectionModel]> {
         let infoSection = SectionModel(
             model: .info,
-            items: [Section.Item.info(KeychainService.BUID)]
-        )
+            items: [Section.Item.info(KeychainService.BUID)])
 
         let current = scannerStore.currentScan
             .map { unsortedScans in
-                return unsortedScans.sorted(by: { scan0, scan1 in scan0.buid < scan1.buid })
+                unsortedScans.sorted(by: { scan0, scan1 in scan0.buid < scan1.buid })
             }
             .map { [unowned self] scans -> [SectionModel] in
-                return self.section(from: scans, for: .current)
+                self.section(from: scans, for: .current)
             }
         let log = scannerStore.scans
             .map { unsortedScans in
-                return unsortedScans.sorted(by: { scan0, scan1 in scan0.date > scan1.date })
+                unsortedScans.sorted(by: { scan0, scan1 in scan0.date > scan1.date })
             }
             .map { [unowned self] scans -> [SectionModel] in
-                return self.section(from: scans, for: .log)
+                self.section(from: scans, for: .log)
             }
 
         return Observable.combineLatest(current.startWith([]), log.startWith([])) { currentSection, logSection -> [SectionModel] in
-            return [infoSection] + currentSection + logSection
+            [infoSection] + currentSection + logSection
         }
         .asDriver(onErrorJustReturn: [])
     }
-    
+
     // MARK: - Clear stored records
-    
+
     func clear() {
         scannerStore.deleteAllData()
     }
@@ -61,7 +59,6 @@ final class ScanListVM {
 // MARK: - Sections helpers
 
 extension ScanListVM {
-
     private func section(from scans: [Scan], for section: Section) -> [SectionModel] {
         let items: [ScanListVM.Section.Item] = scans.map { .scan($0) }
         return [
@@ -73,14 +70,13 @@ extension ScanListVM {
 // MARK: - Sections
 
 extension ScanListVM {
-    
     typealias SectionModel = AnimatableSectionModel<Section, Section.Item>
 
     enum Section: IdentifiableType, Equatable {
         case info
         case current
         case log
-        
+
         var identity: String {
             switch self {
             case .info:
@@ -91,11 +87,11 @@ extension ScanListVM {
                 return "History"
             }
         }
-        
-        static func == (lhs: Section, rhs: Section) -> Bool {
-            return lhs.identity == rhs.identity
+
+        static func ==(lhs: Section, rhs: Section) -> Bool {
+            lhs.identity == rhs.identity
         }
-        
+
         enum Item: IdentifiableType, Equatable {
             case info(_ buid: String?)
             case scan(Scan)
@@ -104,7 +100,7 @@ extension ScanListVM {
                 switch self {
                 case .info:
                     return "buid"
-                case .scan(let scan):
+                case let .scan(scan):
                     return scan.id
                 }
             }
@@ -113,7 +109,7 @@ extension ScanListVM {
                 switch self {
                 case .info:
                     return "buid"
-                case .scan(let scan):
+                case let .scan(scan):
                     return scan
                 }
             }
@@ -122,12 +118,12 @@ extension ScanListVM {
                 switch self {
                 case .info:
                     return nil
-                case .scan(let scan):
+                case let .scan(scan):
                     return scan.rssi
                 }
             }
-            
-            static func == (lhs: Item, rhs: Item) -> Bool {
+
+            static func ==(lhs: Item, rhs: Item) -> Bool {
                 if let l = lhs.object as? Scan, let r = rhs.object as? Scan {
                     return l == r
                 } else {

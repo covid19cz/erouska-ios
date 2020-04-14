@@ -9,7 +9,6 @@
 import UIKit
 
 class NavigationController: UINavigationController {
-
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return .all
@@ -17,5 +16,4 @@ class NavigationController: UINavigationController {
             return .portrait
         }
     }
-
 }

@@ -6,11 +6,10 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import Foundation
 import CoreBluetooth
+import Foundation
 
-protocol BTScannering: class {
-
+protocol BTScannering: AnyObject {
     /// default: 3, in seconds
     var deviceUpdateLimit: TimeInterval { get set }
     /// default: -90...0, in RSSI
@@ -28,17 +27,15 @@ protocol BTScannering: class {
     var isRunning: Bool { get }
     func start()
     func stop()
-
 }
 
-protocol BTScannerDelegate: class {
+protocol BTScannerDelegate: AnyObject {
     func didFind(device: BTDevice)
     func didUpdate(device: BTDevice)
 }
 
 final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCentralManagerDelegate, CBPeripheralDelegate {
-
-    private var centralManager: CBCentralManager! = nil
+    private var centralManager: CBCentralManager!
     private var discoveredPeripherals: [UUID: CBPeripheral] = [:]
     private var discoveredDevices: [BTDevice] = []
     private var discoveredData: [UUID: Data] = [:]
@@ -55,9 +52,8 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
             delegate: self,
             queue: nil,
             options: [
-                CBCentralManagerOptionShowPowerAlertKey: false,
-            ]
-        )
+                CBCentralManagerOptionShowPowerAlertKey: false
+            ])
 
         if #available(iOS 13.1, *) {
             if ![CBManagerAuthorization.allowedAlways, .restricted].contains(CBCentralManager.authorization) {
@@ -83,13 +79,15 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     var fetchBUIDRetry: TimeInterval = 30
 
     var isRunning: Bool {
-        return centralManager.isScanning
+        centralManager.isScanning
     }
+
     private var started: Bool = false
 
     var state: CBManagerState {
-        return centralManager.state
+        centralManager.state
     }
+
     var didUpdateState: UpdateState?
 
     func start() {
@@ -100,8 +98,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
             withServices: [BT.transferService.cbUUID],
             options: [
                 CBCentralManagerScanOptionAllowDuplicatesKey: true
-            ]
-        )
+            ])
         log("BTScanner: Scanning started")
     }
 
@@ -144,17 +141,17 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         return timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate
     }
 
-    func checkDeviceType(peripheral: CBPeripheral, advertisementData: [String : Any]) -> BTDevice.Platform {
-        return advertisementData["kCBAdvDataServiceData"] == nil ? .iOS : .android
+    func checkDeviceType(peripheral: CBPeripheral, advertisementData: [String: Any]) -> BTDevice.Platform {
+        advertisementData["kCBAdvDataServiceData"] == nil ? .iOS : .android
     }
 
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         guard discoveredPeripherals[peripheral.identifier] == nil else {
             // already registred
 
             // limit refresh
             guard !checkRefreshTime(UUID: peripheral.identifier) else {
-                //log("Check refresh time guarded")
+                // log("Check refresh time guarded")
                 return
             }
             log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
@@ -247,12 +244,11 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 platform: platform,
                 date: Date(),
                 name: peripheral.name ?? replaceDevice?.name,
-                rssi: RSSI.intValue
-            )
+                rssi: RSSI.intValue)
 
             if replaceDevice != nil {
                 discoveredDevices.append(device)
-                invoke() { $0.didUpdate(device: device) }
+                invoke { $0.didUpdate(device: device) }
                 return
             }
         case .iOS:
@@ -264,8 +260,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 platform: platform,
                 date: Date(),
                 name: peripheral.name,
-                rssi: RSSI.intValue
-            )
+                rssi: RSSI.intValue)
 
             discoveredData[peripheral.identifier] = Data()
         }
@@ -274,7 +269,7 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         discoveredPeripherals[peripheral.identifier] = peripheral
 
         log("BTScanner: Found \(device.platform) device \(device)")
-        invoke() { $0.didFind(device: device) }
+        invoke { $0.didFind(device: device) }
         discoveredDevices.append(device)
 
         if device.platform == .iOS, device.backendIdentifier == nil {
@@ -384,11 +379,10 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
                 platform: .iOS,
                 date: Date(),
                 name: peripheral.name ?? oldDevice.name,
-                rssi: oldDevice.rssi
-            )
+                rssi: oldDevice.rssi)
 
             discoveredDevices[index] = device
-            invoke() { $0.didUpdate(device: device) }
+            invoke { $0.didUpdate(device: device) }
         } else {
             log("BTScanner: Error, didn't found but received!")
         }
@@ -412,11 +406,9 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
             centralManager.cancelPeripheralConnection(peripheral)
         }
     }
-
 }
 
 private extension BTScanner {
-
     func cleanup() {
         for peripheral in discoveredPeripherals {
             cleanup(peripheral.value)
@@ -438,5 +430,4 @@ private extension BTScanner {
             }
         }
     }
-
 }

@@ -33,9 +33,9 @@ struct BTDevice {
          medianRssi: Int? = nil) {
         self.id = id
         if platform == .android {
-            self.deviceIdentifier = backendIdentifier ?? bluetoothIdentifier.uuidString
+            deviceIdentifier = backendIdentifier ?? bluetoothIdentifier.uuidString
         } else {
-            self.deviceIdentifier = bluetoothIdentifier.uuidString
+            deviceIdentifier = bluetoothIdentifier.uuidString
         }
         self.bluetoothIdentifier = bluetoothIdentifier
         self.backendIdentifier = backendIdentifier
@@ -45,24 +45,23 @@ struct BTDevice {
         self.rssi = rssi
         self.medianRssi = medianRssi
     }
-    
+
     func toScan(with uuid: String? = nil) -> Scan {
         Scan(
             id: uuid ?? UUID().uuidString,
-            bluetoothIdentifier: self.bluetoothIdentifier.uuidString,
-            deviceIdentifier: self.deviceIdentifier,
-            buid: self.backendIdentifier ?? "unknown",
-            platform: self.platform,
-            name: self.name ?? self.platform.rawValue,
-            date: self.date,
-            rssi: self.rssi,
-            medianRssi: self.medianRssi
-        )
-    }    
+            bluetoothIdentifier: bluetoothIdentifier.uuidString,
+            deviceIdentifier: deviceIdentifier,
+            buid: backendIdentifier ?? "unknown",
+            platform: platform,
+            name: name ?? platform.rawValue,
+            date: date,
+            rssi: rssi,
+            medianRssi: medianRssi)
+    }
 }
 
 extension BTDevice: Equatable {
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.backendIdentifier == rhs.backendIdentifier
+    static func ==(lhs: Self, rhs: Self) -> Bool {
+        lhs.backendIdentifier == rhs.backendIdentifier
     }
 }

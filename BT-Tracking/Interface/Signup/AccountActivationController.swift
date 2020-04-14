@@ -6,14 +6,13 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
-import RxSwift
-import RxRelay
-import FirebaseAuth
 import DeviceKit
+import FirebaseAuth
+import RxRelay
+import RxSwift
+import UIKit
 
 final class AccountActivationController: UIViewController {
-
     struct AuthData {
         let verificationID: String
         let phoneNumber: String
@@ -23,21 +22,22 @@ final class AccountActivationController: UIViewController {
     private var phoneNumber = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
         Observable.combineLatest(phonePrefix.asObservable(), phoneNumber.asObservable()).map { (phonePrefix, phoneNumber) -> Bool in
-            return InputValidation.prefix.validate(phonePrefix) && InputValidation.number.validate(phoneNumber)
+            InputValidation.prefix.validate(phonePrefix) && InputValidation.number.validate(phoneNumber)
         }
     }
+
     private var keyboardHandler: KeyboardHandler!
     private var disposeBag = DisposeBag()
 
-    @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
-    @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private var buttonsBottomConstraint: NSLayoutConstraint!
 
-    @IBOutlet private weak var phonePrefixTextField: UITextField!
-    @IBOutlet private weak var phoneNumberTextField: UITextField!
-    @IBOutlet private weak var actionButton: UIButton!
-    @IBOutlet private weak var permissionSwitch: UISwitch!
-    @IBOutlet private weak var activityView: UIView!
+    @IBOutlet private var phonePrefixTextField: UITextField!
+    @IBOutlet private var phoneNumberTextField: UITextField!
+    @IBOutlet private var actionButton: UIButton!
+    @IBOutlet private var permissionSwitch: UISwitch!
+    @IBOutlet private var activityView: UIView!
 
     private var firstAppear: Bool = true
 
@@ -48,7 +48,7 @@ final class AccountActivationController: UIViewController {
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
-        
+
         phonePrefixTextField.rx.text.orEmpty.bind(to: phonePrefix).disposed(by: disposeBag)
         phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)
 
@@ -84,10 +84,9 @@ final class AccountActivationController: UIViewController {
 
     @IBAction private func activateAcountAction() {
         guard permissionSwitch.isOn else {
-            self.showError(
+            showError(
                 title: "Souhlas s podmínkami zpracování je nezbytný pro aktivaci aplikace. Bez vašeho souhlasu nemůže aplikace fungovat.",
-                message: ""
-            )
+                message: "")
             return
         }
 
@@ -107,7 +106,7 @@ final class AccountActivationController: UIViewController {
                     self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
                 }
                 self.cleanup()
-            } else if let verificationID = verificationID  {
+            } else if let verificationID = verificationID {
                 self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
             }
         }
@@ -117,11 +116,9 @@ final class AccountActivationController: UIViewController {
         guard let url = URL(string: RemoteValues.termsAndConditionsLink) else { return }
         openURL(URL: url)
     }
-
 }
 
 extension AccountActivationController: UITextFieldDelegate {
-
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let type: InputValidation
         if textField == phonePrefixTextField {
@@ -134,19 +131,14 @@ extension AccountActivationController: UITextFieldDelegate {
 
         return validateTextChange(with: type, textField: textField, changeCharactersIn: range, newString: string)
     }
-
 }
 
 private extension AccountActivationController {
-
     func cleanup() {
         do {
             try Auth.auth().signOut()
-        } catch {
-
-        }
+        } catch {}
 
         UserDefaults.resetStandardUserDefaults()
     }
-
 }

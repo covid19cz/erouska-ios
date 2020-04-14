@@ -10,7 +10,7 @@ import Foundation
 
 struct Scan: Equatable {
     let id: String
-    
+
     let bluetoothIdentifier: String
     let deviceIdentifier: String
     let buid: String

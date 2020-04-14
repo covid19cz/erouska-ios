@@ -9,17 +9,15 @@
 import FirebaseAuth
 
 extension Auth {
-
     static var isLoggedIn: Bool {
-        return KeychainService.BUID != nil && KeychainService.TUIDs != nil && Self.auth().currentUser != nil
+        KeychainService.BUID != nil && KeychainService.TUIDs != nil && Self.auth().currentUser != nil
     }
 }
 
 extension String {
-    
     var phoneFormatted: String {
-        let countryCode = self.dropLast(9)
-        let phone = String(self.suffix(9))
+        let countryCode = dropLast(9)
+        let phone = String(suffix(9))
         return countryCode + " " + phone.chunkFormatted(withChunkSize: 3)
     }
 }

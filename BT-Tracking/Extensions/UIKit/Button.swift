@@ -9,7 +9,6 @@
 import UIKit
 
 class Button: UIButton {
-
     enum Style {
         case filled
         case clear
@@ -98,29 +97,24 @@ class Button: UIButton {
 
         layer.borderColor = borderColor?.cgColor
     }
-
 }
 
-final class RoundedButtonFilled: Button {
-
-}
+final class RoundedButtonFilled: Button {}
 
 final class MainScanningButton: Button {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         if #available(iOS 13.0, *) {
             backgroundColor = UIColor.systemGray6
         } else {
-            backgroundColor = UIColor(red: 237/255.0, green: 238/255.0, blue: 240/255.0, alpha: 1)
+            backgroundColor = UIColor(red: 237 / 255.0, green: 238 / 255.0, blue: 240 / 255.0, alpha: 1)
         }
         setTitleColor(.systemBlue, for: .normal)
     }
 }
 
 final class RoundedButtonClear: Button {
-
     override func awakeFromNib() {
         style = .clear
         super.awakeFromNib()

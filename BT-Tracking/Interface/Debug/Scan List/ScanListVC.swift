@@ -6,21 +6,20 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import RxSwift
+import FirebaseAuth
 import RxCocoa
 import RxDataSources
-import FirebaseAuth
+import RxSwift
 
 final class ScanListVC: UIViewController, UITableViewDelegate {
-
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
 
     private var dataSource: RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>!
     private var viewModel = ScanListVM(scannerStore: AppDelegate.shared.scannerStore)
     private let bag = DisposeBag()
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,7 +47,7 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
             AppDelegate.shared.advertiser.stop()
             AppDelegate.shared.scanner.stop()
             AppDelegate.shared.scannerStore.deleteAllData()
-            
+
             AppSettings.deleteAllData()
 
             try Auth.auth().signOut()
@@ -61,53 +60,50 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
         }
     }
 
-
     @IBAction func clearAction(_ sender: Any) {
         viewModel.clear()
     }
-
 
     @IBAction func closeAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
-
     // MARK: - TableView
-    
+
     private func setupTableView() {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         tableView.rowHeight = UITableView.automaticDimension
 
-        dataSource = RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
+        dataSource = RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>(configureCell: { _, tableView, indexPath, row in
             let cell: UITableViewCell?
             switch row {
-            case .info(let buid):
+            case let .info(buid):
                 let infoCell = tableView.dequeueReusableCell(withIdentifier: InfoCell.identifier, for: indexPath) as? InfoCell
                 infoCell?.configure(for: buid, tuid: AppDelegate.shared.advertiser.currentID)
                 cell = infoCell
-            case .scan(let scan):
+            case let .scan(scan):
                 let scanCell = tableView.dequeueReusableCell(withIdentifier: ScanCell.identifier, for: indexPath) as? ScanCell
                 scanCell?.configure(for: scan)
                 cell = scanCell
             }
             return cell ?? UITableViewCell()
         })
-        
+
         viewModel.sections
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: bag)
-        
+
         tableView.rx.setDelegate(self)
             .disposed(by: bag)
-        
+
         dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
     }
-    
+
     // MARK: - TableView section header
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 29
+        29
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -116,5 +112,4 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
         cell?.configure(for: datasourceSection.model.identity)
         return cell?.contentView ?? UIView()
     }
-
 }

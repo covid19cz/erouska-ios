@@ -9,11 +9,10 @@
 import UIKit
 
 final class SectionTitleCell: UITableViewCell {
-
     static let identifier = "sectionTitleCell"
 
-    @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet var titleLabel: UILabel!
+
     func configure(for title: String) {
         titleLabel.text = title
     }

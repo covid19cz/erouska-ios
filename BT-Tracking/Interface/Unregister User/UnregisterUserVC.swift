@@ -6,13 +6,12 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import FirebaseAuth
+import UIKit
 
 final class UnregisterUserVC: UIViewController {
-
-    @IBOutlet private weak var activityView: UIView!
-    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private var activityView: UIView!
+    @IBOutlet private var textLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +23,8 @@ final class UnregisterUserVC: UIViewController {
 
     @IBAction private func unregisterAction() {
         activityView.isHidden = false
-        
-        AppDelegate.shared.functions.httpsCallable("deleteUser").call() { [weak self] result, error in
+
+        AppDelegate.shared.functions.httpsCallable("deleteUser").call { [weak self] _, error in
             guard let self = self else { return }
             self.activityView.isHidden = true
 

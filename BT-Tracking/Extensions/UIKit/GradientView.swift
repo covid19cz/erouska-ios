@@ -6,11 +6,10 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import QuartzCore
+import UIKit
 
 class GradientView: UIView {
-
     private weak var gradientMaskLayer: CAGradientLayer!
 
     override init(frame: CGRect = .zero) {
@@ -27,7 +26,7 @@ class GradientView: UIView {
 
     private func setup() {
         let layer = CAGradientLayer()
-        self.gradientMaskLayer = layer
+        gradientMaskLayer = layer
         layer.frame = bounds
         self.layer.mask = layer
         layer.startPoint = CGPoint(x: 0, y: 0)
@@ -45,5 +44,4 @@ class GradientView: UIView {
 
         gradientMaskLayer.frame = bounds
     }
-
 }

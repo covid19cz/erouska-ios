@@ -9,10 +9,9 @@
 import UIKit
 
 final class DataHeaderCell: UITableViewCell {
-
     static let identifier = "headerCell"
 
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private var segmentedControl: UISegmentedControl!
 
     func configure(with numberOfScans: Int) {
         segmentedControl.setTitle("Vše", forSegmentAt: 0)

@@ -9,13 +9,12 @@
 import UIKit
 
 final class DataCell: UITableViewCell {
-
     static let identifier = "dataCell"
 
-    @IBOutlet private weak var buidLabel: UILabel!
-    @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var timeLabel: UILabel!
-    @IBOutlet private weak var RSSILabel: UILabel!
+    @IBOutlet private var buidLabel: UILabel!
+    @IBOutlet private var dateLabel: UILabel!
+    @IBOutlet private var timeLabel: UILabel!
+    @IBOutlet private var RSSILabel: UILabel!
 
     func configure(for scan: Scan) {
         buidLabel.text = String(scan.buid.prefix(6)) + "..."

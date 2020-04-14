@@ -9,16 +9,15 @@
 import Foundation
 
 struct AppSettings {
-
     static let firebaseRegion = "europe-west1"
     static let backgroundModeAlertShownKey = "backgroundModeAlertShown"
     static let appFirstTimeLaunchedKey = "appFirstTimeLaunched"
-    
+
     static let TUIDRotation: Int = 60 * 60
 
     static var state: ActiveAppViewModel.State? {
         get {
-            return ActiveAppViewModel.State(rawValue: UserDefaults.standard.string(forKey: "AppState") ?? "")
+            ActiveAppViewModel.State(rawValue: UserDefaults.standard.string(forKey: "AppState") ?? "")
         }
         set {
             UserDefaults.standard.setValue(newValue?.rawValue, forKey: "AppState")
@@ -35,19 +34,19 @@ struct AppSettings {
             UserDefaults.standard.set(newValue?.timeIntervalSince1970, forKey: "UploadDate")
         }
     }
-    
+
     static var backgroundModeAlertShown: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: backgroundModeAlertShownKey)
+            UserDefaults.standard.bool(forKey: backgroundModeAlertShownKey)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: backgroundModeAlertShownKey)
         }
     }
-    
+
     static var appFirstTimeLaunched: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: appFirstTimeLaunchedKey)
+            UserDefaults.standard.bool(forKey: appFirstTimeLaunchedKey)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: appFirstTimeLaunchedKey)
@@ -57,7 +56,7 @@ struct AppSettings {
     static func deleteAllData() {
         KeychainService.BUID = nil
         KeychainService.TUIDs = nil
-        
+
         AppSettings.state = nil
         AppSettings.lastUploadDate = nil
         AppSettings.backgroundModeAlertShown = false

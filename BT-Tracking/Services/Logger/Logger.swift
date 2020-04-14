@@ -15,7 +15,7 @@ func log(_ text: String) {
     }
 }
 
-protocol LogDelegate: class {
+protocol LogDelegate: AnyObject {
     func didLog(_ text: String)
 }
 
@@ -27,4 +27,3 @@ struct Log {
         print(text)
     }
 }
-

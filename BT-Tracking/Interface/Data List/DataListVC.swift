@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import RxSwift
 import RxCocoa
 import RxDataSources
+import RxSwift
 #if !targetEnvironment(macCatalyst)
 import FirebaseAuth
 import FirebaseStorage
@@ -17,11 +17,10 @@ import FirebaseStorage
 import Reachability
 
 final class DataListVC: UIViewController, UITableViewDelegate {
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var activityView: UIView!
+    @IBOutlet var infoButton: UIBarButtonItem!
 
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var activityView: UIView!
-    @IBOutlet weak var infoButton: UIBarButtonItem!
-    
     private var dataSource: RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>!
     private let viewModel = DataListVM()
     private let bag = DisposeBag()
@@ -38,7 +37,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTableView()
         viewModel.selectedSegmentIndex.accept(0)
     }
@@ -58,14 +57,14 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         tableView.allowsSelection = false
         tableView.rowHeight = UITableView.automaticDimension
 
-        dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
+        dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { _, tableView, indexPath, row in
             let cell: UITableViewCell?
             switch row {
-            case .header(let scansCount):
+            case let .header(scansCount):
                 let headerCell = tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath) as? DataHeaderCell
                 headerCell?.configure(with: scansCount)
                 cell = headerCell
-            case .data(let scan):
+            case let .data(scan):
                 let scanCell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
                 scanCell?.configure(for: scan)
                 cell = scanCell
@@ -84,6 +83,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     // MARK: - Actions
+
     @IBAction private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         viewModel.selectedSegmentIndex.accept(sender.selectedSegmentIndex)
     }
@@ -92,16 +92,14 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         let controller = UIAlertController(
             title: "Požádal vás pracovník hygienické stanice o zaslání seznamu telefonů, se kterými jste se setkali?",
             message: "S odeslanými daty bude Ministerstvo zdravotnictví a jemu podřízení hygienici pracovat na základě vašeho souhlasu podle podmínek zpracování.",
-            preferredStyle: .alert
-        )
+            preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: "Ano, odeslat", style: .default, handler: { [weak self] _ in
             self?.sendReport()
         }))
         controller.addAction(UIAlertAction(title: "Ne", style: .cancel, handler: { _ in
             self.showError(
                 title: "Sdílejte data jen v případě, že vás pracovník hygienické stanice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu",
-                message: ""
-            )
+                message: "")
         }))
         controller.preferredAction = controller.actions.first
         present(controller, animated: true, completion: nil)
@@ -115,16 +113,14 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
             showError(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
-                message: ""
-            )
+                message: "")
             return
         }
 
         guard let connection = try? Reachability().connection, connection != .unavailable else {
             showError(
                 title: "Nepodařilo se nám odeslat data",
-                message: "Zkontrolujte připojení k internetu a zkuste to znovu"
-            )
+                message: "Zkontrolujte připojení k internetu a zkuste to znovu")
             return
         }
 
@@ -158,7 +154,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         let storageMetadata = StorageMetadata()
         storageMetadata.customMetadata = metadata
 
-        fileReference.putFile(from: fileURL, metadata: storageMetadata) { [weak self] (metadata, error) in
+        fileReference.putFile(from: fileURL, metadata: storageMetadata) { [weak self] _, error in
             guard let self = self else { return }
             self.activityView.isHidden = true
 
@@ -168,13 +164,11 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
                 self.showError(
                     title: "Nepodařilo se nám odeslat data",
-                    message: "Zkontrolujte připojení k internetu a zkuste to znovu"
-                )
+                    message: "Zkontrolujte připojení k internetu a zkuste to znovu")
                 return
             }
             AppSettings.lastUploadDate = fileDate
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
     }
-
 }

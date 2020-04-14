@@ -6,14 +6,13 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
-import RxSwift
+import RealmSwift
 import RxCocoa
 import RxRealm
-import RealmSwift
+import RxSwift
+import UIKit
 
 final class ScannerStore {
-
     /// default 60
     private let scanningPeriod: Int
     /// default 0
@@ -22,7 +21,7 @@ final class ScannerStore {
     private let lastPurgeDateKey = "lastDataPurgeDate"
 
     /// 1 day... for testing set to 60 seconds for example
-    private let dataPurgeCheckInterval: TimeInterval = 1 * 86400
+    private let dataPurgeCheckInterval: TimeInterval = 1 * 86_400
 
     /// 14 days... for testing se to 300 seconds for example and see data older then 5 minutes being deleted
     private let dataPurgeInterval: TimeInterval
@@ -33,33 +32,34 @@ final class ScannerStore {
 
     private let scanObjects: Results<ScanRealm>
     private let bag = DisposeBag()
-    
+
     private let didFindSubject = PublishRelay<BTDevice>()
     private let didUpdateSubject = PublishRelay<BTDevice>()
     private let didReceive: Observable<BTDevice>
     private let timer: Observable<Int>
     private var period: BehaviorSubject<Void> {
-        return BehaviorSubject<Void>(value: ())
+        BehaviorSubject<Void>(value: ())
     }
+
     private var currentPeriod: BehaviorSubject<Void>?
     private var devices = [BTDevice]()
-    
-    init(scanningPeriod: Int = 60, dataPurgeInterval: TimeInterval = 14 * 86400) {
+
+    init(scanningPeriod: Int = 60, dataPurgeInterval: TimeInterval = 14 * 86_400) {
         self.scanningPeriod = scanningPeriod
         self.dataPurgeInterval = dataPurgeInterval
-        self.timer = Observable.timer(.seconds(scanningDelay), period: .seconds(scanningPeriod), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+        timer = Observable.timer(.seconds(scanningDelay), period: .seconds(scanningPeriod), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
 
         didReceive = Observable.merge(didFindSubject.asObservable(), didUpdateSubject.asObservable())
         let realm = try! Realm()
         scanObjects = realm.objects(ScanRealm.self)
         scans = Observable.array(from: scanObjects)
             .map { scanned in
-                return scanned.map { $0.toScan() }
+                scanned.map { $0.toScan() }
             }
         bindScanning()
         bindAppTerminate()
     }
-    
+
     private func bindScanning() {
         // Periods
         currentPeriod = period
@@ -79,7 +79,7 @@ final class ScannerStore {
             })
             .disposed(by: bag)
     }
-    
+
     private func bind(newPeriod: BehaviorSubject<Void>?, endsAt endDate: Date) {
         newPeriod?
             .subscribe(onCompleted: { [weak self] in
@@ -87,7 +87,7 @@ final class ScannerStore {
             })
             .disposed(by: bag)
     }
-    
+
     private func bindAppTerminate() {
         appTermination
             .subscribe(onNext: { [weak self] in
@@ -95,15 +95,15 @@ final class ScannerStore {
             })
             .disposed(by: bag)
     }
-    
+
     private func processPeriod(with endDate: Date) {
-        self.currentPeriod = self.period
-        self.bind(newPeriod: self.currentPeriod, endsAt: Date() + Double(scanningPeriod))
-        self.process(self.devices, at: endDate)
-        self.devices.removeAll()
-        self.deleteOldRecordsIfNeeded()
+        currentPeriod = period
+        bind(newPeriod: currentPeriod, endsAt: Date() + Double(scanningPeriod))
+        process(devices, at: endDate)
+        devices.removeAll()
+        deleteOldRecordsIfNeeded()
     }
-    
+
     private func process(_ devices: [BTDevice], at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let averaged = grouped.map { group -> ScanRealm? in
@@ -124,12 +124,12 @@ final class ScannerStore {
         }
         averaged.compactMap { $0 }.forEach { addDeviceToStorage(data: $0) }
     }
-    
+
     private func updateCurrent(at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let latestDevices = grouped
             .map { group -> BTDevice? in
-                return group.value.sorted(by: { $0.date > $1.date }).first
+                group.value.sorted(by: { $0.date > $1.date }).first
             }
             .compactMap { $0 }
             .map { [unowned self] device -> Scan in
@@ -138,7 +138,7 @@ final class ScannerStore {
             }
         currentScan.accept(latestDevices)
     }
-    
+
     private func addDeviceToStorage(data: ScanRealm) {
         do {
             let realm = try Realm()
@@ -160,7 +160,7 @@ final class ScannerStore {
         }
         deleteOldRecords()
     }
-    
+
     private func deleteOldRecords() {
         do {
             let realm = try Realm()
@@ -175,14 +175,13 @@ final class ScannerStore {
             log("Realm: Failed to delete! \(error)")
         }
     }
-    
+
     private func storeLastPurgeDate() {
         UserDefaults.standard.set(Date(), forKey: lastPurgeDateKey)
     }
 }
 
 extension ScannerStore: BTScannerDelegate {
-
     func didFind(device: BTDevice) {
         didFindSubject.accept(device)
     }
@@ -193,7 +192,6 @@ extension ScannerStore: BTScannerDelegate {
 }
 
 extension ScannerStore {
-    
     func deleteAllData() {
         do {
             let realm = try Realm()

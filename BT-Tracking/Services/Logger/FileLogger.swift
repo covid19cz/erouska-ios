@@ -9,16 +9,15 @@
 import Foundation
 
 final class FileLogger {
-    
     static let shared = FileLogger()!
 
     private(set) var fileURL: URL
-    
+
     init?() {
         guard let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
-        self.fileURL = URL(fileURLWithPath: documents).appendingPathComponent("application.log")
+        fileURL = URL(fileURLWithPath: documents).appendingPathComponent("application.log")
     }
-    
+
     func writeLog(_ text: String) {
         do {
             let newText = getLog() + "\n" + formatter.string(from: Date()) + " " + text
@@ -27,7 +26,7 @@ final class FileLogger {
             print("Unexpected error writing to log: \(error)")
         }
     }
-    
+
     func getLog() -> String {
         do {
             return try String(contentsOf: fileURL, encoding: .utf8)
@@ -36,7 +35,7 @@ final class FileLogger {
             return ""
         }
     }
-    
+
     func purgeLogs() {
         do {
             try "".write(to: fileURL, atomically: false, encoding: .utf8)

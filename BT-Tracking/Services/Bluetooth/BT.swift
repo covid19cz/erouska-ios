@@ -6,8 +6,8 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import CoreBluetooth
+import UIKit
 
 enum BT: String {
     case advertiserName = "Covid-19"

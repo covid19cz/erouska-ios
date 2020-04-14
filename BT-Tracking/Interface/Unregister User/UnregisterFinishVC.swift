@@ -9,9 +9,8 @@
 import UIKit
 
 final class UnregisterFinishVC: UIViewController {
-
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var closeButton: RoundedButtonFilled!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var closeButton: RoundedButtonFilled!
 
     override func viewDidLoad() {
         super.viewDidLoad()

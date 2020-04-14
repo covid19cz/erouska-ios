@@ -6,14 +6,13 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import CoreBluetooth
+import UIKit
 import UserNotifications
 
 final class FirstActivationController: UIViewController {
-
-    @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var buttonsView: ButtonsBackgroundView!
 
     // MARK: -
 
@@ -24,7 +23,7 @@ final class FirstActivationController: UIViewController {
     }
 
     // MARK: - Actions
-    
+
     @IBAction private func continueAction() {
         if bluetoothAuthorized {
             UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
@@ -42,17 +41,16 @@ final class FirstActivationController: UIViewController {
             performSegue(withIdentifier: "bluetooth", sender: nil)
         }
     }
-    
+
     @IBAction private func auditsURLAction(_ sender: Any) {
         guard let url = URL(string: RemoteValues.proclamationLink) else { return }
         openURL(URL: url)
     }
-    
+
     private var bluetoothAuthorized: Bool {
         if #available(iOS 13.0, *) {
             return CBCentralManager().authorization == .allowedAlways
         }
         return CBPeripheralManager.authorizationStatus() == .authorized
     }
-
 }

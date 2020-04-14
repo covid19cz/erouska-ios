@@ -6,13 +6,12 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import RxSwift
-import RxCocoa
 import MarkdownKit
+import RxCocoa
+import RxSwift
 
 final class HelpVC: UIViewController {
-
-    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private var textView: UITextView!
 
     private let bag = DisposeBag()
 
@@ -35,8 +34,7 @@ final class HelpVC: UIViewController {
             top: 16,
             left: view.layoutMargins.left,
             bottom: 16,
-            right: view.layoutMargins.right
-        )
+            right: view.layoutMargins.right)
     }
 
     // MARK: - Actions

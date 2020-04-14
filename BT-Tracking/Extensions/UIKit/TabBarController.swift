@@ -9,7 +9,6 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return .all
@@ -17,5 +16,4 @@ class TabBarController: UITabBarController {
             return .portrait
         }
     }
-
 }

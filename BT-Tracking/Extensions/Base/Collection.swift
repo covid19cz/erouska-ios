@@ -20,13 +20,13 @@ extension Collection where Element: BinaryInteger {
 
 extension Array where Element == Int {
     func median() -> Double? {
-        guard count > 0  else { return nil }
+        guard count > 0 else { return nil }
 
-        let sortedArray = self.sorted()
+        let sortedArray = sorted()
         if count % 2 != 0 {
-            return Double(sortedArray[count/2])
+            return Double(sortedArray[count / 2])
         } else {
-            return Double(sortedArray[count/2] + sortedArray[count/2 - 1]) / 2.0
+            return Double(sortedArray[count / 2] + sortedArray[count / 2 - 1]) / 2.0
         }
     }
 }

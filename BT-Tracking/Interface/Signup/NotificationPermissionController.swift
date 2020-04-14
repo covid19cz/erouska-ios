@@ -10,9 +10,8 @@ import UIKit
 import UserNotifications
 
 final class NotificationPermissionController: UIViewController {
-
-    @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var buttonsView: ButtonsBackgroundView!
 
     // MARK: -
 
@@ -23,13 +22,13 @@ final class NotificationPermissionController: UIViewController {
     }
 
     // MARK: - Action
-    
+
     @IBAction func continueAction(_ sender: Any) {
         requestPermission()
     }
-    
+
     // MARK: - Request permission
-    
+
     private func requestPermission() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(

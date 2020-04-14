@@ -8,10 +8,11 @@
 
 import UIKit
 
-@IBDesignable class LayoutConstraintHelper : NSLayoutConstraint {
+@IBDesignable class LayoutConstraintHelper: NSLayoutConstraint {
     @IBInspectable var iP6AndSmaller: CGFloat = 0.0 {
         didSet { deviceConstant(0..<600, value: iP6AndSmaller) }
     }
+
     @IBInspectable var iP6PlusAndBigger: CGFloat = 0.0 {
         didSet { deviceConstant(600..<10_000, value: iP6PlusAndBigger) }
     }

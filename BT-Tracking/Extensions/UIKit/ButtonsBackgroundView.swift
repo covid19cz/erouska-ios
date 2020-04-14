@@ -6,11 +6,10 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 class ButtonsBackgroundView: UIView {
-
     static var TopOffset: CGFloat = -44
 
     static var BottomMargin: CGFloat = 16
@@ -41,7 +40,7 @@ class ButtonsBackgroundView: UIView {
     private func setup() {
         backgroundColor = .clear
         clipsToBounds = false
-        
+
         let gradientView = GradientView()
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         gradientView.isUserInteractionEnabled = false
@@ -85,5 +84,4 @@ class ButtonsBackgroundView: UIView {
             self.isGradientHidden = hideGradient
         }).disposed(by: disposeBag)
     }
-
 }

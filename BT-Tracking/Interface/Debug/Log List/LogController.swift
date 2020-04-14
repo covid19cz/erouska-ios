@@ -6,15 +6,14 @@
 //  Copyright © 2020 hatchery41. All rights reserved.
 //
 
-import UIKit
 import CoreBluetooth
+import UIKit
 
 final class LogController: UIViewController {
-    
     // MARK: - Outlets
-    
-    @IBOutlet weak var textView: UITextView!
-    
+
+    @IBOutlet var textView: UITextView!
+
     // MARK: - Properties
 
     private let scanner: BTScannering = AppDelegate.shared.scanner
@@ -35,9 +34,9 @@ final class LogController: UIViewController {
         super.viewDidLoad()
         setup()
     }
-    
+
     // MARK: - Setup
-    
+
     private func setup() {
         Log.delegate = self
 
@@ -51,7 +50,6 @@ final class LogController: UIViewController {
     func purgeLog() {
         logText = ""
     }
-
 }
 
 extension LogController: BTScannerDelegate {
@@ -80,9 +78,8 @@ extension LogController: BTScannerDelegate {
         guard AppDelegate.inBackground, let notification = notification else { return }
         notification.sound = .none
 
-        let request = UNNotificationRequest(identifier: "Scanning",  content: notification, trigger: nil)
+        let request = UNNotificationRequest(identifier: "Scanning", content: notification, trigger: nil)
         UNUserNotificationCenter.current().add(request)
-
     }
 }
 

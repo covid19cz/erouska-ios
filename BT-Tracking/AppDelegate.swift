@@ -18,7 +18,6 @@ import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     private var allowBackgroundTask: Bool = false
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     private var inBackgroundStage: Bool = false {
@@ -30,26 +29,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) static var inBackground: Bool = false
     private let bag = DisposeBag()
     private var backgroundFetch: UIBackgroundTaskIdentifier?
-    
+
     // MARK: - Globals
 
     static var shared: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
+        UIApplication.shared.delegate as! AppDelegate
     }
 
     private(set) lazy var advertiser: BTAdvertising = BTAdvertiser(
         TUIDs: KeychainService.TUIDs ?? [],
-        IDRotation: AppSettings.TUIDRotation
-    )
+        IDRotation: AppSettings.TUIDRotation)
     private(set) lazy var scanner: BTScannering = BTScanner()
     lazy var scannerStore: ScannerStore = {
         let store = ScannerStore(
             scanningPeriod: RemoteValues.collectionSeconds,
-            dataPurgeInterval: RemoteValues.persistDataInterval
-        )
+            dataPurgeInterval: RemoteValues.persistDataInterval)
         AppDelegate.shared.scanner.add(delegate: store)
         return store
     }()
+
     private(set) var deviceToken: Data?
 
     #if !targetEnvironment(macCatalyst)
@@ -63,17 +61,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         advertiser.stop()
         advertiser = BTAdvertiser(
             TUIDs: KeychainService.TUIDs ?? [],
-            IDRotation: AppSettings.TUIDRotation
-        )
+            IDRotation: AppSettings.TUIDRotation)
 
         if wasRunning {
             advertiser.start()
         }
     }
-    
+
     // MARK: - UIApplicationDelegate
 
-    var window: UIWindow? = nil
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         log("\n\n\n-START--------------------------------\n")
@@ -82,10 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         generalSetup()
         setupInterface()
         setupBackgroundMode(for: application)
-        
+
         return true
     }
-    
+
     func applicationDidBecomeActive(_ application: UIApplication) {
         log("\n\n\n-FOREGROUND---------------------------\n")
 
@@ -100,23 +97,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-
-    }
+    func applicationWillResignActive(_ application: UIApplication) {}
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         log("\n\n\n-BACKGROUND---------------------------\n")
 
         inBackgroundStage = true
         scannerStore.appTermination.onNext(())
-        
+
         guard allowBackgroundTask else { return }
         backgroundTask = application.beginBackgroundTask(withName: "BT") {
             log("\n\n\n-EXPIRATION TASK---------------------------\n")
         }
 
         DispatchQueue.global(qos: .background).async {
-            while(true) {
+            while true {
                 if self.inBackgroundStage == false {
                     log("\n\n\n-END TASK---------------------------\n")
                     break
@@ -135,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-END----------------------------------\n")
     }
 
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         if Auth.auth().canHandle(url) {
             return true
         } else {
@@ -144,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        return true
+        true
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -162,25 +157,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "pushRegistrationToken": deviceToken.hexEncodedString()
         ]
 
-        functions.httpsCallable("changePushToken").call(data) { result, error in
+        functions.httpsCallable("changePushToken").call(data) { _, error in
             if let error = error {
                 log("AppDelegate: Failed to change push token \(error.localizedDescription)")
             }
         }
     }
 
-    func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if Auth.auth().canHandleNotification(notification) {
             completionHandler(.noData)
         } else {
             completionHandler(.noData)
         }
     }
-    
+
     // MARK: - Background fetch
-    
+
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        backgroundFetch = application.beginBackgroundTask (expirationHandler: { [weak self] in
+        backgroundFetch = application.beginBackgroundTask(expirationHandler: { [weak self] in
             log("AppDelegate background: Background task expired")
             application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
             self?.backgroundFetch = nil
@@ -192,7 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
                 self?.backgroundFetch = nil
                 log("AppDelegate background: newData")
-            }, onError: { [weak self] error in
+            }, onError: { [weak self] _ in
                 log("AppDelegate background: Remote config error")
                 completionHandler(.failed)
                 application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
@@ -201,18 +196,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             .disposed(by: bag)
     }
-
 }
 
 private extension AppDelegate {
-
     func generalSetup() {
         let generalCategory = UNNotificationCategory(
             identifier: "Scanning",
             actions: [],
             intentIdentifiers: [],
-            options: .customDismissAction
-        )
+            options: .customDismissAction)
 
         let center = UNUserNotificationCenter.current()
         center.setNotificationCategories([generalCategory])
@@ -225,16 +217,14 @@ private extension AppDelegate {
 
         FirebaseApp.configure()
         setupFirebaseRemoteConfig()
-        Auth.auth().languageCode = "cs";
+        Auth.auth().languageCode = "cs"
 
         #endif
 
         let configuration = Realm.Configuration(
             schemaVersion: 3,
-            migrationBlock: { migration, oldSchemaVersion in
-
-            }
-        )
+            migrationBlock: { _, _ in
+            })
 
         Realm.Configuration.defaultConfiguration = configuration
 
@@ -242,7 +232,7 @@ private extension AppDelegate {
             scannerStore.deleteOldRecordsIfNeeded()
         }
     }
-    
+
     private func setupInterface() {
         let window = UIWindow()
         window.backgroundColor = .black
@@ -271,7 +261,7 @@ private extension AppDelegate {
         UIDevice.current.isProximityMonitoringEnabled = true
         UIApplication.shared.isIdleTimerDisabled = true
     }
-    
+
     private func clearKeychainIfNeeded() {
         guard !AppSettings.appFirstTimeLaunched else { return }
         AppSettings.appFirstTimeLaunched = true
@@ -280,7 +270,7 @@ private extension AppDelegate {
     }
 
     func fetchRemoteConfig() -> Single<Void> {
-        return Single<Void>.create { single in
+        Single<Void>.create { single in
             RemoteConfig.remoteConfig().fetch(withExpirationDuration: 1800) { _, error in
                 if let error = error {
                     log("AppDelegate background: Got an error fetching remote values \(error)")
@@ -294,5 +284,4 @@ private extension AppDelegate {
             return Disposables.create()
         }
     }
-
 }

@@ -11,10 +11,9 @@ import Security
 import UIKit
 
 struct KeychainService {
-
     static var BUID: String? {
         get {
-            return stringValue(for: .BUID)
+            stringValue(for: .BUID)
         }
         set {
             if let value = newValue {
@@ -27,7 +26,7 @@ struct KeychainService {
 
     static var TUIDs: [String]? {
         get {
-            return arrayValue(for: .TUIDs)
+            arrayValue(for: .TUIDs)
         }
         set {
             if let values = newValue {
@@ -41,7 +40,6 @@ struct KeychainService {
 }
 
 private extension KeychainService {
-
     enum Keys: String {
         case BUID
         case TUIDs
@@ -78,10 +76,9 @@ private extension KeychainService {
         }
 
         static func dictionaryFrom(_ values: [Self: Any]) -> NSDictionary {
-            return NSDictionary(
+            NSDictionary(
                 objects: Array(values.values),
-                forKeys: values.keys.map { $0.rawValue } as [NSString]
-            ) as CFDictionary
+                forKeys: values.keys.map { $0.rawValue } as [NSString]) as CFDictionary
         }
     }
 

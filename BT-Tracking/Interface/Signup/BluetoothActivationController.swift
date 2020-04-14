@@ -6,15 +6,14 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import CoreBluetooth
+import UIKit
 import UserNotifications
 
 final class BluetoothActivationController: UIViewController, CBPeripheralManagerDelegate {
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var buttonsView: ButtonsBackgroundView!
 
-    @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
-    
     private var peripheralManager: CBPeripheralManager?
 
     private var bluetoothNotDetermined: Bool {
@@ -54,20 +53,18 @@ final class BluetoothActivationController: UIViewController, CBPeripheralManager
         NotificationCenter.default.removeObserver(
             self,
             name: UIApplication.didBecomeActiveNotification,
-            object: nil
-        )
+            object: nil)
     }
 
     // MARK: - Actions
-    
+
     @IBAction private func activateBluetoothAction() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(applicationDidBecomeActive),
             name: UIApplication.didBecomeActiveNotification,
-            object: nil
-        )
-        
+            object: nil)
+
         checkForBluetooth()
     }
 
@@ -77,14 +74,10 @@ final class BluetoothActivationController: UIViewController, CBPeripheralManager
 
     // MARK: - CBPeripheralManagerDelegate
 
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-
-    }
-
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {}
 }
 
 private extension BluetoothActivationController {
-
     func continueOnboarding() {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
             DispatchQueue.main.async { [weak self] in
@@ -99,7 +92,7 @@ private extension BluetoothActivationController {
             }
         }
     }
-    
+
     func checkForBluetooth() {
         if bluetoothNotDetermined {
             requestBluetoothPermission()
@@ -119,17 +112,15 @@ private extension BluetoothActivationController {
             delegate: self,
             queue: nil,
             options: [
-                CBPeripheralManagerOptionShowPowerAlertKey: false,
-            ]
-        )
+                CBPeripheralManagerOptionShowPowerAlertKey: false
+            ])
     }
 
     func showBluetoothPermissionError() {
         showError(
             title: "Zapněte Bluetooth",
             message: "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.",
-            okHandler: { [weak self] in self?.showAppSettings() }
-        )
+            okHandler: { [weak self] in self?.showAppSettings() })
     }
 
     func showAppSettings() {
@@ -137,5 +128,4 @@ private extension BluetoothActivationController {
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(settingsURL)
     }
-
 }

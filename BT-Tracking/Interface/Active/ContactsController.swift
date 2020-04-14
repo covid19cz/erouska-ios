@@ -9,7 +9,6 @@
 import UIKit
 
 final class ContactsController: UIViewController {
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -51,5 +50,4 @@ final class ContactsController: UIViewController {
             navigationController?.tabBarItem.image = UIImage(named: "phone")?.resize(toWidth: 26)
         }
     }
-
 }

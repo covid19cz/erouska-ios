@@ -6,15 +6,16 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import MarkdownKit
+import UIKit
 
 final class DataCollectionInfoVC: UIViewController {
-
     // MARK: Private Properties
+
     private let textView = UITextView()
 
     // MARK: Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,8 +41,7 @@ final class DataCollectionInfoVC: UIViewController {
             top: 16,
             left: view.layoutMargins.left,
             bottom: 16,
-            right: view.layoutMargins.right
-        )
+            right: view.layoutMargins.right)
     }
 
     private func layoutViews() {
@@ -52,7 +52,7 @@ final class DataCollectionInfoVC: UIViewController {
             textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             textView.topAnchor.constraint(equalTo: view.topAnchor),
-            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 

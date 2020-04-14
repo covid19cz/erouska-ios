@@ -9,9 +9,7 @@
 import UIKit
 
 final class SendReportController: UIViewController {
-
     @IBAction private func closeAction() {
         dismiss(animated: true, completion: nil)
     }
-
 }

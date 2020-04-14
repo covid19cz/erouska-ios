@@ -6,12 +6,11 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import Foundation
 import CoreBluetooth
+import Foundation
 import RxSwift
 
-protocol BTAdvertising: class {
-
+protocol BTAdvertising: AnyObject {
     init(TUIDs: [String], IDRotation: Int)
 
     @available(iOS 13.0, *)
@@ -24,11 +23,9 @@ protocol BTAdvertising: class {
     var isRunning: Bool { get }
     func start()
     func stop()
-    
 }
 
 final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
-
     private let bag = DisposeBag()
 
     // Advertising ID
@@ -40,7 +37,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     private var IDRotationTimer: Observable<Int>
 
     // Brodcasting
-    private var peripheralManager: CBPeripheralManager! = nil
+    private var peripheralManager: CBPeripheralManager!
 
     private var serviceBroadcast: CBCharacteristic?
     private var uniqueBroadcast: CBCharacteristic?
@@ -58,11 +55,10 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     init(TUIDs: [String], IDRotation: Int) {
         self.TUIDs = TUIDs
         self.IDRotation = IDRotation
-        self.IDRotationTimer = Observable.timer(
+        IDRotationTimer = Observable.timer(
             .seconds(0),
             period: .seconds(IDRotation),
-            scheduler: ConcurrentDispatchQueueScheduler(qos: .background)
-        )
+            scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
 
         super.init()
 
@@ -72,8 +68,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             options: [
                 CBPeripheralManagerOptionShowPowerAlertKey: false, // ask to turn on bluetooth
                 CBPeripheralManagerOptionRestoreIdentifierKey: true
-            ]
-        )
+            ])
 
         if #available(iOS 13.1, *) {
             if ![CBManagerAuthorization.allowedAlways, .restricted].contains(CBPeripheralManager.authorization) {
@@ -91,8 +86,9 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     // MARK: - BTAdvertising
 
     var isRunning: Bool {
-        return peripheralManager.isAdvertising && started
+        peripheralManager.isAdvertising && started
     }
+
     private var started: Bool = false
 
     func start() {
@@ -101,7 +97,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
         peripheralManager.startAdvertising([
             // CBAdvertisementDataLocalNameKey: BT.advertiserName.rawValue, disabled for sthorter BT packet
-            CBAdvertisementDataServiceUUIDsKey : [BT.transferService.cbUUID]
+            CBAdvertisementDataServiceUUIDsKey: [BT.transferService.cbUUID]
         ])
 
         IDRotationTimer
@@ -125,8 +121,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         IDRotationTimer = Observable.timer(
             .seconds(0),
             period: .seconds(IDRotation),
-            scheduler: ConcurrentDispatchQueueScheduler(qos: .background)
-        )
+            scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
 
         log("BTAdvertiser: stoped")
     }
@@ -144,17 +139,15 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             type: BT.transferCharacteristic.cbUUID,
             properties: .read,
             value: currentID?.hexData, // ID device according to BE spec
-            permissions: .readable
-        )
+            permissions: .readable)
         self.serviceBroadcast = serviceBroadcast
 
         #if DEBUG
         let uniqueBroadcast = CBMutableCharacteristic(
-              type: BT.broadcastCharacteristic.cbUUID,
-              properties: .read,
-              value: BTDeviceName.data(using: .utf8),
-              permissions: .readable
-        )
+            type: BT.broadcastCharacteristic.cbUUID,
+            properties: .read,
+            value: BTDeviceName.data(using: .utf8),
+            permissions: .readable)
         self.uniqueBroadcast = uniqueBroadcast
 
         return [serviceBroadcast, uniqueBroadcast]
@@ -198,7 +191,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         start()
     }
 
-    func peripheralManager(_ peripheral: CBPeripheralManager, willRestoreState dict: [String : Any]) {
+    func peripheralManager(_ peripheral: CBPeripheralManager, willRestoreState dict: [String: Any]) {
         log("BTAdvertiser: willRestoreState, dict: \(dict)")
     }
 
@@ -221,7 +214,6 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
         log("BTAdvertiser: didAddService: \(service), error: \(error?.localizedDescription ?? "none")")
     }
-
 
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
         log("BTAdvertiser: didReceiveRead: \(request)")
@@ -246,5 +238,4 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         request.value = characteristic.value?.subdata(in: range.lowerBound..<range.upperBound)
         peripheral.respond(to: request, withResult: .success)
     }
-
 }

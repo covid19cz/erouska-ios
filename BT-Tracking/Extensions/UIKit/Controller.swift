@@ -6,11 +6,10 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import UIKit
 import SafariServices
+import UIKit
 
 extension UIViewController {
-
     func show(error: Error, title: String = "Chyba") {
         showError(title: title, message: error.localizedDescription)
     }
@@ -19,10 +18,9 @@ extension UIViewController {
         let alertController = UIAlertController(
             title: title,
             message: message,
-            preferredStyle: .alert
-        )
+            preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: okTitle, style: .cancel, handler: { _ in okHandler?() }))
-        action.flatMap({ action in alertController.addAction(UIAlertAction(title: action.title, style: .default, handler: { _ in action.handler?() })) })
+        action.flatMap { action in alertController.addAction(UIAlertAction(title: action.title, style: .default, handler: { _ in action.handler?() })) }
         present(alertController, animated: true)
     }
 
@@ -30,5 +28,4 @@ extension UIViewController {
         let controller = SFSafariViewController(url: URL)
         present(controller, animated: true, completion: nil)
     }
-
 }
