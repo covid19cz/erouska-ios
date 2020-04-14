@@ -29,9 +29,17 @@ final class DataCollectionInfoVC: UIViewController {
         title = "Informace o sběru dat"
 
         navigationItem.largeTitleDisplayMode = .never
-        edgesForExtendedLayout = []
 
-        textView.textContainerInset = UIEdgeInsets(top: 30, left: 16, bottom: 16, right: 16)
+        textView.isEditable = false
+    }
+
+    override func viewLayoutMarginsDidChange() {
+        super.viewLayoutMarginsDidChange()
+
+        textView.textContainerInset = UIEdgeInsets(top: 30,
+                                                   left: view.layoutMargins.left,
+                                                   bottom: 16,
+                                                   right: view.layoutMargins.right)
     }
 
     private func layoutViews() {
