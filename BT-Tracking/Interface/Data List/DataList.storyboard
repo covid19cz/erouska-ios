@@ -191,7 +191,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Moje data" id="Alq-cw-sQ5">
                         <rightBarButtonItems>
-                            <barButtonItem title="Více informací" image="info" largeContentSizeImage="Více informací" id="Kr6-V8-Cct">
+                            <barButtonItem title="Více informací" image="info.circle.fill" largeContentSizeImage="Více informací" id="Kr6-V8-Cct">
                                 <connections>
                                     <action selector="infoButtonActionWithSender:" destination="xGP-gf-Asp" id="SAl-NY-btp"/>
                                 </connections>
@@ -416,6 +416,6 @@ Po smazání dat dojde k automatickému pozastavení eRoušky.</string>
     <resources>
         <image name="ScanActiveIcon" width="130" height="130"/>
         <image name="Více informací" width="128" height="128"/>
-        <image name="info" width="20" height="20"/>
+        <image name="info.circle.fill" width="24" height="24"/>
     </resources>
 </document>
