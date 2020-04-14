@@ -10,17 +10,6 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        for controller in viewControllers ?? [] {
-            _ = controller.view
-            if let navController = controller as? UINavigationController {
-                _ = navController.topViewController?.view
-            }
-        }
-    }
-
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return .all

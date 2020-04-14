@@ -37,7 +37,7 @@ final class DataCollectionInfoVC: UIViewController {
         super.viewLayoutMarginsDidChange()
 
         textView.textContainerInset = UIEdgeInsets(
-            top: 30,
+            top: 16,
             left: view.layoutMargins.left,
             bottom: 16,
             right: view.layoutMargins.right
@@ -57,7 +57,8 @@ final class DataCollectionInfoVC: UIViewController {
     }
 
     private func setupContent() {
-        let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 16))
+        let markdownParser = MarkdownParser(font: UIFont.preferredFont(forTextStyle: .body))
+        markdownParser.list.indicator = "•"
         let markdownText = RemoteValues.dataCollectionMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
 
         let attributedText = NSMutableAttributedString(attributedString: markdownParser.parse(markdownText))

@@ -30,20 +30,28 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     // MARK: - Lifecycle
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        setupTabBar()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "doc.plaintext")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
-        }
         
         setupTableView()
         viewModel.selectedSegmentIndex.accept(0)
     }
 
     // MARK: - TableView
+
+    private func setupTabBar() {
+        if #available(iOS 13, *) {
+            navigationController?.tabBarItem.image = UIImage(systemName: "doc.plaintext")
+        } else {
+            navigationController?.tabBarItem.image = UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
+        }
+    }
 
     private func setupTableView() {
         tableView.tableFooterView = UIView()

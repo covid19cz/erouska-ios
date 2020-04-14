@@ -130,9 +130,11 @@ final class ActiveAppController: UIViewController {
         controller.addAction(UIAlertAction(title: "Zrušit registraci", style: .default, handler: { [weak self] _ in
             self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
         }))
+        #if !PROD
         controller.addAction(UIAlertAction(title: "Debug", style: .default, handler: { [weak self] _ in
-            self?.performSegue(withIdentifier: "debug", sender: nil)
+            self?.debugAction()
         }))
+        #endif
         controller.addAction(UIAlertAction(title: "O aplikaci", style: .default, handler: { [weak self] _ in
             guard let url = URL(string: RemoteValues.aboutLink) else { return }
             self?.openURL(URL: url)
