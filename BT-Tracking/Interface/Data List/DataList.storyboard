@@ -191,7 +191,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Moje data" id="Alq-cw-sQ5">
                         <rightBarButtonItems>
-                            <barButtonItem title="Více informací" image="info" largeContentSizeImage="Více informací" style="plain" id="Kr6-V8-Cct">
+                            <barButtonItem title="Více informací" image="info" largeContentSizeImage="Více informací" id="Kr6-V8-Cct">
                                 <connections>
                                     <action selector="infoButtonActionWithSender:" destination="xGP-gf-Asp" id="SAl-NY-btp"/>
                                 </connections>
