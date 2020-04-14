@@ -19,8 +19,9 @@ import Reachability
 final class DataListVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var activityView: UIView!
-    @IBOutlet weak var infoButton: UIBarButtonItem!
+    @IBOutlet private weak var infoButton: UIBarButtonItem!
     
     private var dataSource: RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>!
     private let viewModel = DataListVM()
@@ -38,6 +39,10 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        buttonsView.connect(with: tableView)
+        buttonsView.defaultContentInset.bottom += 10
+        buttonsView.resetInsets(in: tableView)
         
         setupTableView()
         viewModel.selectedSegmentIndex.accept(0)

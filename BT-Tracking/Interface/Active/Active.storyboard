@@ -101,14 +101,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bce-ix-LBm">
-                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bce-ix-LBm">
+                                <rect key="frame" x="0.0" y="140" width="375" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1y8-d8-PjO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="686"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2X4-TO-6PI">
-                                                <rect key="frame" x="16" y="20" width="343" height="646"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2X4-TO-6PI">
+                                                <rect key="frame" x="16" y="10" width="343" height="581"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Máte podezření na koronavirus?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7N-dW-0In">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
@@ -188,31 +188,25 @@
                                                             <action selector="webAction" destination="PPZ-by-KGR" eventType="touchUpInside" id="c72-W2-fpQ"/>
                                                         </connections>
                                                     </button>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Wb-X1-3KR" userLabel="Big Space View">
-                                                        <rect key="frame" x="0.0" y="596" width="343" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" priority="500" constant="1" id="7Ng-Xi-ayv"/>
-                                                        </constraints>
-                                                    </view>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="2X4-TO-6PI" secondAttribute="bottom" constant="20" symbolic="YES" id="083-aS-ocQ"/>
-                                            <constraint firstAttribute="leadingMargin" secondItem="2X4-TO-6PI" secondAttribute="leading" id="4Vo-uW-TUp"/>
-                                            <constraint firstItem="2X4-TO-6PI" firstAttribute="top" secondItem="1y8-d8-PjO" secondAttribute="top" constant="20" symbolic="YES" id="AUD-Qh-9rU"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="2X4-TO-6PI" secondAttribute="trailing" id="zRv-Yv-x3y"/>
+                                            <constraint firstAttribute="bottom" secondItem="2X4-TO-6PI" secondAttribute="bottom" constant="16" id="01R-UH-O8Z"/>
+                                            <constraint firstItem="2X4-TO-6PI" firstAttribute="top" secondItem="1y8-d8-PjO" secondAttribute="top" constant="10" id="g3M-fv-V0b"/>
+                                            <constraint firstItem="2X4-TO-6PI" firstAttribute="leading" secondItem="1y8-d8-PjO" secondAttribute="leadingMargin" id="oXd-Me-P11"/>
+                                            <constraint firstItem="2X4-TO-6PI" firstAttribute="trailing" secondItem="1y8-d8-PjO" secondAttribute="trailingMargin" id="wg4-u3-fU7"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="1y8-d8-PjO" firstAttribute="bottom" secondItem="3MB-2g-2io" secondAttribute="bottom" id="3HC-QO-FQM"/>
                                     <constraint firstItem="1y8-d8-PjO" firstAttribute="top" secondItem="3MB-2g-2io" secondAttribute="top" id="5PU-P6-IEi"/>
-                                    <constraint firstAttribute="trailing" secondItem="1y8-d8-PjO" secondAttribute="trailing" id="Oso-bd-fzo"/>
-                                    <constraint firstItem="1y8-d8-PjO" firstAttribute="leading" secondItem="bce-ix-LBm" secondAttribute="leading" id="X4K-ny-EdE"/>
-                                    <constraint firstItem="1y8-d8-PjO" firstAttribute="width" secondItem="bce-ix-LBm" secondAttribute="width" id="jAN-cO-uqi"/>
+                                    <constraint firstItem="1y8-d8-PjO" firstAttribute="leading" secondItem="3MB-2g-2io" secondAttribute="leading" id="N5I-pV-bqP"/>
+                                    <constraint firstItem="3MB-2g-2io" firstAttribute="trailing" secondItem="1y8-d8-PjO" secondAttribute="trailing" id="egI-sl-NC6"/>
+                                    <constraint firstItem="1y8-d8-PjO" firstAttribute="width" secondItem="KLZ-Yt-dbU" secondAttribute="width" id="hMv-uI-D32"/>
+                                    <constraint firstItem="1y8-d8-PjO" firstAttribute="centerX" secondItem="KLZ-Yt-dbU" secondAttribute="centerX" id="pWc-FB-TL3"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="3MB-2g-2io"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="KLZ-Yt-dbU"/>
@@ -221,9 +215,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="bce-ix-LBm" firstAttribute="top" secondItem="mhY-QC-TiG" secondAttribute="topMargin" id="5dc-z6-exZ"/>
-                            <constraint firstItem="bce-ix-LBm" firstAttribute="bottom" secondItem="u4L-1o-dHI" secondAttribute="bottom" id="C4X-sD-PEM"/>
                             <constraint firstItem="u4L-1o-dHI" firstAttribute="trailing" secondItem="bce-ix-LBm" secondAttribute="trailing" id="E82-U0-AWU"/>
                             <constraint firstItem="bce-ix-LBm" firstAttribute="leading" secondItem="u4L-1o-dHI" secondAttribute="leading" id="hQR-me-S2a"/>
+                            <constraint firstAttribute="bottom" secondItem="bce-ix-LBm" secondAttribute="bottom" id="rsP-RM-tYC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u4L-1o-dHI"/>
                     </view>
@@ -245,16 +239,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRX-7H-oZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="561.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="628.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qcL-c9-sLJ">
-                                                <rect key="frame" x="16" y="20" width="343" height="521.66666666666663"/>
+                                                <rect key="frame" x="16" y="20" width="343" height="588.33333333333337"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6s-Qx-Qlh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="393.33333333333331"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="460"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-pw-itY">
-                                                                <rect key="frame" x="14" y="14" width="315" height="365.33333333333331"/>
+                                                                <rect key="frame" x="14" y="14" width="315" height="432"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tfE-3E-o2N">
                                                                         <rect key="frame" x="0.0" y="0.0" width="315" height="48"/>
@@ -315,7 +309,7 @@
                                                                         </constraints>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mby-Ad-cEI">
-                                                                        <rect key="frame" x="0.0" y="62.999999999999993" width="315" height="86.333333333333314"/>
+                                                                        <rect key="frame" x="0.0" y="63" width="315" height="153"/>
                                                                         <string key="text">Na místech s větší koncentrací lidí nechte aplikaci spuštěnou při zapnuté obrazovce. Rozpoznáme tak lépe ostatní eRoušky v okolí.</string>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <nil key="textColor"/>
@@ -323,14 +317,14 @@
                                                                         <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Tipy pro snížení spotřeby baterie" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-oF-dXd">
-                                                                        <rect key="frame" x="0.0" y="164.33333333333334" width="315" height="20.333333333333343"/>
+                                                                        <rect key="frame" x="0.0" y="231" width="315" height="20.333333333333343"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                         <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ldG-Ym-Pd8">
-                                                                        <rect key="frame" x="0.0" y="199.66666666666666" width="315" height="64.333333333333343"/>
+                                                                        <rect key="frame" x="0.0" y="266.33333333333331" width="315" height="64.333333333333314"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhoneDown" translatesAutoresizingMaskIntoConstraints="NO" id="Bwt-9v-Cg8">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="64.333333333333329"/>
@@ -348,7 +342,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7l3-kB-L1x">
-                                                                        <rect key="frame" x="0.0" y="279" width="315" height="86.333333333333314"/>
+                                                                        <rect key="frame" x="0.0" y="345.66666666666669" width="315" height="86.333333333333314"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhonePocket" translatesAutoresizingMaskIntoConstraints="NO" id="MVy-h6-ySg">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="86.333333333333329"/>
@@ -377,7 +371,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANQ-eO-rpO">
-                                                        <rect key="frame" x="0.0" y="413.33333333333331" width="343" height="108.33333333333331"/>
+                                                        <rect key="frame" x="0.0" y="479.99999999999994" width="343" height="108.33333333333331"/>
                                                         <string key="text">Když budete označeni jako nakažení, kontaktujeme vás na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, které byly ve vašem okolí v sekci Moje data.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
