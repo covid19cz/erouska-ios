@@ -46,11 +46,11 @@ final class ActiveAppViewModel {
         var image: UIImage? {
             switch self {
             case .enabled:
-                return UIImage(named: "scan.active")
+                return UIImage(named: "ScanActive")
             case .paused:
-                return UIImage(named: "bluetooth.paused")
+                return UIImage(named: "BluetoothPaused")
             case .disabled:
-                return UIImage(named: "bluetooth.off")
+                return UIImage(named: "BluetoothOff")
             }
         }
 

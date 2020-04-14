@@ -272,7 +272,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT2-5W-m3v">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="42" height="48"/>
                                                                                 <subviews>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="scan.active" translatesAutoresizingMaskIntoConstraints="NO" id="Dqs-Rj-Q2J">
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ScanActive" translatesAutoresizingMaskIntoConstraints="NO" id="Dqs-Rj-Q2J">
                                                                                         <rect key="frame" x="0.0" y="3" width="42" height="42"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" constant="42" id="YRC-9Z-H5E"/>
@@ -342,7 +342,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ldG-Ym-Pd8">
                                                                         <rect key="frame" x="0.0" y="199.66666666666666" width="315" height="64.333333333333343"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone.down" translatesAutoresizingMaskIntoConstraints="NO" id="Bwt-9v-Cg8">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhoneDown" translatesAutoresizingMaskIntoConstraints="NO" id="Bwt-9v-Cg8">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="64.333333333333329"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="50" id="Ofd-Um-axp"/>
@@ -360,7 +360,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7l3-kB-L1x">
                                                                         <rect key="frame" x="0.0" y="279" width="315" height="86.333333333333314"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone.pocket" translatesAutoresizingMaskIntoConstraints="NO" id="MVy-h6-ySg">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhonePocket" translatesAutoresizingMaskIntoConstraints="NO" id="MVy-h6-ySg">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="86.333333333333329"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="50" id="VPa-Pu-v03"/>
@@ -467,9 +467,9 @@
     </scenes>
     <resources>
         <image name="Další možnosti" width="128" height="128"/>
+        <image name="PhoneDown" width="48" height="48"/>
+        <image name="PhonePocket" width="48" height="48"/>
+        <image name="ScanActive" width="48" height="48"/>
         <image name="ellipsis.circle.fill" width="24" height="24"/>
-        <image name="phone.down" width="48" height="48"/>
-        <image name="phone.pocket" width="48" height="48"/>
-        <image name="scan.active" width="48" height="48"/>
     </resources>
 </document>

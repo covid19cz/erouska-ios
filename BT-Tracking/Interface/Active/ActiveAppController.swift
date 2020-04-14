@@ -25,7 +25,7 @@ final class ActiveAppController: UIViewController {
     @IBOutlet private weak var secondTipLabel: UILabel!
     @IBOutlet private weak var textLabel: UILabel!
     @IBOutlet private var activeInfoViews: [UIView]!
-    @IBOutlet private weak var actionButton: Button!
+    @IBOutlet private weak var actionButton: Button! 
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
     
