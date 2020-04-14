@@ -98,15 +98,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     @IBAction private func infoButtonAction(sender: Any?) {
-        let controller = UIAlertController(
-            title: "Jedná se o veškeré záznamy měření signálu okolních telefonů s aplikací eRouška za posledních \(RemoteValues.persistDataDays) dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
-            message: nil,
-            preferredStyle: .alert
-        )
-        controller.addAction(UIAlertAction(title: "Zavřít", style: .default))
-        controller.popoverPresentationController?.sourceView = sender as? UIView
-
-        present(controller, animated: true, completion: nil)
+        navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
     }
 
     private func sendReport() {

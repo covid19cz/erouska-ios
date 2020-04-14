@@ -76,6 +76,7 @@ enum RemoteConfigValueKey: String {
     case emergencyNumber
     
     case helpMarkdown
+    case dataCollectionMarkdown
 }
 
 struct RemoteValues {
@@ -99,17 +100,26 @@ struct RemoteValues {
 
         .emergencyNumber: 1212,
         
-        .helpMarkdown: helpMarkdownBackup
+        .helpMarkdown: helpMarkdownBackup,
+        .dataCollectionMarkdown: dataCollectionMarkdownBackup
     ]
 
-    private static var helpMarkdownBackup: String {
+    private static func localValue(forResource resource: String, withExtension extension: String, withKey key: String) -> String {
         guard
-            let path = Bundle.main.url(forResource: "HelpMarkdownBackup", withExtension: "strings", subdirectory: nil),
+            let path = Bundle.main.url(forResource: resource, withExtension: `extension`),
             let dict = NSDictionary(contentsOf: path),
-            let helpMarkdownBackup = dict.value(forKey: "helpMarkdownBackup") as? String
+            let value = dict.value(forKey: key) as? String
         else { return "" }
 
-        return helpMarkdownBackup
+        return value
+    }
+
+    private static var helpMarkdownBackup: String {
+        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
+    }
+
+    private static var dataCollectionMarkdownBackup: String {
+        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "dataCollectionInfoBackup")
     }
 
     /// doba scanování v sekundách, default = 120
@@ -188,5 +198,10 @@ struct RemoteValues {
     /// Help markdown
     static var helpMarkdown: String {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.helpMarkdown)
+    }
+
+    /// Data collection markdown
+    static var dataCollectionMarkdown: String {
+        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.dataCollectionMarkdown)
     }
 }
