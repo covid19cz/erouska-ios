@@ -36,10 +36,12 @@ final class DataCollectionInfoVC: UIViewController {
     override func viewLayoutMarginsDidChange() {
         super.viewLayoutMarginsDidChange()
 
-        textView.textContainerInset = UIEdgeInsets(top: 30,
-                                                   left: view.layoutMargins.left,
-                                                   bottom: 16,
-                                                   right: view.layoutMargins.right)
+        textView.textContainerInset = UIEdgeInsets(
+            top: 30,
+            left: view.layoutMargins.left,
+            bottom: 16,
+            right: view.layoutMargins.right
+        )
     }
 
     private func layoutViews() {
