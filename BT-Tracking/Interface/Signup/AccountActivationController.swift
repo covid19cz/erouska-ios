@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxRelay
-import RxKeyboard
 import FirebaseAuth
 import DeviceKit
 
@@ -20,99 +19,57 @@ final class AccountActivationController: UIViewController {
         let phoneNumber: String
     }
 
-    enum PhoneValidator {
-        case prefix, number, smsCode
-
-        var characterSet: CharacterSet {
-            switch self {
-            case .prefix:
-                return CharacterSet(charactersIn: "+0123456789")
-            case .number, .smsCode:
-                return CharacterSet(charactersIn: "0123456789")
-            }
-        }
-
-        var rangeLimit: ClosedRange<Int> {
-            switch self {
-            case .prefix:
-                return 2...5
-            case .number:
-                return 9...9
-            case .smsCode:
-                return 6...6
-            }
-        }
-
-        func validate(_ text: String) -> Bool {
-            guard rangeLimit.contains(text.count), text == filtered(text) else { return false }
-            return true
-        }
-
-        func filtered(_ text: String) -> String {
-            let set = characterSet.inverted
-            return text.components(separatedBy: set).joined()
-        }
-
-        func checkChange(_ oldString: String, _ newString: String) -> (result: Bool, edited: String?) {
-            guard newString.count <= rangeLimit.upperBound else {
-                let text = String(filtered(newString).prefix(rangeLimit.upperBound))
-                return (result: false, edited: oldString == text ? nil : text)
-            }
-            return (result: true, edited: nil)
-        }
-    }
-
     private var phonePrefix = BehaviorRelay<String>(value: "")
     private var phoneNumber = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
         Observable.combineLatest(phonePrefix.asObservable(), phoneNumber.asObservable()).map { (phonePrefix, phoneNumber) -> Bool in
-            return PhoneValidator.prefix.validate(phonePrefix) && PhoneValidator.number.validate(phoneNumber)
+            return InputValidation.prefix.validate(phonePrefix) && InputValidation.number.validate(phoneNumber)
         }
     }
+    private var keyboardHandler: KeyboardHandler!
     private var disposeBag = DisposeBag()
 
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
+
     @IBOutlet private weak var phonePrefixTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     @IBOutlet private weak var actionButton: UIButton!
     @IBOutlet private weak var permissionSwitch: UISwitch!
     @IBOutlet private weak var activityView: UIView!
 
+    private var firstAppear: Bool = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        keyboardHandler = KeyboardHandler(in: view, scrollView: scrollView, buttonsView: buttonsView, buttonsBottomConstraint: buttonsBottomConstraint)
+
+        buttonsView.connect(with: scrollView)
+        buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
+        
         phonePrefixTextField.rx.text.orEmpty.bind(to: phonePrefix).disposed(by: disposeBag)
         phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)
 
         isValid.bind(to: actionButton.rx.isEnabled).disposed(by: disposeBag)
-
-        RxKeyboard.instance.visibleHeight.drive(onNext: { [weak self] keyboardVisibleHeight in
-            guard let self = self else { return }
-
-            self.view.setNeedsLayout()
-            UIView.animate(withDuration: 0.1) {
-                let adjsutHomeIndicator = keyboardVisibleHeight - self.view.safeAreaInsets.bottom
-                self.scrollView.contentInset.bottom = adjsutHomeIndicator
-                self.scrollView.scrollIndicatorInsets.bottom = adjsutHomeIndicator
-                self.view.layoutIfNeeded()
-
-                guard keyboardVisibleHeight > 0 else { return }
-
-                DispatchQueue.main.async {
-                    let height = (self.scrollView.frame.height - adjsutHomeIndicator)
-                    let contentSize = self.scrollView.contentSize
-                    guard contentSize.height - height > -60 else { return }
-                    self.scrollView.scrollRectToVisible(CGRect(x: 0, y: (contentSize.height - height), width: contentSize.width, height: height), animated: true)
-                }
-            }
-        }).disposed(by: disposeBag)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        guard Device.current.diagonal != 4 else { return }
-        phoneNumberTextField.becomeFirstResponder()
+        if firstAppear {
+            keyboardHandler.setup()
+        }
+        guard Device.current.diagonal != 4 else {
+            firstAppear = false
+            return
+        }
+
+        if firstAppear {
+            phoneNumberTextField.becomeFirstResponder()
+            firstAppear = false
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -166,9 +123,7 @@ final class AccountActivationController: UIViewController {
 extension AccountActivationController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return true }
-
-        let type: PhoneValidator
+        let type: InputValidation
         if textField == phonePrefixTextField {
             type = .prefix
         } else if textField == phoneNumberTextField {
@@ -176,17 +131,8 @@ extension AccountActivationController: UITextFieldDelegate {
         } else {
             return true
         }
-        
-        let candidate = NSString(string: text).replacingCharacters(in: range, with: string)
-        let check = type.checkChange(text, candidate)
-        if check.result {
-            return true
-        }
-        DispatchQueue.main.async {
-            textField.text = check.edited ?? text
-            textField.sendActions(for: .valueChanged)
-        }
-        return false
+
+        return validateTextChange(with: type, textField: textField, changeCharactersIn: range, newString: string)
     }
 
 }
