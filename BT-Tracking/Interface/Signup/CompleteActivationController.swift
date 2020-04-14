@@ -194,7 +194,9 @@ private extension CompleteActivationController {
         expirationSeconds = Date.timeIntervalSinceReferenceDate + RemoteValues.smsErrorTimeoutSeconds
         updateExpirationTitle()
 
-        expirationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+        expirationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
+
             if self.expirationSeconds - Date.timeIntervalSinceReferenceDate <= 0 {
                 self.expirationTimer?.invalidate()
                 self.showError(
