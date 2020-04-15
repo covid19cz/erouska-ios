@@ -131,6 +131,9 @@
 		8083D910244643BD007FA4E9 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96124290C1000E57601 /* ScanCell.swift */; };
 		8083D911244643BD007FA4E9 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053572427C5AA00DC1034 /* InfoCell.swift */; };
 		8083D9122446466A007FA4E9 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
+		8083D9142446F779007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
+		8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
+		8083D9162446F80B007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		80AD970D2429318B00AEA661 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
 		80B94555242B7B460052CD9F /* ActiveAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppViewModel.swift */; };
 		80B94557242B96560052CD9F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
@@ -224,6 +227,7 @@
 		80799BEA2423B89A002B04C5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		8083D8F4244640A0007FA4E9 /* eRouska Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eRouska Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8083D8F6244640CD007FA4E9 /* Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Prod.plist"; sourceTree = "<group>"; };
+		8083D9132446F779007FA4E9 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		80AD970C2429318B00AEA661 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		80B94554242B7B460052CD9F /* ActiveAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppViewModel.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -541,6 +545,7 @@
 				80610BCF24363D7B00E031C8 /* Auth.swift */,
 				80BE3FCE2446028E00D0C810 /* InputValidation.swift */,
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
+				8083D9132446F779007FA4E9 /* Markdown.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -924,6 +929,7 @@
 				80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */,
 				46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */,
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
+				8083D9142446F779007FA4E9 /* Markdown.swift in Sources */,
 				4657C454243BD03D009E0E85 /* NotificationPermissionController.swift in Sources */,
 				80631A98242CAB5000EB0B6C /* Image.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */,
@@ -981,6 +987,7 @@
 				8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */,
 				8083D8A9244640A0007FA4E9 /* UnregisterUserVC.swift in Sources */,
 				8083D8AA244640A0007FA4E9 /* FirstActivationController.swift in Sources */,
+				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
 				8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */,
 				8083D8AD244640A0007FA4E9 /* AccountActivationController.swift in Sources */,
 				8083D8AE244640A0007FA4E9 /* DataListVC.swift in Sources */,
@@ -1060,6 +1067,7 @@
 				8083D90324464334007FA4E9 /* NavigationController.swift in Sources */,
 				80BB474D24212A3C00F552FC /* LogController.swift in Sources */,
 				8083D8F924464331007FA4E9 /* Data.swift in Sources */,
+				8083D9162446F80B007FA4E9 /* Markdown.swift in Sources */,
 				8083D90A24464342007FA4E9 /* DeleteDataVM.swift in Sources */,
 				80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */,
 				8083D910244643BD007FA4E9 /* ScanCell.swift in Sources */,
