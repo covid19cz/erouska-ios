@@ -32,6 +32,7 @@ final class DataCollectionInfoVC: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
 
         textView.isEditable = false
+        textView.dataDetectorTypes = [.link]
     }
 
     override func viewLayoutMarginsDidChange() {

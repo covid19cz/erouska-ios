@@ -25,6 +25,7 @@ final class HelpVC: UIViewController {
         super.viewDidLoad()
 
         textView.isEditable = false
+        textView.dataDetectorTypes = [.link]
         setupContent()
     }
 
