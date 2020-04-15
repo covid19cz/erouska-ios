@@ -8,16 +8,12 @@
 
 import Foundation
 
-struct BTDevice {
-    enum Platform: String {
-        case iOS, android = "Android"
-    }
-
+struct BTScan {
     let id: UUID
     var deviceIdentifier: String
     let bluetoothIdentifier: UUID // CBPeripheral identifier, on android is very random
     var backendIdentifier: String? // buid
-    var platform: Platform
+    var platform: BTPlatform
     var date: Date
     var name: String?
     var rssi: Int
@@ -26,7 +22,7 @@ struct BTDevice {
     init(id: UUID,
          bluetoothIdentifier: UUID,
          backendIdentifier: String? = nil,
-         platform: BTDevice.Platform,
+         platform: BTPlatform,
          date: Date,
          name: String? = nil,
          rssi: Int,
@@ -61,7 +57,7 @@ struct BTDevice {
     }    
 }
 
-extension BTDevice: Equatable {
+extension BTScan: Equatable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.backendIdentifier == rhs.backendIdentifier
     }

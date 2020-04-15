@@ -21,6 +21,10 @@ final class DataCollectionInfoVC: UIViewController {
 
         initViews()
         layoutViews()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setupContent()
     }
 

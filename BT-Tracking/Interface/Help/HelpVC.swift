@@ -26,6 +26,10 @@ final class HelpVC: UIViewController {
 
         textView.isEditable = false
         textView.dataDetectorTypes = [.link]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setupContent()
     }
 

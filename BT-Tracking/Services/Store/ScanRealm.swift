@@ -22,9 +22,9 @@ final class ScanRealm: Object {
     @objc dynamic var avargeRssi = 0
     @objc dynamic var medianRssi = 0
     
-    var platform: BTDevice.Platform? {
+    var platform: BTPlatform? {
         get {
-            BTDevice.Platform.init(rawValue: _platform)
+            BTPlatform(rawValue: _platform)
         }
         set {
             guard let platform = newValue else { return }
@@ -36,7 +36,7 @@ final class ScanRealm: Object {
         return "id"
     }
     
-    convenience init(device: BTDevice, avargeRssi: Int, medianRssi: Int, startDate: Date, endDate: Date) {
+    convenience init(device: BTScan, avargeRssi: Int, medianRssi: Int, startDate: Date, endDate: Date) {
         self.init()
         
         self.id = UUID().uuidString

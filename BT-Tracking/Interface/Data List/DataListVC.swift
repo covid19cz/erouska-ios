@@ -21,7 +21,6 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var activityView: UIView!
-    @IBOutlet private weak var infoButton: UIBarButtonItem!
     
     private var dataSource: RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>!
     private let viewModel = DataListVM()
@@ -47,6 +46,12 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         setupTableView()
         viewModel.selectedSegmentIndex.accept(0)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     // MARK: - TableView
 
@@ -60,12 +65,17 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     private func setupTableView() {
         tableView.tableFooterView = UIView()
-        tableView.allowsSelection = false
         tableView.rowHeight = UITableView.automaticDimension
 
         dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
             let cell: UITableViewCell?
             switch row {
+            case .scanningInfo:
+                let scanningInfoCell = tableView.dequeueReusableCell(withIdentifier: ScanningInfoCell.identifier, for: indexPath) as? ScanningInfoCell
+                cell = scanningInfoCell
+            case .aboutData:
+                let aboutDataCell = tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath) as? AboutDataCell
+                cell = aboutDataCell
             case .header(let scansCount):
                 let headerCell = tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath) as? DataHeaderCell
                 headerCell?.configure(with: scansCount)
@@ -83,6 +93,13 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             .disposed(by: bag)
 
         tableView.rx.setDelegate(self)
+            .disposed(by: bag)
+        
+        tableView.rx.modelSelected(DataListVM.Section.Item.self)
+            .filter { $0 == .aboutData }
+            .subscribe(onNext: { [weak self] item in
+                self?.navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
+            })
             .disposed(by: bag)
 
         dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
@@ -110,10 +127,6 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         }))
         controller.preferredAction = controller.actions.first
         present(controller, animated: true, completion: nil)
-    }
-
-    @IBAction private func infoButtonAction(sender: Any?) {
-        navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
     }
 
     private func sendReport() {
@@ -181,5 +194,4 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
     }
-
 }
