@@ -39,7 +39,7 @@ protocol BTScannerDelegate: class {
     func didUpdate(device: BTScanUpdate)
 }
 
-final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCentralManagerDelegate, CBPeripheralDelegate {
+final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering {
 
     private let bag = DisposeBag()
 
@@ -52,6 +52,12 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     private let acceptUUIDs = [BT.broadcastCharacteristic.cbUUID, BT.transferCharacteristic.cbUUID]
 
     override init() {
+        deviceRemoverTimer = Observable.timer(
+            .seconds(0),
+            period: .seconds(Int(removeDevicesAfterAreMissingForTime)),
+            scheduler: ConcurrentDispatchQueueScheduler(qos: .background)
+        )
+
         super.init()
 
         centralManager = CBCentralManager(
@@ -60,12 +66,6 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
             options: [
                 CBCentralManagerOptionShowPowerAlertKey: false,
             ]
-        )
-
-        deviceRemoverTimer = Observable.timer(
-            .seconds(0),
-            period: .seconds(Int(removeDevicesAfterAreMissingForTime)),
-            scheduler: ConcurrentDispatchQueueScheduler(qos: .background)
         )
 
         if #available(iOS 13.1, *) {
@@ -103,6 +103,10 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     }
     var didUpdateState: UpdateState?
 
+    deinit {
+        cleanup()
+    }
+
     func start() {
         started = true
         guard !centralManager.isScanning, centralManager.state == .poweredOn else { return }
@@ -123,10 +127,13 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
 
         guard centralManager.isScanning else { return }
 
+        cleanup()
         centralManager.stopScan()
     }
 
-    // MARK: - CBCentralManagerDelegate
+}
+
+extension BTScanner: CBCentralManagerDelegate {
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         log("BTScanner: centralManagerDidUpdateState: \(central.state.rawValue)")
@@ -139,7 +146,82 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
         start()
     }
 
-    private func checkRefreshTime(device: BTScanDevice) -> Bool {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        if filterRSSIPower {
+            guard allowedRSSIRange.contains(RSSI.intValue) else {
+                log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+                log("BTScanner: RSSI range \(RSSI.intValue)")
+                return
+            }
+        }
+
+        guard var device = discoveredDevices[peripheral.identifier] else {
+            log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
+
+            let newDevice = BTScanDevice(manager: central, peripheral: peripheral, RSII: RSSI.intValue, advertisementData: advertisementData)
+            newDevice.observableState.bind { [weak self] state in
+                self?.invoke() { $0.didUpdate(device: newDevice.toScanUpdate()) }
+            }.disposed(by: bag)
+
+            discoveredDevices[peripheral.identifier] = newDevice
+
+            log("BTScanner: Found \(String(describing: newDevice.platform)) device \(newDevice)")
+            invoke() { $0.didFind(device: newDevice.toScanUpdate()) }
+            return
+        }
+
+        device.update(with: peripheral, RSII: RSSI.intValue, advertisementData: advertisementData)
+
+        if device.isReadyToConnect {
+            device.connect(to: peripheral)
+        }
+
+        if device.backendIdentifier != nil,
+            let otherDevice = discoveredDevices.first(where: { $0.value.backendIdentifier == device.backendIdentifier })?.value,
+            device != otherDevice {
+
+            otherDevice.mergeWith(scan: device)
+            discoveredDevices[peripheral.identifier] = otherDevice
+            device = otherDevice
+        }
+
+        if checkRefreshTime(device: device) {
+            log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
+            invoke() { $0.didUpdate(device: device.toScanUpdate()) }
+        }
+    }
+
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        log("BTScanner: Failed to connect to \(peripheral), error: \(error?.localizedDescription ?? "none")")
+
+        // report missing device?
+        guard let device = discoveredDevices[peripheral.identifier] else { return }
+        device.didFail(to: peripheral, error: error)
+    }
+
+    func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
+        log("BTScanner: connectionEventDidOccur \(peripheral), event: \(event)")
+    }
+
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        log("BTScanner: Peripheral connected \(peripheral)")
+
+        guard let device = discoveredDevices[peripheral.identifier] else { return }
+        device.discoverServices(from: peripheral)
+    }
+
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        log("BTScanner: didDisconnectPeripheral: \(peripheral), error: \(error?.localizedDescription ?? "none")")
+
+        guard let device = discoveredDevices[peripheral.identifier] else { return }
+        device.didDisconnect(peripheral: peripheral, error: error)
+    }
+
+}
+
+private extension BTScanner {
+
+    func checkRefreshTime(device: BTScanDevice) -> Bool {
         guard let timeInterval = device.lastConnectionDate?.timeIntervalSinceReferenceDate else { return false }
         guard !AppDelegate.inBackground else {
             if !reportedBackground {
@@ -155,178 +237,6 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     func checkDeviceType(peripheral: CBPeripheral, advertisementData: [String : Any]) -> BTScanUpdate.Platform {
         return advertisementData["kCBAdvDataServiceData"] == nil ? .iOS : .android
     }
-
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if filterRSSIPower {
-            guard allowedRSSIRange.contains(RSSI.intValue) else {
-                log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
-                log("BTScanner: RSSI range \(RSSI.intValue)")
-                return
-            }
-        }
-
-        guard let device = discoveredDevices[peripheral.identifier] else {
-            log("BTScanner: Discovered \(String(describing: peripheral.name)) ID: \(peripheral.identifier.uuidString) \(advertisementData) at \(RSSI)")
-
-            let newDevice = BTScanDevice(peripheral: peripheral, RSII: RSSI.intValue, advertisementData: advertisementData)
-            discoveredDevices[peripheral.identifier] = newDevice
-
-            log("BTScanner: Found \(String(describing: newDevice.platform)) device \(newDevice)")
-            invoke() { $0.didFind(device: newDevice.toScanUpdate()) }
-            return
-        }
-
-        device.update(with: peripheral, RSII: RSSI.intValue, advertisementData: advertisementData)
-
-        // limit rssi updates
-        if checkRefreshTime(device: device) {
-            log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
-            invoke() { $0.didUpdate(device: device.toScanUpdate()) }
-        }
-
-        if device.isReadyToConnect {
-            device.didStartConnection()
-            central.connect(peripheral, options: nil)
-        }
-
-        if device.backendIdentifier != nil, let otherDevice = discoveredDevices.first(where: { $0.value.backendIdentifier == device.backendIdentifier })?.value,
-        device != otherDevice {
-            otherDevice.mergeWith(scan: device)
-            discoveredDevices[peripheral.identifier] = otherDevice
-        }
-    }
-
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        log("BTScanner: Failed to connect to \(peripheral), error: \(error?.localizedDescription ?? "none")")
-
-        // report missing device?
-        guard let device = discoveredDevices[peripheral.identifier] else { return }
-        device.didFailToConnect(error: error)
-        device.cleanupConnection(peripheral)
-    }
-
-    func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
-        log("BTScanner: connectionEventDidOccur \(peripheral), event: \(event)")
-    }
-
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        log("BTScanner: Peripheral connected \(peripheral)")
-
-        peripheral.delegate = self
-        peripheral.discoverServices([BT.transferService.cbUUID])
-    }
-
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        log("BTScanner: didDisconnectPeripheral: \(peripheral), error: \(error?.localizedDescription ?? "none")")
-
-        if error != nil {
-            retryBUID[peripheral.identifier] = Date().timeIntervalSince1970
-            cleanup(peripheral)
-            log("BTScanner: Disconnect with error, will try retry in \(fetchBUIDRetry)")
-            return
-        }
-        cleanup(peripheral)
-    }
-
-    // MARK: CBPeripheralDelegate
-
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        guard error == nil else {
-            log("BTScanner: Error discovering services: \(String(describing: error?.localizedDescription))")
-            cleanup(peripheral)
-            return
-        }
-
-        // Discover the characteristic we want...
-        // Loop through the newly filled peripheral.services array, just in case there's more than one.
-        guard let services = peripheral.services, !services.isEmpty else {
-            retryBUID[peripheral.identifier] = Date().timeIntervalSince1970
-            cleanup(peripheral)
-            log("BTScanner: No services to discover, will try retry in \(fetchBUIDRetry)")
-            return
-        }
-
-        services.forEach {
-            peripheral.discoverCharacteristics([BT.transferCharacteristic.cbUUID], for: $0) // transferCharacteristic
-        }
-    }
-
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        guard error == nil else {
-            log("BTScanner: Error discovering characteristics \(String(describing: error?.localizedDescription))")
-            cleanup(peripheral)
-            return
-        }
-
-        guard let characteristics = service.characteristics else {
-            log("BTScanner: No characteristics to subscribe")
-            return
-        }
-
-        for characteristic in characteristics where acceptUUIDs.contains(characteristic.uuid) {
-            log("BTScanner: ReadValue for \(characteristic.uuid)")
-            peripheral.readValue(for: characteristic)
-        }
-    }
-
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        guard error == nil else {
-            log("BTScanner: Error discovering characteristics: \(String(describing: error?.localizedDescription))")
-            return
-        }
-        guard let newData = characteristic.value else {
-            log("BTScanner: No data in characteristic")
-            return
-        }
-
-        peripheral.setNotifyValue(false, for: characteristic)
-        centralManager.cancelPeripheralConnection(peripheral)
-
-        let stringFromData = newData.hexEncodedString()
-        log("BTScanner: Received: \(peripheral.identifier.uuidString) \(stringFromData)")
-
-        // set guid
-        if let index = discoveredDevices.firstIndex(where: { $0.bluetoothIdentifier == peripheral.identifier }) {
-            let oldDevice = discoveredDevices[index]
-            let device = BTScanUpdate(
-                id: oldDevice.id,
-                bluetoothIdentifier: peripheral.identifier,
-                backendIdentifier: stringFromData,
-                platform: .iOS,
-                date: Date(),
-                name: peripheral.name ?? oldDevice.name,
-                rssi: oldDevice.rssi
-            )
-
-            discoveredDevices[index] = device
-            invoke() { $0.didUpdate(device: device) }
-        } else {
-            log("BTScanner: Error, didn't found but received!")
-        }
-    }
-
-    func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
-        guard error == nil else {
-            log("BTScanner: Error changing notification state: \(String(describing: error?.localizedDescription))")
-            return
-        }
-
-        guard acceptUUIDs.contains(characteristic.uuid) else {
-            log("BTScanner: Error not accepted characteristic: \(characteristic)")
-            return
-        }
-
-        if characteristic.isNotifying {
-            log("BTScanner: Notification began on \(characteristic)")
-        } else {
-            log("BTScanner: Notification stoppped on \(characteristic). Disconnecting")
-            centralManager.cancelPeripheralConnection(peripheral)
-        }
-    }
-
-}
-
-private extension BTScanner {
 
     func cleanup() {
         discoveredDevices.forEach {
