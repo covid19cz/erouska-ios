@@ -75,7 +75,7 @@ class BTScanDevice: NSObject {
 
     private(set) var lastConnectionDate: Date?
 
-    var lastUpdateDate: Date?
+    var lastUpdateInvokeDate: Date?
 
     private(set) var lastError: Error?
 
@@ -114,6 +114,7 @@ class BTScanDevice: NSObject {
         super.init()
 
         update(with: peripheral, RSII: RSII, advertisementData: advertisementData)
+        lastUpdateInvokeDate = Date()
     }
 
     /// Called usually from central:didDiscover:peripheral:advertisementData:

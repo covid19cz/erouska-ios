@@ -160,7 +160,7 @@ extension BTScanner: CBCentralManagerDelegate {
 
             let newDevice = BTScanDevice(manager: central, peripheral: peripheral, RSII: RSSI.intValue, advertisementData: advertisementData)
             newDevice.observableState.bind { [weak self] state in
-                newDevice.lastUpdateDate? = Date()
+                newDevice.lastUpdateInvokeDate? = Date()
                 self?.invoke() { $0.didUpdate(device: newDevice.toScanUpdate()) }
             }.disposed(by: bag)
 
@@ -187,7 +187,7 @@ extension BTScanner: CBCentralManagerDelegate {
         if checkRefreshTime(device: device) {
             log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
 
-            device.lastUpdateDate? = Date()
+            device.lastUpdateInvokeDate? = Date()
             invoke() { $0.didUpdate(device: device.toScanUpdate()) }
         }
     }
@@ -223,7 +223,7 @@ extension BTScanner: CBCentralManagerDelegate {
 private extension BTScanner {
 
     func checkRefreshTime(device: BTScanDevice) -> Bool {
-        guard let timeInterval = device.lastUpdateDate?.timeIntervalSinceReferenceDate else { return false }
+        guard let timeInterval = device.lastUpdateInvokeDate?.timeIntervalSinceReferenceDate else { return false }
 
         guard !AppDelegate.inBackground else {
             if !reportedBackground {
