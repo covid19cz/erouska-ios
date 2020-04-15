@@ -18,7 +18,7 @@ protocol CSVMakering {
     var fromDate: Date? { get }
 
     func createFile(callback: @escaping Callback)
-
+    func deleteFile()
 }
 
 /*
@@ -34,8 +34,7 @@ final class CSVMaker: CSVMakering {
     private(set) var fromDate: Date?
 
     init?(fromDate: Date?) {
-        guard let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
-        self.fileURL = URL(fileURLWithPath: documents).appendingPathComponent("db.csv")
+        self.fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("db.csv")
         self.fromDate = fromDate
     }
 
@@ -81,4 +80,11 @@ final class CSVMaker: CSVMakering {
         callback(Result(fileURL, metadata), nil)
     }
 
+    func deleteFile() {
+        do {
+            try FileManager.default.removeItem(at: fileURL)
+        } catch let error as NSError {
+            print("Could not clear temp file CSVMaker: \(error)")
+        }
+    }
 }

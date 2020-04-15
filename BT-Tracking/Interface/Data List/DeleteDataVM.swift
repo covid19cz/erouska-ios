@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DeleteDataVM {
+final class DeleteDataVM {
     
     // MARK: - Properties
     
@@ -30,5 +30,8 @@ class DeleteDataVM {
     
     func deleteAllData() {
         scannerStore.deleteAllData()
+        #if !PROD
+        FileLogger.shared.purgeLogs()
+        #endif
     }
 }

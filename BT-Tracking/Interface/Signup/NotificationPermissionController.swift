@@ -9,8 +9,19 @@
 import UIKit
 import UserNotifications
 
-class NotificationPermissionController: UIViewController {
-    
+final class NotificationPermissionController: UIViewController {
+
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+
+    // MARK: -
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        buttonsView.connect(with: scrollView)
+    }
+
     // MARK: - Action
     
     @IBAction func continueAction(_ sender: Any) {

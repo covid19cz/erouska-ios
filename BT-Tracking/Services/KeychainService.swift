@@ -38,7 +38,6 @@ struct KeychainService {
             AppDelegate.shared.resetAdvertising()
         }
     }
-
 }
 
 private extension KeychainService {
@@ -49,7 +48,7 @@ private extension KeychainService {
     }
 
     enum SecurityKeys: String {
-        case className, attributeAccount, attributeService, matchLimit, matchLimitOne, returnData, valueData, genericPassword
+        case className, attributeAccount, attributeService, matchLimit, matchLimitOne, returnData, valueData, genericPassword, accessible, firstUnlock
 
         var rawValue: Self.RawValue {
             let key: CFString
@@ -70,6 +69,10 @@ private extension KeychainService {
                 key = kSecValueData
             case .genericPassword:
                 key = kSecClassGenericPassword
+            case .accessible:
+                key = kSecAttrAccessible
+            case .firstUnlock:
+                key = kSecAttrAccessibleAfterFirstUnlock
             }
             return String(format: key as String)
         }
@@ -97,7 +100,8 @@ private extension KeychainService {
             .className: SecurityKeys.genericPassword.rawValue,
             .attributeService: key.rawValue,
             .attributeAccount: "local",
-            .valueData: value as NSData
+            .valueData: value as NSData,
+            .accessible: SecurityKeys.firstUnlock.rawValue
         ]
         let keychainQuery = SecurityKeys.dictionaryFrom(nativeQuery)
 
@@ -143,5 +147,4 @@ private extension KeychainService {
         }
         return nil
     }
-
 }

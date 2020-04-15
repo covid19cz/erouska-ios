@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if !targetEnvironment(macCatalyst)
 import FirebaseRemoteConfig
+#endif
 
 extension AppDelegate {
 
@@ -74,6 +76,9 @@ enum RemoteConfigValueKey: String {
     case shareAppDynamicLink
 
     case emergencyNumber
+    
+    case helpMarkdown
+    case dataCollectionMarkdown
 }
 
 struct RemoteValues {
@@ -95,8 +100,29 @@ struct RemoteValues {
         .homepageLink: "http://erouska.cz",
         .shareAppDynamicLink: "https://covid19cz.page.link/share",
 
-        .emergencyNumber: 1212
+        .emergencyNumber: 1212,
+        
+        .helpMarkdown: helpMarkdownBackup,
+        .dataCollectionMarkdown: dataCollectionMarkdownBackup
     ]
+
+    private static func localValue(forResource resource: String, withExtension extension: String, withKey key: String) -> String {
+        guard
+            let path = Bundle.main.url(forResource: resource, withExtension: `extension`),
+            let dict = NSDictionary(contentsOf: path),
+            let value = dict.value(forKey: key) as? String
+        else { return "" }
+
+        return value
+    }
+
+    private static var helpMarkdownBackup: String {
+        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
+    }
+
+    private static var dataCollectionMarkdownBackup: String {
+        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "dataCollectionInfoBackup")
+    }
 
     /// doba scanování v sekundách, default = 120
     static var collectionSeconds: Int {
@@ -163,7 +189,7 @@ struct RemoteValues {
     }
 
     static var shareAppDynamicLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.shareAppDynamicLink)
+        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// nouzové číslo - 1212
@@ -171,4 +197,13 @@ struct RemoteValues {
         return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.emergencyNumber)
     }
 
+    /// Help markdown
+    static var helpMarkdown: String {
+        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.helpMarkdown)
+    }
+
+    /// Data collection markdown
+    static var dataCollectionMarkdown: String {
+        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.dataCollectionMarkdown)
+    }
 }

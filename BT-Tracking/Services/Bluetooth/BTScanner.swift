@@ -219,6 +219,12 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering, CBCen
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         log("BTScanner: didDisconnectPeripheral: \(peripheral), error: \(error?.localizedDescription ?? "none")")
 
+        if error != nil {
+            retryBUID[peripheral.identifier] = Date().timeIntervalSince1970
+            cleanup(peripheral)
+            log("BTScanner: Disconnect with error, will try retry in \(fetchBUIDRetry)")
+            return
+        }
         cleanup(peripheral)
     }
 

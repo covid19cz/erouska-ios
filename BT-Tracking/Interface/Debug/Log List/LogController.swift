@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class LogController: UIViewController {
+final class LogController: UIViewController {
     
     // MARK: - Outlets
     
@@ -17,8 +17,7 @@ class LogController: UIViewController {
     
     // MARK: - Properties
 
-    private var advertiser: BTAdvertising = AppDelegate.shared.advertiser
-    private var scanner: BTScannering = AppDelegate.shared.scanner
+    private let scanner: BTScannering = AppDelegate.shared.scanner
 
     private var logText: String = "" {
         didSet {
@@ -82,7 +81,7 @@ extension LogController: BTScannerDelegate {
         notification.sound = .none
 
         let request = UNNotificationRequest(identifier: "Scanning",  content: notification, trigger: nil)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        UNUserNotificationCenter.current().add(request)
 
     }
 }

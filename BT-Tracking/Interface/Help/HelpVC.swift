@@ -8,56 +8,43 @@
 
 import RxSwift
 import RxCocoa
-import RxDataSources
 
-class HelpVC: UIViewController, UITableViewDelegate {
+final class HelpVC: UIViewController {
 
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var textView: UITextView!
 
-    private var dataSource: RxTableViewSectionedAnimatedDataSource<HelpVM.SectionModel>!
-    private let viewModel = HelpVM()
     private let bag = DisposeBag()
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        setupTabBar()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupTabBar()
-        setupTableView()
+        textView.isEditable = false
+        textView.dataDetectorTypes = [.link]
+        setupContent()
     }
 
-    private func setupTabBar() {
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "questionmark.circle")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "questionmark.circle")?.resize(toWidth: 26)
-        }
+    override func viewLayoutMarginsDidChange() {
+        super.viewLayoutMarginsDidChange()
+
+        textView.textContainerInset = UIEdgeInsets(
+            top: 16,
+            left: view.layoutMargins.left,
+            bottom: 16,
+            right: view.layoutMargins.right
+        )
     }
 
-    // MARK: - TableView
-    private func setupTableView() {
-        tableView.tableFooterView = UIView()
-        tableView.allowsSelection = false
-        tableView.rowHeight = UITableView.automaticDimension
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
 
-        dataSource = RxTableViewSectionedAnimatedDataSource<HelpVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
-            let cell: UITableViewCell?
-            switch row {
-            case .main(let data):
-                let helpCell = tableView.dequeueReusableCell(withIdentifier: HelpCell.identifier, for: indexPath) as? HelpCell
-                helpCell?.configure(data: data)
-                cell = helpCell
-            }
-            return cell ?? UITableViewCell()
-        })
-
-        viewModel.sections
-            .drive(tableView.rx.items(dataSource: dataSource))
-            .disposed(by: bag)
-
-        tableView.rx.setDelegate(self)
-            .disposed(by: bag)
-
-        dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
+        guard #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
+        setupContent()
     }
 
     // MARK: - Actions
@@ -66,5 +53,18 @@ class HelpVC: UIViewController, UITableViewDelegate {
         guard let url = URL(string: RemoteValues.aboutLink) else { return }
         openURL(URL: url)
     }
+}
 
+private extension HelpVC {
+    func setupTabBar() {
+        if #available(iOS 13, *) {
+            navigationController?.tabBarItem.image = UIImage(systemName: "questionmark.circle")
+        } else {
+            navigationController?.tabBarItem.image = UIImage(named: "questionmark.circle")?.resize(toWidth: 26)
+        }
+    }
+
+    func setupContent() {
+        textView.attributedText = Markdown.attributedString(markdown: RemoteValues.helpMarkdown)
+    }
 }

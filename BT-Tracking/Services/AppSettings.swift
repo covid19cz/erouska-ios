@@ -11,9 +11,9 @@ import Foundation
 struct AppSettings {
 
     static let firebaseRegion = "europe-west1"
-
     static let backgroundModeAlertShownKey = "backgroundModeAlertShown"
-
+    static let appFirstTimeLaunchedKey = "appFirstTimeLaunched"
+    
     static let TUIDRotation: Int = 60 * 60
 
     static var state: ActiveAppViewModel.State? {
@@ -42,6 +42,15 @@ struct AppSettings {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: backgroundModeAlertShownKey)
+        }
+    }
+    
+    static var appFirstTimeLaunched: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: appFirstTimeLaunchedKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: appFirstTimeLaunchedKey)
         }
     }
 

@@ -10,15 +10,18 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RxDataSources
+#if !targetEnvironment(macCatalyst)
 import FirebaseAuth
 import FirebaseStorage
+#endif
 import Reachability
 
 final class DataListVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var activityView: UIView!
-    @IBOutlet weak var infoButton: UIBarButtonItem!
+    @IBOutlet private weak var infoButton: UIBarButtonItem!
     
     private var dataSource: RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>!
     private let viewModel = DataListVM()
@@ -28,20 +31,32 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     // MARK: - Lifecycle
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        setupTabBar()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "doc.plaintext")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
-        }
+        buttonsView.connect(with: tableView)
+        buttonsView.defaultContentInset.bottom += 10
+        buttonsView.resetInsets(in: tableView)
         
         setupTableView()
         viewModel.selectedSegmentIndex.accept(0)
     }
 
     // MARK: - TableView
+
+    private func setupTabBar() {
+        if #available(iOS 13, *) {
+            navigationController?.tabBarItem.image = UIImage(systemName: "doc.plaintext")
+        } else {
+            navigationController?.tabBarItem.image = UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
+        }
+    }
 
     private func setupTableView() {
         tableView.tableFooterView = UIView()
@@ -89,7 +104,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         }))
         controller.addAction(UIAlertAction(title: "Ne", style: .cancel, handler: { _ in
             self.showError(
-                title: "Sdílejte data jen v případě, že vás pracovník hygienické stnaice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu",
+                title: "Sdílejte data jen v případě, že vás pracovník hygienické stanice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu",
                 message: ""
             )
         }))
@@ -98,15 +113,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     @IBAction private func infoButtonAction(sender: Any?) {
-        let controller = UIAlertController(
-            title: "Jedná se o veškeré záznamy měření signálu okolních telefonů s aplikací eRouška za posledních \(RemoteValues.persistDataDays) dní. Data neobsahují údaje o poloze ani jiné osobní údaje. Odeslat hygienikům je můžete pouze vy.",
-            message: nil,
-            preferredStyle: .alert
-        )
-        controller.addAction(UIAlertAction(title: "Zavřít", style: .default, handler: nil))
-        controller.popoverPresentationController?.sourceView = sender as? UIView
-
-        present(controller, animated: true, completion: nil)
+        navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
     }
 
     private func sendReport() {
@@ -141,7 +148,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
                 self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata, fileDate: fileDate)
             } else if let error = error {
                 self.activityView.isHidden = true
-                self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkánímy")
+                self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkáními")
             }
         })
     }
@@ -160,6 +167,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             guard let self = self else { return }
             self.activityView.isHidden = true
 
+            self.writer?.deleteFile()
             if let error = error {
                 log("FirebaseUpload: Error \(error.localizedDescription)")
 

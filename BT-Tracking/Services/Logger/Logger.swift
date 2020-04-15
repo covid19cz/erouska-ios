@@ -9,10 +9,14 @@
 import Foundation
 
 func log(_ text: String) {
+    #if !PROD
     DispatchQueue.main.async {
         Log.log(text)
         FileLogger.shared.writeLog(text)
     }
+    #elseif DEBUG
+    print(text)
+    #endif
 }
 
 protocol LogDelegate: class {

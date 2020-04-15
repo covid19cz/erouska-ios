@@ -12,6 +12,9 @@ import UserNotifications
 
 final class BluetoothActivationController: UIViewController, CBPeripheralManagerDelegate {
 
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    
     private var peripheralManager: CBPeripheralManager?
 
     private var bluetoothNotDetermined: Bool {
@@ -29,6 +32,14 @@ final class BluetoothActivationController: UIViewController, CBPeripheralManager
     }
 
     private var checkAfterBecomeActive: Bool = false
+
+    // MARK: -
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        buttonsView.connect(with: scrollView)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

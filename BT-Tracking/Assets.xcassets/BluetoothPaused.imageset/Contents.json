@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icon-ok 1.png",
+      "filename" : "Pause.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icon-ok 1@2x.png",
+      "filename" : "Pause@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icon-ok 1@3x.png",
+      "filename" : "Pause@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FileLogController: UIViewController {
+final class FileLogController: UIViewController {
 
     // MARK: - Outlets
 
@@ -28,6 +28,10 @@ class FileLogController: UIViewController {
         super.viewWillAppear(animated)
 
         textView.text = FileLogger.shared.getLog()
+    }
+
+    deinit {
+        timer?.invalidate()
     }
 
     // MARK: - Setup
