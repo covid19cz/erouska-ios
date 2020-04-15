@@ -12,9 +12,8 @@ import SwiftyMarkdown
 struct Markdown {
     
     static func attributedString(markdown: String) -> NSAttributedString {
-        var editedMD = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
+        var editedMD = markdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
         editedMD = editedMD.replacingOccurrences(of: "(.pdf)", with: "")
-        print(editedMD)
 
         let md = SwiftyMarkdown(string: editedMD)
 
@@ -22,7 +21,7 @@ struct Markdown {
         md.body.fontSize = body.pointSize
 
         let h1 = UIFont.preferredFont(forTextStyle: .headline)
-        md.h1.fontSize = h1 .pointSize
+        md.h1.fontSize = h1.pointSize
         md.h1.fontStyle = .bold
 
         let h2 = UIFont.preferredFont(forTextStyle: .subheadline)
@@ -40,5 +39,4 @@ struct Markdown {
         attributedText.addAttribute(.foregroundColor, value: textColor, range: NSMakeRange(0, attributedText.length))
         return attributedText
     }
-
 }
