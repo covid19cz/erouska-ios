@@ -160,6 +160,7 @@ extension BTScanner: CBCentralManagerDelegate {
 
             let newDevice = BTScanDevice(manager: central, peripheral: peripheral, RSII: RSSI.intValue, advertisementData: advertisementData)
             newDevice.observableState.bind { [weak self] state in
+                newDevice.lastUpdateDate? = Date()
                 self?.invoke() { $0.didUpdate(device: newDevice.toScanUpdate()) }
             }.disposed(by: bag)
 
@@ -172,7 +173,7 @@ extension BTScanner: CBCentralManagerDelegate {
 
         device.update(with: peripheral, RSII: RSSI.intValue, advertisementData: advertisementData)
 
-        if device.isReadyToConnect {
+        if device.isReadyToConnect, device.backendIdentifier == nil {
             device.connect(to: peripheral)
         }
 
@@ -185,6 +186,8 @@ extension BTScanner: CBCentralManagerDelegate {
 
         if checkRefreshTime(device: device) {
             log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
+
+            device.lastUpdateDate? = Date()
             invoke() { $0.didUpdate(device: device.toScanUpdate()) }
         }
     }
@@ -220,16 +223,17 @@ extension BTScanner: CBCentralManagerDelegate {
 private extension BTScanner {
 
     func checkRefreshTime(device: BTScanDevice) -> Bool {
-        guard let timeInterval = device.lastDiscoveryDate?.timeIntervalSinceReferenceDate else { return false }
+        guard let timeInterval = device.lastUpdateDate?.timeIntervalSinceReferenceDate else { return false }
+
         guard !AppDelegate.inBackground else {
             if !reportedBackground {
                 log("Background refresh limit Disabled")
             }
             reportedBackground = true
-            return false
+            return true
         }
         reportedBackground = false
-        return timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate
+        return timeInterval + deviceUpdateLimit < Date.timeIntervalSinceReferenceDate
     }
 
     func checkDeviceType(peripheral: CBPeripheral, advertisementData: [String : Any]) -> BTPlatform {

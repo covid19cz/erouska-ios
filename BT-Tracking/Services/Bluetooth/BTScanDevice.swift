@@ -75,6 +75,8 @@ class BTScanDevice: NSObject {
 
     private(set) var lastConnectionDate: Date?
 
+    var lastUpdateDate: Date?
+
     private(set) var lastError: Error?
 
     var RSII: Int {
@@ -120,11 +122,14 @@ class BTScanDevice: NSObject {
         lastDiscoveryDate = Date()
         numberOfUpdates += 1
 
-        if peripheral.name == "iPad" || peripheral.name == "iPhone" {
+        if let name = peripheral.name, (name.hasPrefix("iPhone") || name.hasPrefix("iPad")) {
             platform = .iOS
         }
 
         RSIIs.append(RSII)
+        if RSIIs.count > 2_000 {
+            RSIIs.removeFirst()
+        }
 
         guard backendIdentifier == nil else { return }
 
