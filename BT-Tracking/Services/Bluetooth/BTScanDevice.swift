@@ -41,6 +41,8 @@ class BTScanDevice: NSObject {
         case conntecting
         /// is conected to bt device
         case connected
+        /// reading value buid value
+        case reading
         /// disconncted - failed to connect to bt device
         case disconnected
         /// scanner is waiting for bt device connection retry
@@ -118,6 +120,10 @@ class BTScanDevice: NSObject {
         lastDiscoveryDate = Date()
         numberOfUpdates += 1
 
+        if peripheral.name == "iPad" || peripheral.name == "iPhone" {
+            platform = .iOS
+        }
+
         RSIIs.append(RSII)
 
         guard backendIdentifier == nil else { return }
@@ -139,16 +145,20 @@ class BTScanDevice: NSObject {
     }
 
     func connect(to peripheral: CBPeripheral) {
+        guard [State.intial, .idle].contains(state) else { return }
+
         state = .conntecting
         manager.connect(peripheral, options: nil)
     }
 
     func discoverServices(from peripheral: CBPeripheral) {
+        guard state == .conntecting else { return }
+
         state = .connected
         lastConnectionDate = Date()
 
         peripheral.delegate = self
-        peripheral.discoverServices(Self.AcceptedUUIDs)
+        peripheral.discoverServices([BT.transferService.cbUUID])
     }
 
     func didFail(to peripheral: CBPeripheral, error: Error?) {
@@ -171,6 +181,7 @@ class BTScanDevice: NSObject {
         }
 
         if [State.idle, .disconnected, .waitingForRetry].contains(state) {
+            cleanupConnection(peripheral)
             return
         }
         didFail(to: peripheral, error: nil)
@@ -181,7 +192,7 @@ class BTScanDevice: NSObject {
             id: id,
             bluetoothIdentifier: peripheral.identifier,
             backendIdentifier: backendIdentifier,
-            platform: platform == .iOS ? .iOS : .android,
+            platform: platform,
             date: lastDiscoveryDate ?? firstDiscoveryDate ?? Date(),
             name: nil,
             rssi: RSII,
@@ -211,7 +222,7 @@ class BTScanDevice: NSObject {
     // MARK: - Equatable
 
     override func isEqual(_ object: Any?) -> Bool {
-        return self.id == (object as? BTScanUpdate)?.id
+        return id == (object as? BTScanDevice)?.id
     }
 
     static func == (lhs: BTScanDevice, rhs: BTScanDevice) -> Bool {
@@ -275,8 +286,7 @@ extension BTScanDevice: CBPeripheralDelegate {
 private extension BTScanDevice {
 
     func didDiscoverServices(to peripheral: CBPeripheral) {
-        state = .connected
-        lastConnectionDate = Date()
+        guard state == .connected else { return }
 
         // Discover the characteristic we want...
         // Loop through the newly filled peripheral.services array, just in case there's more than one.
@@ -292,25 +302,28 @@ private extension BTScanDevice {
     }
 
     func didDiscoverCharacteristics(for peripheral: CBPeripheral, service: CBService) {
+        guard state == .connected else { return }
+
         guard let characteristics = service.characteristics else {
             didFail(to: peripheral, error: nil)
             log("BTScanner: No characteristics to subscribe")
             return
         }
 
-        var foundCharacteristic: Bool = false
         for characteristic in characteristics where Self.AcceptedUUIDs.contains(characteristic.uuid) {
             log("BTScanner: ReadValue for \(characteristic.uuid)")
+            state = .reading
             peripheral.readValue(for: characteristic)
-            foundCharacteristic = true
         }
 
-        if !foundCharacteristic {
+        if state != .reading {
             didFail(to: peripheral, error: nil)
         }
     }
 
     func didReadValue(from peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+        guard state == .reading else { return }
+
         guard let newData = characteristic.value else {
             didFail(to: peripheral, error: nil)
             log("BTScanner: No data in characteristic")

@@ -177,9 +177,7 @@ extension BTScanner: CBCentralManagerDelegate {
         }
 
         if device.backendIdentifier != nil,
-            let otherDevice = discoveredDevices.first(where: { $0.value.backendIdentifier == device.backendIdentifier })?.value,
-            device != otherDevice {
-
+            let otherDevice = discoveredDevices.first(where: { $0.value.backendIdentifier == device.backendIdentifier && $0.value != device })?.value {
             otherDevice.mergeWith(scan: device)
             discoveredDevices[peripheral.identifier] = otherDevice
             device = otherDevice
