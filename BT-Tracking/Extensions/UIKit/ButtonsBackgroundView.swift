@@ -80,10 +80,18 @@ class ButtonsBackgroundView: UIView {
 
         scrollView.rx.contentOffset.asDriver().drive(onNext: { [weak self] offset in
             guard let self = self else { return }
-            let bottomContentOffsetDiff = scrollView.contentInset.bottom - self.defaultContentInset.bottom
-            let hideGradient = offset.y - scrollView.adjustedContentInset.top + scrollView.bounds.height + Self.BottomMargin - bottomContentOffsetDiff >= scrollView.contentSize.height
-            self.isGradientHidden = hideGradient
+            self.updateOffset(in: scrollView, offset: offset)
         }).disposed(by: disposeBag)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.updateOffset(in: scrollView, offset: scrollView.contentOffset)
+        }
+    }
+
+    func updateOffset(in scrollView: UIScrollView, offset: CGPoint) {
+        let bottomContentOffsetDiff = scrollView.contentInset.bottom - defaultContentInset.bottom
+        let hideGradient = offset.y - scrollView.adjustedContentInset.top + scrollView.bounds.height + Self.BottomMargin - bottomContentOffsetDiff >= scrollView.contentSize.height
+        isGradientHidden = hideGradient
     }
 
 }

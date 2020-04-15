@@ -14,7 +14,7 @@ struct Scan: Equatable {
     let bluetoothIdentifier: String
     let deviceIdentifier: String
     let buid: String
-    let platform: BTDevice.Platform
+    let platform: BTPlatform
     let name: String
     let date: Date
     let rssi: Int
