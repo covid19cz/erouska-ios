@@ -234,7 +234,7 @@ private extension BTScanner {
         return timeInterval + deviceUpdateLimit > Date.timeIntervalSinceReferenceDate
     }
 
-    func checkDeviceType(peripheral: CBPeripheral, advertisementData: [String : Any]) -> BTScanUpdate.Platform {
+    func checkDeviceType(peripheral: CBPeripheral, advertisementData: [String : Any]) -> BTPlatform {
         return advertisementData["kCBAdvDataServiceData"] == nil ? .iOS : .android
     }
 

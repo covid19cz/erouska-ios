@@ -9,15 +9,11 @@
 import Foundation
 
 struct BTScanUpdate {
-    enum Platform: String {
-        case iOS, android = "Android"
-    }
-
     let id: UUID
     var deviceIdentifier: String
     let bluetoothIdentifier: UUID // CBPeripheral identifier, on android is very random
     var backendIdentifier: String? // buid
-    var platform: Platform
+    var platform: BTPlatform
     var date: Date
     var name: String?
     var rssi: Int
@@ -26,7 +22,7 @@ struct BTScanUpdate {
     init(id: UUID,
          bluetoothIdentifier: UUID,
          backendIdentifier: String? = nil,
-         platform: BTScanUpdate.Platform,
+         platform: BTPlatform,
          date: Date,
          name: String? = nil,
          rssi: Int,

@@ -22,9 +22,9 @@ final class ScanRealm: Object {
     @objc dynamic var avargeRssi = 0
     @objc dynamic var medianRssi = 0
     
-    var platform: BTScanUpdate.Platform? {
+    var platform: BTPlatform? {
         get {
-            BTScanUpdate.Platform.init(rawValue: _platform)
+            BTPlatform(rawValue: _platform)
         }
         set {
             guard let platform = newValue else { return }

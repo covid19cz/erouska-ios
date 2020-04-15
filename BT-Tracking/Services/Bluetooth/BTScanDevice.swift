@@ -11,7 +11,7 @@ import CoreBluetooth
 import RxSwift
 
 enum BTPlatform: String {
-    case unknown, iOS, android = "Android"
+    case unknown = "Unknown", iOS, android = "Android"
 }
 
 class BTScanDevice: NSObject {
