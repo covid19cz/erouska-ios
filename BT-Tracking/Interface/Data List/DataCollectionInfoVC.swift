@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import MarkdownKit
 
 final class DataCollectionInfoVC: UIViewController {
 
-    // MARK: Private Properties
+    // MARK: - Private Properties
+
     private let textView = UITextView()
 
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +24,7 @@ final class DataCollectionInfoVC: UIViewController {
         setupContent()
     }
 
-    // MARK: Setup
+    // MARK: - Setup
 
     private func initViews() {
         title = "Informace o sběru dat"
@@ -31,6 +32,7 @@ final class DataCollectionInfoVC: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
 
         textView.isEditable = false
+        textView.dataDetectorTypes = [.link]
     }
 
     override func viewLayoutMarginsDidChange() {
@@ -43,6 +45,15 @@ final class DataCollectionInfoVC: UIViewController {
             right: view.layoutMargins.right
         )
     }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
+        setupContent()
+    }
+
+    // MARK: - Private
 
     private func layoutViews() {
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,20 +68,6 @@ final class DataCollectionInfoVC: UIViewController {
     }
 
     private func setupContent() {
-        let markdownParser = MarkdownParser(font: UIFont.preferredFont(forTextStyle: .body))
-        markdownParser.list.indicator = "•"
-        let markdownText = RemoteValues.dataCollectionMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
-
-        let attributedText = NSMutableAttributedString(attributedString: markdownParser.parse(markdownText))
-        var textColor: UIColor {
-            if #available(iOS 13.0, *) {
-                return .label
-            } else {
-                return .black
-            }
-        }
-        attributedText.addAttribute(.foregroundColor, value: textColor, range: NSMakeRange(0, attributedText.length))
-
-        textView.attributedText = attributedText
+        textView.attributedText = Markdown.attributedString(markdown: RemoteValues.dataCollectionMarkdown)
     }
 }

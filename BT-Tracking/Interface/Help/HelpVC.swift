@@ -8,7 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import MarkdownKit
 
 final class HelpVC: UIViewController {
 
@@ -25,7 +24,9 @@ final class HelpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        showContent()
+        textView.isEditable = false
+        textView.dataDetectorTypes = [.link]
+        setupContent()
     }
 
     override func viewLayoutMarginsDidChange() {
@@ -37,6 +38,13 @@ final class HelpVC: UIViewController {
             bottom: 16,
             right: view.layoutMargins.right
         )
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
+        setupContent()
     }
 
     // MARK: - Actions
@@ -56,23 +64,7 @@ private extension HelpVC {
         }
     }
 
-    func showContent() {
-        let markdownParser = MarkdownParser(font: UIFont.preferredFont(forTextStyle: .body))
-        markdownParser.list.indicator = "•"
-        var helpMarkdown = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
-        helpMarkdown = helpMarkdown.replacingOccurrences(of: "([Android](https://github.com/covid19cz/erouska-android), [iOS](https://github.com/covid19cz/erouska-ios))", with: "pro [Android](https://github.com/covid19cz/erouska-android) a [iOS](https://github.com/covid19cz/erouska-ios)")
-        helpMarkdown = helpMarkdown.replacingOccurrences(of: "[iOS](https://github.com/covid19cz/erouska-ios))", with: "[iOS](https://github.com/covid19cz/erouska-ios) )")
-
-        let attributedText = NSMutableAttributedString(attributedString: markdownParser.parse(helpMarkdown))
-        var textColor: UIColor {
-            if #available(iOS 13.0, *) {
-                return .label
-            } else {
-                return .black
-            }
-        }
-        attributedText.addAttribute(.foregroundColor, value: textColor, range: NSMakeRange(0, attributedText.length))
-
-        textView.attributedText = attributedText
+    func setupContent() {
+        textView.attributedText = Markdown.attributedString(markdown: RemoteValues.helpMarkdown)
     }
 }
