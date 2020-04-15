@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BTScanUpdate {
+struct BTScan {
     let id: UUID
     var deviceIdentifier: String
     let bluetoothIdentifier: UUID // CBPeripheral identifier, on android is very random
@@ -57,7 +57,7 @@ struct BTScanUpdate {
     }    
 }
 
-extension BTScanUpdate: Equatable {
+extension BTScan: Equatable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.backendIdentifier == rhs.backendIdentifier
     }

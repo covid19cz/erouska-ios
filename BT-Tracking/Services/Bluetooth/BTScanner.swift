@@ -35,8 +35,8 @@ protocol BTScannering: class {
 }
 
 protocol BTScannerDelegate: class {
-    func didFind(device: BTScanUpdate)
-    func didUpdate(device: BTScanUpdate)
+    func didFind(device: BTScan)
+    func didUpdate(device: BTScan)
 }
 
 final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering {
@@ -220,7 +220,7 @@ extension BTScanner: CBCentralManagerDelegate {
 private extension BTScanner {
 
     func checkRefreshTime(device: BTScanDevice) -> Bool {
-        guard let timeInterval = device.lastConnectionDate?.timeIntervalSinceReferenceDate else { return false }
+        guard let timeInterval = device.lastDiscoveryDate?.timeIntervalSinceReferenceDate else { return false }
         guard !AppDelegate.inBackground else {
             if !reportedBackground {
                 log("Background refresh limit Disabled")

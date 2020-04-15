@@ -36,7 +36,7 @@ final class ScanRealm: Object {
         return "id"
     }
     
-    convenience init(device: BTScanUpdate, avargeRssi: Int, medianRssi: Int, startDate: Date, endDate: Date) {
+    convenience init(device: BTScan, avargeRssi: Int, medianRssi: Int, startDate: Date, endDate: Date) {
         self.init()
         
         self.id = UUID().uuidString

@@ -187,8 +187,8 @@ class BTScanDevice: NSObject {
         didFail(to: peripheral, error: nil)
     }
 
-    func toScanUpdate() -> BTScanUpdate {
-        return BTScanUpdate(
+    func toScanUpdate() -> BTScan {
+        return BTScan(
             id: id,
             bluetoothIdentifier: peripheral.identifier,
             backendIdentifier: backendIdentifier,

@@ -34,15 +34,15 @@ final class ScannerStore {
     private let scanObjects: Results<ScanRealm>
     private let bag = DisposeBag()
     
-    private let didFindSubject = PublishRelay<BTScanUpdate>()
-    private let didUpdateSubject = PublishRelay<BTScanUpdate>()
-    private let didReceive: Observable<BTScanUpdate>
+    private let didFindSubject = PublishRelay<BTScan>()
+    private let didUpdateSubject = PublishRelay<BTScan>()
+    private let didReceive: Observable<BTScan>
     private let timer: Observable<Int>
     private var period: BehaviorSubject<Void> {
         return BehaviorSubject<Void>(value: ())
     }
     private var currentPeriod: BehaviorSubject<Void>?
-    private var devices = [BTScanUpdate]()
+    private var devices = [BTScan]()
     
     init(scanningPeriod: Int = 60, dataPurgeInterval: TimeInterval = 14 * 86400) {
         self.scanningPeriod = scanningPeriod
@@ -104,7 +104,7 @@ final class ScannerStore {
         self.deleteOldRecordsIfNeeded()
     }
     
-    private func process(_ devices: [BTScanUpdate], at date: Date) {
+    private func process(_ devices: [BTScan], at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let averaged = grouped.map { group -> ScanRealm? in
             guard var device = group.value.first,
@@ -128,7 +128,7 @@ final class ScannerStore {
     private func updateCurrent(at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let latestDevices = grouped
-            .map { group -> BTScanUpdate? in
+            .map { group -> BTScan? in
                 return group.value.sorted(by: { $0.date > $1.date }).first
             }
             .compactMap { $0 }
@@ -183,11 +183,11 @@ final class ScannerStore {
 
 extension ScannerStore: BTScannerDelegate {
 
-    func didFind(device: BTScanUpdate) {
+    func didFind(device: BTScan) {
         didFindSubject.accept(device)
     }
 
-    func didUpdate(device: BTScanUpdate) {
+    func didUpdate(device: BTScan) {
         didUpdateSubject.accept(device)
     }
 }
