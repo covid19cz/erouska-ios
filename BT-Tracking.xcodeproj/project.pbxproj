@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */; };
+		46269D0624472BAF00FA3DB2 /* AboutDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */; };
+		46269D0824472BBF00FA3DB2 /* ScanningInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */; };
 		4657C454243BD03D009E0E85 /* NotificationPermissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657C453243BD03D009E0E85 /* NotificationPermissionController.swift */; };
 		46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */; };
 		46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */; };
@@ -184,6 +186,8 @@
 /* Begin PBXFileReference section */
 		36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.debug.xcconfig"; sourceTree = "<group>"; };
 		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
+		46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDataCell.swift; sourceTree = "<group>"; };
+		46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInfoCell.swift; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		4657C453243BD03D009E0E85 /* NotificationPermissionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionController.swift; sourceTree = "<group>"; };
 		46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnregisterUser.storyboard; sourceTree = "<group>"; };
@@ -495,6 +499,8 @@
 			children = (
 				80AD970C2429318B00AEA661 /* DataCell.swift */,
 				5EE9D814242F74F5002F833C /* DataHeaderCell.swift */,
+				46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */,
+				46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -949,8 +955,10 @@
 				46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
 				8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */,
+				46269D0824472BBF00FA3DB2 /* ScanningInfoCell.swift in Sources */,
 				80ECB96924291E2F00E57601 /* CSVWriter.swift in Sources */,
 				80B94555242B7B460052CD9F /* ActiveAppViewModel.swift in Sources */,
+				46269D0624472BAF00FA3DB2 /* AboutDataCell.swift in Sources */,
 				5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */,
 				80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,

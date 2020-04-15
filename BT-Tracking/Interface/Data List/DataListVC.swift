@@ -66,6 +66,12 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
             let cell: UITableViewCell?
             switch row {
+            case .scanningInfo:
+                let scanningInfoCell = tableView.dequeueReusableCell(withIdentifier: ScanningInfoCell.identifier, for: indexPath) as? ScanningInfoCell
+                cell = scanningInfoCell
+            case .aboutData:
+                let aboutDataCell = tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath) as? AboutDataCell
+                cell = aboutDataCell
             case .header(let scansCount):
                 let headerCell = tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath) as? DataHeaderCell
                 headerCell?.configure(with: scansCount)
@@ -181,5 +187,4 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
     }
-
 }

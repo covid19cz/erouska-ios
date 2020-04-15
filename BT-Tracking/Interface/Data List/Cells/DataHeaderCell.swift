@@ -13,7 +13,8 @@ final class DataHeaderCell: UITableViewCell {
     static let identifier = "headerCell"
 
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
-
+    @IBOutlet private weak var aboutDataLabel: UILabel!
+    
     func configure(with numberOfScans: Int) {
         segmentedControl.setTitle("Vše", forSegmentAt: 0)
         segmentedControl.setTitle("Blízka setkání", forSegmentAt: 1)
