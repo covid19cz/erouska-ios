@@ -12,7 +12,10 @@ import SwiftyMarkdown
 struct Markdown {
     
     static func attributedString(markdown: String) -> NSAttributedString {
-        let editedMD = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
+        var editedMD = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
+        editedMD = editedMD.replacingOccurrences(of: "(.pdf)", with: "")
+        print(editedMD)
+
         let md = SwiftyMarkdown(string: editedMD)
 
         let body = UIFont.preferredFont(forTextStyle: .body)

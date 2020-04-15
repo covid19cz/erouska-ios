@@ -24,6 +24,7 @@ final class HelpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        textView.isEditable = false
         setupContent()
     }
 
