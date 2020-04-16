@@ -52,7 +52,7 @@ struct KeyboardHandler {
                 guard contentSize.height - height > -60 else { return }
                 self.scrollView.scrollRectToVisible(CGRect(x: 0, y: (contentSize.height - height), width: contentSize.width, height: height), animated: true)
             }
-        }, completion: nil)
+        })
     }
 
 }

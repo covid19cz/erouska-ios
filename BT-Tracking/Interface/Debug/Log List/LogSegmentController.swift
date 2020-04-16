@@ -56,7 +56,7 @@ final class LogSegmentController: UIViewController {
 
     @IBAction func shareLogsAction(_ sender: Any) {
         let shareController = UIActivityViewController(activityItems: [FileLogger.shared.fileURL], applicationActivities: nil)
-        present(shareController, animated: true, completion: nil)
+        present(shareController, animated: true)
     }
 
     @IBAction private func purgeLogsAction(_ sender: Any) {
@@ -65,11 +65,11 @@ final class LogSegmentController: UIViewController {
             self.pergeLogs()
         }))
         controller.addAction(UIAlertAction(title: "No", style: .cancel))
-        present(controller, animated: true, completion: nil)
+        present(controller, animated: true)
     }
 
     @IBAction private func closeAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 
     private func pergeLogs() {

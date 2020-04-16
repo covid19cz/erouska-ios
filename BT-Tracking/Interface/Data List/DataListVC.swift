@@ -76,9 +76,9 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             case .aboutData:
                 let aboutDataCell = tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath) as? AboutDataCell
                 cell = aboutDataCell
-            case .header(let scansCount):
+            case .header:
                 let headerCell = tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath) as? DataHeaderCell
-                headerCell?.configure(with: scansCount)
+                headerCell?.configure()
                 cell = headerCell
             case .data(let scan):
                 let scanCell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
@@ -127,14 +127,14 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             )
         }))
         controller.preferredAction = controller.actions.first
-        present(controller, animated: true, completion: nil)
+        present(controller, animated: true)
     }
 
 }
 
 private extension DataListVC {
 
-    func sendReport() {
+    private func sendReport() {
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
             showError(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",

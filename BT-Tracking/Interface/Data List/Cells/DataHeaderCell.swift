@@ -15,7 +15,7 @@ final class DataHeaderCell: UITableViewCell {
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var aboutDataLabel: UILabel!
     
-    func configure(with numberOfScans: Int) {
+    func configure() {
         segmentedControl.setTitle("Vše", forSegmentAt: 0)
         segmentedControl.setTitle("Blízka setkání", forSegmentAt: 1)
     }
