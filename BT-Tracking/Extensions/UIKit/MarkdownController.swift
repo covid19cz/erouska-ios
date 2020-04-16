@@ -10,9 +10,15 @@ import UIKit
 
 class MarkdownController: UIViewController {
 
+    // MARK: - Public Properties
+
+    var markdownContent: String {
+        ""
+    }
+
     // MARK: - Private Properties
 
-    let textView = UITextView()
+    private let textView = UITextView()
 
     // MARK: - Lifecycle
 
@@ -23,10 +29,6 @@ class MarkdownController: UIViewController {
         layoutViews()
     }
 
-    func setupContent() {
-
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -34,6 +36,10 @@ class MarkdownController: UIViewController {
     }
 
     // MARK: - Setup
+
+    private func setupContent() {
+        textView.attributedText = Markdown.attributedString(markdown: markdownContent)
+    }
 
     private func initViews() {
         textView.text = ""

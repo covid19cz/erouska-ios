@@ -151,7 +151,7 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                                     <constraint firstAttribute="height" constant="44" id="uqi-m7-6p7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Zavřit">
+                                <state key="normal" title="Zavřít">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
                                 <connections>
