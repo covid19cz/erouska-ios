@@ -6,14 +6,9 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import RxSwift
-import RxCocoa
+import UIKit
 
-final class HelpVC: UIViewController {
-
-    @IBOutlet private weak var textView: UITextView!
-
-    private let bag = DisposeBag()
+final class HelpVC: MarkdownController {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,35 +16,8 @@ final class HelpVC: UIViewController {
         setupTabBar()
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        textView.isEditable = false
-        textView.dataDetectorTypes = [.link]
-        textView.text = ""
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupContent()
-    }
-
-    override func viewLayoutMarginsDidChange() {
-        super.viewLayoutMarginsDidChange()
-
-        textView.textContainerInset = UIEdgeInsets(
-            top: 16,
-            left: view.layoutMargins.left,
-            bottom: 16,
-            right: view.layoutMargins.right
-        )
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        guard #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
-        setupContent()
+    override func setupContent() {
+        textView.attributedText = Markdown.attributedString(markdown: RemoteValues.helpMarkdown)
     }
 
     // MARK: - Actions
@@ -61,6 +29,7 @@ final class HelpVC: UIViewController {
 }
 
 private extension HelpVC {
+
     func setupTabBar() {
         if #available(iOS 13, *) {
             navigationController?.tabBarItem.image = UIImage(systemName: "questionmark.circle")
@@ -69,7 +38,4 @@ private extension HelpVC {
         }
     }
 
-    func setupContent() {
-        textView.attributedText = Markdown.attributedString(markdown: RemoteValues.helpMarkdown)
-    }
 }

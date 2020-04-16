@@ -49,8 +49,9 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: animated)
     }
 
     // MARK: - TableView
@@ -106,6 +107,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     // MARK: - Actions
+
     @IBAction private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         viewModel.selectedSegmentIndex.accept(sender.selectedSegmentIndex)
     }
@@ -129,7 +131,11 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         present(controller, animated: true, completion: nil)
     }
 
-    private func sendReport() {
+}
+
+private extension DataListVC {
+
+    func sendReport() {
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
             showError(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
@@ -150,7 +156,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         createCSVFile()
     }
 
-    private func createCSVFile() {
+    func createCSVFile() {
         let fileDate = Date()
 
         writer = CSVMaker(fromDate: nil) // AppSettings.lastUploadDate, set to last upload date, if we want increment upload
@@ -166,7 +172,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         })
     }
 
-    private func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
+    func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
         let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(KeychainService.BUID ?? "")"
         let fileName = "\(Int(fileDate.timeIntervalSince1970 * 1000)).csv"
 
@@ -194,4 +200,5 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
     }
+
 }
