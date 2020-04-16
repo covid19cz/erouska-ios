@@ -11,7 +11,6 @@ import FirebaseAuth
 
 final class UnregisterUserVC: UIViewController {
 
-    @IBOutlet private weak var activityView: UIView!
     @IBOutlet private weak var textLabel: UILabel!
 
     override func viewDidLoad() {
@@ -23,11 +22,11 @@ final class UnregisterUserVC: UIViewController {
     // MARK: - Actions
 
     @IBAction private func unregisterAction() {
-        activityView.isHidden = false
+        showProgress()
         
         AppDelegate.shared.functions.httpsCallable("deleteUser").call() { [weak self] result, error in
             guard let self = self else { return }
-            self.activityView.isHidden = true
+            self.hideProgress()
 
             if let error = error as NSError? {
                 Log.log("deleteUser request failed with error: \(error.localizedDescription)")

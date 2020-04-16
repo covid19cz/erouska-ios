@@ -37,7 +37,6 @@ final class AccountActivationController: UIViewController {
     @IBOutlet private weak var phoneNumberTextField: UITextField!
     @IBOutlet private weak var actionButton: UIButton!
     @IBOutlet private weak var permissionSwitch: UISwitch!
-    @IBOutlet private weak var activityView: UIView!
 
     private var firstAppear: Bool = true
 
@@ -91,13 +90,13 @@ final class AccountActivationController: UIViewController {
             return
         }
 
-        activityView.isHidden = false
+        showProgress()
         view.endEditing(true)
 
         let phone = phonePrefix.value + phoneNumber.value
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self] verificationID, error in
             guard let self = self else { return }
-            self.activityView.isHidden = true
+            self.hideProgress()
 
             if let error = error {
                 log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")

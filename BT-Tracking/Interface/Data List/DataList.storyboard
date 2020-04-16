@@ -203,20 +203,6 @@
                                     <constraint firstItem="Twl-oa-ZjU" firstAttribute="leading" secondItem="qq0-b5-X4V" secondAttribute="leadingMargin" id="kn8-7W-NMW"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgp-uY-jGu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-iX-N9x">
-                                        <rect key="frame" x="188.5" y="388" width="37" height="37"/>
-                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="DO9-iX-N9x" firstAttribute="centerY" secondItem="fgp-uY-jGu" secondAttribute="centerY" id="ij7-x1-1mm"/>
-                                    <constraint firstItem="DO9-iX-N9x" firstAttribute="centerX" secondItem="fgp-uY-jGu" secondAttribute="centerX" id="qfT-mq-Jlc"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -226,18 +212,9 @@
                             <constraint firstItem="qq0-b5-X4V" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="Irq-7h-nuL"/>
                             <constraint firstItem="bDv-0K-1Gq" firstAttribute="trailing" secondItem="qq0-b5-X4V" secondAttribute="trailing" id="Ley-eV-kz9"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="trailing" secondItem="bDv-0K-1Gq" secondAttribute="trailing" id="O4n-r6-oAF"/>
-                            <constraint firstItem="fgp-uY-jGu" firstAttribute="trailing" secondItem="bDv-0K-1Gq" secondAttribute="trailing" id="Pwf-qX-teG"/>
-                            <constraint firstItem="fgp-uY-jGu" firstAttribute="bottom" secondItem="bDv-0K-1Gq" secondAttribute="bottom" id="ZYp-QE-dQD"/>
-                            <constraint firstItem="fgp-uY-jGu" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="l15-98-E0f"/>
-                            <constraint firstItem="fgp-uY-jGu" firstAttribute="top" secondItem="48y-Xq-MiP" secondAttribute="top" id="wpb-Cd-oRn"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="top" secondItem="48y-Xq-MiP" secondAttribute="top" id="zLY-H9-QHN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bDv-0K-1Gq"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="fgp-uY-jGu"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Moje data" largeTitleDisplayMode="always" id="Alq-cw-sQ5">
@@ -249,7 +226,6 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="activityView" destination="fgp-uY-jGu" id="oZ7-2F-Tfr"/>
                         <outlet property="buttonsView" destination="qq0-b5-X4V" id="WPz-cm-HAA"/>
                         <outlet property="tableView" destination="Mfj-6R-8L4" id="jlS-jK-bU3"/>
                         <segue destination="Bzh-9z-YpA" kind="presentation" identifier="sendReport" id="5OC-gk-9SW"/>
@@ -267,7 +243,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qag-Ae-DEK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

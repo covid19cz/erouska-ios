@@ -27,8 +27,40 @@ extension UIViewController {
     }
 
     func openURL(URL: URL) {
-        let controller = SFSafariViewController(url: URL)
-        present(controller, animated: true, completion: nil)
+        present(SFSafariViewController(url: URL), animated: true)
+    }
+
+    static let progressTag = 42
+
+    func showProgress() {
+        let viewToShowProgressOn = view.window ?? view
+
+        let overlay = UIView()
+        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        overlay.tag = UIViewController.progressTag
+
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.startAnimating()
+        overlay.addSubview(activityIndicator)
+
+        viewToShowProgressOn?.addSubview(overlay)
+
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: overlay.centerYAnchor),
+
+            overlay.leadingAnchor.constraint(equalTo: overlay.superview!.leadingAnchor),
+            overlay.trailingAnchor.constraint(equalTo: overlay.superview!.trailingAnchor),
+            overlay.topAnchor.constraint(equalTo: overlay.superview!.topAnchor),
+            overlay.bottomAnchor.constraint(equalTo: overlay.superview!.bottomAnchor),
+        ])
+    }
+
+    func hideProgress() {
+        view.window?.subviews.first { $0.tag == UIViewController.progressTag }?.removeFromSuperview()
+        view.subviews.first { $0.tag == UIViewController.progressTag }?.removeFromSuperview()
     }
 
 }
