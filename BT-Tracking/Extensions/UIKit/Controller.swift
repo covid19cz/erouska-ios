@@ -30,10 +30,11 @@ extension UIViewController {
         present(SFSafariViewController(url: URL), animated: true)
     }
 
-    static let progressTag = 42
+    private static let progressTag = 42
 
+    /// shows overlay over current UIViewController's window, if it has one
     func showProgress() {
-        let viewToShowProgressOn = view.window ?? view
+        guard let window = view.window else { return }
 
         let overlay = UIView()
         overlay.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -45,22 +46,21 @@ extension UIViewController {
         activityIndicator.startAnimating()
         overlay.addSubview(activityIndicator)
 
-        viewToShowProgressOn?.addSubview(overlay)
+        window.addSubview(overlay)
 
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: overlay.centerYAnchor),
 
-            overlay.leadingAnchor.constraint(equalTo: overlay.superview!.leadingAnchor),
-            overlay.trailingAnchor.constraint(equalTo: overlay.superview!.trailingAnchor),
-            overlay.topAnchor.constraint(equalTo: overlay.superview!.topAnchor),
-            overlay.bottomAnchor.constraint(equalTo: overlay.superview!.bottomAnchor),
+            overlay.leadingAnchor.constraint(equalTo: window.leadingAnchor),
+            overlay.trailingAnchor.constraint(equalTo: window.trailingAnchor),
+            overlay.topAnchor.constraint(equalTo: window.topAnchor),
+            overlay.bottomAnchor.constraint(equalTo: window.bottomAnchor),
         ])
     }
 
     func hideProgress() {
         view.window?.subviews.first { $0.tag == UIViewController.progressTag }?.removeFromSuperview()
-        view.subviews.first { $0.tag == UIViewController.progressTag }?.removeFromSuperview()
     }
 
 }

@@ -134,7 +134,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
 private extension DataListVC {
 
-    private func sendReport() {
+    func sendReport() {
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
             showError(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
@@ -154,7 +154,7 @@ private extension DataListVC {
         createCSVFile()
     }
 
-    private func createCSVFile() {
+    func createCSVFile() {
         showProgress()
 
         let fileDate = Date()
@@ -172,7 +172,7 @@ private extension DataListVC {
         })
     }
 
-    private func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
+    func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
         let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(KeychainService.BUID ?? "")"
         let fileName = "\(Int(fileDate.timeIntervalSince1970 * 1000)).csv"
 

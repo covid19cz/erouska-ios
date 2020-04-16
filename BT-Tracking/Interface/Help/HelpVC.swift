@@ -30,7 +30,7 @@ final class HelpVC: MarkdownController {
 
 private extension HelpVC {
 
-    private func setupTabBar() {
+    func setupTabBar() {
         if #available(iOS 13, *) {
             navigationController?.tabBarItem.image = UIImage(systemName: "questionmark.circle")
         } else {
