@@ -186,6 +186,9 @@
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
 		FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
+		FFC7E1022448780700872DCA /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7E1012448780700872DCA /* ErrorController.swift */; };
+		FFC7E1032448780700872DCA /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7E1012448780700872DCA /* ErrorController.swift */; };
+		FFC7E1042448781000872DCA /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7E1012448780700872DCA /* ErrorController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -281,6 +284,7 @@
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
 		FFC4432524460D78002D2A6D /* MarkdownBackups.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = MarkdownBackups.strings; sourceTree = "<group>"; };
+		FFC7E1012448780700872DCA /* ErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -557,6 +561,7 @@
 				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 				80B94556242B96560052CD9F /* NavigationController.swift */,
 				FFC4432324460A35002D2A6D /* MarkdownController.swift */,
+				FFC7E1012448780700872DCA /* ErrorController.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -947,6 +952,7 @@
 				BD979AE924255BD1004001ED /* FirstActivationController.swift in Sources */,
 				8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */,
 				80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */,
+				FFC7E1022448780700872DCA /* ErrorController.swift in Sources */,
 				80BB476824238CBB00F552FC /* AccountActivationController.swift in Sources */,
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
 				80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */,
@@ -1037,6 +1043,7 @@
 				8083D8C2244640A0007FA4E9 /* ScannerStore.swift in Sources */,
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
 				8083D8C5244640A0007FA4E9 /* CSVWriter.swift in Sources */,
+				FFC7E1032448780700872DCA /* ErrorController.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppViewModel.swift in Sources */,
 				8083D8C7244640A0007FA4E9 /* DataHeaderCell.swift in Sources */,
 				8083D8C8244640A0007FA4E9 /* CompleteActivationController.swift in Sources */,
@@ -1098,6 +1105,7 @@
 				8083D8F924464331007FA4E9 /* Data.swift in Sources */,
 				8083D9162446F80B007FA4E9 /* Markdown.swift in Sources */,
 				8083D90A24464342007FA4E9 /* DeleteDataVM.swift in Sources */,
+				FFC7E1042448781000872DCA /* ErrorController.swift in Sources */,
 				80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */,
 				8083D910244643BD007FA4E9 /* ScanCell.swift in Sources */,
 				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,

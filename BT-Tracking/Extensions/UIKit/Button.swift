@@ -87,9 +87,19 @@ class Button: UIButton {
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
 
+        initialize()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+
+        initialize()
+    }
+
+    func initialize() {
         style.setup(with: self, borderColor: borderColor)
     }
 
@@ -106,10 +116,9 @@ final class RoundedButtonFilled: Button {
 }
 
 final class MainScanningButton: Button {
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    override func initialize() {
+        super.initialize()
+
         if #available(iOS 13.0, *) {
             backgroundColor = UIColor.systemGray6
         } else {
@@ -121,8 +130,8 @@ final class MainScanningButton: Button {
 
 final class RoundedButtonClear: Button {
 
-    override func awakeFromNib() {
+    override func initialize() {
         style = .clear
-        super.awakeFromNib()
+        super.initialize()
     }
 }

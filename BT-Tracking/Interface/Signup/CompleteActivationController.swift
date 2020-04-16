@@ -91,17 +91,17 @@ final class CompleteActivationController: UIViewController {
 
                 if error.code == AuthErrorCode.invalidVerificationCode.rawValue {
                     self.smsCodeTextField.text = ""
-                    self.showError(title: "Ověřovací kód není správně zadaný.", message: "")
+                    self.showAlert(title: "Ověřovací kód není správně zadaný.", message: "")
                 } else if error.code == AuthErrorCode.sessionExpired.rawValue {
                     self.smsCodeTextField.text = ""
                     self.showError(
+                        pageTitle: "Ověřovací kód",
                         title: "Vypršela platnost ověřovacího kódu",
-                        message: "Nechte si odeslat nový ověřovací kód a zadejte ho do 3 minut.",
-                        okTitle: "Ano, chci",
-                        okHandler: { [weak self] in
+                        message: "Zkontrolujte telefonní číslo a nechte si odeslat nový ověřovací kód.",
+                        primaryAction: (title: "Odeslat nový", handler: { [weak self] in
                             self?.resendSmsCode()
-                        },
-                        action: (title: "Ne", handler: { [weak self] in
+                        }),
+                        secondaryAction: (title: "Zavřít", handler: { [weak self] in
                             self?.smsCodeTextField.becomeFirstResponder()
                         })
                     )
@@ -200,11 +200,12 @@ private extension CompleteActivationController {
             if self.expirationSeconds - Date.timeIntervalSinceReferenceDate <= 0 {
                 self.expirationTimer?.invalidate()
                 self.showError(
+                    pageTitle: "Ověřovací kód",
                     title: "Vypršela platnost ověřovacího kódu",
                     message: "Zkontrolujte telefonní číslo a nechte si odeslat nový ověřovací kód.",
-                    okHandler: {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                    primaryAction: (title: "Dobře", handler: { [weak self] in
+                        self?.navigationController?.popViewController(animated: true)
+                    })
                 )
                 return
             }

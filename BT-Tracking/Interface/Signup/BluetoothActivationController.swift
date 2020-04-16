@@ -85,7 +85,7 @@ final class BluetoothActivationController: UIViewController, CBPeripheralManager
 
 private extension BluetoothActivationController {
 
-    func continueOnboarding() {
+    private func continueOnboarding() {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
             DispatchQueue.main.async { [weak self] in
                 if settings.authorizationStatus == .authorized {
@@ -100,7 +100,7 @@ private extension BluetoothActivationController {
         }
     }
     
-    func checkForBluetooth() {
+    private func checkForBluetooth() {
         if bluetoothNotDetermined {
             requestBluetoothPermission()
             return
@@ -114,7 +114,7 @@ private extension BluetoothActivationController {
         continueOnboarding()
     }
 
-    func requestBluetoothPermission() {
+    private func requestBluetoothPermission() {
         peripheralManager = CBPeripheralManager(
             delegate: self,
             queue: nil,
@@ -124,15 +124,15 @@ private extension BluetoothActivationController {
         )
     }
 
-    func showBluetoothPermissionError() {
+    private func showBluetoothPermissionError() {
         showError(
             title: "Zapněte Bluetooth",
             message: "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.",
-            okHandler: { [weak self] in self?.showAppSettings() }
+            primaryAction: (title: "Zapnout Bluetooth", handler: { [weak self] in self?.showAppSettings() })
         )
     }
 
-    func showAppSettings() {
+    private func showAppSettings() {
         checkAfterBecomeActive = true
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(settingsURL)

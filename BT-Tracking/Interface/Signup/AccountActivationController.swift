@@ -84,7 +84,7 @@ final class AccountActivationController: UIViewController {
 
     @IBAction private func activateAcountAction() {
         guard permissionSwitch.isOn else {
-            self.showError(
+            self.showAlert(
                 title: "Souhlas s podmínkami zpracování je nezbytný pro aktivaci aplikace. Bez vašeho souhlasu nemůže aplikace fungovat.",
                 message: ""
             )
@@ -102,9 +102,17 @@ final class AccountActivationController: UIViewController {
             if let error = error {
                 log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
                 if (error as NSError).code == AuthErrorCode.tooManyRequests.rawValue {
-                    self.showError(title: "Telefonní číslo jsme dočasně zablokovali", message: "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu.")
+                    self.showError(
+                        pageTitle: "Telefonní číslo",
+                        title: "Telefonní číslo jsme dočasně zablokovali",
+                        message: "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu."
+                    )
                 } else {
-                    self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
+                    self.showError(
+                        pageTitle: "Telefonní číslo",
+                        title: "Nepodařilo se nám ověřit telefonní číslo",
+                        message: "Zkontrolujte připojení k internetu a zkuste to znovu"
+                    )
                 }
                 self.cleanup()
             } else if let verificationID = verificationID  {
