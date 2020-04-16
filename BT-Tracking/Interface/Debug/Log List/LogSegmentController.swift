@@ -62,7 +62,7 @@ final class LogSegmentController: UIViewController {
     @IBAction private func purgeLogsAction(_ sender: Any) {
         let controller = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
-            self.pergeLogs()
+            self.purgeLogs()
         }))
         controller.addAction(UIAlertAction(title: "No", style: .cancel))
         present(controller, animated: true)
@@ -72,7 +72,7 @@ final class LogSegmentController: UIViewController {
         dismiss(animated: true)
     }
 
-    private func pergeLogs() {
+    private func purgeLogs() {
         FileLogger.shared.purgeLogs()
 
         leftController.purgeLog()
