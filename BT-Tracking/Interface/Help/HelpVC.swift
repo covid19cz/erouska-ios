@@ -10,14 +10,14 @@ import UIKit
 
 final class HelpVC: MarkdownController {
 
+    override var markdownContent: String {
+        RemoteValues.helpMarkdown
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         setupTabBar()
-    }
-
-    override func setupContent() {
-        textView.attributedText = Markdown.attributedString(markdown: RemoteValues.helpMarkdown)
     }
 
     // MARK: - Actions
