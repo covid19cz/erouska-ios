@@ -95,7 +95,7 @@ final class ActiveAppController: UIViewController {
         updateViewModel()
     }
 
-    func resumeScanning() {
+    private func resumeScanning() {
         AppSettings.state = .enabled
         updateViewModel()
     }
@@ -111,7 +111,7 @@ final class ActiveAppController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?.last ?? navigationItem.rightBarButtonItem
         
-        present(activityViewController, animated: true, completion: nil)
+        present(activityViewController, animated: true)
     }
 
     @IBAction private func changeScanningAction() {
@@ -141,14 +141,14 @@ final class ActiveAppController: UIViewController {
         }))
         controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
-        present(controller, animated: true, completion: nil)
+        present(controller, animated: true)
     }
 
     private func debugAction() {
         let storyboard = UIStoryboard(name: "Debug", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
         controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true, completion: nil)
+        present(controller, animated: true)
     }
 
     // MARK: -

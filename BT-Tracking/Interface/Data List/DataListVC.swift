@@ -20,7 +20,6 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
-    @IBOutlet private weak var activityView: UIView!
     
     private var dataSource: RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>!
     private let viewModel = DataListVM()
@@ -77,9 +76,9 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             case .aboutData:
                 let aboutDataCell = tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath) as? AboutDataCell
                 cell = aboutDataCell
-            case .header(let scansCount):
+            case .header:
                 let headerCell = tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath) as? DataHeaderCell
-                headerCell?.configure(with: scansCount)
+                headerCell?.configure()
                 cell = headerCell
             case .data(let scan):
                 let scanCell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
@@ -98,7 +97,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         
         tableView.rx.modelSelected(DataListVM.Section.Item.self)
             .filter { $0 == .aboutData }
-            .subscribe(onNext: { [weak self] item in
+            .subscribe(onNext: { [weak self] _ in
                 self?.navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
             })
             .disposed(by: bag)
@@ -128,7 +127,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             )
         }))
         controller.preferredAction = controller.actions.first
-        present(controller, animated: true, completion: nil)
+        present(controller, animated: true)
     }
 
 }
@@ -152,11 +151,12 @@ private extension DataListVC {
             return
         }
 
-        activityView.isHidden = false
         createCSVFile()
     }
 
     func createCSVFile() {
+        showProgress()
+
         let fileDate = Date()
 
         writer = CSVMaker(fromDate: nil) // AppSettings.lastUploadDate, set to last upload date, if we want increment upload
@@ -166,7 +166,7 @@ private extension DataListVC {
             if let result = result {
                 self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata, fileDate: fileDate)
             } else if let error = error {
-                self.activityView.isHidden = true
+                self.hideProgress()
                 self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkáními")
             }
         })
@@ -184,7 +184,7 @@ private extension DataListVC {
 
         fileReference.putFile(from: fileURL, metadata: storageMetadata) { [weak self] (metadata, error) in
             guard let self = self else { return }
-            self.activityView.isHidden = true
+            self.hideProgress()
 
             self.writer?.deleteFile()
             if let error = error {

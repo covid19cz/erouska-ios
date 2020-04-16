@@ -35,7 +35,6 @@ final class CompleteActivationController: UIViewController {
     @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet private weak var smsCodeTextField: UITextField!
     @IBOutlet private weak var actionButton: Button!
-    @IBOutlet private weak var activityView: UIView!
 
     private var expirationSeconds: TimeInterval = 0
     private var expirationTimer: Timer?
@@ -77,7 +76,7 @@ final class CompleteActivationController: UIViewController {
 
     @IBAction private func activateAcountAction(_ sender: Any) {
         guard let authData = authData else { return }
-        activityView.isHidden = false
+        showProgress()
         view.endEditing(true)
 
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: authData.verificationID, verificationCode: smsCode.value)
@@ -87,7 +86,7 @@ final class CompleteActivationController: UIViewController {
 
             if let rawError = error {
                 let error = rawError as NSError
-                self.activityView.isHidden = true
+                self.hideProgress()
 
                 if error.code == AuthErrorCode.invalidVerificationCode.rawValue {
                     self.smsCodeTextField.text = ""
@@ -126,7 +125,7 @@ final class CompleteActivationController: UIViewController {
 
                 AppDelegate.shared.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
                     guard let self = self else { return }
-                    self.activityView.isHidden = true
+                    self.hideProgress()
 
                     if let error = error as NSError? {
                         self.show(error: error, title: "Chyba při aktivaci")
@@ -153,12 +152,12 @@ final class CompleteActivationController: UIViewController {
 
     @IBAction private func resendSmsCode() {
         guard let phone = authData?.phoneNumber else { return }
-        activityView.isHidden = false
+        self.showProgress()
         smsCodeTextField.resignFirstResponder()
 
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self] verificationID, error in
             guard let self = self else { return }
-            self.activityView.isHidden = true
+            self.hideProgress()
 
             if let error = error {
                 self.show(error: error, title: "Chyba při aktivaci")
