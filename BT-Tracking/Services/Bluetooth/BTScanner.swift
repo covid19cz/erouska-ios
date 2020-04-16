@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 import RxSwift
 
-protocol BTScannering: class {
+protocol BTScannering: AnyObject {
 
     /// default: 3, in seconds
     var deviceUpdateLimit: TimeInterval { get set }
@@ -34,7 +34,7 @@ protocol BTScannering: class {
 
 }
 
-protocol BTScannerDelegate: class {
+protocol BTScannerDelegate: AnyObject {
 
     func didFind(device: BTScan)
     func didUpdate(device: BTScan)

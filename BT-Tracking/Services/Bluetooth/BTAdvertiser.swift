@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 import RxSwift
 
-protocol BTAdvertising: class {
+protocol BTAdvertising: AnyObject {
 
     init(TUIDs: [String], IDRotation: Int)
 
