@@ -10,12 +10,23 @@ import UIKit
 import CoreBluetooth
 import UserNotifications
 
+protocol FirstActivationControllerDelegate: AnyObject {
+    func controllerDidTapContinue(_ controller: FirstActivationController)
+    func controllerDidTapAudit(_ controller: FirstActivationController)
+}
+
 final class FirstActivationController: UIViewController {
+
+    // MARK: - Public Properties
+
+    weak var delegate: FirstActivationControllerDelegate?
+
+    // MARK: - Private Properties
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
 
-    // MARK: -
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +36,13 @@ final class FirstActivationController: UIViewController {
 
     // MARK: - Actions
     
-    @IBAction private func continueAction() {
+    @IBAction private func didTapContinue() {
+        delegate?.controllerDidTapContinue(self)
+
+        if true {
+            return
+        }
+
         if bluetoothAuthorized {
             UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
                 DispatchQueue.main.async { [weak self] in
@@ -43,9 +60,8 @@ final class FirstActivationController: UIViewController {
         }
     }
     
-    @IBAction private func auditsURLAction(_ sender: Any) {
-        guard let url = URL(string: RemoteValues.proclamationLink) else { return }
-        openURL(URL: url)
+    @IBAction private func didTapAudit(_ sender: Any) {
+        delegate?.controllerDidTapAudit(self)
     }
     
     private var bluetoothAuthorized: Bool {

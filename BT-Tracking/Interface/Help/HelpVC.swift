@@ -2,7 +2,7 @@
 //  HelpVC.swift
 //  BT-Tracking
 //
-//  Created by Lukáš Foldýna on 26/03/2020.
+//  Created by Michal Šrůtek on 17/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
@@ -14,28 +14,12 @@ final class HelpVC: MarkdownController {
         RemoteValues.helpMarkdown
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        setupTabBar()
-    }
+        title = "Jak to funguje"
 
-    // MARK: - Actions
-
-    @IBAction private func aboutAction() {
-        guard let url = URL(string: RemoteValues.aboutLink) else { return }
-        openURL(URL: url)
-    }
-}
-
-private extension HelpVC {
-
-    func setupTabBar() {
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "questionmark.circle")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "questionmark.circle")?.resize(toWidth: 26)
-        }
+        // TODO: msrutek, add right bar button item - about app
     }
 
 }

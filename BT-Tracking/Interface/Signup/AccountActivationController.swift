@@ -139,11 +139,7 @@ extension AccountActivationController: UITextFieldDelegate {
 private extension AccountActivationController {
 
     func cleanup() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-
-        }
+        try? Auth.auth().signOut()
 
         UserDefaults.resetStandardUserDefaults()
     }

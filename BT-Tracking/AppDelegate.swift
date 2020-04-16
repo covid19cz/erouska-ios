@@ -19,6 +19,7 @@ import RxSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private var appCoordinator: AppCoordinator!
     private var allowBackgroundTask: Bool = false
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     private var inBackgroundStage: Bool = false {
@@ -80,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         clearKeychainIfNeeded()
         generalSetup()
-        setupInterface()
+        setupAppCoordinator()
         setupBackgroundMode(for: application)
         
         return true
@@ -243,27 +244,10 @@ private extension AppDelegate {
         }
     }
     
-    private func setupInterface() {
-        let window = UIWindow()
-        window.backgroundColor = .black
-        window.makeKeyAndVisible()
-        self.window = window
-
-        let storyboard: UIStoryboard
-        #if !targetEnvironment(macCatalyst)
-
-        if !Auth.isLoggedIn {
-            try? Auth.auth().signOut()
-            storyboard = UIStoryboard(name: "Signup", bundle: nil)
-        } else {
-            storyboard = UIStoryboard(name: "Active", bundle: nil)
-        }
-
-        #else
-        storyboard = UIStoryboard(name: "Debug", bundle: nil)
-        #endif
-
-        window.rootViewController = storyboard.instantiateInitialViewController()
+    private func setupAppCoordinator() {
+        window = UIWindow()
+        appCoordinator = AppCoordinator(window: window!)
+        appCoordinator.start()
     }
 
     private func setupBackgroundMode(for application: UIApplication) {

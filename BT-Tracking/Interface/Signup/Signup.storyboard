@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kfk-wA-RM9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,26 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="KBO-ko-yrH">
-            <objects>
-                <navigationController id="kfk-wA-RM9" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="pNZ-IF-ibE" kind="relationship" relationship="rootViewController" id="glb-ZD-Jhp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5lM-ms-2kO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2270" y="-31"/>
-        </scene>
         <!--eRouška-->
         <scene sceneID="GJX-OU-pnd">
             <objects>
-                <viewController id="pNZ-IF-ibE" customClass="FirstActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstActivationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pNZ-IF-ibE" customClass="FirstActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MCy-hW-ZTB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,7 +57,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                         <state key="normal" title="Více o nezávislých auditech"/>
                                                         <connections>
-                                                            <action selector="auditsURLAction:" destination="pNZ-IF-ibE" eventType="touchUpInside" id="lHd-A0-34h"/>
+                                                            <action selector="didTapAudit:" destination="pNZ-IF-ibE" eventType="touchUpInside" id="dBa-k0-ttz"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -115,7 +99,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="continueAction" destination="pNZ-IF-ibE" eventType="touchUpInside" id="QOJ-g8-FNF"/>
+                                                    <action selector="didTapContinue" destination="pNZ-IF-ibE" eventType="touchUpInside" id="TpX-WK-BFY"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-OA-pEZ" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
@@ -127,9 +111,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                 <state key="normal" title="Jak to funguje">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
-                                                <connections>
-                                                    <segue destination="Tm2-1s-Hbj" kind="show" id="dFa-tE-tum"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -176,11 +157,11 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
             <objects>
                 <viewController id="q6P-fR-rVF" customClass="CompleteActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="62b-SF-fPw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHa-3n-qmi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcf-Pj-5Ze">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="162.66666666666666"/>
@@ -235,7 +216,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                 <viewLayoutGuide key="frameLayoutGuide" id="gxe-WW-NCT"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozH-EE-HS0" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="668" width="375" height="94"/>
+                                <rect key="frame" x="0.0" y="614" width="375" height="94"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDN-Uj-w2M" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="16" y="50" width="343" height="44"/>
@@ -274,11 +255,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Ověřovací kód" largeTitleDisplayMode="always" id="l3U-k0-Fod">
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="uVc-DO-9jU">
-                            <connections>
-                                <segue destination="Tm2-1s-Hbj" kind="show" id="utZ-G0-Rhr"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="uVc-DO-9jU"/>
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="vDN-Uj-w2M" id="y9l-aU-C2E"/>
@@ -299,11 +276,11 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
             <objects>
                 <viewController id="1ln-NW-njF" customClass="BluetoothActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2X2-Ep-DR3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDW-qM-yre">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cNY-7b-57Z">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
@@ -360,7 +337,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                 <viewLayoutGuide key="frameLayoutGuide" id="NgQ-Sr-M5p"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="meA-hx-Fcs" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="668" width="375" height="110"/>
+                                <rect key="frame" x="0.0" y="614" width="375" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-gP-OXF" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="16" y="50" width="343" height="44"/>
@@ -399,11 +376,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </view>
                     <navigationItem key="navigationItem" title="Povolení Bluetooth" largeTitleDisplayMode="always" id="iPo-w0-AmX">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="lIB-gt-iyC"/>
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="tdL-Kj-Pcu">
-                            <connections>
-                                <segue destination="Tm2-1s-Hbj" kind="show" id="FLh-nf-xgs"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="tdL-Kj-Pcu"/>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonsView" destination="meA-hx-Fcs" id="cPj-x7-plV"/>
@@ -421,11 +394,11 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
             <objects>
                 <viewController id="BBC-aE-fuq" customClass="AccountActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceh-zy-1BU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGO-et-vUI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LHR-Og-Y0r">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="324"/>
@@ -532,7 +505,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                 <viewLayoutGuide key="frameLayoutGuide" id="8I3-Mi-4eD"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RgO-Jj-tjN" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="668" width="375" height="94"/>
+                                <rect key="frame" x="0.0" y="614" width="375" height="94"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4n-ew-pkC" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="16" y="50" width="343" height="44"/>
@@ -572,11 +545,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Telefonní číslo" largeTitleDisplayMode="always" id="M4Q-Z0-fSN">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="Ifa-FJ-QZq"/>
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="z0N-gl-bwU">
-                            <connections>
-                                <segue destination="Tm2-1s-Hbj" kind="show" id="S39-Cf-beJ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="z0N-gl-bwU"/>
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="H4n-ew-pkC" id="IKW-1O-qQD"/>
@@ -594,26 +563,16 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
             </objects>
             <point key="canvasLocation" x="1252" y="-31.03448275862069"/>
         </scene>
-        <!--Help-->
-        <scene sceneID="xrM-rQ-Utw">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="Help" id="Tm2-1s-Hbj" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="aFc-Qu-JYc"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SDw-LS-t63" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="339" y="538"/>
-        </scene>
         <!--Ověření-->
         <scene sceneID="J9c-t7-uW3">
             <objects>
                 <viewController id="1qZ-bG-yib" customClass="NotificationPermissionController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QIH-fQ-XIa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28z-zE-f3s">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uZb-wK-VQT">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="416"/>
@@ -667,7 +626,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                 <viewLayoutGuide key="frameLayoutGuide" id="lOW-DS-Gif"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BMQ-37-LtV" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="668" width="375" height="110"/>
+                                <rect key="frame" x="0.0" y="614" width="375" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzc-3p-o5r" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="16" y="50" width="343" height="44"/>
@@ -706,11 +665,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </view>
                     <navigationItem key="navigationItem" title="Ověření" largeTitleDisplayMode="always" id="Ia5-ZL-73y">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="AGe-uz-MAj"/>
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="zNr-NV-ndm">
-                            <connections>
-                                <segue destination="Tm2-1s-Hbj" kind="show" id="HJI-Y5-Kpb"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="zNr-NV-ndm"/>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonsView" destination="BMQ-37-LtV" id="X7l-oz-Q9C"/>
@@ -725,7 +680,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LBz-k7-fXB"/>
-        <segue reference="S39-Cf-beJ"/>
         <segue reference="p0J-jR-yfg"/>
     </inferredMetricsTieBreakers>
     <resources>

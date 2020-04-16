@@ -223,11 +223,7 @@ private extension CompleteActivationController {
     }
 
     func cleanup() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-
-        }
+        try? Auth.auth().signOut()
 
         UserDefaults.resetStandardUserDefaults()
     }

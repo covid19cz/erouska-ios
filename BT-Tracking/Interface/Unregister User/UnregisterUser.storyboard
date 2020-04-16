@@ -55,11 +55,7 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                         <viewLayoutGuide key="safeArea" id="KbH-UB-wng"/>
                     </view>
                     <navigationItem key="navigationItem" title="Zrušit registraci" id="nYk-V5-bbs">
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="f0j-Gd-mtF">
-                            <connections>
-                                <segue destination="Iuv-HQ-wcp" kind="show" id="CcY-Gq-8P5"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="f0j-Gd-mtF"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -69,17 +65,7 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSM-lR-c2Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305.79710144927537" y="203.57142857142856"/>
-        </scene>
-        <!--Help-->
-        <scene sceneID="7iY-JI-7S8">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Help" id="Iuv-HQ-wcp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="w1e-hW-jbK"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HN8-3Z-77Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="959" y="204"/>
+            <point key="canvasLocation" x="326" y="356"/>
         </scene>
         <!--Zrušit registraci-->
         <scene sceneID="YGG-0T-ejY">

@@ -21,7 +21,6 @@
                         <segue destination="8pR-j1-IZY" kind="relationship" relationship="viewControllers" id="Ba7-2w-sYV"/>
                         <segue destination="Ecq-qf-QeQ" kind="relationship" relationship="viewControllers" id="jGg-vn-Hoi"/>
                         <segue destination="v9g-l9-1nr" kind="relationship" relationship="viewControllers" id="BMz-eG-eV7"/>
-                        <segue destination="S3U-Wy-NaO" kind="relationship" relationship="viewControllers" id="A6t-X9-5nb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ww7-jz-Cgw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -65,16 +64,6 @@
             </objects>
             <point key="canvasLocation" x="72" y="1300"/>
         </scene>
-        <!--HelpNavigation-->
-        <scene sceneID="P4F-IN-7fN">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="HelpNavigation" id="S3U-Wy-NaO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Nbu-nk-wz1"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sDq-r7-6Eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="102" y="1433"/>
-        </scene>
         <!--Kontakty-->
         <scene sceneID="n01-Tj-cda">
             <objects>
@@ -96,7 +85,7 @@
         <!--Kontakty-->
         <scene sceneID="Qrw-iC-jAO">
             <objects>
-                <viewController id="PPZ-by-KGR" customClass="ContactsController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactsController" id="PPZ-by-KGR" customClass="ContactsController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mhY-QC-TiG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -230,7 +219,7 @@
         <!--Aplikace je aktivní-->
         <scene sceneID="fsH-bj-obm">
             <objects>
-                <viewController id="SLc-31-c7B" userLabel="Aplikace je aktivní" customClass="ActiveAppController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActiveAppController" id="SLc-31-c7B" userLabel="Aplikace je aktivní" customClass="ActiveAppController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hh6-32-Hb4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
