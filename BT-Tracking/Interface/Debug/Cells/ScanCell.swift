@@ -13,6 +13,7 @@ final class ScanCell: UITableViewCell {
     static let identifier = "scanCell"
 
     @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var stateLabel: UILabel!
     @IBOutlet private weak var identifierLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var rssiLabel: UILabel!
@@ -22,6 +23,7 @@ final class ScanCell: UITableViewCell {
         identifierLabel.text = "BT: " + scan.bluetoothIdentifier
         dateLabel.text = ScanCell.formatter.string(from: scan.date)
         rssiLabel.text = String(scan.rssi)  + " dB, TUID: " + scan.buid
+        stateLabel.text = "State: \(scan.state)"
     }
     
     private static var formatter: DateFormatter = {

@@ -73,6 +73,11 @@ extension LogController: BTScannerDelegate {
         localLog(text)
     }
 
+    func didRemove(device: BTScan) {
+        let text = "Remove device: \(device.bluetoothIdentifier.uuidString), last signal: \(device.rssi)"
+        localLog(text)
+    }
+
     private func localLog(_ text: String, notification: UNMutableNotificationContent? = nil) {
         log("\n" + text + "\n")
         logToView(text)
@@ -82,7 +87,6 @@ extension LogController: BTScannerDelegate {
 
         let request = UNNotificationRequest(identifier: "Scanning",  content: notification, trigger: nil)
         UNUserNotificationCenter.current().add(request)
-
     }
 }
 

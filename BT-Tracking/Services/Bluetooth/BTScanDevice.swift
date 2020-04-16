@@ -22,7 +22,9 @@ class BTScanDevice: NSObject {
     /// Number of updateds from device, before it will try to connect and get BUID
     static let NumberOfUpdatesNeededForConnection = 3
 
-    static let DeviceIsMissingAfterSeconds = 2 * 60
+    static let DeviceIsMissingAfterSeconds: TimeInterval = 1 * 60
+
+    static let RemoveDeviceAfterSeconds: TimeInterval = 1.8 * 60
 
     static let RetryTimeInSeconds: TimeInterval = 60
 
@@ -41,7 +43,7 @@ class BTScanDevice: NSObject {
         case conntecting
         /// is conected to bt device
         case connected
-        /// reading value buid value
+        /// reading tuid value
         case reading
         /// disconncted - failed to connect to bt device
         case disconnected
@@ -51,6 +53,8 @@ class BTScanDevice: NSObject {
         case idle
         /// not updates from bt in x seconds
         case missing
+        /// removed from scanner
+        case removed
     }
 
     private(set) var state: State = .intial {
@@ -69,7 +73,7 @@ class BTScanDevice: NSObject {
 
     private(set) var lastPeripheral: CBPeripheral?
 
-    private(set) var lastDiscoveryDate: Date?
+    private(set) var lastDiscoveryDate: Date
 
     private(set) var connectionRetries: Int = 0
 
@@ -111,10 +115,15 @@ class BTScanDevice: NSObject {
         self.manager = manager
         self.peripheral = peripheral
         self.firstDiscoveryDate = Date()
+        self.lastDiscoveryDate = Date()
         super.init()
 
         update(with: peripheral, RSII: RSII, advertisementData: advertisementData)
         lastUpdateInvokeDate = Date()
+    }
+
+    deinit {
+        cleanupConnection()
     }
 
     /// Called usually from central:didDiscover:peripheral:advertisementData:
@@ -130,6 +139,10 @@ class BTScanDevice: NSObject {
         RSIIs.append(RSII)
         if RSIIs.count > 2_000 {
             RSIIs.removeFirst()
+        }
+
+        if state == .missing {
+            state = .idle
         }
 
         guard backendIdentifier == nil else { return }
@@ -151,7 +164,7 @@ class BTScanDevice: NSObject {
     }
 
     func connect(to peripheral: CBPeripheral) {
-        guard [State.intial, .idle].contains(state) else { return }
+        guard [State.intial, .idle, .waitingForRetry].contains(state) else { return }
 
         state = .conntecting
         manager.connect(peripheral, options: nil)
@@ -171,12 +184,19 @@ class BTScanDevice: NSObject {
         cleanupConnection(peripheral)
         lastError = error
 
-        guard connectionRetries < Self.MaxNumberOfRetries else {
-            state = .disconnected
-            return
-        }
-        state = .waitingForRetry
         connectionRetries += 1
+        state = connectionRetries >= Self.MaxNumberOfRetries ? .disconnected : .waitingForRetry
+    }
+
+    func missing() {
+        if ![State.intial, .idle, .waitingForRetry].contains(state) {
+            cleanupConnection()
+        }
+        state = .missing
+    }
+
+    func removed() {
+        state = .removed
     }
 
     func didDisconnect(peripheral: CBPeripheral, error: Error?) {
@@ -199,10 +219,11 @@ class BTScanDevice: NSObject {
             bluetoothIdentifier: peripheral.identifier,
             backendIdentifier: backendIdentifier,
             platform: platform,
-            date: lastDiscoveryDate ?? firstDiscoveryDate ?? Date(),
+            date: lastDiscoveryDate,
             name: nil,
             rssi: RSII,
-            medianRssi: medianRSII
+            medianRssi: medianRSII,
+            state: state
         )
     }
 
