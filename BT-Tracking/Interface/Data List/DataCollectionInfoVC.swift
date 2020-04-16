@@ -10,15 +10,15 @@ import Foundation
 
 final class DataCollectionInfoVC: MarkdownController {
 
+    override var markdownContent: String {
+        RemoteValues.dataCollectionMarkdown
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Informace o sběru dat"
         navigationItem.largeTitleDisplayMode = .never
-    }
-    
-    override func setupContent() {
-        textView.attributedText = Markdown.attributedString(markdown: RemoteValues.dataCollectionMarkdown)
     }
 
 }
