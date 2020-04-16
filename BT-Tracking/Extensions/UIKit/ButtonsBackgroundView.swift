@@ -24,6 +24,7 @@ class ButtonsBackgroundView: UIView {
     var defaultContentInset: UIEdgeInsets = .zero
 
     private weak var gradientView: GradientView?
+    private weak var scrollView: UIScrollView?
     private let disposeBag = DisposeBag()
 
     override init(frame: CGRect = .zero) {
@@ -36,6 +37,17 @@ class ButtonsBackgroundView: UIView {
         super.init(coder: aDecoder)
 
         setup()
+    }
+
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let hit = super.hitTest(point, with: event)
+        if hit is UIButton {
+            return hit
+        } else if scrollView?.frame.contains(point) == true {
+            return scrollView?.hitTest(point, with: event)
+        } else {
+            return hit
+        }
     }
 
     private func setup() {
@@ -77,6 +89,7 @@ class ButtonsBackgroundView: UIView {
         defaultContentInset.bottom = frame.height + Self.TopOffset
         scrollView.contentInset = defaultContentInset
         scrollView.scrollIndicatorInsets = defaultContentInset
+        self.scrollView = scrollView
 
         scrollView.rx.contentOffset.asDriver().drive(onNext: { [weak self] offset in
             guard let self = self else { return }

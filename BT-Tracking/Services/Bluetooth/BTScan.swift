@@ -18,6 +18,7 @@ struct BTScan {
     var name: String?
     var rssi: Int
     var medianRssi: Int?
+    var state: BTScanDevice.State
 
     init(id: UUID,
          bluetoothIdentifier: UUID,
@@ -26,7 +27,8 @@ struct BTScan {
          date: Date,
          name: String? = nil,
          rssi: Int,
-         medianRssi: Int? = nil) {
+         medianRssi: Int? = nil,
+         state: BTScanDevice.State = .intial) {
         self.id = id
         if platform == .android {
             self.deviceIdentifier = backendIdentifier ?? bluetoothIdentifier.uuidString
@@ -40,6 +42,7 @@ struct BTScan {
         self.name = name
         self.rssi = rssi
         self.medianRssi = medianRssi
+        self.state = state
     }
     
     func toScan(with uuid: String? = nil) -> Scan {
@@ -52,7 +55,8 @@ struct BTScan {
             name: self.name ?? self.platform.rawValue,
             date: self.date,
             rssi: self.rssi,
-            medianRssi: self.medianRssi
+            medianRssi: self.medianRssi,
+            state: self.state
         )
     }    
 }

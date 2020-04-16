@@ -62,7 +62,8 @@ final class ScanRealm: Object {
             name: self.name ?? "neznámé",
             date: self.startDate,
             rssi: self.avargeRssi,
-            medianRssi: self.medianRssi
+            medianRssi: self.medianRssi,
+            state: .intial
         )
     }
     

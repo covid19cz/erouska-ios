@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="kfk-wA-RM9" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -259,33 +259,15 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                     <constraint firstItem="vDN-Uj-w2M" firstAttribute="top" secondItem="ozH-EE-HS0" secondAttribute="top" constant="50" id="u41-Xc-hPc"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1c-Vs-7uN">
-                                <rect key="frame" x="0.0" y="148.33333333333331" width="375" height="663.66666666666674"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cEy-Wn-8CS">
-                                        <rect key="frame" x="169" y="313.33333333333337" width="37" height="37"/>
-                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="cEy-Wn-8CS" firstAttribute="centerY" secondItem="n1c-Vs-7uN" secondAttribute="centerY" id="ohx-nV-PXF"/>
-                                    <constraint firstItem="cEy-Wn-8CS" firstAttribute="centerX" secondItem="n1c-Vs-7uN" secondAttribute="centerX" id="q1E-JF-t9b"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="QHa-3n-qmi" firstAttribute="trailing" secondItem="zIf-rI-ET1" secondAttribute="trailing" id="F66-JI-C7W"/>
-                            <constraint firstItem="zIf-rI-ET1" firstAttribute="trailing" secondItem="n1c-Vs-7uN" secondAttribute="trailing" id="Jk1-6u-xNl"/>
                             <constraint firstItem="QHa-3n-qmi" firstAttribute="top" secondItem="62b-SF-fPw" secondAttribute="top" id="LkG-y0-jyw"/>
                             <constraint firstItem="ozH-EE-HS0" firstAttribute="leading" secondItem="zIf-rI-ET1" secondAttribute="leading" id="OeV-zR-ylh"/>
-                            <constraint firstAttribute="bottom" secondItem="n1c-Vs-7uN" secondAttribute="bottom" id="Usn-ZA-eWA"/>
-                            <constraint firstItem="zIf-rI-ET1" firstAttribute="top" secondItem="n1c-Vs-7uN" secondAttribute="top" id="bxo-Y1-sgc"/>
                             <constraint firstItem="zIf-rI-ET1" firstAttribute="bottom" secondItem="ozH-EE-HS0" secondAttribute="bottom" constant="16" id="dba-Ii-re6"/>
                             <constraint firstItem="QHa-3n-qmi" firstAttribute="leading" secondItem="zIf-rI-ET1" secondAttribute="leading" id="e8t-Pe-FnG"/>
                             <constraint firstItem="zIf-rI-ET1" firstAttribute="bottom" secondItem="QHa-3n-qmi" secondAttribute="bottom" id="fig-JX-L9z"/>
-                            <constraint firstItem="n1c-Vs-7uN" firstAttribute="leading" secondItem="zIf-rI-ET1" secondAttribute="leading" id="m0z-Fe-Wcu"/>
                             <constraint firstItem="zIf-rI-ET1" firstAttribute="trailing" secondItem="ozH-EE-HS0" secondAttribute="trailing" id="n9y-xb-pJg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zIf-rI-ET1"/>
@@ -300,7 +282,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="vDN-Uj-w2M" id="y9l-aU-C2E"/>
-                        <outlet property="activityView" destination="n1c-Vs-7uN" id="vzT-Gn-AU4"/>
                         <outlet property="buttonsBottomConstraint" destination="dba-Ii-re6" id="ZpX-zx-RaT"/>
                         <outlet property="buttonsView" destination="ozH-EE-HS0" id="lPD-bj-xcD"/>
                         <outlet property="scrollView" destination="QHa-3n-qmi" id="fmU-Zh-JJ5"/>
@@ -575,34 +556,16 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                     <constraint firstAttribute="trailingMargin" secondItem="H4n-ew-pkC" secondAttribute="trailing" id="w31-6O-z2g"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeQ-dB-icf">
-                                <rect key="frame" x="0.0" y="148.33333333333331" width="375" height="663.66666666666674"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-yr-MK2">
-                                        <rect key="frame" x="169" y="313.33333333333337" width="37" height="37"/>
-                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="Jm7-yr-MK2" firstAttribute="centerX" secondItem="zeQ-dB-icf" secondAttribute="centerX" id="MM6-5e-8EE"/>
-                                    <constraint firstItem="Jm7-yr-MK2" firstAttribute="centerY" secondItem="zeQ-dB-icf" secondAttribute="centerY" id="dfb-tv-wSq"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="YGO-et-vUI" firstAttribute="top" secondItem="ceh-zy-1BU" secondAttribute="top" id="3ju-E0-6Ac"/>
-                            <constraint firstItem="0Iv-MJ-cGL" firstAttribute="trailing" secondItem="zeQ-dB-icf" secondAttribute="trailing" id="44G-gm-Zek"/>
                             <constraint firstItem="RgO-Jj-tjN" firstAttribute="leading" secondItem="0Iv-MJ-cGL" secondAttribute="leading" id="58g-qc-ydP"/>
                             <constraint firstItem="YGO-et-vUI" firstAttribute="leading" secondItem="0Iv-MJ-cGL" secondAttribute="leading" id="CFP-9S-IRh"/>
                             <constraint firstItem="YGO-et-vUI" firstAttribute="trailing" secondItem="0Iv-MJ-cGL" secondAttribute="trailing" id="LA2-6O-fFp"/>
-                            <constraint firstItem="zeQ-dB-icf" firstAttribute="top" secondItem="0Iv-MJ-cGL" secondAttribute="top" id="PZ0-LH-8a7"/>
                             <constraint firstItem="0Iv-MJ-cGL" firstAttribute="trailing" secondItem="RgO-Jj-tjN" secondAttribute="trailing" id="T9v-LP-Onx"/>
                             <constraint firstItem="YGO-et-vUI" firstAttribute="bottom" secondItem="0Iv-MJ-cGL" secondAttribute="bottom" id="VIt-fL-CIV"/>
-                            <constraint firstAttribute="bottom" secondItem="zeQ-dB-icf" secondAttribute="bottom" id="csC-ub-RFH"/>
                             <constraint firstItem="0Iv-MJ-cGL" firstAttribute="bottom" secondItem="RgO-Jj-tjN" secondAttribute="bottom" constant="16" id="s26-h2-0t2"/>
-                            <constraint firstItem="zeQ-dB-icf" firstAttribute="leading" secondItem="0Iv-MJ-cGL" secondAttribute="leading" id="xfU-jO-oFP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Iv-MJ-cGL"/>
                     </view>
@@ -617,7 +580,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="H4n-ew-pkC" id="IKW-1O-qQD"/>
-                        <outlet property="activityView" destination="zeQ-dB-icf" id="kTd-3f-m2u"/>
                         <outlet property="buttonsBottomConstraint" destination="s26-h2-0t2" id="Mdn-oW-AaA"/>
                         <outlet property="buttonsView" destination="RgO-Jj-tjN" id="IGi-WB-daW"/>
                         <outlet property="permissionSwitch" destination="N6i-Um-KwL" id="9F2-WU-e7n"/>
@@ -764,7 +726,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
     <inferredMetricsTieBreakers>
         <segue reference="LBz-k7-fXB"/>
         <segue reference="S39-Cf-beJ"/>
-        <segue reference="kyL-aQ-rgP"/>
+        <segue reference="p0J-jR-yfg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BluetoothIlustration" width="130" height="130"/>

@@ -19,4 +19,5 @@ struct Scan: Equatable {
     let date: Date
     let rssi: Int
     let medianRssi: Int?
+    let state: BTScanDevice.State
 }

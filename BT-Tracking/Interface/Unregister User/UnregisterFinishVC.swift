@@ -18,7 +18,7 @@ final class UnregisterFinishVC: UIViewController {
         navigationItem.leftBarButtonItem = nil
         navigationItem.hidesBackButton = true
         titleLabel.text = "Registaci vašeho telefonního čísla jsme zrušili"
-        closeButton.setTitle("Zavřit", for: .normal)
+        closeButton.setTitle("Zavřít", for: .normal)
     }
 
     @IBAction func closeButtonDidTap(_ sender: RoundedButtonFilled) {

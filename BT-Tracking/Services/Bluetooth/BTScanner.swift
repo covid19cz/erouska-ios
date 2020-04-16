@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 import RxSwift
 
-protocol BTScannering: class {
+protocol BTScannering: AnyObject {
 
     /// default: 3, in seconds
     var deviceUpdateLimit: TimeInterval { get set }
@@ -34,9 +34,12 @@ protocol BTScannering: class {
 
 }
 
-protocol BTScannerDelegate: class {
+protocol BTScannerDelegate: AnyObject {
+
     func didFind(device: BTScan)
     func didUpdate(device: BTScan)
+    func didRemove(device: BTScan)
+    
 }
 
 final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering {
@@ -79,6 +82,16 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering {
                 return
             }
         }
+
+        deviceRemoverTimer
+            .skip(1)
+            .subscribe(onNext: { [weak self] _ in
+                guard self?.isRunning == true else { return }
+                DispatchQueue.main.async {
+                    self?.checkIfDevicesAreAlive()
+                }
+            })
+            .disposed(by: bag)
     }
 
     // MARK: - BTScannering
@@ -221,6 +234,20 @@ extension BTScanner: CBCentralManagerDelegate {
 }
 
 private extension BTScanner {
+
+    func checkIfDevicesAreAlive() {
+        let devices = discoveredDevices
+        for (identifier, device) in devices {
+            let lastUpdate = device.lastDiscoveryDate.timeIntervalSinceReferenceDate
+            if device.state == .missing, lastUpdate + BTScanDevice.RemoveDeviceAfterSeconds < Date.timeIntervalSinceReferenceDate {
+                discoveredDevices.removeValue(forKey: identifier)
+                device.removed()
+                invoke() { $0.didRemove(device: device.toScanUpdate()) }
+            } else if device.state != .missing, lastUpdate + BTScanDevice.DeviceIsMissingAfterSeconds < Date.timeIntervalSinceReferenceDate {
+                device.missing()
+            }
+        }
+    }
 
     func checkRefreshTime(device: BTScanDevice) -> Bool {
         guard let timeInterval = device.lastUpdateInvokeDate?.timeIntervalSinceReferenceDate else { return false }

@@ -190,6 +190,11 @@ extension ScannerStore: BTScannerDelegate {
     func didUpdate(device: BTScan) {
         didUpdateSubject.accept(device)
     }
+
+    func didRemove(device: BTScan) {
+        didUpdateSubject.accept(device)
+    }
+
 }
 
 extension ScannerStore {

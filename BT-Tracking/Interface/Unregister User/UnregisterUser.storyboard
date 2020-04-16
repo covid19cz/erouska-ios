@@ -16,20 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpS-PB-8v7">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="QrZ-gF-k3m">
-                                        <rect key="frame" x="188.5" y="412.5" width="37" height="37"/>
-                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="QrZ-gF-k3m" firstAttribute="centerX" secondItem="YpS-PB-8v7" secondAttribute="centerX" id="I7F-5S-xEf"/>
-                                    <constraint firstItem="QrZ-gF-k3m" firstAttribute="centerY" secondItem="YpS-PB-8v7" secondAttribute="centerY" id="Sei-cC-KKm"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-Ij-VRe">
                                 <rect key="frame" x="20" y="103" width="374" height="264"/>
                                 <string key="text">Opravdu chcete zrušit registraci svého telefonního čísla? 
@@ -59,16 +45,12 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="YpS-PB-8v7" firstAttribute="top" secondItem="Qng-EQ-a9q" secondAttribute="top" id="9D8-OE-nL0"/>
                             <constraint firstItem="KbH-UB-wng" firstAttribute="bottom" secondItem="Yka-5x-pJ7" secondAttribute="bottom" constant="15" id="BVd-6o-vYR"/>
                             <constraint firstItem="Yka-5x-pJ7" firstAttribute="leading" secondItem="Qng-EQ-a9q" secondAttribute="leadingMargin" id="C0p-fx-ZTm"/>
-                            <constraint firstAttribute="trailing" secondItem="YpS-PB-8v7" secondAttribute="trailing" id="Vrj-dB-txz"/>
-                            <constraint firstItem="YpS-PB-8v7" firstAttribute="leading" secondItem="Qng-EQ-a9q" secondAttribute="leading" id="doW-QC-1Nq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Yka-5x-pJ7" secondAttribute="trailing" id="fJD-Av-Kll"/>
                             <constraint firstItem="MZo-Ij-VRe" firstAttribute="top" secondItem="KbH-UB-wng" secondAttribute="top" constant="15" id="g6g-TR-Wsh"/>
                             <constraint firstItem="MZo-Ij-VRe" firstAttribute="leading" secondItem="Qng-EQ-a9q" secondAttribute="leadingMargin" id="krT-IW-rsa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MZo-Ij-VRe" secondAttribute="trailing" id="n9p-mO-R88"/>
-                            <constraint firstItem="YpS-PB-8v7" firstAttribute="bottom" secondItem="KbH-UB-wng" secondAttribute="bottom" id="odb-4U-0Jj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KbH-UB-wng"/>
                     </view>
@@ -81,7 +63,6 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="activityView" destination="YpS-PB-8v7" id="MFx-wu-H3S"/>
                         <outlet property="textLabel" destination="MZo-Ij-VRe" id="5qb-Sn-nyb"/>
                         <segue destination="Pwb-kN-9EN" kind="show" identifier="finish" id="wnv-e9-DBR"/>
                     </connections>
@@ -151,7 +132,7 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                                     <constraint firstAttribute="height" constant="44" id="uqi-m7-6p7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Zavřit">
+                                <state key="normal" title="Zavřít">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
                                 <connections>

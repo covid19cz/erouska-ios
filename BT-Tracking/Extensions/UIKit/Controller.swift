@@ -27,8 +27,40 @@ extension UIViewController {
     }
 
     func openURL(URL: URL) {
-        let controller = SFSafariViewController(url: URL)
-        present(controller, animated: true, completion: nil)
+        present(SFSafariViewController(url: URL), animated: true)
+    }
+
+    private static let progressTag = 42
+
+    /// shows overlay over current UIViewController's window, if it has one
+    func showProgress() {
+        guard let window = view.window else { return }
+
+        let overlay = UIView()
+        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        overlay.tag = UIViewController.progressTag
+
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.startAnimating()
+        overlay.addSubview(activityIndicator)
+
+        window.addSubview(overlay)
+
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: overlay.centerYAnchor),
+
+            overlay.leadingAnchor.constraint(equalTo: window.leadingAnchor),
+            overlay.trailingAnchor.constraint(equalTo: window.trailingAnchor),
+            overlay.topAnchor.constraint(equalTo: window.topAnchor),
+            overlay.bottomAnchor.constraint(equalTo: window.bottomAnchor),
+        ])
+    }
+
+    func hideProgress() {
+        view.window?.subviews.first { $0.tag == UIViewController.progressTag }?.removeFromSuperview()
     }
 
 }

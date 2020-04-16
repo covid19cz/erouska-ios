@@ -19,7 +19,7 @@ func log(_ text: String) {
     #endif
 }
 
-protocol LogDelegate: class {
+protocol LogDelegate: AnyObject {
     func didLog(_ text: String)
 }
 

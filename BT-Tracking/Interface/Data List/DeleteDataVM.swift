@@ -19,13 +19,7 @@ final class DeleteDataVM {
     init(scannerStore: ScannerStore) {
         self.scannerStore = scannerStore
     }
-    
-    // MARK: - Alert
-    
-    func showAlert() {
-        
-    }
-    
+
     // MARK: - Delete data
     
     func deleteAllData() {

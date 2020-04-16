@@ -6,49 +6,18 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import RxSwift
-import RxCocoa
+import UIKit
 
-final class HelpVC: UIViewController {
+final class HelpVC: MarkdownController {
 
-    @IBOutlet private weak var textView: UITextView!
-
-    private let bag = DisposeBag()
+    override var markdownContent: String {
+        RemoteValues.helpMarkdown
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         setupTabBar()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        textView.isEditable = false
-        textView.dataDetectorTypes = [.link]
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupContent()
-    }
-
-    override func viewLayoutMarginsDidChange() {
-        super.viewLayoutMarginsDidChange()
-
-        textView.textContainerInset = UIEdgeInsets(
-            top: 16,
-            left: view.layoutMargins.left,
-            bottom: 16,
-            right: view.layoutMargins.right
-        )
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        guard #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
-        setupContent()
     }
 
     // MARK: - Actions
@@ -60,6 +29,7 @@ final class HelpVC: UIViewController {
 }
 
 private extension HelpVC {
+
     func setupTabBar() {
         if #available(iOS 13, *) {
             navigationController?.tabBarItem.image = UIImage(systemName: "questionmark.circle")
@@ -68,7 +38,4 @@ private extension HelpVC {
         }
     }
 
-    func setupContent() {
-        textView.attributedText = Markdown.attributedString(markdown: RemoteValues.helpMarkdown)
-    }
 }

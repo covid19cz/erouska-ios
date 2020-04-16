@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 import RxSwift
 
-protocol BTAdvertising: class {
+protocol BTAdvertising: AnyObject {
 
     init(TUIDs: [String], IDRotation: Int)
 
@@ -108,8 +108,10 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             .skip(1)
             .subscribe(onNext: { [weak self] _ in
                 guard self?.isRunning == true else { return }
-                self?.rotateDeviceID()
-                self?.didChangeID?()
+                DispatchQueue.main.async {
+                    self?.rotateDeviceID()
+                    self?.didChangeID?()
+                }
             })
             .disposed(by: bag)
 

@@ -81,7 +81,7 @@
 		8083D8CB244640A0007FA4E9 /* BTScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0CF241FE706008907B8 /* BTScanner.swift */; };
 		8083D8CD244640A0007FA4E9 /* BluetoothActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationController.swift */; };
 		8083D8CE244640A0007FA4E9 /* SendReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportController.swift */; };
-		8083D8CF244640A0007FA4E9 /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* DataCollectionInfoVC.swift */; };
+		8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		8083D8D0244640A0007FA4E9 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
 		8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
 		8083D8D3244640A0007FA4E9 /* DeleteDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */; };
@@ -122,7 +122,7 @@
 		8083D90324464334007FA4E9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
 		8083D90524464339007FA4E9 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCE2446028E00D0C810 /* InputValidation.swift */; };
 		8083D90624464339007FA4E9 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE97824252AE6001A93B3 /* MulticastDelegate.swift */; };
-		8083D90724464342007FA4E9 /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* DataCollectionInfoVC.swift */; };
+		8083D90724464342007FA4E9 /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		8083D90824464342007FA4E9 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		8083D90924464342007FA4E9 /* DeleteDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */; };
 		8083D90A24464342007FA4E9 /* DeleteDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */; };
@@ -167,6 +167,9 @@
 		80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
 		80D5F7E52423D8740010EF51 /* CompleteActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */; };
+		80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
+		80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
+		80DF2F022448428B00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
 		80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB95D24290B6700E57601 /* ScanRealm.swift */; };
 		80ECB96324290C1000E57601 /* ScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96124290C1000E57601 /* ScanCell.swift */; };
 		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
@@ -181,7 +184,7 @@
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
 		BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
-		FFC4432424460A36002D2A6D /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* DataCollectionInfoVC.swift */; };
+		FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 /* End PBXBuildFile section */
 
@@ -255,6 +258,7 @@
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 		80D5F7E42423D8730010EF51 /* CompleteActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationController.swift; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionInfoVC.swift; sourceTree = "<group>"; };
 		80ECB95D24290B6700E57601 /* ScanRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanRealm.swift; sourceTree = "<group>"; };
 		80ECB96124290C1000E57601 /* ScanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCell.swift; sourceTree = "<group>"; };
 		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
@@ -275,7 +279,7 @@
 		CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
-		FFC4432324460A35002D2A6D /* DataCollectionInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionInfoVC.swift; sourceTree = "<group>"; };
+		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
 		FFC4432524460D78002D2A6D /* MarkdownBackups.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = MarkdownBackups.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -552,6 +556,7 @@
 				80799BEA2423B89A002B04C5 /* Controller.swift */,
 				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 				80B94556242B96560052CD9F /* NavigationController.swift */,
+				FFC4432324460A35002D2A6D /* MarkdownController.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -585,7 +590,7 @@
 				803C5B242429346500E49414 /* DataListVM.swift */,
 				46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */,
 				46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */,
-				FFC4432324460A35002D2A6D /* DataCollectionInfoVC.swift */,
+				80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */,
 			);
 			path = "Data List";
 			sourceTree = "<group>";
@@ -979,7 +984,7 @@
 				80ECB96324290C1000E57601 /* ScanCell.swift in Sources */,
 				80BB476624236ED100F552FC /* BluetoothActivationController.swift in Sources */,
 				80BF9C262424D55800150108 /* SendReportController.swift in Sources */,
-				FFC4432424460A36002D2A6D /* DataCollectionInfoVC.swift in Sources */,
+				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
@@ -989,6 +994,7 @@
 				80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */,
 				80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */,
 				80610BD024363D7B00E031C8 /* Auth.swift in Sources */,
+				80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				805BE9772424DE0E001A93B3 /* BTScan.swift in Sources */,
@@ -1011,6 +1017,7 @@
 				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
 				8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */,
 				8083D8AD244640A0007FA4E9 /* AccountActivationController.swift in Sources */,
+				80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */,
 				8083D8AE244640A0007FA4E9 /* DataListVC.swift in Sources */,
 				8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */,
 				8083D8B0244640A0007FA4E9 /* DeleteDataVC.swift in Sources */,
@@ -1038,7 +1045,7 @@
 				8083D8CB244640A0007FA4E9 /* BTScanner.swift in Sources */,
 				8083D8CD244640A0007FA4E9 /* BluetoothActivationController.swift in Sources */,
 				8083D8CE244640A0007FA4E9 /* SendReportController.swift in Sources */,
-				8083D8CF244640A0007FA4E9 /* DataCollectionInfoVC.swift in Sources */,
+				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
 				8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */,
 				8083D8D3244640A0007FA4E9 /* DeleteDataVM.swift in Sources */,
@@ -1076,6 +1083,7 @@
 				8083D90C24464345007FA4E9 /* HelpVC.swift in Sources */,
 				8083D8FC24464331007FA4E9 /* Layout.swift in Sources */,
 				8083D90B24464342007FA4E9 /* DataListVM.swift in Sources */,
+				80DF2F022448428B00C3037F /* DataCollectionInfoVC.swift in Sources */,
 				8083D8FE24464334007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D90E244643BB007FA4E9 /* ScanListVM.swift in Sources */,
 				8083D90824464342007FA4E9 /* DataListVC.swift in Sources */,
@@ -1096,7 +1104,7 @@
 				8083D90624464339007FA4E9 /* MulticastDelegate.swift in Sources */,
 				80BB475024212A3C00F552FC /* BTScanner.swift in Sources */,
 				80BB475224212A3C00F552FC /* BT.swift in Sources */,
-				8083D90724464342007FA4E9 /* DataCollectionInfoVC.swift in Sources */,
+				8083D90724464342007FA4E9 /* MarkdownController.swift in Sources */,
 				8083D91B244758CB007FA4E9 /* BTScan.swift in Sources */,
 				8083D8FD24464334007FA4E9 /* Button.swift in Sources */,
 			);
@@ -1256,7 +1264,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1278,7 +1286,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
