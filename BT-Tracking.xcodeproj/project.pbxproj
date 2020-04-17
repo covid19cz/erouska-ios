@@ -184,6 +184,8 @@
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
 		BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
+		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
+		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 /* End PBXBuildFile section */
@@ -279,6 +281,7 @@
 		CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
 		FFC4432524460D78002D2A6D /* MarkdownBackups.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = MarkdownBackups.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -537,11 +540,11 @@
 			isa = PBXGroup;
 			children = (
 				8054C0DC2420AF63008907B8 /* App.swift */,
-				80610BD8243B13AE00E031C8 /* String.swift */,
+				80ECB96524290DA900E57601 /* Collection.swift */,
 				807053522427BA2500DC1034 /* Data.swift */,
 				80631A97242CAB5000EB0B6C /* Image.swift */,
-				80ECB96524290DA900E57601 /* Collection.swift */,
 				BDBB00D724261D5C00871FE4 /* Layout.swift */,
+				80610BD8243B13AE00E031C8 /* String.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -551,12 +554,13 @@
 			children = (
 				80BB47632422865B00F552FC /* Button.swift */,
 				80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */,
-				80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */,
-				80BE3FC52445CCAC00D0C810 /* GradientView.swift */,
+				FF2F0DBB2449AFA60062A7F9 /* Color.swift */,
 				80799BEA2423B89A002B04C5 /* Controller.swift */,
-				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
-				80B94556242B96560052CD9F /* NavigationController.swift */,
+				80BE3FC52445CCAC00D0C810 /* GradientView.swift */,
+				80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */,
 				FFC4432324460A35002D2A6D /* MarkdownController.swift */,
+				80B94556242B96560052CD9F /* NavigationController.swift */,
+				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -566,8 +570,8 @@
 			children = (
 				80610BCF24363D7B00E031C8 /* Auth.swift */,
 				80BE3FCE2446028E00D0C810 /* InputValidation.swift */,
-				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 				8083D9132446F779007FA4E9 /* Markdown.swift */,
+				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -986,6 +990,7 @@
 				80BF9C262424D55800150108 /* SendReportController.swift in Sources */,
 				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
+				FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */,
 				80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
 				803669A9243F4B0D00684B57 /* BTScanDevice.swift in Sources */,
@@ -1049,6 +1054,7 @@
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
 				8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */,
 				8083D8D3244640A0007FA4E9 /* DeleteDataVM.swift in Sources */,
+				FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */,
 				8083D8D4244640A0007FA4E9 /* Collection.swift in Sources */,
 				8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
