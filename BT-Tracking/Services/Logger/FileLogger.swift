@@ -19,7 +19,9 @@ final class FileLogger {
         guard let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
         self.fileURL = URL(fileURLWithPath: documents).appendingPathComponent("application.log")
 
-        FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
+            FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
+        }
         guard let fileHandle = try? FileHandle(forWritingTo: fileURL) else { return nil }
         fileHandle.seekToEndOfFile()
 

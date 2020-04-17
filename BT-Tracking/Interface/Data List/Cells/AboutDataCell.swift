@@ -8,7 +8,6 @@
 
 import UIKit
 
-class AboutDataCell: UITableViewCell {
-
+final class AboutDataCell: UITableViewCell {
     static let identifier = "aboutDataCell"
 }
