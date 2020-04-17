@@ -44,6 +44,10 @@ private extension RegistrationCoordinator {
 
         navigationController.pushViewController(viewController, animated: false)
     }
+
+    func showHelpScreen() {
+
+    }
 }
 
 // MARK: - FirstActivationControllerDelegate
@@ -51,6 +55,10 @@ private extension RegistrationCoordinator {
 extension RegistrationCoordinator: FirstActivationControllerDelegate {
     func controllerDidTapContinue(_ controller: FirstActivationController) {
 
+    }
+
+    func controllerDidTapHelp(_ controller: FirstActivationController) {
+        showHelpScreen()
     }
 
     func controllerDidTapAudit(_ controller: FirstActivationController) {

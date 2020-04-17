@@ -12,6 +12,7 @@ import UserNotifications
 
 protocol FirstActivationControllerDelegate: AnyObject {
     func controllerDidTapContinue(_ controller: FirstActivationController)
+    func controllerDidTapHelp(_ controller: FirstActivationController)
     func controllerDidTapAudit(_ controller: FirstActivationController)
 }
 
@@ -35,6 +36,10 @@ final class FirstActivationController: UIViewController {
     }
 
     // MARK: - Actions
+
+    @IBAction private func didTapHelp() {
+        delegate?.controllerDidTapHelp(self)
+    }
     
     @IBAction private func didTapContinue() {
         delegate?.controllerDidTapContinue(self)

@@ -111,6 +111,9 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                 <state key="normal" title="Jak to funguje">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="didTapHelp" destination="pNZ-IF-ibE" eventType="touchUpInside" id="akt-qj-Zsj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

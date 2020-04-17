@@ -24,16 +24,3 @@ final class LoggedInCoordinator: Coordinator {
         window.makeKeyAndVisible()
     }
 }
-
-final class LoggedInTabBarController: TabBarController {
-    let active = ActiveCoordinator()
-    let data = DataCoordinator()
-    let contacts = ContactsCoordinator()
-    let help = HelpCoordinator()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        viewControllers = [active.navigationController, data.navigationController, contacts.navigationController, help.navigationController]
-    }
-}

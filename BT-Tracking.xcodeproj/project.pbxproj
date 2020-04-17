@@ -192,6 +192,8 @@
 		FF2F0DCF2449E37C0062A7F9 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DCD2449E37C0062A7F9 /* HelpVC.swift */; };
 		FF2F0DD22449E8D70062A7F9 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DD12449E8D70062A7F9 /* AuthorizationService.swift */; };
 		FF2F0DD32449E8D70062A7F9 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DD12449E8D70062A7F9 /* AuthorizationService.swift */; };
+		FF2F0DD52449EF0F0062A7F9 /* LoggedInTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DD42449EF0F0062A7F9 /* LoggedInTabBar.swift */; };
+		FF2F0DD62449EF0F0062A7F9 /* LoggedInTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DD42449EF0F0062A7F9 /* LoggedInTabBar.swift */; };
 		FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 		FFC7E1072448C43800872DCA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7E1062448C43800872DCA /* Coordinator.swift */; };
@@ -302,6 +304,7 @@
 		FF2F0DCA2449E1D00062A7F9 /* DataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCoordinator.swift; sourceTree = "<group>"; };
 		FF2F0DCD2449E37C0062A7F9 /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		FF2F0DD12449E8D70062A7F9 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
+		FF2F0DD42449EF0F0062A7F9 /* LoggedInTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInTabBar.swift; sourceTree = "<group>"; };
 		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
 		FFC4432524460D78002D2A6D /* MarkdownBackups.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = MarkdownBackups.strings; sourceTree = "<group>"; };
 		FFC7E1062448C43800872DCA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -545,6 +548,7 @@
 		80BB476024227C1400F552FC /* Signup */ = {
 			isa = PBXGroup;
 			children = (
+				FFC7E1122448E9C600872DCA /* RegistrationCoordinator.swift */,
 				80BB476124227C2500F552FC /* Signup.storyboard */,
 				BD979AE824255BD1004001ED /* FirstActivationController.swift */,
 				80BB476524236ED100F552FC /* BluetoothActivationController.swift */,
@@ -607,6 +611,7 @@
 			isa = PBXGroup;
 			children = (
 				80AD970B2429317900AEA661 /* Cells */,
+				FF2F0DCA2449E1D00062A7F9 /* DataCoordinator.swift */,
 				80ECB96B24292FB000E57601 /* DataList.storyboard */,
 				803C5B22242932BF00E49414 /* DataListVC.swift */,
 				803C5B242429346500E49414 /* DataListVM.swift */,
@@ -621,10 +626,13 @@
 			isa = PBXGroup;
 			children = (
 				BD0191462424331900707341 /* Active.storyboard */,
+				FF2F0DC42449E1880062A7F9 /* ActiveCoordinator.swift */,
+				FF2F0DD72449EF540062A7F9 /* Contacts */,
+				FFC7E1152448EA9D00872DCA /* LoggedInCoordinator.swift */,
+				FF2F0DD42449EF0F0062A7F9 /* LoggedInTabBar.swift */,
 				BD979AEA242565AF004001ED /* ActiveAppController.swift */,
 				80B94554242B7B460052CD9F /* ActiveAppViewModel.swift */,
 				80BF9C252424D55800150108 /* SendReportController.swift */,
-				8075EDC2242A6E93001D9DCD /* ContactsController.swift */,
 			);
 			path = Active;
 			sourceTree = "<group>";
@@ -632,6 +640,7 @@
 		BDB07FBE24254A7B00834E79 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				FF2F0DC72449E1B60062A7F9 /* HelpCoordinator.swift */,
 				FF2F0DCD2449E37C0062A7F9 /* HelpVC.swift */,
 			);
 			path = Help;
@@ -643,6 +652,15 @@
 				FF2F0DD12449E8D70062A7F9 /* AuthorizationService.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		FF2F0DD72449EF540062A7F9 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				FF2F0DC12449E16D0062A7F9 /* ContactsCoordinator.swift */,
+				8075EDC2242A6E93001D9DCD /* ContactsController.swift */,
+			);
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 		FFC4432724461357002D2A6D /* Resources */ = {
@@ -666,12 +684,6 @@
 			children = (
 				FFC7E1062448C43800872DCA /* Coordinator.swift */,
 				FFC7E10A2448C45C00872DCA /* AppCoordinator.swift */,
-				FFC7E1122448E9C600872DCA /* RegistrationCoordinator.swift */,
-				FFC7E1152448EA9D00872DCA /* LoggedInCoordinator.swift */,
-				FF2F0DC12449E16D0062A7F9 /* ContactsCoordinator.swift */,
-				FF2F0DC42449E1880062A7F9 /* ActiveCoordinator.swift */,
-				FF2F0DC72449E1B60062A7F9 /* HelpCoordinator.swift */,
-				FF2F0DCA2449E1D00062A7F9 /* DataCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1050,6 +1062,7 @@
 				FF2F0DD22449E8D70062A7F9 /* AuthorizationService.swift in Sources */,
 				5E110F9C2433C4AD0059712A /* UnregisterFinishVC.swift in Sources */,
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
+				FF2F0DD52449EF0F0062A7F9 /* LoggedInTabBar.swift in Sources */,
 				80AD970D2429318B00AEA661 /* DataCell.swift in Sources */,
 				FFC7E1162448EA9D00872DCA /* LoggedInCoordinator.swift in Sources */,
 				80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */,
@@ -1108,6 +1121,7 @@
 				8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
 				8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */,
+				FF2F0DD62449EF0F0062A7F9 /* LoggedInTabBar.swift in Sources */,
 				8083D8D9244640A0007FA4E9 /* App.swift in Sources */,
 				8083D8DA244640A0007FA4E9 /* BTScan.swift in Sources */,
 				FFC7E1082448C43800872DCA /* Coordinator.swift in Sources */,
