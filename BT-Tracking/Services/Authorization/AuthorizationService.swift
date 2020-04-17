@@ -12,8 +12,13 @@ import FirebaseAuth
 protocol AuthorizationService: AnyObject {
     func signOut() throws
     var isLoggedIn: Bool { get }
-    func verifyPhoneNumber(_ phoneNumber: String, completion: (Result<String, Error>) -> Void)
+    func verifyPhoneNumber(_ phoneNumber: String, completion: @escaping (Result<String, PhoneAuthenticationError>) -> Void)
 
+}
+
+enum PhoneAuthenticationError: Error {
+    case general
+    case limitExceeded
 }
 
 final class DefaultAuthorizationService: AuthorizationService {
@@ -36,10 +41,16 @@ final class DefaultAuthorizationService: AuthorizationService {
         KeychainService.BUID != nil && KeychainService.TUIDs != nil && auth.currentUser != nil
     }
 
-    // TODO: finish this
-    func verifyPhoneNumber(_ phoneNumber: String, completion: (Result<String, Error>) -> Void) {
-
-//        completion(.failure(error))
+    func verifyPhoneNumber(_ phoneNumber: String, completion: @escaping (Result<String, PhoneAuthenticationError>) -> Void) {
+        phoneAuthProvider.verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+            if let verificationID = verificationID {
+                completion(.success(verificationID))
+            } else if (error as NSError?)?.code == AuthErrorCode.tooManyRequests.rawValue {
+                completion(.failure(.limitExceeded))
+            } else {
+                completion(.failure(.general))
+            }
+        }
     }
 }
 
@@ -56,6 +67,6 @@ final class TestAuthorizationService: AuthorizationService {
         shouldReturnIsLoggedIn
     }
 
-    func verifyPhoneNumber(_ phoneNumber: String, completion: (Result<String, Error>) -> Void) {
+    func verifyPhoneNumber(_ phoneNumber: String, completion: @escaping (Result<String, PhoneAuthenticationError>) -> Void) {
     }
 }
