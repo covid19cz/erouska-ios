@@ -90,8 +90,9 @@ final class AccountActivationController: UIViewController {
             return
         }
 
-        showProgress()
         view.endEditing(true)
+
+        showProgress()
 
         let phone = phonePrefix.value + phoneNumber.value
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self] verificationID, error in

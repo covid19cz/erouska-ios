@@ -62,11 +62,15 @@ private extension RegistrationCoordinator {
     }
 
     func showBluetoothScreen() {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "BluetoothActivationController") as! BluetoothActivationController
 
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showPhoneNumberScreen() {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AccountActivationController") as! AccountActivationController
 
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showNotificationsScreen() {
@@ -86,8 +90,6 @@ extension RegistrationCoordinator: FirstActivationControllerDelegate {
         }
 
         userNotificationCenter.getNotificationSettings { [weak self] settings in
-            NSLog("msrutek, thread: \(Thread.current)")
-
             guard let self = self else { return }
 
             DispatchQueue.main.async {
@@ -95,17 +97,6 @@ extension RegistrationCoordinator: FirstActivationControllerDelegate {
                     self.showNotificationsScreen()
                 } else {
                     self.showPhoneNumberScreen()
-                }
-
-                switch settings.authorizationStatus {
-                case .authorized:
-                    NSLog("msrutek, authorized")
-                case .provisional:
-                    NSLog("msrutek, provisional")
-                case .notDetermined:
-                    NSLog("msrutek, notDetermined")
-                case .denied:
-                    NSLog("msrutek, denied")
                 }
             }
         }

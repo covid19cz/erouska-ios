@@ -395,7 +395,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         <!--Telefonní číslo-->
         <scene sceneID="vLC-jn-bpl">
             <objects>
-                <viewController id="BBC-aE-fuq" customClass="AccountActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountActivationController" id="BBC-aE-fuq" customClass="AccountActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceh-zy-1BU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -682,7 +682,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LBz-k7-fXB"/>
+        <segue reference="9If-5K-v2Z"/>
         <segue reference="kyL-aQ-rgP"/>
     </inferredMetricsTieBreakers>
     <resources>
