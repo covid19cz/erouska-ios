@@ -7,19 +7,31 @@
 //
 
 import UIKit
+import CoreBluetooth
+import UserNotifications
 
 final class RegistrationCoordinator: Coordinator {
-    private let navigationController: UINavigationController
     private let window: UIWindow
+    private let navigationController: UINavigationController
+    private let userNotificationCenter: UNUserNotificationCenter
 
     private let storyboard = UIStoryboard(name: "Signup", bundle: nil)
 
+    private var bluetoothAuthorized: Bool {
+           if #available(iOS 13.0, *) {
+               return CBCentralManager().authorization == .allowedAlways
+           }
+           return CBPeripheralManager.authorizationStatus() == .authorized
+       }
+
     init(
         window: UIWindow,
-        navigationController: UINavigationController = UINavigationController()
+        navigationController: UINavigationController = UINavigationController(),
+        userNotificationCenter: UNUserNotificationCenter = UNUserNotificationCenter.current()
     ) {
-        self.navigationController = navigationController
         self.window = window
+        self.navigationController = navigationController
+        self.userNotificationCenter = userNotificationCenter
 
         navigationController.navigationBar.prefersLargeTitles = true
     }
@@ -46,7 +58,21 @@ private extension RegistrationCoordinator {
     }
 
     func showHelpScreen() {
+        navigationController.pushViewController(HelpVC(), animated: true)
+    }
 
+    func showBluetoothScreen() {
+
+    }
+
+    func showPhoneNumberScreen() {
+
+    }
+
+    func showNotificationsScreen() {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "NotificationPermissionController") as! NotificationPermissionController
+
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
 
@@ -54,7 +80,35 @@ private extension RegistrationCoordinator {
 
 extension RegistrationCoordinator: FirstActivationControllerDelegate {
     func controllerDidTapContinue(_ controller: FirstActivationController) {
+        guard bluetoothAuthorized else {
+            showBluetoothScreen()
+            return
+        }
 
+        userNotificationCenter.getNotificationSettings { [weak self] settings in
+            NSLog("msrutek, thread: \(Thread.current)")
+
+            guard let self = self else { return }
+
+            DispatchQueue.main.async {
+                if settings.authorizationStatus == .notDetermined {
+                    self.showNotificationsScreen()
+                } else {
+                    self.showPhoneNumberScreen()
+                }
+
+                switch settings.authorizationStatus {
+                case .authorized:
+                    NSLog("msrutek, authorized")
+                case .provisional:
+                    NSLog("msrutek, provisional")
+                case .notDetermined:
+                    NSLog("msrutek, notDetermined")
+                case .denied:
+                    NSLog("msrutek, denied")
+                }
+            }
+        }
     }
 
     func controllerDidTapHelp(_ controller: FirstActivationController) {

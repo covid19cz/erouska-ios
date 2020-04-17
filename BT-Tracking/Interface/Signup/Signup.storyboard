@@ -277,7 +277,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         <!--Povolení Bluetooth-->
         <scene sceneID="aiw-yL-KMo">
             <objects>
-                <viewController id="1ln-NW-njF" customClass="BluetoothActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BluetoothActivationController" id="1ln-NW-njF" customClass="BluetoothActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2X2-Ep-DR3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -569,7 +569,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         <!--Ověření-->
         <scene sceneID="J9c-t7-uW3">
             <objects>
-                <viewController id="1qZ-bG-yib" customClass="NotificationPermissionController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationPermissionController" id="1qZ-bG-yib" customClass="NotificationPermissionController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QIH-fQ-XIa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -683,7 +683,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LBz-k7-fXB"/>
-        <segue reference="p0J-jR-yfg"/>
+        <segue reference="kyL-aQ-rgP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BluetoothIlustration" width="130" height="130"/>

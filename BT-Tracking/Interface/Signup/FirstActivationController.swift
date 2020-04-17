@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import CoreBluetooth
-import UserNotifications
 
 protocol FirstActivationControllerDelegate: AnyObject {
     func controllerDidTapContinue(_ controller: FirstActivationController)
@@ -43,37 +41,10 @@ final class FirstActivationController: UIViewController {
     
     @IBAction private func didTapContinue() {
         delegate?.controllerDidTapContinue(self)
-
-        if true {
-            return
-        }
-
-        if bluetoothAuthorized {
-            UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
-                DispatchQueue.main.async { [weak self] in
-                    if settings.authorizationStatus == .notDetermined {
-                        // Request authorization
-                        self?.performSegue(withIdentifier: "notification", sender: nil)
-                    } else {
-                        // Already authorized or denied
-                        self?.performSegue(withIdentifier: "activation", sender: nil)
-                    }
-                }
-            }
-        } else {
-            performSegue(withIdentifier: "bluetooth", sender: nil)
-        }
     }
     
     @IBAction private func didTapAudit(_ sender: Any) {
         delegate?.controllerDidTapAudit(self)
-    }
-    
-    private var bluetoothAuthorized: Bool {
-        if #available(iOS 13.0, *) {
-            return CBCentralManager().authorization == .allowedAlways
-        }
-        return CBPeripheralManager.authorizationStatus() == .authorized
     }
 
 }
