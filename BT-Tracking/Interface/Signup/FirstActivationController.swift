@@ -29,12 +29,12 @@ final class FirstActivationController: UIViewController {
         if bluetoothAuthorized {
             UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
                 DispatchQueue.main.async { [weak self] in
-                    if settings.authorizationStatus == .authorized {
-                        // Already authorized
-                        self?.performSegue(withIdentifier: "activation", sender: nil)
-                    } else {
+                    if settings.authorizationStatus == .notDetermined {
                         // Request authorization
                         self?.performSegue(withIdentifier: "notification", sender: nil)
+                    } else {
+                        // Already authorized or denied
+                        self?.performSegue(withIdentifier: "activation", sender: nil)
                     }
                 }
             }
