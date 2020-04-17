@@ -12,21 +12,34 @@ import FirebaseAuth
 protocol AuthorizationService: AnyObject {
     func signOut() throws
     var isLoggedIn: Bool { get }
+    func verifyPhoneNumber(_ phoneNumber: String, completion: (Result<String, Error>) -> Void)
+
 }
 
 final class DefaultAuthorizationService: AuthorizationService {
     private let auth: Auth
+    private let phoneAuthProvider: PhoneAuthProvider
+
+    init(
+        auth: Auth = .auth(),
+        phoneAuthProvider: PhoneAuthProvider = .provider()
+    ) {
+        self.auth = auth
+        self.phoneAuthProvider = phoneAuthProvider
+    }
 
     func signOut() throws {
         try auth.signOut()
     }
 
     var isLoggedIn: Bool {
-        return KeychainService.BUID != nil && KeychainService.TUIDs != nil && auth.currentUser != nil
+        KeychainService.BUID != nil && KeychainService.TUIDs != nil && auth.currentUser != nil
     }
 
-    init(auth: Auth = .auth()) {
-        self.auth = auth
+    // TODO: finish this
+    func verifyPhoneNumber(_ phoneNumber: String, completion: (Result<String, Error>) -> Void) {
+
+//        completion(.failure(error))
     }
 }
 
@@ -41,5 +54,8 @@ final class TestAuthorizationService: AuthorizationService {
 
     var isLoggedIn: Bool {
         shouldReturnIsLoggedIn
+    }
+
+    func verifyPhoneNumber(_ phoneNumber: String, completion: (Result<String, Error>) -> Void) {
     }
 }

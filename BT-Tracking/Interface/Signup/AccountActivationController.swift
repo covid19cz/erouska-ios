@@ -9,8 +9,12 @@
 import UIKit
 import RxSwift
 import RxRelay
-import FirebaseAuth
 import DeviceKit
+
+protocol AccountActivationControllerDelegate: AnyObject {
+    func controllerDidTapPrivacy(_ controller: AccountActivationController)
+    func controller(_ controller: AccountActivationController, didTapContinueWithPhoneNumber phoneNumber: String)
+}
 
 final class AccountActivationController: UIViewController {
 
@@ -19,8 +23,14 @@ final class AccountActivationController: UIViewController {
         let phoneNumber: String
     }
 
-    private var phonePrefix = BehaviorRelay<String>(value: "")
-    private var phoneNumber = BehaviorRelay<String>(value: "")
+    // MARK: - Public Properties
+
+    weak var delegate: AccountActivationControllerDelegate?
+
+    // MARK: - Private Properties
+
+    private let phonePrefix = BehaviorRelay<String>(value: "")
+    private let phoneNumber = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
         Observable.combineLatest(phonePrefix.asObservable(), phoneNumber.asObservable()).map { (phonePrefix, phoneNumber) -> Bool in
             return InputValidation.prefix.validate(phonePrefix) && InputValidation.number.validate(phoneNumber)
@@ -81,7 +91,7 @@ final class AccountActivationController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction private func activateAcountAction() {
+    @IBAction private func didTapContinue() {
         guard permissionSwitch.isOn else {
             self.showError(
                 title: "Souhlas s podmínkami zpracování je nezbytný pro aktivaci aplikace. Bez vašeho souhlasu nemůže aplikace fungovat.",
@@ -92,30 +102,12 @@ final class AccountActivationController: UIViewController {
 
         view.endEditing(true)
 
-        showProgress()
-
         let phone = phonePrefix.value + phoneNumber.value
-        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self] verificationID, error in
-            guard let self = self else { return }
-            self.hideProgress()
-
-            if let error = error {
-                log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
-                if (error as NSError).code == AuthErrorCode.tooManyRequests.rawValue {
-                    self.showError(title: "Telefonní číslo jsme dočasně zablokovali", message: "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu.")
-                } else {
-                    self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
-                }
-                self.cleanup()
-            } else if let verificationID = verificationID  {
-                self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
-            }
-        }
+        delegate?.controller(self, didTapContinueWithPhoneNumber: phone)
     }
 
-    @IBAction private func privacyURLAction() {
-        guard let url = URL(string: RemoteValues.termsAndConditionsLink) else { return }
-        openURL(URL: url)
+    @IBAction private func didTapPrivacy() {
+        delegate?.controllerDidTapPrivacy(self)
     }
 
 }
@@ -133,16 +125,6 @@ extension AccountActivationController: UITextFieldDelegate {
         }
 
         return validateTextChange(with: type, textField: textField, changeCharactersIn: range, newString: string)
-    }
-
-}
-
-private extension AccountActivationController {
-
-    func cleanup() {
-        try? Auth.auth().signOut()
-
-        UserDefaults.resetStandardUserDefaults()
     }
 
 }

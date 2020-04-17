@@ -29,7 +29,10 @@ final class AppCoordinator: Coordinator {
         } else {
             try? authorizationService.signOut()
 
-            coordinator = RegistrationCoordinator(window: window)
+            coordinator = RegistrationCoordinator(
+                window: window,
+                authorizationService: authorizationService
+            )
         }
 
         childCoordinators.append(coordinator)

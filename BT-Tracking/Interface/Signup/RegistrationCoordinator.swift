@@ -9,11 +9,13 @@
 import UIKit
 import CoreBluetooth
 import UserNotifications
+import FirebaseAuth
 
 final class RegistrationCoordinator: Coordinator {
     private let window: UIWindow
     private let navigationController: UINavigationController
     private let userNotificationCenter: UNUserNotificationCenter
+    private let authorizationService: AuthorizationService
 
     private let storyboard = UIStoryboard(name: "Signup", bundle: nil)
 
@@ -26,10 +28,12 @@ final class RegistrationCoordinator: Coordinator {
 
     init(
         window: UIWindow,
+        authorizationService: AuthorizationService,
         navigationController: UINavigationController = UINavigationController(),
         userNotificationCenter: UNUserNotificationCenter = UNUserNotificationCenter.current()
     ) {
         self.window = window
+        self.authorizationService = authorizationService
         self.navigationController = navigationController
         self.userNotificationCenter = userNotificationCenter
 
@@ -109,5 +113,57 @@ extension RegistrationCoordinator: FirstActivationControllerDelegate {
     func controllerDidTapAudit(_ controller: FirstActivationController) {
         guard let url = URL(string: RemoteValues.proclamationLink) else { return }
         controller.openURL(URL: url)
+    }
+}
+
+// MARK: - AccountActivationControllerDelegate
+
+extension RegistrationCoordinator: AccountActivationControllerDelegate {
+    func controllerDidTapPrivacy(_ controller: AccountActivationController) {
+        guard let url = URL(string: RemoteValues.termsAndConditionsLink) else { return }
+        controller.openURL(URL: url)
+    }
+
+    func controller(_ controller: AccountActivationController, didTapContinueWithPhoneNumber phoneNumber: String) {
+        controller.showProgress()
+
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self, weak controller] verificationID, error in
+            guard let self = self, let controller = controller else { return }
+
+            controller.hideProgress()
+
+
+            if let error = error {
+                log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
+                if (error as NSError).code == AuthErrorCode.tooManyRequests.rawValue {
+                    controller.showError(
+                        title: "Telefonní číslo jsme dočasně zablokovali",
+                        message: "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu."
+                    )
+                } else {
+                    controller.showError(
+                        title: "Nepodařilo se nám ověřit telefonní číslo",
+                        message: "Zkontrolujte připojení k internetu a zkuste to znovu"
+                    )
+                }
+                self.cleanup()
+            } else if let verificationID = verificationID {
+
+                //TODO...
+//                self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
+            }
+        }
+
+
+    }
+
+    private func handleError() {
+
+    }
+
+    private func cleanup() {
+        try? authorizationService.signOut()
+
+        UserDefaults.resetStandardUserDefaults()
     }
 }

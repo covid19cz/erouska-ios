@@ -479,7 +479,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                 <state key="normal" title="Podmínky zpracování"/>
                                                                 <connections>
-                                                                    <action selector="privacyURLAction" destination="BBC-aE-fuq" eventType="touchUpInside" id="YAQ-dh-YGb"/>
+                                                                    <action selector="didTapPrivacy" destination="BBC-aE-fuq" eventType="touchUpInside" id="hl8-Da-pqa"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -520,7 +520,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
-                                            <action selector="activateAcountAction" destination="BBC-aE-fuq" eventType="touchUpInside" id="bLb-9d-isH"/>
+                                            <action selector="didTapContinue" destination="BBC-aE-fuq" eventType="touchUpInside" id="LSU-gx-Wox"/>
                                         </connections>
                                     </button>
                                 </subviews>
