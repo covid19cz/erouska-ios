@@ -45,8 +45,13 @@ final class DefaultAuthorizationService: AuthorizationService {
         phoneAuthProvider.verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
             if let verificationID = verificationID {
                 completion(.success(verificationID))
-            } else if (error as NSError?)?.code == AuthErrorCode.tooManyRequests.rawValue {
-                completion(.failure(.limitExceeded))
+            } else if let error = error as NSError? {
+                log("AuthorizationService: phoneNumber verification error: \(error.localizedDescription), code: \(error.code)")
+                if error.code == AuthErrorCode.tooManyRequests.rawValue {
+                    completion(.failure(.limitExceeded))
+                } else {
+                    completion(.failure(.general))
+                }
             } else {
                 completion(.failure(.general))
             }
