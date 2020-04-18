@@ -12,6 +12,11 @@ import RxRelay
 
 protocol VerificationCodeControllerDelegate: AnyObject {
     func controller(_ controller: VerificationCodeController, didTapVerifyWithCode code: String)
+    func controllerDidTapRetry(_ controller: VerificationCodeController)
+}
+
+protocol HandlingVerificationCodeErrors: AnyObject & UIViewController {
+    func handleError(_ error: VerificationCodeError)
 }
 
 final class VerificationCodeController: UIViewController {
@@ -85,95 +90,35 @@ final class VerificationCodeController: UIViewController {
     @IBAction private func didTapVerify(_ sender: Any) {
         delegate?.controller(self, didTapVerifyWithCode: smsCode.value)
         view.endEditing(true)
+    }
+}
 
-//        let credential = PhoneAuthProvider.provider().credential(withVerificationID: authData.verificationID, verificationCode: smsCode.value)
+// MARK: - HandlingVerificationCodeErrors
 
-        Auth.auth().signIn(with: credential) { [weak self] _, error in
-            guard let self = self else { return }
+extension VerificationCodeController: HandlingVerificationCodeErrors {
 
-            if let error = error as NSError? {
-                self.hideProgress()
+    func handleError(_ error: VerificationCodeError) {
+        switch error {
+        case .invalid:
+            smsCodeTextField.text = ""
+            showError(title: "Ověřovací kód není správně zadaný.", message: "")
+        case .expired:
+            smsCodeTextField.text = ""
 
-                if error.code == AuthErrorCode.invalidVerificationCode.rawValue {
-                    self.smsCodeTextField.text = ""
-                    self.showError(title: "Ověřovací kód není správně zadaný.", message: "")
-                } else if error.code == AuthErrorCode.sessionExpired.rawValue {
-                    self.smsCodeTextField.text = ""
-                    self.showError(
-                        title: "Vypršela platnost ověřovacího kódu",
-                        message: "Nechte si odeslat nový ověřovací kód a zadejte ho do 3 minut.",
-                        okTitle: "Ano, chci",
-                        okHandler: { [weak self] in
-                            self?.resendSmsCode()
-                        },
-                        action: (title: "Ne", handler: { [weak self] in
-                            self?.smsCodeTextField.becomeFirstResponder()
-                        })
-                    )
-                } else {
-                    self.show(error: error, title: "Chyba při aktivaci")
-                    self.smsCodeTextField.becomeFirstResponder()
-                }
-            } else {
-                let data: [String: Any] = [
-                    "platform": "iOS",
-                    "platformVersion": UIDevice.current.systemVersion,
-                    "manufacturer": "Apple",
-                    "model": Device.current.description,
-                    "locale": "\(Locale.current.languageCode ?? "cs")_\(Locale.current.regionCode ?? "CZ")",
-                    "pushRegistrationToken": AppDelegate.shared.deviceToken?.hexEncodedString ?? "xyz"
-                ]
-
-                AppDelegate.shared.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
+            // TODO: Add finish registration later option
+            self.showError(
+                title: "Vypršela platnost ověřovacího kódu",
+                message: "Zkontrolujte telefonní číslo a nechte si odeslat nový ověřovací kód.",
+                okHandler: { [weak self] in
                     guard let self = self else { return }
-                    self.hideProgress()
-
-                    if let error = error as NSError? {
-                        self.show(error: error, title: "Chyba při aktivaci")
-                        self.cleanup()
-                        self.navigationController?.popViewController(animated: true)
-                    } else if let result = result?.data as? [String: Any] {
-                        if let BUID = result["buid"] as? String, let TUIDs = result["tuids"] as? [String] {
-                            KeychainService.BUID = BUID
-                            KeychainService.TUIDs = TUIDs
-
-                            let storyboard = UIStoryboard(name: "Active", bundle: nil)
-                            AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
-                        } else {
-                            self.show(error: NSError(domain: AuthErrorDomain, code: 500, userInfo: nil), title: "Chyba při aktivaci")
-                            self.cleanup()
-                        }
-                    }
+                    self.delegate?.controllerDidTapRetry(self)
                 }
-            }
+            )
+        case .general:
+            show(error: error, title: "Chyba při aktivaci")
+            smsCodeTextField.becomeFirstResponder()
         }
-
-
-
     }
-
-
-    // TODO: msrutek
-    private func resendSmsCode() {
-//        guard let phone = authData?.phoneNumber else { return }
-//        self.showProgress()
-//        smsCodeTextField.resignFirstResponder()
-//
-//        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self] verificationID, error in
-//            guard let self = self else { return }
-//            self.hideProgress()
-//
-//            if let error = error {
-//                self.show(error: error, title: "Chyba při aktivaci")
-//                self.cleanup()
-//            } else if let verificationID = verificationID  {
-//                self.authData = PhoneNumberController.AuthData(verificationID: verificationID, phoneNumber: phone)
-//                self.startExpirationTimer()
-//                self.smsCodeTextField.becomeFirstResponder()
-//            }
-//        }
-    }
-
 }
 
 // MARK: - UITextFieldDelegate
@@ -207,8 +152,9 @@ private extension VerificationCodeController {
                 self.showError(
                     title: "Vypršela platnost ověřovacího kódu",
                     message: "Zkontrolujte telefonní číslo a nechte si odeslat nový ověřovací kód.",
-                    okHandler: {
-                        self.navigationController?.popViewController(animated: true)
+                    okHandler: { [weak self] in
+                        guard let self = self else { return }
+                        self.delegate?.controllerDidTapRetry(self)
                     }
                 )
                 return
@@ -227,11 +173,4 @@ private extension VerificationCodeController {
         dateFormatter.dateFormat = "m:ss"
         return dateFormatter
     }
-
-    func cleanup() {
-        try? Auth.auth().signOut()
-
-        UserDefaults.resetStandardUserDefaults()
-    }
-
 }

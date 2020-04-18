@@ -84,6 +84,7 @@ private extension RegistrationCoordinator {
 
     func showPhoneNumberScreen() {
         let viewController = storyboard.instantiateViewController(withIdentifier: "PhoneNumberController") as! PhoneNumberController
+        viewController.delegate = self
 
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -100,6 +101,15 @@ private extension RegistrationCoordinator {
         let viewController = storyboard.instantiateViewController(withIdentifier: "NotificationPermissionController") as! NotificationPermissionController
 
         navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+// MARK: - Private Methods
+
+private extension RegistrationCoordinator {
+    func cleanup() {
+        try? authorizationService.signOut()
+        UserDefaults.resetStandardUserDefaults()
     }
 }
 
@@ -170,24 +180,18 @@ extension RegistrationCoordinator: PhoneNumberControllerDelegate {
             }
         }
     }
-
-    private func handleError() {
-
-    }
-
-    private func cleanup() {
-        try? authorizationService.signOut()
-
-        UserDefaults.resetStandardUserDefaults()
-    }
 }
 
 // MARK: - VerificationCodeControllerDelegate
 
 extension RegistrationCoordinator: VerificationCodeControllerDelegate {
+    func controllerDidTapRetry(_ controller: VerificationCodeController) {
+        navigationController.popViewController(animated: true)
+    }
+
     func controller(_ controller: VerificationCodeController, didTapVerifyWithCode code: String) {
         guard let verificationId = verificationId else {
-            // TODO: show fekal error
+            controller.handleError(.general)
             return
         }
 
@@ -200,18 +204,14 @@ extension RegistrationCoordinator: VerificationCodeControllerDelegate {
 
             switch result {
             case .success:
-                self.registerBuid()
-            case .failure(.expired):
-                break
-            case .failure(.invalid):
-                break
-            case .failure(.general):
-                break
+                self.registerBuid(at: controller)
+            case let .failure(error):
+                controller.handleError(error)
             }
         }
     }
 
-    private func registerBuid() {
+    private func registerBuid(at controller: UIViewController) {
         let data: [String: Any] = [
             "platform": "iOS",
             "platformVersion": UIDevice.current.systemVersion,
@@ -221,16 +221,18 @@ extension RegistrationCoordinator: VerificationCodeControllerDelegate {
             "pushRegistrationToken": AppDelegate.shared.deviceToken?.hexEncodedString ?? "xyz"
         ]
 
-        AppDelegate.shared.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
-            guard let self = self else { return }
-//            self.hideProgress()
+        controller.showProgress()
+
+        AppDelegate.shared.functions.httpsCallable("registerBuid").call(data) { [weak self, weak controller] result, error in
+            guard let self = self, let controller = controller else { return }
+            controller.hideProgress()
 
             if let error = error as NSError? {
                 log("RegistrationCoordinator: registerBuid error: \(error.localizedDescription), code: \(error.code)")
 
-//                self.show(error: error, title: "Chyba při aktivaci")
                 self.cleanup()
                 self.navigationController.popViewController(animated: true)
+                self.navigationController.topViewController?.show(error: error, title: "Chyba při aktivaci")
 
                 return
             }
@@ -241,13 +243,8 @@ extension RegistrationCoordinator: VerificationCodeControllerDelegate {
                 let TUIDs = result["tuids"] as? [String]
             else {
                 log("RegistrationCoordinator: registerBuid wrong data")
-
-                // TODO: fekal error
                 self.cleanup()
-
-                // show error
-//                self.show(error: NSError(domain: AuthErrorDomain, code: 500, userInfo: nil), title: "Chyba při aktivaci")
-
+                controller.showError(message: "Chyba při aktivaci")
                 return
             }
 
