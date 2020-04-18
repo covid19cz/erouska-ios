@@ -1,5 +1,19 @@
-/*
-   @LANGUAGE cs
-   @DIRECTORY Resources 
-   @FILE Localizable.strings 
-*/
+"app_name" = "eRouška";
+"help" = "Nápověda";
+"back" = "Zpět";
+
+"welcome_help" = "Jak to funguje";
+"welcome_activation" = "Pokračovat k aktivaci";
+"welcome_title" = "Díky eRoušce ochráníte sebe  i ostatní ve svém okolí";
+"welcome_body" = "Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí nákaza koronavirem, telefonicky vás kontaktuje pracovník hygienické stanice.\n\nKdyž se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny ostatní uživatele aplikace, s kterými jste se potkali.";
+"welcome_body_more" = "Více o nezávislých auditech";
+
+"bluetooth_permission_title" = "Povolení Bluetooth";
+"bluetooth_permission_headline" = "eRouška pro správné fungování potřebuje používat Bluetooth";
+"bluetooth_permission_body" = "Bluetooth nikdy nevypínejte, aby aplikace mohla správně fungovat.\n\nNasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyzve pracovník hygienické stanice.";
+"bluetooth_permission_enable" = "Povolit Bluetooth";
+
+"notifications_title" = "Ověření";
+"notifications_headline" = "Potřebujeme ověřit, že nejste robot";
+"notifications_body" = "Aby eRouška chránila vás i vaše blízké, musí ji používat jen reální lidé. Proto vás potřebujeme ověřit jednoduchým testem, který proběhne bez vašeho zásahu.\n\nStačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.";
+"notifications_continue" = "Pokračovat";
