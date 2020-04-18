@@ -10,12 +10,6 @@ import UIKit
 
 final class ContactsController: UIViewController {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        setupTabBar()
-    }
-
     // MARK: - Actions
 
     @IBAction private func importantContactsAction() {
@@ -40,16 +34,6 @@ final class ContactsController: UIViewController {
     @IBAction private func webAction() {
         guard let url = URL(string: RemoteValues.homepageLink) else { return }
         openURL(URL: url)
-    }
-
-    // MARK: -
-
-    private func setupTabBar() {
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "phone")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "phone")?.resize(toWidth: 26)
-        }
     }
 
 }
