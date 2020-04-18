@@ -22,20 +22,41 @@ final class AppCoordinator: Coordinator {
     }
 
     func start() {
-        let coordinator: Coordinator
-
         if authorizationService.isLoggedIn {
-            coordinator = LoggedInCoordinator(window: window)
+            startLoggedIn()
         } else {
             try? authorizationService.signOut()
-
-            coordinator = RegistrationCoordinator(
-                window: window,
-                authorizationService: authorizationService
-            )
+            startRegistration()
         }
+    }
+}
 
+// MARK: - Start Root Coordinators
+
+private extension AppCoordinator {
+    func startLoggedIn() {
+        let coordinator = LoggedInCoordinator(window: window)
         childCoordinators.append(coordinator)
         coordinator.start()
+    }
+
+    func startRegistration() {
+        let coordinator = RegistrationCoordinator(
+            window: window,
+            authorizationService: authorizationService
+        )
+        coordinator.delegate = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+}
+
+// MARK: - RegistrationCoordinatorDelegate
+
+extension AppCoordinator: RegistrationCoordinatorDelegate {
+    func coordinatorDidFinishRegistration(_ coordinator: RegistrationCoordinator) {
+        childCoordinators.removeAll { $0 is RegistrationCoordinator }
+
+        startLoggedIn()
     }
 }
