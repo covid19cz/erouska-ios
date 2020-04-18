@@ -91,10 +91,7 @@ final class AccountActivationVC: UIViewController {
 
     @IBAction private func activateAcountAction() {
         guard permissionSwitch.isOn else {
-            self.showAlert(
-                title: viewModel.permissionAlert,
-                message: ""
-            )
+            self.showAlert(title: viewModel.permissionAlert)
             return
         }
 

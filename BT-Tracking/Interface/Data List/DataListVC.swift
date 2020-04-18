@@ -65,21 +65,28 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         viewModel.selectedSegmentIndex.accept(sender.selectedSegmentIndex)
     }
 
-    @IBAction private func sendReportAction() {
+    @IBAction private func sendReportAction(_ sender: Any?) {
         let controller = UIAlertController(
-            title: "Požádal vás pracovník hygienické stanice o zaslání seznamu telefonů, se kterými jste se setkali?",
-            message: "S odeslanými daty bude Ministerstvo zdravotnictví a jemu podřízení hygienici pracovat na základě vašeho souhlasu podle podmínek zpracování.",
+            title: Localizable(viewModel.sendDataQuestionTitle),
+            message: Localizable(viewModel.sendDataQuestionMessage),
             preferredStyle: .alert
         )
-        controller.addAction(UIAlertAction(title: "Ano, odeslat", style: .default, handler: { [weak self] _ in
-            self?.sendReport()
-        }))
-        controller.addAction(UIAlertAction(title: "Ne", style: .cancel, handler: { _ in
-            self.showAlert(
-                title: "Sdílejte data jen v případě, že vás pracovník hygienické stanice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu",
-                message: ""
-            )
-        }))
+        controller.addAction(UIAlertAction(
+            title: Localizable(viewModel.sendDataQuestionYes),
+            style: .default,
+            handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.sendReport()
+            }
+        ))
+        controller.addAction(UIAlertAction(
+            title: Localizable(viewModel.sendDataQuestionNo),
+            style: .cancel,
+            handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.showAlert(title: self.viewModel.sendDataErrorOnlyAfter)
+            }
+        ))
         controller.preferredAction = controller.actions.first
         present(controller, animated: true)
     }
@@ -142,18 +149,12 @@ private extension DataListVC {
 
     func sendReport() {
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
-            showAlert(
-                title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
-                message: ""
-            )
+            showAlert(title: viewModel.sendDataErrorWait)
             return
         }
 
         guard let connection = try? Reachability().connection, connection != .unavailable else {
-            showAlert(
-                title: "Nepodařilo se nám odeslat data",
-                message: "Zkontrolujte připojení k internetu a zkuste to znovu"
-            )
+            showSendDataErrorFailed()
             return
         }
 
@@ -173,7 +174,7 @@ private extension DataListVC {
                 self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata, fileDate: fileDate)
             } else if let error = error {
                 self.hideProgress()
-                self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkáními")
+                self.show(error: error, title: self.viewModel.sendDataErrorFile)
             }
         })
     }
@@ -195,16 +196,19 @@ private extension DataListVC {
             self.writer?.deleteFile()
             if let error = error {
                 log("FirebaseUpload: Error \(error.localizedDescription)")
-
-                self.showAlert(
-                    title: "Nepodařilo se nám odeslat data",
-                    message: "Zkontrolujte připojení k internetu a zkuste to znovu"
-                )
+                self.showSendDataErrorFailed()
                 return
             }
             AppSettings.lastUploadDate = fileDate
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
+    }
+
+    func showSendDataErrorFailed() {
+        showAlert(
+            title: viewModel.sendDataErrorFailedTitle,
+            message: viewModel.sendDataErrorFailedMessage
+        )
     }
 
 }

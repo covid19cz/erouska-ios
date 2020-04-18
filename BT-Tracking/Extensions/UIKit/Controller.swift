@@ -17,10 +17,10 @@ extension UIViewController {
     }
 
     /// show alert, localization keys are expected
-    func showAlert(title: String = "error", message: String, okTitle: String = "ok", okHandler: (() -> Void)? = nil, action: (title: String, handler: (() -> Void)?)? = nil) {
+    func showAlert(title: String = "error", message: String? = nil, okTitle: String = "ok", okHandler: (() -> Void)? = nil, action: (title: String, handler: (() -> Void)?)? = nil) {
         let alertController = UIAlertController(
             title: Localizable(title),
-            message: Localizable(message),
+            message: message == nil ? nil : Localizable(message ?? ""),
             preferredStyle: .alert
         )
         alertController.addAction(UIAlertAction(

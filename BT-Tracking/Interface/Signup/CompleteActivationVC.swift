@@ -193,7 +193,7 @@ private extension CompleteActivationVC {
     func handleVerification(error: NSError) {
         if error.code == AuthErrorCode.invalidVerificationCode.rawValue {
             codeTextField.text = ""
-            showAlert(title: viewModel.errorWrongCode, message: "")
+            showAlert(title: viewModel.errorWrongCode)
         } else if error.code == AuthErrorCode.sessionExpired.rawValue {
             expirationAlert()
         } else {

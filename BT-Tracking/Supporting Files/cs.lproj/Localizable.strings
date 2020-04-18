@@ -85,3 +85,15 @@
 "data_list_header_time" = "Čas";
 "data_list_header_id" = "ID";
 "data_list_header_signal" = "RSSI";
+
+"data_list_send_question_title" = "Požádal vás pracovník hygienické stanice o zaslání seznamu telefonů, se kterými jste se setkali?";
+"data_list_send_question_message" = "S odeslanými daty bude Ministerstvo zdravotnictví a jemu podřízení hygienici pracovat na základě vašeho souhlasu podle podmínek zpracování.";
+"data_list_send_question_yes" = "Ano, odeslat";
+"data_list_send_question_no" = "Ne";
+
+"data_list_send_error_wait" = "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.";
+"data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";
+"data_list_send_error_failed_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
+"data_list_send_error_file_title" = "Nepodařilo se vytvořit soubor se setkáními";
+
+"data_list_send_error_only_after_message" = "Sdílejte data jen v případě, že vás pracovník hygienické stanice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu.";

@@ -16,10 +16,21 @@ final class DataListVM {
 
     // MARK: - Localization
 
-    var title = "data_list_title"
-    var infoButton = "data_list_info_button"
-    var deleteButton = "data_list_delete_button"
-    var sendButton = "data_list_send_button"
+    let title = "data_list_title"
+    let infoButton = "data_list_info_button"
+    let deleteButton = "data_list_delete_button"
+    let sendButton = "data_list_send_button"
+
+    let sendDataQuestionTitle = "data_list_send_question_title"
+    let sendDataQuestionMessage = "data_list_send_question_message"
+    let sendDataQuestionYes = "data_list_send_question_yes"
+    let sendDataQuestionNo = "data_list_send_question_no"
+
+    let sendDataErrorWait = "data_list_send_error_wait"
+    let sendDataErrorFailedTitle = "data_list_send_error_failed_title"
+    let sendDataErrorFailedMessage = "data_list_send_error_failed_message"
+    let sendDataErrorFile = "data_list_send_error_file_title"
+    let sendDataErrorOnlyAfter = "data_list_send_error_only_after_message"
 
     // MARK: - Properties
 

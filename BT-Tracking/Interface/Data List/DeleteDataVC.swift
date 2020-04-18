@@ -34,8 +34,11 @@ final class DeleteDataVC: UIViewController {
         let controller = (tabBarController?.viewControllers?.first as? UINavigationController)?.topViewController as? ActiveAppVC
         controller?.pauseScanning()
 
-        showAlert(title: "Všechna data jsme odstranili a eRoušku pozastavili", message: "", okHandler: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        })
+        showAlert(
+            title: "Všechna data jsme odstranili a eRoušku pozastavili",
+            okHandler: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }
+        )
     }
 }
