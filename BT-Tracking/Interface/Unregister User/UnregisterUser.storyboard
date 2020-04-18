@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OdD-NU-Jt7">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,11 +11,11 @@
             <objects>
                 <viewController id="OdD-NU-Jt7" customClass="UnregisterUserVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qng-EQ-a9q">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-Ij-VRe">
-                                <rect key="frame" x="20" y="103" width="374" height="264"/>
+                                <rect key="frame" x="20" y="59" width="560" height="203"/>
                                 <string key="text">Opravdu chcete zrušit registraci svého telefonního čísla? 
 
 Po zrušení registrace vás nemůžeme kontaktovat v případě, že dojde k potvrzení nákazy koronavirem u někoho z vašeho okolí. 
@@ -30,7 +28,7 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yka-5x-pJ7" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="20" y="803" width="374" height="44"/>
+                                <rect key="frame" x="20" y="541" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0dl-Xa-CWe"/>
                                 </constraints>
@@ -63,7 +61,8 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="textLabel" destination="MZo-Ij-VRe" id="5qb-Sn-nyb"/>
+                        <outlet property="actionButton" destination="Yka-5x-pJ7" id="33R-Il-WK0"/>
+                        <outlet property="bodyLabel" destination="MZo-Ij-VRe" id="5qb-Sn-nyb"/>
                         <segue destination="Pwb-kN-9EN" kind="show" identifier="finish" id="wnv-e9-DBR"/>
                     </connections>
                 </viewController>
@@ -86,14 +85,14 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
             <objects>
                 <viewController storyboardIdentifier="unregisterFinish" hidesBottomBarWhenPushed="YES" id="Pwb-kN-9EN" customClass="UnregisterFinishVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eGZ-Up-kfd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fjy-5T-lyh">
-                                <rect key="frame" x="16" y="365" width="382" height="166.5"/>
+                                <rect key="frame" x="16" y="217" width="568" height="166.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ScanActive" translatesAutoresizingMaskIntoConstraints="NO" id="vBp-M6-JBt">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="130"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="568" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="130" id="6eK-l4-jTF" customClass="LayoutConstraintHelper" customModule="eRouska" customModuleProvider="target">
                                                 <userDefinedRuntimeAttributes>
@@ -109,7 +108,7 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registaci vašeho telefonního čísla jsme zrušili" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGQ-JA-Oge">
-                                        <rect key="frame" x="0.0" y="146" width="382" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="146" width="568" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.54901960780000003" green="0.76078431369999999" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -127,7 +126,7 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2G6-UX-GDn" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="20" y="803" width="374" height="44"/>
+                                <rect key="frame" x="20" y="541" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="uqi-m7-6p7"/>
                                 </constraints>
@@ -157,7 +156,7 @@ Zrušením registrace dojde k vypnutí aplikace ve všech zařízeních registro
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="closeButton" destination="2G6-UX-GDn" id="OFC-S8-S9V"/>
-                        <outlet property="titleLabel" destination="HGQ-JA-Oge" id="5xp-1n-yKZ"/>
+                        <outlet property="headlineLabel" destination="HGQ-JA-Oge" id="5xp-1n-yKZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4X-Rs-BBF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

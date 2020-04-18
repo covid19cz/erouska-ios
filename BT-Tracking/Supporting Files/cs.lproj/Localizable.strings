@@ -108,5 +108,26 @@
 "data_send_body" = "Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nZůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygieniků.";
 "data_send_close_button" = "Zavřít";
 
+"contacts_title" = "Kontakty";
+"contacts_important_headline" = "Máte podezření na koronavirus?";
+"contacts_important_body" = "Zůstaňte doma a kontaktuje svého praktického lékaře nebo příslušnou hygienickou stanici.";
+"contacts_important_button" = "Důležité kontakty";
+"contacts_help_headline" = "Potřebujete poradit?";
+"contacts_help_body" = "Veškeré otázky a nejasnosti týkající se koronaviru by vám měli zodpovědět na webu MZČR nebo\n\nna bezplatné infolince 1212.";
+"contacts_help_faq_button" = "Často kladené otázky";
+"contacts_help_call_button" = "Zavolejte na 1212";
+"contacts_about_headline" = "O aplikaci eRouška";
+"contacts_about_body" = "Potřebujete poradit s aplikací nebo vás zajímá jak funguje? Podívejte se na web erouska.cz.";
+"contacts_about_button" = "Přejít na web erouska.cz";
+
 "help_title" = "Jak to funguje";
 "help_tab_title" = "Nápověda";
+
+"unregister_user_title" = "Zrušit registraci";
+"unregister_user_body" = "Opravdu chcete zrušit registraci svého telefonního čísla?\n\nPo zrušení registrace vás nemůžeme kontaktovat v případě, že dojde k potvrzení nákazy koronavirem u někoho z vašeho okolí.\n\nDojde-li k potvrzení nákazy u vás, nebudeme mít možnost kontaktovat nikoho z vašeho okolí.\n\nZrušením registrace dojde k vypnutí aplikace ve všech zařízeních registrovaných s tímto telefonním číslem %@.";
+"unregister_user_button" = "Zrušit registraci";
+"unregister_user_error_title" = "Chyba při zrušení registrace";
+
+"unregister_finish_title" = "Zrušit registraci";
+"unregister_finish_headline" = "Registaci vašeho telefonního čísla jsme zrušili";
+"unregister_finish_close" = "Zavřít";

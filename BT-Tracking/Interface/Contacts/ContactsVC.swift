@@ -10,10 +10,37 @@ import UIKit
 
 final class ContactsVC: UIViewController {
 
+    // MARK: -
+
+    private let viewModel = ContactsVM()
+
+    // MARK: - Outlets
+
+    @IBOutlet weak var importantHeadlineLabel: UILabel!
+    @IBOutlet weak var importantBodyLabel: UILabel!
+    @IBOutlet weak var importantButton: UIButton!
+
+    @IBOutlet weak var helpHeadlineLabel: UILabel!
+    @IBOutlet weak var helpBodyLabel: UILabel!
+    @IBOutlet weak var helpFaqButton: UIButton!
+    @IBOutlet weak var helpCallButton: UIButton!
+
+    @IBOutlet weak var aboutHeadlineLabel: UILabel!
+    @IBOutlet weak var aboutBodyLabel: UILabel!
+    @IBOutlet weak var aboutButton: UIButton!
+
+    // MARK: -
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         setupTabBar()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupStrings()
     }
 
     // MARK: - Actions
@@ -42,14 +69,30 @@ final class ContactsVC: UIViewController {
         openURL(URL: url)
     }
 
-    // MARK: -
+}
 
-    private func setupTabBar() {
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "phone")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "phone")?.resize(toWidth: 26)
-        }
+private extension ContactsVC {
+
+    func setupStrings() {
+        navigationItem.localizedTitle(viewModel.title)
+
+        importantHeadlineLabel.localizedText(viewModel.importantHeadline)
+        importantBodyLabel.localizedText(viewModel.importantBody)
+        importantButton.localizedTitle(viewModel.importantButton)
+
+        helpHeadlineLabel.localizedText(viewModel.helpHeadline)
+        helpBodyLabel.localizedText(viewModel.helpBody)
+        helpFaqButton.localizedTitle(viewModel.helpFaqButton)
+        helpCallButton.localizedTitle(viewModel.helpCallButton)
+
+        aboutHeadlineLabel.localizedText(viewModel.aboutHeadline)
+        aboutBodyLabel.localizedText(viewModel.aboutBody)
+        aboutButton.localizedTitle(viewModel.aboutButton)
+    }
+
+    func setupTabBar() {
+        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.image = viewModel.tabIcon
     }
 
 }

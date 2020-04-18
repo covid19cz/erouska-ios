@@ -182,6 +182,9 @@
 		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
 		80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
 		80CA44DE244B384F008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
+		80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
+		80CA44E2244B4518008E22F8 /* UnregisterUserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */; };
+		80CA44E4244B464B008E22F8 /* UnregisterFinishVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
 		80D5F7E52423D8740010EF51 /* CompleteActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */; };
 		80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
@@ -281,6 +284,9 @@
 		80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationVM.swift; sourceTree = "<group>"; };
 		80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationVM.swift; sourceTree = "<group>"; };
 		80CA44DB244B3769008E22F8 /* HelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVM.swift; sourceTree = "<group>"; };
+		80CA44DF244B404F008E22F8 /* ContactsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVM.swift; sourceTree = "<group>"; };
+		80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterUserVM.swift; sourceTree = "<group>"; };
+		80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterFinishVM.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 		80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationVC.swift; sourceTree = "<group>"; };
@@ -359,7 +365,9 @@
 			children = (
 				46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */,
 				80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */,
+				80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */,
 				5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */,
+				80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */,
 			);
 			path = "Unregister User";
 			sourceTree = "<group>";
@@ -605,6 +613,7 @@
 			isa = PBXGroup;
 			children = (
 				8075EDC2242A6E93001D9DCD /* ContactsVC.swift */,
+				80CA44DF244B404F008E22F8 /* ContactsVM.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -982,6 +991,7 @@
 				803C5B252429346500E49414 /* DataListVM.swift in Sources */,
 				80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */,
 				BD979AE924255BD1004001ED /* FirstActivationVC.swift in Sources */,
+				80CA44E2244B4518008E22F8 /* UnregisterUserVM.swift in Sources */,
 				8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */,
 				80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */,
 				80BB476824238CBB00F552FC /* AccountActivationVC.swift in Sources */,
@@ -1025,6 +1035,7 @@
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
 				80ECB96324290C1000E57601 /* ScanCell.swift in Sources */,
 				80BB476624236ED100F552FC /* BluetoothActivationVC.swift in Sources */,
+				80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */,
 				80BF9C262424D55800150108 /* SendReportVC.swift in Sources */,
 				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
@@ -1041,6 +1052,7 @@
 				80610BD024363D7B00E031C8 /* Auth.swift in Sources */,
 				80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
+				80CA44E4244B464B008E22F8 /* UnregisterFinishVM.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				805BE9772424DE0E001A93B3 /* BTScan.swift in Sources */,
 				46F21CAF2422597F00C01DFA /* Scan.swift in Sources */,

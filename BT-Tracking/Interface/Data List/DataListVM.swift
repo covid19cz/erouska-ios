@@ -16,6 +16,15 @@ final class DataListVM {
 
     // MARK: - Localization
 
+    let tabTitle = "data_list_title"
+    var tabIcon: UIImage? {
+        if #available(iOS 13, *) {
+            return UIImage(systemName: "doc.plaintext")
+        } else {
+            return UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
+        }
+    }
+
     let title = "data_list_title"
     let infoButton = "data_list_info_button"
     let deleteButton = "data_list_delete_button"
@@ -33,15 +42,6 @@ final class DataListVM {
     let sendDataErrorOnlyAfter = "data_list_send_error_only_after_message"
 
     // MARK: - Properties
-
-    let tabTitle = "data_list_title"
-    var tabIcon: UIImage? {
-        if #available(iOS 13, *) {
-            return UIImage(systemName: "doc.plaintext")
-        } else {
-            return UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
-        }
-    }
 
     let selectedSegmentIndex = PublishRelay<Int>()
 
