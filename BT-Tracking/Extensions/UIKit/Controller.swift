@@ -11,18 +11,30 @@ import SafariServices
 
 extension UIViewController {
 
-    func show(error: Error, title: String = "Chyba") {
-        showError(title: title, message: error.localizedDescription)
+    /// show default error alert, localization keys are expected
+    func show(error: Error, title: String = "error") {
+        showAlert(title: title, message: error.localizedDescription)
     }
 
-    func showError(title: String = "Chyba", message: String, okTitle: String? = "OK", okHandler: (() -> Void)? = nil, action: (title: String, handler: (() -> Void)?)? = nil) {
+    /// show alert, localization keys are expected
+    func showAlert(title: String = "error", message: String? = nil, okTitle: String = "ok", okHandler: (() -> Void)? = nil, action: (title: String, handler: (() -> Void)?)? = nil) {
         let alertController = UIAlertController(
-            title: title,
-            message: message,
+            title: Localizable(title),
+            message: message == nil ? nil : Localizable(message ?? ""),
             preferredStyle: .alert
         )
-        alertController.addAction(UIAlertAction(title: okTitle, style: .cancel, handler: { _ in okHandler?() }))
-        action.flatMap({ action in alertController.addAction(UIAlertAction(title: action.title, style: .default, handler: { _ in action.handler?() })) })
+        alertController.addAction(UIAlertAction(
+            title: Localizable(okTitle),
+            style: .cancel,
+            handler: { _ in okHandler?() }
+        ))
+        action.flatMap({ action in
+            alertController.addAction(UIAlertAction(
+                title: Localizable(action.title),
+                style: .default,
+                handler: { _ in action.handler?() }
+            ))
+        })
         present(alertController, animated: true)
     }
 

@@ -10,14 +10,27 @@ import UIKit
 
 final class HelpVC: MarkdownController {
 
+    // MARK: -
+
+    private let viewModel = HelpVM()
+
     override var markdownContent: String {
-        RemoteValues.helpMarkdown
+        viewModel.markdownContent
     }
+
+    // MARK: -
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         setupTabBar()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.about)
     }
 
     // MARK: - Actions
@@ -31,11 +44,8 @@ final class HelpVC: MarkdownController {
 private extension HelpVC {
 
     func setupTabBar() {
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "questionmark.circle")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "questionmark.circle")?.resize(toWidth: 26)
-        }
+        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.image = viewModel.tabIcon
     }
 
 }

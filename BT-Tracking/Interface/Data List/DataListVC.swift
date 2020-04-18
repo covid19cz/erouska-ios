@@ -18,14 +18,20 @@ import Reachability
 
 final class DataListVC: UIViewController, UITableViewDelegate {
 
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
-    
+    // MARK: -
+
     private var dataSource: RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>!
     private let viewModel = DataListVM()
     private let bag = DisposeBag()
 
     private var writer: CSVMakering?
+
+    // MARK: - Outlets
+
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private weak var sendButton: Button!
+
 
     // MARK: - Lifecycle
 
@@ -41,9 +47,9 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         buttonsView.connect(with: tableView)
         buttonsView.defaultContentInset.bottom += 10
         buttonsView.resetInsets(in: tableView)
-        
+
+        setupStrings()
         setupTableView()
-        viewModel.selectedSegmentIndex.accept(0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,79 +59,34 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: animated)
     }
 
-    // MARK: - TableView
-
-    private func setupTabBar() {
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "doc.plaintext")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
-        }
-    }
-
-    private func setupTableView() {
-        tableView.tableFooterView = UIView()
-        tableView.rowHeight = UITableView.automaticDimension
-
-        dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
-            let cell: UITableViewCell?
-            switch row {
-            case .scanningInfo:
-                let scanningInfoCell = tableView.dequeueReusableCell(withIdentifier: ScanningInfoCell.identifier, for: indexPath) as? ScanningInfoCell
-                cell = scanningInfoCell
-            case .aboutData:
-                let aboutDataCell = tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath) as? AboutDataCell
-                cell = aboutDataCell
-            case .header:
-                let headerCell = tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath) as? DataHeaderCell
-                headerCell?.configure()
-                cell = headerCell
-            case .data(let scan):
-                let scanCell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
-                scanCell?.configure(for: scan)
-                cell = scanCell
-            }
-            return cell ?? UITableViewCell()
-        })
-
-        viewModel.sections
-            .drive(tableView.rx.items(dataSource: dataSource))
-            .disposed(by: bag)
-
-        tableView.rx.setDelegate(self)
-            .disposed(by: bag)
-        
-        tableView.rx.modelSelected(DataListVM.Section.Item.self)
-            .filter { $0 == .aboutData }
-            .subscribe(onNext: { [weak self] _ in
-                self?.navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
-            })
-            .disposed(by: bag)
-
-        dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
-    }
-
     // MARK: - Actions
 
     @IBAction private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         viewModel.selectedSegmentIndex.accept(sender.selectedSegmentIndex)
     }
 
-    @IBAction private func sendReportAction() {
+    @IBAction private func sendReportAction(_ sender: Any?) {
         let controller = UIAlertController(
-            title: "Požádal vás pracovník hygienické stanice o zaslání seznamu telefonů, se kterými jste se setkali?",
-            message: "S odeslanými daty bude Ministerstvo zdravotnictví a jemu podřízení hygienici pracovat na základě vašeho souhlasu podle podmínek zpracování.",
+            title: Localizable(viewModel.sendDataQuestionTitle),
+            message: Localizable(viewModel.sendDataQuestionMessage),
             preferredStyle: .alert
         )
-        controller.addAction(UIAlertAction(title: "Ano, odeslat", style: .default, handler: { [weak self] _ in
-            self?.sendReport()
-        }))
-        controller.addAction(UIAlertAction(title: "Ne", style: .cancel, handler: { _ in
-            self.showError(
-                title: "Sdílejte data jen v případě, že vás pracovník hygienické stanice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu",
-                message: ""
-            )
-        }))
+        controller.addAction(UIAlertAction(
+            title: Localizable(viewModel.sendDataQuestionYes),
+            style: .default,
+            handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.sendReport()
+            }
+        ))
+        controller.addAction(UIAlertAction(
+            title: Localizable(viewModel.sendDataQuestionNo),
+            style: .cancel,
+            handler: { [weak self] _ in
+                guard let self = self else { return }
+                self.showAlert(title: self.viewModel.sendDataErrorOnlyAfter)
+            }
+        ))
         controller.preferredAction = controller.actions.first
         present(controller, animated: true)
     }
@@ -134,20 +95,66 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
 private extension DataListVC {
 
+    func setupStrings() {
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.deleteButton)
+
+        sendButton.localizedTitle(viewModel.sendButton)
+    }
+
+    func setupTabBar() {
+        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.image = viewModel.tabIcon
+    }
+
+    func setupTableView() {
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
+
+        dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
+            switch row {
+            case .scanningInfo:
+                return tableView.dequeueReusableCell(withIdentifier: ScanningInfoCell.identifier, for: indexPath)
+            case .aboutData:
+                return tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath)
+            case .header:
+                return tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath)
+            case .data(let scan):
+                let cell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
+                cell?.configure(for: scan)
+                return cell ?? UITableViewCell()
+            }
+        })
+
+        viewModel.sections
+            .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+
+        tableView.rx.setDelegate(self)
+            .disposed(by: bag)
+
+        tableView.rx.modelSelected(DataListVM.Section.Item.self)
+            .filter { $0 == .aboutData }
+            .subscribe(onNext: { [weak self] _ in
+                self?.navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
+            })
+            .disposed(by: bag)
+
+        dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
+
+        viewModel.selectedSegmentIndex.accept(0)
+    }
+
+    // MARK: - Report
+
     func sendReport() {
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
-            showError(
-                title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
-                message: ""
-            )
+            showAlert(title: viewModel.sendDataErrorWait)
             return
         }
 
         guard let connection = try? Reachability().connection, connection != .unavailable else {
-            showError(
-                title: "Nepodařilo se nám odeslat data",
-                message: "Zkontrolujte připojení k internetu a zkuste to znovu"
-            )
+            showSendDataErrorFailed()
             return
         }
 
@@ -167,7 +174,7 @@ private extension DataListVC {
                 self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata, fileDate: fileDate)
             } else if let error = error {
                 self.hideProgress()
-                self.show(error: error, title: "Nepodařilo se vytvořit soubor se setkáními")
+                self.show(error: error, title: self.viewModel.sendDataErrorFile)
             }
         })
     }
@@ -189,16 +196,19 @@ private extension DataListVC {
             self.writer?.deleteFile()
             if let error = error {
                 log("FirebaseUpload: Error \(error.localizedDescription)")
-
-                self.showError(
-                    title: "Nepodařilo se nám odeslat data",
-                    message: "Zkontrolujte připojení k internetu a zkuste to znovu"
-                )
+                self.showSendDataErrorFailed()
                 return
             }
             AppSettings.lastUploadDate = fileDate
             self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
+    }
+
+    func showSendDataErrorFailed() {
+        showAlert(
+            title: viewModel.sendDataErrorFailedTitle,
+            message: viewModel.sendDataErrorFailedMessage
+        )
     }
 
 }

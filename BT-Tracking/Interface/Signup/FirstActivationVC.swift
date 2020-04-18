@@ -7,13 +7,23 @@
 //
 
 import UIKit
-import CoreBluetooth
 import UserNotifications
 
-final class FirstActivationController: UIViewController {
+final class FirstActivationVC: UIViewController {
+
+    // NARK: -
+
+    private let viewModel = FirstActivationVM()
+
+    // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var moreButton: UIButton!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private weak var continueButton: Button!
+    @IBOutlet private weak var howItWorksButton: Button!
 
     // MARK: -
 
@@ -21,12 +31,13 @@ final class FirstActivationController: UIViewController {
         super.viewDidLoad()
 
         buttonsView.connect(with: scrollView)
+        setupStrings()
     }
 
     // MARK: - Actions
     
     @IBAction private func continueAction() {
-        if bluetoothAuthorized {
+        if viewModel.bluetoothAuthorized {
             UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
                 DispatchQueue.main.async { [weak self] in
                     if settings.authorizationStatus == .notDetermined {
@@ -47,12 +58,21 @@ final class FirstActivationController: UIViewController {
         guard let url = URL(string: RemoteValues.proclamationLink) else { return }
         openURL(URL: url)
     }
-    
-    private var bluetoothAuthorized: Bool {
-        if #available(iOS 13.0, *) {
-            return CBCentralManager().authorization == .allowedAlways
-        }
-        return CBPeripheralManager.authorizationStatus() == .authorized
+
+}
+
+private extension FirstActivationVC {
+
+    func setupStrings() {
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
+
+        headlineLabel.localizedText(viewModel.headline)
+        bodyLabel.localizedText(viewModel.body)
+        moreButton.localizedTitle(viewModel.moreButton)
+        continueButton.localizedTitle(viewModel.continueButton)
+        howItWorksButton.localizedTitle(viewModel.howItWorksButton)
+
     }
 
 }

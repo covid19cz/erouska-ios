@@ -1,5 +1,5 @@
 //
-//  ActiveAppController.swift
+//  ActiveAppVC.swift
 //  BT-Tracking
 //
 //  Created by Jakub Skořepa on 20/03/2020.
@@ -10,22 +10,22 @@ import UIKit
 import FirebaseAuth
 import CoreBluetooth
 
-final class ActiveAppController: UIViewController {
+final class ActiveAppVC: UIViewController {
 
-    private var viewModel = ActiveAppViewModel(bluetoothActive: true)
+    private var viewModel = ActiveAppVM(bluetoothActive: true)
     
     // MARK: - Outlets
 
     @IBOutlet private weak var mainStackView: UIStackView!
     @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var headLabel: UILabel!
+    @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tipsLabel: UILabel!
+    @IBOutlet private weak var actionButton: Button!
     @IBOutlet private weak var firstTipLabel: UILabel!
     @IBOutlet private weak var secondTipLabel: UILabel!
-    @IBOutlet private weak var textLabel: UILabel!
-    @IBOutlet private var activeInfoViews: [UIView]!
-    @IBOutlet private weak var actionButton: Button! 
+    @IBOutlet private var tipsViews: [UIView]!
+    @IBOutlet private weak var footerLabel: UILabel!
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
     
@@ -47,6 +47,7 @@ final class ActiveAppController: UIViewController {
 
         checkForBluetooth()
 
+        setupStrings()
         updateScanner()
         updateInterface()
     }
@@ -103,10 +104,7 @@ final class ActiveAppController: UIViewController {
     @IBAction private func shareAppAction() {
         guard let url = URL(string: RemoteValues.shareAppDynamicLink) else { return }
 
-        let message = """
-        Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na \(url).
-        """
-
+        let message = String(format: Localizable(viewModel.shareAppMessage), url.absoluteString)
         let shareContent: [Any] = [message]
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?.last ?? navigationItem.rightBarButtonItem
@@ -127,21 +125,25 @@ final class ActiveAppController: UIViewController {
 
     @IBAction private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: "Zrušit registraci", style: .default, handler: { [weak self] _ in
-            self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
+            self?.unregisterUserAction()
         }))
         #if !PROD
-        controller.addAction(UIAlertAction(title: "Debug", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
         #endif
-        controller.addAction(UIAlertAction(title: "O aplikaci", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuAbout), style: .default, handler: { [weak self] _ in
             guard let url = URL(string: RemoteValues.aboutLink) else { return }
             self?.openURL(URL: url)
         }))
-        controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancel), style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
+    }
+
+    private func unregisterUserAction() {
+        performSegue(withIdentifier: "unregisterUser", sender: nil)
     }
 
     private func debugAction() {
@@ -159,10 +161,10 @@ final class ActiveAppController: UIViewController {
 
 }
 
-private extension ActiveAppController {
+private extension ActiveAppVC {
 
     func updateViewModel() {
-        viewModel = ActiveAppViewModel(bluetoothActive: viewModel.lastBluetoothState)
+        viewModel = ActiveAppVM(bluetoothActive: viewModel.lastBluetoothState)
 
         updateScanner()
         updateInterface()
@@ -180,19 +182,21 @@ private extension ActiveAppController {
     }
 
     func updateInterface() {
-        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
-
         let isActive = viewModel.state != .enabled
-        activeInfoViews.forEach { $0.isHidden = isActive }
+        tipsViews.forEach { $0.isHidden = isActive }
         imageView.image = viewModel.state.image
-        headLabel.text = viewModel.state.head
-        headLabel.textColor = viewModel.state.color
-        titleLabel.text = viewModel.state.title
-        tipsLabel.text = viewModel.state.tips
-        firstTipLabel.text = viewModel.state.firstTip
-        secondTipLabel.text = viewModel.state.secondTip
-        textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
-        actionButton.setTitle(viewModel.state.actionTitle, for: .normal)
+        headlineLabel.localizedText(viewModel.state.headline)
+        headlineLabel.textColor = viewModel.state.color
+        titleLabel.localizedText(viewModel.state.title)
+        tipsLabel.localizedText(viewModel.tips)
+        firstTipLabel.localizedText(viewModel.firstTip)
+        secondTipLabel.localizedText(viewModel.secondTip)
+        if let footer = viewModel.state.footer {
+            footerLabel.localizedText(footer, values: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
+        } else {
+            footerLabel.text = nil
+        }
+        actionButton.localizedTitle(viewModel.state.actionTitle)
 
         // Apply element size fix for iPhone SE size screens only
         cardView.layoutIfNeeded()
@@ -200,6 +204,15 @@ private extension ActiveAppController {
             actionButtonWidthConstraint.constant = viewModel.state == .enabled ? 110 : 100
             actionButton.layoutIfNeeded()
         }
+    }
+
+    func setupStrings() {
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
+        navigationItem.rightBarButtonItems?.last?.localizedTitle(viewModel.shareApp)
+
+        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
     }
 
     func layoutCardView() {
@@ -236,14 +249,14 @@ private extension ActiveAppController {
         guard !AppSettings.backgroundModeAlertShown, UIApplication.shared.backgroundRefreshStatus == .denied else { return }
         AppSettings.backgroundModeAlertShown = true
         let controller = UIAlertController(
-            title: "Aktualizace na pozadí",
-            message: "eRouška se potřebuje sama spustit i na pozadí, například po restartování telefonu, abyste na to nemuseli myslet vy.\n\nPovolte možnost 'Aktualizace na pozadí' v nastavení aplikace.",
+            title: Localizable(viewModel.backgroundModeTitle),
+            message: Localizable(viewModel.backgroundModeMessage),
             preferredStyle: .alert
         )
-        controller.addAction(UIAlertAction(title: "Upravit nastavení", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.backgroundModeAction), style: .default, handler: { [weak self] _ in
             self?.openSettings()
         }))
-        controller.addAction(UIAlertAction(title: "Zavřít", style: .default))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.backgroundModeCancel), style: .default))
         controller.preferredAction = controller.actions.first
         present(controller, animated: true)
     }
