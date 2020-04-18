@@ -146,8 +146,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     <connections>
                         <outlet property="buttonsView" destination="ajD-o4-CZf" id="tE3-QP-CeP"/>
                         <outlet property="scrollView" destination="oIo-ag-AlX" id="n8t-fj-b3A"/>
-                        <segue destination="1ln-NW-njF" kind="show" identifier="bluetooth" id="UA2-MZ-WsL"/>
-                        <segue destination="1qZ-bG-yib" kind="show" identifier="notification" id="LBz-k7-fXB"/>
                         <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="p0J-jR-yfg"/>
                     </connections>
                 </viewController>
@@ -279,11 +277,11 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
             <objects>
                 <viewController storyboardIdentifier="BluetoothActivationController" id="1ln-NW-njF" customClass="BluetoothActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2X2-Ep-DR3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDW-qM-yre">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cNY-7b-57Z">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
@@ -340,7 +338,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                 <viewLayoutGuide key="frameLayoutGuide" id="NgQ-Sr-M5p"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="meA-hx-Fcs" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="614" width="375" height="110"/>
+                                <rect key="frame" x="0.0" y="668" width="375" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-gP-OXF" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="16" y="50" width="343" height="44"/>
@@ -682,7 +680,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LBz-k7-fXB"/>
         <segue reference="p0J-jR-yfg"/>
     </inferredMetricsTieBreakers>
     <resources>

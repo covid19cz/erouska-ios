@@ -78,6 +78,7 @@ private extension RegistrationCoordinator {
 
     func showBluetoothScreen() {
         let viewController = storyboard.instantiateViewController(withIdentifier: "BluetoothActivationController") as! BluetoothActivationController
+        viewController.delegate = self
 
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -102,6 +103,20 @@ private extension RegistrationCoordinator {
 
         navigationController.pushViewController(viewController, animated: true)
     }
+
+    func showNextScreenBasedOnNotificationSettings() {
+        userNotificationCenter.getNotificationSettings { [weak self] settings in
+            guard let self = self else { return }
+
+            DispatchQueue.main.async {
+                if settings.authorizationStatus == .notDetermined {
+                    self.showNotificationsScreen()
+                } else {
+                    self.showPhoneNumberScreen()
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Private Methods
@@ -122,17 +137,7 @@ extension RegistrationCoordinator: IntroControllerDelegate {
             return
         }
 
-        userNotificationCenter.getNotificationSettings { [weak self] settings in
-            guard let self = self else { return }
-
-            DispatchQueue.main.async {
-                if settings.authorizationStatus == .notDetermined {
-                    self.showNotificationsScreen()
-                } else {
-                    self.showPhoneNumberScreen()
-                }
-            }
-        }
+        showNextScreenBasedOnNotificationSettings()
     }
 
     func controllerDidTapHelp(_ controller: IntroController) {
@@ -142,6 +147,14 @@ extension RegistrationCoordinator: IntroControllerDelegate {
     func controllerDidTapAudit(_ controller: IntroController) {
         guard let url = URL(string: RemoteValues.proclamationLink) else { return }
         controller.openURL(URL: url)
+    }
+}
+
+// MARK: - BluetoothActivationControllerDelegate
+
+extension RegistrationCoordinator: BluetoothActivationControllerDelegate {
+    func controllerDidSetBluetooth(_ controller: BluetoothActivationController) {
+        showNextScreenBasedOnNotificationSettings()
     }
 }
 

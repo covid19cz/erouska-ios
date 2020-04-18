@@ -10,7 +10,13 @@ import UIKit
 import CoreBluetooth
 import UserNotifications
 
-final class BluetoothActivationController: UIViewController, CBPeripheralManagerDelegate {
+protocol BluetoothActivationControllerDelegate: AnyObject {
+    func controllerDidSetBluetooth(_ controller: BluetoothActivationController)
+}
+
+final class BluetoothActivationController: UIViewController {
+
+    weak var delegate: BluetoothActivationControllerDelegate?
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
@@ -74,32 +80,15 @@ final class BluetoothActivationController: UIViewController, CBPeripheralManager
     @objc private func applicationDidBecomeActive() {
         checkForBluetooth()
     }
+}
 
-    // MARK: - CBPeripheralManagerDelegate
+// MARK: - CBPeripheralManagerDelegate
 
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-
-    }
-
+extension BluetoothActivationController: CBPeripheralManagerDelegate {
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {}
 }
 
 private extension BluetoothActivationController {
-
-    func continueOnboarding() {
-        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
-            DispatchQueue.main.async { [weak self] in
-                if settings.authorizationStatus == .notDetermined {
-                    // Request authorization
-                    self?.performSegue(withIdentifier: "notification", sender: nil)
-                } else {
-                    // Already authorized or denied
-                    self?.performSegue(withIdentifier: "activation", sender: nil)
-                }
-                self?.peripheralManager = nil
-            }
-        }
-    }
-    
     func checkForBluetooth() {
         if bluetoothNotDetermined {
             requestBluetoothPermission()
@@ -111,7 +100,7 @@ private extension BluetoothActivationController {
             return
         }
 
-        continueOnboarding()
+        delegate?.controllerDidSetBluetooth(self)
     }
 
     func requestBluetoothPermission() {
@@ -137,5 +126,4 @@ private extension BluetoothActivationController {
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(settingsURL)
     }
-
 }
