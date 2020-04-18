@@ -16,7 +16,7 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
     @IBOutlet private weak var tableView: UITableView!
 
     private var dataSource: RxTableViewSectionedAnimatedDataSource<ScanListVM.SectionModel>!
-    private var viewModel = ScanListVM(scannerStore: AppDelegate.shared.scannerStore)
+    private let viewModel = ScanListVM(scannerStore: AppDelegate.shared.scannerStore)
     private let bag = DisposeBag()
 
     // MARK: - Lifecycle
@@ -54,8 +54,7 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
             try Auth.auth().signOut()
             UserDefaults.resetStandardUserDefaults()
 
-            let storyboard = UIStoryboard(name: "Signup", bundle: nil)
-            view.window?.rootViewController = storyboard.instantiateInitialViewController()
+            NotificationCenter.default.post(name: .didUnregisterUser, object: nil)
         } catch {
             show(error: error)
         }
