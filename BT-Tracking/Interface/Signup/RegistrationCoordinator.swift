@@ -72,7 +72,13 @@ private extension RegistrationCoordinator {
     }
 
     func showPhoneNumberScreen() {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "AccountActivationController") as! AccountActivationController
+        let viewController = storyboard.instantiateViewController(withIdentifier: "PhoneNumberController") as! PhoneNumberController
+
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func showVerificationCodeScreen() {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CompleteActivationController") as! CompleteActivationController
 
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -116,45 +122,38 @@ extension RegistrationCoordinator: FirstActivationControllerDelegate {
     }
 }
 
-// MARK: - AccountActivationControllerDelegate
+// MARK: - PhoneNumberControllerDelegate
 
-extension RegistrationCoordinator: AccountActivationControllerDelegate {
-    func controllerDidTapPrivacy(_ controller: AccountActivationController) {
+extension RegistrationCoordinator: PhoneNumberControllerDelegate {
+    func controllerDidTapPrivacy(_ controller: PhoneNumberController) {
         guard let url = URL(string: RemoteValues.termsAndConditionsLink) else { return }
         controller.openURL(URL: url)
     }
 
-    func controller(_ controller: AccountActivationController, didTapContinueWithPhoneNumber phoneNumber: String) {
+    func controller(_ controller: PhoneNumberController, didTapContinueWithPhoneNumber phoneNumber: String) {
         controller.showProgress()
 
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self, weak controller] verificationID, error in
+        authorizationService.verifyPhoneNumber(phoneNumber) { [weak self, weak controller] result in
             guard let self = self, let controller = controller else { return }
 
             controller.hideProgress()
 
-
-            if let error = error {
-                log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
-                if (error as NSError).code == AuthErrorCode.tooManyRequests.rawValue {
-                    controller.showError(
-                        title: "Telefonní číslo jsme dočasně zablokovali",
-                        message: "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu."
-                    )
-                } else {
-                    controller.showError(
-                        title: "Nepodařilo se nám ověřit telefonní číslo",
-                        message: "Zkontrolujte připojení k internetu a zkuste to znovu"
-                    )
-                }
-                self.cleanup()
-            } else if let verificationID = verificationID {
-
-                //TODO...
-//                self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
+            switch result {
+            case let .success(verificationId):
+                self.showVerificationCodeScreen()
+                //self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
+            case .failure(.limitExceeded):
+                controller.showError(
+                    title: "Telefonní číslo jsme dočasně zablokovali",
+                    message: "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu."
+                )
+            case .failure(.general):
+                controller.showError(
+                    title: "Nepodařilo se nám ověřit telefonní číslo",
+                    message: "Zkontrolujte připojení k internetu a zkuste to znovu"
+                )
             }
         }
-
-
     }
 
     private func handleError() {

@@ -14,7 +14,7 @@ import DeviceKit
 
 final class CompleteActivationController: UIViewController {
 
-    var authData: AccountActivationController.AuthData?
+    var authData: PhoneNumberController.AuthData?
 
     private var smsCode = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
@@ -163,7 +163,7 @@ final class CompleteActivationController: UIViewController {
                 self.show(error: error, title: "Chyba při aktivaci")
                 self.cleanup()
             } else if let verificationID = verificationID  {
-                self.authData = AccountActivationController.AuthData(verificationID: verificationID, phoneNumber: phone)
+                self.authData = PhoneNumberController.AuthData(verificationID: verificationID, phoneNumber: phone)
                 self.startExpirationTimer()
                 self.smsCodeTextField.becomeFirstResponder()
             }

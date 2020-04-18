@@ -1,5 +1,5 @@
 //
-//  AccountActivationController.swift
+//  PhoneNumberController.swift
 //  BT-Tracking
 //
 //  Created by Lukáš Foldýna on 19/03/2020.
@@ -11,12 +11,12 @@ import RxSwift
 import RxRelay
 import DeviceKit
 
-protocol AccountActivationControllerDelegate: AnyObject {
-    func controllerDidTapPrivacy(_ controller: AccountActivationController)
-    func controller(_ controller: AccountActivationController, didTapContinueWithPhoneNumber phoneNumber: String)
+protocol PhoneNumberControllerDelegate: AnyObject {
+    func controllerDidTapPrivacy(_ controller: PhoneNumberController)
+    func controller(_ controller: PhoneNumberController, didTapContinueWithPhoneNumber phoneNumber: String)
 }
 
-final class AccountActivationController: UIViewController {
+final class PhoneNumberController: UIViewController {
 
     struct AuthData {
         let verificationID: String
@@ -25,7 +25,7 @@ final class AccountActivationController: UIViewController {
 
     // MARK: - Public Properties
 
-    weak var delegate: AccountActivationControllerDelegate?
+    weak var delegate: PhoneNumberControllerDelegate?
 
     // MARK: - Private Properties
 
@@ -112,7 +112,9 @@ final class AccountActivationController: UIViewController {
 
 }
 
-extension AccountActivationController: UITextFieldDelegate {
+// MARK: - UITextFieldDelegate
+
+extension PhoneNumberController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let type: InputValidation
