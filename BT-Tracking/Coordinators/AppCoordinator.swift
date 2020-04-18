@@ -60,7 +60,6 @@ private extension AppCoordinator {
 // MARK: - Notifications
 
 private extension AppCoordinator {
-
     func initNotifications() {
         notificationCenter.addObserver(
             self,

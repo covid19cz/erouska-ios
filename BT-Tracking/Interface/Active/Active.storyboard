@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,70 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="YWR-rg-48V">
-            <objects>
-                <tabBarController id="6Wd-sH-aiC" customClass="TabBarController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iCY-JL-jXM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="8pR-j1-IZY" kind="relationship" relationship="viewControllers" id="Ba7-2w-sYV"/>
-                        <segue destination="Ecq-qf-QeQ" kind="relationship" relationship="viewControllers" id="jGg-vn-Hoi"/>
-                        <segue destination="v9g-l9-1nr" kind="relationship" relationship="viewControllers" id="BMz-eG-eV7"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ww7-jz-Cgw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-917" y="1300"/>
-        </scene>
-        <!--eRouška-->
-        <scene sceneID="cWO-yu-PwA">
-            <objects>
-                <navigationController id="8pR-j1-IZY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="eRouška" id="VoJ-0E-pnm"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9Gy-y2-tgV">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="SLc-31-c7B" kind="relationship" relationship="rootViewController" id="lJh-M1-ZKO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xgF-We-scY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="314" y="893"/>
-        </scene>
-        <!--DataList-->
-        <scene sceneID="DC3-Ek-JEO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DataList" id="Ecq-qf-QeQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="gkc-Au-Szg"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ph2-fL-JIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="72" y="1300"/>
-        </scene>
-        <!--Kontakty-->
-        <scene sceneID="n01-Tj-cda">
-            <objects>
-                <navigationController id="v9g-l9-1nr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kontakty" id="UZH-Dl-Ge4"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iGG-Be-Xf5">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="PPZ-by-KGR" kind="relationship" relationship="rootViewController" id="QbI-bx-H60"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mcg-y6-Jkz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="312" y="1864"/>
-        </scene>
         <!--Kontakty-->
         <scene sceneID="Qrw-iC-jAO">
             <objects>
@@ -81,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bce-ix-LBm">
-                                <rect key="frame" x="0.0" y="140" width="375" height="672"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1y8-d8-PjO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
@@ -102,21 +38,21 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-QQ-KxS">
-                                                        <rect key="frame" x="0.0" y="114.66666666666669" width="343" height="30"/>
+                                                        <rect key="frame" x="0.0" y="114.66666666666666" width="343" height="30"/>
                                                         <state key="normal" title="Důležité kontakty"/>
                                                         <connections>
                                                             <action selector="importantContactsAction" destination="PPZ-by-KGR" eventType="touchUpInside" id="cNt-WQ-4xS"/>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCV-og-Xxr" userLabel="Medium Space View">
-                                                        <rect key="frame" x="0.0" y="159.66666666666669" width="343" height="10"/>
+                                                        <rect key="frame" x="0.0" y="159.66666666666666" width="343" height="10"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="jc5-8b-SBk"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Potřebujete poradit?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKo-sx-CBC">
-                                                        <rect key="frame" x="0.0" y="184.66666666666669" width="343" height="20.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="184.66666666666666" width="343" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -135,21 +71,21 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pt1-Aa-acn">
-                                                        <rect key="frame" x="0.0" y="366.33333333333337" width="343" height="30"/>
+                                                        <rect key="frame" x="0.0" y="366.33333333333331" width="343" height="30"/>
                                                         <state key="normal" title="Zavolejte na 1212"/>
                                                         <connections>
                                                             <action selector="call1212Action" destination="PPZ-by-KGR" eventType="touchUpInside" id="Anv-K8-RNL"/>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsA-sP-Cx0" userLabel="Medium Space View">
-                                                        <rect key="frame" x="0.0" y="411.33333333333337" width="343" height="10"/>
+                                                        <rect key="frame" x="0.0" y="411.33333333333331" width="343" height="10"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="HpA-FL-XSv"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O aplikaci eRouška" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inP-AV-6wj">
-                                                        <rect key="frame" x="0.0" y="436.33333333333337" width="343" height="20.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="436.33333333333331" width="343" height="20.333333333333314"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -204,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kY3-1J-NRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1213.0434782608697" y="1863.6160714285713"/>
+            <point key="canvasLocation" x="1100" y="1670"/>
         </scene>
         <!--Aplikace je aktivní-->
         <scene sceneID="fsH-bj-obm">
@@ -215,7 +151,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWN-IR-79w">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRX-7H-oZ1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="628.33333333333337"/>
@@ -423,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1213.5999999999999" y="892.61083743842369"/>
+            <point key="canvasLocation" x="247" y="1670"/>
         </scene>
     </scenes>
     <resources>
