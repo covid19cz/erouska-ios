@@ -14,7 +14,23 @@ import RealmSwift
 
 final class DataListVM {
 
+    // MARK: - Localization
+
+    var title = "data_list_title"
+    var infoButton = "data_list_info_button"
+    var deleteButton = "data_list_delete_button"
+    var sendButton = "data_list_send_button"
+
     // MARK: - Properties
+
+    var tabBarIcon: UIImage? {
+        if #available(iOS 13, *) {
+            return UIImage(systemName: "doc.plaintext")
+        } else {
+            return UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
+        }
+    }
+
     let selectedSegmentIndex = PublishRelay<Int>()
 
     private let scans: Observable<[Scan]>

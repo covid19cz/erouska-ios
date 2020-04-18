@@ -73,3 +73,15 @@
 
 "share_app" = "Sdílet aplikaci";
 "share_app_message" = "Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na %@/";
+
+"data_list_title" = "Moje data";
+"data_list_headline" = "Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone při zhasnutém displeji méně účinné.";
+"data_list_info_button" = "Informace o sběru dat";
+"data_list_delete_button" = "Smazat data";
+"data_list_send_button" = "Odeslat data";
+"data_list_section_all" = "Vše";
+"data_list_section_nearby" = "Blízka setkání";
+"data_list_header_date" = "Datum";
+"data_list_header_time" = "Čas";
+"data_list_header_id" = "ID";
+"data_list_header_signal" = "RSSI";

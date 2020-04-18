@@ -18,14 +18,20 @@ import Reachability
 
 final class DataListVC: UIViewController, UITableViewDelegate {
 
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
-    
+    // MARK: -
+
     private var dataSource: RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>!
     private let viewModel = DataListVM()
     private let bag = DisposeBag()
 
     private var writer: CSVMakering?
+
+    // MARK: - Outlets
+
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private weak var sendButton: Button!
+
 
     // MARK: - Lifecycle
 
@@ -41,9 +47,9 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         buttonsView.connect(with: tableView)
         buttonsView.defaultContentInset.bottom += 10
         buttonsView.resetInsets(in: tableView)
-        
+
+        setupStrings()
         setupTableView()
-        viewModel.selectedSegmentIndex.accept(0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,58 +57,6 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         tableView.deselectRow(at: indexPath, animated: animated)
-    }
-
-    // MARK: - TableView
-
-    private func setupTabBar() {
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "doc.plaintext")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
-        }
-    }
-
-    private func setupTableView() {
-        tableView.tableFooterView = UIView()
-        tableView.rowHeight = UITableView.automaticDimension
-
-        dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
-            let cell: UITableViewCell?
-            switch row {
-            case .scanningInfo:
-                let scanningInfoCell = tableView.dequeueReusableCell(withIdentifier: ScanningInfoCell.identifier, for: indexPath) as? ScanningInfoCell
-                cell = scanningInfoCell
-            case .aboutData:
-                let aboutDataCell = tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath) as? AboutDataCell
-                cell = aboutDataCell
-            case .header:
-                let headerCell = tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath) as? DataHeaderCell
-                headerCell?.configure()
-                cell = headerCell
-            case .data(let scan):
-                let scanCell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
-                scanCell?.configure(for: scan)
-                cell = scanCell
-            }
-            return cell ?? UITableViewCell()
-        })
-
-        viewModel.sections
-            .drive(tableView.rx.items(dataSource: dataSource))
-            .disposed(by: bag)
-
-        tableView.rx.setDelegate(self)
-            .disposed(by: bag)
-        
-        tableView.rx.modelSelected(DataListVM.Section.Item.self)
-            .filter { $0 == .aboutData }
-            .subscribe(onNext: { [weak self] _ in
-                self?.navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
-            })
-            .disposed(by: bag)
-
-        dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
     }
 
     // MARK: - Actions
@@ -133,6 +87,58 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 }
 
 private extension DataListVC {
+
+    func setupStrings() {
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.deleteButton)
+
+        sendButton.localizedTitle(viewModel.sendButton)
+    }
+
+    func setupTabBar() {
+        navigationController?.tabBarItem.localizedTitle(viewModel.title)
+        navigationController?.tabBarItem.image = viewModel.tabBarIcon
+    }
+
+    func setupTableView() {
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
+
+        dataSource = RxTableViewSectionedAnimatedDataSource<DataListVM.SectionModel>(configureCell: { datasource, tableView, indexPath, row in
+            switch row {
+            case .scanningInfo:
+                return tableView.dequeueReusableCell(withIdentifier: ScanningInfoCell.identifier, for: indexPath)
+            case .aboutData:
+                return tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath)
+            case .header:
+                return tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath)
+            case .data(let scan):
+                let cell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
+                cell?.configure(for: scan)
+                return cell ?? UITableViewCell()
+            }
+        })
+
+        viewModel.sections
+            .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+
+        tableView.rx.setDelegate(self)
+            .disposed(by: bag)
+
+        tableView.rx.modelSelected(DataListVM.Section.Item.self)
+            .filter { $0 == .aboutData }
+            .subscribe(onNext: { [weak self] _ in
+                self?.navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
+            })
+            .disposed(by: bag)
+
+        dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
+
+        viewModel.selectedSegmentIndex.accept(0)
+    }
+
+    // MARK: - Report
 
     func sendReport() {
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
