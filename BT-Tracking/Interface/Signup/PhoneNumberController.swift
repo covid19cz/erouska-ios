@@ -13,6 +13,7 @@ import DeviceKit
 
 protocol PhoneNumberControllerDelegate: AnyObject {
     func controllerDidTapPrivacy(_ controller: PhoneNumberController)
+    func controllerDidTapHelp(_ controller: PhoneNumberController)
     func controller(_ controller: PhoneNumberController, didTapContinueWithPhoneNumber phoneNumber: String)
 }
 
@@ -47,6 +48,8 @@ final class PhoneNumberController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Nápověda", style: .plain, target: self, action: #selector(didTapHelp))
 
         keyboardHandler = KeyboardHandler(in: view, scrollView: scrollView, buttonsView: buttonsView, buttonsBottomConstraint: buttonsBottomConstraint)
 
@@ -97,6 +100,9 @@ final class PhoneNumberController: UIViewController {
         delegate?.controllerDidTapPrivacy(self)
     }
 
+    @objc private func didTapHelp() {
+        delegate?.controllerDidTapHelp(self)
+    }
 }
 
 // MARK: - UITextFieldDelegate

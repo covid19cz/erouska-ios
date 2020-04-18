@@ -11,6 +11,7 @@ import UserNotifications
 
 protocol NotificationPermissionControllerDelegate: AnyObject {
     func controllerDidTapContinue(_ controller: NotificationPermissionController)
+    func controllerDidTapHelp(_ controller: NotificationPermissionController)
 }
 
 final class NotificationPermissionController: UIViewController {
@@ -25,6 +26,8 @@ final class NotificationPermissionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Nápověda", style: .plain, target: self, action: #selector(didTapHelp))
+
         buttonsView.connect(with: scrollView)
     }
 
@@ -32,5 +35,9 @@ final class NotificationPermissionController: UIViewController {
     
     @IBAction func didTapContinue(_ sender: Any) {
         delegate?.controllerDidTapContinue(self)
+    }
+    
+    @objc private func didTapHelp() {
+        delegate?.controllerDidTapHelp(self)
     }
 }

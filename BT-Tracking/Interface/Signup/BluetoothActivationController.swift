@@ -12,6 +12,7 @@ import UserNotifications
 
 protocol BluetoothActivationControllerDelegate: AnyObject {
     func controllerDidSetBluetooth(_ controller: BluetoothActivationController)
+    func controllerDidTapHelp(_ controller: BluetoothActivationController)
 }
 
 final class BluetoothActivationController: UIViewController {
@@ -45,6 +46,7 @@ final class BluetoothActivationController: UIViewController {
         super.viewDidLoad()
 
         buttonsView.connect(with: scrollView)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Nápověda", style: .plain, target: self, action: #selector(didTapHelp))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +81,10 @@ final class BluetoothActivationController: UIViewController {
 
     @objc private func applicationDidBecomeActive() {
         checkForBluetooth()
+    }
+
+    @objc private func didTapHelp() {
+        delegate?.controllerDidTapHelp(self)
     }
 }
 

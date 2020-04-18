@@ -254,9 +254,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         <viewLayoutGuide key="safeArea" id="zIf-rI-ET1"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Ověřovací kód" largeTitleDisplayMode="always" id="l3U-k0-Fod">
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="uVc-DO-9jU"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Ověřovací kód" largeTitleDisplayMode="always" id="l3U-k0-Fod"/>
                     <connections>
                         <outlet property="actionButton" destination="vDN-Uj-w2M" id="y9l-aU-C2E"/>
                         <outlet property="buttonsBottomConstraint" destination="dba-Ii-re6" id="ZpX-zx-RaT"/>
@@ -376,7 +374,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </view>
                     <navigationItem key="navigationItem" title="Povolení Bluetooth" largeTitleDisplayMode="always" id="iPo-w0-AmX">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="lIB-gt-iyC"/>
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="tdL-Kj-Pcu"/>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonsView" destination="meA-hx-Fcs" id="cPj-x7-plV"/>
@@ -544,7 +541,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Telefonní číslo" largeTitleDisplayMode="always" id="M4Q-Z0-fSN">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="Ifa-FJ-QZq"/>
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="z0N-gl-bwU"/>
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="H4n-ew-pkC" id="IKW-1O-qQD"/>
@@ -663,7 +659,6 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </view>
                     <navigationItem key="navigationItem" title="Ověření" largeTitleDisplayMode="always" id="Ia5-ZL-73y">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="AGe-uz-MAj"/>
-                        <barButtonItem key="rightBarButtonItem" title="Nápověda" id="zNr-NV-ndm"/>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonsView" destination="BMQ-37-LtV" id="X7l-oz-Q9C"/>

@@ -157,6 +157,10 @@ extension RegistrationCoordinator: BluetoothActivationControllerDelegate {
     func controllerDidSetBluetooth(_ controller: BluetoothActivationController) {
         showNextScreenBasedOnNotificationSettings()
     }
+
+    func controllerDidTapHelp(_ controller: BluetoothActivationController) {
+        showHelpScreen()
+    }
 }
 
 // MARK: - NotificationPermissionControllerDelegate
@@ -171,11 +175,19 @@ extension RegistrationCoordinator: NotificationPermissionControllerDelegate {
 
         UIApplication.shared.registerForRemoteNotifications()
     }
+
+    func controllerDidTapHelp(_ controller: NotificationPermissionController) {
+        showHelpScreen()
+    }
 }
 
 // MARK: - PhoneNumberControllerDelegate
 
 extension RegistrationCoordinator: PhoneNumberControllerDelegate {
+    func controllerDidTapHelp(_ controller: PhoneNumberController) {
+        showHelpScreen()
+    }
+
     func controllerDidTapPrivacy(_ controller: PhoneNumberController) {
         guard let url = URL(string: RemoteValues.termsAndConditionsLink) else { return }
         controller.openURL(URL: url)
@@ -213,6 +225,10 @@ extension RegistrationCoordinator: PhoneNumberControllerDelegate {
 // MARK: - VerificationCodeControllerDelegate
 
 extension RegistrationCoordinator: VerificationCodeControllerDelegate {
+    func controllerDidTapHelp(_ controller: VerificationCodeController) {
+        showHelpScreen()
+    }
+
     func controllerDidTapRetry(_ controller: VerificationCodeController) {
         navigationController.popViewController(animated: true)
     }

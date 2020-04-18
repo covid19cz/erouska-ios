@@ -13,6 +13,7 @@ import RxRelay
 protocol VerificationCodeControllerDelegate: AnyObject {
     func controller(_ controller: VerificationCodeController, didTapVerifyWithCode code: String)
     func controllerDidTapRetry(_ controller: VerificationCodeController)
+    func controllerDidTapHelp(_ controller: VerificationCodeController)
 }
 
 protocol HandlingVerificationCodeErrors: AnyObject & UIViewController {
@@ -60,6 +61,8 @@ final class VerificationCodeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Nápověda", style: .plain, target: self, action: #selector(didTapHelp))
+
         keyboardHandler = KeyboardHandler(in: view, scrollView: scrollView, buttonsView: buttonsView, buttonsBottomConstraint: buttonsBottomConstraint)
 
         buttonsView.connect(with: scrollView)
@@ -90,6 +93,10 @@ final class VerificationCodeController: UIViewController {
     @IBAction private func didTapVerify(_ sender: Any) {
         delegate?.controller(self, didTapVerifyWithCode: smsCode.value)
         view.endEditing(true)
+    }
+
+    @objc private func didTapHelp() {
+        delegate?.controllerDidTapHelp(self)
     }
 }
 
