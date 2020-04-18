@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Public
 
     func resetAdvertising() {
+        guard KeychainService.BUID != nil else { return }
         let wasRunning = advertiser.isRunning
         advertiser.stop()
         advertiser = BTAdvertiser(

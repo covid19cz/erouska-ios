@@ -62,7 +62,6 @@ final class FirstActivationVC: UIViewController {
 }
 
 private extension FirstActivationVC {
-
     func setupStrings() {
         navigationItem.localizedTitle(viewModel.title)
         navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
@@ -72,7 +71,5 @@ private extension FirstActivationVC {
         moreButton.localizedTitle(viewModel.moreButton)
         continueButton.localizedTitle(viewModel.continueButton)
         howItWorksButton.localizedTitle(viewModel.howItWorksButton)
-
     }
-
 }
