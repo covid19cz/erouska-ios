@@ -3,7 +3,9 @@
 "back" = "Zpět";
 "ok" = "OK";
 "error" = "Chyba";
-"share_app" = "Sdílet aplikaci";
+"debug" = "Debug";
+"about" = "O aplikaci";
+"close" = "Zavřít";
 
 "welcome_help" = "Jak to funguje";
 "welcome_activation" = "Pokračovat k aktivaci";
@@ -61,3 +63,13 @@
 "active_button_disabled" = "Zapnout";
 "active_footer" = "Při podezření na nákazu vás budeme kontaktovat na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, který naleznete v sekci Moje data.";
 "active";
+
+"active_background_mode_title" = "Aktualizace na pozadí";
+"active_background_mode_message" = "eRouška se potřebuje sama spustit i na pozadí, například po restartování telefonu, abyste na to nemuseli myslet vy.\n\nPovolte možnost 'Aktualizace na pozadí' v nastavení aplikace.";
+"active_background_mode_settings" = "Upravit nastavení";
+"active_background_mode_cancel" = "Zavřít";
+
+"cancel_registration_button" = "Zrušit registraci";
+
+"share_app" = "Sdílet aplikaci";
+"share_app_message" = "Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na %@/";

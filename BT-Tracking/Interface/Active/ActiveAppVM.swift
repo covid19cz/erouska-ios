@@ -108,11 +108,23 @@ final class ActiveAppVM {
 
     let title = "app_name"
     let tabTitle = "app_name"
+
     let shareApp = "share_app"
+    let shareAppMessage = "share_app_message"
 
     let tips = "active_tips_title"
     let firstTip = "active_tip_1"
     let secondTip = "active_tip_2"
+
+    let menuAbout = "about"
+    let menuDebug = "debug"
+    let menuCancelRegistration = "cancel_registration_button"
+    let menuCancel = "close"
+
+    let backgroundModeTitle = "active_background_mode_title"
+    let backgroundModeMessage = "active_background_mode_title"
+    let backgroundModeAction = "active_background_mode_settings"
+    let backgroundModeCancel = "active_background_mode_cancel"
 
     private(set) var state: State
 

@@ -47,6 +47,7 @@ final class ActiveAppVC: UIViewController {
 
         checkForBluetooth()
 
+        setupStrings()
         updateScanner()
         updateInterface()
     }
@@ -103,10 +104,7 @@ final class ActiveAppVC: UIViewController {
     @IBAction private func shareAppAction() {
         guard let url = URL(string: RemoteValues.shareAppDynamicLink) else { return }
 
-        let message = """
-        Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na \(url).
-        """
-
+        let message = String(format: Localizable(viewModel.shareAppMessage), url.absoluteString)
         let shareContent: [Any] = [message]
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?.last ?? navigationItem.rightBarButtonItem
@@ -127,21 +125,25 @@ final class ActiveAppVC: UIViewController {
 
     @IBAction private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: "Zrušit registraci", style: .default, handler: { [weak self] _ in
-            self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
+            self?.unregisterUserAction()
         }))
         #if !PROD
-        controller.addAction(UIAlertAction(title: "Debug", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
         #endif
-        controller.addAction(UIAlertAction(title: "O aplikaci", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuAbout), style: .default, handler: { [weak self] _ in
             guard let url = URL(string: RemoteValues.aboutLink) else { return }
             self?.openURL(URL: url)
         }))
-        controller.addAction(UIAlertAction(title: "Zavřít", style: .cancel))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancel), style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
+    }
+
+    private func unregisterUserAction() {
+        performSegue(withIdentifier: "unregisterUser", sender: nil)
     }
 
     private func debugAction() {
@@ -180,8 +182,6 @@ private extension ActiveAppVC {
     }
 
     func updateInterface() {
-        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
-
         let isActive = viewModel.state != .enabled
         tipsViews.forEach { $0.isHidden = isActive }
         imageView.image = viewModel.state.image
@@ -208,8 +208,10 @@ private extension ActiveAppVC {
 
     func setupStrings() {
         navigationItem.localizedTitle(viewModel.title)
-        navigationItem.rightBarButtonItems?.first?.localizedTitle(viewModel.shareApp)
-        tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationItem.rightBarButtonItems?.last?.localizedTitle(viewModel.shareApp)
+
+        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
     }
 
     func layoutCardView() {
@@ -246,14 +248,14 @@ private extension ActiveAppVC {
         guard !AppSettings.backgroundModeAlertShown, UIApplication.shared.backgroundRefreshStatus == .denied else { return }
         AppSettings.backgroundModeAlertShown = true
         let controller = UIAlertController(
-            title: "Aktualizace na pozadí",
-            message: "eRouška se potřebuje sama spustit i na pozadí, například po restartování telefonu, abyste na to nemuseli myslet vy.\n\nPovolte možnost 'Aktualizace na pozadí' v nastavení aplikace.",
+            title: Localizable(viewModel.backgroundModeTitle),
+            message: Localizable(viewModel.backgroundModeMessage),
             preferredStyle: .alert
         )
-        controller.addAction(UIAlertAction(title: "Upravit nastavení", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.backgroundModeAction), style: .default, handler: { [weak self] _ in
             self?.openSettings()
         }))
-        controller.addAction(UIAlertAction(title: "Zavřít", style: .default))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.backgroundModeCancel), style: .default))
         controller.preferredAction = controller.actions.first
         present(controller, animated: true)
     }
