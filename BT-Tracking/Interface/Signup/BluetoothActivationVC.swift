@@ -131,7 +131,7 @@ private extension BluetoothActivationVC {
     }
 
     func showBluetoothPermissionError() {
-        showError(
+        showAlert(
             title: "Zapněte Bluetooth",
             message: "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.",
             okHandler: { [weak self] in self?.showAppSettings() }

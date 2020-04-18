@@ -225,7 +225,7 @@ private extension AppDelegate {
 
         FirebaseApp.configure()
         setupFirebaseRemoteConfig()
-        Auth.auth().languageCode = "cs";
+        Auth.auth().languageCode = "cs"
 
         #endif
 

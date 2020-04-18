@@ -52,13 +52,13 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAZ-5r-e2M">
                                                         <rect key="frame" x="0.0" y="97.666666666666686" width="343" height="345"/>
-                                                        <mutableString key="text">Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.
+                                                        <string key="text">Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.
 
 Pokud se u majitele kteréhokoliv z nich potvrdí nákaza koronavirem, telefonicky vás kontaktuje pracovník hygienické stanice.
 
 Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny ostatní uživatele aplikace, s kterými jste se potkali.
 
-Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní údaje bez vašeho vědomí. Odešlete je vy sami a pouze hygienikům.</mutableString>
+Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní údaje bez vašeho vědomí. Odešlete je vy sami a pouze hygienikům.</string>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -174,7 +174,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
         <!--Ověřovací kód-->
         <scene sceneID="YpT-d0-CPf">
             <objects>
-                <viewController id="q6P-fR-rVF" customClass="CompleteActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="q6P-fR-rVF" customClass="CompleteActivationVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="62b-SF-fPw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,12 +282,12 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="vDN-Uj-w2M" id="y9l-aU-C2E"/>
+                        <outlet property="bodyLabel" destination="DzS-um-5Af" id="A2w-bM-okB"/>
                         <outlet property="buttonsBottomConstraint" destination="dba-Ii-re6" id="ZpX-zx-RaT"/>
                         <outlet property="buttonsView" destination="ozH-EE-HS0" id="lPD-bj-xcD"/>
+                        <outlet property="codeTextField" destination="XPz-6e-tCh" id="XVx-D3-VAx"/>
+                        <outlet property="headlineLabel" destination="EwR-Me-iUg" id="GYC-lK-RoV"/>
                         <outlet property="scrollView" destination="QHa-3n-qmi" id="fmU-Zh-JJ5"/>
-                        <outlet property="smsCodeTextField" destination="XPz-6e-tCh" id="XVx-D3-VAx"/>
-                        <outlet property="subtitleLabel" destination="DzS-um-5Af" id="A2w-bM-okB"/>
-                        <outlet property="titleLabel" destination="EwR-Me-iUg" id="GYC-lK-RoV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9u-03-pOg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -419,7 +419,7 @@ Nasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyz
         <!--Telefonní číslo-->
         <scene sceneID="vLC-jn-bpl">
             <objects>
-                <viewController id="BBC-aE-fuq" customClass="AccountActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BBC-aE-fuq" customClass="AccountActivationVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceh-zy-1BU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -582,7 +582,11 @@ Nasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyz
                         <outlet property="actionButton" destination="H4n-ew-pkC" id="IKW-1O-qQD"/>
                         <outlet property="buttonsBottomConstraint" destination="s26-h2-0t2" id="Mdn-oW-AaA"/>
                         <outlet property="buttonsView" destination="RgO-Jj-tjN" id="IGi-WB-daW"/>
+                        <outlet property="headlineLabel" destination="WVR-YI-wPh" id="tUK-gl-2Da"/>
+                        <outlet property="permissionFooter" destination="Jhg-5G-PBv" id="yjA-D5-q9k"/>
+                        <outlet property="permissionMoreButton" destination="6k9-CT-6uo" id="4rw-8e-kHI"/>
                         <outlet property="permissionSwitch" destination="N6i-Um-KwL" id="9F2-WU-e7n"/>
+                        <outlet property="permissionTitleLabel" destination="cuw-qW-pqd" id="1hK-q4-DUH"/>
                         <outlet property="phoneNumberTextField" destination="lga-hM-kAK" id="lzC-ec-aPx"/>
                         <outlet property="phonePrefixTextField" destination="2O2-Pb-aan" id="vLh-ST-ZQD"/>
                         <outlet property="scrollView" destination="YGO-et-vUI" id="WXu-O4-Gk0"/>
@@ -632,9 +636,9 @@ Nasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyz
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oH6-oS-6ZX">
                                                         <rect key="frame" x="0.0" y="180.33333333333331" width="343" height="218.33333333333331"/>
-                                                        <mutableString key="text">Aby eRouška chránila vás i vaše blízké, musí ji používat jen reální lidé. Proto vás potřebujeme ověřit jednoduchým testem, který proběhne bez vašeho zásahu.
+                                                        <string key="text">Aby eRouška chránila vás i vaše blízké, musí ji používat jen reální lidé. Proto vás potřebujeme ověřit jednoduchým testem, který proběhne bez vašeho zásahu.
 
-Stačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.</mutableString>
+Stačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -724,7 +728,7 @@ Stačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se se
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="9If-5K-v2Z"/>
-        <segue reference="FLh-nf-xgs"/>
+        <segue reference="utZ-G0-Rhr"/>
         <segue reference="kyL-aQ-rgP"/>
     </inferredMetricsTieBreakers>
     <resources>

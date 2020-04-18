@@ -121,7 +121,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             self?.sendReport()
         }))
         controller.addAction(UIAlertAction(title: "Ne", style: .cancel, handler: { _ in
-            self.showError(
+            self.showAlert(
                 title: "Sdílejte data jen v případě, že vás pracovník hygienické stanice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu",
                 message: ""
             )
@@ -136,7 +136,7 @@ private extension DataListVC {
 
     func sendReport() {
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
-            showError(
+            showAlert(
                 title: "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.",
                 message: ""
             )
@@ -144,7 +144,7 @@ private extension DataListVC {
         }
 
         guard let connection = try? Reachability().connection, connection != .unavailable else {
-            showError(
+            showAlert(
                 title: "Nepodařilo se nám odeslat data",
                 message: "Zkontrolujte připojení k internetu a zkuste to znovu"
             )
@@ -190,7 +190,7 @@ private extension DataListVC {
             if let error = error {
                 log("FirebaseUpload: Error \(error.localizedDescription)")
 
-                self.showError(
+                self.showAlert(
                     title: "Nepodařilo se nám odeslat data",
                     message: "Zkontrolujte připojení k internetu a zkuste to znovu"
                 )

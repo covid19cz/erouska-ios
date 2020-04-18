@@ -38,6 +38,18 @@ extension UIButton {
 
 extension UILabel {
 
+    func localizedText(_ text: String, comment: String? = nil, values: CVarArg...) {
+        self.text = String(format: Localizable(text, comment: comment), arguments: values)
+    }
+
+}
+
+extension UITextField {
+
+    func localizedPlaceholder(_ text: String, comment: String? = nil) {
+        self.placeholder = Localizable(text, comment: comment)
+    }
+
     func localizedText(_ text: String, comment: String? = nil) {
         self.text = Localizable(text, comment: comment)
     }

@@ -9,13 +9,13 @@
 import UIKit
 
 enum InputValidation {
-    case prefix, number, smsCode
+    case prefix, number, code
 
     var characterSet: CharacterSet {
         switch self {
         case .prefix:
             return CharacterSet(charactersIn: "+0123456789")
-        case .number, .smsCode:
+        case .number, .code:
             return CharacterSet(charactersIn: "0123456789")
         }
     }
@@ -26,7 +26,7 @@ enum InputValidation {
             return 2...5
         case .number:
             return 9...9
-        case .smsCode:
+        case .code:
             return 6...6
         }
     }
