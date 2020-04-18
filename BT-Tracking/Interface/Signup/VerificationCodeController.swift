@@ -14,23 +14,26 @@ import DeviceKit
 
 final class VerificationCodeController: UIViewController {
 
+    // MARK: - Public Properties
+
     var authData: PhoneNumberController.AuthData?
 
-    private var smsCode = BehaviorRelay<String>(value: "")
+    // MARK: - Private Properties
+
+    private let smsCode = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
-        smsCode.asObservable().map { phoneNumber -> Bool in
-            InputValidation.smsCode.validate(phoneNumber)
+        smsCode.asObservable().map {
+            InputValidation.smsCode.validate($0)
         }
     }
     private var keyboardHandler: KeyboardHandler!
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     private var subtitle: String = ""
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
-
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet private weak var smsCodeTextField: UITextField!
@@ -38,7 +41,9 @@ final class VerificationCodeController: UIViewController {
 
     private var expirationSeconds: TimeInterval = 0
     private var expirationTimer: Timer?
-    private var firstAppear: Bool = true
+    private var firstAppear = true
+
+    // MARK: - Lifecycle
 
     deinit {
         expirationTimer?.invalidate()
@@ -84,8 +89,7 @@ final class VerificationCodeController: UIViewController {
         Auth.auth().signIn(with: credential) { [weak self] authResult, error in
             guard let self = self else { return }
 
-            if let rawError = error {
-                let error = rawError as NSError
+            if let error = error as NSError? {
                 self.hideProgress()
 
                 if error.code == AuthErrorCode.invalidVerificationCode.rawValue {
@@ -109,19 +113,14 @@ final class VerificationCodeController: UIViewController {
                     self.smsCodeTextField.becomeFirstResponder()
                 }
             } else {
-                var data: [String: Any] = [
+                let data: [String: Any] = [
                     "platform": "iOS",
                     "platformVersion": UIDevice.current.systemVersion,
                     "manufacturer": "Apple",
                     "model": Device.current.description,
                     "locale": "\(Locale.current.languageCode ?? "cs")_\(Locale.current.regionCode ?? "CZ")",
+                    "pushRegistrationToken": AppDelegate.shared.deviceToken?.hexEncodedString ?? "xyz"
                 ]
-
-                if let token = AppDelegate.shared.deviceToken {
-                    data["pushRegistrationToken"] = token.hexEncodedString()
-                } else {
-                    data["pushRegistrationToken"] = "xyz"
-                }
 
                 AppDelegate.shared.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
                     guard let self = self else { return }
@@ -144,13 +143,12 @@ final class VerificationCodeController: UIViewController {
                             self.cleanup()
                         }
                     }
-
                 }
             }
         }
     }
 
-    @IBAction private func resendSmsCode() {
+    private func resendSmsCode() {
         guard let phone = authData?.phoneNumber else { return }
         self.showProgress()
         smsCodeTextField.resignFirstResponder()
@@ -171,6 +169,8 @@ final class VerificationCodeController: UIViewController {
     }
 
 }
+
+// MARK: - UITextFieldDelegate
 
 extension VerificationCodeController: UITextFieldDelegate {
 

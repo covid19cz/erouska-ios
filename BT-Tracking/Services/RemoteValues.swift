@@ -139,7 +139,7 @@ struct RemoteValues {
         return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.criticalExpositionRssi)
     }
 
-    /// timeout na automatické ověření SMS, default = 20
+    /// timeout na automatické ověření SMS, default = 15 * 60
     static var smsErrorTimeoutSeconds: TimeInterval {
         return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.smsErrorTimeoutSeconds))
     }

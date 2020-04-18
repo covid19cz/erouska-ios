@@ -9,10 +9,10 @@
 import UIKit
 
 final class LoggedInTabBarController: TabBarController {
-    let active = ActiveCoordinator()
-    let data = DataCoordinator()
-    let contacts = ContactsCoordinator()
-    let help = HelpCoordinator()
+    private let active = ActiveCoordinator()
+    private let data = DataCoordinator()
+    private let contacts = ContactsCoordinator()
+    private let help = HelpCoordinator()
 
     override func viewDidLoad() {
         super.viewDidLoad()

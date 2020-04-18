@@ -31,7 +31,7 @@ struct KeyboardHandler {
         }).disposed(by: disposeBag)
     }
 
-    func handle(keyboardVisibleHeight: CGFloat) {
+    private func handle(keyboardVisibleHeight: CGFloat) {
         view.setNeedsLayout()
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
             self.view.layoutIfNeeded()

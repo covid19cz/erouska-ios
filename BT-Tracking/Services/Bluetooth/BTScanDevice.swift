@@ -361,7 +361,7 @@ private extension BTScanDevice {
         manager.cancelPeripheralConnection(peripheral)
         cleanupConnection(peripheral)
 
-        let stringFromData = newData.hexEncodedString()
+        let stringFromData = newData.hexEncodedString
         log("BTScanner: Received: \(peripheral.identifier.uuidString) \(stringFromData)")
 
         backendIdentifier = stringFromData
@@ -373,7 +373,7 @@ private extension BTScanDevice {
     func tryToFetchBackendIdentifier(advertisementData: [String: Any]) -> Bool {
         if let serviceData = advertisementData[CBAdvertisementDataServiceDataKey] as? [CBUUID: Any],
             let rawBUID = serviceData.first?.value as? Data {
-            let raw = rawBUID.hexEncodedString()
+            let raw = rawBUID.hexEncodedString
             backendIdentifier = raw
             platform = .android
             return true

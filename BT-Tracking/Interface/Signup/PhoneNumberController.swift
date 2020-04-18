@@ -32,12 +32,12 @@ final class PhoneNumberController: UIViewController {
     private let phonePrefix = BehaviorRelay<String>(value: "")
     private let phoneNumber = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
-        Observable.combineLatest(phonePrefix.asObservable(), phoneNumber.asObservable()).map { (phonePrefix, phoneNumber) -> Bool in
-            return InputValidation.prefix.validate(phonePrefix) && InputValidation.number.validate(phoneNumber)
+        Observable.combineLatest(phonePrefix.asObservable(), phoneNumber.asObservable()).map { phonePrefix, phoneNumber in
+            InputValidation.prefix.validate(phonePrefix) && InputValidation.number.validate(phoneNumber)
         }
     }
     private var keyboardHandler: KeyboardHandler!
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!

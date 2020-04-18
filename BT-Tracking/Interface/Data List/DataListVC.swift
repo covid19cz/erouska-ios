@@ -182,7 +182,7 @@ private extension DataListVC {
         let storageMetadata = StorageMetadata()
         storageMetadata.customMetadata = metadata
 
-        fileReference.putFile(from: fileURL, metadata: storageMetadata) { [weak self] (metadata, error) in
+        fileReference.putFile(from: fileURL, metadata: storageMetadata) { [weak self] metadata, error in
             guard let self = self else { return }
             self.hideProgress()
 

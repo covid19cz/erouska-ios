@@ -160,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let buid = KeychainService.BUID else { return }
         let data: [String: Any] = [
             "buid": buid,
-            "pushRegistrationToken": deviceToken.hexEncodedString()
+            "pushRegistrationToken": deviceToken.hexEncodedString
         ]
 
         functions.httpsCallable("changePushToken").call(data) { result, error in
