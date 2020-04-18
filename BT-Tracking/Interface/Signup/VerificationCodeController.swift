@@ -9,14 +9,17 @@
 import UIKit
 import RxSwift
 import RxRelay
-import FirebaseAuth
-import DeviceKit
+
+protocol VerificationCodeControllerDelegate: AnyObject {
+    func controller(_ controller: VerificationCodeController, didTapVerifyWithCode code: String)
+}
 
 final class VerificationCodeController: UIViewController {
 
     // MARK: - Public Properties
 
-    var authData: PhoneNumberController.AuthData?
+    var phoneNumber: String?
+    weak var delegate: VerificationCodeControllerDelegate?
 
     // MARK: - Private Properties
 
@@ -57,7 +60,7 @@ final class VerificationCodeController: UIViewController {
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
 
-        titleLabel.text = titleLabel.text?.replacingOccurrences(of: "%@", with: authData?.phoneNumber.phoneFormatted ?? "")
+        titleLabel.text = titleLabel.text?.replacingOccurrences(of: "%@", with: phoneNumber?.phoneFormatted ?? "")
 
         subtitle = subtitleLabel.text ?? ""
         startExpirationTimer()
@@ -79,14 +82,13 @@ final class VerificationCodeController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction private func activateAcountAction(_ sender: Any) {
-        guard let authData = authData else { return }
-        showProgress()
+    @IBAction private func didTapVerify(_ sender: Any) {
+        delegate?.controller(self, didTapVerifyWithCode: smsCode.value)
         view.endEditing(true)
 
-        let credential = PhoneAuthProvider.provider().credential(withVerificationID: authData.verificationID, verificationCode: smsCode.value)
+//        let credential = PhoneAuthProvider.provider().credential(withVerificationID: authData.verificationID, verificationCode: smsCode.value)
 
-        Auth.auth().signIn(with: credential) { [weak self] authResult, error in
+        Auth.auth().signIn(with: credential) { [weak self] _, error in
             guard let self = self else { return }
 
             if let error = error as NSError? {
@@ -131,8 +133,7 @@ final class VerificationCodeController: UIViewController {
                         self.cleanup()
                         self.navigationController?.popViewController(animated: true)
                     } else if let result = result?.data as? [String: Any] {
-                        if let BUID = result["buid"] as? String,
-                            let TUIDs = result["tuids"] as? [String] {
+                        if let BUID = result["buid"] as? String, let TUIDs = result["tuids"] as? [String] {
                             KeychainService.BUID = BUID
                             KeychainService.TUIDs = TUIDs
 
@@ -146,26 +147,31 @@ final class VerificationCodeController: UIViewController {
                 }
             }
         }
+
+
+
     }
 
+
+    // TODO: msrutek
     private func resendSmsCode() {
-        guard let phone = authData?.phoneNumber else { return }
-        self.showProgress()
-        smsCodeTextField.resignFirstResponder()
-
-        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self] verificationID, error in
-            guard let self = self else { return }
-            self.hideProgress()
-
-            if let error = error {
-                self.show(error: error, title: "Chyba při aktivaci")
-                self.cleanup()
-            } else if let verificationID = verificationID  {
-                self.authData = PhoneNumberController.AuthData(verificationID: verificationID, phoneNumber: phone)
-                self.startExpirationTimer()
-                self.smsCodeTextField.becomeFirstResponder()
-            }
-        }
+//        guard let phone = authData?.phoneNumber else { return }
+//        self.showProgress()
+//        smsCodeTextField.resignFirstResponder()
+//
+//        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self] verificationID, error in
+//            guard let self = self else { return }
+//            self.hideProgress()
+//
+//            if let error = error {
+//                self.show(error: error, title: "Chyba při aktivaci")
+//                self.cleanup()
+//            } else if let verificationID = verificationID  {
+//                self.authData = PhoneNumberController.AuthData(verificationID: verificationID, phoneNumber: phone)
+//                self.startExpirationTimer()
+//                self.smsCodeTextField.becomeFirstResponder()
+//            }
+//        }
     }
 
 }

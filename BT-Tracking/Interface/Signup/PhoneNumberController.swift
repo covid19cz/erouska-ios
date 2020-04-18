@@ -18,11 +18,6 @@ protocol PhoneNumberControllerDelegate: AnyObject {
 
 final class PhoneNumberController: UIViewController {
 
-    struct AuthData {
-        let verificationID: String
-        let phoneNumber: String
-    }
-
     // MARK: - Public Properties
 
     weak var delegate: PhoneNumberControllerDelegate?
@@ -81,14 +76,6 @@ final class PhoneNumberController: UIViewController {
         }
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-
-        guard let destination = segue.destination as? VerificationCodeController,
-            let authData = sender as? AuthData else { return }
-        destination.authData = authData
-    }
-
     // MARK: - Actions
 
     @IBAction private func didTapContinue() {
@@ -128,5 +115,4 @@ extension PhoneNumberController: UITextFieldDelegate {
 
         return validateTextChange(with: type, textField: textField, changeCharactersIn: range, newString: string)
     }
-
 }

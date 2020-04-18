@@ -231,7 +231,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
-                                            <action selector="activateAcountAction:" destination="q6P-fR-rVF" eventType="touchUpInside" id="UYI-x1-KQV"/>
+                                            <action selector="didTapVerify:" destination="q6P-fR-rVF" eventType="touchUpInside" id="IlE-3g-zH0"/>
                                         </connections>
                                     </button>
                                 </subviews>

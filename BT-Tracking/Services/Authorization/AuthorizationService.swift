@@ -13,12 +13,18 @@ protocol AuthorizationService: AnyObject {
     func signOut() throws
     var isLoggedIn: Bool { get }
     func verifyPhoneNumber(_ phoneNumber: String, completion: @escaping (Result<String, PhoneAuthenticationError>) -> Void)
-
+    func verifyCode(_ code: String, withVerificationId verificationId: String, completion: @escaping (Result<Void, VerificationCodeError>) -> Void)
 }
 
 enum PhoneAuthenticationError: Error {
     case general
     case limitExceeded
+}
+
+enum VerificationCodeError: Error {
+    case invalid
+    case expired
+    case general
 }
 
 final class DefaultAuthorizationService: AuthorizationService {
@@ -57,21 +63,26 @@ final class DefaultAuthorizationService: AuthorizationService {
             }
         }
     }
-}
 
-// TODO: msrutek, move elsewhere
-final class TestAuthorizationService: AuthorizationService {
-    var signOutCalled = 0
-    var shouldReturnIsLoggedIn = true
+    func verifyCode(_ code: String, withVerificationId verificationId: String, completion: @escaping (Result<Void, VerificationCodeError>) -> Void) {
+        let credential = phoneAuthProvider.credential(withVerificationID: verificationId, verificationCode: code)
 
-    func signOut() throws {
-        signOutCalled += 1
-    }
+        auth.signIn(with: credential) { _, error in
+            if let error = error as NSError? {
+                log("AuthorizationService: verifyCode error: \(error.localizedDescription), code: \(error.code)")
 
-    var isLoggedIn: Bool {
-        shouldReturnIsLoggedIn
-    }
-
-    func verifyPhoneNumber(_ phoneNumber: String, completion: @escaping (Result<String, PhoneAuthenticationError>) -> Void) {
+                switch error.code {
+                case AuthErrorCode.invalidVerificationCode.rawValue:
+                    completion(.failure(.invalid))
+                case AuthErrorCode.sessionExpired.rawValue:
+                    completion(.failure(.expired))
+                default:
+                    completion(.failure(.general))
+                }
+            } else {
+                // ¯\_(ツ)_/¯
+                completion(.success(()))
+            }
+        }
     }
 }

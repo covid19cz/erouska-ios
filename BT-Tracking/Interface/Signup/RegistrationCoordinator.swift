@@ -10,21 +10,32 @@ import UIKit
 import CoreBluetooth
 import UserNotifications
 import FirebaseAuth
+import DeviceKit
+
+protocol RegistrationCoordinatorDelegate: AnyObject {
+    func coordinatorDidFinishRegistration(_ coordinator: RegistrationCoordinator)
+}
 
 final class RegistrationCoordinator: Coordinator {
+    // MARK: - Public Properties
+    weak var delegate: RegistrationCoordinatorDelegate?
+
+    // MARK: - Private Properties
     private let window: UIWindow
     private let navigationController: UINavigationController
     private let userNotificationCenter: UNUserNotificationCenter
     private let authorizationService: AuthorizationService
-
     private let storyboard = UIStoryboard(name: "Signup", bundle: nil)
 
     private var bluetoothAuthorized: Bool {
-           if #available(iOS 13.0, *) {
-               return CBCentralManager().authorization == .allowedAlways
-           }
-           return CBPeripheralManager.authorizationStatus() == .authorized
-       }
+        if #available(iOS 13.0, *) {
+            return CBCentralManager().authorization == .allowedAlways
+        }
+        return CBPeripheralManager.authorizationStatus() == .authorized
+    }
+
+    private var phoneNumber: String?
+    private var verificationId: String?
 
     init(
         window: UIWindow,
@@ -79,6 +90,8 @@ private extension RegistrationCoordinator {
 
     func showVerificationCodeScreen() {
         let viewController = storyboard.instantiateViewController(withIdentifier: "VerificationCodeController") as! VerificationCodeController
+        viewController.phoneNumber = phoneNumber
+        viewController.delegate = self
 
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -131,6 +144,8 @@ extension RegistrationCoordinator: PhoneNumberControllerDelegate {
     }
 
     func controller(_ controller: PhoneNumberController, didTapContinueWithPhoneNumber phoneNumber: String) {
+        self.phoneNumber = phoneNumber
+
         controller.showProgress()
 
         authorizationService.verifyPhoneNumber(phoneNumber) { [weak self, weak controller] result in
@@ -141,7 +156,7 @@ extension RegistrationCoordinator: PhoneNumberControllerDelegate {
             switch result {
             case let .success(verificationId):
                 self.showVerificationCodeScreen()
-                //self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
+                self.verificationId = verificationId
             case .failure(.limitExceeded):
                 controller.showError(
                     title: "Telefonní číslo jsme dočasně zablokovali",
@@ -164,5 +179,84 @@ extension RegistrationCoordinator: PhoneNumberControllerDelegate {
         try? authorizationService.signOut()
 
         UserDefaults.resetStandardUserDefaults()
+    }
+}
+
+// MARK: - VerificationCodeControllerDelegate
+
+extension RegistrationCoordinator: VerificationCodeControllerDelegate {
+    func controller(_ controller: VerificationCodeController, didTapVerifyWithCode code: String) {
+        guard let verificationId = verificationId else {
+            // TODO: show fekal error
+            return
+        }
+
+        controller.showProgress()
+
+        authorizationService.verifyCode(code, withVerificationId: verificationId) { [weak self, weak controller] result in
+
+            guard let self = self, let controller = controller else { return }
+            controller.hideProgress()
+
+            switch result {
+            case .success:
+                self.registerBuid()
+            case .failure(.expired):
+                break
+            case .failure(.invalid):
+                break
+            case .failure(.general):
+                break
+            }
+        }
+    }
+
+    private func registerBuid() {
+        let data: [String: Any] = [
+            "platform": "iOS",
+            "platformVersion": UIDevice.current.systemVersion,
+            "manufacturer": "Apple",
+            "model": Device.current.description,
+            "locale": "\(Locale.current.languageCode ?? "cs")_\(Locale.current.regionCode ?? "CZ")",
+            "pushRegistrationToken": AppDelegate.shared.deviceToken?.hexEncodedString ?? "xyz"
+        ]
+
+        AppDelegate.shared.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
+            guard let self = self else { return }
+//            self.hideProgress()
+
+            if let error = error as NSError? {
+                log("RegistrationCoordinator: registerBuid error: \(error.localizedDescription), code: \(error.code)")
+
+//                self.show(error: error, title: "Chyba při aktivaci")
+                self.cleanup()
+                self.navigationController.popViewController(animated: true)
+
+                return
+            }
+
+            guard
+                let result = result?.data as? [String: Any],
+                let BUID = result["buid"] as? String,
+                let TUIDs = result["tuids"] as? [String]
+            else {
+                log("RegistrationCoordinator: registerBuid wrong data")
+
+                // TODO: fekal error
+                self.cleanup()
+
+                // show error
+//                self.show(error: NSError(domain: AuthErrorDomain, code: 500, userInfo: nil), title: "Chyba při aktivaci")
+
+                return
+            }
+
+            log("RegistrationCoordinator: registerBuid success")
+
+            KeychainService.BUID = BUID
+            KeychainService.TUIDs = TUIDs
+
+            self.delegate?.coordinatorDidFinishRegistration(self)
+        }
     }
 }
