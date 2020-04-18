@@ -103,8 +103,8 @@ private extension DataListVC {
     }
 
     func setupTabBar() {
-        navigationController?.tabBarItem.localizedTitle(viewModel.title)
-        navigationController?.tabBarItem.image = viewModel.tabBarIcon
+        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.image = viewModel.tabIcon
     }
 
     func setupTableView() {

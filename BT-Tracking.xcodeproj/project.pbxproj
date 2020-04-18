@@ -179,6 +179,9 @@
 		80CA44D6244AEBDE008E22F8 /* AccountActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */; };
 		80CA44D8244AF22B008E22F8 /* CompleteActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */; };
 		80CA44DA244AFEF2008E22F8 /* ActiveAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppVC.swift */; };
+		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
+		80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
+		80CA44DE244B384F008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
 		80D5F7E52423D8740010EF51 /* CompleteActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */; };
 		80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
@@ -277,6 +280,7 @@
 		80CA44D1244AE783008E22F8 /* NotificationPermissionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionVM.swift; sourceTree = "<group>"; };
 		80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationVM.swift; sourceTree = "<group>"; };
 		80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationVM.swift; sourceTree = "<group>"; };
+		80CA44DB244B3769008E22F8 /* HelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVM.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 		80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationVC.swift; sourceTree = "<group>"; };
@@ -643,6 +647,7 @@
 			children = (
 				BDB07FBF24254A8F00834E79 /* Help.storyboard */,
 				80631A95242CA27800EB0B6C /* HelpVC.swift */,
+				80CA44DB244B3769008E22F8 /* HelpVM.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -1025,6 +1030,7 @@
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */,
 				80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */,
+				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
 				80CA44B4244AD979008E22F8 /* FirstActivationVM.swift in Sources */,
 				803669A9243F4B0D00684B57 /* BTScanDevice.swift in Sources */,
@@ -1086,6 +1092,7 @@
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
 				8083D8CB244640A0007FA4E9 /* BTScanner.swift in Sources */,
 				8083D8CD244640A0007FA4E9 /* BluetoothActivationVC.swift in Sources */,
+				80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */,
 				8083D8CE244640A0007FA4E9 /* SendReportVC.swift in Sources */,
 				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
@@ -1114,6 +1121,7 @@
 				80BB474924212A3C00F552FC /* LogSegmentController.swift in Sources */,
 				8083D8FF24464334007FA4E9 /* KeyboardHandler.swift in Sources */,
 				8083D90024464334007FA4E9 /* GradientView.swift in Sources */,
+				80CA44DE244B384F008E22F8 /* HelpVM.swift in Sources */,
 				80BE18B4243391F500C4A9E6 /* RemoteValues.swift in Sources */,
 				8083D8F724464331007FA4E9 /* App.swift in Sources */,
 				8083D911244643BD007FA4E9 /* InfoCell.swift in Sources */,

@@ -34,7 +34,8 @@ final class DataListVM {
 
     // MARK: - Properties
 
-    var tabBarIcon: UIImage? {
+    let tabTitle = "data_list_title"
+    var tabIcon: UIImage? {
         if #available(iOS 13, *) {
             return UIImage(systemName: "doc.plaintext")
         } else {

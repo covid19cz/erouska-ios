@@ -107,3 +107,6 @@
 "data_send_headline" = "Děkujeme, že pomáháte bojovat proti šíření koronaviru. ";
 "data_send_body" = "Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nZůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygieniků.";
 "data_send_close_button" = "Zavřít";
+
+"help_title" = "Jak to funguje";
+"help_tab_title" = "Nápověda";
