@@ -1,5 +1,5 @@
 //
-//  ActiveAppController.swift
+//  ActiveAppVC.swift
 //  BT-Tracking
 //
 //  Created by Jakub Skořepa on 20/03/2020.
@@ -10,22 +10,22 @@ import UIKit
 import FirebaseAuth
 import CoreBluetooth
 
-final class ActiveAppController: UIViewController {
+final class ActiveAppVC: UIViewController {
 
-    private var viewModel = ActiveAppViewModel(bluetoothActive: true)
+    private var viewModel = ActiveAppVM(bluetoothActive: true)
     
     // MARK: - Outlets
 
     @IBOutlet private weak var mainStackView: UIStackView!
     @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var headLabel: UILabel!
+    @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tipsLabel: UILabel!
+    @IBOutlet private weak var actionButton: Button!
     @IBOutlet private weak var firstTipLabel: UILabel!
     @IBOutlet private weak var secondTipLabel: UILabel!
-    @IBOutlet private weak var textLabel: UILabel!
-    @IBOutlet private var activeInfoViews: [UIView]!
-    @IBOutlet private weak var actionButton: Button! 
+    @IBOutlet private var tipsViews: [UIView]!
+    @IBOutlet private weak var footerLabel: UILabel!
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
     
@@ -159,10 +159,10 @@ final class ActiveAppController: UIViewController {
 
 }
 
-private extension ActiveAppController {
+private extension ActiveAppVC {
 
     func updateViewModel() {
-        viewModel = ActiveAppViewModel(bluetoothActive: viewModel.lastBluetoothState)
+        viewModel = ActiveAppVM(bluetoothActive: viewModel.lastBluetoothState)
 
         updateScanner()
         updateInterface()
@@ -183,16 +183,20 @@ private extension ActiveAppController {
         navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
 
         let isActive = viewModel.state != .enabled
-        activeInfoViews.forEach { $0.isHidden = isActive }
+        tipsViews.forEach { $0.isHidden = isActive }
         imageView.image = viewModel.state.image
-        headLabel.text = viewModel.state.head
-        headLabel.textColor = viewModel.state.color
-        titleLabel.text = viewModel.state.title
-        tipsLabel.text = viewModel.state.tips
-        firstTipLabel.text = viewModel.state.firstTip
-        secondTipLabel.text = viewModel.state.secondTip
-        textLabel.text = viewModel.state.text.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
-        actionButton.setTitle(viewModel.state.actionTitle, for: .normal)
+        headlineLabel.localizedText(viewModel.state.headline)
+        headlineLabel.textColor = viewModel.state.color
+        titleLabel.localizedText(viewModel.state.title)
+        tipsLabel.localizedText(viewModel.tips)
+        firstTipLabel.localizedText(viewModel.firstTip)
+        secondTipLabel.localizedText(viewModel.secondTip)
+        if let footer = viewModel.state.footer {
+            footerLabel.localizedText(footer, values: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
+        } else {
+            footerLabel.text = nil
+        }
+        actionButton.localizedTitle(viewModel.state.actionTitle)
 
         // Apply element size fix for iPhone SE size screens only
         cardView.layoutIfNeeded()
@@ -200,6 +204,12 @@ private extension ActiveAppController {
             actionButtonWidthConstraint.constant = viewModel.state == .enabled ? 110 : 100
             actionButton.layoutIfNeeded()
         }
+    }
+
+    func setupStrings() {
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.rightBarButtonItems?.first?.localizedTitle(viewModel.shareApp)
+        tabBarItem.localizedTitle(viewModel.tabTitle)
     }
 
     func layoutCardView() {

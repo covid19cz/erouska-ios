@@ -1,5 +1,5 @@
 //
-//  ContactsController.swift
+//  ContactsVC.swift
 //  BT-Tracking
 //
 //  Created by Lukáš Foldýna on 24/03/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ContactsController: UIViewController {
+final class ContactsVC: UIViewController {
 
     override func awakeFromNib() {
         super.awakeFromNib()

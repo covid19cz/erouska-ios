@@ -13,7 +13,7 @@ final class NotificationPermissionVC: UIViewController {
 
     // MARK: -
 
-    let viewModel = NotificationPermissionVM()
+    private let viewModel = NotificationPermissionVM()
 
     // MARK: - Outlets
 

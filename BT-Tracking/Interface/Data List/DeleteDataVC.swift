@@ -31,7 +31,7 @@ final class DeleteDataVC: UIViewController {
     @IBAction private func deleteAllData(_ sender: Any) {
         viewModel.deleteAllData()
 
-        let controller = (tabBarController?.viewControllers?.first as? UINavigationController)?.topViewController as? ActiveAppController
+        let controller = (tabBarController?.viewControllers?.first as? UINavigationController)?.topViewController as? ActiveAppVC
         controller?.pauseScanning()
 
         showAlert(title: "Všechna data jsme odstranili a eRoušku pozastavili", message: "", okHandler: { [weak self] in

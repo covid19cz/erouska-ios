@@ -20,6 +20,14 @@ extension UINavigationItem {
 
 }
 
+extension UITabBarItem {
+
+    func localizedTitle(_ text: String, comment: String? = nil) {
+        title = Localizable(text, comment: comment)
+    }
+
+}
+
 extension UIBarButtonItem {
 
     func localizedTitle(_ text: String, comment: String? = nil) {
