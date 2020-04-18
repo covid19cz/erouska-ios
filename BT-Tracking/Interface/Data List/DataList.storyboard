@@ -275,7 +275,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-Ye-sGl">
-                                <rect key="frame" x="20" y="56" width="374" height="703"/>
+                                <rect key="frame" x="20" y="56" width="374" height="752"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0l-Ah-UvZ" userLabel="Space View">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="5"/>
@@ -325,11 +325,11 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-fY-ke2" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="413" width="374" height="211"/>
+                                        <rect key="frame" x="0.0" y="413" width="374" height="260"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sR-Eb-tvx" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="639" width="374" height="44"/>
+                                        <rect key="frame" x="0.0" y="688" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="pTc-1t-X1g"/>
                                         </constraints>
@@ -342,7 +342,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5V-cH-HmX" userLabel="Space View">
-                                        <rect key="frame" x="0.0" y="698" width="374" height="5"/>
+                                        <rect key="frame" x="0.0" y="747" width="374" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="z3a-IS-m4H"/>
@@ -364,7 +364,12 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                     <navigationItem key="navigationItem" title="Odesláno" id="Yey-Fh-VuT">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="UYc-jP-jcZ"/>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="8Ee-su-jfJ" id="jvm-nI-phf"/>
+                        <outlet property="closeButton" destination="7sR-Eb-tvx" id="5F3-UW-gTJ"/>
+                        <outlet property="headlineLabel" destination="RBc-JL-Q8y" id="OiH-AT-sgf"/>
+                        <outlet property="titleLabel" destination="wrs-gT-kFO" id="2km-27-ie5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSz-x2-r7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -395,7 +400,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qwL-Fh-g7N">
-                                <rect key="frame" x="20" y="140" width="374" height="653"/>
+                                <rect key="frame" x="20" y="158.5" width="374" height="634.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-lw-NdS">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="174.5"/>
@@ -409,11 +414,11 @@ Po smazání dat dojde k automatickému pozastavení eRoušky.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0v1-rS-iZ4">
-                                        <rect key="frame" x="0.0" y="189.5" width="374" height="404.5"/>
+                                        <rect key="frame" x="0.0" y="189.5" width="374" height="386"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjq-uQ-dSM" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="609" width="374" height="44"/>
+                                        <rect key="frame" x="0.0" y="590.5" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="hjp-ci-t6g"/>
                                         </constraints>
@@ -433,11 +438,15 @@ Po smazání dat dojde k automatickému pozastavení eRoušky.</string>
                             <constraint firstItem="qwL-Fh-g7N" firstAttribute="leading" secondItem="zhI-BM-y6U" secondAttribute="leading" constant="20" id="MNL-PM-6vS"/>
                             <constraint firstAttribute="trailing" secondItem="qwL-Fh-g7N" secondAttribute="trailing" constant="20" id="ZR8-CQ-ael"/>
                             <constraint firstItem="zhI-BM-y6U" firstAttribute="bottom" secondItem="qwL-Fh-g7N" secondAttribute="bottom" constant="20" id="siH-vm-vyi"/>
-                            <constraint firstItem="qwL-Fh-g7N" firstAttribute="top" secondItem="zhI-BM-y6U" secondAttribute="top" id="xb3-ZV-PT1"/>
+                            <constraint firstItem="qwL-Fh-g7N" firstAttribute="top" secondItem="zhI-BM-y6U" secondAttribute="top" constant="10" id="xb3-ZV-PT1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zhI-BM-y6U"/>
                     </view>
                     <navigationItem key="navigationItem" title="Smazat data" id="3TM-Bw-xPt"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="ofa-lw-NdS" id="OKe-oo-gLa"/>
+                        <outlet property="deleteButton" destination="Yjq-uQ-dSM" id="7hT-W4-iVi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCZ-y7-LzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

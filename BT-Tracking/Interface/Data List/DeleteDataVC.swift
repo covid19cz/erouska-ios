@@ -10,7 +10,15 @@ import UIKit
 
 final class DeleteDataVC: UIViewController {
 
+    // MARK: -
+
     private let viewModel = DeleteDataVM(scannerStore: AppDelegate.shared.scannerStore)
+
+    // MARK: - Outlets
+
+    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var deleteButton: RoundedButtonFilled!
+
 
     // MARK: - Life cycle
     
@@ -22,8 +30,10 @@ final class DeleteDataVC: UIViewController {
     // MARK: - Setup
     
     private func setup() {
-        title = "Smazat data"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.localizedTitle(viewModel.title)
+
+        bodyLabel.localizedText(viewModel.body)
+        deleteButton.localizedTitle(viewModel.deleteButton)
     }
     
     // MARK: - Action
@@ -35,7 +45,7 @@ final class DeleteDataVC: UIViewController {
         controller?.pauseScanning()
 
         showAlert(
-            title: "Všechna data jsme odstranili a eRoušku pozastavili",
+            title: viewModel.deleteSuccess,
             okHandler: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
             }

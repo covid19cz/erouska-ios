@@ -17,7 +17,7 @@ final class DataCollectionInfoVC: MarkdownController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Informace o sběru dat"
+        navigationItem.localizedTitle("data_list_info_button")
         navigationItem.largeTitleDisplayMode = .never
     }
 

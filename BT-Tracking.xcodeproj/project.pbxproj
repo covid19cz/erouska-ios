@@ -620,6 +620,7 @@
 				80ECB96B24292FB000E57601 /* DataList.storyboard */,
 				803C5B22242932BF00E49414 /* DataListVC.swift */,
 				803C5B242429346500E49414 /* DataListVM.swift */,
+				80BF9C252424D55800150108 /* SendReportVC.swift */,
 				46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */,
 				46A0D530242CEB9500FAE9EA /* DeleteDataVM.swift */,
 				80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */,
@@ -633,7 +634,6 @@
 				BD0191462424331900707341 /* Active.storyboard */,
 				BD979AEA242565AF004001ED /* ActiveAppVC.swift */,
 				80B94554242B7B460052CD9F /* ActiveAppVM.swift */,
-				80BF9C252424D55800150108 /* SendReportVC.swift */,
 			);
 			path = Active;
 			sourceTree = "<group>";
