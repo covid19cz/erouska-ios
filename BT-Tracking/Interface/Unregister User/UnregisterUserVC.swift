@@ -26,6 +26,7 @@ final class UnregisterUserVC: UIViewController {
         super.viewDidLoad()
 
         navigationItem.localizedTitle(viewModel.title)
+        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
 
         bodyLabel.localizedText(viewModel.body, values: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
         actionButton.localizedTitle(viewModel.actionButton)

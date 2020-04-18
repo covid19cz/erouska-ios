@@ -11,6 +11,7 @@ import Foundation
 struct UnregisterUserVM {
 
     let title = "unregister_user_title"
+    let help = "help"
     let body = "unregister_user_body"
     let actionButton = "unregister_user_button"
 

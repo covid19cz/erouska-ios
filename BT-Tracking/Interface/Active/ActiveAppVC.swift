@@ -208,6 +208,7 @@ private extension ActiveAppVC {
 
     func setupStrings() {
         navigationItem.localizedTitle(viewModel.title)
+        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
         navigationItem.rightBarButtonItems?.last?.localizedTitle(viewModel.shareApp)
 
         navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)

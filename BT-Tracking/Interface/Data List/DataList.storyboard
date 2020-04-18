@@ -361,9 +361,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                         <viewLayoutGuide key="safeArea" id="Es3-Ia-z2R"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Odesláno" id="Yey-Fh-VuT">
-                        <barButtonItem key="backBarButtonItem" title="Zpět" id="UYc-jP-jcZ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Odesláno" id="Yey-Fh-VuT"/>
                     <connections>
                         <outlet property="bodyLabel" destination="8Ee-su-jfJ" id="jvm-nI-phf"/>
                         <outlet property="closeButton" destination="7sR-Eb-tvx" id="5F3-UW-gTJ"/>
@@ -400,7 +398,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qwL-Fh-g7N">
-                                <rect key="frame" x="20" y="158.5" width="374" height="634.5"/>
+                                <rect key="frame" x="20" y="150" width="374" height="643"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-lw-NdS">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="174.5"/>
@@ -414,11 +412,11 @@ Po smazání dat dojde k automatickému pozastavení eRoušky.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0v1-rS-iZ4">
-                                        <rect key="frame" x="0.0" y="189.5" width="374" height="386"/>
+                                        <rect key="frame" x="0.0" y="189.5" width="374" height="394.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjq-uQ-dSM" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="590.5" width="374" height="44"/>
+                                        <rect key="frame" x="0.0" y="599" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="hjp-ci-t6g"/>
                                         </constraints>

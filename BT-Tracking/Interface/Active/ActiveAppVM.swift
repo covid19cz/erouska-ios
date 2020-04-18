@@ -107,6 +107,7 @@ final class ActiveAppVM {
     }
 
     let title = "app_name"
+    let back = "back"
     let tabTitle = "app_name"
 
     let shareApp = "share_app"
