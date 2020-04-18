@@ -12,7 +12,7 @@ import RxRelay
 import FirebaseAuth
 import DeviceKit
 
-final class CompleteActivationController: UIViewController {
+final class VerificationCodeController: UIViewController {
 
     var authData: PhoneNumberController.AuthData?
 
@@ -172,7 +172,7 @@ final class CompleteActivationController: UIViewController {
 
 }
 
-extension CompleteActivationController: UITextFieldDelegate {
+extension VerificationCodeController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let type: InputValidation
@@ -187,7 +187,7 @@ extension CompleteActivationController: UITextFieldDelegate {
 
 }
 
-private extension CompleteActivationController {
+private extension VerificationCodeController {
 
     func startExpirationTimer() {
         expirationSeconds = Date.timeIntervalSinceReferenceDate + RemoteValues.smsErrorTimeoutSeconds

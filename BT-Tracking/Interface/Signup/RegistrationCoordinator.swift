@@ -78,7 +78,7 @@ private extension RegistrationCoordinator {
     }
 
     func showVerificationCodeScreen() {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "CompleteActivationController") as! CompleteActivationController
+        let viewController = storyboard.instantiateViewController(withIdentifier: "VerificationCodeController") as! VerificationCodeController
 
         navigationController.pushViewController(viewController, animated: true)
     }

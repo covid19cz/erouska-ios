@@ -158,7 +158,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         <!--Ověřovací kód-->
         <scene sceneID="YpT-d0-CPf">
             <objects>
-                <viewController storyboardIdentifier="CompleteActivationController" id="q6P-fR-rVF" customClass="CompleteActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerificationCodeController" id="q6P-fR-rVF" customClass="VerificationCodeController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="62b-SF-fPw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

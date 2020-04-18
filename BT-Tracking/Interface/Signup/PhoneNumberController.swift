@@ -84,7 +84,7 @@ final class PhoneNumberController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 
-        guard let destination = segue.destination as? CompleteActivationController,
+        guard let destination = segue.destination as? VerificationCodeController,
             let authData = sender as? AuthData else { return }
         destination.authData = authData
     }
