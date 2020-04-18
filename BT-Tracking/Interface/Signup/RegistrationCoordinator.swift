@@ -100,6 +100,7 @@ private extension RegistrationCoordinator {
 
     func showNotificationsScreen() {
         let viewController = storyboard.instantiateViewController(withIdentifier: "NotificationPermissionController") as! NotificationPermissionController
+        viewController.delegate = self
 
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -155,6 +156,20 @@ extension RegistrationCoordinator: IntroControllerDelegate {
 extension RegistrationCoordinator: BluetoothActivationControllerDelegate {
     func controllerDidSetBluetooth(_ controller: BluetoothActivationController) {
         showNextScreenBasedOnNotificationSettings()
+    }
+}
+
+// MARK: - NotificationPermissionControllerDelegate
+
+extension RegistrationCoordinator: NotificationPermissionControllerDelegate {
+    func controllerDidTapContinue(_ controller: NotificationPermissionController) {
+        userNotificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] _, _ in
+            DispatchQueue.main.async {
+                self?.showPhoneNumberScreen()
+            }
+        }
+
+        UIApplication.shared.registerForRemoteNotifications()
     }
 }
 

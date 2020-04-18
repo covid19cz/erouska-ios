@@ -9,12 +9,18 @@
 import UIKit
 import UserNotifications
 
+protocol NotificationPermissionControllerDelegate: AnyObject {
+    func controllerDidTapContinue(_ controller: NotificationPermissionController)
+}
+
 final class NotificationPermissionController: UIViewController {
+
+    weak var delegate: NotificationPermissionControllerDelegate?
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
 
-    // MARK: -
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,21 +30,7 @@ final class NotificationPermissionController: UIViewController {
 
     // MARK: - Action
     
-    @IBAction func continueAction(_ sender: Any) {
-        requestPermission()
-    }
-    
-    // MARK: - Request permission
-    
-    private func requestPermission() {
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: { [weak self] _, _ in
-                DispatchQueue.main.async { [weak self] in
-                    self?.performSegue(withIdentifier: "activation", sender: nil)
-                }
-        })
-        UIApplication.shared.registerForRemoteNotifications()
+    @IBAction func didTapContinue(_ sender: Any) {
+        delegate?.controllerDidTapContinue(self)
     }
 }
