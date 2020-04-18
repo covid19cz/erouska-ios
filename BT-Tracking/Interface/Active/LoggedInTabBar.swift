@@ -17,6 +17,11 @@ final class LoggedInTabBarController: TabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewControllers = [active.navigationController, data.navigationController, contacts.navigationController, help.navigationController]
+        viewControllers = [
+            active.navigationController,
+            data.navigationController,
+            contacts.navigationController,
+            help.navigationController
+        ]
     }
 }

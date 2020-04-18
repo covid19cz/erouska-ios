@@ -7,45 +7,35 @@
 //
 
 import UIKit
-import FirebaseAuth
+
+protocol UnregisterUserVCDelegate: AnyObject {
+    func controllerDidTapConfirm(_ controller: UnregisterUserVC)
+    func controllerDidTapHelp(_ controller: UnregisterUserVC)
+}
 
 final class UnregisterUserVC: UIViewController {
+
+    weak var delegate: UnregisterUserVCDelegate?
+    var phoneNumber: String?
 
     @IBOutlet private weak var textLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textLabel.text = textLabel.text?.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Nápověda", style: .plain, target: self, action: #selector(didTapHelp))
+
+        // TODO: msrutek, inject P/N
+        textLabel.text = textLabel.text?.replacingOccurrences(of: "%@", with: phoneNumber?.phoneFormatted ?? "")
     }
 
     // MARK: - Actions
 
-    @IBAction private func unregisterAction() {
-        showProgress()
-        
-        AppDelegate.shared.functions.httpsCallable("deleteUser").call() { [weak self] result, error in
-            guard let self = self else { return }
-            self.hideProgress()
+    @IBAction private func didTapConfirm() {
+        delegate?.controllerDidTapConfirm(self)
+    }
 
-            if let error = error as NSError? {
-                Log.log("deleteUser request failed with error: \(error.localizedDescription)")
-                self.show(error: error, title: "Chyba při zrušení registrace")
-                return
-            }
-
-            #if !PROD
-            FileLogger.shared.purgeLogs()
-            #endif
-            Log.log("deleteUser request success finished")
-
-            AppDelegate.shared.advertiser.stop()
-            AppDelegate.shared.scanner.stop()
-            AppDelegate.shared.scannerStore.deleteAllData()
-
-            AppSettings.deleteAllData()
-
-            self.performSegue(withIdentifier: "finish", sender: nil)
-        }
+    @objc private func didTapHelp() {
+        delegate?.controllerDidTapHelp(self)
     }
 }

@@ -8,21 +8,24 @@
 
 import UIKit
 
+protocol UnregisterFinishVCDelegate: AnyObject {
+    func controllerDidTapClose(_ controller: UnregisterFinishVC)
+}
+
 final class UnregisterFinishVC: UIViewController {
+
+    weak var delegate: UnregisterFinishVCDelegate?
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var closeButton: RoundedButtonFilled!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = nil
-        navigationItem.hidesBackButton = true
         titleLabel.text = "Registaci vašeho telefonního čísla jsme zrušili"
         closeButton.setTitle("Zavřít", for: .normal)
     }
 
-    @IBAction func closeButtonDidTap(_ sender: RoundedButtonFilled) {
-        let storyboard = UIStoryboard(name: "Signup", bundle: nil)
-        AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
+    @IBAction func didTapClose(_ sender: Any) {
+        delegate?.controllerDidTapClose(self)
     }
 }

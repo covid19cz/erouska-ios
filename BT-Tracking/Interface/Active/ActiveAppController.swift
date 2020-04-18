@@ -10,7 +10,13 @@ import UIKit
 import FirebaseAuth
 import CoreBluetooth
 
+protocol ActiveAppControllerDelegate: AnyObject {
+    func controllerDidTapUnregister(_ controller: ActiveAppController)
+}
+
 final class ActiveAppController: UIViewController {
+
+    weak var delegate: ActiveAppControllerDelegate?
 
     private var viewModel = ActiveAppViewModel(bluetoothActive: true)
     
@@ -128,7 +134,8 @@ final class ActiveAppController: UIViewController {
     @IBAction private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Zrušit registraci", style: .default, handler: { [weak self] _ in
-            self?.performSegue(withIdentifier: "unregisterUser", sender: nil)
+            guard let self = self else { return }
+            self.delegate?.controllerDidTapUnregister(self)
         }))
         #if !PROD
         controller.addAction(UIAlertAction(title: "Debug", style: .default, handler: { [weak self] _ in

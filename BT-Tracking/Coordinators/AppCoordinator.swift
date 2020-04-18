@@ -11,14 +11,20 @@ import UIKit
 final class AppCoordinator: Coordinator {
     private let authorizationService: AuthorizationService
     private let window: UIWindow
+    private let notificationCenter: NotificationCenter
+
     private var childCoordinators: [Coordinator] = []
 
     init(
         window: UIWindow,
-        authorizationService: AuthorizationService = DefaultAuthorizationService()
+        authorizationService: AuthorizationService = DefaultAuthorizationService(),
+        notificationCenter: NotificationCenter = .default
     ) {
         self.authorizationService = authorizationService
         self.window = window
+        self.notificationCenter = notificationCenter
+
+        initNotifications()
     }
 
     func start() {
@@ -48,6 +54,26 @@ private extension AppCoordinator {
         coordinator.delegate = self
         childCoordinators.append(coordinator)
         coordinator.start()
+    }
+}
+
+// MARK: - Notifications
+
+private extension AppCoordinator {
+
+    func initNotifications() {
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(didUnregisterUser),
+            name: .didUnregisterUser,
+            object: nil
+        )
+    }
+
+    @objc func didUnregisterUser() {
+        childCoordinators.removeAll { $0 is LoggedInCoordinator }
+
+        startRegistration()
     }
 }
 

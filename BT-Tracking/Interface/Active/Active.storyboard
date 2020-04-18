@@ -44,16 +44,6 @@
             </objects>
             <point key="canvasLocation" x="314" y="893"/>
         </scene>
-        <!--UnregisterUser-->
-        <scene sceneID="Qin-eM-KuC">
-            <objects>
-                <viewControllerPlaceholder storyboardName="UnregisterUser" id="CTE-1d-tWg" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="3G2-gB-0Br"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f12-AJ-vPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1804" y="893"/>
-        </scene>
         <!--DataList-->
         <scene sceneID="DC3-Ek-JEO">
             <objects>
@@ -429,7 +419,6 @@
                         <outletCollection property="activeInfoViews" destination="VfP-oF-dXd" collectionClass="NSMutableArray" id="pMh-xa-Pfg"/>
                         <outletCollection property="activeInfoViews" destination="ldG-Ym-Pd8" collectionClass="NSMutableArray" id="rLE-97-vC9"/>
                         <outletCollection property="activeInfoViews" destination="7l3-kB-L1x" collectionClass="NSMutableArray" id="B6L-a7-mLN"/>
-                        <segue destination="CTE-1d-tWg" kind="show" identifier="unregisterUser" id="65U-zW-nvS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
