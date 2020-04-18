@@ -25,7 +25,6 @@ final class UnregisterUserVC: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Nápověda", style: .plain, target: self, action: #selector(didTapHelp))
 
-        // TODO: msrutek, inject P/N
         textLabel.text = textLabel.text?.replacingOccurrences(of: "%@", with: phoneNumber?.phoneFormatted ?? "")
     }
 

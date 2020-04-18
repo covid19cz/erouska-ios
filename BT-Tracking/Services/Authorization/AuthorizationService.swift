@@ -49,7 +49,7 @@ final class DefaultAuthorizationService: AuthorizationService {
     }
 
     var phoneNumber: String? {
-        auth.currentUser?.phoneNumber?.phoneFormatted
+        auth.currentUser?.phoneNumber
     }
 
     func verifyPhoneNumber(_ phoneNumber: String, completion: @escaping (Result<String, PhoneAuthenticationError>) -> Void) {

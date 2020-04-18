@@ -16,16 +16,19 @@ final class ActiveCoordinator: Coordinator {
 
     let navigationController: UINavigationController
     private let notificationCenter: NotificationCenter
+    private let authorizationService: AuthorizationService
 
     private let storyboard = UIStoryboard(name: "Active", bundle: nil)
     private let unregisterStoryboard = UIStoryboard(name: "UnregisterUser", bundle: nil)
 
     init(
         navigationController: UINavigationController = UINavigationController(),
-        notificationCenter: NotificationCenter = .default
+        notificationCenter: NotificationCenter = .default,
+        authorizationService: AuthorizationService = DefaultAuthorizationService()
     ) {
         self.navigationController = navigationController
         self.notificationCenter = notificationCenter
+        self.authorizationService = authorizationService
 
         navigationController.navigationBar.prefersLargeTitles = true
 
@@ -49,6 +52,7 @@ private extension ActiveCoordinator {
     func showUnregisterScreen() {
         let viewController = unregisterStoryboard.instantiateViewController(withIdentifier: "UnregisterUserVC") as! UnregisterUserVC
         viewController.delegate = self
+        viewController.phoneNumber = authorizationService.phoneNumber
 
         navigationController.pushViewController(viewController, animated: true)
     }
