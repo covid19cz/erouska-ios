@@ -1,1 +1,133 @@
+"app_name" = "eRouška";
+"help" = "Nápověda";
+"back" = "Zpět";
+"ok" = "OK";
+"error" = "Chyba";
+"debug" = "Debug";
+"about" = "O aplikaci";
+"close" = "Zavřít";
 
+"welcome_help" = "Jak to funguje";
+"welcome_activation" = "Pokračovat k aktivaci";
+"welcome_title" = "Díky eRoušce ochráníte sebe  i ostatní ve svém okolí";
+"welcome_body" = "Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí nákaza koronavirem, telefonicky vás kontaktuje pracovník hygienické stanice.\n\nKdyž se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny ostatní uživatele aplikace, s kterými jste se potkali.";
+"welcome_body_more" = "Více o nezávislých auditech";
+
+"bluetooth_permission_title" = "Povolení Bluetooth";
+"bluetooth_permission_headline" = "eRouška pro správné fungování potřebuje používat Bluetooth";
+"bluetooth_permission_body" = "Bluetooth nikdy nevypínejte, aby aplikace mohla správně fungovat.\n\nNasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyzve pracovník hygienické stanice.";
+"bluetooth_permission_enable" = "Povolit Bluetooth";
+
+"notifications_title" = "Ověření";
+"notifications_headline" = "Potřebujeme ověřit, že nejste robot";
+"notifications_body" = "Aby eRouška chránila vás i vaše blízké, musí ji používat jen reální lidé. Proto vás potřebujeme ověřit jednoduchým testem, který proběhne bez vašeho zásahu.\n\nStačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.";
+"notifications_continue" = "Pokračovat";
+
+"login_title" = "Telefonní číslo";
+"login_headline" = "Zadejte telefonní číslo, na které vás bude kontaktovat pracovník hygienické stanice pouze v případě, že se u někoho z vašeho okolí potvrdí nákaza koronavirem.";
+"login_phone_prefix" = "+420";
+"login_phone_placeholder" = "Telefonní číslo (povinné)";
+"login_permission_title" = "Souhlasím s podmínkami";
+"login_permission_footer" = "Souhlasím, aby Ministerstvo zdravotnictví pracovalo se zadaným telefonním číslem a údaji o setkání s jinými uživateli aplikace podle podmínek zpracování za účelem epidemiologického šetření.";
+"login_permission_footer_more" = "Podmínky zpracování";
+"login_permission_alert" = "Souhlas s podmínkami zpracování je nezbytný pro aktivaci aplikace. Bez vašeho souhlasu nemůže aplikace fungovat.";
+"login_continue" = "Pokračovat";
+"login_error_too_many_requests_title" = "Telefonní číslo jsme dočasně zablokovali";
+"login_error_too_many_requests_message" = "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu.";
+"login_error_verification_title" = "Telefonní číslo jsme dočasně zablokovali";
+"login_error_verification_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
+
+"login_code_title" = "Ověřovací kód";
+"login_code_headline" = "Na telefonní číslo %@ jsme vám zaslali SMS s ověřovacím kódem.";
+"login_code_body" = "Platnost kódu vyprší za %@.";
+"login_code_placeholder" = "Ověřovací kód(povinné)";
+"login_code_continue" = "Ověřit";
+"login_code_error_title" = "Chyba při aktivaci";
+"login_code_error_wrong_code" = "Ověřovací kód není správně zadaný.";
+"login_code_error_expired_title" = "Vypršela platnost ověřovacího kódu";
+"login_code_error_expired_message" = "Zkontrolujte telefonní číslo a nechte si odeslat nový ověřovací kód.";
+
+"active_head_enabled" = "eRouška je aktivní";
+"active_head_paused" = "eRouška je pozastavená";
+"active_head_disabled" = "Zapněte Bluetooth";
+
+"active_title_enabled" = "Na místech s větší koncentrací lidí nechte aplikaci spuštěnou při zapnuté obrazovce. Rozpoznáme tak lépe ostatní eRoušky v okolí.";
+"active_title_paused" = "Aplikace je aktuálně pozastavená a nesbírá žádná data o vašem okolí.\n\nSpusťte znovu sběr dat a chraňte vás i vaše okolí. Nezapomínejte na to v momentě, kdy opouštíte svůj domov.";
+"active_title_disabled" = "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout\".";
+
+"active_tips_title" = "Tipy pro snížení spotřeby baterie";
+"active_tip_1" = "Na stole otočte telefon obrazovkou dolů. Obrazovka automaticky zhasne.";
+"active_tip_2" = "Do kapsy dávejte telefon nabíjecím konektorem nahoru. Zakrytá obrazovka automaticky zhasne.";
+"active_button_enabled" = "Pozastavit";
+"active_button_paused" = "Spustit";
+"active_button_disabled" = "Zapnout";
+"active_footer" = "Při podezření na nákazu vás budeme kontaktovat na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, který naleznete v sekci Moje data.";
+"active";
+
+"active_background_mode_title" = "Aktualizace na pozadí";
+"active_background_mode_message" = "eRouška se potřebuje sama spustit i na pozadí, například po restartování telefonu, abyste na to nemuseli myslet vy.\n\nPovolte možnost 'Aktualizace na pozadí' v nastavení aplikace.";
+"active_background_mode_settings" = "Upravit nastavení";
+"active_background_mode_cancel" = "Zavřít";
+
+"cancel_registration_button" = "Zrušit registraci";
+
+"share_app" = "Sdílet aplikaci";
+"share_app_message" = "Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na %@/";
+
+"data_list_title" = "Moje data";
+"data_list_headline" = "Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone při zhasnutém displeji méně účinné.";
+"data_list_info_button" = "Informace o sběru dat";
+"data_list_delete_button" = "Smazat data";
+"data_list_send_button" = "Odeslat data";
+"data_list_section_all" = "Vše";
+"data_list_section_nearby" = "Blízka setkání";
+"data_list_header_date" = "Datum";
+"data_list_header_time" = "Čas";
+"data_list_header_id" = "ID";
+"data_list_header_signal" = "RSSI";
+
+"data_list_send_question_title" = "Požádal vás pracovník hygienické stanice o zaslání seznamu telefonů, se kterými jste se setkali?";
+"data_list_send_question_message" = "S odeslanými daty bude Ministerstvo zdravotnictví a jemu podřízení hygienici pracovat na základě vašeho souhlasu podle podmínek zpracování.";
+"data_list_send_question_yes" = "Ano, odeslat";
+"data_list_send_question_no" = "Ne";
+
+"data_list_send_error_wait" = "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.";
+"data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";
+"data_list_send_error_failed_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
+"data_list_send_error_file_title" = "Nepodařilo se vytvořit soubor se setkáními";
+"data_list_send_error_only_after_message" = "Sdílejte data jen v případě, že vás pracovník hygienické stanice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu.";
+
+"data_delete_title" = "Smazat data";
+"data_delete_body" = "Opravdu chcete smazat všechna naměřená data?\n\nHygienici tak přijdou o možnost využít vaše kontakty v případě, že budete nakažen.\n\nPo smazání dat dojde k automatickému pozastavení eRoušky.";
+"data_delete_delete_button" = "Smazat všechna data";
+"data_delete_success" = "Všechna data jsme odstranili a eRoušku pozastavili";
+
+"data_send_title" = "Odesláno";
+"data_send_title_label" = "Data jste úspěsně odeslali";
+"data_send_headline" = "Děkujeme, že pomáháte bojovat proti šíření koronaviru. ";
+"data_send_body" = "Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nZůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygieniků.";
+"data_send_close_button" = "Zavřít";
+
+"contacts_title" = "Kontakty";
+"contacts_important_headline" = "Máte podezření na koronavirus?";
+"contacts_important_body" = "Zůstaňte doma a kontaktuje svého praktického lékaře nebo příslušnou hygienickou stanici.";
+"contacts_important_button" = "Důležité kontakty";
+"contacts_help_headline" = "Potřebujete poradit?";
+"contacts_help_body" = "Veškeré otázky a nejasnosti týkající se koronaviru by vám měli zodpovědět na webu MZČR nebo\n\nna bezplatné infolince 1212.";
+"contacts_help_faq_button" = "Často kladené otázky";
+"contacts_help_call_button" = "Zavolejte na 1212";
+"contacts_about_headline" = "O aplikaci eRouška";
+"contacts_about_body" = "Potřebujete poradit s aplikací nebo vás zajímá jak funguje? Podívejte se na web erouska.cz.";
+"contacts_about_button" = "Přejít na web erouska.cz";
+
+"help_title" = "Jak to funguje";
+"help_tab_title" = "Nápověda";
+
+"unregister_user_title" = "Zrušit registraci";
+"unregister_user_body" = "Opravdu chcete zrušit registraci svého telefonního čísla?\n\nPo zrušení registrace vás nemůžeme kontaktovat v případě, že dojde k potvrzení nákazy koronavirem u někoho z vašeho okolí.\n\nDojde-li k potvrzení nákazy u vás, nebudeme mít možnost kontaktovat nikoho z vašeho okolí.\n\nZrušením registrace dojde k vypnutí aplikace ve všech zařízeních registrovaných s tímto telefonním číslem %@.";
+"unregister_user_button" = "Zrušit registraci";
+"unregister_user_error_title" = "Chyba při zrušení registrace";
+
+"unregister_finish_title" = "Zrušit registraci";
+"unregister_finish_headline" = "Registaci vašeho telefonního čísla jsme zrušili";
+"unregister_finish_close" = "Zavřít";
