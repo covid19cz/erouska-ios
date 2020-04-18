@@ -50,7 +50,7 @@
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
 		8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
 		8083D8A9244640A0007FA4E9 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
-		8083D8AA244640A0007FA4E9 /* FirstActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActivationController.swift */; };
+		8083D8AA244640A0007FA4E9 /* IntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* IntroController.swift */; };
 		8083D8AD244640A0007FA4E9 /* PhoneNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* PhoneNumberController.swift */; };
 		8083D8AE244640A0007FA4E9 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */; };
@@ -174,7 +174,7 @@
 		8B67740B562698E5590B4757 /* Pods_eRouska_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */; };
 		9A5AD9E845D94B114BBAF3DE /* Pods_eRouska_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
-		BD979AE924255BD1004001ED /* FirstActivationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActivationController.swift */; };
+		BD979AE924255BD1004001ED /* IntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* IntroController.swift */; };
 		BD979AEB242565AF004001ED /* ActiveAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppController.swift */; };
 		BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
@@ -289,7 +289,7 @@
 		991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.release.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.release.xcconfig"; sourceTree = "<group>"; };
 		A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
-		BD979AE824255BD1004001ED /* FirstActivationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstActivationController.swift; sourceTree = "<group>"; };
+		BD979AE824255BD1004001ED /* IntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroController.swift; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppController.swift; sourceTree = "<group>"; };
 		BDBB00D724261D5C00871FE4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.debug.xcconfig"; sourceTree = "<group>"; };
@@ -550,7 +550,7 @@
 			children = (
 				FFC7E1122448E9C600872DCA /* RegistrationCoordinator.swift */,
 				80BB476124227C2500F552FC /* Signup.storyboard */,
-				BD979AE824255BD1004001ED /* FirstActivationController.swift */,
+				BD979AE824255BD1004001ED /* IntroController.swift */,
 				80BB476524236ED100F552FC /* BluetoothActivationController.swift */,
 				4657C453243BD03D009E0E85 /* NotificationPermissionController.swift */,
 				80BB476724238CBB00F552FC /* PhoneNumberController.swift */,
@@ -997,7 +997,7 @@
 			files = (
 				803C5B252429346500E49414 /* DataListVM.swift in Sources */,
 				80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */,
-				BD979AE924255BD1004001ED /* FirstActivationController.swift in Sources */,
+				BD979AE924255BD1004001ED /* IntroController.swift in Sources */,
 				8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */,
 				80BB476824238CBB00F552FC /* PhoneNumberController.swift in Sources */,
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
@@ -1077,7 +1077,7 @@
 			files = (
 				8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */,
 				8083D8A9244640A0007FA4E9 /* UnregisterUserVC.swift in Sources */,
-				8083D8AA244640A0007FA4E9 /* FirstActivationController.swift in Sources */,
+				8083D8AA244640A0007FA4E9 /* IntroController.swift in Sources */,
 				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
 				8083D8AD244640A0007FA4E9 /* PhoneNumberController.swift in Sources */,
 				80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */,

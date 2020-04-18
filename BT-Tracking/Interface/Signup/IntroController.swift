@@ -1,5 +1,5 @@
 //
-//  FirstActivationController.swift
+//  IntroController.swift
 //  BT-Tracking
 //
 //  Created by Jakub Skořepa on 20/03/2020.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol FirstActivationControllerDelegate: AnyObject {
-    func controllerDidTapContinue(_ controller: FirstActivationController)
-    func controllerDidTapHelp(_ controller: FirstActivationController)
-    func controllerDidTapAudit(_ controller: FirstActivationController)
+protocol IntroControllerDelegate: AnyObject {
+    func controllerDidTapContinue(_ controller: IntroController)
+    func controllerDidTapHelp(_ controller: IntroController)
+    func controllerDidTapAudit(_ controller: IntroController)
 }
 
-final class FirstActivationController: UIViewController {
+final class IntroController: UIViewController {
 
     // MARK: - Public Properties
 
-    weak var delegate: FirstActivationControllerDelegate?
+    weak var delegate: IntroControllerDelegate?
 
     // MARK: - Private Properties
 

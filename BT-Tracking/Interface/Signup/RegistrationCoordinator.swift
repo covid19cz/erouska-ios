@@ -42,7 +42,7 @@ final class RegistrationCoordinator: Coordinator {
 
     func start() {
         setupWindow()
-        showWelcomeScreen()
+        showIntroScreen()
     }
 
      private func setupWindow() {
@@ -54,8 +54,8 @@ final class RegistrationCoordinator: Coordinator {
 // MARK: - Show Screens
 
 private extension RegistrationCoordinator {
-    func showWelcomeScreen() {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "FirstActivationController") as! FirstActivationController
+    func showIntroScreen() {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "IntroController") as! IntroController
         viewController.delegate = self
 
         navigationController.pushViewController(viewController, animated: false)
@@ -90,10 +90,10 @@ private extension RegistrationCoordinator {
     }
 }
 
-// MARK: - FirstActivationControllerDelegate
+// MARK: - IntroControllerDelegate
 
-extension RegistrationCoordinator: FirstActivationControllerDelegate {
-    func controllerDidTapContinue(_ controller: FirstActivationController) {
+extension RegistrationCoordinator: IntroControllerDelegate {
+    func controllerDidTapContinue(_ controller: IntroController) {
         guard bluetoothAuthorized else {
             showBluetoothScreen()
             return
@@ -112,11 +112,11 @@ extension RegistrationCoordinator: FirstActivationControllerDelegate {
         }
     }
 
-    func controllerDidTapHelp(_ controller: FirstActivationController) {
+    func controllerDidTapHelp(_ controller: IntroController) {
         showHelpScreen()
     }
 
-    func controllerDidTapAudit(_ controller: FirstActivationController) {
+    func controllerDidTapAudit(_ controller: IntroController) {
         guard let url = URL(string: RemoteValues.proclamationLink) else { return }
         controller.openURL(URL: url)
     }
