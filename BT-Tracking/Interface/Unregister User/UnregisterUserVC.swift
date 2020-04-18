@@ -41,7 +41,8 @@ final class UnregisterUserVC: UIViewController {
             guard let self = self else { return }
             self.hideProgress()
 
-            if let error = error as NSError? {
+            if let error = error as NSError?,
+                error.code != AuthErrorCode.userNotFound.rawValue {
                 Log.log("deleteUser request failed with error: \(error.localizedDescription)")
                 self.show(error: error, title: self.viewModel.errorTitle)
                 return
