@@ -74,7 +74,7 @@
 "share_app_message" = "Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na %@/";
 
 "data_list_title" = "Moje data";
-"data_list_headline" = "Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone při zhasnutém displeji méně účinné.";
+"data_list_headline" = "Zde je výpis eRoušek, které se vyskytly ve vašem okolí. Zobrazení neindikuje nakažení ostatních uživatelů.\nVyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone při zhasnutém displeji méně účinné.";
 "data_list_info_button" = "Informace o sběru dat";
 "data_list_delete_button" = "Smazat data";
 "data_list_send_button" = "Odeslat data";

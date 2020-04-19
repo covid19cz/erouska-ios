@@ -14,7 +14,7 @@ enum BTPlatform: String {
     case unknown = "Unknown", iOS, android = "Android"
 }
 
-class BTScanDevice: NSObject {
+final class BTScanDevice: NSObject {
 
     /// Missing RSII device RSII value
     static let DisconnectedRSII = -200
