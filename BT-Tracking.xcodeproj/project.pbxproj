@@ -206,6 +206,15 @@
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
 		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
+		FFC32E9D244B74CF0008104C /* BTScanDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803669A8243F4B0D00684B57 /* BTScanDevice.swift */; };
+		FFC32E9E244B74E00008104C /* CompleteActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */; };
+		FFC32E9F244B74F50008104C /* UnregisterUserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */; };
+		FFC32EA0244B75020008104C /* UnregisterFinishVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */; };
+		FFC32EA1244B75120008104C /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B3244AD979008E22F8 /* FirstActivationVM.swift */; };
+		FFC32EA2244B75280008104C /* AccountActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */; };
+		FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */; };
+		FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */; };
+		FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
 		FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 /* End PBXBuildFile section */
@@ -1081,6 +1090,7 @@
 				8083D8B0244640A0007FA4E9 /* DeleteDataVC.swift in Sources */,
 				8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */,
 				8083D8B2244640A0007FA4E9 /* NotificationPermissionVC.swift in Sources */,
+				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
 				8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */,
@@ -1093,10 +1103,13 @@
 				8083D8BB244640A0007FA4E9 /* MulticastDelegate.swift in Sources */,
 				8083D8BD244640A0007FA4E9 /* RemoteValues.swift in Sources */,
 				8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */,
+				FFC32E9E244B74E00008104C /* CompleteActivationVM.swift in Sources */,
 				8083D8C2244640A0007FA4E9 /* ScannerStore.swift in Sources */,
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
 				8083D8C5244640A0007FA4E9 /* CSVWriter.swift in Sources */,
+				FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */,
 				80CA44D3244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */,
+				FFC32EA0244B75020008104C /* UnregisterFinishVM.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				8083D8C7244640A0007FA4E9 /* DataHeaderCell.swift in Sources */,
 				8083D8C8244640A0007FA4E9 /* CompleteActivationVC.swift in Sources */,
@@ -1109,13 +1122,18 @@
 				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
 				8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */,
+				FFC32EA2244B75280008104C /* AccountActivationVM.swift in Sources */,
+				FFC32EA1244B75120008104C /* FirstActivationVM.swift in Sources */,
 				8083D8D3244640A0007FA4E9 /* DeleteDataVM.swift in Sources */,
+				FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */,
 				FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */,
 				8083D8D4244640A0007FA4E9 /* Collection.swift in Sources */,
 				8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
 				8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */,
 				8083D8D9244640A0007FA4E9 /* App.swift in Sources */,
+				FFC32E9F244B74F50008104C /* UnregisterUserVM.swift in Sources */,
+				FFC32E9D244B74CF0008104C /* BTScanDevice.swift in Sources */,
 				8083D8DA244640A0007FA4E9 /* BTScan.swift in Sources */,
 				8083D8DB244640A0007FA4E9 /* Scan.swift in Sources */,
 				8083D8DC244640A0007FA4E9 /* UnregisterFinishVC.swift in Sources */,
