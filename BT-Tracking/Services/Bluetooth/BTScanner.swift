@@ -198,7 +198,7 @@ extension BTScanner: CBCentralManagerDelegate {
         }
 
         if checkRefreshTime(device: device) {
-            log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
+            //log("BTScanner: Update ID: \(peripheral.identifier.uuidString) at \(RSSI)")
 
             device.lastUpdateInvokeDate? = Date()
             invoke() { $0.didUpdate(device: device.toScanUpdate()) }
