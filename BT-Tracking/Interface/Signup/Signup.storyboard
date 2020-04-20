@@ -3,7 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="kfk-wA-RM9" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Aga-97-j0u">
-                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -27,7 +27,7 @@
         <!--eRouška-->
         <scene sceneID="GJX-OU-pnd">
             <objects>
-                <viewController id="pNZ-IF-ibE" customClass="FirstActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pNZ-IF-ibE" customClass="FirstActivationVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MCy-hW-ZTB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,10 +36,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFR-VR-jwr">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="491.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="493.66666666666669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="7QL-Gs-rG9">
-                                                <rect key="frame" x="16" y="10" width="343" height="481.66666666666669"/>
+                                                <rect key="frame" x="16" y="10" width="343" height="483.66666666666669"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="MinLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xgx-Up-y98">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="29.333333333333332"/>
@@ -51,25 +51,20 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAZ-5r-e2M">
-                                                        <rect key="frame" x="0.0" y="97.666666666666671" width="343" height="243.66666666666663"/>
+                                                        <rect key="frame" x="0.0" y="97.666666666666686" width="343" height="345"/>
                                                         <string key="text">Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.
 
 Pokud se u majitele kteréhokoliv z nich potvrdí nákaza koronavirem, telefonicky vás kontaktuje pracovník hygienické stanice.
 
-Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny ostatní uživatele aplikace, s kterými jste se potkali.</string>
+Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny ostatní uživatele aplikace, s kterými jste se potkali.
+
+Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní údaje bez vašeho vědomí. Odešlete je vy sami a pouze hygienikům.</string>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVM-Zq-YWv">
-                                                        <rect key="frame" x="0.0" y="354.33333333333331" width="343" height="86.333333333333314"/>
-                                                        <string key="text">Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní údaje bez vašeho vědomí. Odešlete je vy sami a pouze hygienikům.</string>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypD-bH-0Pq">
-                                                        <rect key="frame" x="0.0" y="453.66666666666669" width="343" height="28"/>
+                                                        <rect key="frame" x="0.0" y="455.66666666666669" width="343" height="28"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                         <state key="normal" title="Více o nezávislých auditech"/>
                                                         <connections>
@@ -160,7 +155,12 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="NHD-52-HEh"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="bodyLabel" destination="vAZ-5r-e2M" id="KNW-q8-KY8"/>
                         <outlet property="buttonsView" destination="ajD-o4-CZf" id="tE3-QP-CeP"/>
+                        <outlet property="continueButton" destination="m34-ff-402" id="HdM-U0-q3Q"/>
+                        <outlet property="headlineLabel" destination="FQp-0s-STi" id="0Wl-Ab-KZT"/>
+                        <outlet property="howItWorksButton" destination="AkE-OA-pEZ" id="YI8-yX-MI4"/>
+                        <outlet property="moreButton" destination="ypD-bH-0Pq" id="xtc-vs-LNX"/>
                         <outlet property="scrollView" destination="oIo-ag-AlX" id="n8t-fj-b3A"/>
                         <segue destination="1ln-NW-njF" kind="show" identifier="bluetooth" id="UA2-MZ-WsL"/>
                         <segue destination="1qZ-bG-yib" kind="show" identifier="notification" id="LBz-k7-fXB"/>
@@ -174,7 +174,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         <!--Ověřovací kód-->
         <scene sceneID="YpT-d0-CPf">
             <objects>
-                <viewController id="q6P-fR-rVF" customClass="CompleteActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="q6P-fR-rVF" customClass="CompleteActivationVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="62b-SF-fPw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,12 +282,12 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="vDN-Uj-w2M" id="y9l-aU-C2E"/>
+                        <outlet property="bodyLabel" destination="DzS-um-5Af" id="A2w-bM-okB"/>
                         <outlet property="buttonsBottomConstraint" destination="dba-Ii-re6" id="ZpX-zx-RaT"/>
                         <outlet property="buttonsView" destination="ozH-EE-HS0" id="lPD-bj-xcD"/>
+                        <outlet property="codeTextField" destination="XPz-6e-tCh" id="XVx-D3-VAx"/>
+                        <outlet property="headlineLabel" destination="EwR-Me-iUg" id="GYC-lK-RoV"/>
                         <outlet property="scrollView" destination="QHa-3n-qmi" id="fmU-Zh-JJ5"/>
-                        <outlet property="smsCodeTextField" destination="XPz-6e-tCh" id="XVx-D3-VAx"/>
-                        <outlet property="subtitleLabel" destination="DzS-um-5Af" id="A2w-bM-okB"/>
-                        <outlet property="titleLabel" destination="EwR-Me-iUg" id="GYC-lK-RoV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9u-03-pOg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -297,7 +297,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         <!--Povolení Bluetooth-->
         <scene sceneID="aiw-yL-KMo">
             <objects>
-                <viewController id="1ln-NW-njF" customClass="BluetoothActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1ln-NW-njF" customClass="BluetoothActivationVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2X2-Ep-DR3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -306,10 +306,10 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cNY-7b-57Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="358.66666666666669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Qn1-el-dqh">
-                                                <rect key="frame" x="16" y="10" width="343" height="324"/>
+                                                <rect key="frame" x="16" y="10" width="343" height="332.66666666666669"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BluetoothIlustration" translatesAutoresizingMaskIntoConstraints="NO" id="8tj-Yx-jqc">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
@@ -324,16 +324,13 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth nikdy nevypínejte, aby aplikace mohla správně fungovat." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-hR-Czd">
-                                                        <rect key="frame" x="0.0" y="202.33333333333334" width="343" height="42.333333333333343"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-hR-Czd">
+                                                        <rect key="frame" x="0.0" y="202.33333333333331" width="343" height="130.33333333333331"/>
+                                                        <string key="text">Bluetooth nikdy nevypínejte, aby aplikace mohla správně fungovat.
+
+Nasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyzve pracovník hygienické stanice.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyzve pracovník hygienické stanice." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhz-zk-obE">
-                                                        <rect key="frame" x="0.0" y="259.66666666666669" width="343" height="64.333333333333314"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -406,7 +403,10 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bodyLabel" destination="j9t-hR-Czd" id="xQm-9d-AlR"/>
                         <outlet property="buttonsView" destination="meA-hx-Fcs" id="cPj-x7-plV"/>
+                        <outlet property="enableButton" destination="TnQ-gP-OXF" id="wd6-K1-PX2"/>
+                        <outlet property="headlineLabel" destination="iiy-ie-U39" id="18t-zK-w6j"/>
                         <outlet property="scrollView" destination="EDW-qM-yre" id="SGi-Jk-4LN"/>
                         <segue destination="1qZ-bG-yib" kind="show" identifier="notification" id="9If-5K-v2Z"/>
                     </connections>
@@ -419,7 +419,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         <!--Telefonní číslo-->
         <scene sceneID="vLC-jn-bpl">
             <objects>
-                <viewController id="BBC-aE-fuq" customClass="AccountActivationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BBC-aE-fuq" customClass="AccountActivationVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceh-zy-1BU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -582,7 +582,11 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         <outlet property="actionButton" destination="H4n-ew-pkC" id="IKW-1O-qQD"/>
                         <outlet property="buttonsBottomConstraint" destination="s26-h2-0t2" id="Mdn-oW-AaA"/>
                         <outlet property="buttonsView" destination="RgO-Jj-tjN" id="IGi-WB-daW"/>
+                        <outlet property="headlineLabel" destination="WVR-YI-wPh" id="tUK-gl-2Da"/>
+                        <outlet property="permissionFooter" destination="Jhg-5G-PBv" id="yjA-D5-q9k"/>
+                        <outlet property="permissionMoreButton" destination="6k9-CT-6uo" id="4rw-8e-kHI"/>
                         <outlet property="permissionSwitch" destination="N6i-Um-KwL" id="9F2-WU-e7n"/>
+                        <outlet property="permissionTitleLabel" destination="cuw-qW-pqd" id="1hK-q4-DUH"/>
                         <outlet property="phoneNumberTextField" destination="lga-hM-kAK" id="lzC-ec-aPx"/>
                         <outlet property="phonePrefixTextField" destination="2O2-Pb-aan" id="vLh-ST-ZQD"/>
                         <outlet property="scrollView" destination="YGO-et-vUI" id="WXu-O4-Gk0"/>
@@ -607,7 +611,7 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         <!--Ověření-->
         <scene sceneID="J9c-t7-uW3">
             <objects>
-                <viewController id="1qZ-bG-yib" customClass="NotificationPermissionController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1qZ-bG-yib" customClass="NotificationPermissionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QIH-fQ-XIa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -616,10 +620,10 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uZb-wK-VQT">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="416"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="424.66666666666669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2Pk-8H-zPD">
-                                                <rect key="frame" x="16" y="10" width="343" height="390"/>
+                                                <rect key="frame" x="16" y="10" width="343" height="398.66666666666669"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notification" translatesAutoresizingMaskIntoConstraints="NO" id="H91-jt-ooM">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
@@ -631,16 +635,12 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oH6-oS-6ZX">
-                                                        <rect key="frame" x="0.0" y="180.33333333333334" width="343" height="86.333333333333343"/>
-                                                        <string key="text">Aby eRouška chránila vás i vaše blízké, musí ji používat jen reální lidé. Proto vás potřebujeme ověřit jednoduchým testem, který proběhne bez vašeho zásahu.</string>
+                                                        <rect key="frame" x="0.0" y="180.33333333333331" width="343" height="218.33333333333331"/>
+                                                        <string key="text">Aby eRouška chránila vás i vaše blízké, musí ji používat jen reální lidé. Proto vás potřebujeme ověřit jednoduchým testem, který proběhne bez vašeho zásahu.
+
+Stačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I71-6U-z9V">
-                                                        <rect key="frame" x="0.0" y="281.66666666666669" width="343" height="108.33333333333331"/>
-                                                        <string key="text">Stačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.</string>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -713,7 +713,10 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bodyLabel" destination="oH6-oS-6ZX" id="zb6-YI-dRQ"/>
                         <outlet property="buttonsView" destination="BMQ-37-LtV" id="X7l-oz-Q9C"/>
+                        <outlet property="continueButton" destination="bzc-3p-o5r" id="zAR-kf-1Mv"/>
+                        <outlet property="headlineLabel" destination="rhY-my-yM8" id="YWF-p7-ct8"/>
                         <outlet property="scrollView" destination="28z-zE-f3s" id="sE5-TL-fk5"/>
                         <segue destination="BBC-aE-fuq" kind="show" identifier="activation" id="kyL-aQ-rgP"/>
                     </connections>
@@ -724,9 +727,9 @@ Když se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny 
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LBz-k7-fXB"/>
-        <segue reference="S39-Cf-beJ"/>
-        <segue reference="p0J-jR-yfg"/>
+        <segue reference="9If-5K-v2Z"/>
+        <segue reference="utZ-G0-Rhr"/>
+        <segue reference="kyL-aQ-rgP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BluetoothIlustration" width="130" height="130"/>

@@ -16,9 +16,9 @@ struct AppSettings {
     
     static let TUIDRotation: Int = 60 * 60
 
-    static var state: ActiveAppViewModel.State? {
+    static var state: ActiveAppVM.State? {
         get {
-            return ActiveAppViewModel.State(rawValue: UserDefaults.standard.string(forKey: "AppState") ?? "")
+            return ActiveAppVM.State(rawValue: UserDefaults.standard.string(forKey: "AppState") ?? "")
         }
         set {
             UserDefaults.standard.setValue(newValue?.rawValue, forKey: "AppState")

@@ -8,7 +8,16 @@
 
 import UIKit
 
-class ScanningInfoCell: UITableViewCell {
+final class ScanningInfoCell: UITableViewCell {
 
     static let identifier = "scanningInfoCell"
+
+    @IBOutlet private weak var infoLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        infoLabel.localizedText("data_list_headline")
+    }
+
 }

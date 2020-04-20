@@ -9,5 +9,15 @@
 import UIKit
 
 final class AboutDataCell: UITableViewCell {
+
     static let identifier = "aboutDataCell"
+
+    @IBOutlet private weak var titleLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        titleLabel.localizedText("data_list_info_button")
+    }
+
 }

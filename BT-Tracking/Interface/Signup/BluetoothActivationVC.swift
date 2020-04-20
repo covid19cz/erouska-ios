@@ -10,28 +10,23 @@ import UIKit
 import CoreBluetooth
 import UserNotifications
 
-final class BluetoothActivationController: UIViewController, CBPeripheralManagerDelegate {
+final class BluetoothActivationVC: UIViewController, CBPeripheralManagerDelegate {
 
-    @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
-    
+    // MARK: -
+
+    private let viewModel = BluetoothActivationVM()
+
     private var peripheralManager: CBPeripheralManager?
 
-    private var bluetoothNotDetermined: Bool {
-        if #available(iOS 13.0, *) {
-            return CBCentralManager().authorization == .notDetermined
-        }
-        return CBPeripheralManager.authorizationStatus() == .notDetermined
-    }
-
-    private var bluetoothAuthorized: Bool {
-        if #available(iOS 13.0, *) {
-            return CBCentralManager().authorization == .allowedAlways
-        }
-        return CBPeripheralManager.authorizationStatus() == .authorized
-    }
-
     private var checkAfterBecomeActive: Bool = false
+
+    // MARK: - Outlets
+
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private weak var enableButton: Button!
 
     // MARK: -
 
@@ -39,6 +34,7 @@ final class BluetoothActivationController: UIViewController, CBPeripheralManager
         super.viewDidLoad()
 
         buttonsView.connect(with: scrollView)
+        setupStrings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -83,17 +79,27 @@ final class BluetoothActivationController: UIViewController, CBPeripheralManager
 
 }
 
-private extension BluetoothActivationController {
+private extension BluetoothActivationVC {
+
+    func setupStrings() {
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
+        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
+
+        headlineLabel.localizedText(viewModel.headline)
+        bodyLabel.localizedText(viewModel.body)
+        enableButton.localizedTitle(viewModel.enableButton)
+    }
 
     func continueOnboarding() {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
             DispatchQueue.main.async { [weak self] in
-                if settings.authorizationStatus == .authorized {
-                    // Already authorized
-                    self?.performSegue(withIdentifier: "activation", sender: nil)
-                } else {
+                if settings.authorizationStatus == .notDetermined {
                     // Request authorization
                     self?.performSegue(withIdentifier: "notification", sender: nil)
+                } else {
+                    // Already authorized or denied
+                    self?.performSegue(withIdentifier: "activation", sender: nil)
                 }
                 self?.peripheralManager = nil
             }
@@ -101,12 +107,12 @@ private extension BluetoothActivationController {
     }
     
     func checkForBluetooth() {
-        if bluetoothNotDetermined {
+        if viewModel.bluetoothNotDetermined {
             requestBluetoothPermission()
             return
         }
 
-        if !bluetoothAuthorized {
+        if !viewModel.bluetoothAuthorized {
             showBluetoothPermissionError()
             return
         }
@@ -125,7 +131,7 @@ private extension BluetoothActivationController {
     }
 
     func showBluetoothPermissionError() {
-        showError(
+        showAlert(
             title: "Zapněte Bluetooth",
             message: "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.",
             okHandler: { [weak self] in self?.showAppSettings() }

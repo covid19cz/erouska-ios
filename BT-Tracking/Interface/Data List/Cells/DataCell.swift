@@ -51,4 +51,5 @@ final class DataCell: UITableViewCell {
         formatter.timeStyle = .medium
         return formatter
     }()
+
 }
