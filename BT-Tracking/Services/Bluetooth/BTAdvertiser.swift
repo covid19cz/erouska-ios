@@ -33,7 +33,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
     private(set) var currentID: String?
     var didChangeID: IDChangeCallback?
 
-    private let IDRotation: Int
+    private let IDRotation: TimeInterval
     private var IDRotationTimer: Timer?
 
     // Brodcasting
@@ -54,7 +54,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
     init(TUIDs: [String], IDRotation: Int) {
         self.TUIDs = TUIDs
-        self.IDRotation = IDRotation
+        self.IDRotation = TimeInterval(IDRotation)
 
         super.init()
 
@@ -97,7 +97,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
         ])
 
         IDRotationTimer?.invalidate()
-        IDRotationTimer = Timer.scheduledTimer(withTimeInterval: IDRotationTimer, repeats: true, block: { [weak self] _ in
+        IDRotationTimer = Timer.scheduledTimer(withTimeInterval: IDRotation, repeats: true, block: { [weak self] _ in
             guard self?.isRunning == true else { return }
             DispatchQueue.main.async {
                 self?.rotateDeviceID()
