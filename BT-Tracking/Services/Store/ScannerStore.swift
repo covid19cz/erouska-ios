@@ -19,8 +19,6 @@ final class ScannerStore {
     /// default 0
     private let scanningDelay: Int = 0
 
-    private let lastPurgeDateKey = "lastDataPurgeDate"
-
     /// 1 day... for testing set to 60 seconds for example
     private let dataPurgeCheckInterval: TimeInterval = 1 * 86400
 
@@ -156,7 +154,7 @@ final class ScannerStore {
     }
 
     func deleteOldRecordsIfNeeded() {
-        guard let lastPurgeDate = UserDefaults.standard.object(forKey: lastPurgeDateKey) as? Date else {
+        guard let lastPurgeDate = AppSettings.lastPurgeDate else {
             storeLastPurgeDate()
             return
         }
@@ -182,7 +180,7 @@ final class ScannerStore {
     }
     
     private func storeLastPurgeDate() {
-        UserDefaults.standard.set(Date(), forKey: lastPurgeDateKey)
+        AppSettings.lastPurgeDate = Date()
     }
 }
 
