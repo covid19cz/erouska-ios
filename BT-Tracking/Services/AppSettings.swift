@@ -34,8 +34,7 @@ struct AppSettings {
     static var lastUploadDate: Date? {
         get {
             let rawValue = double(forKey: .lastUploadDate)
-            let time = TimeInterval(rawValue)
-            return Date(timeIntervalSince1970: time)
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
         }
         set {
             set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
@@ -45,8 +44,7 @@ struct AppSettings {
     static var lastPurgeDate: Date? {
         get {
             let rawValue = double(forKey: .lastDataPurgeDate)
-            let time = TimeInterval(rawValue)
-            return Date(timeIntervalSince1970: time)
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
         }
         set {
             set(withKey: .lastDataPurgeDate, value: newValue?.timeIntervalSince1970)
