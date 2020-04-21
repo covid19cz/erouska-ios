@@ -43,6 +43,7 @@ final class ScannerStore {
     }
     private var currentPeriod: BehaviorSubject<Void>?
     private var devices = [BTScan]()
+    private let scannerQueue = SerialDispatchQueueScheduler(qos: .background)
     
     init(scanningPeriod: Int = 60, dataPurgeInterval: TimeInterval = 14 * 86400) {
         self.scanningPeriod = scanningPeriod
@@ -66,6 +67,7 @@ final class ScannerStore {
         bind(newPeriod: currentPeriod, endsAt: Date() + Double(scanningPeriod))
         timer
             .skip(1)
+            .observeOn(scannerQueue)
             .subscribe(onNext: { [weak self] _ in
                 self?.currentPeriod?.onCompleted()
             })
@@ -73,6 +75,7 @@ final class ScannerStore {
 
         // Device scans
         didReceive
+            .observeOn(scannerQueue)
             .subscribe(onNext: { [weak self] device in
                 self?.devices.append(device)
                 self?.updateCurrent(at: Date())
@@ -82,6 +85,7 @@ final class ScannerStore {
     
     private func bind(newPeriod: BehaviorSubject<Void>?, endsAt endDate: Date) {
         newPeriod?
+            .observeOn(scannerQueue)
             .subscribe(onCompleted: { [weak self] in
                 self?.processPeriod(with: endDate)
             })
@@ -90,6 +94,7 @@ final class ScannerStore {
     
     private func bindAppTerminate() {
         appTermination
+            .observeOn(scannerQueue)
             .subscribe(onNext: { [weak self] in
                 self?.processPeriod(with: Date())
             })
