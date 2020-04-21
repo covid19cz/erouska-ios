@@ -1378,7 +1378,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking6";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking5";
 				PRODUCT_NAME = eRouska;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1400,7 +1400,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking6";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking5";
 				PRODUCT_NAME = eRouska;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
