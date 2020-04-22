@@ -33,12 +33,6 @@ final class HelpVC: MarkdownController {
         navigationItem.rightBarButtonItem?.localizedTitle(viewModel.about)
     }
 
-    // MARK: - Actions
-
-    @IBAction private func aboutAction() {
-        guard let url = URL(string: RemoteValues.aboutLink) else { return }
-        openURL(URL: url)
-    }
 }
 
 private extension HelpVC {

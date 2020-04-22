@@ -130,3 +130,5 @@
 "unregister_finish_title" = "Zrušit registraci";
 "unregister_finish_headline" = "Registaci vašeho telefonního čísla jsme zrušili";
 "unregister_finish_close" = "Zavřít";
+
+"about_title" = "O aplikaci";
