@@ -44,7 +44,15 @@ class ButtonsBackgroundView: UIView {
         if hit is UIButton {
             return hit
         } else if scrollView?.frame.contains(point) == true {
-            return scrollView?.hitTest(point, with: event)
+            guard let hitView = scrollView?.hitTest(point, with: event) else { return hit }
+
+            for subview in hitView.subviews.reversed() {
+                let convertedPoint = subview.convert(point, from: self)
+                if let hitView = subview.hitTest(convertedPoint, with: event) {
+                    return hitView
+                }
+            }
+            return hitView
         } else {
             return hit
         }
