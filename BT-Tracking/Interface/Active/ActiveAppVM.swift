@@ -68,11 +68,11 @@ final class ActiveAppVM {
         var title: String {
             switch self {
             case .enabled:
-                return "active_title_enabled"
+                return RemoteValues.activeTitleEnabled
             case .paused:
-                return "active_title_paused"
+                return Localizable("active_title_paused")
             case .disabled:
-                return "active_title_disabled"
+                return Localizable("active_title_disabled")
             }
         }
 

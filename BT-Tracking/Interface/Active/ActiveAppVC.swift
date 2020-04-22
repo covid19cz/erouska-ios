@@ -57,6 +57,13 @@ final class ActiveAppVC: UIViewController {
 
         layoutCardView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateInterface()
+        layoutCardView()
+    }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
@@ -158,7 +165,6 @@ final class ActiveAppVC: UIViewController {
     @objc private func applicationDidBecomeActive() {
         checkForBluetooth()
     }
-
 }
 
 private extension ActiveAppVC {
@@ -188,7 +194,7 @@ private extension ActiveAppVC {
         imageView.image = viewModel.state.image
         headlineLabel.localizedText(viewModel.state.headline)
         headlineLabel.textColor = viewModel.state.color
-        titleLabel.localizedText(viewModel.state.title)
+        titleLabel.text = viewModel.state.title
         tipsLabel.localizedText(viewModel.tips)
         firstTipLabel.localizedText(viewModel.firstTip)
         secondTipLabel.localizedText(viewModel.secondTip)
@@ -278,5 +284,4 @@ private extension ActiveAppVC {
         guard let URL = url else { return }
         UIApplication.shared.open(URL)
     }
-
 }

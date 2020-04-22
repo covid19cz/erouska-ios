@@ -55,7 +55,6 @@ extension AppDelegate {
     func remoteConfigString(forKey key: RemoteConfigValueKey) -> String {
         return RemoteConfig.remoteConfig()[key.rawValue].stringValue ?? ""
     }
-
 }
 
 enum RemoteConfigValueKey: String {
@@ -79,6 +78,9 @@ enum RemoteConfigValueKey: String {
     
     case helpMarkdown
     case dataCollectionMarkdown
+    
+    case activeTitleEnabled
+    case activeTitleEnabled_en
 }
 
 struct RemoteValues {
@@ -103,7 +105,10 @@ struct RemoteValues {
         .emergencyNumber: 1212,
         
         .helpMarkdown: helpMarkdownBackup,
-        .dataCollectionMarkdown: dataCollectionMarkdownBackup
+        .dataCollectionMarkdown: dataCollectionMarkdownBackup,
+        
+        .activeTitleEnabled: activeTitleEnabledDefault,
+        .activeTitleEnabled_en: activeTitleEnabledDefaultEn,
     ]
 
     private static func localValue(forResource resource: String, withExtension extension: String, withKey key: String) -> String {
@@ -122,6 +127,14 @@ struct RemoteValues {
 
     private static var dataCollectionMarkdownBackup: String {
         return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "dataCollectionInfoBackup")
+    }
+    
+    private static var activeTitleEnabledDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefault")
+    }
+    
+    private static var activeTitleEnabledDefaultEn: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefaultEn")
     }
 
     /// doba scanování v sekundách, default = 120
@@ -205,5 +218,29 @@ struct RemoteValues {
     /// Data collection markdown
     static var dataCollectionMarkdown: String {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.dataCollectionMarkdown)
+    }
+    
+    /// Main screen title enabled text
+    static var activeTitleEnabled: String {
+        
+        enum SupportedLanguage: String {
+            case cs, en
+        }
+                
+        var language = SupportedLanguage.cs
+        if let preferredLocalization = Bundle.main.preferredLocalizations.first, let preferredLanguage = SupportedLanguage(rawValue: preferredLocalization) {
+            language = preferredLanguage
+        }
+                
+        var key: RemoteConfigValueKey {
+            switch language {
+            case .en: return .activeTitleEnabled_en
+            default: return .activeTitleEnabled
+            }
+        }
+        
+        return AppDelegate.shared.remoteConfigString(forKey: key)
+            .replacingOccurrences(of: "\\n", with: "\n")
+            .replacingOccurrences(of: "\\", with: "")
     }
 }
