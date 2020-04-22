@@ -168,6 +168,7 @@ private extension ActiveAppVC {
 
         updateScanner()
         updateInterface()
+        setupStrings()
     }
 
     func updateScanner() {
