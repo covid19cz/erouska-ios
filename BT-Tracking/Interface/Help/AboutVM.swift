@@ -15,8 +15,6 @@ struct AboutVM {
 
     let title = "about_title"
 
-    let info = "about_info"
-
     let teams: [AboutTeam]
 
     var sections = BehaviorRelay<[SectionModel]>(value: [])

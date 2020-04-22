@@ -17,7 +17,7 @@ final class AboutInfoCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        // localize
+        infoLabel.localizedText("about_info")
     }
 
 }
