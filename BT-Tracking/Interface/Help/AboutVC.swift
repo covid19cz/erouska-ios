@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class AboutVC: UIViewController {
+final class AboutVC: UIViewController {
 
     private var dataSource: RxTableViewSectionedAnimatedDataSource<AboutVM.SectionModel>!
     private let viewModel = AboutVM()
@@ -21,7 +21,7 @@ class AboutVC: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
 
-    // MARK: -
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,10 @@ extension AboutVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.section > 0 else { return }
         let person = viewModel.teams[indexPath.section - 1].people[indexPath.row]
-        guard let rawURL = person.linkedin, let URL = URL(string: rawURL) else { return }
+        guard let rawURL = person.linkedin, let URL = URL(string: rawURL) else {
+            tableView.deselectRow(at: indexPath, animated: true)
+            return
+        }
         openURL(URL: URL)
     }
 
