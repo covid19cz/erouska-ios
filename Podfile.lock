@@ -1,4 +1,7 @@
 PODS:
+  - Alamofire (5.1.0)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
   - CSV.swift (2.4.3)
   - DeviceKit (3.1.0)
   - Differentiator (4.0.1)
@@ -129,6 +132,7 @@ PODS:
   - SwiftyMarkdown (1.2.1)
 
 DEPENDENCIES:
+  - AlamofireImage
   - CSV.swift (~> 2.4.3)
   - DeviceKit (~> 3.1.0)
   - Firebase/Auth (~> 6.22.0)
@@ -147,6 +151,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AlamofireImage
     - CSV.swift
     - DeviceKit
     - Differentiator
@@ -183,6 +189,8 @@ SPEC REPOS:
     - SwiftyMarkdown
 
 SPEC CHECKSUMS:
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   CSV.swift: d38741b349c067b4a6db42237cb0e2974d21ccac
   DeviceKit: b9a28acbad6b8dbccf456814b6f95bef17a6654f
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
@@ -218,6 +226,6 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwiftyMarkdown: 2154183e70170f940fe43342f385c92d9cf0a76b
 
-PODFILE CHECKSUM: 8db0dbe63f87781fa90d1684a956559cc15b02f0
+PODFILE CHECKSUM: 7316d35993497617d64d85a3379958995b01c51c
 
 COCOAPODS: 1.9.1

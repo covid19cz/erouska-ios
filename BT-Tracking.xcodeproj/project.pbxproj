@@ -46,6 +46,24 @@
 		8064DF6E244EF3B7005E8AA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8064DF6B244EF3B7005E8AA3 /* GoogleService-Info.plist */; };
 		8064DF70244EF3C0005E8AA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */; };
 		8064DF71244EF3C5005E8AA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8064DF6B244EF3B7005E8AA3 /* GoogleService-Info.plist */; };
+		8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF77244F3E94005E8AA3 /* AboutInfoCell.swift */; };
+		8064DF79244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF77244F3E94005E8AA3 /* AboutInfoCell.swift */; };
+		8064DF7A244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF77244F3E94005E8AA3 /* AboutInfoCell.swift */; };
+		8064DF7C244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF7B244F3ED2005E8AA3 /* AboutPersonCell.swift */; };
+		8064DF7D244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF7B244F3ED2005E8AA3 /* AboutPersonCell.swift */; };
+		8064DF7E244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF7B244F3ED2005E8AA3 /* AboutPersonCell.swift */; };
+		8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF84244F3FFD005E8AA3 /* AboutVC.swift */; };
+		8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF84244F3FFD005E8AA3 /* AboutVC.swift */; };
+		8064DF87244F3FFD005E8AA3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF84244F3FFD005E8AA3 /* AboutVC.swift */; };
+		8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
+		8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
+		8064DF8B244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
+		8064DF8E244F40E4005E8AA3 /* AboutPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF8D244F40E4005E8AA3 /* AboutPerson.swift */; };
+		8064DF8F244F40E4005E8AA3 /* AboutPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF8D244F40E4005E8AA3 /* AboutPerson.swift */; };
+		8064DF90244F40E4005E8AA3 /* AboutPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF8D244F40E4005E8AA3 /* AboutPerson.swift */; };
+		8064DF92244F420A005E8AA3 /* AboutTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF91244F420A005E8AA3 /* AboutTeam.swift */; };
+		8064DF93244F420A005E8AA3 /* AboutTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF91244F420A005E8AA3 /* AboutTeam.swift */; };
+		8064DF94244F420A005E8AA3 /* AboutTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF91244F420A005E8AA3 /* AboutTeam.swift */; };
 		807053532427BA2500DC1034 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
 		807053582427C5AA00DC1034 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053572427C5AA00DC1034 /* InfoCell.swift */; };
 		8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDBF242A613F001D9DCD /* AppSettings.swift */; };
@@ -139,6 +157,7 @@
 		8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D9162446F80B007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D91B244758CB007FA4E9 /* BTScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE9762424DE0E001A93B3 /* BTScan.swift */; };
+		809B40AE245097F500AD3687 /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 		80AD970D2429318B00AEA661 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
 		80B94557242B96560052CD9F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
@@ -263,6 +282,12 @@
 		80631A97242CAB5000EB0B6C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8064DF6B244EF3B7005E8AA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8064DF77244F3E94005E8AA3 /* AboutInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInfoCell.swift; sourceTree = "<group>"; };
+		8064DF7B244F3ED2005E8AA3 /* AboutPersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPersonCell.swift; sourceTree = "<group>"; };
+		8064DF84244F3FFD005E8AA3 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		8064DF88244F4026005E8AA3 /* AboutVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVM.swift; sourceTree = "<group>"; };
+		8064DF8D244F40E4005E8AA3 /* AboutPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPerson.swift; sourceTree = "<group>"; };
+		8064DF91244F420A005E8AA3 /* AboutTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTeam.swift; sourceTree = "<group>"; };
 		807053522427BA2500DC1034 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		807053572427C5AA00DC1034 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		8075EDBF242A613F001D9DCD /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -451,7 +476,6 @@
 				8054C0DB2420AF4F008907B8 /* Extensions */,
 				FFC4432724461357002D2A6D /* Resources */,
 				8054C0CA241FE68B008907B8 /* Supporting Files */,
-				8054C0B9241D4932008907B8 /* Assets.xcassets */,
 				8054C0B0241D492F008907B8 /* AppDelegate.swift */,
 			);
 			path = "BT-Tracking";
@@ -476,7 +500,6 @@
 			children = (
 				8064DF6A244EF3B7005E8AA3 /* Firebase Dev */,
 				8064DF6C244EF3B7005E8AA3 /* Firebase Prod */,
-				80BE18BF2433C18200C4A9E6 /* Localizable.strings */,
 				80D5F7E62424B1540010EF51 /* README.md */,
 				80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */,
 				8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */,
@@ -545,6 +568,24 @@
 				8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */,
 			);
 			path = "Firebase Prod";
+			sourceTree = "<group>";
+		};
+		8064DF76244F3E82005E8AA3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8064DF77244F3E94005E8AA3 /* AboutInfoCell.swift */,
+				8064DF7B244F3ED2005E8AA3 /* AboutPersonCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8064DF8C244F40DB005E8AA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8064DF91244F420A005E8AA3 /* AboutTeam.swift */,
+				8064DF8D244F40E4005E8AA3 /* AboutPerson.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		807053542427C4E800DC1034 /* Cells */ = {
@@ -682,9 +723,13 @@
 		BDB07FBE24254A7B00834E79 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				8064DF8C244F40DB005E8AA3 /* Model */,
+				8064DF76244F3E82005E8AA3 /* Cells */,
 				BDB07FBF24254A8F00834E79 /* Help.storyboard */,
 				80631A95242CA27800EB0B6C /* HelpVC.swift */,
 				80CA44DB244B3769008E22F8 /* HelpVM.swift */,
+				8064DF84244F3FFD005E8AA3 /* AboutVC.swift */,
+				8064DF88244F4026005E8AA3 /* AboutVM.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -692,17 +737,11 @@
 		FFC4432724461357002D2A6D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FFC443282446135F002D2A6D /* Markdown Backups */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		FFC443282446135F002D2A6D /* Markdown Backups */ = {
-			isa = PBXGroup;
-			children = (
+				8054C0B9241D4932008907B8 /* Assets.xcassets */,
+				80BE18BF2433C18200C4A9E6 /* Localizable.strings */,
 				FFC4432524460D78002D2A6D /* MarkdownBackups.strings */,
 			);
-			path = "Markdown Backups";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -779,6 +818,13 @@
 				TargetAttributes = {
 					8054C0AC241D492F008907B8 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1140;
+					};
+					8083D8A5244640A0007FA4E9 = {
+						LastSwiftMigration = 1140;
+					};
+					80BB474624212A3C00F552FC = {
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -843,6 +889,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				809B40AE245097F500AD3687 /* MarkdownBackups.strings in Resources */,
 				80BB475624212A3C00F552FC /* LaunchScreen.storyboard in Resources */,
 				80CA44CA244ADD82008E22F8 /* Localizable.strings in Resources */,
 				80BB475824212A3C00F552FC /* Assets.xcassets in Resources */,
@@ -1017,6 +1064,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8064DF7C244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
 				803C5B252429346500E49414 /* DataListVM.swift in Sources */,
 				80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */,
 				BD979AE924255BD1004001ED /* FirstActivationVC.swift in Sources */,
@@ -1034,6 +1082,7 @@
 				BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */,
 				8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */,
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
+				8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
 				80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */,
@@ -1064,22 +1113,26 @@
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
 				80ECB96324290C1000E57601 /* ScanCell.swift in Sources */,
 				80BB476624236ED100F552FC /* BluetoothActivationVC.swift in Sources */,
+				8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */,
 				80BF9C262424D55800150108 /* SendReportVC.swift in Sources */,
 				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
+				8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */,
 				80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */,
 				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
 				80CA44B4244AD979008E22F8 /* FirstActivationVM.swift in Sources */,
 				803669A9243F4B0D00684B57 /* BTScanDevice.swift in Sources */,
+				8064DF92244F420A005E8AA3 /* AboutTeam.swift in Sources */,
 				46A0D531242CEB9500FAE9EA /* DeleteDataVM.swift in Sources */,
 				80ECB96624290DA900E57601 /* Collection.swift in Sources */,
 				80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */,
 				80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */,
 				80610BD024363D7B00E031C8 /* Auth.swift in Sources */,
 				80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */,
+				8064DF8E244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				80CA44E4244B464B008E22F8 /* UnregisterFinishVM.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
@@ -1097,10 +1150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8064DF7D244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
+				8064DF8F244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */,
 				80CA44CF244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
 				8083D8A9244640A0007FA4E9 /* UnregisterUserVC.swift in Sources */,
 				8083D8AA244640A0007FA4E9 /* FirstActivationVC.swift in Sources */,
+				8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
 				8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */,
 				8083D8AD244640A0007FA4E9 /* AccountActivationVC.swift in Sources */,
@@ -1137,6 +1193,8 @@
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
 				8083D8CB244640A0007FA4E9 /* BTScanner.swift in Sources */,
 				8083D8CD244640A0007FA4E9 /* BluetoothActivationVC.swift in Sources */,
+				8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */,
+				8064DF93244F420A005E8AA3 /* AboutTeam.swift in Sources */,
 				80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */,
 				8083D8CE244640A0007FA4E9 /* SendReportVC.swift in Sources */,
 				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
@@ -1145,6 +1203,7 @@
 				FFC32EA2244B75280008104C /* AccountActivationVM.swift in Sources */,
 				FFC32EA1244B75120008104C /* FirstActivationVM.swift in Sources */,
 				8083D8D3244640A0007FA4E9 /* DeleteDataVM.swift in Sources */,
+				8064DF79244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
 				FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */,
 				FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */,
 				8083D8D4244640A0007FA4E9 /* Collection.swift in Sources */,
@@ -1177,10 +1236,14 @@
 				8083D911244643BD007FA4E9 /* InfoCell.swift in Sources */,
 				80CA44B8244ADA76008E22F8 /* Localization.swift in Sources */,
 				8083D90D244643BB007FA4E9 /* ScanListVC.swift in Sources */,
+				8064DF87244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8083D90924464342007FA4E9 /* DeleteDataVC.swift in Sources */,
 				80BB474A24212A3C00F552FC /* Logger.swift in Sources */,
 				8083D90124464334007FA4E9 /* Controller.swift in Sources */,
 				80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */,
+				8064DF94244F420A005E8AA3 /* AboutTeam.swift in Sources */,
+				8064DF7A244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
+				8064DF90244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				80CA44D0244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
 				8083D90F244643BD007FA4E9 /* SectionTitleCell.swift in Sources */,
 				8083D90C24464345007FA4E9 /* HelpVC.swift in Sources */,
@@ -1203,6 +1266,8 @@
 				8083D8F924464331007FA4E9 /* Data.swift in Sources */,
 				8083D9162446F80B007FA4E9 /* Markdown.swift in Sources */,
 				8083D90A24464342007FA4E9 /* DeleteDataVM.swift in Sources */,
+				8064DF7E244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
+				8064DF8B244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */,
 				8083D910244643BD007FA4E9 /* ScanCell.swift in Sources */,
 				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,
@@ -1368,6 +1433,7 @@
 			baseConfigurationReference = C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 42;
@@ -1380,6 +1446,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking5";
 				PRODUCT_NAME = eRouska;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1390,6 +1457,7 @@
 			baseConfigurationReference = DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 42;
@@ -1412,6 +1480,7 @@
 			baseConfigurationReference = 36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 42;
@@ -1425,6 +1494,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG PROD";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1435,6 +1505,7 @@
 			baseConfigurationReference = 92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 42;
@@ -1458,6 +1529,7 @@
 			baseConfigurationReference = E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 42;
@@ -1473,6 +1545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covid19cz.BT-Tracking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -1483,6 +1556,7 @@
 			baseConfigurationReference = 991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 42;

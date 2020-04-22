@@ -130,3 +130,6 @@
 "unregister_finish_title" = "Zrušit registraci";
 "unregister_finish_headline" = "Registaci vašeho telefonního čísla jsme zrušili";
 "unregister_finish_close" = "Zavřít";
+
+"about_title" = "O aplikaci";
+"about_info" = "Aplikace vznikla v rámci iniciativy Covid19CZ. Vyvíjeli jsme ji s důrazem na ochranu soukromí, abychom ji bez obav mohli používat i my. Data se ukládají jen do vašeho zařízení a nelze z nich zjistit, kde jste se pohybovali. Děkujeme, že aplikaci používáte a věříme, že se nám společně podaří epidemii zvládnout.";
