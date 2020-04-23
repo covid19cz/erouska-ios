@@ -254,4 +254,11 @@ private extension RemoteValues {
         return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "aboutJsonBackup")
     }
 
+    static var activeTitleEnabledDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefault")
+    }
+    
+    static var activeTitleEnabledDefaultEn: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefaultEn")
+    }
 }

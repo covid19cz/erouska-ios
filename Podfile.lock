@@ -132,7 +132,7 @@ PODS:
   - SwiftyMarkdown (1.2.1)
 
 DEPENDENCIES:
-  - AlamofireImage
+  - AlamofireImage (~> 4.1.0)
   - CSV.swift (~> 2.4.3)
   - DeviceKit (~> 3.1.0)
   - Firebase/Auth (~> 6.22.0)
@@ -226,6 +226,6 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwiftyMarkdown: 2154183e70170f940fe43342f385c92d9cf0a76b
 
-PODFILE CHECKSUM: 7316d35993497617d64d85a3379958995b01c51c
+PODFILE CHECKSUM: c3531b3170cefa3b284b96cf0bc311981bd27933
 
 COCOAPODS: 1.9.1
