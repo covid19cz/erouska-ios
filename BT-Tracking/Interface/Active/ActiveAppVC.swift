@@ -141,8 +141,7 @@ final class ActiveAppVC: UIViewController {
         }))
         #endif
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuAbout), style: .default, handler: { [weak self] _ in
-            guard let url = URL(string: RemoteValues.aboutLink) else { return }
-            self?.openURL(URL: url)
+            self?.aboutAction()
         }))
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancel), style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
@@ -158,6 +157,12 @@ final class ActiveAppVC: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
+    }
+
+    private func aboutAction() {
+        let storyboard = UIStoryboard(name: "Help", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "About")
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     // MARK: -
