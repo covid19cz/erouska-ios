@@ -55,7 +55,6 @@ extension AppDelegate {
     func remoteConfigString(forKey key: RemoteConfigValueKey) -> String {
         return RemoteConfig.remoteConfig()[key.rawValue].stringValue ?? ""
     }
-
 }
 
 enum RemoteConfigValueKey: String {
@@ -81,6 +80,9 @@ enum RemoteConfigValueKey: String {
     case dataCollectionMarkdown
 
     case aboutJson
+    
+    case activeTitleEnabled
+    case activeTitleEnabled_en
 }
 
 struct RemoteValues {
@@ -107,7 +109,10 @@ struct RemoteValues {
         .helpMarkdown: helpMarkdownBackup,
         .dataCollectionMarkdown: dataCollectionMarkdownBackup,
 
-        .aboutJson: aboutJsonBackup
+        .aboutJson: aboutJsonBackup,
+        
+        .activeTitleEnabled: activeTitleEnabledDefault,
+        .activeTitleEnabled_en: activeTitleEnabledDefaultEn,
     ]
 
     /// doba scanování v sekundách, default = 120
@@ -197,7 +202,30 @@ struct RemoteValues {
     static var dataCollectionMarkdown: String {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.dataCollectionMarkdown)
     }
+    
+    /// Main screen title enabled text
+    static var activeTitleEnabled: String {
 
+        enum SupportedLanguage: String {
+            case cs, en
+        }
+
+        var language = SupportedLanguage.cs
+        if let preferredLocalization = Bundle.main.preferredLocalizations.first, let preferredLanguage = SupportedLanguage(rawValue: preferredLocalization) {
+            language = preferredLanguage
+        }
+
+        var key: RemoteConfigValueKey {
+            switch language {
+            case .en: return .activeTitleEnabled_en
+            default: return .activeTitleEnabled
+            }
+        }
+
+        return AppDelegate.shared.remoteConfigString(forKey: key)
+            .replacingOccurrences(of: "\\n", with: "\n")
+            .replacingOccurrences(of: "\\", with: "")
+    }
 }
 
 // MARK: - Backup
@@ -226,4 +254,11 @@ private extension RemoteValues {
         return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "aboutJsonBackup")
     }
 
+    static var activeTitleEnabledDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefault")
+    }
+    
+    static var activeTitleEnabledDefaultEn: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefaultEn")
+    }
 }

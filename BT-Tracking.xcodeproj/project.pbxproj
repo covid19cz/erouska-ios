@@ -10,6 +10,8 @@
 		0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */; };
 		46269D0624472BAF00FA3DB2 /* AboutDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */; };
 		46269D0824472BBF00FA3DB2 /* ScanningInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */; };
+		4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
+		4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
 		4657C454243BD03D009E0E85 /* NotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657C453243BD03D009E0E85 /* NotificationPermissionVC.swift */; };
 		46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */; };
 		46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */; };
@@ -245,6 +247,7 @@
 		46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDataCell.swift; sourceTree = "<group>"; };
 		46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInfoCell.swift; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
+		4651F9B724505A7B0003D23D /* RemoteTitles.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RemoteTitles.strings; sourceTree = "<group>"; };
 		4657C453243BD03D009E0E85 /* NotificationPermissionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionVC.swift; sourceTree = "<group>"; };
 		46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnregisterUser.storyboard; sourceTree = "<group>"; };
 		46A0D52E242CEB8A00FAE9EA /* DeleteDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataVC.swift; sourceTree = "<group>"; };
@@ -740,6 +743,7 @@
 				8054C0B9241D4932008907B8 /* Assets.xcassets */,
 				80BE18BF2433C18200C4A9E6 /* Localizable.strings */,
 				FFC4432524460D78002D2A6D /* MarkdownBackups.strings */,
+				4651F9B724505A7B0003D23D /* RemoteTitles.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -859,6 +863,7 @@
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
+				4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */,
 				80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */,
 				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
 				FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */,
@@ -880,6 +885,7 @@
 				8083D8E9244640A0007FA4E9 /* Localizable.strings in Resources */,
 				8083D8EA244640A0007FA4E9 /* Signup.storyboard in Resources */,
 				8064DF70244EF3C0005E8AA3 /* GoogleService-Info.plist in Resources */,
+				4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */,
 				8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */,
 				8083D8EC244640A0007FA4E9 /* DataList.storyboard in Resources */,
 			);
