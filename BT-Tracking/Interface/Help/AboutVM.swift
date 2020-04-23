@@ -32,7 +32,7 @@ struct AboutVM {
                 items: [Section.Item.info]
             )
 
-            let teamSections = teams.map { team -> SectionModel in return self.section(from: team) }
+            let teamSections = teams.map { section(from: $0) }
 
             sections.accept([infoSection] + teamSections)
         } catch {
