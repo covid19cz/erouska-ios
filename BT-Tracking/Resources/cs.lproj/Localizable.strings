@@ -34,7 +34,7 @@
 "login_continue" = "Pokračovat";
 "login_error_too_many_requests_title" = "Telefonní číslo jsme dočasně zablokovali";
 "login_error_too_many_requests_message" = "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu.";
-"login_error_verification_title" = "Telefonní číslo jsme dočasně zablokovali";
+"login_error_verification_title" = "Nepodařilo se nám ověřit telefonní číslo";
 "login_error_verification_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
 
 "login_code_title" = "Ověřovací kód";

@@ -32,9 +32,9 @@ struct AccountActivationVM {
 
     let continueButton = "login_continue"
 
-    let errorToManyRequestsTitle = "login_error_too_many_requests_title"
+    let errorTooManyRequestsTitle = "login_error_too_many_requests_title"
 
-    let errorToManyRequestsMessage = "login_error_too_many_requests_message"
+    let errorTooManyRequestsMessage = "login_error_too_many_requests_message"
 
     let errorVerificationTitle = "login_error_verification_title"
 

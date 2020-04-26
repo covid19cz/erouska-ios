@@ -165,8 +165,8 @@ private extension AccountActivationVC {
         log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
         if (error as NSError).code == AuthErrorCode.tooManyRequests.rawValue {
             showAlert(
-                title: viewModel.errorToManyRequestsTitle,
-                message: viewModel.errorToManyRequestsMessage
+                title: viewModel.errorTooManyRequestsTitle,
+                message: viewModel.errorTooManyRequestsMessage
             )
         } else {
             showAlert(
