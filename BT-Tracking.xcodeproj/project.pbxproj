@@ -23,6 +23,31 @@
 		4B4D1AC92455B370003FA2AD /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 4B4D1AC82455B370003FA2AD /* RxRealm */; };
 		4B4D1ACB2455B49D003FA2AD /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 4B4D1ACA2455B49D003FA2AD /* RxRealm */; };
 		4B4D1ACD2455B4A5003FA2AD /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 4B4D1ACC2455B4A5003FA2AD /* RxRealm */; };
+		4B4D1ACE2455B6ED003FA2AD /* ScannerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CB3242270F700C01DFA /* ScannerStore.swift */; };
+		4B4D1ACF2455B6FF003FA2AD /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CAE2422597F00C01DFA /* Scan.swift */; };
+		4B4D1AD02455B702003FA2AD /* ScanRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB95D24290B6700E57601 /* ScanRealm.swift */; };
+		4B4D1AD12455B714003FA2AD /* BTScanDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803669A8243F4B0D00684B57 /* BTScanDevice.swift */; };
+		4B4D1AD22455B72D003FA2AD /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
+		4B4D1AD32455B73A003FA2AD /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDBF242A613F001D9DCD /* AppSettings.swift */; };
+		4B4D1AD42455B74A003FA2AD /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
+		4B4D1AD52455B7A1003FA2AD /* ScanningInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */; };
+		4B4D1AD62455B7A6003FA2AD /* AboutDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */; };
+		4B4D1AD72455B7AB003FA2AD /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
+		4B4D1AD82455B7B0003FA2AD /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
+		4B4D1AD92455B7CA003FA2AD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
+		4B4D1ADA2455B80F003FA2AD /* CSVWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96824291E2F00E57601 /* CSVWriter.swift */; };
+		4B4D1ADB2455B820003FA2AD /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80610BCF24363D7B00E031C8 /* Auth.swift */; };
+		4B4D1ADC2455B8B7003FA2AD /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BB476124227C2500F552FC /* Signup.storyboard */; };
+		4B4D1ADD2455B8C0003FA2AD /* DataList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* DataList.storyboard */; };
+		4B4D1ADE2455B8D0003FA2AD /* SendReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportVC.swift */; };
+		4B4D1ADF2455B8E6003FA2AD /* FirstActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActivationVC.swift */; };
+		4B4D1AE02455B8E6003FA2AD /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B3244AD979008E22F8 /* FirstActivationVM.swift */; };
+		4B4D1AE12455B8E6003FA2AD /* BluetoothActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationVC.swift */; };
+		4B4D1AE22455B8E6003FA2AD /* NotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657C453243BD03D009E0E85 /* NotificationPermissionVC.swift */; };
+		4B4D1AE32455B8E6003FA2AD /* AccountActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationVC.swift */; };
+		4B4D1AE42455B8E6003FA2AD /* AccountActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */; };
+		4B4D1AE52455B8E6003FA2AD /* CompleteActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */; };
+		4B4D1AE62455B8E6003FA2AD /* CompleteActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */; };
 		5E110F9C2433C4AD0059712A /* UnregisterFinishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */; };
 		5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
@@ -919,6 +944,8 @@
 				80BB475824212A3C00F552FC /* Assets.xcassets in Resources */,
 				80BB475924212A3C00F552FC /* Debug.storyboard in Resources */,
 				8083D9122446466A007FA4E9 /* Help.storyboard in Resources */,
+				4B4D1ADD2455B8C0003FA2AD /* DataList.storyboard in Resources */,
+				4B4D1ADC2455B8B7003FA2AD /* Signup.storyboard in Resources */,
 				8064DF71244EF3C5005E8AA3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1254,17 +1281,29 @@
 				80BB474924212A3C00F552FC /* LogSegmentController.swift in Sources */,
 				8083D8FF24464334007FA4E9 /* KeyboardHandler.swift in Sources */,
 				8083D90024464334007FA4E9 /* GradientView.swift in Sources */,
+				4B4D1ADA2455B80F003FA2AD /* CSVWriter.swift in Sources */,
 				80CA44DE244B384F008E22F8 /* HelpVM.swift in Sources */,
 				80BE18B4243391F500C4A9E6 /* RemoteValues.swift in Sources */,
 				8083D8F724464331007FA4E9 /* App.swift in Sources */,
 				8083D911244643BD007FA4E9 /* InfoCell.swift in Sources */,
 				80CA44B8244ADA76008E22F8 /* Localization.swift in Sources */,
 				8083D90D244643BB007FA4E9 /* ScanListVC.swift in Sources */,
+				4B4D1ADE2455B8D0003FA2AD /* SendReportVC.swift in Sources */,
 				8064DF87244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
+				4B4D1AE32455B8E6003FA2AD /* AccountActivationVC.swift in Sources */,
+				4B4D1AD52455B7A1003FA2AD /* ScanningInfoCell.swift in Sources */,
+				4B4D1ACE2455B6ED003FA2AD /* ScannerStore.swift in Sources */,
 				8083D90924464342007FA4E9 /* DeleteDataVC.swift in Sources */,
+				4B4D1AD82455B7B0003FA2AD /* DataCell.swift in Sources */,
+				4B4D1AE22455B8E6003FA2AD /* NotificationPermissionVC.swift in Sources */,
 				80BB474A24212A3C00F552FC /* Logger.swift in Sources */,
 				8083D90124464334007FA4E9 /* Controller.swift in Sources */,
+				4B4D1AD12455B714003FA2AD /* BTScanDevice.swift in Sources */,
+				4B4D1ADF2455B8E6003FA2AD /* FirstActivationVC.swift in Sources */,
+				4B4D1AD02455B702003FA2AD /* ScanRealm.swift in Sources */,
 				80BB474B24212A3C00F552FC /* BTAdvertiser.swift in Sources */,
+				4B4D1AD92455B7CA003FA2AD /* Color.swift in Sources */,
+				4B4D1AE52455B8E6003FA2AD /* CompleteActivationVC.swift in Sources */,
 				8064DF94244F420A005E8AA3 /* AboutTeam.swift in Sources */,
 				8064DF7A244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
 				8064DF90244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
@@ -1274,10 +1313,14 @@
 				8083D8FC24464331007FA4E9 /* Layout.swift in Sources */,
 				80CA44DA244AFEF2008E22F8 /* ActiveAppVC.swift in Sources */,
 				8083D90B24464342007FA4E9 /* DataListVM.swift in Sources */,
+				4B4D1AE42455B8E6003FA2AD /* AccountActivationVM.swift in Sources */,
+				4B4D1AE02455B8E6003FA2AD /* FirstActivationVM.swift in Sources */,
 				80DF2F022448428B00C3037F /* DataCollectionInfoVC.swift in Sources */,
 				8083D8FE24464334007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D90E244643BB007FA4E9 /* ScanListVM.swift in Sources */,
 				8083D90824464342007FA4E9 /* DataListVC.swift in Sources */,
+				4B4D1AD32455B73A003FA2AD /* AppSettings.swift in Sources */,
+				4B4D1AD62455B7A6003FA2AD /* AboutDataCell.swift in Sources */,
 				80BB474C24212A3C00F552FC /* FileLogger.swift in Sources */,
 				8083D8FB24464331007FA4E9 /* Collection.swift in Sources */,
 				8083D8F824464331007FA4E9 /* String.swift in Sources */,
@@ -1292,10 +1335,17 @@
 				8083D90A24464342007FA4E9 /* DeleteDataVM.swift in Sources */,
 				8064DF7E244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
 				8064DF8B244F4026005E8AA3 /* AboutVM.swift in Sources */,
+				4B4D1ACF2455B6FF003FA2AD /* Scan.swift in Sources */,
 				80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */,
 				8083D910244643BD007FA4E9 /* ScanCell.swift in Sources */,
 				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,
+				4B4D1AD42455B74A003FA2AD /* ActiveAppVM.swift in Sources */,
+				4B4D1ADB2455B820003FA2AD /* Auth.swift in Sources */,
+				4B4D1AE62455B8E6003FA2AD /* CompleteActivationVM.swift in Sources */,
+				4B4D1AE12455B8E6003FA2AD /* BluetoothActivationVC.swift in Sources */,
+				4B4D1AD22455B72D003FA2AD /* KeychainService.swift in Sources */,
 				8083D90624464339007FA4E9 /* MulticastDelegate.swift in Sources */,
+				4B4D1AD72455B7AB003FA2AD /* DataHeaderCell.swift in Sources */,
 				80BB475024212A3C00F552FC /* BTScanner.swift in Sources */,
 				80BB475224212A3C00F552FC /* BT.swift in Sources */,
 				8083D90724464342007FA4E9 /* MarkdownController.swift in Sources */,

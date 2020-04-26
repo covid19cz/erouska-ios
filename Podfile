@@ -39,4 +39,5 @@ end
 
 target "eRouska Mac" do
   common_pods
+  firebase_pods
 end

@@ -7,12 +7,10 @@
 //
 
 import UIKit
-#if !targetEnvironment(macCatalyst)
 import Firebase
 import FirebaseAuth
 import FirebaseFunctions
 import FirebaseRemoteConfig
-#endif
 import RealmSwift
 import RxSwift
 
@@ -52,9 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     private(set) var deviceToken: Data?
 
-    #if !targetEnvironment(macCatalyst)
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
-    #endif
 
     // MARK: - Public
 
@@ -218,16 +214,12 @@ private extension AppDelegate {
         let center = UNUserNotificationCenter.current()
         center.setNotificationCategories([generalCategory])
 
-        #if !targetEnvironment(macCatalyst)
-
         #if DEBUG && TARGET_IPHONE_SIMULATOR
         Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         #endif
 
         FirebaseApp.configure()
         setupFirebaseRemoteConfig()
-
-        #endif
 
         let configuration = Realm.Configuration(
             schemaVersion: 3,
@@ -250,7 +242,6 @@ private extension AppDelegate {
         self.window = window
 
         let storyboard: UIStoryboard
-        #if !targetEnvironment(macCatalyst)
 
         if !Auth.isLoggedIn {
             try? Auth.auth().signOut()
@@ -258,10 +249,6 @@ private extension AppDelegate {
         } else {
             storyboard = UIStoryboard(name: "Active", bundle: nil)
         }
-
-        #else
-        storyboard = UIStoryboard(name: "Debug", bundle: nil)
-        #endif
 
         window.rootViewController = storyboard.instantiateInitialViewController()
     }

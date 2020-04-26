@@ -10,10 +10,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RxDataSources
-#if !targetEnvironment(macCatalyst)
 import FirebaseAuth
 import FirebaseStorage
-#endif
 import Reachability
 
 final class DataListVC: UIViewController, UITableViewDelegate {
