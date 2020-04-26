@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,9 @@
 		46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CA82422444600C01DFA /* ScanListVC.swift */; };
 		46F21CAF2422597F00C01DFA /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CAE2422597F00C01DFA /* Scan.swift */; };
 		46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F21CB3242270F700C01DFA /* ScannerStore.swift */; };
+		4B4D1AC92455B370003FA2AD /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 4B4D1AC82455B370003FA2AD /* RxRealm */; };
+		4B4D1ACB2455B49D003FA2AD /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 4B4D1ACA2455B49D003FA2AD /* RxRealm */; };
+		4B4D1ACD2455B4A5003FA2AD /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 4B4D1ACC2455B4A5003FA2AD /* RxRealm */; };
 		5E110F9C2433C4AD0059712A /* UnregisterFinishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */; };
 		5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
@@ -361,6 +364,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B4D1ACB2455B49D003FA2AD /* RxRealm in Frameworks */,
 				8B67740B562698E5590B4757 /* Pods_eRouska_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +373,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B4D1ACD2455B4A5003FA2AD /* RxRealm in Frameworks */,
 				0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +382,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B4D1AC92455B370003FA2AD /* RxRealm in Frameworks */,
 				9A5AD9E845D94B114BBAF3DE /* Pods_eRouska_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,6 +773,9 @@
 			dependencies = (
 			);
 			name = "eRouska Dev";
+			packageProductDependencies = (
+				4B4D1ACA2455B49D003FA2AD /* RxRealm */,
+			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
 			productType = "com.apple.product-type.application";
@@ -787,6 +796,9 @@
 			dependencies = (
 			);
 			name = "eRouska Prod";
+			packageProductDependencies = (
+				4B4D1ACC2455B4A5003FA2AD /* RxRealm */,
+			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska Prod.app */;
 			productType = "com.apple.product-type.application";
@@ -806,6 +818,9 @@
 			dependencies = (
 			);
 			name = "eRouska Mac";
+			packageProductDependencies = (
+				4B4D1AC82455B370003FA2AD /* RxRealm */,
+			);
 			productName = "BT-Tracking";
 			productReference = 80BB475E24212A3C00F552FC /* eRouska Mac.app */;
 			productType = "com.apple.product-type.application";
@@ -842,6 +857,9 @@
 				cs,
 			);
 			mainGroup = 8054C0A4241D492F008907B8;
+			packageReferences = (
+				4B4D1AC72455B370003FA2AD /* XCRemoteSwiftPackageReference "RxRealm" */,
+			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1623,6 +1641,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4B4D1AC72455B370003FA2AD /* XCRemoteSwiftPackageReference "RxRealm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxRealm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4B4D1AC82455B370003FA2AD /* RxRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B4D1AC72455B370003FA2AD /* XCRemoteSwiftPackageReference "RxRealm" */;
+			productName = RxRealm;
+		};
+		4B4D1ACA2455B49D003FA2AD /* RxRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B4D1AC72455B370003FA2AD /* XCRemoteSwiftPackageReference "RxRealm" */;
+			productName = RxRealm;
+		};
+		4B4D1ACC2455B4A5003FA2AD /* RxRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B4D1AC72455B370003FA2AD /* XCRemoteSwiftPackageReference "RxRealm" */;
+			productName = RxRealm;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8054C0A5241D492F008907B8 /* Project object */;
 }

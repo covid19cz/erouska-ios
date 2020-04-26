@@ -8,9 +8,6 @@ def common_pods
   pod 'RxDataSources', '~> 4.0.1'
   pod 'RxKeyboard', '~> 1.0.0'
 
-  pod 'RealmSwift', '~> 4.4.0'
-  pod "RxRealm", '~> 2.0.0'
-
   pod 'CSV.swift', '~> 2.4.3'
 
   pod 'DeviceKit', '~> 3.1.0'
