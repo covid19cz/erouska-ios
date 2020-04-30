@@ -52,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     private(set) var deviceToken: Data?
 
+    private var exposure: ExposureServicing?
+
     #if !targetEnvironment(macCatalyst)
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
     #endif
@@ -83,6 +85,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         generalSetup()
         setupInterface()
         setupBackgroundMode(for: application)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.setupExposure()
+        }
         
         return true
     }
@@ -206,6 +212,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 private extension AppDelegate {
+
+    func setupExposure() {
+        if #available(iOS 13.5, *) {
+            exposure = ExposureService()
+            log("Exposure: \(String(describing: exposure?.isEnabled))")
+            log("Exposure: \(String(describing: exposure?.isActive))")
+            log("Exposure: \(String(describing: exposure?.status.rawValue))")
+
+            exposure?.activate(callback: { error in
+                if let error = error {
+                    log("Exposure error: \(error)")
+                } else {
+                    log("Exposure is active!")
+                }
+            })
+        }
+    }
 
     func generalSetup() {
         let generalCategory = UNNotificationCategory(

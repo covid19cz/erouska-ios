@@ -27,6 +27,7 @@
 		803669A9243F4B0D00684B57 /* BTScanDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803669A8243F4B0D00684B57 /* BTScanDevice.swift */; };
 		803C5B23242932BF00E49414 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		803C5B252429346500E49414 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
+		8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */; };
 		8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
@@ -263,6 +264,7 @@
 		803669A8243F4B0D00684B57 /* BTScanDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTScanDevice.swift; sourceTree = "<group>"; };
 		803C5B22242932BF00E49414 /* DataListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVC.swift; sourceTree = "<group>"; };
 		803C5B242429346500E49414 /* DataListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVM.swift; sourceTree = "<group>"; };
+		8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureService.swift; sourceTree = "<group>"; };
 		8054C0AD241D492F008907B8 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Debug.storyboard; sourceTree = "<group>"; };
@@ -451,6 +453,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8051FDA1245ACD7900B2D5EA /* Exposure */ = {
+			isa = PBXGroup;
+			children = (
+				8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */,
+			);
+			path = Exposure;
+			sourceTree = "<group>";
+		};
 		8054C0A4241D492F008907B8 = {
 			isa = PBXGroup;
 			children = (
@@ -515,6 +525,7 @@
 		8054C0CC241FE6D5008907B8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8051FDA1245ACD7900B2D5EA /* Exposure */,
 				805BE9742424DDDE001A93B3 /* Bluetooth */,
 				46F21CB524227E5D00C01DFA /* Store */,
 				80ECB96724291E1B00E57601 /* CSV */,
@@ -1098,6 +1109,7 @@
 				80CA44D8244AF22B008E22F8 /* CompleteActivationVM.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
+				8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */,
 				46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
 				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
