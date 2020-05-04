@@ -128,7 +128,7 @@
 "unregister_user_error_title" = "Chyba při zrušení registrace";
 
 "unregister_finish_title" = "Zrušit registraci";
-"unregister_finish_headline" = "Registaci vašeho telefonního čísla jsme zrušili";
+"unregister_finish_headline" = "Registraci vašeho telefonního čísla jsme zrušili";
 "unregister_finish_close" = "Zavřít";
 
 "about_title" = "O aplikaci";
