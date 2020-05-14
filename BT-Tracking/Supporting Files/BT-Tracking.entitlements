@@ -18,5 +18,7 @@
 	<true/>
 	<key>com.apple.security.network.server</key>
 	<true/>
+    <key>com.apple.developer.exposure-notification</key>
+    <true/>
 </dict>
 </plist>
