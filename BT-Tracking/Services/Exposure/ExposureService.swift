@@ -41,7 +41,6 @@ class ExposureService: ExposureServicing {
     typealias Callback = (Error?) -> Void
 
     private var manager: ENManager
-    private var session: ENExposureDetectionSession
 
     var isActive: Bool {
         return manager.exposureNotificationStatus == .active
@@ -57,7 +56,17 @@ class ExposureService: ExposureServicing {
 
     init() {
         manager = ENManager()
-        session = ENExposureDetectionSession()
+        manager.activate { _ in
+            if ENManager.authorizationStatus == .authorized && !self.manager.exposureNotificationEnabled {
+                self.manager.setExposureNotificationEnabled(true) { _ in
+                    // No error handling for attempts to enable on launch
+                }
+            }
+        }
+    }
+
+    deinit {
+        manager.invalidate()
     }
 
     func activate(callback: Callback?) {
@@ -72,30 +81,23 @@ class ExposureService: ExposureServicing {
                 }
             }
         case .unknown:
-            manager.activate { [weak self] error in
+            manager.setExposureNotificationEnabled(true) { [weak self] error in
                 guard error == nil else {
                     callback?(error)
                     return
                 }
 
-                self?.manager.setExposureNotificationEnabled(true) { [weak self] error in
+                guard let self = self else { return }
+                log("Trace \(self.isActive)")
+                log("Trace \(self.isEnabled)")
+                log("Trace \(self.status)")
+
+                self.manager.activate { error in
                     guard error == nil else {
                         callback?(error)
                         return
                     }
-
-                    guard let self = self else { return }
-                    log("Trace \(self.isActive)")
-                    log("Trace \(self.isEnabled)")
-                    log("Trace \(self.status)")
-
-                    self.session.activate { [weak self] error in
-                        guard error == nil else {
-                            callback?(error)
-                            return
-                        }
-                        callback?(nil)
-                    }
+                    callback?(nil)
                 }
             }
         case .restricted:
@@ -108,9 +110,6 @@ class ExposureService: ExposureServicing {
     }
 
     func deactivate(callback: Callback?) {
-        session.invalidate()
-        session = ENExposureDetectionSession()
-
         manager.setExposureNotificationEnabled(false) { [weak self] error in
             guard error == nil else {
                 callback?(error)
@@ -125,13 +124,15 @@ class ExposureService: ExposureServicing {
     }
 
     func getDiagnosisKeys(callback: @escaping ENGetDiagnosisKeysHandler) {
+        #if DEBUG
+        manager.getTestDiagnosisKeys(completionHandler: callback)
+        #else
         manager.getDiagnosisKeys(completionHandler: callback)
+        #endif
     }
 
     func resetAll(callback: Callback?) {
-        manager.resetAllData { error in
-            callback?(error)
-        }
+
     }
 
 }
