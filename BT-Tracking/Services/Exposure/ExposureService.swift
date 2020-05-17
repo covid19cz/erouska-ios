@@ -12,7 +12,23 @@ import ExposureNotification
 enum ExposureError: Error {
     case bluetoothOff
     case restrictedAccess
+    case noData
     case unknown
+}
+
+struct ExposureDiagnosisKey: Codable, Equatable {
+    let keyData: Data
+    let rollingPeriod: ENIntervalNumber
+    let rollingStartNumber: ENIntervalNumber
+    let transmissionRiskLevel: ENRiskLevel
+
+    @available(iOS 13.5, *)
+    init(key: ENTemporaryExposureKey) {
+        self.keyData = key.keyData
+        self.rollingPeriod = key.rollingPeriod
+        self.rollingStartNumber = key.rollingStartNumber
+        self.transmissionRiskLevel = key.transmissionRiskLevel
+    }
 }
 
 protocol ExposureServicing: class {
@@ -29,7 +45,10 @@ protocol ExposureServicing: class {
     func deactivate(callback: Callback?)
 
     @available(iOS 13.5, *)
-    func getDiagnosisKeys(callback: @escaping ENGetDiagnosisKeysHandler)
+    typealias KeysCallback = (_ result: Result<[ExposureDiagnosisKey], Error>) -> Void
+
+    @available(iOS 13.5, *)
+    func getDiagnosisKeys(callback: @escaping KeysCallback)
 
     func resetAll(callback: Callback?)
 
@@ -90,7 +109,7 @@ class ExposureService: ExposureServicing {
                 guard let self = self else { return }
                 log("Trace \(self.isActive)")
                 log("Trace \(self.isEnabled)")
-                log("Trace \(self.status)")
+                log("Trace \(self.status.rawValue)")
 
                 self.manager.activate { error in
                     guard error == nil else {
@@ -123,11 +142,21 @@ class ExposureService: ExposureServicing {
          }
     }
 
-    func getDiagnosisKeys(callback: @escaping ENGetDiagnosisKeysHandler) {
+    func getDiagnosisKeys(callback: @escaping KeysCallback) {
+        let innerCallbck: ENGetDiagnosisKeysHandler = { keys, error in
+            if let error = error {
+                callback(.failure(error))
+            } else if keys?.isEmpty == true {
+                callback(.failure(ExposureError.noData))
+            } else if let keys = keys {
+                callback(.success(keys.map { ExposureDiagnosisKey(key: $0) }))
+            }
+        }
+
         #if DEBUG
-        manager.getTestDiagnosisKeys(completionHandler: callback)
+        manager.getTestDiagnosisKeys(completionHandler: innerCallbck)
         #else
-        manager.getDiagnosisKeys(completionHandler: callback)
+        manager.getDiagnosisKeys(completionHandler: innerCallbck)
         #endif
     }
 

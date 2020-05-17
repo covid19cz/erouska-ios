@@ -227,6 +227,20 @@ private extension AppDelegate {
                     log("Exposure is active!")
                 }
             })
+
+            exposure?.getDiagnosisKeys(callback: { result in
+                switch result {
+                case .success(let keys):
+                    log("Get keys \(keys)")
+
+                    let encoder = JSONEncoder()
+                    let data = (try? encoder.encode(keys)) ?? Data()
+
+                    print(String(bytes: data, encoding: .utf8) ?? "failed to encode")
+                case .failure(let error):
+                    log("Get keys error \(error)")
+                }
+            })
         }
     }
 
