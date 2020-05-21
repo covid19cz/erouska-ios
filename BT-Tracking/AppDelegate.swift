@@ -37,11 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
-    private(set) lazy var advertiser: BTAdvertising = BTAdvertiser(
+    private(set) lazy var advertiser: BTAdvertising = BTFakeAdvertiser(
         TUIDs: KeychainService.TUIDs ?? [],
         IDRotation: AppSettings.TUIDRotation
     )
-    private(set) lazy var scanner: BTScannering = BTScanner()
+    private(set) lazy var scanner: BTScannering = BTFakeScanner()
     lazy var scannerStore: ScannerStore = {
         let store = ScannerStore(
             scanningPeriod: RemoteValues.collectionSeconds,
@@ -51,8 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return store
     }()
     private(set) var deviceToken: Data?
-
-    private var exposure: ExposureServicing?
 
     #if !targetEnvironment(macCatalyst)
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
@@ -64,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard KeychainService.BUID != nil else { return }
         let wasRunning = advertiser.isRunning
         advertiser.stop()
-        advertiser = BTAdvertiser(
+        advertiser = BTFakeAdvertiser(
             TUIDs: KeychainService.TUIDs ?? [],
             IDRotation: AppSettings.TUIDRotation
         )
@@ -85,10 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         generalSetup()
         setupInterface()
         setupBackgroundMode(for: application)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.setupExposure()
-        }
         
         return true
     }
@@ -212,37 +206,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 private extension AppDelegate {
-
-    func setupExposure() {
-        if #available(iOS 13.5, *) {
-            exposure = ExposureService()
-            log("Exposure: \(String(describing: exposure?.isEnabled))")
-            log("Exposure: \(String(describing: exposure?.isActive))")
-            log("Exposure: \(String(describing: exposure?.status.rawValue))")
-
-            exposure?.activate(callback: { error in
-                if let error = error {
-                    log("Exposure error: \(error)")
-                } else {
-                    log("Exposure is active!")
-                }
-            })
-
-            exposure?.getDiagnosisKeys(callback: { result in
-                switch result {
-                case .success(let keys):
-                    log("Get keys \(keys)")
-
-                    let encoder = JSONEncoder()
-                    let data = (try? encoder.encode(keys)) ?? Data()
-
-                    print(String(bytes: data, encoding: .utf8) ?? "failed to encode")
-                case .failure(let error):
-                    log("Get keys error \(error)")
-                }
-            })
-        }
-    }
 
     func generalSetup() {
         let generalCategory = UNNotificationCategory(

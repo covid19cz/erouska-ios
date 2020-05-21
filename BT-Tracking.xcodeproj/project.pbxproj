@@ -220,6 +220,12 @@
 		80ECB96624290DA900E57601 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
 		80ECB96924291E2F00E57601 /* CSVWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96824291E2F00E57601 /* CSVWriter.swift */; };
 		80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* DataList.storyboard */; };
+		80FC71AF2476FDF200F86389 /* BTFakeAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71AE2476FDF200F86389 /* BTFakeAdvertiser.swift */; };
+		80FC71B12476FE0800F86389 /* BTFakeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B02476FE0800F86389 /* BTFakeScanner.swift */; };
+		80FC71B22476FE3E00F86389 /* BTFakeAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71AE2476FDF200F86389 /* BTFakeAdvertiser.swift */; };
+		80FC71B32476FE3E00F86389 /* BTFakeAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71AE2476FDF200F86389 /* BTFakeAdvertiser.swift */; };
+		80FC71B42476FE4000F86389 /* BTFakeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B02476FE0800F86389 /* BTFakeScanner.swift */; };
+		80FC71B52476FE4100F86389 /* BTFakeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B02476FE0800F86389 /* BTFakeScanner.swift */; };
 		8B67740B562698E5590B4757 /* Pods_eRouska_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */; };
 		9A5AD9E845D94B114BBAF3DE /* Pods_eRouska_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
@@ -340,6 +346,8 @@
 		80ECB96524290DA900E57601 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		80ECB96824291E2F00E57601 /* CSVWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVWriter.swift; sourceTree = "<group>"; };
 		80ECB96B24292FB000E57601 /* DataList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DataList.storyboard; sourceTree = "<group>"; };
+		80FC71AE2476FDF200F86389 /* BTFakeAdvertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTFakeAdvertiser.swift; sourceTree = "<group>"; };
+		80FC71B02476FE0800F86389 /* BTFakeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTFakeScanner.swift; sourceTree = "<group>"; };
 		901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.release.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig"; sourceTree = "<group>"; };
 		991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.release.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.release.xcconfig"; sourceTree = "<group>"; };
@@ -551,6 +559,7 @@
 		805BE9742424DDDE001A93B3 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
+				80FC71AD2476FDE200F86389 /* Fake */,
 				8054C0D1241FE720008907B8 /* BT.swift */,
 				8054C0CD241FE6D5008907B8 /* BTAdvertiser.swift */,
 				805BE9762424DE0E001A93B3 /* BTScan.swift */,
@@ -723,6 +732,15 @@
 				80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */,
 			);
 			path = "Data List";
+			sourceTree = "<group>";
+		};
+		80FC71AD2476FDE200F86389 /* Fake */ = {
+			isa = PBXGroup;
+			children = (
+				80FC71AE2476FDF200F86389 /* BTFakeAdvertiser.swift */,
+				80FC71B02476FE0800F86389 /* BTFakeScanner.swift */,
+			);
+			path = Fake;
 			sourceTree = "<group>";
 		};
 		BD0191452424330200707341 /* Active */ = {
@@ -1099,6 +1117,7 @@
 				80631A98242CAB5000EB0B6C /* Image.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */,
 				8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */,
+				80FC71B12476FE0800F86389 /* BTFakeScanner.swift in Sources */,
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
 				8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
@@ -1129,6 +1148,7 @@
 				80D5F7E52423D8740010EF51 /* CompleteActivationVC.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				80BE3FCF2446028E00D0C810 /* InputValidation.swift in Sources */,
+				80FC71AF2476FDF200F86389 /* BTFakeAdvertiser.swift in Sources */,
 				8054C0D0241FE706008907B8 /* BTScanner.swift in Sources */,
 				80ECB96324290C1000E57601 /* ScanCell.swift in Sources */,
 				80BB476624236ED100F552FC /* BluetoothActivationVC.swift in Sources */,
@@ -1184,6 +1204,7 @@
 				8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */,
 				8083D8B0244640A0007FA4E9 /* DeleteDataVC.swift in Sources */,
 				8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */,
+				80FC71B42476FE4000F86389 /* BTFakeScanner.swift in Sources */,
 				8083D8B2244640A0007FA4E9 /* NotificationPermissionVC.swift in Sources */,
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
@@ -1216,6 +1237,7 @@
 				8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				8064DF93244F420A005E8AA3 /* AboutTeam.swift in Sources */,
 				80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */,
+				80FC71B22476FE3E00F86389 /* BTFakeAdvertiser.swift in Sources */,
 				8083D8CE244640A0007FA4E9 /* SendReportVC.swift in Sources */,
 				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
@@ -1256,6 +1278,7 @@
 				8083D911244643BD007FA4E9 /* InfoCell.swift in Sources */,
 				80CA44B8244ADA76008E22F8 /* Localization.swift in Sources */,
 				8083D90D244643BB007FA4E9 /* ScanListVC.swift in Sources */,
+				80FC71B52476FE4100F86389 /* BTFakeScanner.swift in Sources */,
 				8064DF87244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8083D90924464342007FA4E9 /* DeleteDataVC.swift in Sources */,
 				80BB474A24212A3C00F552FC /* Logger.swift in Sources */,
@@ -1270,6 +1293,7 @@
 				8083D8FC24464331007FA4E9 /* Layout.swift in Sources */,
 				80CA44DA244AFEF2008E22F8 /* ActiveAppVC.swift in Sources */,
 				8083D90B24464342007FA4E9 /* DataListVM.swift in Sources */,
+				80FC71B32476FE3E00F86389 /* BTFakeAdvertiser.swift in Sources */,
 				80DF2F022448428B00C3037F /* DataCollectionInfoVC.swift in Sources */,
 				8083D8FE24464334007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D90E244643BB007FA4E9 /* ScanListVM.swift in Sources */,
@@ -1507,7 +1531,7 @@
 				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1534,7 +1558,7 @@
 				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

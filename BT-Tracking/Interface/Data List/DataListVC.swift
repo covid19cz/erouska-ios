@@ -148,6 +148,50 @@ private extension DataListVC {
     // MARK: - Report
 
     func sendReport() {
+        newSendReport()
+    }
+
+    func newSendReport() {
+        guard let scanner = AppDelegate.shared.scanner as? BTFakeScanner else { return }
+        scanner.exposure.getDiagnosisKeys { result in
+            switch result {
+            case .success(let keys):
+                let encoder = JSONEncoder()
+                let data = (try? encoder.encode(keys)) ?? Data()
+
+                let path = "exposure/\(Auth.auth().currentUser?.uid ?? "")/"
+                let fileName = "exposure.json"
+
+                let storage = Storage.storage()
+                let storageReference = storage.reference()
+                let fileReference = storageReference.child("\(path)/\(fileName)")
+                let storageMetadata = StorageMetadata()
+                let metadata = [
+                    "version": "1",
+                    "buid": KeychainService.BUID ?? ""
+                ]
+                storageMetadata.customMetadata = metadata
+
+                fileReference.putData(data, metadata: storageMetadata) { [weak self] (metadata, error) in
+                    guard let self = self else { return }
+                    self.hideProgress()
+
+                    self.writer?.deleteFile()
+                    if let error = error {
+                        log("FirebaseUpload: Error \(error.localizedDescription)")
+                        self.showSendDataErrorFailed()
+                        return
+                    }
+                    AppSettings.lastUploadDate = Date()
+                    self.performSegue(withIdentifier: "sendReport", sender: nil)
+                }
+            case .failure(let error):
+                log("Failed to get exposure keys \(error)")
+            }
+        }
+    }
+
+    func oldSendReport() {
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
             showAlert(title: viewModel.sendDataErrorWait)
             return
