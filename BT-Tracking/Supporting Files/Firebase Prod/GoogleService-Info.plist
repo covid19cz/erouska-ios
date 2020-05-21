@@ -19,17 +19,17 @@
 	<key>PROJECT_ID</key>
 	<string>covid19cz</string>
 	<key>STORAGE_BUCKET</key>
-	<string>covid19cz.appspot.com</string>
+	<string>covid19cz-exposure</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:1077972356575:ios:34f4965910afe43161886a</string>
 	<key>DATABASE_URL</key>
