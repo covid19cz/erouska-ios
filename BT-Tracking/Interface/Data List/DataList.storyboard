@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcd-UM-9Nt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcd-UM-9Nt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-6R-8L4">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-6R-8L4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -190,6 +189,19 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCh-ML-OPo" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="20" y="644" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="szS-kG-hSf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <state key="normal" title="Vyhodnotit data">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                                <connections>
+                                    <action selector="processReports" destination="xGP-gf-Asp" eventType="touchUpInside" id="Trf-HI-vMG"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qq0-b5-X4V" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="703" width="414" height="110"/>
                                 <subviews>
@@ -218,12 +230,15 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qq0-b5-X4V" firstAttribute="top" secondItem="jCh-ML-OPo" secondAttribute="bottom" constant="15" id="386-Df-RCC"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="CmS-06-K9h"/>
                             <constraint firstItem="bDv-0K-1Gq" firstAttribute="bottom" secondItem="qq0-b5-X4V" secondAttribute="bottom" id="F7R-0P-rOa"/>
                             <constraint firstItem="bDv-0K-1Gq" firstAttribute="bottom" secondItem="Mfj-6R-8L4" secondAttribute="bottom" id="HjX-4B-895"/>
                             <constraint firstItem="qq0-b5-X4V" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="Irq-7h-nuL"/>
                             <constraint firstItem="bDv-0K-1Gq" firstAttribute="trailing" secondItem="qq0-b5-X4V" secondAttribute="trailing" id="Ley-eV-kz9"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="trailing" secondItem="bDv-0K-1Gq" secondAttribute="trailing" id="O4n-r6-oAF"/>
+                            <constraint firstItem="jCh-ML-OPo" firstAttribute="width" secondItem="Twl-oa-ZjU" secondAttribute="width" id="mTC-sR-pmE"/>
+                            <constraint firstItem="jCh-ML-OPo" firstAttribute="centerX" secondItem="qq0-b5-X4V" secondAttribute="centerX" id="qBg-9s-3dK"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="top" secondItem="48y-Xq-MiP" secondAttribute="top" id="zLY-H9-QHN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bDv-0K-1Gq"/>
@@ -256,7 +271,7 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qag-Ae-DEK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

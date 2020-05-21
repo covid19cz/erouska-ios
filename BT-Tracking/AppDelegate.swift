@@ -15,9 +15,12 @@ import FirebaseRemoteConfig
 #endif
 import RealmSwift
 import RxSwift
+import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    static let backgroundTaskIdentifier = Bundle.main.bundleIdentifier! + ".exposure-notification"
 
     private var allowBackgroundTask: Bool = false
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
@@ -83,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         generalSetup()
         setupInterface()
         setupBackgroundMode(for: application)
-        
+
         return true
     }
     

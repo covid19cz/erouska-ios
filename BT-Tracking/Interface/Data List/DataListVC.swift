@@ -15,6 +15,7 @@ import FirebaseAuth
 import FirebaseStorage
 #endif
 import Reachability
+import BackgroundTasks
 
 final class DataListVC: UIViewController, UITableViewDelegate {
 
@@ -60,6 +61,39 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     // MARK: - Actions
+
+    @IBAction private func processReports() {
+        guard let scanner = AppDelegate.shared.scanner as? BTFakeScanner else { return }
+        showProgress()
+
+        let dateFormat = DateFormatter()
+        dateFormat.timeStyle = .short
+        dateFormat.dateStyle = .short
+
+        scanner.exposure.detectExposures { result in
+            self.hideProgress()
+
+            switch result {
+            case .success(var exposures):
+                exposures.sort { $0.date < $1.date }
+
+                var result = ""
+                for exposure in exposures {
+                    result += "EXP: \(dateFormat.string(from: exposure.date))" +
+                    ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
+                }
+                if result == "" {
+                    result = "None";
+                }
+
+                log("EXP: \(exposures)")
+                log("EXP: \(result)")
+                self.showAlert(title: "Exposures", message: result)
+            case .failure(let error):
+                self.show(error: error)
+            }
+        }
+    }
 
     @IBAction private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         viewModel.selectedSegmentIndex.accept(sender.selectedSegmentIndex)
@@ -153,6 +187,7 @@ private extension DataListVC {
 
     func newSendReport() {
         guard let scanner = AppDelegate.shared.scanner as? BTFakeScanner else { return }
+
         scanner.exposure.getDiagnosisKeys { result in
             switch result {
             case .success(let keys):

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -226,6 +226,14 @@
 		80FC71B32476FE3E00F86389 /* BTFakeAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71AE2476FDF200F86389 /* BTFakeAdvertiser.swift */; };
 		80FC71B42476FE4000F86389 /* BTFakeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B02476FE0800F86389 /* BTFakeScanner.swift */; };
 		80FC71B52476FE4100F86389 /* BTFakeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B02476FE0800F86389 /* BTFakeScanner.swift */; };
+		80FC71B7247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */; };
+		80FC71B8247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */; };
+		80FC71B9247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */; };
+		80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BB2477180400F86389 /* SwiftProtobuf */; };
+		80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BD2477184000F86389 /* SwiftProtobuf */; };
+		80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
+		80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
+		80FC71C2247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
 		8B67740B562698E5590B4757 /* Pods_eRouska_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */; };
 		9A5AD9E845D94B114BBAF3DE /* Pods_eRouska_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
@@ -348,6 +356,8 @@
 		80ECB96B24292FB000E57601 /* DataList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DataList.storyboard; sourceTree = "<group>"; };
 		80FC71AE2476FDF200F86389 /* BTFakeAdvertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTFakeAdvertiser.swift; sourceTree = "<group>"; };
 		80FC71B02476FE0800F86389 /* BTFakeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTFakeScanner.swift; sourceTree = "<group>"; };
+		80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperDiagnosisKeyFileProtobuf.pb.swift; sourceTree = "<group>"; };
+		80FC71BF247718C700F86389 /* ExposureEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureEntities.swift; sourceTree = "<group>"; };
 		901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.release.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig"; sourceTree = "<group>"; };
 		991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.release.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.release.xcconfig"; sourceTree = "<group>"; };
@@ -373,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B67740B562698E5590B4757 /* Pods_eRouska_Dev.framework in Frameworks */,
+				80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */,
+				80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +477,9 @@
 		8051FDA1245ACD7900B2D5EA /* Exposure */ = {
 			isa = PBXGroup;
 			children = (
+				80FC71BF247718C700F86389 /* ExposureEntities.swift */,
 				8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */,
+				80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */,
 			);
 			path = Exposure;
 			sourceTree = "<group>";
@@ -797,6 +811,9 @@
 			dependencies = (
 			);
 			name = "eRouska Dev";
+			packageProductDependencies = (
+				80FC71BB2477180400F86389 /* SwiftProtobuf */,
+			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
 			productType = "com.apple.product-type.application";
@@ -817,6 +834,9 @@
 			dependencies = (
 			);
 			name = "eRouska Prod";
+			packageProductDependencies = (
+				80FC71BD2477184000F86389 /* SwiftProtobuf */,
+			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska Prod.app */;
 			productType = "com.apple.product-type.application";
@@ -872,6 +892,9 @@
 				cs,
 			);
 			mainGroup = 8054C0A4241D492F008907B8;
+			packageReferences = (
+				80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1133,7 +1156,9 @@
 				46F21CA92422444600C01DFA /* ScanListVC.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
 				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
+				80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */,
 				46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */,
+				80FC71B7247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
 				80CA44CE244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
 				80CA44D6244AEBDE008E22F8 /* AccountActivationVM.swift in Sources */,
@@ -1195,6 +1220,7 @@
 				80CA44CF244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
 				8083D8A9244640A0007FA4E9 /* UnregisterUserVC.swift in Sources */,
 				8083D8AA244640A0007FA4E9 /* FirstActivationVC.swift in Sources */,
+				80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */,
 				8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
 				8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */,
@@ -1209,6 +1235,7 @@
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
+				80FC71B8247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
 				8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */,
 				8083D8B6244640A0007FA4E9 /* BTAdvertiser.swift in Sources */,
 				8083D8B7244640A0007FA4E9 /* Data.swift in Sources */,
@@ -1314,9 +1341,11 @@
 				8064DF8B244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */,
 				8083D910244643BD007FA4E9 /* ScanCell.swift in Sources */,
+				80FC71C2247718C700F86389 /* ExposureEntities.swift in Sources */,
 				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,
 				8083D90624464339007FA4E9 /* MulticastDelegate.swift in Sources */,
 				80BB475024212A3C00F552FC /* BTScanner.swift in Sources */,
+				80FC71B9247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
 				80BB475224212A3C00F552FC /* BT.swift in Sources */,
 				8083D90724464342007FA4E9 /* MarkdownController.swift in Sources */,
 				8083D91B244758CB007FA4E9 /* BTScan.swift in Sources */,
@@ -1665,6 +1694,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		80FC71BB2477180400F86389 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		80FC71BD2477184000F86389 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8054C0A5241D492F008907B8 /* Project object */;
 }
