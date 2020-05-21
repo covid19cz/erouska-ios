@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1077972356575-cfp7g2rtvihvjsu1lcc05mek64nq59ia.apps.googleusercontent.com</string>
+	<string>941144972907-ds016o6p1icpju7s67p8dhr55jltub0j.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1077972356575-cfp7g2rtvihvjsu1lcc05mek64nq59ia</string>
+	<string>com.googleusercontent.apps.941144972907-ds016o6p1icpju7s67p8dhr55jltub0j</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>1077972356575-tv76pkt5ru2rmp8but5pgu236ci7ibib.apps.googleusercontent.com</string>
+	<string>941144972907-n11bsjourafod10sin5fomirse6crnfa.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyChJ_jWSssjOv_Yta28ksx_B2Vzf6CdfAQ</string>
+	<string>AIzaSyDFjnrOLTJmtDALMjsxkIC94w9eqFIUGNk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1077972356575</string>
+	<string>941144972907</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>cz.covid19cz.erouska</string>
 	<key>PROJECT_ID</key>
-	<string>covid19cz</string>
+	<string>daring-leaf-272223</string>
 	<key>STORAGE_BUCKET</key>
-	<string>covid19cz.appspot.com</string>
+	<string>daring-leaf-272223.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1077972356575:ios:34f4965910afe43161886a</string>
+	<string>1:941144972907:ios:8ff3f773cf3987de73db2e</string>
 	<key>DATABASE_URL</key>
-	<string>https://covid19cz.firebaseio.com</string>
+	<string>https://daring-leaf-272223.firebaseio.com</string>
 </dict>
 </plist>
