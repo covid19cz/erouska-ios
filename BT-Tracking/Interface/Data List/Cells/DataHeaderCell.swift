@@ -14,8 +14,21 @@ final class DataHeaderCell: UITableViewCell {
 
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
 
-    func configure(with numberOfScans: Int) {
-        segmentedControl.setTitle("Vše", forSegmentAt: 0)
-        segmentedControl.setTitle("Blízka setkání", forSegmentAt: 1)
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var idLabel: UILabel!
+    @IBOutlet private weak var signalLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        segmentedControl.setTitle(Localizable("data_list_section_all"), forSegmentAt: 0)
+        segmentedControl.setTitle(Localizable("data_list_section_nearby"), forSegmentAt: 1)
+
+        dateLabel.localizedText("data_list_header_date")
+        timeLabel.localizedText("data_list_header_time")
+        idLabel.localizedText("data_list_header_id")
+        signalLabel.localizedText("data_list_header_signal")
     }
+
 }

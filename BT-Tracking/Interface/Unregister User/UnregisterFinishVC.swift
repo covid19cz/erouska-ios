@@ -10,19 +10,33 @@ import UIKit
 
 final class UnregisterFinishVC: UIViewController {
 
-    @IBOutlet private weak var titleLabel: UILabel!
+    // MARK: -
+
+    private let viewModel = UnregisterFinishVM()
+
+    // MARK: - Outlets
+
+    @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var closeButton: RoundedButtonFilled!
+
+    // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         navigationItem.leftBarButtonItem = nil
         navigationItem.hidesBackButton = true
-        titleLabel.text = "Registaci vašeho telefonního čísla jsme zrušili"
-        closeButton.setTitle("Zavřit", for: .normal)
+        navigationItem.localizedTitle(viewModel.title)
+
+        headlineLabel.localizedText(viewModel.headline)
+        closeButton.localizedTitle(viewModel.closeButton)
     }
 
-    @IBAction func closeButtonDidTap(_ sender: RoundedButtonFilled) {
+    // MARK: - Actions
+
+    @IBAction private func closeButtonDidTap(_ sender: RoundedButtonFilled) {
         let storyboard = UIStoryboard(name: "Signup", bundle: nil)
         AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
     }
+
 }

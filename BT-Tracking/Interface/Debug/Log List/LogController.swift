@@ -55,7 +55,7 @@ final class LogController: UIViewController {
 }
 
 extension LogController: BTScannerDelegate {
-    func didFind(device: BTDevice) {
+    func didFind(device: BTScan) {
         let text = "Found device: \(device.bluetoothIdentifier.uuidString), buid: \(device.backendIdentifier ?? "unknown"), platform: \(device.platform), signal: \(device.rssi)"
 
         #if DEBUG
@@ -68,8 +68,13 @@ extension LogController: BTScannerDelegate {
         #endif
     }
 
-    func didUpdate(device: BTDevice) {
+    func didUpdate(device: BTScan) {
         let text = "Updated device: \(device.bluetoothIdentifier.uuidString), signal: \(device.rssi)"
+        localLog(text)
+    }
+
+    func didRemove(device: BTScan) {
+        let text = "Remove device: \(device.bluetoothIdentifier.uuidString), last signal: \(device.rssi)"
         localLog(text)
     }
 
@@ -82,7 +87,6 @@ extension LogController: BTScannerDelegate {
 
         let request = UNNotificationRequest(identifier: "Scanning",  content: notification, trigger: nil)
         UNUserNotificationCenter.current().add(request)
-
     }
 }
 

@@ -8,9 +8,8 @@
 
 import Foundation
 import CoreBluetooth
-import RxSwift
 
-protocol BTAdvertising: class {
+protocol BTAdvertising: AnyObject {
 
     init(TUIDs: [String], IDRotation: Int)
 
@@ -29,15 +28,13 @@ protocol BTAdvertising: class {
 
 final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
-    private let bag = DisposeBag()
-
     // Advertising ID
     private let TUIDs: [String]
     private(set) var currentID: String?
     var didChangeID: IDChangeCallback?
 
-    private let IDRotation: Int
-    private var IDRotationTimer: Observable<Int>
+    private let IDRotation: TimeInterval
+    private var IDRotationTimer: Timer?
 
     // Brodcasting
     private var peripheralManager: CBPeripheralManager! = nil
@@ -57,12 +54,7 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
     init(TUIDs: [String], IDRotation: Int) {
         self.TUIDs = TUIDs
-        self.IDRotation = IDRotation
-        self.IDRotationTimer = Observable.timer(
-            .seconds(0),
-            period: .seconds(IDRotation),
-            scheduler: ConcurrentDispatchQueueScheduler(qos: .background)
-        )
+        self.IDRotation = TimeInterval(IDRotation)
 
         super.init()
 
@@ -104,14 +96,13 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
             CBAdvertisementDataServiceUUIDsKey : [BT.transferService.cbUUID]
         ])
 
-        IDRotationTimer
-            .skip(1)
-            .subscribe(onNext: { [weak self] _ in
-                guard self?.isRunning == true else { return }
+        IDRotationTimer?.invalidate()
+        IDRotationTimer = Timer.scheduledTimer(withTimeInterval: IDRotation, repeats: true, block: { [weak self] _ in
+            guard self?.isRunning == true else { return }
+            DispatchQueue.main.async {
                 self?.rotateDeviceID()
-                self?.didChangeID?()
-            })
-            .disposed(by: bag)
+            }
+        })
 
         log("BTAdvertiser: started")
     }
@@ -122,11 +113,8 @@ final class BTAdvertiser: NSObject, BTAdvertising, CBPeripheralManagerDelegate {
 
         peripheralManager.stopAdvertising()
 
-        IDRotationTimer = Observable.timer(
-            .seconds(0),
-            period: .seconds(IDRotation),
-            scheduler: ConcurrentDispatchQueueScheduler(qos: .background)
-        )
+        IDRotationTimer?.invalidate()
+        IDRotationTimer = nil
 
         log("BTAdvertiser: stoped")
     }

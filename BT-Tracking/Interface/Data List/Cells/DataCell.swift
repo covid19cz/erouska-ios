@@ -22,6 +22,20 @@ final class DataCell: UITableViewCell {
         dateLabel.text = Self.dateFormatter.string(from: scan.date)
         timeLabel.text = Self.timeFormatter.string(from: scan.date)
         RSSILabel.text = String(scan.rssi) + " dB"
+        RSSILabel.textColor = color(forScan: scan)
+    }
+
+    private func color(forScan scan: Scan) -> UIColor {
+        switch scan.expositionLevel {
+        case .level1: return UIColor(rgb: 0x4CAF50)
+        case .level2: return UIColor(rgb: 0x8BC34A)
+        case .level3: return UIColor(rgb: 0xCDDC39)
+        case .level4: return UIColor(rgb: 0xFFEB3B)
+        case .level5: return UIColor(rgb: 0xFFC107)
+        case .level6: return UIColor(rgb: 0xFF9800)
+        case .level7: return UIColor(rgb: 0xFF5722)
+        case .level8: return UIColor(rgb: 0xF44336)
+        }
     }
 
     private static var dateFormatter: DateFormatter = {
@@ -37,4 +51,5 @@ final class DataCell: UITableViewCell {
         formatter.timeStyle = .medium
         return formatter
     }()
+
 }

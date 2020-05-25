@@ -19,8 +19,6 @@ final class ScannerStore {
     /// default 0
     private let scanningDelay: Int = 0
 
-    private let lastPurgeDateKey = "lastDataPurgeDate"
-
     /// 1 day... for testing set to 60 seconds for example
     private let dataPurgeCheckInterval: TimeInterval = 1 * 86400
 
@@ -34,15 +32,16 @@ final class ScannerStore {
     private let scanObjects: Results<ScanRealm>
     private let bag = DisposeBag()
     
-    private let didFindSubject = PublishRelay<BTDevice>()
-    private let didUpdateSubject = PublishRelay<BTDevice>()
-    private let didReceive: Observable<BTDevice>
+    private let didFindSubject = PublishRelay<BTScan>()
+    private let didUpdateSubject = PublishRelay<BTScan>()
+    private let didReceive: Observable<BTScan>
     private let timer: Observable<Int>
     private var period: BehaviorSubject<Void> {
         return BehaviorSubject<Void>(value: ())
     }
     private var currentPeriod: BehaviorSubject<Void>?
-    private var devices = [BTDevice]()
+    private var devices = [BTScan]()
+    private let scannerQueue = SerialDispatchQueueScheduler(qos: .background)
     
     init(scanningPeriod: Int = 60, dataPurgeInterval: TimeInterval = 14 * 86400) {
         self.scanningPeriod = scanningPeriod
@@ -66,6 +65,7 @@ final class ScannerStore {
         bind(newPeriod: currentPeriod, endsAt: Date() + Double(scanningPeriod))
         timer
             .skip(1)
+            .observeOn(scannerQueue)
             .subscribe(onNext: { [weak self] _ in
                 self?.currentPeriod?.onCompleted()
             })
@@ -73,6 +73,7 @@ final class ScannerStore {
 
         // Device scans
         didReceive
+            .observeOn(scannerQueue)
             .subscribe(onNext: { [weak self] device in
                 self?.devices.append(device)
                 self?.updateCurrent(at: Date())
@@ -82,6 +83,7 @@ final class ScannerStore {
     
     private func bind(newPeriod: BehaviorSubject<Void>?, endsAt endDate: Date) {
         newPeriod?
+            .observeOn(scannerQueue)
             .subscribe(onCompleted: { [weak self] in
                 self?.processPeriod(with: endDate)
             })
@@ -90,6 +92,7 @@ final class ScannerStore {
     
     private func bindAppTerminate() {
         appTermination
+            .observeOn(scannerQueue)
             .subscribe(onNext: { [weak self] in
                 self?.processPeriod(with: Date())
             })
@@ -104,7 +107,7 @@ final class ScannerStore {
         self.deleteOldRecordsIfNeeded()
     }
     
-    private func process(_ devices: [BTDevice], at date: Date) {
+    private func process(_ devices: [BTScan], at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let averaged = grouped.map { group -> ScanRealm? in
             guard var device = group.value.first,
@@ -128,7 +131,7 @@ final class ScannerStore {
     private func updateCurrent(at date: Date) {
         let grouped = Dictionary(grouping: devices, by: { $0.deviceIdentifier })
         let latestDevices = grouped
-            .map { group -> BTDevice? in
+            .map { group -> BTScan? in
                 return group.value.sorted(by: { $0.date > $1.date }).first
             }
             .compactMap { $0 }
@@ -151,7 +154,7 @@ final class ScannerStore {
     }
 
     func deleteOldRecordsIfNeeded() {
-        guard let lastPurgeDate = UserDefaults.standard.object(forKey: lastPurgeDateKey) as? Date else {
+        guard let lastPurgeDate = AppSettings.lastPurgeDate else {
             storeLastPurgeDate()
             return
         }
@@ -177,19 +180,24 @@ final class ScannerStore {
     }
     
     private func storeLastPurgeDate() {
-        UserDefaults.standard.set(Date(), forKey: lastPurgeDateKey)
+        AppSettings.lastPurgeDate = Date()
     }
 }
 
 extension ScannerStore: BTScannerDelegate {
 
-    func didFind(device: BTDevice) {
+    func didFind(device: BTScan) {
         didFindSubject.accept(device)
     }
 
-    func didUpdate(device: BTDevice) {
+    func didUpdate(device: BTScan) {
         didUpdateSubject.accept(device)
     }
+
+    func didRemove(device: BTScan) {
+        didUpdateSubject.accept(device)
+    }
+
 }
 
 extension ScannerStore {

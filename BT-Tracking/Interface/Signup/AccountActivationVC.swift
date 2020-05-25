@@ -1,5 +1,5 @@
 //
-//  AccountActivationController.swift
+//  AccountActivationVC.swift
 //  BT-Tracking
 //
 //  Created by Lukáš Foldýna on 19/03/2020.
@@ -12,12 +12,16 @@ import RxRelay
 import FirebaseAuth
 import DeviceKit
 
-final class AccountActivationController: UIViewController {
+final class AccountActivationVC: UIViewController {
 
     struct AuthData {
         let verificationID: String
         let phoneNumber: String
     }
+
+    // MARK: -
+
+    private let viewModel = AccountActivationVM()
 
     private var phonePrefix = BehaviorRelay<String>(value: "")
     private var phoneNumber = BehaviorRelay<String>(value: "")
@@ -29,30 +33,33 @@ final class AccountActivationController: UIViewController {
     private var keyboardHandler: KeyboardHandler!
     private var disposeBag = DisposeBag()
 
-    @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
-    @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
+    private var firstAppear: Bool = true
 
+    // MARK: - Outlets
+
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var phonePrefixTextField: UITextField!
     @IBOutlet private weak var phoneNumberTextField: UITextField!
-    @IBOutlet private weak var actionButton: UIButton!
+    @IBOutlet private weak var permissionTitleLabel: UILabel!
     @IBOutlet private weak var permissionSwitch: UISwitch!
-    @IBOutlet private weak var activityView: UIView!
+    @IBOutlet private weak var permissionFooter: UILabel!
+    @IBOutlet private weak var permissionMoreButton: UIButton!
 
-    private var firstAppear: Bool = true
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var actionButton: UIButton!
+
+    // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        keyboardHandler = KeyboardHandler(in: view, scrollView: scrollView, buttonsView: buttonsView, buttonsBottomConstraint: buttonsBottomConstraint)
-
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
-        
-        phonePrefixTextField.rx.text.orEmpty.bind(to: phonePrefix).disposed(by: disposeBag)
-        phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)
 
-        isValid.bind(to: actionButton.rx.isEnabled).disposed(by: disposeBag)
+        setupTextFields()
+        setupStrings()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -75,7 +82,7 @@ final class AccountActivationController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 
-        guard let destination = segue.destination as? CompleteActivationController,
+        guard let destination = segue.destination as? CompleteActivationVC,
             let authData = sender as? AuthData else { return }
         destination.authData = authData
     }
@@ -84,31 +91,22 @@ final class AccountActivationController: UIViewController {
 
     @IBAction private func activateAcountAction() {
         guard permissionSwitch.isOn else {
-            self.showError(
-                title: "Souhlas s podmínkami zpracování je nezbytný pro aktivaci aplikace. Bez vašeho souhlasu nemůže aplikace fungovat.",
-                message: ""
-            )
+            self.showAlert(title: viewModel.permissionAlert)
             return
         }
 
-        activityView.isHidden = false
+        showProgress()
         view.endEditing(true)
 
         let phone = phonePrefix.value + phoneNumber.value
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { [weak self] verificationID, error in
             guard let self = self else { return }
-            self.activityView.isHidden = true
+            self.hideProgress()
 
             if let error = error {
-                log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
-                if (error as NSError).code == AuthErrorCode.tooManyRequests.rawValue {
-                    self.showError(title: "Telefonní číslo jsme dočasně zablokovali", message: "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu.")
-                } else {
-                    self.showError(title: "Nepodařilo se nám ověřit telefonní číslo", message: "Zkontrolujte připojení k internetu a zkuste to znovu")
-                }
-                self.cleanup()
+                self.handle(error: error)
             } else if let verificationID = verificationID  {
-                self.performSegue(withIdentifier: "verification", sender: AuthData(verificationID: verificationID, phoneNumber: phone))
+                self.handleSuccess(authData: AuthData(verificationID: verificationID, phoneNumber: phone))
             }
         }
     }
@@ -120,7 +118,7 @@ final class AccountActivationController: UIViewController {
 
 }
 
-extension AccountActivationController: UITextFieldDelegate {
+extension AccountActivationVC: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let type: InputValidation
@@ -137,7 +135,51 @@ extension AccountActivationController: UITextFieldDelegate {
 
 }
 
-private extension AccountActivationController {
+private extension AccountActivationVC {
+
+    func setupStrings() {
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
+        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
+
+        headlineLabel.localizedText(viewModel.headline)
+        phonePrefixTextField.localizedPlaceholder(viewModel.phonePrefix)
+        phonePrefixTextField.localizedText(viewModel.phonePrefix)
+        phoneNumberTextField.localizedPlaceholder(viewModel.phonePlaceholder)
+        permissionTitleLabel.localizedText(viewModel.permissionTitle)
+        permissionFooter.localizedText(viewModel.permissionFooter)
+        permissionMoreButton.localizedTitle(viewModel.permissionFooterMore)
+        actionButton.localizedTitle(viewModel.continueButton)
+    }
+
+    func setupTextFields() {
+        keyboardHandler = KeyboardHandler(in: view, scrollView: scrollView, buttonsView: buttonsView, buttonsBottomConstraint: buttonsBottomConstraint)
+
+        phonePrefixTextField.rx.text.orEmpty.bind(to: phonePrefix).disposed(by: disposeBag)
+        phoneNumberTextField.rx.text.orEmpty.bind(to: phoneNumber).disposed(by: disposeBag)
+
+        isValid.bind(to: actionButton.rx.isEnabled).disposed(by: disposeBag)
+    }
+
+    func handle(error: Error) {
+        log("Auth: verifyPhoneNumber error: \(error.localizedDescription)")
+        if (error as NSError).code == AuthErrorCode.tooManyRequests.rawValue {
+            showAlert(
+                title: viewModel.errorTooManyRequestsTitle,
+                message: viewModel.errorTooManyRequestsMessage
+            )
+        } else {
+            showAlert(
+                title: viewModel.errorVerificationTitle,
+                message: viewModel.errorVerificationMessage
+            )
+        }
+        cleanup()
+    }
+
+    func handleSuccess(authData: AuthData) {
+        performSegue(withIdentifier: "verification", sender: authData)
+    }
 
     func cleanup() {
         do {

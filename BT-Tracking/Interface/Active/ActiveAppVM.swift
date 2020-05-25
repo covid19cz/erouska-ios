@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ActiveAppViewModel {
+final class ActiveAppVM {
 
     enum State: String {
         case enabled
@@ -54,59 +54,45 @@ final class ActiveAppViewModel {
             }
         }
 
-        var head: String {
+        var headline: String {
             switch self {
             case .enabled:
-                return "eRouška je aktivní"
+                return "active_head_enabled"
             case .paused:
-                return "eRouška je pozastavená"
+                return "active_head_paused"
             case .disabled:
-                return "Zapněte Bluetooth"
+                return "active_head_disabled"
             }
         }
 
         var title: String {
             switch self {
             case .enabled:
-                return "Na místech s větší koncentrací lidí nechte aplikaci spuštěnou při zapnuté obrazovce. Rozpoznáme tak lépe ostatní eRoušky v okolí."
+                return RemoteValues.activeTitleEnabled
             case .paused:
-                return "Aplikace je aktuálně pozastavená a nesbírá žádná data o vašem okolí.\n\nSpusťte znovu sběr dat a chraňte vás i vaše okolí. Nezapomínejte na to v momentě, kdy opouštíte svůj domov."
+                return Localizable("active_title_paused")
             case .disabled:
-                return "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout\"."
+                return Localizable("active_title_disabled")
             }
         }
-        
-        var tips: String {
-            return "Tipy pro snížení spotřeby baterie"
-        }
-        
-        var firstTip: String {
-            return "Na stole otočte telefon obrazovkou dolů. Obrazovka automaticky zhasne."
-        }
-        
-        var secondTip: String {
-            return "Do kapsy dávejte telefon nabíjecím konektorem nahoru. Zakrytá obrazovka automaticky zhasne."
-        }
 
-        var text: String {
+        var footer: String? {
             switch self {
             case .enabled:
-                return "Při podezření na nákazu vás budeme kontaktovat na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, který naleznete v sekci Moje data."
-            case .paused:
-                return ""
-            case .disabled:
-                return ""
+                return "active_footer"
+            default:
+                return nil
             }
         }
 
         var actionTitle: String {
             switch self {
             case .enabled:
-                return "Pozastavit"
+                return "active_button_enabled"
             case .paused:
-                return "Spustit"
+                return "active_button_paused"
             case .disabled:
-                return "Zapnout"
+                return "active_button_disabled"
             }
         }
 
@@ -119,6 +105,27 @@ final class ActiveAppViewModel {
             }
         }
     }
+
+    let title = "app_name"
+    let back = "back"
+    let tabTitle = "app_name"
+
+    let shareApp = "share_app"
+    let shareAppMessage = "share_app_message"
+
+    let tips = "active_tips_title"
+    let firstTip = "active_tip_1"
+    let secondTip = "active_tip_2"
+
+    let menuAbout = "about"
+    let menuDebug = "debug"
+    let menuCancelRegistration = "cancel_registration_button"
+    let menuCancel = "close"
+
+    let backgroundModeTitle = "active_background_mode_title"
+    let backgroundModeMessage = "active_background_mode_title"
+    let backgroundModeAction = "active_background_mode_settings"
+    let backgroundModeCancel = "active_background_mode_cancel"
 
     private(set) var state: State
 
@@ -143,4 +150,5 @@ final class ActiveAppViewModel {
             state = (AppSettings.state == .disabled ? .enabled : AppSettings.state) ?? .enabled
         }
     }
+
 }

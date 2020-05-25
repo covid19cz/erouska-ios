@@ -55,7 +55,6 @@ extension AppDelegate {
     func remoteConfigString(forKey key: RemoteConfigValueKey) -> String {
         return RemoteConfig.remoteConfig()[key.rawValue].stringValue ?? ""
     }
-
 }
 
 enum RemoteConfigValueKey: String {
@@ -79,6 +78,11 @@ enum RemoteConfigValueKey: String {
     
     case helpMarkdown
     case dataCollectionMarkdown
+
+    case aboutJson
+    
+    case activeTitleEnabled
+    case activeTitleEnabled_en
 }
 
 struct RemoteValues {
@@ -103,26 +107,13 @@ struct RemoteValues {
         .emergencyNumber: 1212,
         
         .helpMarkdown: helpMarkdownBackup,
-        .dataCollectionMarkdown: dataCollectionMarkdownBackup
+        .dataCollectionMarkdown: dataCollectionMarkdownBackup,
+
+        .aboutJson: aboutJsonBackup,
+        
+        .activeTitleEnabled: activeTitleEnabledDefault,
+        .activeTitleEnabled_en: activeTitleEnabledDefaultEn,
     ]
-
-    private static func localValue(forResource resource: String, withExtension extension: String, withKey key: String) -> String {
-        guard
-            let path = Bundle.main.url(forResource: resource, withExtension: `extension`),
-            let dict = NSDictionary(contentsOf: path),
-            let value = dict.value(forKey: key) as? String
-        else { return "" }
-
-        return value
-    }
-
-    private static var helpMarkdownBackup: String {
-        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
-    }
-
-    private static var dataCollectionMarkdownBackup: String {
-        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "dataCollectionInfoBackup")
-    }
 
     /// doba scanování v sekundách, default = 120
     static var collectionSeconds: Int {
@@ -183,6 +174,11 @@ struct RemoteValues {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.aboutLink)
     }
 
+    /// Authors json
+    static var aboutJson: String {
+        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.aboutJson)
+    }
+
     /// Homepage - erouska.cz
     static var homepageLink: String {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.homepageLink)
@@ -205,5 +201,64 @@ struct RemoteValues {
     /// Data collection markdown
     static var dataCollectionMarkdown: String {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.dataCollectionMarkdown)
+    }
+    
+    /// Main screen title enabled text
+    static var activeTitleEnabled: String {
+
+        enum SupportedLanguage: String {
+            case cs, en
+        }
+
+        var language = SupportedLanguage.cs
+        if let preferredLocalization = Bundle.main.preferredLocalizations.first, let preferredLanguage = SupportedLanguage(rawValue: preferredLocalization) {
+            language = preferredLanguage
+        }
+
+        var key: RemoteConfigValueKey {
+            switch language {
+            case .en: return .activeTitleEnabled_en
+            default: return .activeTitleEnabled
+            }
+        }
+
+        return AppDelegate.shared.remoteConfigString(forKey: key)
+            .replacingOccurrences(of: "\\n", with: "\n")
+            .replacingOccurrences(of: "\\", with: "")
+    }
+}
+
+// MARK: - Backup
+
+private extension RemoteValues {
+
+    static func localValue(forResource resource: String, withExtension extension: String, withKey key: String) -> String {
+        guard
+            let path = Bundle.main.url(forResource: resource, withExtension: `extension`),
+            let dict = NSDictionary(contentsOf: path),
+            let value = dict.value(forKey: key) as? String
+        else { return "" }
+
+        return value
+    }
+
+    static var helpMarkdownBackup: String {
+        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
+    }
+
+    static var dataCollectionMarkdownBackup: String {
+        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "dataCollectionInfoBackup")
+    }
+
+    static var aboutJsonBackup: String {
+        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "aboutJsonBackup")
+    }
+
+    static var activeTitleEnabledDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefault")
+    }
+    
+    static var activeTitleEnabledDefaultEn: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefaultEn")
     }
 }

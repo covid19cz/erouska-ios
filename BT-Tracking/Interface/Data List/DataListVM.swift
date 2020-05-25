@@ -14,7 +14,35 @@ import RealmSwift
 
 final class DataListVM {
 
+    // MARK: - Localization
+
+    let tabTitle = "data_list_title"
+    var tabIcon: UIImage? {
+        if #available(iOS 13, *) {
+            return UIImage(systemName: "doc.plaintext")
+        } else {
+            return UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
+        }
+    }
+
+    let title = "data_list_title"
+    let infoButton = "data_list_info_button"
+    let deleteButton = "data_list_delete_button"
+    let sendButton = "data_list_send_button"
+
+    let sendDataQuestionTitle = "data_list_send_question_title"
+    let sendDataQuestionMessage = "data_list_send_question_message"
+    let sendDataQuestionYes = "data_list_send_question_yes"
+    let sendDataQuestionNo = "data_list_send_question_no"
+
+    let sendDataErrorWait = "data_list_send_error_wait"
+    let sendDataErrorFailedTitle = "data_list_send_error_failed_title"
+    let sendDataErrorFailedMessage = "data_list_send_error_failed_message"
+    let sendDataErrorFile = "data_list_send_error_file_title"
+    let sendDataErrorOnlyAfter = "data_list_send_error_only_after_message"
+
     // MARK: - Properties
+
     let selectedSegmentIndex = PublishRelay<Int>()
 
     private let scans: Observable<[Scan]>
@@ -58,10 +86,12 @@ final class DataListVM {
 extension DataListVM {
 
     private func section(from scans: [Scan]) -> [SectionModel] {
-        let header = DataListVM.Section.Item.header(scanObjects.distinct(by: ["buid"]).count)
+        let header = DataListVM.Section.Item.header
+        let scanningInfo = DataListVM.Section.Item.scanningInfo
+        let aboutData = DataListVM.Section.Item.aboutData
         let items: [DataListVM.Section.Item] = scans.map { .data($0) }
         return [
-            SectionModel(model: .list, items: [header] + items)
+            SectionModel(model: .list, items: [scanningInfo, aboutData, header] + items)
         ]
     }
 
@@ -88,8 +118,10 @@ extension DataListVM {
         }
 
         enum Item: IdentifiableType, Equatable {
-            case header(Int)
+            case header
             case data(Scan)
+            case scanningInfo
+            case aboutData
 
             var identity: String {
                 switch self {
@@ -97,12 +129,16 @@ extension DataListVM {
                     return "header"
                 case .data(let scan):
                     return scan.id
+                case .scanningInfo:
+                    return "scanningInfo"
+                case .aboutData:
+                    return "aboutData"
                 }
             }
 
             var date: Date? {
                 switch self {
-                case .header:
+                case .header, .scanningInfo, .aboutData:
                     return nil
                 case .data(let scan):
                     return scan.date

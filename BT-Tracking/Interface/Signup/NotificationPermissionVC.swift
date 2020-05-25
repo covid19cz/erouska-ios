@@ -9,10 +9,19 @@
 import UIKit
 import UserNotifications
 
-final class NotificationPermissionController: UIViewController {
+final class NotificationPermissionVC: UIViewController {
+
+    // MARK: -
+
+    private let viewModel = NotificationPermissionVM()
+
+    // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
+    @IBOutlet private weak var continueButton: RoundedButtonFilled!
 
     // MARK: -
 
@@ -20,6 +29,7 @@ final class NotificationPermissionController: UIViewController {
         super.viewDidLoad()
 
         buttonsView.connect(with: scrollView)
+        setupStrings()
     }
 
     // MARK: - Action
@@ -27,10 +37,24 @@ final class NotificationPermissionController: UIViewController {
     @IBAction func continueAction(_ sender: Any) {
         requestPermission()
     }
-    
+
+}
+
+private extension NotificationPermissionVC {
+
+    func setupStrings() {
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
+        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
+        
+        headlineLabel.localizedText(viewModel.headline)
+        bodyLabel.localizedText(viewModel.body)
+        continueButton.localizedTitle(viewModel.continueButton)
+    }
+
     // MARK: - Request permission
-    
-    private func requestPermission() {
+
+    func requestPermission() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(
             options: authOptions,
@@ -41,4 +65,5 @@ final class NotificationPermissionController: UIViewController {
         })
         UIApplication.shared.registerForRemoteNotifications()
     }
+
 }

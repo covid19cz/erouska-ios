@@ -68,7 +68,7 @@ final class ScanListVC: UIViewController, UITableViewDelegate {
 
 
     @IBAction func closeAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 
 

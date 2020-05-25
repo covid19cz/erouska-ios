@@ -24,6 +24,7 @@ class ButtonsBackgroundView: UIView {
     var defaultContentInset: UIEdgeInsets = .zero
 
     private weak var gradientView: GradientView?
+    private weak var scrollView: UIScrollView?
     private let disposeBag = DisposeBag()
 
     override init(frame: CGRect = .zero) {
@@ -36,6 +37,25 @@ class ButtonsBackgroundView: UIView {
         super.init(coder: aDecoder)
 
         setup()
+    }
+
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let hit = super.hitTest(point, with: event)
+        if hit is UIButton {
+            return hit
+        } else if scrollView?.frame.contains(point) == true {
+            guard let hitView = scrollView?.hitTest(point, with: event) else { return hit }
+
+            for subview in hitView.subviews.reversed() {
+                let convertedPoint = subview.convert(point, from: self)
+                if let hitView = subview.hitTest(convertedPoint, with: event) {
+                    return hitView
+                }
+            }
+            return hitView
+        } else {
+            return hit
+        }
     }
 
     private func setup() {
@@ -77,13 +97,22 @@ class ButtonsBackgroundView: UIView {
         defaultContentInset.bottom = frame.height + Self.TopOffset
         scrollView.contentInset = defaultContentInset
         scrollView.scrollIndicatorInsets = defaultContentInset
+        self.scrollView = scrollView
 
         scrollView.rx.contentOffset.asDriver().drive(onNext: { [weak self] offset in
             guard let self = self else { return }
-            let bottomContentOffsetDiff = scrollView.contentInset.bottom - self.defaultContentInset.bottom
-            let hideGradient = offset.y - scrollView.adjustedContentInset.top + scrollView.bounds.height + Self.BottomMargin - bottomContentOffsetDiff >= scrollView.contentSize.height
-            self.isGradientHidden = hideGradient
+            self.updateOffset(in: scrollView, offset: offset)
         }).disposed(by: disposeBag)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.updateOffset(in: scrollView, offset: scrollView.contentOffset)
+        }
+    }
+
+    func updateOffset(in scrollView: UIScrollView, offset: CGPoint) {
+        let bottomContentOffsetDiff = scrollView.contentInset.bottom - defaultContentInset.bottom
+        let hideGradient = offset.y - scrollView.adjustedContentInset.top + scrollView.bounds.height + Self.BottomMargin - bottomContentOffsetDiff >= scrollView.contentSize.height
+        isGradientHidden = hideGradient
     }
 
 }

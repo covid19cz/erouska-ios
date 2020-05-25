@@ -17,7 +17,9 @@ def common_pods
 
   pod "ReachabilitySwift", '~> 5.0.0'
 
-  pod "MarkdownKit", '~> 1.6.0'
+  pod 'SwiftyMarkdown', '~> 1.2.1'
+
+  pod 'AlamofireImage', '~> 4.1.0'
 end
 
 def firebase_pods

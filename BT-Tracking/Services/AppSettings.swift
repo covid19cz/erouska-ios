@@ -10,47 +10,62 @@ import Foundation
 
 struct AppSettings {
 
+    private enum Keys: String {
+        case appState = "appState"
+        case backgroundModeAlertShown = "backgroundModeAlertShown"
+        case appFirstTimeLaunched = "appFirstTimeLaunched"
+        case lastUploadDate = "lastUploadDate"
+        case lastDataPurgeDate = "lastDataPurgeDate"
+    }
+
     static let firebaseRegion = "europe-west1"
-    static let backgroundModeAlertShownKey = "backgroundModeAlertShown"
-    static let appFirstTimeLaunchedKey = "appFirstTimeLaunched"
     
     static let TUIDRotation: Int = 60 * 60
 
-    static var state: ActiveAppViewModel.State? {
+    static var state: ActiveAppVM.State? {
         get {
-            return ActiveAppViewModel.State(rawValue: UserDefaults.standard.string(forKey: "AppState") ?? "")
+            return ActiveAppVM.State(rawValue: string(forKey: .appState))
         }
         set {
-            UserDefaults.standard.setValue(newValue?.rawValue, forKey: "AppState")
+            set(withKey: .appState, value: newValue?.rawValue)
         }
     }
 
     static var lastUploadDate: Date? {
         get {
-            let rawValue = UserDefaults.standard.double(forKey: "UploadDate")
-            let time = TimeInterval(rawValue)
-            return Date(timeIntervalSince1970: time)
+            let rawValue = double(forKey: .lastUploadDate)
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
         }
         set {
-            UserDefaults.standard.set(newValue?.timeIntervalSince1970, forKey: "UploadDate")
+            set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
+        }
+    }
+
+    static var lastPurgeDate: Date? {
+        get {
+            let rawValue = double(forKey: .lastDataPurgeDate)
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+        }
+        set {
+            set(withKey: .lastDataPurgeDate, value: newValue?.timeIntervalSince1970)
         }
     }
     
     static var backgroundModeAlertShown: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: backgroundModeAlertShownKey)
+            return bool(forKey: .backgroundModeAlertShown)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: backgroundModeAlertShownKey)
+            set(withKey: .backgroundModeAlertShown, value: newValue)
         }
     }
     
     static var appFirstTimeLaunched: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: appFirstTimeLaunchedKey)
+            return bool(forKey: .appFirstTimeLaunched)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: appFirstTimeLaunchedKey)
+            set(withKey: .appFirstTimeLaunched, value: newValue)
         }
     }
 
@@ -62,4 +77,23 @@ struct AppSettings {
         AppSettings.lastUploadDate = nil
         AppSettings.backgroundModeAlertShown = false
     }
+
+    // MARK: - Private
+
+    private static func bool(forKey key: Keys) -> Bool {
+        return UserDefaults.standard.bool(forKey: key.rawValue)
+    }
+
+    private static func double(forKey key: Keys) -> Double {
+        return UserDefaults.standard.double(forKey: key.rawValue)
+    }
+
+    private static func string(forKey key: Keys) -> String {
+        return UserDefaults.standard.string(forKey: key.rawValue) ?? ""
+    }
+
+    private static func set(withKey key: Keys, value: Any?) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
+    }
+
 }

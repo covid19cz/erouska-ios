@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -23,43 +23,17 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.1077972356575-olvss64s9bnk2fp2lhg1cc4c1cvf8f49</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.1077972356575-g0n4ouc5vuhs0iifu5157ufgv7durh16</string>
+				<string>com.googleusercontent.apps.941144972907-ds016o6p1icpju7s67p8dhr55jltub0j</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.covid19cz.BT-Tracking5</string>
+			<string>cz.covid19cz.erouska</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.covid19cz.BT-Tracking5</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.covid19cz.BT-Tracking6</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.covid19cz.BT-Tracking6</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.1077972356575-rflvasannh2k4hh3475994j1dhk99qkh</string>
+				<string>cz.covid19cz.erouska</string>
 			</array>
 		</dict>
 	</array>

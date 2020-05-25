@@ -1,0 +1,11 @@
+/* 
+  RemoteTitles.strings
+  BT-Tracking
+
+  Created by Tomas Svoboda on 22/04/2020.
+  Copyright © 2020 Covid19CZ. All rights reserved.
+*/
+
+"activeTitleEnabledDefault" = "Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.\n\nNa rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.";
+
+"activeTitleEnabledDefaultEn" = "Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.\n\nNa rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.";

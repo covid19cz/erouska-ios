@@ -11,27 +11,40 @@ import FirebaseAuth
 
 final class UnregisterUserVC: UIViewController {
 
-    @IBOutlet private weak var activityView: UIView!
-    @IBOutlet private weak var textLabel: UILabel!
+    // MARK: -
+
+    private let viewModel = UnregisterUserVM()
+
+    // MARK: - Outlets
+
+    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var actionButton: Button!
+
+    // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textLabel.text = textLabel.text?.replacingOccurrences(of: "%@", with: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
+
+        bodyLabel.localizedText(viewModel.body, values: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
+        actionButton.localizedTitle(viewModel.actionButton)
     }
 
     // MARK: - Actions
 
     @IBAction private func unregisterAction() {
-        activityView.isHidden = false
+        showProgress()
         
         AppDelegate.shared.functions.httpsCallable("deleteUser").call() { [weak self] result, error in
             guard let self = self else { return }
-            self.activityView.isHidden = true
+            self.hideProgress()
 
-            if let error = error as NSError? {
+            if let error = error as NSError?,
+                error.code != AuthErrorCode.userNotFound.rawValue {
                 Log.log("deleteUser request failed with error: \(error.localizedDescription)")
-                self.show(error: error, title: "Chyba při zrušení registrace")
+                self.show(error: error, title: self.viewModel.errorTitle)
                 return
             }
 
@@ -49,4 +62,5 @@ final class UnregisterUserVC: UIViewController {
             self.performSegue(withIdentifier: "finish", sender: nil)
         }
     }
+
 }
