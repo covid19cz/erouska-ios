@@ -22,6 +22,8 @@ struct Exposure: Codable, Equatable {
     let duration: TimeInterval
     let totalRiskScore: ENRiskScore
     let transmissionRiskLevel: ENRiskLevel
+    let attenuationValue: ENAttenuation
+    var attenuationDurations: [Int]
 }
 
 struct ExposureConfiguration: Codable {

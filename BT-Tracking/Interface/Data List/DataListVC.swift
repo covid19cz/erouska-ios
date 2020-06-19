@@ -79,8 +79,11 @@ final class DataListVC: UIViewController, UITableViewDelegate {
 
                 var result = ""
                 for exposure in exposures {
+                    let signals = exposure.attenuationDurations.map { "\($0)" }
                     result += "EXP: \(dateFormat.string(from: exposure.date))" +
                     ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
+                        + "attenuation value: \(exposure.attenuationValue)\n"
+                        + "signal attenuations: \(signals.joined(separator: ", "))\n"
                 }
                 if result == "" {
                     result = "None";
@@ -182,13 +185,62 @@ private extension DataListVC {
     // MARK: - Report
 
     func sendReport() {
-        newSendReport()
+        let alert = UIAlertController(title: "Ktery druh klicu", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Test keys", style: .default, handler: { _ in
+            self.newSendReport2()
+        }))
+        alert.addAction(UIAlertAction(title: "Real keys", style: .default, handler: { _ in
+            self.newSendReport()
+        }))
+        alert.addAction(UIAlertAction(title: "Zrusit", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 
     func newSendReport() {
         guard let scanner = AppDelegate.shared.scanner as? BTFakeScanner else { return }
 
         scanner.exposure.getDiagnosisKeys { result in
+            switch result {
+            case .success(let keys):
+                let encoder = JSONEncoder()
+                let data = (try? encoder.encode(keys)) ?? Data()
+
+                let path = "exposure/\(Auth.auth().currentUser?.uid ?? "")/"
+                let fileName = "exposure.json"
+
+                let storage = Storage.storage()
+                let storageReference = storage.reference()
+                let fileReference = storageReference.child("\(path)/\(fileName)")
+                let storageMetadata = StorageMetadata()
+                let metadata = [
+                    "version": "1",
+                    "buid": KeychainService.BUID ?? ""
+                ]
+                storageMetadata.customMetadata = metadata
+
+                fileReference.putData(data, metadata: storageMetadata) { [weak self] (metadata, error) in
+                    guard let self = self else { return }
+                    self.hideProgress()
+
+                    self.writer?.deleteFile()
+                    if let error = error {
+                        log("FirebaseUpload: Error \(error.localizedDescription)")
+                        self.showSendDataErrorFailed()
+                        return
+                    }
+                    AppSettings.lastUploadDate = Date()
+                    self.performSegue(withIdentifier: "sendReport", sender: nil)
+                }
+            case .failure(let error):
+                log("Failed to get exposure keys \(error)")
+            }
+        }
+    }
+
+    func newSendReport2() {
+        guard let scanner = AppDelegate.shared.scanner as? BTFakeScanner else { return }
+
+        scanner.exposure.getTestDiagnosisKeys { result in
             switch result {
             case .success(let keys):
                 let encoder = JSONEncoder()

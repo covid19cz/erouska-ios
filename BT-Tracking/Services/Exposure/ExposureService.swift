@@ -30,6 +30,7 @@ protocol ExposureServicing: class {
 
     @available(iOS 13.5, *)
     func getDiagnosisKeys(callback: @escaping KeysCallback)
+    func getTestDiagnosisKeys(callback: @escaping KeysCallback)
 
     typealias DetectCallback = (Result<[Exposure], Error>) -> Void
     var detectingExposures: Bool { get }
@@ -138,11 +139,21 @@ class ExposureService: ExposureServicing {
             }
         }
 
-        #if DEBUG
-        manager.getTestDiagnosisKeys(completionHandler: innerCallbck)
-        #else
         manager.getDiagnosisKeys(completionHandler: innerCallbck)
-        #endif
+    }
+
+    func getTestDiagnosisKeys(callback: @escaping KeysCallback) {
+        let innerCallbck: ENGetDiagnosisKeysHandler = { keys, error in
+            if let error = error {
+                callback(.failure(error))
+            } else if keys?.isEmpty == true {
+                callback(.failure(ExposureError.noData))
+            } else if let keys = keys {
+                callback(.success(keys.map { ExposureDiagnosisKey(key: $0) }))
+            }
+        }
+
+        manager.getTestDiagnosisKeys(completionHandler: innerCallbck)
     }
 
     static let privateKeyECData = Data(base64Encoded: """
@@ -318,7 +329,9 @@ class ExposureService: ExposureServicing {
                                             date: exposure.date,
                                             duration: exposure.duration,
                                             totalRiskScore: exposure.totalRiskScore,
-                                            transmissionRiskLevel: exposure.transmissionRiskLevel
+                                            transmissionRiskLevel: exposure.transmissionRiskLevel,
+                                            attenuationValue: exposure.attenuationValue,
+                                            attenuationDurations: exposure.attenuationDurations.map { $0.intValue }
                                         )
                                     }
                                     progress.completedUnitCount = progress.totalUnitCount
