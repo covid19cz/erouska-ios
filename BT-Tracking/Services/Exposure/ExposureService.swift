@@ -161,7 +161,7 @@ class ExposureService: ExposureServicing {
 
     func showBluetoothOffUserNotificationIfNeeded() {
         let identifier = "bluetooth-off"
-        if ENManager.authorizationStatus == .authorized && manager.exposureNotificationStatus == .bluetoothOff {
+        if ENManager.authorizationStatus == .authorized, manager.exposureNotificationStatus == .bluetoothOff {
             let content = UNMutableNotificationContent()
             content.title = NSLocalizedString("USER_NOTIFICATION_BLUETOOTH_OFF_TITLE", comment: "User notification title")
             content.body = NSLocalizedString("USER_NOTIFICATION_BLUETOOTH_OFF_BODY", comment: "User notification")

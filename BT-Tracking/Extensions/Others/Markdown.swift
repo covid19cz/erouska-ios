@@ -6,7 +6,7 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SwiftyMarkdown
 
 struct Markdown {
