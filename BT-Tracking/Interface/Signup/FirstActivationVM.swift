@@ -12,10 +12,7 @@ import CoreBluetooth
 struct FirstActivationVM {
 
     var bluetoothAuthorized: Bool {
-        if #available(iOS 13.0, *) {
-            return CBCentralManager().authorization == .allowedAlways
-        }
-        return CBPeripheralManager.authorizationStatus() == .authorized
+        return CBPeripheralManager.authorization == .allowedAlways
     }
 
     let title = "app_name"

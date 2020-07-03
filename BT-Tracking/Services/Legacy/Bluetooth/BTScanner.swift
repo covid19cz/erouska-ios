@@ -71,16 +71,9 @@ final class BTScanner: MulticastDelegate<BTScannerDelegate>, BTScannering {
             ]
         )
 
-        if #available(iOS 13.1, *) {
-            if ![CBManagerAuthorization.allowedAlways, .restricted].contains(CBCentralManager.authorization) {
-                log("BTScanner: Not authorized! \(CBCentralManager.authorization)")
-                return
-            }
-        } else if #available(iOS 13.0, *) {
-            if ![CBManagerAuthorization.allowedAlways, .restricted].contains(centralManager.authorization) {
-                log("BTScanner: Not authorized! \(centralManager.authorization)")
-                return
-            }
+        if ![CBManagerAuthorization.allowedAlways, .restricted].contains(CBCentralManager.authorization) {
+            log("BTScanner: Not authorized! \(CBCentralManager.authorization)")
+            return
         }
 
         deviceRemoverTimer

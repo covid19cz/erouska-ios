@@ -53,7 +53,7 @@ extension UIViewController {
         overlay.translatesAutoresizingMaskIntoConstraints = false
         overlay.tag = UIViewController.progressTag
 
-        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.startAnimating()
         overlay.addSubview(activityIndicator)
