@@ -41,7 +41,6 @@ struct ExposureDiagnosisKey: Codable, Equatable {
     let rollingStartNumber: ENIntervalNumber
     let transmissionRiskLevel: ENRiskLevel
 
-    @available(iOS 13.5, *)
     init(key: ENTemporaryExposureKey) {
         self.keyData = key.keyData
         self.rollingPeriod = key.rollingPeriod

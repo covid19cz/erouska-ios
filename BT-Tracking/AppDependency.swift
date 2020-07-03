@@ -14,6 +14,8 @@ import FirebaseFunctions
 
 class AppDependency {
 
+    private(set) lazy var exposureService: ExposureServicing = ExposureService()
+
     private(set) lazy var advertiser: BTAdvertising = BTFakeAdvertiser(
         TUIDs: KeychainService.TUIDs ?? [],
         IDRotation: AppSettings.TUIDRotation

@@ -19,16 +19,14 @@ protocol ExposureServicing: class {
     var isActive: Bool { get }
     var isEnabled: Bool { get }
 
-    @available(iOS 13.5, *)
     var status: ENStatus { get }
+    var authorizationStatus: ENAuthorizationStatus { get }
 
     func activate(callback: Callback?)
     func deactivate(callback: Callback?)
 
-    @available(iOS 13.5, *)
     typealias KeysCallback = (_ result: Result<[ExposureDiagnosisKey], Error>) -> Void
 
-    @available(iOS 13.5, *)
     func getDiagnosisKeys(callback: @escaping KeysCallback)
     func getTestDiagnosisKeys(callback: @escaping KeysCallback)
 
@@ -38,9 +36,10 @@ protocol ExposureServicing: class {
 
     func resetAll(callback: Callback?)
 
+    func showBluetoothOffUserNotificationIfNeeded()
+
 }
 
-@available(iOS 13.5, *)
 class ExposureService: ExposureServicing {
 
     typealias Callback = (Error?) -> Void
@@ -57,6 +56,10 @@ class ExposureService: ExposureServicing {
 
     var status: ENStatus {
         return manager.exposureNotificationStatus
+    }
+
+    var authorizationStatus: ENAuthorizationStatus {
+        return ENManager.authorizationStatus
     }
 
     init() {
@@ -154,6 +157,26 @@ class ExposureService: ExposureServicing {
         }
 
         manager.getTestDiagnosisKeys(completionHandler: innerCallbck)
+    }
+
+    func showBluetoothOffUserNotificationIfNeeded() {
+        let identifier = "bluetooth-off"
+        if ENManager.authorizationStatus == .authorized && manager.exposureNotificationStatus == .bluetoothOff {
+            let content = UNMutableNotificationContent()
+            content.title = NSLocalizedString("USER_NOTIFICATION_BLUETOOTH_OFF_TITLE", comment: "User notification title")
+            content.body = NSLocalizedString("USER_NOTIFICATION_BLUETOOTH_OFF_BODY", comment: "User notification")
+            content.sound = .default
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request) { error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        print("Error showing error user notification: \(error)")
+                    }
+                }
+            }
+        } else {
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [identifier])
+        }
     }
 
     static let privateKeyECData = Data(base64Encoded: """

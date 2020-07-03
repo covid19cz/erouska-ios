@@ -13,5 +13,8 @@ protocol DownloadServicing: class {
 }
 
 class DownloadService: DownloadServicing {
-    
+
+    private var filePattern: String = "/diag_keys/%s/keys_%s.pb"
+    private var timeout: TimeInterval = 30
+
 }

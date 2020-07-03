@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clearKeychainIfNeeded()
         generalSetup()
         setupInterface()
-        setupBackgroundMode(for: application)
+        setupBackgroundMode()
 
         return true
     }
@@ -210,10 +210,46 @@ private extension AppDelegate {
         window.rootViewController = storyboard.instantiateInitialViewController()
     }
 
-    private func setupBackgroundMode(for application: UIApplication) {
-        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
-        UIDevice.current.isProximityMonitoringEnabled = true
-        UIApplication.shared.isIdleTimerDisabled = true
+    private func setupBackgroundMode() {
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: Self.backgroundTaskIdentifier, using: .main) { task in
+
+            // Notify the user if bluetooth is off
+            Self.dependency.exposureService.showBluetoothOffUserNotificationIfNeeded()
+
+            // Perform the exposure detection
+            Self.dependency.exposureService.detectExposures { result in
+                switch result {
+                case .success:
+                    task.setTaskCompleted(success: true)
+                case let .failure(error):
+                    task.setTaskCompleted(success: false)
+                    Log.log("Failed to detect exposures \(error.localizedDescription)")
+                }
+            }
+
+            // Handle running out of time
+            task.expirationHandler = {
+                Log.log("Background task timeout")
+                // TODO: handle error, NSLocalizedString("BACKGROUND_TIMEOUT", comment: "Error")
+            }
+
+            // Schedule the next background task
+            self.scheduleBackgroundTaskIfNeeded()
+        }
+
+        scheduleBackgroundTaskIfNeeded()
+    }
+
+    private  func scheduleBackgroundTaskIfNeeded() {
+        guard Self.dependency.exposureService.authorizationStatus == .authorized else { return }
+        let taskRequest = BGProcessingTaskRequest(identifier: Self.backgroundTaskIdentifier)
+        taskRequest.requiresNetworkConnectivity = true
+
+        do {
+            try BGTaskScheduler.shared.submit(taskRequest)
+        } catch {
+            Log.log("Bakcground: Unable to schedule background task: \(error)")
+        }
     }
     
     private func clearKeychainIfNeeded() {
