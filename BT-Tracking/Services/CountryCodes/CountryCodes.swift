@@ -15,7 +15,7 @@ protocol CountryCodesServicing: class {
 
     var countryCodes: [String] { get }
 
-    var updateCallback: Callback?
+    var updateCallback: Callback? { get set }
 
 }
 
@@ -33,19 +33,19 @@ class CountryCodeService: CountryCodesServicing {
 
     init() {
         networkInfo = CTTelephonyNetworkInfo()
-        networkInfo.subscriberCellularProviderDidUpdateNotifier = { [weak self] _ in
+        countryCodes = []
+
+        networkInfo.serviceSubscriberCellularProvidersDidUpdateNotifier = { [weak self] _ in
             self?.update()
         }
-
-        countryCodes = []
         update()
     }
 
     func update() {
         var codes: [String] = []
-        for carrier in networkInfo.serviceSubscriberCellularProviders {
-            guard !codes.contains(carrier.isoCountryCode) else { continue }
-            codes.append(codes.isoCountryCode)
+        for (_, carrier) in networkInfo.serviceSubscriberCellularProviders ?? [:] {
+            guard let code = carrier.isoCountryCode ?? carrier.mobileCountryCode, !codes.contains(code) else { continue }
+            codes.append(code)
         }
         self.countryCodes = codes
     }

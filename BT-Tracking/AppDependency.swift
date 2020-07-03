@@ -33,6 +33,8 @@ class AppDependency {
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
     #endif
 
+    lazy var countryCodes: CountryCodesServicing = CountryCodeService()
+
     func resetAdvertising() {
         guard KeychainService.BUID != nil else { return }
         let wasRunning = advertiser.isRunning
