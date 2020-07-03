@@ -161,12 +161,15 @@
 		8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D9162446F80B007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D91B244758CB007FA4E9 /* BTScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE9762424DE0E001A93B3 /* BTScan.swift */; };
-		8084DEEE24AF8055001FBB16 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodes.swift */; };
+		8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodesService.swift */; };
 		8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
 		8084DEF124AF84F3001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
 		8084DEF224AF84F3001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
-		8084DEF324AF85F3001FBB16 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodes.swift */; };
-		8084DEF424AF85F4001FBB16 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodes.swift */; };
+		8084DEF324AF85F3001FBB16 /* CountryCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodesService.swift */; };
+		8084DEF424AF85F4001FBB16 /* CountryCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodesService.swift */; };
+		8084DEF724AF86C1001FBB16 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* DownloadService.swift */; };
+		8084DEF824AF872C001FBB16 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* DownloadService.swift */; };
+		8084DEF924AF872C001FBB16 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* DownloadService.swift */; };
 		809B40AE245097F500AD3687 /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 		80AD970D2429318B00AEA661 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
@@ -322,8 +325,9 @@
 		8083D8F4244640A0007FA4E9 /* eRouska Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eRouska Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8083D8F6244640CD007FA4E9 /* Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Prod.plist"; sourceTree = "<group>"; };
 		8083D9132446F779007FA4E9 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		8084DEED24AF8055001FBB16 /* CountryCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodes.swift; sourceTree = "<group>"; };
+		8084DEED24AF8055001FBB16 /* CountryCodesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodesService.swift; sourceTree = "<group>"; };
 		8084DEEF24AF8425001FBB16 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		8084DEF624AF86C1001FBB16 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 		80AD970C2429318B00AEA661 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		80B94554242B7B460052CD9F /* ActiveAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVM.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -559,6 +563,7 @@
 			children = (
 				8051FDA1245ACD7900B2D5EA /* Exposure */,
 				8084DEEB24AF8030001FBB16 /* CountryCodes */,
+				8084DEF524AF86B0001FBB16 /* Download */,
 				8084DEEC24AF8039001FBB16 /* Legacy */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
@@ -647,7 +652,7 @@
 		8084DEEB24AF8030001FBB16 /* CountryCodes */ = {
 			isa = PBXGroup;
 			children = (
-				8084DEED24AF8055001FBB16 /* CountryCodes.swift */,
+				8084DEED24AF8055001FBB16 /* CountryCodesService.swift */,
 			);
 			path = CountryCodes;
 			sourceTree = "<group>";
@@ -660,6 +665,14 @@
 				80ECB96724291E1B00E57601 /* CSV */,
 			);
 			path = Legacy;
+			sourceTree = "<group>";
+		};
+		8084DEF524AF86B0001FBB16 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				8084DEF624AF86C1001FBB16 /* DownloadService.swift */,
+			);
+			path = Download;
 			sourceTree = "<group>";
 		};
 		80A47E7E24309F1B001E5A79 /* Log List */ = {
@@ -1169,6 +1182,7 @@
 				80FC71B12476FE0800F86389 /* BTFakeScanner.swift in Sources */,
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
 				8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
+				8084DEF724AF86C1001FBB16 /* DownloadService.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
 				80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */,
@@ -1185,7 +1199,7 @@
 				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
 				80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */,
 				46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */,
-				8084DEEE24AF8055001FBB16 /* CountryCodes.swift in Sources */,
+				8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */,
 				80FC71B7247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
 				80CA44CE244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
@@ -1277,6 +1291,7 @@
 				FFC32E9E244B74E00008104C /* CompleteActivationVM.swift in Sources */,
 				8083D8C2244640A0007FA4E9 /* ScannerStore.swift in Sources */,
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
+				8084DEF824AF872C001FBB16 /* DownloadService.swift in Sources */,
 				8083D8C5244640A0007FA4E9 /* CSVWriter.swift in Sources */,
 				FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */,
 				80CA44D3244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */,
@@ -1310,7 +1325,7 @@
 				8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */,
 				8083D8D9244640A0007FA4E9 /* App.swift in Sources */,
 				FFC32E9F244B74F50008104C /* UnregisterUserVM.swift in Sources */,
-				8084DEF324AF85F3001FBB16 /* CountryCodes.swift in Sources */,
+				8084DEF324AF85F3001FBB16 /* CountryCodesService.swift in Sources */,
 				FFC32E9D244B74CF0008104C /* BTScanDevice.swift in Sources */,
 				8083D8DA244640A0007FA4E9 /* BTScan.swift in Sources */,
 				8083D8DB244640A0007FA4E9 /* Scan.swift in Sources */,
@@ -1331,6 +1346,7 @@
 				8083D90024464334007FA4E9 /* GradientView.swift in Sources */,
 				80CA44DE244B384F008E22F8 /* HelpVM.swift in Sources */,
 				80BE18B4243391F500C4A9E6 /* RemoteValues.swift in Sources */,
+				8084DEF924AF872C001FBB16 /* DownloadService.swift in Sources */,
 				8083D8F724464331007FA4E9 /* App.swift in Sources */,
 				8083D911244643BD007FA4E9 /* InfoCell.swift in Sources */,
 				80CA44B8244ADA76008E22F8 /* Localization.swift in Sources */,
@@ -1373,7 +1389,7 @@
 				80BB474E24212A3C00F552FC /* FileLogController.swift in Sources */,
 				8083D910244643BD007FA4E9 /* ScanCell.swift in Sources */,
 				80FC71C2247718C700F86389 /* ExposureEntities.swift in Sources */,
-				8084DEF424AF85F4001FBB16 /* CountryCodes.swift in Sources */,
+				8084DEF424AF85F4001FBB16 /* CountryCodesService.swift in Sources */,
 				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,
 				8083D90624464339007FA4E9 /* MulticastDelegate.swift in Sources */,
 				80BB475024212A3C00F552FC /* BTScanner.swift in Sources */,

@@ -35,6 +35,8 @@ class AppDependency {
 
     lazy var countryCodes: CountryCodesServicing = CountryCodeService()
 
+    lazy var downloader: DownloadServicing = DownloadService()
+
     func resetAdvertising() {
         guard KeychainService.BUID != nil else { return }
         let wasRunning = advertiser.isRunning
