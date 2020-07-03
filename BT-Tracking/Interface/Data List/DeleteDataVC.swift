@@ -12,7 +12,7 @@ final class DeleteDataVC: UIViewController {
 
     // MARK: -
 
-    private let viewModel = DeleteDataVM(scannerStore: AppDelegate.shared.scannerStore)
+    private let viewModel = DeleteDataVM(scannerStore: AppDelegate.dependency.scannerStore)
 
     // MARK: - Outlets
 

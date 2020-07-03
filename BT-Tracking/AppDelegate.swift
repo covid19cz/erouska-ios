@@ -21,9 +21,6 @@ import BackgroundTasks
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     static let backgroundTaskIdentifier = Bundle.main.bundleIdentifier! + ".exposure-notification"
-
-    private var allowBackgroundTask: Bool = false
-    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     private var inBackgroundStage: Bool = false {
         didSet {
             Self.inBackground = inBackgroundStage
@@ -40,40 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
-    private(set) lazy var advertiser: BTAdvertising = BTFakeAdvertiser(
-        TUIDs: KeychainService.TUIDs ?? [],
-        IDRotation: AppSettings.TUIDRotation
-    )
-    private(set) lazy var scanner: BTScannering = BTFakeScanner()
-    lazy var scannerStore: ScannerStore = {
-        let store = ScannerStore(
-            scanningPeriod: RemoteValues.collectionSeconds,
-            dataPurgeInterval: RemoteValues.persistDataInterval
-        )
-        AppDelegate.shared.scanner.add(delegate: store)
-        return store
-    }()
-    private(set) var deviceToken: Data?
-
-    #if !targetEnvironment(macCatalyst)
-    private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
-    #endif
-
-    // MARK: - Public
-
-    func resetAdvertising() {
-        guard KeychainService.BUID != nil else { return }
-        let wasRunning = advertiser.isRunning
-        advertiser.stop()
-        advertiser = BTFakeAdvertiser(
-            TUIDs: KeychainService.TUIDs ?? [],
-            IDRotation: AppSettings.TUIDRotation
-        )
-
-        if wasRunning {
-            advertiser.start()
-        }
-    }
+    static var dependency = AppDependency()
     
     // MARK: - UIApplicationDelegate
 
@@ -93,14 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         log("\n\n\n-FOREGROUND---------------------------\n")
 
-        if backgroundTask != .invalid {
-            application.endBackgroundTask(backgroundTask)
-            backgroundTask = .invalid
-        }
         inBackgroundStage = false
 
         if Auth.isLoggedIn {
-            scannerStore.deleteOldRecordsIfNeeded()
+            Self.dependency.scannerStore.deleteOldRecordsIfNeeded()
         }
     }
 
@@ -112,30 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-BACKGROUND---------------------------\n")
 
         inBackgroundStage = true
-        scannerStore.appTermination.onNext(())
-        
-        guard allowBackgroundTask else { return }
-        backgroundTask = application.beginBackgroundTask(withName: "BT") {
-            log("\n\n\n-EXPIRATION TASK---------------------------\n")
-        }
-
-        DispatchQueue.global(qos: .background).async {
-            while(true) {
-                if self.inBackgroundStage == false {
-                    log("\n\n\n-END TASK---------------------------\n")
-                    break
-                }
-            }
-
-            DispatchQueue.main.async {
-                application.endBackgroundTask(self.backgroundTask)
-                self.backgroundTask = .invalid
-            }
-        }
+        Self.dependency.scannerStore.appTermination.onNext(())
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        scannerStore.appTermination.onNext(())
+        Self.dependency.scannerStore.appTermination.onNext(())
         log("\n\n\n-END----------------------------------\n")
     }
 
@@ -157,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         Auth.auth().setAPNSToken(deviceToken, type: .prod)
         #endif
-        self.deviceToken = deviceToken
+        Self.dependency.deviceToken = deviceToken
 
         // update token on server
         guard let buid = KeychainService.BUID else { return }
@@ -166,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "pushRegistrationToken": deviceToken.hexEncodedString()
         ]
 
-        functions.httpsCallable("changePushToken").call(data) { result, error in
+        Self.dependency.functions.httpsCallable("changePushToken").call(data) { result, error in
             if let error = error {
                 log("AppDelegate: Failed to change push token \(error.localizedDescription)")
             }
@@ -242,7 +183,7 @@ private extension AppDelegate {
         Realm.Configuration.defaultConfiguration = configuration
 
         if Auth.isLoggedIn {
-            scannerStore.deleteOldRecordsIfNeeded()
+            Self.dependency.scannerStore.deleteOldRecordsIfNeeded()
         }
     }
     

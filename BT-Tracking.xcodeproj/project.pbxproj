@@ -162,6 +162,9 @@
 		8083D9162446F80B007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D91B244758CB007FA4E9 /* BTScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE9762424DE0E001A93B3 /* BTScan.swift */; };
 		8084DEEE24AF8055001FBB16 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodes.swift */; };
+		8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
+		8084DEF124AF84F3001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
+		8084DEF224AF84F3001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
 		809B40AE245097F500AD3687 /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 		80AD970D2429318B00AEA661 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
@@ -318,6 +321,7 @@
 		8083D8F6244640CD007FA4E9 /* Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Prod.plist"; sourceTree = "<group>"; };
 		8083D9132446F779007FA4E9 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		8084DEED24AF8055001FBB16 /* CountryCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodes.swift; sourceTree = "<group>"; };
+		8084DEEF24AF8425001FBB16 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		80AD970C2429318B00AEA661 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		80B94554242B7B460052CD9F /* ActiveAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVM.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -515,6 +519,7 @@
 				FFC4432724461357002D2A6D /* Resources */,
 				8054C0CA241FE68B008907B8 /* Supporting Files */,
 				8054C0B0241D492F008907B8 /* AppDelegate.swift */,
+				8084DEEF24AF8425001FBB16 /* AppDependency.swift */,
 			);
 			path = "BT-Tracking";
 			sourceTree = "<group>";
@@ -1168,6 +1173,7 @@
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				46F21CA72422442D00C01DFA /* ScanListVM.swift in Sources */,
+				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
 				80CA44D8244AF22B008E22F8 /* CompleteActivationVM.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
@@ -1296,6 +1302,7 @@
 				FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */,
 				FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */,
 				8083D8D4244640A0007FA4E9 /* Collection.swift in Sources */,
+				8084DEF124AF84F3001FBB16 /* AppDependency.swift in Sources */,
 				8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
 				8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */,
@@ -1327,6 +1334,7 @@
 				8083D90D244643BB007FA4E9 /* ScanListVC.swift in Sources */,
 				80FC71B52476FE4100F86389 /* BTFakeScanner.swift in Sources */,
 				8064DF87244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
+				8084DEF224AF84F3001FBB16 /* AppDependency.swift in Sources */,
 				8083D90924464342007FA4E9 /* DeleteDataVC.swift in Sources */,
 				80BB474A24212A3C00F552FC /* Logger.swift in Sources */,
 				8083D90124464334007FA4E9 /* Controller.swift in Sources */,

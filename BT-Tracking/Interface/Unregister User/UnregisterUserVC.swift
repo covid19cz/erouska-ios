@@ -37,7 +37,7 @@ final class UnregisterUserVC: UIViewController {
     @IBAction private func unregisterAction() {
         showProgress()
         
-        AppDelegate.shared.functions.httpsCallable("deleteUser").call() { [weak self] result, error in
+        AppDelegate.dependency.functions.httpsCallable("deleteUser").call() { [weak self] result, error in
             guard let self = self else { return }
             self.hideProgress()
 
@@ -53,9 +53,9 @@ final class UnregisterUserVC: UIViewController {
             #endif
             Log.log("deleteUser request success finished")
 
-            AppDelegate.shared.advertiser.stop()
-            AppDelegate.shared.scanner.stop()
-            AppDelegate.shared.scannerStore.deleteAllData()
+            AppDelegate.dependency.advertiser.stop()
+            AppDelegate.dependency.scanner.stop()
+            AppDelegate.dependency.scannerStore.deleteAllData()
 
             AppSettings.deleteAllData()
 

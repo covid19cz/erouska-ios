@@ -63,7 +63,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     // MARK: - Actions
 
     @IBAction private func processReports() {
-        guard let scanner = AppDelegate.shared.scanner as? BTFakeScanner else { return }
+        guard let scanner = AppDelegate.dependency.scanner as? BTFakeScanner else { return }
         showProgress()
 
         let dateFormat = DateFormatter()
@@ -197,7 +197,7 @@ private extension DataListVC {
     }
 
     func newSendReport() {
-        guard let scanner = AppDelegate.shared.scanner as? BTFakeScanner else { return }
+        guard let scanner = AppDelegate.dependency.scanner as? BTFakeScanner else { return }
 
         scanner.exposure.getDiagnosisKeys { result in
             switch result {
@@ -238,7 +238,7 @@ private extension DataListVC {
     }
 
     func newSendReport2() {
-        guard let scanner = AppDelegate.shared.scanner as? BTFakeScanner else { return }
+        guard let scanner = AppDelegate.dependency.scanner as? BTFakeScanner else { return }
 
         scanner.exposure.getTestDiagnosisKeys { result in
             switch result {

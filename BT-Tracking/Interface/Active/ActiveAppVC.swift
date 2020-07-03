@@ -34,7 +34,7 @@ final class ActiveAppVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _ = AppDelegate.shared.scannerStore // start scanner store
+        _ = AppDelegate.dependency.scannerStore // start scanner store
 
         viewModel.scanner.didUpdateState = { [weak self] state in
             guard let self = self else { return }

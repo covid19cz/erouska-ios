@@ -216,13 +216,13 @@ private extension CompleteActivationVC {
             "locale": "\(Locale.current.languageCode ?? "cs")_\(Locale.current.regionCode ?? "CZ")",
         ]
 
-        if let token = AppDelegate.shared.deviceToken {
+        if let token = AppDelegate.dependency.deviceToken {
             data["pushRegistrationToken"] = token.hexEncodedString()
         } else {
             data["pushRegistrationToken"] = "xyz"
         }
 
-        AppDelegate.shared.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
+        AppDelegate.dependency.functions.httpsCallable("registerBuid").call(data) { [weak self] result, error in
             guard let self = self else { return }
             self.hideProgress()
 
