@@ -161,6 +161,7 @@
 		8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D9162446F80B007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D91B244758CB007FA4E9 /* BTScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE9762424DE0E001A93B3 /* BTScan.swift */; };
+		8084DEEE24AF8055001FBB16 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodes.swift */; };
 		809B40AE245097F500AD3687 /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 		80AD970D2429318B00AEA661 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD970C2429318B00AEA661 /* DataCell.swift */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
@@ -226,9 +227,9 @@
 		80FC71B32476FE3E00F86389 /* BTFakeAdvertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71AE2476FDF200F86389 /* BTFakeAdvertiser.swift */; };
 		80FC71B42476FE4000F86389 /* BTFakeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B02476FE0800F86389 /* BTFakeScanner.swift */; };
 		80FC71B52476FE4100F86389 /* BTFakeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B02476FE0800F86389 /* BTFakeScanner.swift */; };
-		80FC71B7247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */; };
-		80FC71B8247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */; };
-		80FC71B9247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */; };
+		80FC71B7247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */; };
+		80FC71B8247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */; };
+		80FC71B9247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */; };
 		80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BB2477180400F86389 /* SwiftProtobuf */; };
 		80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BD2477184000F86389 /* SwiftProtobuf */; };
 		80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
@@ -316,6 +317,7 @@
 		8083D8F4244640A0007FA4E9 /* eRouska Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eRouska Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8083D8F6244640CD007FA4E9 /* Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Prod.plist"; sourceTree = "<group>"; };
 		8083D9132446F779007FA4E9 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
+		8084DEED24AF8055001FBB16 /* CountryCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodes.swift; sourceTree = "<group>"; };
 		80AD970C2429318B00AEA661 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		80B94554242B7B460052CD9F /* ActiveAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVM.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -356,7 +358,7 @@
 		80ECB96B24292FB000E57601 /* DataList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DataList.storyboard; sourceTree = "<group>"; };
 		80FC71AE2476FDF200F86389 /* BTFakeAdvertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTFakeAdvertiser.swift; sourceTree = "<group>"; };
 		80FC71B02476FE0800F86389 /* BTFakeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTFakeScanner.swift; sourceTree = "<group>"; };
-		80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperDiagnosisKeyFileProtobuf.pb.swift; sourceTree = "<group>"; };
+		80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureDiagnosisKeyFile.pb.swift; sourceTree = "<group>"; };
 		80FC71BF247718C700F86389 /* ExposureEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureEntities.swift; sourceTree = "<group>"; };
 		901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.release.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig"; sourceTree = "<group>"; };
@@ -478,8 +480,8 @@
 			isa = PBXGroup;
 			children = (
 				80FC71BF247718C700F86389 /* ExposureEntities.swift */,
+				80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */,
 				8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */,
-				80FC71B6247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */,
 			);
 			path = Exposure;
 			sourceTree = "<group>";
@@ -549,9 +551,8 @@
 			isa = PBXGroup;
 			children = (
 				8051FDA1245ACD7900B2D5EA /* Exposure */,
-				805BE9742424DDDE001A93B3 /* Bluetooth */,
-				46F21CB524227E5D00C01DFA /* Store */,
-				80ECB96724291E1B00E57601 /* CSV */,
+				8084DEEB24AF8030001FBB16 /* CountryCodes */,
+				8084DEEC24AF8039001FBB16 /* Legacy */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
 				801B54BF243C624700A5D81E /* KeychainService.swift */,
@@ -634,6 +635,24 @@
 				807053572427C5AA00DC1034 /* InfoCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		8084DEEB24AF8030001FBB16 /* CountryCodes */ = {
+			isa = PBXGroup;
+			children = (
+				8084DEED24AF8055001FBB16 /* CountryCodes.swift */,
+			);
+			path = CountryCodes;
+			sourceTree = "<group>";
+		};
+		8084DEEC24AF8039001FBB16 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				805BE9742424DDDE001A93B3 /* Bluetooth */,
+				46F21CB524227E5D00C01DFA /* Store */,
+				80ECB96724291E1B00E57601 /* CSV */,
+			);
+			path = Legacy;
 			sourceTree = "<group>";
 		};
 		80A47E7E24309F1B001E5A79 /* Log List */ = {
@@ -1158,7 +1177,8 @@
 				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
 				80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */,
 				46F21CB4242270F700C01DFA /* ScannerStore.swift in Sources */,
-				80FC71B7247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
+				8084DEEE24AF8055001FBB16 /* CountryCodes.swift in Sources */,
+				80FC71B7247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
 				80CA44CE244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
 				80CA44D6244AEBDE008E22F8 /* AccountActivationVM.swift in Sources */,
@@ -1235,7 +1255,7 @@
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
-				80FC71B8247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
+				80FC71B8247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */,
 				8083D8B6244640A0007FA4E9 /* BTAdvertiser.swift in Sources */,
 				8083D8B7244640A0007FA4E9 /* Data.swift in Sources */,
@@ -1345,7 +1365,7 @@
 				80BB474F24212A3C00F552FC /* AppDelegate.swift in Sources */,
 				8083D90624464339007FA4E9 /* MulticastDelegate.swift in Sources */,
 				80BB475024212A3C00F552FC /* BTScanner.swift in Sources */,
-				80FC71B9247717BE00F86389 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
+				80FC71B9247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				80BB475224212A3C00F552FC /* BT.swift in Sources */,
 				8083D90724464342007FA4E9 /* MarkdownController.swift in Sources */,
 				8083D91B244758CB007FA4E9 /* BTScan.swift in Sources */,
@@ -1512,7 +1532,7 @@
 				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1536,7 +1556,7 @@
 				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = 62884AX6G8;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1614,7 +1634,7 @@
 				DEVELOPMENT_TEAM = N448G4S8S9;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1641,7 +1661,7 @@
 				DEVELOPMENT_TEAM = N448G4S8S9;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
