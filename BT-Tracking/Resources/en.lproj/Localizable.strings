@@ -79,7 +79,7 @@
 "data_list_delete_button" = "Smazat data";
 "data_list_send_button" = "Odeslat data";
 "data_list_section_all" = "Vše";
-"data_list_section_nearby" = "Blízka setkání";
+"data_list_section_nearby" = "Blízká setkání";
 "data_list_header_date" = "Datum";
 "data_list_header_time" = "Čas";
 "data_list_header_id" = "ID";
