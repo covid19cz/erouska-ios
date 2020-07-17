@@ -16,5 +16,5 @@ struct ForceUpdateVM {
 
     let updateButton = "force_update_button"
 
-    let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/erouška/id1509210215")!
+    let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id1509210215")!
 }
