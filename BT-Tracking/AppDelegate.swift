@@ -249,21 +249,25 @@ private extension AppDelegate {
         window.makeKeyAndVisible()
         self.window = window
 
-        let storyboard: UIStoryboard
+        let rootViewController: UIViewController?
         #if !targetEnvironment(macCatalyst)
 
-        if !Auth.isLoggedIn {
+        if Version.currentiOSVersion < Version("13.5") {
+            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceOSUpdateVC")
+        } else if RemoteValues.minSupportedVersion > Version.currentAppVersion {
+            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
+        } else if !Auth.isLoggedIn {
             try? Auth.auth().signOut()
-            storyboard = UIStoryboard(name: "Signup", bundle: nil)
+            rootViewController = UIStoryboard(name: "Signup", bundle: nil).instantiateInitialViewController()
         } else {
-            storyboard = UIStoryboard(name: "Active", bundle: nil)
+            rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
         }
 
         #else
-        storyboard = UIStoryboard(name: "Debug", bundle: nil)
+        rootViewController = UIStoryboard(name: "Debug", bundle: nil).instantiateInitialViewController()
         #endif
 
-        window.rootViewController = storyboard.instantiateInitialViewController()
+        window.rootViewController = rootViewController
     }
 
     private func setupBackgroundMode(for application: UIApplication) {
