@@ -252,7 +252,7 @@ private extension AppDelegate {
         let rootViewController: UIViewController?
         #if !targetEnvironment(macCatalyst)
 
-        if Version.currentiOSVersion < Version("13.5") {
+        if Version.currentOSVersion < Version("13.5") {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceOSUpdateVC")
         } else if RemoteValues.minSupportedVersion > Version.currentAppVersion {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")

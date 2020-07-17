@@ -6,7 +6,6 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-//import Foundation
 import UIKit
 
 struct Version {
@@ -24,7 +23,7 @@ extension Version {
         return Version(rawValue ?? "")
     }
 
-    static var currentiOSVersion: Version {
+    static var currentOSVersion: Version {
         return Version(UIDevice.current.systemVersion)
     }
 }
