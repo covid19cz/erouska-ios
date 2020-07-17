@@ -136,3 +136,5 @@
 "force_update_title" = "Důležitá aktualizace eRoušky";
 "force_update_body" = "Je připravená důležitá aktualizace eRoušky. Chcete-li pokračovat v jejím používání, proveďte aktualizaci na nejnovější verzi.";
 "force_update_button" = "Aktualizovat";
+"force_os_update_title" = "Aktualizujte telefon na nejnovější verzi iOS";
+"force_os_update_body" = "Nejnovější verze operačního systému iOS (13.5 nebo novější) je nezbytná pro aktivaci oznámení o setkání s osobou, u které byla prokázana nákaza virem COVID-19.";

@@ -232,6 +232,10 @@
 		D61DFE5A24C1AFDA002E1B2E /* ForceUpdate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */; };
 		D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */; };
 		D61DFE5D24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */; };
+		D61DFE6024C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */; };
+		D61DFE6124C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */; };
+		D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */; };
+		D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */; };
 		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FFC32E9D244B74CF0008104C /* BTScanDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803669A8243F4B0D00684B57 /* BTScanDevice.swift */; };
@@ -358,6 +362,8 @@
 		D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForceUpdate.storyboard; sourceTree = "<group>"; };
 		D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVC.swift; sourceTree = "<group>"; };
 		D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVM.swift; sourceTree = "<group>"; };
+		D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceOSUpdateVC.swift; sourceTree = "<group>"; };
+		D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceOSUpdateVM.swift; sourceTree = "<group>"; };
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -753,6 +759,8 @@
 				D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */,
 				D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */,
 				D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */,
+				D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */,
+				D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */,
 			);
 			path = "Force Update";
 			sourceTree = "<group>";
@@ -1155,6 +1163,7 @@
 				803669A9243F4B0D00684B57 /* BTScanDevice.swift in Sources */,
 				8064DF92244F420A005E8AA3 /* AboutTeam.swift in Sources */,
 				46A0D531242CEB9500FAE9EA /* DeleteDataVM.swift in Sources */,
+				D61DFE6024C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
 				80ECB96624290DA900E57601 /* Collection.swift in Sources */,
 				80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */,
 				80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */,
@@ -1172,6 +1181,7 @@
 				8054C0D2241FE720008907B8 /* BT.swift in Sources */,
 				80AD970D2429318B00AEA661 /* DataCell.swift in Sources */,
 				80ECB95E24290B6700E57601 /* ScanRealm.swift in Sources */,
+				D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1242,6 +1252,7 @@
 				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
 				8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */,
 				8083D8D9244640A0007FA4E9 /* App.swift in Sources */,
+				D61DFE6124C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
 				FFC32E9F244B74F50008104C /* UnregisterUserVM.swift in Sources */,
 				FFC32E9D244B74CF0008104C /* BTScanDevice.swift in Sources */,
 				D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
@@ -1252,6 +1263,7 @@
 				8083D8DE244640A0007FA4E9 /* DataCell.swift in Sources */,
 				8083D8DF244640A0007FA4E9 /* ScanRealm.swift in Sources */,
 				8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */,
+				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
