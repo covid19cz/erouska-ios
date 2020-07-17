@@ -28,7 +28,6 @@ struct ContactsVM {
     let helpHeadline = "contacts_help_headline"
     let helpBody = "contacts_help_body"
     let helpFaqButton = "contacts_help_faq_button"
-    let helpCallButton = "contacts_help_call_button"
 
     let aboutHeadline = "contacts_about_headline"
     let aboutBody = "contacts_about_body"
