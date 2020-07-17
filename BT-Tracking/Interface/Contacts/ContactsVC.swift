@@ -23,7 +23,6 @@ final class ContactsVC: UIViewController {
     @IBOutlet weak var helpHeadlineLabel: UILabel!
     @IBOutlet weak var helpBodyLabel: UILabel!
     @IBOutlet weak var helpFaqButton: UIButton!
-    @IBOutlet weak var helpCallButton: UIButton!
 
     @IBOutlet weak var aboutHeadlineLabel: UILabel!
     @IBOutlet weak var aboutBodyLabel: UILabel!
@@ -57,13 +56,6 @@ final class ContactsVC: UIViewController {
         }
     }
 
-    @IBAction private func call1212Action() {
-        guard let url = URL(string: "tel:\(RemoteValues.emergencyPhonenumber)") else { return }
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-        }
-    }
-
     @IBAction private func webAction() {
         guard let url = URL(string: RemoteValues.homepageLink) else { return }
         openURL(URL: url)
@@ -83,7 +75,6 @@ private extension ContactsVC {
         helpHeadlineLabel.localizedText(viewModel.helpHeadline)
         helpBodyLabel.localizedText(viewModel.helpBody)
         helpFaqButton.localizedTitle(viewModel.helpFaqButton)
-        helpCallButton.localizedTitle(viewModel.helpCallButton)
 
         aboutHeadlineLabel.localizedText(viewModel.aboutHeadline)
         aboutBodyLabel.localizedText(viewModel.aboutBody)
