@@ -73,8 +73,6 @@ enum RemoteConfigValueKey: String {
     case aboutLink
     case homepageLink
     case shareAppDynamicLink
-
-    case emergencyNumber
     
     case helpMarkdown
     case dataCollectionMarkdown
@@ -103,8 +101,6 @@ struct RemoteValues {
         .aboutLink: "http://erouska.cz",
         .homepageLink: "http://erouska.cz",
         .shareAppDynamicLink: "https://covid19cz.page.link/share",
-
-        .emergencyNumber: 1212,
         
         .helpMarkdown: helpMarkdownBackup,
         .dataCollectionMarkdown: dataCollectionMarkdownBackup,
@@ -186,11 +182,6 @@ struct RemoteValues {
 
     static var shareAppDynamicLink: String {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-
-    /// nouzové číslo - 1212
-    static var emergencyPhonenumber: Int {
-        return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.emergencyNumber)
     }
 
     /// Help markdown
