@@ -236,6 +236,8 @@
 		D61DFE6124C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */; };
 		D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */; };
 		D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */; };
+		D6340C6224C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
+		D6340C6324C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FFC32E9D244B74CF0008104C /* BTScanDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803669A8243F4B0D00684B57 /* BTScanDevice.swift */; };
@@ -364,6 +366,7 @@
 		D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVM.swift; sourceTree = "<group>"; };
 		D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceOSUpdateVC.swift; sourceTree = "<group>"; };
 		D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceOSUpdateVM.swift; sourceTree = "<group>"; };
+		D6340C6124C1F46D00E550A1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -693,6 +696,7 @@
 				80BE3FCE2446028E00D0C810 /* InputValidation.swift */,
 				8083D9132446F779007FA4E9 /* Markdown.swift */,
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
+				D6340C6124C1F46D00E550A1 /* Version.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1109,6 +1113,7 @@
 				80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */,
 				80BB476824238CBB00F552FC /* AccountActivationVC.swift in Sources */,
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
+				D6340C6224C1F46D00E550A1 /* Version.swift in Sources */,
 				80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */,
 				46A0D52F242CEB8A00FAE9EA /* DeleteDataVC.swift in Sources */,
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
@@ -1190,6 +1195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6340C6324C1F46D00E550A1 /* Version.swift in Sources */,
 				8064DF7D244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
 				8064DF8F244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */,
