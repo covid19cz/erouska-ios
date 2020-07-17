@@ -16,5 +16,5 @@ struct ForceOSUpdateVM {
 
     let updateButton = "force_update_button"
 
-    let settingsURL = URL(string: "App-Prefs:root=General")! // This URL is Apple private API and can lead to app rejection
+    let settingsURL = URL(string: "App-Prefs:root=General")!
 }
