@@ -81,6 +81,8 @@ enum RemoteConfigValueKey: String {
     
     case activeTitleEnabled
     case activeTitleEnabled_en
+
+    case minSupportedVersion
 }
 
 struct RemoteValues {
@@ -109,6 +111,8 @@ struct RemoteValues {
         
         .activeTitleEnabled: activeTitleEnabledDefault,
         .activeTitleEnabled_en: activeTitleEnabledDefaultEn,
+
+        .minSupportedVersion: Version("1.0.0"),
     ]
 
     /// doba scanování v sekundách, default = 120
@@ -216,6 +220,12 @@ struct RemoteValues {
         return AppDelegate.shared.remoteConfigString(forKey: key)
             .replacingOccurrences(of: "\\n", with: "\n")
             .replacingOccurrences(of: "\\", with: "")
+    }
+
+    /// Min supported app version. Used for force update.
+    static var minSupportedVersion: Version {
+        let rawAppVersion = AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.minSupportedVersion)
+        return Version(rawAppVersion)
     }
 }
 
