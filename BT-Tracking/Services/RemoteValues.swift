@@ -85,6 +85,7 @@ enum RemoteConfigValueKey: String {
 
     case minSupportedVersion
     case unsupportedDeviceLink
+    case shouldCheckOSVersion
 }
 
 struct RemoteValues {
@@ -116,6 +117,7 @@ struct RemoteValues {
 
         .minSupportedVersion: Version("1.0.0"),
         .unsupportedDeviceLink: "https://koronavirus.mzcr.cz",
+        .shouldCheckOSVersion: false,
     ]
 
     /// doba scanování v sekundách, default = 120
@@ -233,6 +235,10 @@ struct RemoteValues {
 
     static var unsupportedDeviceLink: String {
         return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.unsupportedDeviceLink)
+    }
+
+    static var shouldCheckOSVersion: Bool {
+        return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.shouldCheckOSVersion) == 1
     }
 }
 
