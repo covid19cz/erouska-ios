@@ -267,9 +267,11 @@ private extension AppDelegate {
         let rootViewController: UIViewController?
         #if !targetEnvironment(macCatalyst)
 
-        if Version.currentOSVersion < Version("13.5") {
+        if !isDeviceSupported() {
+            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "UnsupportedDeviceVC")
+        } else if Version.currentOSVersion < Version("13.5") {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceOSUpdateVC")
-        } else if RemoteValues.minSupportedVersion > Version.currentAppVersion {
+        } else if RemoteValues.minSupportedVersion > App.appVersion {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
         } else if !Auth.isLoggedIn {
             try? Auth.auth().signOut()
@@ -296,5 +298,19 @@ private extension AppDelegate {
         AppSettings.appFirstTimeLaunched = true
         KeychainService.BUID = nil
         KeychainService.TUIDs = nil
+    }
+
+    private func isDeviceSupported() -> Bool {
+        #if targetEnvironment(simulator)
+        return true
+        #else
+        let model = UIDevice.current.modelName
+        if model.hasPrefix("iPhone") {
+            // List of supported devices from https://support.apple.com/cs-cz/guide/iphone/iphe3fa5df43/13.0/ios/13.0
+            let modelNumber = String(model[model.index(model.startIndex, offsetBy: 6)...])
+            return Double(modelNumber.replacingOccurrences(of: ",", with: ".")) ?? 0 >= 8.0
+        }
+        return false
+        #endif
     }
 }

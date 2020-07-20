@@ -225,6 +225,114 @@
             </objects>
             <point key="canvasLocation" x="928" y="-181"/>
         </scene>
+        <!--Unsupported DeviceVC-->
+        <scene sceneID="IjS-xv-Adr">
+            <objects>
+                <viewController storyboardIdentifier="UnsupportedDeviceVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Emj-LY-ovJ" customClass="UnsupportedDeviceVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mrh-oe-qFl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4y-rw-Gh0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="802"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KVM-Is-41J">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="802"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="adJ-aH-I6U">
+                                                <rect key="frame" x="20" y="233" width="374" height="336"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ForceOSUpdate" translatesAutoresizingMaskIntoConstraints="NO" id="Dse-Ix-4Lr">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="199"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaše zařízení nepodporuje iOS 13.5 nebo novější" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be6-ht-HTR">
+                                                        <rect key="frame" x="0.0" y="214" width="374" height="42.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nejnovější verze operačního systému iOS (13.5 nebo novější) je nezbytná pro další fungování eRoušky." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xko-VO-u5v">
+                                                        <rect key="frame" x="0.0" y="271.5" width="374" height="64.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="adJ-aH-I6U" firstAttribute="centerX" secondItem="KVM-Is-41J" secondAttribute="centerX" id="Brw-Hd-MHS"/>
+                                            <constraint firstItem="adJ-aH-I6U" firstAttribute="leading" secondItem="KVM-Is-41J" secondAttribute="leadingMargin" id="SG8-US-Q1V"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="adJ-aH-I6U" secondAttribute="trailing" id="STG-qp-V1s"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="adJ-aH-I6U" secondAttribute="bottom" constant="16" id="ULr-zQ-ZPO"/>
+                                            <constraint firstItem="adJ-aH-I6U" firstAttribute="centerY" secondItem="KVM-Is-41J" secondAttribute="centerY" id="cuk-m1-cKQ"/>
+                                            <constraint firstItem="adJ-aH-I6U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KVM-Is-41J" secondAttribute="top" constant="10" id="j8A-gn-Qog"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="KVM-Is-41J" firstAttribute="leading" secondItem="X6Y-lP-KhE" secondAttribute="leading" id="5ys-C3-hSR"/>
+                                    <constraint firstItem="KVM-Is-41J" firstAttribute="trailing" secondItem="X6Y-lP-KhE" secondAttribute="trailing" id="GJO-jM-czf"/>
+                                    <constraint firstItem="KVM-Is-41J" firstAttribute="centerX" secondItem="RTM-Ea-b5M" secondAttribute="centerX" id="Mhv-U6-pjY"/>
+                                    <constraint firstItem="KVM-Is-41J" firstAttribute="width" secondItem="RTM-Ea-b5M" secondAttribute="width" id="XI4-jU-6PQ"/>
+                                    <constraint firstItem="KVM-Is-41J" firstAttribute="top" secondItem="X6Y-lP-KhE" secondAttribute="top" id="Yjj-Iq-9sQ"/>
+                                    <constraint firstItem="KVM-Is-41J" firstAttribute="bottom" secondItem="X6Y-lP-KhE" secondAttribute="bottom" constant="50" id="jNW-Ii-086"/>
+                                    <constraint firstItem="KVM-Is-41J" firstAttribute="height" secondItem="x4y-rw-Gh0" secondAttribute="height" priority="250" id="wO2-2a-Z98"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="X6Y-lP-KhE"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="RTM-Ea-b5M"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t98-Uz-2tB" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="752" width="414" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5g-K0-yvQ" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="50" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="vsO-GX-W0D"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <state key="normal" title="Další informace">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="updateAction" destination="Emj-LY-ovJ" eventType="touchUpInside" id="CLI-5p-Ewf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="l5g-K0-yvQ" firstAttribute="top" secondItem="t98-Uz-2tB" secondAttribute="top" constant="50" id="5oN-oJ-L2H"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="l5g-K0-yvQ" secondAttribute="trailing" id="Oxb-bp-Hkf"/>
+                                    <constraint firstItem="l5g-K0-yvQ" firstAttribute="leading" secondItem="t98-Uz-2tB" secondAttribute="leadingMargin" id="b7Z-Oc-dB7"/>
+                                    <constraint firstAttribute="bottom" secondItem="l5g-K0-yvQ" secondAttribute="bottom" constant="16" id="dbo-bA-cWb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="x4y-rw-Gh0" firstAttribute="leading" secondItem="e1i-dD-oJQ" secondAttribute="leading" id="D25-e1-PHA"/>
+                            <constraint firstItem="e1i-dD-oJQ" firstAttribute="bottom" secondItem="t98-Uz-2tB" secondAttribute="bottom" id="G2f-UW-wsV"/>
+                            <constraint firstItem="x4y-rw-Gh0" firstAttribute="bottom" secondItem="l5g-K0-yvQ" secondAttribute="top" id="JdK-eA-1Wv"/>
+                            <constraint firstItem="x4y-rw-Gh0" firstAttribute="top" secondItem="Mrh-oe-qFl" secondAttribute="top" id="SfO-uE-72n"/>
+                            <constraint firstItem="e1i-dD-oJQ" firstAttribute="trailing" secondItem="x4y-rw-Gh0" secondAttribute="trailing" id="daQ-a0-UOd"/>
+                            <constraint firstItem="t98-Uz-2tB" firstAttribute="leading" secondItem="e1i-dD-oJQ" secondAttribute="leading" id="eED-8n-71t"/>
+                            <constraint firstItem="e1i-dD-oJQ" firstAttribute="trailing" secondItem="t98-Uz-2tB" secondAttribute="trailing" id="mtE-vp-ypP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e1i-dD-oJQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="bodyLabel" destination="xko-VO-u5v" id="PpW-gE-OwE"/>
+                        <outlet property="buttonsView" destination="t98-Uz-2tB" id="eQF-ei-o7e"/>
+                        <outlet property="headlineLabel" destination="be6-ht-HTR" id="eCb-cZ-JIU"/>
+                        <outlet property="scrollView" destination="x4y-rw-Gh0" id="F4p-KV-0gf"/>
+                        <outlet property="updateButton" destination="l5g-K0-yvQ" id="Qtd-Dk-ABT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TTp-5y-7um" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768" y="-181"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ForceOSUpdate" width="200" height="199"/>

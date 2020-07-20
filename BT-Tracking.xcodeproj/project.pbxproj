@@ -238,6 +238,12 @@
 		D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */; };
 		D6340C6224C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6324C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
+		D6340C6524C5976000E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
+		D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
+		D6340C6824C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */; };
+		D6340C6924C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */; };
+		D6340C6B24C5A27700E550A1 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6A24C5A27700E550A1 /* Device.swift */; };
+		D6340C6C24C5A27700E550A1 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6A24C5A27700E550A1 /* Device.swift */; };
 		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FFC32E9D244B74CF0008104C /* BTScanDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803669A8243F4B0D00684B57 /* BTScanDevice.swift */; };
@@ -367,6 +373,9 @@
 		D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceOSUpdateVC.swift; sourceTree = "<group>"; };
 		D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceOSUpdateVM.swift; sourceTree = "<group>"; };
 		D6340C6124C1F46D00E550A1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVC.swift; sourceTree = "<group>"; };
+		D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVM.swift; sourceTree = "<group>"; };
+		D6340C6A24C5A27700E550A1 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -685,6 +694,7 @@
 				80B94556242B96560052CD9F /* NavigationController.swift */,
 				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 				80CA44B5244ADA44008E22F8 /* Localization.swift */,
+				D6340C6A24C5A27700E550A1 /* Device.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -765,6 +775,8 @@
 				D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */,
 				D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */,
 				D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */,
+				D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */,
+				D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */,
 			);
 			path = "Force Update";
 			sourceTree = "<group>";
@@ -1124,6 +1136,7 @@
 				8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */,
 				8054C0CE241FE6D5008907B8 /* BTAdvertiser.swift in Sources */,
 				8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
+				D6340C6824C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
 				80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */,
@@ -1142,6 +1155,7 @@
 				80CA44D6244AEBDE008E22F8 /* AccountActivationVM.swift in Sources */,
 				8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */,
 				80CA44D2244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */,
+				D6340C6B24C5A27700E550A1 /* Device.swift in Sources */,
 				46269D0824472BBF00FA3DB2 /* ScanningInfoCell.swift in Sources */,
 				80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */,
 				80ECB96924291E2F00E57601 /* CSVWriter.swift in Sources */,
@@ -1180,6 +1194,7 @@
 				80CA44E4244B464B008E22F8 /* UnregisterFinishVM.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				805BE9772424DE0E001A93B3 /* BTScan.swift in Sources */,
+				D6340C6524C5976000E550A1 /* UnsupportedDeviceVC.swift in Sources */,
 				D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
 				46F21CAF2422597F00C01DFA /* Scan.swift in Sources */,
 				5E110F9C2433C4AD0059712A /* UnregisterFinishVC.swift in Sources */,
@@ -1222,6 +1237,7 @@
 				80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */,
 				8083D8B9244640A0007FA4E9 /* GradientView.swift in Sources */,
 				8083D8BA244640A0007FA4E9 /* String.swift in Sources */,
+				D6340C6924C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */,
 				8083D8BB244640A0007FA4E9 /* MulticastDelegate.swift in Sources */,
 				8083D8BD244640A0007FA4E9 /* RemoteValues.swift in Sources */,
 				8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */,
@@ -1233,6 +1249,7 @@
 				80CA44D3244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */,
 				FFC32EA0244B75020008104C /* UnregisterFinishVM.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
+				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
 				8083D8C7244640A0007FA4E9 /* DataHeaderCell.swift in Sources */,
 				8083D8C8244640A0007FA4E9 /* CompleteActivationVC.swift in Sources */,
 				8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */,
@@ -1269,6 +1286,7 @@
 				8083D8DE244640A0007FA4E9 /* DataCell.swift in Sources */,
 				8083D8DF244640A0007FA4E9 /* ScanRealm.swift in Sources */,
 				8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */,
+				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
