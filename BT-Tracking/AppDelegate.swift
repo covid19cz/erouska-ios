@@ -186,7 +186,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
             self?.backgroundFetch = nil
         })
-        fetchRemoteConfig()
+        fetchRemoteValues(background: true)
             .subscribe(onSuccess: { [weak self] _ in
                 log("AppDelegate background: Remote config updated")
                 completionHandler(.newData)
@@ -225,7 +225,12 @@ private extension AppDelegate {
         #endif
 
         FirebaseApp.configure()
-        setupFirebaseRemoteConfig()
+        setupDefaultValues()
+        fetchRemoteValues(background: false)
+            .subscribe(onSuccess: { [weak self] _ in
+                self?.checkFetchedMinSupportedVersion()
+            })
+            .disposed(by: bag)
 
         #endif
 
@@ -240,6 +245,16 @@ private extension AppDelegate {
 
         if Auth.isLoggedIn {
             scannerStore.deleteOldRecordsIfNeeded()
+        }
+    }
+
+    private func checkFetchedMinSupportedVersion() {
+        if RemoteValues.minSupportedVersion > Version.currentAppVersion {
+            advertiser.stop()
+            scanner.stop()
+            let viewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
+            viewController.modalPresentationStyle = .fullScreen
+            window?.rootViewController?.present(viewController, animated: true)
         }
     }
     
@@ -282,21 +297,4 @@ private extension AppDelegate {
         KeychainService.BUID = nil
         KeychainService.TUIDs = nil
     }
-
-    func fetchRemoteConfig() -> Single<Void> {
-        return Single<Void>.create { single in
-            RemoteConfig.remoteConfig().fetch(withExpirationDuration: 1800) { _, error in
-                if let error = error {
-                    log("AppDelegate background: Got an error fetching remote values \(error)")
-                    single(.error(error))
-                    return
-                }
-                RemoteConfig.remoteConfig().activate()
-                log("AppDelegate background: Retrieved values from the Firebase Remote Config!")
-                single(.success(()))
-            }
-            return Disposables.create()
-        }
-    }
-
 }
