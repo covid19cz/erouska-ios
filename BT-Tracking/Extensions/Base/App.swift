@@ -9,8 +9,9 @@
 import Foundation
 
 struct App {
-    static var appVersion: String {
-        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+    static var appVersion: Version {
+        let rawValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        return Version(rawValue ?? "")
     }
 
     static var bundleBuild: String {

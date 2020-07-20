@@ -249,7 +249,7 @@ private extension AppDelegate {
     }
 
     private func checkFetchedMinSupportedVersion() {
-        if RemoteValues.minSupportedVersion > Version.currentAppVersion {
+        if RemoteValues.minSupportedVersion > App.appVersion {
             advertiser.stop()
             scanner.stop()
             let viewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
