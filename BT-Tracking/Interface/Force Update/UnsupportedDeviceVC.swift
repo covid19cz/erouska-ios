@@ -20,7 +20,7 @@ final class UnsupportedDeviceVC: UIViewController {
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
-    @IBOutlet private weak var updateButton: Button!
+    @IBOutlet private weak var moreInfoButton: Button!
 
     // MARK: -
 
@@ -32,8 +32,9 @@ final class UnsupportedDeviceVC: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction private func updateAction() {
-        UIApplication.shared.open(viewModel.moreInfoURL)
+    @IBAction private func moreInfoAction() {
+        guard let url = URL(string: RemoteValues.unsupportedDeviceLink) else { return }
+        openURL(URL: url)
     }
 
     // MARK: -
@@ -41,6 +42,6 @@ final class UnsupportedDeviceVC: UIViewController {
     private func setupStrings() {
         headlineLabel.localizedText(viewModel.headline)
         bodyLabel.localizedText(viewModel.body)
-        updateButton.localizedTitle(viewModel.updateButton)
+        moreInfoButton.localizedTitle(viewModel.moreInfoButton)
     }
 }

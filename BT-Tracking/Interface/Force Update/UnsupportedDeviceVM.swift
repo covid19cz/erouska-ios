@@ -14,7 +14,5 @@ struct UnsupportedDeviceVM {
 
     let body = "unsupported_device_body"
 
-    let updateButton = "unsupported_device_button"
-    // TODO: Use remote config URL
-    let moreInfoURL = URL(string: "App-Prefs:root=General")!
+    let moreInfoButton = "unsupported_device_button"
 }

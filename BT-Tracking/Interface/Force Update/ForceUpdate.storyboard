@@ -296,7 +296,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
-                                            <action selector="updateAction" destination="Emj-LY-ovJ" eventType="touchUpInside" id="CLI-5p-Ewf"/>
+                                            <action selector="moreInfoAction" destination="Emj-LY-ovJ" eventType="touchUpInside" id="bfh-Fi-0D8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -325,8 +325,8 @@
                         <outlet property="bodyLabel" destination="xko-VO-u5v" id="PpW-gE-OwE"/>
                         <outlet property="buttonsView" destination="t98-Uz-2tB" id="eQF-ei-o7e"/>
                         <outlet property="headlineLabel" destination="be6-ht-HTR" id="eCb-cZ-JIU"/>
+                        <outlet property="moreInfoButton" destination="l5g-K0-yvQ" id="3FD-Kx-776"/>
                         <outlet property="scrollView" destination="x4y-rw-Gh0" id="F4p-KV-0gf"/>
-                        <outlet property="updateButton" destination="l5g-K0-yvQ" id="Qtd-Dk-ABT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTp-5y-7um" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
