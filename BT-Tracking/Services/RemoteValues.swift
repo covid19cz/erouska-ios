@@ -10,15 +10,11 @@ import Foundation
 #if !targetEnvironment(macCatalyst)
 import FirebaseRemoteConfig
 #endif
+import RxSwift
 
 extension AppDelegate {
 
-    func setupFirebaseRemoteConfig() {
-        setupDefaultValues()
-        fetchRemoteValues()
-    }
-
-    private func setupDefaultValues() {
+    func setupDefaultValues() {
         var remoteDefaults: [String: NSObject] = [:]
         for (key, value) in RemoteValues.defaults {
             guard let object = value as? NSObject else { continue }
@@ -28,19 +24,24 @@ extension AppDelegate {
         RemoteConfig.remoteConfig().setDefaults(remoteDefaults)
     }
 
-    private func fetchRemoteValues() {
+    func fetchRemoteValues(background: Bool) -> Single<Void> {
         #if DEBUG
         let fetchDuration: TimeInterval = 0
         #else
-        let fetchDuration: TimeInterval = 3600
+        let fetchDuration: TimeInterval = background ? 1800 : 3600
         #endif
-        RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { _, error in
-            if let error = error {
-                log("AppDelegate: Got an error fetching remote values \(error)")
-                return
+        return Single<Void>.create { single in
+            RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { _, error in
+                if let error = error {
+                    log("AppDelegate\(background ? " background" : ""): Got an error fetching remote values \(error)")
+                    single(.error(error))
+                    return
+                }
+                RemoteConfig.remoteConfig().activate()
+                log("AppDelegate\(background ? " background" : ""): Retrieved values from the Firebase Remote Config!")
+                single(.success(()))
             }
-            RemoteConfig.remoteConfig().activate()
-            log("AppDelegate: Retrieved values from the Firebase Remote Config!")
+            return Disposables.create()
         }
     }
 
@@ -81,6 +82,8 @@ enum RemoteConfigValueKey: String {
     
     case activeTitleEnabled
     case activeTitleEnabled_en
+
+    case minSupportedVersion
 }
 
 struct RemoteValues {
@@ -109,6 +112,8 @@ struct RemoteValues {
         
         .activeTitleEnabled: activeTitleEnabledDefault,
         .activeTitleEnabled_en: activeTitleEnabledDefaultEn,
+
+        .minSupportedVersion: Version("1.0.0"),
     ]
 
     /// doba scanování v sekundách, default = 120
@@ -216,6 +221,12 @@ struct RemoteValues {
         return AppDelegate.shared.remoteConfigString(forKey: key)
             .replacingOccurrences(of: "\\n", with: "\n")
             .replacingOccurrences(of: "\\", with: "")
+    }
+
+    /// Min supported app version. Used for force update.
+    static var minSupportedVersion: Version {
+        let rawAppVersion = AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.minSupportedVersion)
+        return Version(rawAppVersion)
     }
 }
 
