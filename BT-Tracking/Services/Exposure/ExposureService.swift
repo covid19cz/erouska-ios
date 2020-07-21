@@ -79,7 +79,7 @@ class ExposureService: ExposureServicing {
 
     func activate(callback: Callback?) {
         switch manager.exposureNotificationStatus {
-        case .active:
+        case .active, .paused:
             callback?(nil)
         case .disabled:
             manager.setExposureNotificationEnabled(true) { error in
