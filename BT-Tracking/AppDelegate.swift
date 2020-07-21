@@ -194,8 +194,9 @@ private extension AppDelegate {
 
     private func checkFetchedMinSupportedVersion() {
         if RemoteValues.minSupportedVersion > Version.currentAppVersion {
-            advertiser.stop()
-            scanner.stop()
+            Self.dependency.advertiser.stop()
+            Self.dependency.scanner.stop()
+
             let viewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
             viewController.modalPresentationStyle = .fullScreen
             window?.rootViewController?.present(viewController, animated: true)
