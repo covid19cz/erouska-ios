@@ -17,7 +17,3 @@ end
 target "eRouska Prod" do
   firebase_pods
 end
-
-target "eRouska Mac" do
-
-end

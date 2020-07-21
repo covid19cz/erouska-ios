@@ -37,8 +37,8 @@ final class BluetoothActivationVC: UIViewController, CBPeripheralManagerDelegate
         setupStrings()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         guard checkAfterBecomeActive else { return }
         activateBluetoothAction()
@@ -93,7 +93,7 @@ private extension BluetoothActivationVC {
 
     func continueOnboarding() {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
-            DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
                 if settings.authorizationStatus == .notDetermined {
                     // Request authorization
                     self?.performSegue(withIdentifier: "notification", sender: nil)

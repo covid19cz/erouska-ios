@@ -6,6 +6,6 @@
   Copyright © 2020 Covid19CZ. All rights reserved.
 */
 
-"activeTitleEnabledDefault" = "Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.\n\nNa rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.";
+"activeTitleEnabledDefault" = "Na rušných místech rozpoznává ostatní eRoušky pouze v případě, že ji necháte na obrazovce a nezamknete telefon.";
 
-"activeTitleEnabledDefaultEn" = "Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.\n\nNa rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.";
+"activeTitleEnabledDefaultEn" = "Na rušných místech rozpoznává ostatní eRoušky pouze v případě, že ji necháte na obrazovce a nezamknete telefon.";

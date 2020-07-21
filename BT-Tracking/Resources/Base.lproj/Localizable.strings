@@ -79,7 +79,7 @@
 "data_list_delete_button" = "Smazat data";
 "data_list_send_button" = "Odeslat data";
 "data_list_section_all" = "Vše";
-"data_list_section_nearby" = "Blízka setkání";
+"data_list_section_nearby" = "Blízká setkání";
 "data_list_header_date" = "Datum";
 "data_list_header_time" = "Čas";
 "data_list_header_id" = "ID";
@@ -112,9 +112,8 @@
 "contacts_important_body" = "Zůstaňte doma a kontaktuje svého praktického lékaře nebo příslušnou hygienickou stanici.";
 "contacts_important_button" = "Důležité kontakty";
 "contacts_help_headline" = "Potřebujete poradit?";
-"contacts_help_body" = "Veškeré otázky a nejasnosti týkající se koronaviru by vám měli zodpovědět na webu MZČR nebo\n\nna bezplatné infolince 1212.";
+"contacts_help_body" = "Veškeré otázky a nejasnosti týkající se koronaviru by vám měli zodpovědět na webu MZČR.";
 "contacts_help_faq_button" = "Často kladené otázky";
-"contacts_help_call_button" = "Zavolejte na 1212";
 "contacts_about_headline" = "O aplikaci eRouška";
 "contacts_about_body" = "Potřebujete poradit s aplikací nebo vás zajímá jak funguje? Podívejte se na web erouska.cz.";
 "contacts_about_button" = "Přejít na web erouska.cz";
@@ -128,8 +127,14 @@
 "unregister_user_error_title" = "Chyba při zrušení registrace";
 
 "unregister_finish_title" = "Zrušit registraci";
-"unregister_finish_headline" = "Registaci vašeho telefonního čísla jsme zrušili";
+"unregister_finish_headline" = "Registraci vašeho telefonního čísla jsme zrušili";
 "unregister_finish_close" = "Zavřít";
 
 "about_title" = "O aplikaci";
 "about_info" = "Aplikace vznikla v rámci iniciativy Covid19CZ. Vyvíjeli jsme ji s důrazem na ochranu soukromí, abychom ji bez obav mohli používat i my. Data se ukládají jen do vašeho zařízení a nelze z nich zjistit, kde jste se pohybovali. Děkujeme, že aplikaci používáte a věříme, že se nám společně podaří epidemii zvládnout.";
+
+"force_update_title" = "Důležitá aktualizace eRoušky";
+"force_update_body" = "Je připravená důležitá aktualizace eRoušky. Chcete-li pokračovat v jejím používání, proveďte aktualizaci na nejnovější verzi.";
+"force_update_button" = "Aktualizovat";
+"force_os_update_title" = "Aktualizujte telefon na nejnovější verzi iOS";
+"force_os_update_body" = "Nejnovější verze operačního systému iOS (13.5 nebo novější) je nezbytná pro aktivaci oznámení o setkání s osobou, u které byla prokázana nákaza virem COVID-19.";
