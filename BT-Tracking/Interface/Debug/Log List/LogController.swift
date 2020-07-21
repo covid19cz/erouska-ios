@@ -17,8 +17,6 @@ final class LogController: UIViewController {
     
     // MARK: - Properties
 
-    private let scanner: BTScannering = AppDelegate.shared.scanner
-
     private var logText: String = "" {
         didSet {
             textView.text = logText
@@ -26,10 +24,6 @@ final class LogController: UIViewController {
     }
 
     // MARK: - Lifecycle
-
-    deinit {
-        scanner.remove(delegate: self)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +36,6 @@ final class LogController: UIViewController {
         Log.delegate = self
 
         textView.text = ""
-
-        scanner.add(delegate: self)
     }
 
     // MARK: -
@@ -52,42 +44,6 @@ final class LogController: UIViewController {
         logText = ""
     }
 
-}
-
-extension LogController: BTScannerDelegate {
-    func didFind(device: BTScan) {
-        let text = "Found device: \(device.bluetoothIdentifier.uuidString), buid: \(device.backendIdentifier ?? "unknown"), platform: \(device.platform), signal: \(device.rssi)"
-
-        #if DEBUG
-        let content = UNMutableNotificationContent()
-        content.title = "Found device: \(device.bluetoothIdentifier.uuidString)"
-        content.body = "Signal: \(device.rssi), BUID: \(device.backendIdentifier ?? "unknown")"
-        localLog(text, notification: content)
-        #else
-        localLog(text, notification: nil)
-        #endif
-    }
-
-    func didUpdate(device: BTScan) {
-        let text = "Updated device: \(device.bluetoothIdentifier.uuidString), signal: \(device.rssi)"
-        localLog(text)
-    }
-
-    func didRemove(device: BTScan) {
-        let text = "Remove device: \(device.bluetoothIdentifier.uuidString), last signal: \(device.rssi)"
-        localLog(text)
-    }
-
-    private func localLog(_ text: String, notification: UNMutableNotificationContent? = nil) {
-        log("\n" + text + "\n")
-        logToView(text)
-
-        guard AppDelegate.inBackground, let notification = notification else { return }
-        notification.sound = .none
-
-        let request = UNNotificationRequest(identifier: "Scanning",  content: notification, trigger: nil)
-        UNUserNotificationCenter.current().add(request)
-    }
 }
 
 extension LogController: LogDelegate {
