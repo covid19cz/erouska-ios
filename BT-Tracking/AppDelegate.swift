@@ -58,10 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-FOREGROUND---------------------------\n")
 
         inBackgroundStage = false
-
-        if Auth.isLoggedIn {
-            Self.dependency.scannerStore.deleteOldRecordsIfNeeded()
-        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -72,11 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-BACKGROUND---------------------------\n")
 
         inBackgroundStage = true
-        Self.dependency.scannerStore.appTermination.onNext(())
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        Self.dependency.scannerStore.appTermination.onNext(())
         log("\n\n\n-END----------------------------------\n")
     }
 
@@ -186,16 +180,11 @@ private extension AppDelegate {
         )
 
         Realm.Configuration.defaultConfiguration = configuration
-
-        if Auth.isLoggedIn {
-            Self.dependency.scannerStore.deleteOldRecordsIfNeeded()
-        }
     }
 
     private func checkFetchedMinSupportedVersion() {
         if RemoteValues.minSupportedVersion > Version.currentAppVersion {
-            Self.dependency.advertiser.stop()
-            Self.dependency.scanner.stop()
+            Self.dependency.exposureService.deactivate(callback: { _ in })
 
             let viewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
             viewController.modalPresentationStyle = .fullScreen

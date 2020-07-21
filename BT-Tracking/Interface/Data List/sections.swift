@@ -25,8 +25,6 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     private let viewModel = DataListVM()
     private let bag = DisposeBag()
 
-    private var writer: CSVMakering?
-
     // MARK: - Outlets
 
     @IBOutlet private weak var tableView: UITableView!
@@ -63,14 +61,13 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     // MARK: - Actions
 
     @IBAction private func processReports() {
-        guard let scanner = AppDelegate.dependency.scanner as? BTFakeScanner else { return }
         showProgress()
 
         let dateFormat = DateFormatter()
         dateFormat.timeStyle = .short
         dateFormat.dateStyle = .short
 
-        scanner.exposure.detectExposures { result in
+        AppDelegate.dependency.exposureService.detectExposures { result in
             self.hideProgress()
 
             switch result {
@@ -156,10 +153,6 @@ private extension DataListVC {
                 return tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath)
             case .header:
                 return tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath)
-            case .data(let scan):
-                let cell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
-                cell?.configure(for: scan)
-                return cell ?? UITableViewCell()
             }
         })
 
@@ -187,9 +180,6 @@ private extension DataListVC {
     func sendReport() {
         let alert = UIAlertController(title: "Ktery druh klicu", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Test keys", style: .default, handler: { _ in
-            self.newSendReport2()
-        }))
-        alert.addAction(UIAlertAction(title: "Real keys", style: .default, handler: { _ in
             self.newSendReport()
         }))
         alert.addAction(UIAlertAction(title: "Zrusit", style: .cancel, handler: nil))
@@ -197,142 +187,61 @@ private extension DataListVC {
     }
 
     func newSendReport() {
-        guard let scanner = AppDelegate.dependency.scanner as? BTFakeScanner else { return }
-
-        scanner.exposure.getDiagnosisKeys { result in
-            switch result {
-            case .success(let keys):
-                let encoder = JSONEncoder()
-                let data = (try? encoder.encode(keys)) ?? Data()
-
-                let path = "exposure/\(Auth.auth().currentUser?.uid ?? "")/"
-                let fileName = "exposure.json"
-
-                let storage = Storage.storage()
-                let storageReference = storage.reference()
-                let fileReference = storageReference.child("\(path)/\(fileName)")
-                let storageMetadata = StorageMetadata()
-                let metadata = [
-                    "version": "1",
-                    "buid": KeychainService.BUID ?? ""
-                ]
-                storageMetadata.customMetadata = metadata
-
-                fileReference.putData(data, metadata: storageMetadata) { [weak self] (metadata, error) in
-                    guard let self = self else { return }
-                    self.hideProgress()
-
-                    self.writer?.deleteFile()
-                    if let error = error {
-                        log("FirebaseUpload: Error \(error.localizedDescription)")
-                        self.showSendDataErrorFailed()
-                        return
-                    }
-                    AppSettings.lastUploadDate = Date()
-                    self.performSegue(withIdentifier: "sendReport", sender: nil)
-                }
-            case .failure(let error):
-                log("Failed to get exposure keys \(error)")
-            }
-        }
-    }
-
-    func newSendReport2() {
-        guard let scanner = AppDelegate.dependency.scanner as? BTFakeScanner else { return }
-
-        scanner.exposure.getTestDiagnosisKeys { result in
-            switch result {
-            case .success(let keys):
-                let encoder = JSONEncoder()
-                let data = (try? encoder.encode(keys)) ?? Data()
-
-                let path = "exposure/\(Auth.auth().currentUser?.uid ?? "")/"
-                let fileName = "exposure.json"
-
-                let storage = Storage.storage()
-                let storageReference = storage.reference()
-                let fileReference = storageReference.child("\(path)/\(fileName)")
-                let storageMetadata = StorageMetadata()
-                let metadata = [
-                    "version": "1",
-                    "buid": KeychainService.BUID ?? ""
-                ]
-                storageMetadata.customMetadata = metadata
-
-                fileReference.putData(data, metadata: storageMetadata) { [weak self] (metadata, error) in
-                    guard let self = self else { return }
-                    self.hideProgress()
-
-                    self.writer?.deleteFile()
-                    if let error = error {
-                        log("FirebaseUpload: Error \(error.localizedDescription)")
-                        self.showSendDataErrorFailed()
-                        return
-                    }
-                    AppSettings.lastUploadDate = Date()
-                    self.performSegue(withIdentifier: "sendReport", sender: nil)
-                }
-            case .failure(let error):
-                log("Failed to get exposure keys \(error)")
-            }
-        }
-    }
-
-    func oldSendReport() {
+        #if DEBUG
+        #else
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
             showAlert(title: viewModel.sendDataErrorWait)
             return
         }
+        #endif
 
         guard let connection = try? Reachability().connection, connection != .unavailable else {
             showSendDataErrorFailed()
             return
         }
 
-        createCSVFile()
-    }
+        let exposureService = AppDelegate.dependency.exposureService
+        let callback: ExposureServicing.KeysCallback = { result in
+            switch result {
+            case .success(let keys):
+                let encoder = JSONEncoder()
+                let data = (try? encoder.encode(keys)) ?? Data()
 
-    func createCSVFile() {
-        showProgress()
+                let path = "exposure/\(Auth.auth().currentUser?.uid ?? "")/"
+                let fileName = "exposure.json"
 
-        let fileDate = Date()
+                let storage = Storage.storage()
+                let storageReference = storage.reference()
+                let fileReference = storageReference.child("\(path)/\(fileName)")
+                let storageMetadata = StorageMetadata()
+                let metadata = [
+                    "version": "1",
+                    "buid": KeychainService.BUID ?? ""
+                ]
+                storageMetadata.customMetadata = metadata
 
-        writer = CSVMaker(fromDate: nil) // AppSettings.lastUploadDate, set to last upload date, if we want increment upload
-        writer?.createFile(callback: { [weak self] result, error in
-            guard let self = self else { return }
+                fileReference.putData(data, metadata: storageMetadata) { [weak self] (metadata, error) in
+                    guard let self = self else { return }
+                    self.hideProgress()
 
-            if let result = result {
-                self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata, fileDate: fileDate)
-            } else if let error = error {
-                self.hideProgress()
-                self.show(error: error, title: self.viewModel.sendDataErrorFile)
+                    if let error = error {
+                        log("FirebaseUpload: Error \(error.localizedDescription)")
+                        self.showSendDataErrorFailed()
+                        return
+                    }
+                    AppSettings.lastUploadDate = Date()
+                    self.performSegue(withIdentifier: "sendReport", sender: nil)
+                }
+            case .failure(let error):
+                log("Failed to get exposure keys \(error)")
             }
-        })
-    }
-
-    func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
-        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(KeychainService.BUID ?? "")"
-        let fileName = "\(Int(fileDate.timeIntervalSince1970 * 1000)).csv"
-
-        let storage = Storage.storage()
-        let storageReference = storage.reference()
-        let fileReference = storageReference.child("\(path)/\(fileName)")
-        let storageMetadata = StorageMetadata()
-        storageMetadata.customMetadata = metadata
-
-        fileReference.putFile(from: fileURL, metadata: storageMetadata) { [weak self] (metadata, error) in
-            guard let self = self else { return }
-            self.hideProgress()
-
-            self.writer?.deleteFile()
-            if let error = error {
-                log("FirebaseUpload: Error \(error.localizedDescription)")
-                self.showSendDataErrorFailed()
-                return
-            }
-            AppSettings.lastUploadDate = fileDate
-            self.performSegue(withIdentifier: "sendReport", sender: nil)
         }
+
+        #if DEBUG
+        exposureService.getTestDiagnosisKeys(callback: callback)
+        #else
+        exposureService.getDiagnosisKeys(callback: callback)
+        #endif
     }
 
     func showSendDataErrorFailed() {

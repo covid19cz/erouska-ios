@@ -16,19 +16,6 @@ class AppDependency {
 
     private(set) lazy var exposureService: ExposureServicing = ExposureService()
 
-    private(set) lazy var advertiser: BTAdvertising = BTFakeAdvertiser(
-        TUIDs: KeychainService.TUIDs ?? [],
-        IDRotation: AppSettings.TUIDRotation
-    )
-    private(set) lazy var scanner: BTScannering = BTFakeScanner()
-    lazy var scannerStore: ScannerStore = {
-        let store = ScannerStore(
-            scanningPeriod: RemoteValues.collectionSeconds,
-            dataPurgeInterval: RemoteValues.persistDataInterval
-        )
-        scanner.add(delegate: store)
-        return store
-    }()
     var deviceToken: Data?
 
     #if !targetEnvironment(macCatalyst)
@@ -41,16 +28,8 @@ class AppDependency {
 
     func resetAdvertising() {
         guard KeychainService.BUID != nil else { return }
-        let wasRunning = advertiser.isRunning
-        advertiser.stop()
-        advertiser = BTFakeAdvertiser(
-            TUIDs: KeychainService.TUIDs ?? [],
-            IDRotation: AppSettings.TUIDRotation
-        )
-
-        if wasRunning {
-            advertiser.start()
-        }
+        guard exposureService.status == .active || exposureService.status == .paused else { return }
+        exposureService.deactivate { _ in }
     }
 
 }

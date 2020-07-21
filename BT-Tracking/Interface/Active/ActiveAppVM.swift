@@ -137,8 +137,7 @@ final class ActiveAppVM {
         }
     }
 
-    let advertiser: BTAdvertising = AppDelegate.dependency.advertiser
-    let scanner: BTScannering = AppDelegate.dependency.scanner
+    let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
     var lastBluetoothState: Bool // true enabled
 
     init(bluetoothActive: Bool) {

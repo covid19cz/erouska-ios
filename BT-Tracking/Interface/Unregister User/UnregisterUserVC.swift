@@ -53,9 +53,7 @@ final class UnregisterUserVC: UIViewController {
             #endif
             Log.log("deleteUser request success finished")
 
-            AppDelegate.dependency.advertiser.stop()
-            AppDelegate.dependency.scanner.stop()
-            AppDelegate.dependency.scannerStore.deleteAllData()
+            AppDelegate.dependency.exposureService.deactivate { _ in }
 
             AppSettings.deleteAllData()
 

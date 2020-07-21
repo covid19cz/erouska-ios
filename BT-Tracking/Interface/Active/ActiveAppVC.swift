@@ -34,19 +34,6 @@ final class ActiveAppVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _ = AppDelegate.dependency.scannerStore // start scanner store
-
-        viewModel.scanner.didUpdateState = { [weak self] state in
-            guard let self = self else { return }
-            if state == .poweredOff, self.viewModel.state != .disabled {
-                self.checkForBluetooth()
-            } else if state == .poweredOn, self.viewModel.state == .disabled {
-                self.checkForBluetooth()
-            }
-        }
-
-        checkForBluetooth()
-
         setupStrings()
         updateScanner()
         updateInterface()
@@ -63,6 +50,7 @@ final class ActiveAppVC: UIViewController {
         
         updateInterface()
         layoutCardView()
+        checkForBluetooth()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -185,11 +173,15 @@ private extension ActiveAppVC {
     func updateScanner() {
         switch viewModel.state {
         case .enabled:
-            viewModel.advertiser.start()
-            viewModel.scanner.start()
+            viewModel.exposureService.activate { [weak self] error in
+                guard let error = error else { return }
+                self?.show(error: error)
+            }
         case .disabled, .paused:
-            viewModel.advertiser.stop()
-            viewModel.scanner.stop()
+            viewModel.exposureService.deactivate { [weak self] error in
+                guard let error = error else { return }
+                self?.show(error: error)
+            }
         }
     }
 
@@ -241,14 +233,8 @@ private extension ActiveAppVC {
     }
 
     func checkForBluetooth() {
-        var state: Bool
-        if #available(iOS 13.0, *) {
-            state = viewModel.advertiser.authorization == .allowedAlways
-        } else {
-            state = CBPeripheralManager.authorizationStatus() == .authorized
-        }
-
-        if viewModel.scanner.state == .poweredOff {
+        var state = true
+        if CBPeripheralManager().state == .poweredOff {
             state = false
         }
 
@@ -280,7 +266,7 @@ private extension ActiveAppVC {
 
     func openBluetoothSettings() {
         let url: URL?
-        if viewModel.scanner.state == .poweredOff {
+        if CBPeripheralManager().state == .poweredOff {
             url = URL(string: "App-Prefs::root=Settings&path=Bluetooth")
         } else {
             url = URL(string: UIApplication.openSettingsURLString)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcd-UM-9Nt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcd-UM-9Nt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -244,13 +244,7 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                         <viewLayoutGuide key="safeArea" id="bDv-0K-1Gq"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Moje data" largeTitleDisplayMode="always" id="Alq-cw-sQ5">
-                        <barButtonItem key="rightBarButtonItem" title="Smazat data" id="3kd-J2-YfH">
-                            <connections>
-                                <segue destination="Qab-Pf-r3c" kind="show" id="Q8e-Iy-QM9"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Moje data" largeTitleDisplayMode="always" id="Alq-cw-sQ5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonsView" destination="qq0-b5-X4V" id="WPz-cm-HAA"/>
@@ -405,67 +399,6 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpE-fX-Sqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1801" y="140"/>
-        </scene>
-        <!--Smazat data-->
-        <scene sceneID="EC0-LB-zCa">
-            <objects>
-                <viewController id="Qab-Pf-r3c" customClass="DeleteDataVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fxa-Gn-aV8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qwL-Fh-g7N">
-                                <rect key="frame" x="20" y="150" width="374" height="643"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-lw-NdS">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="174.5"/>
-                                        <string key="text">Opravdu chcete smazat všechna naměřená data?
-
-Hygienici tak přijdou o možnost využít vaše kontakty v případě, že budete nakažen.
-
-Po smazání dat dojde k automatickému pozastavení eRoušky.</string>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0v1-rS-iZ4">
-                                        <rect key="frame" x="0.0" y="189.5" width="374" height="394.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjq-uQ-dSM" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="599" width="374" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="hjp-ci-t6g"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <state key="normal" title="Smazat všechna data">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deleteAllData:" destination="Qab-Pf-r3c" eventType="touchUpInside" id="CX0-wc-P4a"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="qwL-Fh-g7N" firstAttribute="leading" secondItem="zhI-BM-y6U" secondAttribute="leading" constant="20" id="MNL-PM-6vS"/>
-                            <constraint firstAttribute="trailing" secondItem="qwL-Fh-g7N" secondAttribute="trailing" constant="20" id="ZR8-CQ-ael"/>
-                            <constraint firstItem="zhI-BM-y6U" firstAttribute="bottom" secondItem="qwL-Fh-g7N" secondAttribute="bottom" constant="20" id="siH-vm-vyi"/>
-                            <constraint firstItem="qwL-Fh-g7N" firstAttribute="top" secondItem="zhI-BM-y6U" secondAttribute="top" constant="10" id="xb3-ZV-PT1"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="zhI-BM-y6U"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Smazat data" id="3TM-Bw-xPt"/>
-                    <connections>
-                        <outlet property="bodyLabel" destination="ofa-lw-NdS" id="OKe-oo-gLa"/>
-                        <outlet property="deleteButton" destination="Yjq-uQ-dSM" id="7hT-W4-iVi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SCZ-y7-LzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1859" y="-586"/>
         </scene>
     </scenes>
     <resources>
