@@ -30,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) static var inBackground: Bool = false
     private let bag = DisposeBag()
     private var backgroundFetch: UIBackgroundTaskIdentifier?
-    
+    private var presentingAnyForceUpdateScreen = false
+
     // MARK: - Globals
 
     static var shared: AppDelegate {
@@ -249,13 +250,25 @@ private extension AppDelegate {
     }
 
     private func checkFetchedMinSupportedVersion() {
-        if RemoteValues.minSupportedVersion > Version.currentAppVersion {
-            advertiser.stop()
-            scanner.stop()
-            let viewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
-            viewController.modalPresentationStyle = .fullScreen
-            window?.rootViewController?.present(viewController, animated: true)
+        guard !presentingAnyForceUpdateScreen else { return }
+
+        var viewControllerIdentifier: String?
+        if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
+            viewControllerIdentifier = "UnsupportedDeviceVC"
+        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version("13.5") {
+            viewControllerIdentifier = "ForceOSUpdateVC"
+        } else if RemoteValues.minSupportedVersion > App.appVersion {
+            viewControllerIdentifier = "ForceUpdateVC"
         }
+
+        guard let identifier = viewControllerIdentifier else { return }
+
+        advertiser.stop()
+        scanner.stop()
+
+        let viewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: identifier)
+        viewController.modalPresentationStyle = .fullScreen
+        window?.rootViewController?.present(viewController, animated: true)
     }
     
     private func setupInterface() {
@@ -267,10 +280,15 @@ private extension AppDelegate {
         let rootViewController: UIViewController?
         #if !targetEnvironment(macCatalyst)
 
-        if Version.currentOSVersion < Version("13.5") {
+        if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
+            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "UnsupportedDeviceVC")
+            presentingAnyForceUpdateScreen = true
+        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version("13.5") {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceOSUpdateVC")
-        } else if RemoteValues.minSupportedVersion > Version.currentAppVersion {
+            presentingAnyForceUpdateScreen = true
+        } else if RemoteValues.minSupportedVersion > App.appVersion {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
+            presentingAnyForceUpdateScreen = true
         } else if !Auth.isLoggedIn {
             try? Auth.auth().signOut()
             rootViewController = UIStoryboard(name: "Signup", bundle: nil).instantiateInitialViewController()
@@ -296,5 +314,19 @@ private extension AppDelegate {
         AppSettings.appFirstTimeLaunched = true
         KeychainService.BUID = nil
         KeychainService.TUIDs = nil
+    }
+
+    private func isDeviceSupported() -> Bool {
+        #if targetEnvironment(simulator)
+        return true
+        #else
+        let model = UIDevice.current.modelName
+        if model.hasPrefix("iPhone") {
+            // List of supported devices from https://support.apple.com/cs-cz/guide/iphone/iphe3fa5df43/13.0/ios/13.0
+            let modelNumber = String(model[model.index(model.startIndex, offsetBy: 6)...])
+            return Double(modelNumber.replacingOccurrences(of: ",", with: ".")) ?? 0 >= 8.0
+        }
+        return false
+        #endif
     }
 }
