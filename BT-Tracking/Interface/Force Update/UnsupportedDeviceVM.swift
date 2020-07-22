@@ -6,13 +6,13 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct UnsupportedDeviceVM {
 
-    let headline = "unsupported_device_title"
+    let headline = UIDevice.current.modelName.hasPrefix("iPad") ? "unsupported_device_ipad_title" : "unsupported_device_title"
 
-    let body = "unsupported_device_body"
+    let body = UIDevice.current.modelName.hasPrefix("iPad") ? "unsupported_device_ipad_body" : "unsupported_device_body"
 
     let moreInfoButton = "unsupported_device_button"
 }
