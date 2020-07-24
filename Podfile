@@ -10,7 +10,7 @@ def firebase_pods
   pod 'Firebase/RemoteConfig', '~> 6.22.0'
 end
 
-target "eRouska Dev" do
+target "eRouska" do
   firebase_pods
 end
 

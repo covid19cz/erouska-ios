@@ -1,6 +1,6 @@
 //
 //  DataHeaderCell.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Bogdan Kurpakov on 28/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.

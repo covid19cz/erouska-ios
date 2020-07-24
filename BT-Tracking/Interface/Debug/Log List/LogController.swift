@@ -1,13 +1,12 @@
 //
 //  LogController.swift
-//  btraced
+// eRouska
 //
 //  Created by Tomas Svoboda on 16/03/2020.
 //  Copyright © 2020 hatchery41. All rights reserved.
 //
 
 import UIKit
-import CoreBluetooth
 
 final class LogController: UIViewController {
     

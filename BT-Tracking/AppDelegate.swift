@@ -1,18 +1,16 @@
 //
 //  AppDelegate.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Lukáš Foldýna on 14/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
 import UIKit
-#if !targetEnvironment(macCatalyst)
 import Firebase
 import FirebaseAuth
 import FirebaseFunctions
 import FirebaseRemoteConfig
-#endif
 import RealmSwift
 import RxSwift
 import BackgroundTasks
@@ -156,8 +154,6 @@ private extension AppDelegate {
         let center = UNUserNotificationCenter.current()
         center.setNotificationCategories([generalCategory])
 
-        #if !targetEnvironment(macCatalyst)
-
         #if DEBUG && TARGET_IPHONE_SIMULATOR
         Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         #endif
@@ -169,8 +165,6 @@ private extension AppDelegate {
                 self?.checkFetchedMinSupportedVersion()
             })
             .disposed(by: bag)
-
-        #endif
 
         let configuration = Realm.Configuration(
             schemaVersion: 3,
@@ -199,7 +193,6 @@ private extension AppDelegate {
         self.window = window
 
         let rootViewController: UIViewController?
-        #if !targetEnvironment(macCatalyst)
 
         if Version.currentOSVersion < Version("13.5") {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceOSUpdateVC")
@@ -212,27 +205,76 @@ private extension AppDelegate {
             rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
         }
 
-        #else
-        rootViewController = UIStoryboard(name: "Debug", bundle: nil).instantiateInitialViewController()
-        #endif
-
         window.rootViewController = rootViewController
     }
 
     private func setupBackgroundMode() {
+        let dateFormat = DateFormatter()
+        dateFormat.timeStyle = .short
+        dateFormat.dateStyle = .short
+
         BGTaskScheduler.shared.register(forTaskWithIdentifier: Self.backgroundTaskIdentifier, using: .main) { task in
 
             // Notify the user if bluetooth is off
             Self.dependency.exposureService.showBluetoothOffUserNotificationIfNeeded()
 
             // Perform the exposure detection
-            Self.dependency.exposureService.detectExposures { result in
+            Self.dependency.reporter.fetchExposureConfiguration { result in
                 switch result {
-                case .success:
-                    task.setTaskCompleted(success: true)
-                case let .failure(error):
+                case .success(let configuration):
+                    Self.dependency.reporter.downloadKeys { result in
+                        switch result {
+                        case .success(let keys):
+                            AppDelegate.dependency.exposureService.detectExposures(
+                                configuration: configuration,
+                                keys: keys
+                            ) { result in
+                                switch result {
+                                case .success(var exposures):
+                                    exposures.sort { $0.date < $1.date }
+
+                                    var result = ""
+                                    for exposure in exposures {
+                                        let signals = exposure.attenuationDurations.map { "\($0)" }
+                                        result += "EXP: \(dateFormat.string(from: exposure.date))" +
+                                            ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
+                                            + "attenuation value: \(exposure.attenuationValue)\n"
+                                            + "signal attenuations: \(signals.joined(separator: ", "))\n"
+                                    }
+                                    if result == "" {
+                                        result = "None";
+                                    }
+
+                                    log("EXP: \(exposures)")
+                                    log("EXP: \(result)")
+
+                                    let content = UNMutableNotificationContent()
+                                    content.title = "Exposures"
+                                    content.body = result
+                                    content.sound = .default
+                                    let request = UNNotificationRequest(identifier: "exposures", content: content, trigger: nil)
+                                    UNUserNotificationCenter.current().add(request) { error in
+                                        DispatchQueue.main.async {
+                                            if let error = error {
+                                                Log.log("AppDelegate: Error showing error user notification \(error)")
+                                            }
+                                        }
+                                    }
+
+                                    task.setTaskCompleted(success: true)
+                                case .failure(let error):
+                                    task.setTaskCompleted(success: false)
+                                    Log.log("AppDelegate: Failed to detect exposures \(error)")
+                                }
+                            }
+                        case .failure(let error):
+                            task.setTaskCompleted(success: false)
+                            Log.log("AppDelegate: Failed to detect exposures \(error)")
+                        }
+                    }
+                case .failure(let error):
                     task.setTaskCompleted(success: false)
-                    Log.log("Failed to detect exposures \(error.localizedDescription)")
+                    Log.log("AppDelegate: Failed to detect exposures \(error)")
                 }
             }
 

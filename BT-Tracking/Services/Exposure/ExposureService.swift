@@ -1,6 +1,6 @@
 //
 //  ExposureService.swift
-//  eRouska Dev
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 30/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -8,12 +8,13 @@
 
 import Foundation
 import ExposureNotification
+import UserNotifications
 import CommonCrypto
 import Security
-import FirebaseStorage
 
 protocol ExposureServicing: class {
 
+    // Activation
     typealias Callback = (Error?) -> Void
     
     var isActive: Bool { get }
@@ -25,17 +26,18 @@ protocol ExposureServicing: class {
     func activate(callback: Callback?)
     func deactivate(callback: Callback?)
 
+    // Keys
     typealias KeysCallback = (_ result: Result<[ExposureDiagnosisKey], Error>) -> Void
-
     func getDiagnosisKeys(callback: @escaping KeysCallback)
     func getTestDiagnosisKeys(callback: @escaping KeysCallback)
 
+    // Detection
     typealias DetectCallback = (Result<[Exposure], Error>) -> Void
     var detectingExposures: Bool { get }
-    func detectExposures(callback: @escaping DetectCallback)
+    func detectExposures(configuration: ENExposureConfiguration, keys: [ExposureDiagnosisKey], callback: @escaping DetectCallback)
 
-    func resetAll(callback: Callback?)
-
+    // Bluetooth
+    var isBluetoothOn: Bool { get }
     func showBluetoothOffUserNotificationIfNeeded()
 
 }
@@ -96,9 +98,9 @@ class ExposureService: ExposureServicing {
                 }
 
                 guard let self = self else { return }
-                log("Trace \(self.isActive)")
-                log("Trace \(self.isEnabled)")
-                log("Trace \(self.status.rawValue)")
+                log("Exposure isActive: \(self.isActive)")
+                log("Exposure isEnabled: \(self.isEnabled)")
+                log("Exposure rawStatus: \(self.status.rawValue)")
 
                 self.manager.activate { error in
                     guard error == nil else {
@@ -132,21 +134,15 @@ class ExposureService: ExposureServicing {
     }
 
     func getDiagnosisKeys(callback: @escaping KeysCallback) {
-        let innerCallbck: ENGetDiagnosisKeysHandler = { keys, error in
-            if let error = error {
-                callback(.failure(error))
-            } else if keys?.isEmpty == true {
-                callback(.failure(ExposureError.noData))
-            } else if let keys = keys {
-                callback(.success(keys.map { ExposureDiagnosisKey(key: $0) }))
-            }
-        }
-
-        manager.getDiagnosisKeys(completionHandler: innerCallbck)
+        manager.getDiagnosisKeys(completionHandler: keysCallback(callback))
     }
 
     func getTestDiagnosisKeys(callback: @escaping KeysCallback) {
-        let innerCallbck: ENGetDiagnosisKeysHandler = { keys, error in
+        manager.getTestDiagnosisKeys(completionHandler: keysCallback(callback))
+    }
+
+    private func keysCallback(_ callback: @escaping KeysCallback) -> ENGetDiagnosisKeysHandler {
+        return { keys, error in
             if let error = error {
                 callback(.failure(error))
             } else if keys?.isEmpty == true {
@@ -155,22 +151,83 @@ class ExposureService: ExposureServicing {
                 callback(.success(keys.map { ExposureDiagnosisKey(key: $0) }))
             }
         }
+    }
 
-        manager.getTestDiagnosisKeys(completionHandler: innerCallbck)
+    private(set) var detectingExposures = false
+
+    func detectExposures(configuration: ENExposureConfiguration, keys: [ExposureDiagnosisKey], callback: @escaping DetectCallback) {
+        guard !detectingExposures else {
+            callback(.failure(ExposureError.alreadyRunning))
+            return
+        }
+        detectingExposures = true
+
+        log("ExposureService archiveDiagnosisKeys")
+        archiveDiagnosisKeys(keys: keys) { result in
+            switch result {
+            case .success(let URLs):
+                log("ExposureService detectExposures")
+                self.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: URLs) { summary, error in
+                    if let error = error {
+                        self.detectingExposures = false
+                        callback(.failure(error))
+                        return
+                    } else if let summary = summary {
+                        log("ExposureService summary \(summary)")
+                        let userExplanation = NSLocalizedString("Bylo detekovano nakazeni!", comment: "User notification")
+                        log("ExposureService getExposureInfo")
+                        self.manager.getExposureInfo(summary: summary, userExplanation: userExplanation) { exposures, error in
+                            if let error = error {
+                                self.detectingExposures = false
+                                callback(.failure(error))
+                                return
+                            }
+
+                            log("ExposureService Exposures \(exposures ?? [])")
+
+                            let newExposures = (exposures ?? []).map { exposure in
+                                Exposure(
+                                    date: exposure.date,
+                                    duration: exposure.duration,
+                                    totalRiskScore: exposure.totalRiskScore,
+                                    transmissionRiskLevel: exposure.transmissionRiskLevel,
+                                    attenuationValue: exposure.attenuationValue,
+                                    attenuationDurations: exposure.attenuationDurations.map { $0.intValue }
+                                )
+                            }
+                            self.detectingExposures = false
+                            callback(.success((newExposures)))
+                        }
+                    } else {
+                        self.detectingExposures = false
+                        callback(.failure(ExposureError.noData))
+                    }
+                }
+            case .failure(let error):
+                self.detectingExposures = false
+                callback(.failure(error))
+            }
+        }
+    }
+
+    // MARK: - Bluetooth
+
+    var isBluetoothOn: Bool {
+        return manager.exposureNotificationStatus != .bluetoothOff
     }
 
     func showBluetoothOffUserNotificationIfNeeded() {
-        let identifier = "bluetooth-off"
+        let identifier = "bluetooth_off"
         if ENManager.authorizationStatus == .authorized, manager.exposureNotificationStatus == .bluetoothOff {
             let content = UNMutableNotificationContent()
-            content.title = NSLocalizedString("USER_NOTIFICATION_BLUETOOTH_OFF_TITLE", comment: "User notification title")
-            content.body = NSLocalizedString("USER_NOTIFICATION_BLUETOOTH_OFF_BODY", comment: "User notification")
+            content.title = NSLocalizedString("bluetooth_off_title", comment: "bluetooth_off_title")
+            content.body = NSLocalizedString("bluetooth_off_body", comment: "bluetooth_off_body")
             content.sound = .default
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request) { error in
                 DispatchQueue.main.async {
                     if let error = error {
-                        print("Error showing error user notification: \(error)")
+                        Log.log("ExposureService: Error showing error user notification \(error)")
                     }
                 }
             }
@@ -178,6 +235,10 @@ class ExposureService: ExposureServicing {
             UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [identifier])
         }
     }
+
+}
+
+private extension ExposureService {
 
     static let privateKeyECData = Data(base64Encoded: """
     MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgKJNe9P8hzcbVkoOYM4hJFkLERNKvtC8B40Y/BNpfxMeh\
@@ -192,7 +253,7 @@ class ExposureService: ExposureServicing {
                 kSecAttrKeyType: kSecAttrKeyTypeEC,
                 kSecAttrKeyClass: kSecAttrKeyClassPrivate,
                 kSecAttrKeySizeInBits: 256
-            ] as CFDictionary
+                ] as CFDictionary
 
             var cfError: Unmanaged<CFError>? = nil
 
@@ -244,7 +305,7 @@ class ExposureService: ExposureServicing {
                     tekSignature.signature = signedHash
                     tekSignature.batchNum = 1
                     tekSignature.batchSize = 1
-                }]
+                    }]
             }
 
             let cachesDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -259,156 +320,6 @@ class ExposureService: ExposureServicing {
         } catch {
             completion(.failure(error))
         }
-    }
-
-    private(set) var detectingExposures = false
-
-    func detectExposures(callback: @escaping DetectCallback) {
-        guard !detectingExposures else {
-            callback(.failure(ExposureError.alreadyRunning))
-            return
-        }
-        detectingExposures = true
-
-        let path = "exposure"
-        let fileName = "exposure.json"
-
-        let storage = Storage.storage()
-        let storageReference = storage.reference()
-
-        let folderReference = storageReference.child(path)
-        folderReference.listAll { result, error in
-            if let error = error {
-                self.detectingExposures = false
-                log("Storage error: \(error)")
-                callback(.failure(error))
-                return
-            }
-
-            var count = 0
-            var reports: [ExposureDiagnosisKey] = []
-            let decoder = JSONDecoder()
-
-            if result.prefixes.count == 0 {
-                self.detectingExposures = false
-                callback(.failure(ExposureError.noData))
-                return
-            }
-
-            for folder in result.prefixes {
-                folder.child(fileName).getData(maxSize: 1024 * 100) { data, error in
-                    count += 1
-                    if let error = error {
-                        log("Storage error: \(error)")
-                        return
-                    }
-
-                    let decoded = try? decoder.decode([ExposureDiagnosisKey].self, from: data ?? Data())
-                    if let values = decoded {
-                        reports.append(contentsOf: values)
-                    }
-
-                    if count == result.prefixes.count {
-                        log("Storage download done!")
-                        self.processKeys(keys: reports, progress: Progress(), callback: callback)
-                    }
-                }
-            }
-        }
-    }
-
-    func processKeys(keys: [ExposureDiagnosisKey], progress: Progress, callback: @escaping DetectCallback) {
-        log("archiveDiagnosisKeys")
-        archiveDiagnosisKeys(keys: keys) { result in
-            switch result {
-            case .success(let URLs):
-                log("getExposureConfiguration")
-                getExposureConfiguration { result in
-                    switch result {
-                    case let .success(configuration):
-                        log("detectExposures")
-                        self.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: URLs) { summary, error in
-                            if let error = error {
-                                progress.cancel()
-                                self.detectingExposures = false
-                                callback(.failure(error))
-                                return
-                            } else if let summary = summary {
-                                log("Exposure summary \(summary)")
-                                let userExplanation = NSLocalizedString("Bylo detekovano nakazeni!", comment: "User notification")
-                                log("getExposureInfo")
-                                self.manager.getExposureInfo(summary: summary, userExplanation: userExplanation) { exposures, error in
-                                    if let error = error {
-                                        progress.cancel()
-                                        self.detectingExposures = false
-                                        callback(.failure(error))
-                                        return
-                                    }
-
-                                    log("Exposures \(exposures ?? [])")
-                                    
-                                    let newExposures = (exposures ?? []).map { exposure in
-                                        Exposure(
-                                            date: exposure.date,
-                                            duration: exposure.duration,
-                                            totalRiskScore: exposure.totalRiskScore,
-                                            transmissionRiskLevel: exposure.transmissionRiskLevel,
-                                            attenuationValue: exposure.attenuationValue,
-                                            attenuationDurations: exposure.attenuationDurations.map { $0.intValue }
-                                        )
-                                    }
-                                    progress.completedUnitCount = progress.totalUnitCount
-                                    self.detectingExposures = false
-                                    callback(.success((newExposures)))
-                                }
-                            } else {
-                                progress.cancel()
-                                self.detectingExposures = false
-                                callback(.failure(ExposureError.noData))
-                            }
-                        }
-
-                    case let .failure(error):
-                        progress.cancel()
-                        self.detectingExposures = false
-                        callback(.failure(error))
-                    }
-                }
-            case .failure(let error):
-                progress.cancel()
-                self.detectingExposures = false
-                callback(.failure(error))
-            }
-        }
-    }
-
-    func getExposureConfiguration(completion: (Result<ENExposureConfiguration, Error>) -> Void) {
-        let dataFromServer = """
-        {"minimumRiskScore":0,
-        "attenuationDurationThresholds":[50, 70],
-        "attenuationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-        "daysSinceLastExposureLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-        "durationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-        "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
-        """.data(using: .utf8)!
-
-        do {
-            let codableExposureConfiguration = try JSONDecoder().decode(ExposureConfiguration.self, from: dataFromServer)
-            let exposureConfiguration = ENExposureConfiguration()
-            exposureConfiguration.minimumRiskScore = codableExposureConfiguration.minimumRiskScore
-            exposureConfiguration.attenuationLevelValues = codableExposureConfiguration.attenuationLevelValues as [NSNumber]
-            exposureConfiguration.daysSinceLastExposureLevelValues = codableExposureConfiguration.daysSinceLastExposureLevelValues as [NSNumber]
-            exposureConfiguration.durationLevelValues = codableExposureConfiguration.durationLevelValues as [NSNumber]
-            exposureConfiguration.transmissionRiskLevelValues = codableExposureConfiguration.transmissionRiskLevelValues as [NSNumber]
-            exposureConfiguration.metadata = ["attenuationDurationThresholds": codableExposureConfiguration.attenuationDurationThresholds]
-            completion(.success(exposureConfiguration))
-        } catch {
-            completion(.failure(error))
-        }
-    }
-
-    func resetAll(callback: Callback?) {
-
     }
 
 }

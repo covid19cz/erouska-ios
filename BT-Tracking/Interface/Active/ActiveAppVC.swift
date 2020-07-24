@@ -1,6 +1,6 @@
 //
 //  ActiveAppVC.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Jakub Skořepa on 20/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -8,7 +8,6 @@
 
 import UIKit
 import FirebaseAuth
-import CoreBluetooth
 
 final class ActiveAppVC: UIViewController {
 
@@ -233,11 +232,7 @@ private extension ActiveAppVC {
     }
 
     func checkForBluetooth() {
-        var state = true
-        if CBPeripheralManager().state == .poweredOff {
-            state = false
-        }
-
+        let state = viewModel.exposureService.isBluetoothOn
         guard viewModel.lastBluetoothState != state else { return }
         viewModel.lastBluetoothState = state
         updateViewModel()
@@ -266,7 +261,7 @@ private extension ActiveAppVC {
 
     func openBluetoothSettings() {
         let url: URL?
-        if CBPeripheralManager().state == .poweredOff {
+        if !viewModel.exposureService.isBluetoothOn {
             url = URL(string: "App-Prefs::root=Settings&path=Bluetooth")
         } else {
             url = URL(string: UIApplication.openSettingsURLString)

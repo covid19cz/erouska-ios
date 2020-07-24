@@ -1,6 +1,6 @@
 //
 //  CompleteActivation.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Lukáš Foldýna on 19/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.

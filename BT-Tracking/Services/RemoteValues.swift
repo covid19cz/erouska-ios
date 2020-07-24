@@ -1,15 +1,13 @@
 //
 //  RemoteValues.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Stanislav Kasprik on 29/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
 import Foundation
-#if !targetEnvironment(macCatalyst)
 import FirebaseRemoteConfig
-#endif
 import RxSwift
 
 extension AppDelegate {

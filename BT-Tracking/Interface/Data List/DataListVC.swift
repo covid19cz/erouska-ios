@@ -1,21 +1,19 @@
 //
 //  DataListVC.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Lukáš Foldýna on 23/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
-#if !targetEnvironment(macCatalyst)
-import FirebaseAuth
-import FirebaseStorage
-#endif
 import Reachability
 import BackgroundTasks
+import ExposureNotification
 
 final class DataListVC: UIViewController, UITableViewDelegate {
 
@@ -30,7 +28,6 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var sendButton: Button!
-
 
     // MARK: - Lifecycle
 
@@ -67,30 +64,48 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         dateFormat.timeStyle = .short
         dateFormat.dateStyle = .short
 
-        AppDelegate.dependency.exposureService.detectExposures { result in
-            self.hideProgress()
-
+        AppDelegate.dependency.reporter.fetchExposureConfiguration { [weak self] result in
             switch result {
-            case .success(var exposures):
-                exposures.sort { $0.date < $1.date }
+            case .success(let configuration):
+                AppDelegate.dependency.reporter.downloadKeys { [weak self] result in
+                    switch result {
+                    case .success(let keys):
+                        AppDelegate.dependency.exposureService.detectExposures(
+                            configuration: configuration,
+                            keys: keys
+                        ) { [weak self] result in
+                            switch result {
+                            case .success(var exposures):
+                                exposures.sort { $0.date < $1.date }
 
-                var result = ""
-                for exposure in exposures {
-                    let signals = exposure.attenuationDurations.map { "\($0)" }
-                    result += "EXP: \(dateFormat.string(from: exposure.date))" +
-                    ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
-                        + "attenuation value: \(exposure.attenuationValue)\n"
-                        + "signal attenuations: \(signals.joined(separator: ", "))\n"
-                }
-                if result == "" {
-                    result = "None";
-                }
+                                var result = ""
+                                for exposure in exposures {
+                                    let signals = exposure.attenuationDurations.map { "\($0)" }
+                                    result += "EXP: \(dateFormat.string(from: exposure.date))" +
+                                        ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
+                                        + "attenuation value: \(exposure.attenuationValue)\n"
+                                        + "signal attenuations: \(signals.joined(separator: ", "))\n"
+                                }
+                                if result == "" {
+                                    result = "None";
+                                }
 
-                log("EXP: \(exposures)")
-                log("EXP: \(result)")
-                self.showAlert(title: "Exposures", message: result)
+                                log("EXP: \(exposures)")
+                                log("EXP: \(result)")
+                                self?.showAlert(title: "Exposures", message: result)
+                            case .failure(let error):
+                                self?.hideProgress()
+                                self?.showDownloadDataErrorFailed(error)
+                            }
+                        }
+                    case .failure(let error):
+                        self?.hideProgress()
+                        self?.showDownloadDataErrorFailed(error)
+                    }
+                }
             case .failure(let error):
-                self.show(error: error)
+                self?.hideProgress()
+                self?.showDownloadDataErrorFailed(error)
             }
         }
     }
@@ -175,18 +190,25 @@ private extension DataListVC {
         viewModel.selectedSegmentIndex.accept(0)
     }
 
-    // MARK: - Report
+    // MARK: - Reports
 
-    func sendReport() {
-        let alert = UIAlertController(title: "Ktery druh klicu", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Test keys", style: .default, handler: { _ in
-            self.newSendReport()
-        }))
-        alert.addAction(UIAlertAction(title: "Zrusit", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+    enum ReportType {
+        case real, test
     }
 
-    func newSendReport() {
+    func sendReport() {
+        let controller = UIAlertController(title: "Ktery druh klicu?", message: nil, preferredStyle: .actionSheet)
+        controller.addAction(UIAlertAction(title: "Test keys", style: .default, handler: { _ in
+            self.sendReport(with: .test)
+        }))
+        controller.addAction(UIAlertAction(title: "Keys", style: .default, handler: { _ in
+            self.sendReport(with: .real)
+        }))
+        controller.addAction(UIAlertAction(title: "Zrusit", style: .cancel, handler: nil))
+        present(controller, animated: true, completion: nil)
+    }
+
+    func sendReport(with type: ReportType) {
         #if DEBUG
         #else
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
@@ -200,48 +222,38 @@ private extension DataListVC {
             return
         }
 
+        showProgress()
+
         let exposureService = AppDelegate.dependency.exposureService
         let callback: ExposureServicing.KeysCallback = { result in
             switch result {
             case .success(let keys):
-                let encoder = JSONEncoder()
-                let data = (try? encoder.encode(keys)) ?? Data()
-
-                let path = "exposure/\(Auth.auth().currentUser?.uid ?? "")/"
-                let fileName = "exposure.json"
-
-                let storage = Storage.storage()
-                let storageReference = storage.reference()
-                let fileReference = storageReference.child("\(path)/\(fileName)")
-                let storageMetadata = StorageMetadata()
-                let metadata = [
-                    "version": "1",
-                    "buid": KeychainService.BUID ?? ""
-                ]
-                storageMetadata.customMetadata = metadata
-
-                fileReference.putData(data, metadata: storageMetadata) { [weak self] (metadata, error) in
-                    guard let self = self else { return }
-                    self.hideProgress()
-
-                    if let error = error {
-                        log("FirebaseUpload: Error \(error.localizedDescription)")
-                        self.showSendDataErrorFailed()
-                        return
+                AppDelegate.dependency.reporter.uploadKeys(keys: keys, callback: { [weak self] result in
+                    self?.hideProgress()
+                    switch result {
+                    case .success:
+                        self?.performSegue(withIdentifier: "sendReport", sender: nil)
+                    case .failure:
+                        self?.showSendDataErrorFailed()
                     }
-                    AppSettings.lastUploadDate = Date()
-                    self.performSegue(withIdentifier: "sendReport", sender: nil)
-                }
+                })
             case .failure(let error):
-                log("Failed to get exposure keys \(error)")
+                log("DataListVC: Failed to get exposure keys \(error)")
+                self.hideProgress()
+                self.showSendDataErrorFailed()
             }
         }
 
-        #if DEBUG
-        exposureService.getTestDiagnosisKeys(callback: callback)
-        #else
-        exposureService.getDiagnosisKeys(callback: callback)
-        #endif
+        switch type {
+        case .test:
+            exposureService.getTestDiagnosisKeys(callback: callback)
+        case .real:
+            exposureService.getDiagnosisKeys(callback: callback)
+        }
+    }
+
+    func showDownloadDataErrorFailed(_ error: Error) {
+        show(error: error)
     }
 
     func showSendDataErrorFailed() {
