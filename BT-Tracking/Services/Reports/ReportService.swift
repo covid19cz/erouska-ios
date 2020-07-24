@@ -10,6 +10,8 @@ import Foundation
 import ExposureNotification
 import FirebaseStorage
 import FirebaseAuth
+import CommonCrypto
+import Security
 
 enum ReportError: String, Error {
     case noData
@@ -24,7 +26,7 @@ protocol ReportServicing: class {
     var isUploading: Bool { get }
     func uploadKeys(keys: [ExposureDiagnosisKey], callback: @escaping UploadKeysCallback)
 
-    typealias DownloadKeysCallback = (Result<[ExposureDiagnosisKey], Error>) -> Void
+    typealias DownloadKeysCallback = (Result<[URL], Error>) -> Void
 
     var isDownloading: Bool { get }
     func downloadKeys(callback: @escaping DownloadKeysCallback)
@@ -102,7 +104,14 @@ class ReportService: ReportServicing {
         func reportSuccess(_ reports: [ExposureDiagnosisKey]) {
             log("ReportService Download done")
             isDownloading = false
-            callback(.success(reports))
+            archiveDiagnosisKeys(keys: reports, completion: { result in
+                switch result {
+                case .success(let URLs):
+                    callback(.success(URLs))
+                case .failure(let error):
+                    reportFailure(error)
+                }
+            })
         }
 
         let folderReference = storageReference.child(folderPattern)
@@ -169,6 +178,93 @@ class ReportService: ReportServicing {
             callback(.success(exposureConfiguration))
         } catch {
             callback(.failure(error))
+        }
+    }
+
+}
+
+private extension ReportService {
+
+    // Exposure package simulation (from apple sample code)
+    static let privateKeyECData = Data(base64Encoded: """
+    MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgKJNe9P8hzcbVkoOYM4hJFkLERNKvtC8B40Y/BNpfxMeh\
+    RANCAASfuKEs4Z9gHY23AtuMv1PvDcp4Uiz6lTbA/p77if0yO2nXBL7th8TUbdHOsUridfBZ09JqNQYKtaU9BalkyodM
+    """)!
+
+    func archiveDiagnosisKeys(keys: [ExposureDiagnosisKey], completion: (Result<[URL], Error>) -> Void) {
+        let fileName = UUID().uuidString
+
+        do {
+            let attributes = [
+                kSecAttrKeyType: kSecAttrKeyTypeEC,
+                kSecAttrKeyClass: kSecAttrKeyClassPrivate,
+                kSecAttrKeySizeInBits: 256
+                ] as CFDictionary
+
+            var cfError: Unmanaged<CFError>? = nil
+
+            let privateKeyData = Self.privateKeyECData.suffix(65) + Self.privateKeyECData.subdata(in: 36..<68)
+            guard let secKey = SecKeyCreateWithData(privateKeyData as CFData, attributes, &cfError) else {
+                throw cfError!.takeRetainedValue()
+            }
+
+            let signatureInfo = SignatureInfo.with { signatureInfo in
+                signatureInfo.appBundleID = Bundle.main.bundleIdentifier!
+                signatureInfo.verificationKeyVersion = "v1"
+                signatureInfo.verificationKeyID = "310"
+                signatureInfo.signatureAlgorithm = "SHA256withECDSA"
+            }
+
+            // In a real implementation, the file at remoteURL would be downloaded from a server
+            // This sample generates and saves a binary and signature pair of files based on the locally stored diagnosis keys
+            let export = TemporaryExposureKeyExport.with { export in
+                export.batchNum = 1
+                export.batchSize = 1
+                export.region = "310"
+                export.signatureInfos = [signatureInfo]
+                export.keys = keys.shuffled().map { diagnosisKey in
+                    TemporaryExposureKey.with { temporaryExposureKey in
+                        temporaryExposureKey.keyData = diagnosisKey.keyData
+                        temporaryExposureKey.transmissionRiskLevel = Int32(diagnosisKey.transmissionRiskLevel)
+                        temporaryExposureKey.rollingStartIntervalNumber = Int32(diagnosisKey.rollingStartNumber)
+                        temporaryExposureKey.rollingPeriod = Int32(diagnosisKey.rollingPeriod)
+                    }
+                }
+            }
+
+            let exportData = "EK Export v1    ".data(using: .utf8)! + (try export.serializedData())
+
+            var exportHash = Data(count: Int(CC_SHA256_DIGEST_LENGTH))
+            _ = exportData.withUnsafeBytes { exportDataBuffer in
+                exportHash.withUnsafeMutableBytes { exportHashBuffer in
+                    CC_SHA256(exportDataBuffer.baseAddress, CC_LONG(exportDataBuffer.count), exportHashBuffer.bindMemory(to: UInt8.self).baseAddress)
+                }
+            }
+
+            guard let signedHash = SecKeyCreateSignature(secKey, .ecdsaSignatureDigestX962SHA256, exportHash as CFData, &cfError) as Data? else {
+                throw cfError!.takeRetainedValue()
+            }
+
+            let tekSignatureList = TEKSignatureList.with { tekSignatureList in
+                tekSignatureList.signatures = [TEKSignature.with { tekSignature in
+                    tekSignature.signatureInfo = signatureInfo
+                    tekSignature.signature = signedHash
+                    tekSignature.batchNum = 1
+                    tekSignature.batchSize = 1
+                    }]
+            }
+
+            let cachesDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+
+            let localBinURL = cachesDirectory.appendingPathComponent(fileName + ".bin")
+            try exportData.write(to: localBinURL)
+
+            let localSigURL = cachesDirectory.appendingPathComponent(fileName + ".sig")
+            try tekSignatureList.serializedData().write(to: localSigURL)
+
+            completion(.success([localBinURL, localSigURL]))
+        } catch {
+            completion(.failure(error))
         }
     }
 

@@ -69,10 +69,10 @@ final class DataListVC: UIViewController, UITableViewDelegate {
             case .success(let configuration):
                 AppDelegate.dependency.reporter.downloadKeys { [weak self] result in
                     switch result {
-                    case .success(let keys):
+                    case .success(let URLs):
                         AppDelegate.dependency.exposureService.detectExposures(
                             configuration: configuration,
-                            keys: keys
+                            URLs: URLs
                         ) { [weak self] result in
                             switch result {
                             case .success(var exposures):

@@ -9,8 +9,6 @@
 import Foundation
 import ExposureNotification
 import UserNotifications
-import CommonCrypto
-import Security
 
 protocol ExposureServicing: class {
 
@@ -34,7 +32,7 @@ protocol ExposureServicing: class {
     // Detection
     typealias DetectCallback = (Result<[Exposure], Error>) -> Void
     var detectingExposures: Bool { get }
-    func detectExposures(configuration: ENExposureConfiguration, keys: [ExposureDiagnosisKey], callback: @escaping DetectCallback)
+    func detectExposures(configuration: ENExposureConfiguration, URLs: [URL], callback: @escaping DetectCallback)
 
     // Bluetooth
     var isBluetoothOn: Bool { get }
@@ -155,57 +153,48 @@ class ExposureService: ExposureServicing {
 
     private(set) var detectingExposures = false
 
-    func detectExposures(configuration: ENExposureConfiguration, keys: [ExposureDiagnosisKey], callback: @escaping DetectCallback) {
+    func detectExposures(configuration: ENExposureConfiguration, URLs: [URL], callback: @escaping DetectCallback) {
         guard !detectingExposures else {
             callback(.failure(ExposureError.alreadyRunning))
             return
         }
         detectingExposures = true
 
-        log("ExposureService archiveDiagnosisKeys")
-        archiveDiagnosisKeys(keys: keys) { result in
-            switch result {
-            case .success(let URLs):
-                log("ExposureService detectExposures")
-                self.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: URLs) { summary, error in
+        log("ExposureService detectExposures")
+        self.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: URLs) { summary, error in
+            if let error = error {
+                self.detectingExposures = false
+                callback(.failure(error))
+                return
+            } else if let summary = summary {
+                log("ExposureService summary \(summary)")
+                let userExplanation = NSLocalizedString("Bylo detekovano nakazeni!", comment: "User notification")
+                log("ExposureService getExposureInfo")
+                self.manager.getExposureInfo(summary: summary, userExplanation: userExplanation) { exposures, error in
                     if let error = error {
                         self.detectingExposures = false
                         callback(.failure(error))
                         return
-                    } else if let summary = summary {
-                        log("ExposureService summary \(summary)")
-                        let userExplanation = NSLocalizedString("Bylo detekovano nakazeni!", comment: "User notification")
-                        log("ExposureService getExposureInfo")
-                        self.manager.getExposureInfo(summary: summary, userExplanation: userExplanation) { exposures, error in
-                            if let error = error {
-                                self.detectingExposures = false
-                                callback(.failure(error))
-                                return
-                            }
-
-                            log("ExposureService Exposures \(exposures ?? [])")
-
-                            let newExposures = (exposures ?? []).map { exposure in
-                                Exposure(
-                                    date: exposure.date,
-                                    duration: exposure.duration,
-                                    totalRiskScore: exposure.totalRiskScore,
-                                    transmissionRiskLevel: exposure.transmissionRiskLevel,
-                                    attenuationValue: exposure.attenuationValue,
-                                    attenuationDurations: exposure.attenuationDurations.map { $0.intValue }
-                                )
-                            }
-                            self.detectingExposures = false
-                            callback(.success((newExposures)))
-                        }
-                    } else {
-                        self.detectingExposures = false
-                        callback(.failure(ExposureError.noData))
                     }
+
+                    log("ExposureService Exposures \(exposures ?? [])")
+
+                    let newExposures = (exposures ?? []).map { exposure in
+                        Exposure(
+                            date: exposure.date,
+                            duration: exposure.duration,
+                            totalRiskScore: exposure.totalRiskScore,
+                            transmissionRiskLevel: exposure.transmissionRiskLevel,
+                            attenuationValue: exposure.attenuationValue,
+                            attenuationDurations: exposure.attenuationDurations.map { $0.intValue }
+                        )
+                    }
+                    self.detectingExposures = false
+                    callback(.success((newExposures)))
                 }
-            case .failure(let error):
+            } else {
                 self.detectingExposures = false
-                callback(.failure(error))
+                callback(.failure(ExposureError.noData))
             }
         }
     }
@@ -233,92 +222,6 @@ class ExposureService: ExposureServicing {
             }
         } else {
             UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [identifier])
-        }
-    }
-
-}
-
-private extension ExposureService {
-
-    static let privateKeyECData = Data(base64Encoded: """
-    MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgKJNe9P8hzcbVkoOYM4hJFkLERNKvtC8B40Y/BNpfxMeh\
-    RANCAASfuKEs4Z9gHY23AtuMv1PvDcp4Uiz6lTbA/p77if0yO2nXBL7th8TUbdHOsUridfBZ09JqNQYKtaU9BalkyodM
-    """)!
-
-    func archiveDiagnosisKeys(keys: [ExposureDiagnosisKey], completion: (Result<[URL], Error>) -> Void) {
-        let fileName = UUID().uuidString
-
-        do {
-            let attributes = [
-                kSecAttrKeyType: kSecAttrKeyTypeEC,
-                kSecAttrKeyClass: kSecAttrKeyClassPrivate,
-                kSecAttrKeySizeInBits: 256
-                ] as CFDictionary
-
-            var cfError: Unmanaged<CFError>? = nil
-
-            let privateKeyData = Self.privateKeyECData.suffix(65) + Self.privateKeyECData.subdata(in: 36..<68)
-            guard let secKey = SecKeyCreateWithData(privateKeyData as CFData, attributes, &cfError) else {
-                throw cfError!.takeRetainedValue()
-            }
-
-            let signatureInfo = SignatureInfo.with { signatureInfo in
-                signatureInfo.appBundleID = Bundle.main.bundleIdentifier!
-                signatureInfo.verificationKeyVersion = "v1"
-                signatureInfo.verificationKeyID = "310"
-                signatureInfo.signatureAlgorithm = "SHA256withECDSA"
-            }
-
-            // In a real implementation, the file at remoteURL would be downloaded from a server
-            // This sample generates and saves a binary and signature pair of files based on the locally stored diagnosis keys
-            let export = TemporaryExposureKeyExport.with { export in
-                export.batchNum = 1
-                export.batchSize = 1
-                export.region = "310"
-                export.signatureInfos = [signatureInfo]
-                export.keys = keys.shuffled().map { diagnosisKey in
-                    TemporaryExposureKey.with { temporaryExposureKey in
-                        temporaryExposureKey.keyData = diagnosisKey.keyData
-                        temporaryExposureKey.transmissionRiskLevel = Int32(diagnosisKey.transmissionRiskLevel)
-                        temporaryExposureKey.rollingStartIntervalNumber = Int32(diagnosisKey.rollingStartNumber)
-                        temporaryExposureKey.rollingPeriod = Int32(diagnosisKey.rollingPeriod)
-                    }
-                }
-            }
-
-            let exportData = "EK Export v1    ".data(using: .utf8)! + (try export.serializedData())
-
-            var exportHash = Data(count: Int(CC_SHA256_DIGEST_LENGTH))
-            _ = exportData.withUnsafeBytes { exportDataBuffer in
-                exportHash.withUnsafeMutableBytes { exportHashBuffer in
-                    CC_SHA256(exportDataBuffer.baseAddress, CC_LONG(exportDataBuffer.count), exportHashBuffer.bindMemory(to: UInt8.self).baseAddress)
-                }
-            }
-
-            guard let signedHash = SecKeyCreateSignature(secKey, .ecdsaSignatureDigestX962SHA256, exportHash as CFData, &cfError) as Data? else {
-                throw cfError!.takeRetainedValue()
-            }
-
-            let tekSignatureList = TEKSignatureList.with { tekSignatureList in
-                tekSignatureList.signatures = [TEKSignature.with { tekSignature in
-                    tekSignature.signatureInfo = signatureInfo
-                    tekSignature.signature = signedHash
-                    tekSignature.batchNum = 1
-                    tekSignature.batchSize = 1
-                    }]
-            }
-
-            let cachesDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
-            let localBinURL = cachesDirectory.appendingPathComponent(fileName + ".bin")
-            try exportData.write(to: localBinURL)
-
-            let localSigURL = cachesDirectory.appendingPathComponent(fileName + ".sig")
-            try tekSignatureList.serializedData().write(to: localSigURL)
-
-            completion(.success([localBinURL, localSigURL]))
-        } catch {
-            completion(.failure(error))
         }
     }
 

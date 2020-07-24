@@ -157,6 +157,7 @@
 		80D5F7E52423D8740010EF51 /* CompleteActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */; };
 		80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
 		80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
+		80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 80DF5FB824CB579E00332D25 /* AlamofireImage */; };
 		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
 		80ECB96624290DA900E57601 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
 		80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* DataList.storyboard */; };
@@ -339,6 +340,7 @@
 				805192A624AF8E2700765392 /* RxKeyboard in Frameworks */,
 				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
 				805192A424AF8E2700765392 /* RxDataSources in Frameworks */,
+				80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */,
 				805192AC24AF8E2700765392 /* Reachability in Frameworks */,
 				805192A024AF8E2700765392 /* RxCocoa in Frameworks */,
 				805192AE24AF8E2700765392 /* SwiftyMarkdown in Frameworks */,
@@ -770,6 +772,7 @@
 				805192A924AF8E2700765392 /* DeviceKit */,
 				805192AB24AF8E2700765392 /* Reachability */,
 				805192AD24AF8E2700765392 /* SwiftyMarkdown */,
+				80DF5FB824CB579E00332D25 /* AlamofireImage */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska.app */;
@@ -1591,6 +1594,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
 			productName = SwiftyMarkdown;
+		};
+		80DF5FB824CB579E00332D25 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
 		};
 		80FC71BB2477180400F86389 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;

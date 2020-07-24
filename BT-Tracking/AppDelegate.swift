@@ -224,10 +224,10 @@ private extension AppDelegate {
                 case .success(let configuration):
                     Self.dependency.reporter.downloadKeys { result in
                         switch result {
-                        case .success(let keys):
+                        case .success(let URLs):
                             AppDelegate.dependency.exposureService.detectExposures(
                                 configuration: configuration,
-                                keys: keys
+                                URLs: URLs
                             ) { result in
                                 switch result {
                                 case .success(var exposures):
