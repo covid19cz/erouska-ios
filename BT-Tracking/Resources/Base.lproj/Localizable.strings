@@ -138,7 +138,11 @@
 "force_update_button" = "Aktualizovat";
 "force_os_update_title" = "Aktualizujte telefon na nejnovější verzi iOS";
 "force_os_update_body" = "Nejnovější verze operačního systému iOS (13.5 nebo novější) je nezbytná pro aktivaci oznámení o setkání s osobou, u které byla prokázana nákaza virem COVID-19.";
-
+"unsupported_device_title" = "Vaše zařízení nepodporuje iOS 13.5 nebo novější";
+"unsupported_device_body" = "Nejnovější verze operačního systému iOS (13.5 nebo novější) je nezbytná pro další fungování eRoušky.";
+"unsupported_device_button" = "Další informace";
+"unsupported_device_ipad_title" = "Tablety s operačním systémem iPadOS nejsou podporované";
+"unsupported_device_ipad_body" = "Nová verze aplikace eRoušky funguje pouze na telefonech s operačních systémem iOS a Android.";
 
 "bluetooth_off_title" = "Zapněte Bluetooth";
 "bluetooth_off_body" = "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout\".";

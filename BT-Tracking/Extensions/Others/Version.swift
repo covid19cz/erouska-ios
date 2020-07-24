@@ -16,12 +16,14 @@ struct Version {
     }
 }
 
-extension Version {
+extension String.StringInterpolation {
 
-    static var currentAppVersion: Version {
-        let rawValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-        return Version(rawValue ?? "")
+    mutating func appendInterpolation(_ value: Version) {
+        appendInterpolation(value.rawValue)
     }
+}
+
+extension Version {
 
     static var currentOSVersion: Version {
         return Version(UIDevice.current.systemVersion)
