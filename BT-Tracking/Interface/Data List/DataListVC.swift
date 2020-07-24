@@ -74,6 +74,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
                             configuration: configuration,
                             URLs: URLs
                         ) { [weak self] result in
+                            self?.hideProgress()
                             switch result {
                             case .success(var exposures):
                                 exposures.sort { $0.date < $1.date }
@@ -94,7 +95,6 @@ final class DataListVC: UIViewController, UITableViewDelegate {
                                 log("EXP: \(result)")
                                 self?.showAlert(title: "Exposures", message: result)
                             case .failure(let error):
-                                self?.hideProgress()
                                 self?.showDownloadDataErrorFailed(error)
                             }
                         }
