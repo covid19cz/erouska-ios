@@ -171,12 +171,12 @@ private extension ActiveAppVC {
 
     func updateScanner() {
         switch viewModel.state {
-        case .enabled:
+        case .enabled, .disabled:
             viewModel.exposureService.activate { [weak self] error in
                 guard let error = error else { return }
                 self?.show(error: error)
             }
-        case .disabled, .paused:
+        case .paused:
             viewModel.exposureService.deactivate { [weak self] error in
                 guard let error = error else { return }
                 self?.show(error: error)
