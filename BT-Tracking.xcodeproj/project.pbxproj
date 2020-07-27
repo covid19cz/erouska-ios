@@ -65,7 +65,6 @@
 		8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
 		8083D8A9244640A0007FA4E9 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
 		8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A95242CA27800EB0B6C /* HelpVC.swift */; };
-		8083D8AD244640A0007FA4E9 /* AccountActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationVC.swift */; };
 		8083D8AE244640A0007FA4E9 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */; };
 		8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
@@ -82,10 +81,8 @@
 		8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
 		8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
 		8083D8C7244640A0007FA4E9 /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
-		8083D8C8244640A0007FA4E9 /* CompleteActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */; };
 		8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCE2446028E00D0C810 /* InputValidation.swift */; };
-		8083D8CD244640A0007FA4E9 /* BluetoothActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationVC.swift */; };
 		8083D8CE244640A0007FA4E9 /* SendReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportVC.swift */; };
 		8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		8083D8D0244640A0007FA4E9 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
@@ -125,8 +122,6 @@
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
 		80B94557242B96560052CD9F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
 		80BB47642422865B00F552FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
-		80BB476624236ED100F552FC /* BluetoothActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationVC.swift */; };
-		80BB476824238CBB00F552FC /* AccountActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationVC.swift */; };
 		80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80BE18BF2433C18200C4A9E6 /* Localizable.strings */; };
 		80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FC52445CCAC00D0C810 /* GradientView.swift */; };
 		80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */; };
@@ -136,19 +131,12 @@
 		80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
 		80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
-		80CA44CE244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44CD244AE458008E22F8 /* BluetoothActivationVM.swift */; };
-		80CA44CF244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44CD244AE458008E22F8 /* BluetoothActivationVM.swift */; };
-		80CA44D2244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D1244AE783008E22F8 /* NotificationPermissionVM.swift */; };
-		80CA44D3244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D1244AE783008E22F8 /* NotificationPermissionVM.swift */; };
-		80CA44D6244AEBDE008E22F8 /* AccountActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */; };
-		80CA44D8244AF22B008E22F8 /* CompleteActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */; };
 		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
 		80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
 		80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
 		80CA44E2244B4518008E22F8 /* UnregisterUserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */; };
 		80CA44E4244B464B008E22F8 /* UnregisterFinishVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
-		80D5F7E52423D8740010EF51 /* CompleteActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */; };
 		80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
 		80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
 		80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 80DF5FB824CB579E00332D25 /* AlamofireImage */; };
@@ -198,12 +186,12 @@
 		D6CD28ED24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */; };
 		D6CD28EE24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
 		D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
+		D6CD28F124CF288E005847AA /* FakeServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28F024CF288E005847AA /* FakeServer.swift */; };
+		D6CD28F224CF288E005847AA /* FakeServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28F024CF288E005847AA /* FakeServer.swift */; };
 		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
-		FFC32E9E244B74E00008104C /* CompleteActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */; };
 		FFC32E9F244B74F50008104C /* UnregisterUserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */; };
 		FFC32EA0244B75020008104C /* UnregisterFinishVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */; };
-		FFC32EA2244B75280008104C /* AccountActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */; };
 		FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */; };
 		FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */; };
 		FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
@@ -265,8 +253,6 @@
 		80B94554242B7B460052CD9F /* ActiveAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVM.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		80BB476524236ED100F552FC /* BluetoothActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivationVC.swift; sourceTree = "<group>"; };
-		80BB476724238CBB00F552FC /* AccountActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationVC.swift; sourceTree = "<group>"; };
 		80BE18C02433C18200C4A9E6 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80BE18C22433C18800C4A9E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80BE3FC52445CCAC00D0C810 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -277,17 +263,12 @@
 		80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterUserVC.swift; sourceTree = "<group>"; };
 		80CA44B5244ADA44008E22F8 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		80CA44CB244ADD8A008E22F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		80CA44CD244AE458008E22F8 /* BluetoothActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivationVM.swift; sourceTree = "<group>"; };
-		80CA44D1244AE783008E22F8 /* NotificationPermissionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionVM.swift; sourceTree = "<group>"; };
-		80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationVM.swift; sourceTree = "<group>"; };
-		80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationVM.swift; sourceTree = "<group>"; };
 		80CA44DB244B3769008E22F8 /* HelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVM.swift; sourceTree = "<group>"; };
 		80CA44DF244B404F008E22F8 /* ContactsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVM.swift; sourceTree = "<group>"; };
 		80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterUserVM.swift; sourceTree = "<group>"; };
 		80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterFinishVM.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
-		80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationVC.swift; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionInfoVC.swift; sourceTree = "<group>"; };
 		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
@@ -322,6 +303,7 @@
 		D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureNotificationPermissionVC.swift; sourceTree = "<group>"; };
 		D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstActivationVM.swift; sourceTree = "<group>"; };
+		D6CD28F024CF288E005847AA /* FakeServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeServer.swift; sourceTree = "<group>"; };
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.release.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.release.xcconfig"; sourceTree = "<group>"; };
@@ -467,7 +449,6 @@
 			children = (
 				D6CD28DA24CF24DC005847AA /* Onboarding */,
 				D61DFE5324C1A904002E1B2E /* Force Update */,
-				80BB476024227C1400F552FC /* Signup */,
 				BD0191452424330200707341 /* Active */,
 				80ECB96A24292F9600E57601 /* Data List */,
 				80CA44D9244AFC0A008E22F8 /* Contacts */,
@@ -502,6 +483,7 @@
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
 				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
+				D6CD28F024CF288E005847AA /* FakeServer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -602,20 +584,6 @@
 				46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		80BB476024227C1400F552FC /* Signup */ = {
-			isa = PBXGroup;
-			children = (
-				80BB476524236ED100F552FC /* BluetoothActivationVC.swift */,
-				80CA44CD244AE458008E22F8 /* BluetoothActivationVM.swift */,
-				80CA44D1244AE783008E22F8 /* NotificationPermissionVM.swift */,
-				80BB476724238CBB00F552FC /* AccountActivationVC.swift */,
-				80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */,
-				80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */,
-				80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */,
-			);
-			path = Signup;
 			sourceTree = "<group>";
 		};
 		80BE3FC72445CCD700D0C810 /* Base */ = {
@@ -1035,7 +1003,6 @@
 				80CA44E2244B4518008E22F8 /* UnregisterUserVM.swift in Sources */,
 				8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */,
 				80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */,
-				80BB476824238CBB00F552FC /* AccountActivationVC.swift in Sources */,
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
 				D6340C6224C1F46D00E550A1 /* Version.swift in Sources */,
 				80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */,
@@ -1053,7 +1020,6 @@
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
-				80CA44D8244AF22B008E22F8 /* CompleteActivationVM.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */,
@@ -1065,25 +1031,21 @@
 				80FC71B7247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
 				D6CD28EC24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */,
-				80CA44CE244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
-				80CA44D6244AEBDE008E22F8 /* AccountActivationVM.swift in Sources */,
 				8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */,
-				80CA44D2244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */,
 				D6340C6B24C5A27700E550A1 /* Device.swift in Sources */,
 				46269D0824472BBF00FA3DB2 /* ScanningInfoCell.swift in Sources */,
 				80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */,
 				80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */,
 				46269D0624472BAF00FA3DB2 /* AboutDataCell.swift in Sources */,
 				5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */,
-				80D5F7E52423D8740010EF51 /* CompleteActivationVC.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				80BE3FCF2446028E00D0C810 /* InputValidation.swift in Sources */,
-				80BB476624236ED100F552FC /* BluetoothActivationVC.swift in Sources */,
 				8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				D6CD28E224CF24DC005847AA /* FirstActivationVC.swift in Sources */,
 				80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */,
 				80BF9C262424D55800150108 /* SendReportVC.swift in Sources */,
 				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
+				D6CD28F124CF288E005847AA /* FakeServer.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */,
@@ -1120,13 +1082,11 @@
 				8064DF7D244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
 				8064DF8F244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */,
-				80CA44CF244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
 				8083D8A9244640A0007FA4E9 /* UnregisterUserVC.swift in Sources */,
 				80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */,
 				8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
 				8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */,
-				8083D8AD244640A0007FA4E9 /* AccountActivationVC.swift in Sources */,
 				80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */,
 				8083D8AE244640A0007FA4E9 /* DataListVC.swift in Sources */,
 				8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */,
@@ -1146,20 +1106,17 @@
 				8083D8BB244640A0007FA4E9 /* MulticastDelegate.swift in Sources */,
 				8083D8BD244640A0007FA4E9 /* RemoteValues.swift in Sources */,
 				8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */,
-				FFC32E9E244B74E00008104C /* CompleteActivationVM.swift in Sources */,
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
+				D6CD28F224CF288E005847AA /* FakeServer.swift in Sources */,
 				FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */,
-				80CA44D3244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				FFC32EA0244B75020008104C /* UnregisterFinishVM.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
 				8083D8C7244640A0007FA4E9 /* DataHeaderCell.swift in Sources */,
-				8083D8C8244640A0007FA4E9 /* CompleteActivationVC.swift in Sources */,
 				8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */,
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
-				8083D8CD244640A0007FA4E9 /* BluetoothActivationVC.swift in Sources */,
 				80591185246DB86B002CD687 /* ExposureService.swift in Sources */,
 				8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				8064DF93244F420A005E8AA3 /* AboutTeam.swift in Sources */,
@@ -1168,7 +1125,6 @@
 				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
 				8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */,
-				FFC32EA2244B75280008104C /* AccountActivationVM.swift in Sources */,
 				D61DFE5D24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
 				8064DF79244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
 				FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */,

@@ -1,6 +1,6 @@
 //
 //  PrivacyVC.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Naim Ashhab on 23/07/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -34,7 +34,7 @@ final class PrivacyVC: UIViewController {
     // MARK: - Action
 
     @IBAction func continueAction(_ sender: Any) {
-        showActiveApp()
+        activateApp()
     }
 
 }
@@ -51,10 +51,19 @@ private extension PrivacyVC {
         continueButton.localizedTitle(viewModel.continueButton)
     }
 
-    func showActiveApp() {
-        // TODO: Set isOnboarded flag to true
-        let storyboard = UIStoryboard(name: "Active", bundle: nil)
-        AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
+    func activateApp() {
+        showProgress()
+        Server.shared.requesteHRID { [weak self] result in
+            self?.hideProgress()
+            switch result {
+            case .success(let eHRID):
+                AppSettings.eHRID = eHRID
+                let storyboard = UIStoryboard(name: "Active", bundle: nil)
+                AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
+            case .failure(let error):
+                self?.show(error: error)
+            }
+        }
     }
 
 }

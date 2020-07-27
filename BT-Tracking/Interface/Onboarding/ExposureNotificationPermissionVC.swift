@@ -1,5 +1,5 @@
 //
-//  NotificationPermissionController.swift
+//  ExposureNotificationPermissionVC.swift
 // eRouska
 //
 //  Created by Tomas Svoboda on 06/04/2020.
@@ -9,11 +9,11 @@
 import UIKit
 import UserNotifications
 
-final class NotificationPermissionVC: UIViewController {
+final class ExposureNotificationPermissionVC: UIViewController {
 
     // MARK: -
 
-    private let viewModel = NotificationPermissionVM()
+    private let viewModel = ExposureNotificationPermissionVM()
 
     // MARK: - Outlets
 
@@ -40,7 +40,7 @@ final class NotificationPermissionVC: UIViewController {
 
 }
 
-private extension NotificationPermissionVC {
+private extension ExposureNotificationPermissionVC {
 
     func setupStrings() {
         navigationItem.localizedTitle(viewModel.title)

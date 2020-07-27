@@ -11,11 +11,12 @@ import Foundation
 struct AppSettings {
 
     private enum Keys: String {
-        case appState = "appState"
-        case backgroundModeAlertShown = "backgroundModeAlertShown"
-        case appFirstTimeLaunched = "appFirstTimeLaunched"
-        case lastUploadDate = "lastUploadDate"
-        case lastDataPurgeDate = "lastDataPurgeDate"
+        case appState
+        case backgroundModeAlertShown
+        case appFirstTimeLaunched
+        case lastUploadDate
+        case lastDataPurgeDate
+        case eHRID
     }
 
     static let firebaseRegion = "europe-west1"
@@ -69,6 +70,16 @@ struct AppSettings {
         }
     }
 
+    static var eHRID: String? {
+        get {
+            let value = string(forKey: .eHRID)
+            return value.isEmpty ? nil : value
+        }
+        set {
+            set(withKey: .eHRID, value: newValue)
+        }
+    }
+
     static func deleteAllData() {
         KeychainService.BUID = nil
         KeychainService.TUIDs = nil
@@ -76,6 +87,7 @@ struct AppSettings {
         AppSettings.state = nil
         AppSettings.lastUploadDate = nil
         AppSettings.backgroundModeAlertShown = false
+        AppSettings.eHRID = nil
     }
 
     // MARK: - Private
