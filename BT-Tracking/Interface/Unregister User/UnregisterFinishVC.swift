@@ -1,6 +1,6 @@
 //
 //  UnregisterFinishVC.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Bogdan Kurpakov on 31/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.

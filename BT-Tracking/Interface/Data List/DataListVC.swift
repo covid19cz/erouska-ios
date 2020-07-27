@@ -1,20 +1,19 @@
 //
 //  DataListVC.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Lukáš Foldýna on 23/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
-#if !targetEnvironment(macCatalyst)
-import FirebaseAuth
-import FirebaseStorage
-#endif
 import Reachability
+import BackgroundTasks
+import ExposureNotification
 
 final class DataListVC: UIViewController, UITableViewDelegate {
 
@@ -24,14 +23,11 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     private let viewModel = DataListVM()
     private let bag = DisposeBag()
 
-    private var writer: CSVMakering?
-
     // MARK: - Outlets
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var sendButton: Button!
-
 
     // MARK: - Lifecycle
 
@@ -60,6 +56,59 @@ final class DataListVC: UIViewController, UITableViewDelegate {
     }
 
     // MARK: - Actions
+
+    @IBAction private func processReports() {
+        showProgress()
+
+        let dateFormat = DateFormatter()
+        dateFormat.timeStyle = .short
+        dateFormat.dateStyle = .short
+
+        AppDelegate.dependency.reporter.fetchExposureConfiguration { [weak self] result in
+            switch result {
+            case .success(let configuration):
+                AppDelegate.dependency.reporter.downloadKeys { [weak self] result in
+                    switch result {
+                    case .success(let URLs):
+                        AppDelegate.dependency.exposureService.detectExposures(
+                            configuration: configuration,
+                            URLs: URLs
+                        ) { [weak self] result in
+                            self?.hideProgress()
+                            switch result {
+                            case .success(var exposures):
+                                exposures.sort { $0.date < $1.date }
+
+                                var result = ""
+                                for exposure in exposures {
+                                    let signals = exposure.attenuationDurations.map { "\($0)" }
+                                    result += "EXP: \(dateFormat.string(from: exposure.date))" +
+                                        ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
+                                        + "attenuation value: \(exposure.attenuationValue)\n"
+                                        + "signal attenuations: \(signals.joined(separator: ", "))\n"
+                                }
+                                if result == "" {
+                                    result = "None";
+                                }
+
+                                log("EXP: \(exposures)")
+                                log("EXP: \(result)")
+                                self?.showAlert(title: "Exposures", message: result)
+                            case .failure(let error):
+                                self?.showDownloadDataErrorFailed(error)
+                            }
+                        }
+                    case .failure(let error):
+                        self?.hideProgress()
+                        self?.showDownloadDataErrorFailed(error)
+                    }
+                }
+            case .failure(let error):
+                self?.hideProgress()
+                self?.showDownloadDataErrorFailed(error)
+            }
+        }
+    }
 
     @IBAction private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         viewModel.selectedSegmentIndex.accept(sender.selectedSegmentIndex)
@@ -119,10 +168,6 @@ private extension DataListVC {
                 return tableView.dequeueReusableCell(withIdentifier: AboutDataCell.identifier, for: indexPath)
             case .header:
                 return tableView.dequeueReusableCell(withIdentifier: DataHeaderCell.identifier, for: indexPath)
-            case .data(let scan):
-                let cell = tableView.dequeueReusableCell(withIdentifier: DataCell.identifier, for: indexPath) as? DataCell
-                cell?.configure(for: scan)
-                return cell ?? UITableViewCell()
             }
         })
 
@@ -145,63 +190,70 @@ private extension DataListVC {
         viewModel.selectedSegmentIndex.accept(0)
     }
 
-    // MARK: - Report
+    // MARK: - Reports
+
+    enum ReportType {
+        case real, test
+    }
 
     func sendReport() {
+        let controller = UIAlertController(title: "Ktery druh klicu?", message: nil, preferredStyle: .actionSheet)
+        controller.addAction(UIAlertAction(title: "Test keys", style: .default, handler: { _ in
+            self.sendReport(with: .test)
+        }))
+        controller.addAction(UIAlertAction(title: "Keys", style: .default, handler: { _ in
+            self.sendReport(with: .real)
+        }))
+        controller.addAction(UIAlertAction(title: "Zrusit", style: .cancel, handler: nil))
+        present(controller, animated: true, completion: nil)
+    }
+
+    func sendReport(with type: ReportType) {
+        #if DEBUG
+        #else
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
             showAlert(title: viewModel.sendDataErrorWait)
             return
         }
+        #endif
 
         guard let connection = try? Reachability().connection, connection != .unavailable else {
             showSendDataErrorFailed()
             return
         }
 
-        createCSVFile()
-    }
-
-    func createCSVFile() {
         showProgress()
 
-        let fileDate = Date()
-
-        writer = CSVMaker(fromDate: nil) // AppSettings.lastUploadDate, set to last upload date, if we want increment upload
-        writer?.createFile(callback: { [weak self] result, error in
-            guard let self = self else { return }
-
-            if let result = result {
-                self.uploadCSVFile(fileURL: result.fileURL, metadata: result.metadata, fileDate: fileDate)
-            } else if let error = error {
+        let exposureService = AppDelegate.dependency.exposureService
+        let callback: ExposureServicing.KeysCallback = { result in
+            switch result {
+            case .success(let keys):
+                AppDelegate.dependency.reporter.uploadKeys(keys: keys, callback: { [weak self] result in
+                    self?.hideProgress()
+                    switch result {
+                    case .success:
+                        self?.performSegue(withIdentifier: "sendReport", sender: nil)
+                    case .failure:
+                        self?.showSendDataErrorFailed()
+                    }
+                })
+            case .failure(let error):
+                log("DataListVC: Failed to get exposure keys \(error)")
                 self.hideProgress()
-                self.show(error: error, title: self.viewModel.sendDataErrorFile)
+                self.showSendDataErrorFailed()
             }
-        })
+        }
+
+        switch type {
+        case .test:
+            exposureService.getTestDiagnosisKeys(callback: callback)
+        case .real:
+            exposureService.getDiagnosisKeys(callback: callback)
+        }
     }
 
-    func uploadCSVFile(fileURL: URL, metadata: [String: String], fileDate: Date) {
-        let path = "proximity/\(Auth.auth().currentUser?.uid ?? "")/\(KeychainService.BUID ?? "")"
-        let fileName = "\(Int(fileDate.timeIntervalSince1970 * 1000)).csv"
-
-        let storage = Storage.storage()
-        let storageReference = storage.reference()
-        let fileReference = storageReference.child("\(path)/\(fileName)")
-        let storageMetadata = StorageMetadata()
-        storageMetadata.customMetadata = metadata
-
-        fileReference.putFile(from: fileURL, metadata: storageMetadata) { [weak self] (metadata, error) in
-            guard let self = self else { return }
-            self.hideProgress()
-
-            self.writer?.deleteFile()
-            if let error = error {
-                log("FirebaseUpload: Error \(error.localizedDescription)")
-                self.showSendDataErrorFailed()
-                return
-            }
-            AppSettings.lastUploadDate = fileDate
-            self.performSegue(withIdentifier: "sendReport", sender: nil)
-        }
+    func showDownloadDataErrorFailed(_ error: Error) {
+        show(error: error)
     }
 
     func showSendDataErrorFailed() {

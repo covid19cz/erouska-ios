@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.941144972907-ds016o6p1icpju7s67p8dhr55jltub0j</string>
+				<string>com.googleusercontent.apps.1077972356575-cfp7g2rtvihvjsu1lcc05mek64nq59ia</string>
 			</array>
 		</dict>
 		<dict>
@@ -54,6 +54,7 @@
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
 		<string>fetch</string>
+		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

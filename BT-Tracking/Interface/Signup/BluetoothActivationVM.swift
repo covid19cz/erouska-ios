@@ -1,6 +1,6 @@
 //
 //  BluetoothActivationVM.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Lukáš Foldýna on 18/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -12,17 +12,11 @@ import CoreBluetooth
 struct BluetoothActivationVM {
 
     var bluetoothNotDetermined: Bool {
-        if #available(iOS 13.0, *) {
-            return CBCentralManager().authorization == .notDetermined
-        }
-        return CBPeripheralManager.authorizationStatus() == .notDetermined
+        return CBCentralManager.authorization == .notDetermined
     }
 
     var bluetoothAuthorized: Bool {
-        if #available(iOS 13.0, *) {
-            return CBCentralManager().authorization == .allowedAlways
-        }
-        return CBPeripheralManager.authorizationStatus() == .authorized
+        return CBCentralManager.authorization == .allowedAlways
     }
 
     let title = "bluetooth_permission_title"

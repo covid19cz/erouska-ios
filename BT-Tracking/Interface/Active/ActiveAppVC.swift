@@ -1,6 +1,6 @@
 //
 //  ActiveAppVC.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Jakub Skořepa on 20/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -8,7 +8,6 @@
 
 import UIKit
 import FirebaseAuth
-import CoreBluetooth
 
 final class ActiveAppVC: UIViewController {
 
@@ -34,19 +33,6 @@ final class ActiveAppVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _ = AppDelegate.shared.scannerStore // start scanner store
-
-        viewModel.scanner.didUpdateState = { [weak self] state in
-            guard let self = self else { return }
-            if state == .poweredOff, self.viewModel.state != .disabled {
-                self.checkForBluetooth()
-            } else if state == .poweredOn, self.viewModel.state == .disabled {
-                self.checkForBluetooth()
-            }
-        }
-
-        checkForBluetooth()
-
         setupStrings()
         updateScanner()
         updateInterface()
@@ -63,6 +49,7 @@ final class ActiveAppVC: UIViewController {
         
         updateInterface()
         layoutCardView()
+        checkForBluetooth()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -184,12 +171,16 @@ private extension ActiveAppVC {
 
     func updateScanner() {
         switch viewModel.state {
-        case .enabled:
-            viewModel.advertiser.start()
-            viewModel.scanner.start()
-        case .disabled, .paused:
-            viewModel.advertiser.stop()
-            viewModel.scanner.stop()
+        case .enabled, .disabled:
+            viewModel.exposureService.activate { [weak self] error in
+                guard let error = error else { return }
+                self?.show(error: error)
+            }
+        case .paused:
+            viewModel.exposureService.deactivate { [weak self] error in
+                guard let error = error else { return }
+                self?.show(error: error)
+            }
         }
     }
 
@@ -241,17 +232,7 @@ private extension ActiveAppVC {
     }
 
     func checkForBluetooth() {
-        var state: Bool
-        if #available(iOS 13.0, *) {
-            state = viewModel.advertiser.authorization == .allowedAlways
-        } else {
-            state = CBPeripheralManager.authorizationStatus() == .authorized
-        }
-
-        if viewModel.scanner.state == .poweredOff {
-            state = false
-        }
-
+        let state = viewModel.exposureService.isBluetoothOn
         guard viewModel.lastBluetoothState != state else { return }
         viewModel.lastBluetoothState = state
         updateViewModel()
@@ -280,7 +261,7 @@ private extension ActiveAppVC {
 
     func openBluetoothSettings() {
         let url: URL?
-        if viewModel.scanner.state == .poweredOff {
+        if !viewModel.exposureService.isBluetoothOn {
             url = URL(string: "App-Prefs::root=Settings&path=Bluetooth")
         } else {
             url = URL(string: UIApplication.openSettingsURLString)

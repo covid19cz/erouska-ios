@@ -1,6 +1,6 @@
 //
 //  Controller.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Lukáš Foldýna on 19/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -53,7 +53,7 @@ extension UIViewController {
         overlay.translatesAutoresizingMaskIntoConstraints = false
         overlay.tag = UIViewController.progressTag
 
-        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.startAnimating()
         overlay.addSubview(activityIndicator)

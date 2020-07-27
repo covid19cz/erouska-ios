@@ -1,6 +1,6 @@
 //
 //  KeychainService.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Lukáš Foldýna on 07/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -35,7 +35,7 @@ struct KeychainService {
             } else {
                 removeValue(with: .TUIDs)
             }
-            AppDelegate.shared.resetAdvertising()
+            AppDelegate.dependency.resetAdvertising()
         }
     }
 }

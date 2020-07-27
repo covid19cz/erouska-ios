@@ -1,6 +1,6 @@
 //
 //  ActiveAppViewModel.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Lukáš Foldýna on 25/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -137,8 +137,7 @@ final class ActiveAppVM {
         }
     }
 
-    let advertiser: BTAdvertising = AppDelegate.shared.advertiser
-    let scanner: BTScannering = AppDelegate.shared.scanner
+    let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
     var lastBluetoothState: Bool // true enabled
 
     init(bluetoothActive: Bool) {

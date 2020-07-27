@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1077972356575-olvss64s9bnk2fp2lhg1cc4c1cvf8f49.apps.googleusercontent.com</string>
+	<string>1077972356575-gqh07o694njagb7l8slq7akq0tjdueol.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1077972356575-olvss64s9bnk2fp2lhg1cc4c1cvf8f49</string>
+	<string>com.googleusercontent.apps.1077972356575-gqh07o694njagb7l8slq7akq0tjdueol</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>1077972356575-tv76pkt5ru2rmp8but5pgu236ci7ibib.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.covid19cz.BT-Tracking5</string>
+	<string>cz.covid19cz.erouska.dev</string>
 	<key>PROJECT_ID</key>
 	<string>covid19cz</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1077972356575:ios:7583eb26c3e6cd8c61886a</string>
+	<string>1:1077972356575:ios:8da6e885dbbd1bfe61886a</string>
 	<key>DATABASE_URL</key>
 	<string>https://covid19cz.firebaseio.com</string>
 </dict>

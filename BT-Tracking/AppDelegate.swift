@@ -1,26 +1,24 @@
 //
 //  AppDelegate.swift
-//  BT-Tracking
+// eRouska
 //
 //  Created by Lukáš Foldýna on 14/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
 import UIKit
-#if !targetEnvironment(macCatalyst)
 import Firebase
 import FirebaseAuth
 import FirebaseFunctions
 import FirebaseRemoteConfig
-#endif
 import RealmSwift
 import RxSwift
+import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private var allowBackgroundTask: Bool = false
-    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+    static let backgroundTaskIdentifier = Bundle.main.bundleIdentifier! + ".exposure-notification"
     private var inBackgroundStage: Bool = false {
         didSet {
             Self.inBackground = inBackgroundStage
@@ -38,40 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
-    private(set) lazy var advertiser: BTAdvertising = BTAdvertiser(
-        TUIDs: KeychainService.TUIDs ?? [],
-        IDRotation: AppSettings.TUIDRotation
-    )
-    private(set) lazy var scanner: BTScannering = BTScanner()
-    lazy var scannerStore: ScannerStore = {
-        let store = ScannerStore(
-            scanningPeriod: RemoteValues.collectionSeconds,
-            dataPurgeInterval: RemoteValues.persistDataInterval
-        )
-        AppDelegate.shared.scanner.add(delegate: store)
-        return store
-    }()
-    private(set) var deviceToken: Data?
-
-    #if !targetEnvironment(macCatalyst)
-    private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
-    #endif
-
-    // MARK: - Public
-
-    func resetAdvertising() {
-        guard KeychainService.BUID != nil else { return }
-        let wasRunning = advertiser.isRunning
-        advertiser.stop()
-        advertiser = BTAdvertiser(
-            TUIDs: KeychainService.TUIDs ?? [],
-            IDRotation: AppSettings.TUIDRotation
-        )
-
-        if wasRunning {
-            advertiser.start()
-        }
-    }
+    static var dependency = AppDependency()
     
     // MARK: - UIApplicationDelegate
 
@@ -83,23 +48,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clearKeychainIfNeeded()
         generalSetup()
         setupInterface()
-        setupBackgroundMode(for: application)
-        
+        setupBackgroundMode()
+
         return true
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         log("\n\n\n-FOREGROUND---------------------------\n")
 
-        if backgroundTask != .invalid {
-            application.endBackgroundTask(backgroundTask)
-            backgroundTask = .invalid
-        }
         inBackgroundStage = false
-
-        if Auth.isLoggedIn {
-            scannerStore.deleteOldRecordsIfNeeded()
-        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -110,30 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-BACKGROUND---------------------------\n")
 
         inBackgroundStage = true
-        scannerStore.appTermination.onNext(())
-        
-        guard allowBackgroundTask else { return }
-        backgroundTask = application.beginBackgroundTask(withName: "BT") {
-            log("\n\n\n-EXPIRATION TASK---------------------------\n")
-        }
-
-        DispatchQueue.global(qos: .background).async {
-            while(true) {
-                if self.inBackgroundStage == false {
-                    log("\n\n\n-END TASK---------------------------\n")
-                    break
-                }
-            }
-
-            DispatchQueue.main.async {
-                application.endBackgroundTask(self.backgroundTask)
-                self.backgroundTask = .invalid
-            }
-        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        scannerStore.appTermination.onNext(())
         log("\n\n\n-END----------------------------------\n")
     }
 
@@ -155,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         Auth.auth().setAPNSToken(deviceToken, type: .prod)
         #endif
-        self.deviceToken = deviceToken
+        Self.dependency.deviceToken = deviceToken
 
         // update token on server
         guard let buid = KeychainService.BUID else { return }
@@ -164,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "pushRegistrationToken": deviceToken.hexEncodedString()
         ]
 
-        functions.httpsCallable("changePushToken").call(data) { result, error in
+        Self.dependency.functions.httpsCallable("changePushToken").call(data) { result, error in
             if let error = error {
                 log("AppDelegate: Failed to change push token \(error.localizedDescription)")
             }
@@ -219,8 +155,6 @@ private extension AppDelegate {
         let center = UNUserNotificationCenter.current()
         center.setNotificationCategories([generalCategory])
 
-        #if !targetEnvironment(macCatalyst)
-
         #if DEBUG && TARGET_IPHONE_SIMULATOR
         Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         #endif
@@ -233,8 +167,6 @@ private extension AppDelegate {
             })
             .disposed(by: bag)
 
-        #endif
-
         let configuration = Realm.Configuration(
             schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
@@ -243,10 +175,6 @@ private extension AppDelegate {
         )
 
         Realm.Configuration.defaultConfiguration = configuration
-
-        if Auth.isLoggedIn {
-            scannerStore.deleteOldRecordsIfNeeded()
-        }
     }
 
     private func checkFetchedMinSupportedVersion() {
@@ -263,8 +191,7 @@ private extension AppDelegate {
 
         guard let identifier = viewControllerIdentifier else { return }
 
-        advertiser.stop()
-        scanner.stop()
+        Self.dependency.exposureService.deactivate(callback: nil)
 
         let viewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: identifier)
         viewController.modalPresentationStyle = .fullScreen
@@ -278,7 +205,6 @@ private extension AppDelegate {
         self.window = window
 
         let rootViewController: UIViewController?
-        #if !targetEnvironment(macCatalyst)
 
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "UnsupportedDeviceVC")
@@ -296,17 +222,102 @@ private extension AppDelegate {
             rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
         }
 
-        #else
-        rootViewController = UIStoryboard(name: "Debug", bundle: nil).instantiateInitialViewController()
-        #endif
-
         window.rootViewController = rootViewController
     }
 
-    private func setupBackgroundMode(for application: UIApplication) {
-        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
-        UIDevice.current.isProximityMonitoringEnabled = true
-        UIApplication.shared.isIdleTimerDisabled = true
+    private func setupBackgroundMode() {
+        let dateFormat = DateFormatter()
+        dateFormat.timeStyle = .short
+        dateFormat.dateStyle = .short
+
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: Self.backgroundTaskIdentifier, using: .main) { task in
+
+            // Notify the user if bluetooth is off
+            Self.dependency.exposureService.showBluetoothOffUserNotificationIfNeeded()
+
+            // Perform the exposure detection
+            Self.dependency.reporter.fetchExposureConfiguration { result in
+                switch result {
+                case .success(let configuration):
+                    Self.dependency.reporter.downloadKeys { result in
+                        switch result {
+                        case .success(let URLs):
+                            AppDelegate.dependency.exposureService.detectExposures(
+                                configuration: configuration,
+                                URLs: URLs
+                            ) { result in
+                                switch result {
+                                case .success(var exposures):
+                                    exposures.sort { $0.date < $1.date }
+
+                                    var result = ""
+                                    for exposure in exposures {
+                                        let signals = exposure.attenuationDurations.map { "\($0)" }
+                                        result += "EXP: \(dateFormat.string(from: exposure.date))" +
+                                            ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
+                                            + "attenuation value: \(exposure.attenuationValue)\n"
+                                            + "signal attenuations: \(signals.joined(separator: ", "))\n"
+                                    }
+                                    if result == "" {
+                                        result = "None";
+                                    }
+
+                                    log("EXP: \(exposures)")
+                                    log("EXP: \(result)")
+
+                                    let content = UNMutableNotificationContent()
+                                    content.title = "Exposures"
+                                    content.body = result
+                                    content.sound = .default
+                                    let request = UNNotificationRequest(identifier: "exposures", content: content, trigger: nil)
+                                    UNUserNotificationCenter.current().add(request) { error in
+                                        DispatchQueue.main.async {
+                                            if let error = error {
+                                                Log.log("AppDelegate: Error showing error user notification \(error)")
+                                            }
+                                        }
+                                    }
+
+                                    task.setTaskCompleted(success: true)
+                                case .failure(let error):
+                                    task.setTaskCompleted(success: false)
+                                    Log.log("AppDelegate: Failed to detect exposures \(error)")
+                                }
+                            }
+                        case .failure(let error):
+                            task.setTaskCompleted(success: false)
+                            Log.log("AppDelegate: Failed to detect exposures \(error)")
+                        }
+                    }
+                case .failure(let error):
+                    task.setTaskCompleted(success: false)
+                    Log.log("AppDelegate: Failed to detect exposures \(error)")
+                }
+            }
+
+            // Handle running out of time
+            task.expirationHandler = {
+                Log.log("Background task timeout")
+                // TODO: handle error, NSLocalizedString("BACKGROUND_TIMEOUT", comment: "Error")
+            }
+
+            // Schedule the next background task
+            self.scheduleBackgroundTaskIfNeeded()
+        }
+
+        scheduleBackgroundTaskIfNeeded()
+    }
+
+    private  func scheduleBackgroundTaskIfNeeded() {
+        guard Self.dependency.exposureService.authorizationStatus == .authorized else { return }
+        let taskRequest = BGProcessingTaskRequest(identifier: Self.backgroundTaskIdentifier)
+        taskRequest.requiresNetworkConnectivity = true
+
+        do {
+            try BGTaskScheduler.shared.submit(taskRequest)
+        } catch {
+            Log.log("Bakcground: Unable to schedule background task: \(error)")
+        }
     }
     
     private func clearKeychainIfNeeded() {

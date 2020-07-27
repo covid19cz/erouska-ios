@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcd-UM-9Nt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcd-UM-9Nt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-6R-8L4">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-6R-8L4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -137,59 +136,21 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                                             <outlet property="timeLabel" destination="vXY-Vj-Hwr" id="nON-Ra-jHe"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dataCell" id="gyz-SA-gkM" customClass="DataCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="273.5" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gyz-SA-gkM" id="sSF-XW-LSp">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-Y9-ugX">
-                                                    <rect key="frame" x="20" y="11" width="374" height="16"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTx-fv-BBa">
-                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="16"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gpf-fz-Npe">
-                                                            <rect key="frame" x="96" y="0.0" width="86" height="16"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odA-Vk-Dhd">
-                                                            <rect key="frame" x="192" y="0.0" width="86" height="16"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="-20 dB" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szl-9k-8Bk" userLabel="RSII Label">
-                                                            <rect key="frame" x="288" y="0.0" width="86" height="16"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="2Wa-Y9-ugX" firstAttribute="top" secondItem="sSF-XW-LSp" secondAttribute="topMargin" id="3cn-iY-ntT"/>
-                                                <constraint firstItem="2Wa-Y9-ugX" firstAttribute="leading" secondItem="sSF-XW-LSp" secondAttribute="leadingMargin" id="bKf-bz-5Lk"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="2Wa-Y9-ugX" secondAttribute="trailing" id="wI7-cH-Ma8"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="RSSILabel" destination="Szl-9k-8Bk" id="tfY-af-ia6"/>
-                                            <outlet property="buidLabel" destination="odA-Vk-Dhd" id="zut-bc-3R5"/>
-                                            <outlet property="dateLabel" destination="TTx-fv-BBa" id="e2V-ra-9UW"/>
-                                            <outlet property="timeLabel" destination="gpf-fz-Npe" id="Bv6-rk-SEY"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCh-ML-OPo" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="20" y="644" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="szS-kG-hSf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <state key="normal" title="Vyhodnotit data">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                                <connections>
+                                    <action selector="processReports" destination="xGP-gf-Asp" eventType="touchUpInside" id="Trf-HI-vMG"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qq0-b5-X4V" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="703" width="414" height="110"/>
                                 <subviews>
@@ -218,24 +179,21 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qq0-b5-X4V" firstAttribute="top" secondItem="jCh-ML-OPo" secondAttribute="bottom" constant="15" id="386-Df-RCC"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="CmS-06-K9h"/>
                             <constraint firstItem="bDv-0K-1Gq" firstAttribute="bottom" secondItem="qq0-b5-X4V" secondAttribute="bottom" id="F7R-0P-rOa"/>
                             <constraint firstItem="bDv-0K-1Gq" firstAttribute="bottom" secondItem="Mfj-6R-8L4" secondAttribute="bottom" id="HjX-4B-895"/>
                             <constraint firstItem="qq0-b5-X4V" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="Irq-7h-nuL"/>
                             <constraint firstItem="bDv-0K-1Gq" firstAttribute="trailing" secondItem="qq0-b5-X4V" secondAttribute="trailing" id="Ley-eV-kz9"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="trailing" secondItem="bDv-0K-1Gq" secondAttribute="trailing" id="O4n-r6-oAF"/>
+                            <constraint firstItem="jCh-ML-OPo" firstAttribute="width" secondItem="Twl-oa-ZjU" secondAttribute="width" id="mTC-sR-pmE"/>
+                            <constraint firstItem="jCh-ML-OPo" firstAttribute="centerX" secondItem="qq0-b5-X4V" secondAttribute="centerX" id="qBg-9s-3dK"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="top" secondItem="48y-Xq-MiP" secondAttribute="top" id="zLY-H9-QHN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bDv-0K-1Gq"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Moje data" largeTitleDisplayMode="always" id="Alq-cw-sQ5">
-                        <barButtonItem key="rightBarButtonItem" title="Smazat data" id="3kd-J2-YfH">
-                            <connections>
-                                <segue destination="Qab-Pf-r3c" kind="show" id="Q8e-Iy-QM9"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Moje data" largeTitleDisplayMode="always" id="Alq-cw-sQ5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonsView" destination="qq0-b5-X4V" id="WPz-cm-HAA"/>
@@ -390,67 +348,6 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpE-fX-Sqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1801" y="140"/>
-        </scene>
-        <!--Smazat data-->
-        <scene sceneID="EC0-LB-zCa">
-            <objects>
-                <viewController id="Qab-Pf-r3c" customClass="DeleteDataVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fxa-Gn-aV8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qwL-Fh-g7N">
-                                <rect key="frame" x="20" y="150" width="374" height="643"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-lw-NdS">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="174.5"/>
-                                        <string key="text">Opravdu chcete smazat všechna naměřená data?
-
-Hygienici tak přijdou o možnost využít vaše kontakty v případě, že budete nakažen.
-
-Po smazání dat dojde k automatickému pozastavení eRoušky.</string>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0v1-rS-iZ4">
-                                        <rect key="frame" x="0.0" y="189.5" width="374" height="394.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjq-uQ-dSM" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="599" width="374" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="hjp-ci-t6g"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <state key="normal" title="Smazat všechna data">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deleteAllData:" destination="Qab-Pf-r3c" eventType="touchUpInside" id="CX0-wc-P4a"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="qwL-Fh-g7N" firstAttribute="leading" secondItem="zhI-BM-y6U" secondAttribute="leading" constant="20" id="MNL-PM-6vS"/>
-                            <constraint firstAttribute="trailing" secondItem="qwL-Fh-g7N" secondAttribute="trailing" constant="20" id="ZR8-CQ-ael"/>
-                            <constraint firstItem="zhI-BM-y6U" firstAttribute="bottom" secondItem="qwL-Fh-g7N" secondAttribute="bottom" constant="20" id="siH-vm-vyi"/>
-                            <constraint firstItem="qwL-Fh-g7N" firstAttribute="top" secondItem="zhI-BM-y6U" secondAttribute="top" constant="10" id="xb3-ZV-PT1"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="zhI-BM-y6U"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Smazat data" id="3TM-Bw-xPt"/>
-                    <connections>
-                        <outlet property="bodyLabel" destination="ofa-lw-NdS" id="OKe-oo-gLa"/>
-                        <outlet property="deleteButton" destination="Yjq-uQ-dSM" id="7hT-W4-iVi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SCZ-y7-LzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1859" y="-586"/>
         </scene>
     </scenes>
     <resources>
