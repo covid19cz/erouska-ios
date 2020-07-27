@@ -20,14 +20,14 @@
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		803C5B23242932BF00E49414 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		803C5B252429346500E49414 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
-		805192A024AF8E2700765392 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8051929F24AF8E2700765392 /* RxCocoa */; };
-		805192A224AF8E2700765392 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A124AF8E2700765392 /* RxSwift */; };
-		805192A424AF8E2700765392 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A324AF8E2700765392 /* RxDataSources */; };
-		805192A624AF8E2700765392 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A524AF8E2700765392 /* RxKeyboard */; };
-		805192A824AF8E2700765392 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A724AF8E2700765392 /* RxRealm */; };
-		805192AA24AF8E2700765392 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A924AF8E2700765392 /* DeviceKit */; };
-		805192AC24AF8E2700765392 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AB24AF8E2700765392 /* Reachability */; };
-		805192AE24AF8E2700765392 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AD24AF8E2700765392 /* SwiftyMarkdown */; };
+		805192A024AF8E2700765392 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 8051929F24AF8E2700765392 /* SwiftPackageProductDependency */; };
+		805192A224AF8E2700765392 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A124AF8E2700765392 /* SwiftPackageProductDependency */; };
+		805192A424AF8E2700765392 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A324AF8E2700765392 /* SwiftPackageProductDependency */; };
+		805192A624AF8E2700765392 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A524AF8E2700765392 /* SwiftPackageProductDependency */; };
+		805192A824AF8E2700765392 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A724AF8E2700765392 /* SwiftPackageProductDependency */; };
+		805192AA24AF8E2700765392 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A924AF8E2700765392 /* SwiftPackageProductDependency */; };
+		805192AC24AF8E2700765392 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AB24AF8E2700765392 /* SwiftPackageProductDependency */; };
+		805192AE24AF8E2700765392 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AD24AF8E2700765392 /* SwiftPackageProductDependency */; };
 		8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */; };
 		8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
@@ -117,15 +117,15 @@
 		8084DEF324AF85F3001FBB16 /* CountryCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodesService.swift */; };
 		8084DEF724AF86C1001FBB16 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* ReportService.swift */; };
 		8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* ReportService.swift */; };
-		8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8091E08124CB3CDF00E0E877 /* AlamofireImage */; };
-		809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8924AF8BFB00D34CC9 /* RxSwift */; };
-		809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8B24AF8BFB00D34CC9 /* RxCocoa */; };
-		809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8E24AF8C2900D34CC9 /* RxDataSources */; };
-		809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9124AF8C3700D34CC9 /* RxKeyboard */; };
-		809F9D9524AF8C8700D34CC9 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9424AF8C8700D34CC9 /* RxRealm */; };
-		80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCA24AF8CBD0088D256 /* DeviceKit */; };
-		80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCD24AF8D0B0088D256 /* Reachability */; };
-		80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BD024AF8D550088D256 /* SwiftyMarkdown */; };
+		8091E08224CB3CDF00E0E877 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 8091E08124CB3CDF00E0E877 /* SwiftPackageProductDependency */; };
+		809F9D8A24AF8BFB00D34CC9 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8924AF8BFB00D34CC9 /* SwiftPackageProductDependency */; };
+		809F9D8C24AF8BFB00D34CC9 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8B24AF8BFB00D34CC9 /* SwiftPackageProductDependency */; };
+		809F9D8F24AF8C2900D34CC9 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8E24AF8C2900D34CC9 /* SwiftPackageProductDependency */; };
+		809F9D9224AF8C3700D34CC9 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9124AF8C3700D34CC9 /* SwiftPackageProductDependency */; };
+		809F9D9524AF8C8700D34CC9 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9424AF8C8700D34CC9 /* SwiftPackageProductDependency */; };
+		80AB9BCB24AF8CBD0088D256 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCA24AF8CBD0088D256 /* SwiftPackageProductDependency */; };
+		80AB9BCE24AF8D0B0088D256 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCD24AF8D0B0088D256 /* SwiftPackageProductDependency */; };
+		80AB9BD124AF8D550088D256 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BD024AF8D550088D256 /* SwiftPackageProductDependency */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
 		80B94557242B96560052CD9F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
 		80BB476224227C2500F552FC /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BB476124227C2500F552FC /* Signup.storyboard */; };
@@ -157,23 +157,23 @@
 		80D5F7E52423D8740010EF51 /* CompleteActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */; };
 		80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
 		80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
-		80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 80DF5FB824CB579E00332D25 /* AlamofireImage */; };
+		80DF5FB924CB579E00332D25 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 80DF5FB824CB579E00332D25 /* SwiftPackageProductDependency */; };
 		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
 		80ECB96624290DA900E57601 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
 		80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* DataList.storyboard */; };
 		80FC71B7247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */; };
 		80FC71B8247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */; };
-		80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BB2477180400F86389 /* SwiftProtobuf */; };
-		80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BD2477184000F86389 /* SwiftProtobuf */; };
+		80FC71BC2477180400F86389 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BB2477180400F86389 /* SwiftPackageProductDependency */; };
+		80FC71BE2477184000F86389 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BD2477184000F86389 /* SwiftPackageProductDependency */; };
 		80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
 		80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
-		8B67740B562698E5590B4757 /* Pods_eRouska_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 		BD979AE924255BD1004001ED /* FirstActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActivationVC.swift */; };
 		BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppVC.swift */; };
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
 		BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
+		D4BBD52AF75F3BC730CEFFA6 /* Pods_eRouska.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A893F3D64B0A55E25D52FA49 /* Pods_eRouska.framework */; };
 		D61DFE5524C1A936002E1B2E /* ForceUpdate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */; };
 		D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */; };
 		D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */; };
@@ -186,7 +186,6 @@
 		D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */; };
 		D6340C6224C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6324C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
-		D6340C6524C5976000E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
 		D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
 		D6340C6824C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */; };
 		D6340C6924C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */; };
@@ -207,6 +206,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.debug.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.debug.xcconfig"; sourceTree = "<group>"; };
 		36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.debug.xcconfig"; sourceTree = "<group>"; };
 		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
 		46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDataCell.swift; sourceTree = "<group>"; };
@@ -296,6 +296,7 @@
 		92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.release.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig"; sourceTree = "<group>"; };
 		991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.release.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.release.xcconfig"; sourceTree = "<group>"; };
 		A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A893F3D64B0A55E25D52FA49 /* Pods_eRouska.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
 		BD979AE824255BD1004001ED /* FirstActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstActivationVC.swift; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVC.swift; sourceTree = "<group>"; };
@@ -303,7 +304,6 @@
 		BDBB00D724261D5C00871FE4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		C4E1A1B424311D3800108325 /* RemoteValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteValues.swift; sourceTree = "<group>"; };
-		CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForceUpdate.storyboard; sourceTree = "<group>"; };
 		D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVC.swift; sourceTree = "<group>"; };
 		D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVM.swift; sourceTree = "<group>"; };
@@ -315,6 +315,7 @@
 		D6340C6A24C5A27700E550A1 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.release.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.release.xcconfig"; sourceTree = "<group>"; };
 		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
 		FFC4432524460D78002D2A6D /* MarkdownBackups.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = MarkdownBackups.strings; sourceTree = "<group>"; };
@@ -325,17 +326,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B67740B562698E5590B4757 /* Pods_eRouska_Dev.framework in Frameworks */,
-				809F9D9524AF8C8700D34CC9 /* RxRealm in Frameworks */,
-				809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */,
-				809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */,
-				80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */,
-				809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */,
-				8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */,
-				80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */,
-				809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */,
-				80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */,
-				80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */,
+				809F9D9524AF8C8700D34CC9 /* BuildFile in Frameworks */,
+				809F9D8C24AF8BFB00D34CC9 /* BuildFile in Frameworks */,
+				809F9D9224AF8C3700D34CC9 /* BuildFile in Frameworks */,
+				80AB9BCB24AF8CBD0088D256 /* BuildFile in Frameworks */,
+				809F9D8F24AF8C2900D34CC9 /* BuildFile in Frameworks */,
+				8091E08224CB3CDF00E0E877 /* BuildFile in Frameworks */,
+				80AB9BCE24AF8D0B0088D256 /* BuildFile in Frameworks */,
+				809F9D8A24AF8BFB00D34CC9 /* BuildFile in Frameworks */,
+				80AB9BD124AF8D550088D256 /* BuildFile in Frameworks */,
+				80FC71BC2477180400F86389 /* BuildFile in Frameworks */,
+				D4BBD52AF75F3BC730CEFFA6 /* Pods_eRouska.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,16 +345,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */,
-				805192A824AF8E2700765392 /* RxRealm in Frameworks */,
-				805192A224AF8E2700765392 /* RxSwift in Frameworks */,
-				805192A624AF8E2700765392 /* RxKeyboard in Frameworks */,
-				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
-				805192A424AF8E2700765392 /* RxDataSources in Frameworks */,
-				80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */,
-				805192AC24AF8E2700765392 /* Reachability in Frameworks */,
-				805192A024AF8E2700765392 /* RxCocoa in Frameworks */,
-				805192AE24AF8E2700765392 /* SwiftyMarkdown in Frameworks */,
-				80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */,
+				805192A824AF8E2700765392 /* BuildFile in Frameworks */,
+				805192A224AF8E2700765392 /* BuildFile in Frameworks */,
+				805192A624AF8E2700765392 /* BuildFile in Frameworks */,
+				805192AA24AF8E2700765392 /* BuildFile in Frameworks */,
+				805192A424AF8E2700765392 /* BuildFile in Frameworks */,
+				80DF5FB924CB579E00332D25 /* BuildFile in Frameworks */,
+				805192AC24AF8E2700765392 /* BuildFile in Frameworks */,
+				805192A024AF8E2700765392 /* BuildFile in Frameworks */,
+				805192AE24AF8E2700765392 /* BuildFile in Frameworks */,
+				80FC71BE2477184000F86389 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +372,8 @@
 				991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */,
 				36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */,
 				92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */,
+				0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */,
+				F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -400,9 +403,9 @@
 		5357F8D365121189A6E32250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */,
 				A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */,
 				901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */,
+				A893F3D64B0A55E25D52FA49 /* Pods_eRouska.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -726,9 +729,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8054C0AC241D492F008907B8 /* eRouska Dev */ = {
+		8054C0AC241D492F008907B8 /* eRouska */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska Dev" */;
+			buildConfigurationList = 8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska" */;
 			buildPhases = (
 				E0A1723CD1B050C9925359D5 /* [CP] Check Pods Manifest.lock */,
 				8054C0A9241D492F008907B8 /* Sources */,
@@ -741,18 +744,18 @@
 			);
 			dependencies = (
 			);
-			name = "eRouska Dev";
+			name = eRouska;
 			packageProductDependencies = (
-				80FC71BB2477180400F86389 /* SwiftProtobuf */,
-				809F9D8924AF8BFB00D34CC9 /* RxSwift */,
-				809F9D8B24AF8BFB00D34CC9 /* RxCocoa */,
-				809F9D8E24AF8C2900D34CC9 /* RxDataSources */,
-				809F9D9124AF8C3700D34CC9 /* RxKeyboard */,
-				809F9D9424AF8C8700D34CC9 /* RxRealm */,
-				80AB9BCA24AF8CBD0088D256 /* DeviceKit */,
-				80AB9BCD24AF8D0B0088D256 /* Reachability */,
-				80AB9BD024AF8D550088D256 /* SwiftyMarkdown */,
-				8091E08124CB3CDF00E0E877 /* AlamofireImage */,
+				80FC71BB2477180400F86389 /* SwiftPackageProductDependency */,
+				809F9D8924AF8BFB00D34CC9 /* SwiftPackageProductDependency */,
+				809F9D8B24AF8BFB00D34CC9 /* SwiftPackageProductDependency */,
+				809F9D8E24AF8C2900D34CC9 /* SwiftPackageProductDependency */,
+				809F9D9124AF8C3700D34CC9 /* SwiftPackageProductDependency */,
+				809F9D9424AF8C8700D34CC9 /* SwiftPackageProductDependency */,
+				80AB9BCA24AF8CBD0088D256 /* SwiftPackageProductDependency */,
+				80AB9BCD24AF8D0B0088D256 /* SwiftPackageProductDependency */,
+				80AB9BD024AF8D550088D256 /* SwiftPackageProductDependency */,
+				8091E08124CB3CDF00E0E877 /* SwiftPackageProductDependency */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
@@ -775,16 +778,16 @@
 			);
 			name = "eRouska Prod";
 			packageProductDependencies = (
-				80FC71BD2477184000F86389 /* SwiftProtobuf */,
-				8051929F24AF8E2700765392 /* RxCocoa */,
-				805192A124AF8E2700765392 /* RxSwift */,
-				805192A324AF8E2700765392 /* RxDataSources */,
-				805192A524AF8E2700765392 /* RxKeyboard */,
-				805192A724AF8E2700765392 /* RxRealm */,
-				805192A924AF8E2700765392 /* DeviceKit */,
-				805192AB24AF8E2700765392 /* Reachability */,
-				805192AD24AF8E2700765392 /* SwiftyMarkdown */,
-				80DF5FB824CB579E00332D25 /* AlamofireImage */,
+				80FC71BD2477184000F86389 /* SwiftPackageProductDependency */,
+				8051929F24AF8E2700765392 /* SwiftPackageProductDependency */,
+				805192A124AF8E2700765392 /* SwiftPackageProductDependency */,
+				805192A324AF8E2700765392 /* SwiftPackageProductDependency */,
+				805192A524AF8E2700765392 /* SwiftPackageProductDependency */,
+				805192A724AF8E2700765392 /* SwiftPackageProductDependency */,
+				805192A924AF8E2700765392 /* SwiftPackageProductDependency */,
+				805192AB24AF8E2700765392 /* SwiftPackageProductDependency */,
+				805192AD24AF8E2700765392 /* SwiftPackageProductDependency */,
+				80DF5FB824CB579E00332D25 /* SwiftPackageProductDependency */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska.app */;
@@ -820,21 +823,21 @@
 			);
 			mainGroup = 8054C0A4241D492F008907B8;
 			packageReferences = (
-				80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
-				809F9D8824AF8BFB00D34CC9 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				809F9D8D24AF8C2900D34CC9 /* XCRemoteSwiftPackageReference "RxDataSources" */,
-				809F9D9024AF8C3700D34CC9 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
-				809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */,
-				80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */,
-				80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */,
-				80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */,
-				8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				80FC71BA2477180400F86389 /* RemoteSwiftPackageReference */,
+				809F9D8824AF8BFB00D34CC9 /* RemoteSwiftPackageReference */,
+				809F9D8D24AF8C2900D34CC9 /* RemoteSwiftPackageReference */,
+				809F9D9024AF8C3700D34CC9 /* RemoteSwiftPackageReference */,
+				809F9D9324AF8C8700D34CC9 /* RemoteSwiftPackageReference */,
+				80AB9BC924AF8CBD0088D256 /* RemoteSwiftPackageReference */,
+				80AB9BCC24AF8D0B0088D256 /* RemoteSwiftPackageReference */,
+				80AB9BCF24AF8D540088D256 /* RemoteSwiftPackageReference */,
+				8091E08024CB3CDF00E0E877 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8054C0AC241D492F008907B8 /* eRouska Dev */,
+				8054C0AC241D492F008907B8 /* eRouska */,
 				8083D8A5244640A0007FA4E9 /* eRouska Prod */,
 			);
 		};
@@ -966,15 +969,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-eRouska/Pods-eRouska-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-eRouska/Pods-eRouska-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eRouska/Pods-eRouska-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E0A1723CD1B050C9925359D5 /* [CP] Check Pods Manifest.lock */ = {
@@ -992,7 +995,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-eRouska Dev-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-eRouska-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1024,7 +1027,7 @@
 				BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */,
 				8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */,
 				8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
-                8084DEF724AF86C1001FBB16 /* ReportService.swift in Sources */,
+				8084DEF724AF86C1001FBB16 /* ReportService.swift in Sources */,
 				D6340C6824C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
@@ -1315,7 +1318,7 @@
 		};
 		8054C0C2241D4932008907B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */;
+			baseConfigurationReference = 0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1341,7 +1344,7 @@
 		};
 		8054C0C3241D4932008907B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */;
+			baseConfigurationReference = F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1431,7 +1434,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska Dev" */ = {
+		8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8054C0C2241D4932008907B8 /* Debug */,
@@ -1452,7 +1455,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+		8091E08024CB3CDF00E0E877 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
 			requirement = {
@@ -1460,7 +1463,7 @@
 				minimumVersion = 4.1.0;
 			};
 		};
-		809F9D8824AF8BFB00D34CC9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		809F9D8824AF8BFB00D34CC9 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
@@ -1468,7 +1471,7 @@
 				minimumVersion = 5.1.1;
 			};
 		};
-		809F9D8D24AF8C2900D34CC9 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+		809F9D8D24AF8C2900D34CC9 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
 			requirement = {
@@ -1476,7 +1479,7 @@
 				minimumVersion = 4.0.1;
 			};
 		};
-		809F9D9024AF8C3700D34CC9 /* XCRemoteSwiftPackageReference "RxKeyboard" */ = {
+		809F9D9024AF8C3700D34CC9 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxKeyboard";
 			requirement = {
@@ -1484,7 +1487,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */ = {
+		809F9D9324AF8C8700D34CC9 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxRealm";
 			requirement = {
@@ -1492,7 +1495,7 @@
 				minimumVersion = 3.0.1;
 			};
 		};
-		80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
+		80AB9BC924AF8CBD0088D256 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devicekit/DeviceKit";
 			requirement = {
@@ -1500,7 +1503,7 @@
 				minimumVersion = 3.2.0;
 			};
 		};
-		80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */ = {
+		80AB9BCC24AF8D0B0088D256 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ashleymills/Reachability.swift.git";
 			requirement = {
@@ -1508,7 +1511,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */ = {
+		80AB9BCF24AF8D540088D256 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SimonFairbairn/SwiftyMarkdown";
 			requirement = {
@@ -1516,7 +1519,7 @@
 				minimumVersion = 1.2.2;
 			};
 		};
-		80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+		80FC71BA2477180400F86389 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-protobuf/";
 			requirement = {
@@ -1527,104 +1530,104 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8051929F24AF8E2700765392 /* RxCocoa */ = {
+		8051929F24AF8E2700765392 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D8824AF8BFB00D34CC9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 809F9D8824AF8BFB00D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxCocoa;
 		};
-		805192A124AF8E2700765392 /* RxSwift */ = {
+		805192A124AF8E2700765392 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D8824AF8BFB00D34CC9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 809F9D8824AF8BFB00D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxSwift;
 		};
-		805192A324AF8E2700765392 /* RxDataSources */ = {
+		805192A324AF8E2700765392 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D8D24AF8C2900D34CC9 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			package = 809F9D8D24AF8C2900D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxDataSources;
 		};
-		805192A524AF8E2700765392 /* RxKeyboard */ = {
+		805192A524AF8E2700765392 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D9024AF8C3700D34CC9 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
+			package = 809F9D9024AF8C3700D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxKeyboard;
 		};
-		805192A724AF8E2700765392 /* RxRealm */ = {
+		805192A724AF8E2700765392 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */;
+			package = 809F9D9324AF8C8700D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxRealm;
 		};
-		805192A924AF8E2700765392 /* DeviceKit */ = {
+		805192A924AF8E2700765392 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			package = 80AB9BC924AF8CBD0088D256 /* RemoteSwiftPackageReference */;
 			productName = DeviceKit;
 		};
-		805192AB24AF8E2700765392 /* Reachability */ = {
+		805192AB24AF8E2700765392 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */;
+			package = 80AB9BCC24AF8D0B0088D256 /* RemoteSwiftPackageReference */;
 			productName = Reachability;
 		};
-		805192AD24AF8E2700765392 /* SwiftyMarkdown */ = {
+		805192AD24AF8E2700765392 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
+			package = 80AB9BCF24AF8D540088D256 /* RemoteSwiftPackageReference */;
 			productName = SwiftyMarkdown;
 		};
-		8091E08124CB3CDF00E0E877 /* AlamofireImage */ = {
+		8091E08124CB3CDF00E0E877 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			package = 8091E08024CB3CDF00E0E877 /* RemoteSwiftPackageReference */;
 			productName = AlamofireImage;
 		};
-		809F9D8924AF8BFB00D34CC9 /* RxSwift */ = {
+		809F9D8924AF8BFB00D34CC9 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D8824AF8BFB00D34CC9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 809F9D8824AF8BFB00D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxSwift;
 		};
-		809F9D8B24AF8BFB00D34CC9 /* RxCocoa */ = {
+		809F9D8B24AF8BFB00D34CC9 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D8824AF8BFB00D34CC9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 809F9D8824AF8BFB00D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxCocoa;
 		};
-		809F9D8E24AF8C2900D34CC9 /* RxDataSources */ = {
+		809F9D8E24AF8C2900D34CC9 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D8D24AF8C2900D34CC9 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			package = 809F9D8D24AF8C2900D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxDataSources;
 		};
-		809F9D9124AF8C3700D34CC9 /* RxKeyboard */ = {
+		809F9D9124AF8C3700D34CC9 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D9024AF8C3700D34CC9 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
+			package = 809F9D9024AF8C3700D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxKeyboard;
 		};
-		809F9D9424AF8C8700D34CC9 /* RxRealm */ = {
+		809F9D9424AF8C8700D34CC9 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */;
+			package = 809F9D9324AF8C8700D34CC9 /* RemoteSwiftPackageReference */;
 			productName = RxRealm;
 		};
-		80AB9BCA24AF8CBD0088D256 /* DeviceKit */ = {
+		80AB9BCA24AF8CBD0088D256 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			package = 80AB9BC924AF8CBD0088D256 /* RemoteSwiftPackageReference */;
 			productName = DeviceKit;
 		};
-		80AB9BCD24AF8D0B0088D256 /* Reachability */ = {
+		80AB9BCD24AF8D0B0088D256 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */;
+			package = 80AB9BCC24AF8D0B0088D256 /* RemoteSwiftPackageReference */;
 			productName = Reachability;
 		};
-		80AB9BD024AF8D550088D256 /* SwiftyMarkdown */ = {
+		80AB9BD024AF8D550088D256 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
+			package = 80AB9BCF24AF8D540088D256 /* RemoteSwiftPackageReference */;
 			productName = SwiftyMarkdown;
 		};
-		80DF5FB824CB579E00332D25 /* AlamofireImage */ = {
+		80DF5FB824CB579E00332D25 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			package = 8091E08024CB3CDF00E0E877 /* RemoteSwiftPackageReference */;
 			productName = AlamofireImage;
 		};
-		80FC71BB2477180400F86389 /* SwiftProtobuf */ = {
+		80FC71BB2477180400F86389 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			package = 80FC71BA2477180400F86389 /* RemoteSwiftPackageReference */;
 			productName = SwiftProtobuf;
 		};
-		80FC71BD2477184000F86389 /* SwiftProtobuf */ = {
+		80FC71BD2477184000F86389 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			package = 80FC71BA2477180400F86389 /* RemoteSwiftPackageReference */;
 			productName = SwiftProtobuf;
 		};
 /* End XCSwiftPackageProductDependency section */
