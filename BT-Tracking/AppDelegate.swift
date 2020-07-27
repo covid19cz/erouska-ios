@@ -217,7 +217,7 @@ private extension AppDelegate {
             presentingAnyForceUpdateScreen = true
         } else if !Auth.isLoggedIn {
             try? Auth.auth().signOut()
-            rootViewController = UIStoryboard(name: "Signup", bundle: nil).instantiateInitialViewController()
+            rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
         } else {
             rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
         }

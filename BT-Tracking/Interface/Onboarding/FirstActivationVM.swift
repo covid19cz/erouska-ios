@@ -11,8 +11,9 @@ import CoreBluetooth
 
 struct FirstActivationVM {
 
-    var bluetoothAuthorized: Bool {
-        return CBPeripheralManager.authorization == .allowedAlways
+    var exposureNotificationAuthorized: Bool {
+        // TODO:
+        return false
     }
 
     let title = "app_name"
