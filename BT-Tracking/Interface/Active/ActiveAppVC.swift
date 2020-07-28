@@ -119,9 +119,6 @@ final class ActiveAppVC: UIViewController {
 
     @IBAction private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
-            self?.unregisterUserAction()
-        }))
         #if !PROD
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
@@ -133,10 +130,6 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancel), style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
-    }
-
-    private func unregisterUserAction() {
-        performSegue(withIdentifier: "unregisterUser", sender: nil)
     }
 
     private func debugAction() {
