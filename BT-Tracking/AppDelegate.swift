@@ -222,6 +222,12 @@ private extension AppDelegate {
         }
 
         window.rootViewController = rootViewController
+
+        if !AppSettings.v2_0NewsLaunched {
+            AppSettings.v2_0NewsLaunched = true
+            guard let newsViewController = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+            rootViewController?.present(newsViewController, animated: true)
+        }
     }
 
     private func setupBackgroundMode() {

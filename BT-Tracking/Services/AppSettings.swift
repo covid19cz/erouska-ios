@@ -17,6 +17,8 @@ struct AppSettings {
         case lastUploadDate
         case lastDataPurgeDate
         case eHRID
+
+        case v2_0NewsLaunched
     }
 
     static let firebaseRegion = "europe-west1"
@@ -77,6 +79,15 @@ struct AppSettings {
         }
         set {
             set(withKey: .eHRID, value: newValue)
+        }
+    }
+
+    static var v2_0NewsLaunched: Bool {
+        get {
+            return bool(forKey: .v2_0NewsLaunched)
+        }
+        set {
+            set(withKey: .v2_0NewsLaunched, value: newValue)
         }
     }
 
