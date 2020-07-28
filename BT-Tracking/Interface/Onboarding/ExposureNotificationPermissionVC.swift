@@ -35,7 +35,7 @@ final class ExposureNotificationPermissionVC: UIViewController {
     // MARK: - Action
     
     @IBAction func continueAction(_ sender: Any) {
-        requestPermission()
+        requestExposureNotificationPresmission()
     }
 
 }
@@ -54,13 +54,23 @@ private extension ExposureNotificationPermissionVC {
 
     // MARK: - Request permission
 
-    func requestPermission() {
+    func requestExposureNotificationPresmission() {
+        viewModel.exposureService.activate { [weak self] error in
+            if let error = error {
+                self?.show(error: error, okHandler: { self?.requestNotificationPermission() })
+            } else {
+                self?.requestNotificationPermission()
+            }
+        }
+    }
+
+    func requestNotificationPermission() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(
             options: authOptions,
             completionHandler: { [weak self] _, _ in
                 DispatchQueue.main.async { [weak self] in
-                    self?.performSegue(withIdentifier: "activation", sender: nil)
+                    self?.performSegue(withIdentifier: "privacy", sender: nil)
                 }
         })
         UIApplication.shared.registerForRemoteNotifications()

@@ -7,13 +7,11 @@
 //
 
 import Foundation
-import CoreBluetooth
 
 struct FirstActivationVM {
 
     var exposureNotificationAuthorized: Bool {
-        // TODO:
-        return false
+        return AppDelegate.dependency.exposureService.authorizationStatus == .authorized
     }
 
     let title = "app_name"

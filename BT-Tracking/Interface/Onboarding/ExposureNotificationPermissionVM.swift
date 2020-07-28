@@ -10,6 +10,8 @@ import Foundation
 
 struct ExposureNotificationPermissionVM {
 
+    let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
+
     let title = "exposure_notification_title"
 
     let back = "back"
