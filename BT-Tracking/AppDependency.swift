@@ -23,7 +23,7 @@ class AppDependency {
     lazy var reporter: ReportServicing = ReportService()
 
     func resetAdvertising() {
-        guard KeychainService.BUID != nil else { return }
+        guard KeychainService.BUID != nil else { return } // TODO: Should be eHRID?
         guard exposureService.status == .active || exposureService.status == .paused else { return }
         exposureService.deactivate { _ in }
     }

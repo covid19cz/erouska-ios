@@ -81,9 +81,6 @@ struct AppSettings {
     }
 
     static func deleteAllData() {
-        KeychainService.BUID = nil
-        KeychainService.TUIDs = nil
-        
         AppSettings.state = nil
         AppSettings.lastUploadDate = nil
         AppSettings.backgroundModeAlertShown = false

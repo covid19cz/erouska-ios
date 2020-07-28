@@ -6,15 +6,6 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import FirebaseAuth
-
-extension Auth {
-
-    static var isLoggedIn: Bool {
-        return KeychainService.BUID != nil && KeychainService.TUIDs != nil && Self.auth().currentUser != nil
-    }
-}
-
 extension String {
     
     var phoneFormatted: String {

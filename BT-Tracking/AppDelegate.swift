@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Self.dependency.deviceToken = deviceToken
 
         // update token on server
-        guard let buid = KeychainService.BUID else { return }
+        guard let buid = KeychainService.BUID else { return } // TODO: Should be eHRID?
         let data: [String: Any] = [
             "buid": buid,
             "pushRegistrationToken": deviceToken.hexEncodedString()
@@ -320,8 +320,6 @@ private extension AppDelegate {
     }
     
     private func clearKeychainIfNeeded() {
-        guard !AppSettings.appFirstTimeLaunched else { return }
-        AppSettings.appFirstTimeLaunched = true
         KeychainService.BUID = nil
         KeychainService.TUIDs = nil
     }
