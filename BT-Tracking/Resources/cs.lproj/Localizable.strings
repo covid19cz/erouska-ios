@@ -122,3 +122,17 @@
 
 "bluetooth_off_title" = "Zapněte Bluetooth";
 "bluetooth_off_body" = "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout\".";
+
+"news_title" = "Novinky";
+"news_button_continue" = "Pokračovat";
+"news_button_close" = "Zavřít";
+"news_to_the_world_title" = "eRouška se chystá do světa";
+"news_to_the_world_body" = "Připravujeme eRoušku na to, aby si rozuměla s podobnými aplikacemi na celém světě. Provedli jsme proto několik změn, které vám nyní představíme.";
+"news_exposure_notification_title" = "Přecházíme na aktivní oznámení";
+"news_exposure_notification_body" = "Pokud se setkáte s někým, u koho se potvrdí nákaza virem COVID-19, eRouška vás bude informovat pomocí oznámení a poradí vám, jak postupovat dále.";
+"news_no_phone_number_title" = "Telefonní čísla už nebudeme potřebovat";
+"news_no_phone_number_body" = "Rušíme evidenci telefonních čísel, protože pro komunikaci s hygienickou stanicí již nejsou potřeba. Při rizikovém setkání vám eRouška doporučí další postup.";
+"news_always_active_title" = "eRouška funguje vždy a všude";
+"news_always_active_body" = "Telefon nemusíte nosit v kapse se zapnutou obrazovkou a pokládat obrazovkou na stůl. Normálně ho používejte a zamykejte, eRouška bude vždy aktivní.";
+"news_privacy_title" = "Myslíme na vaše soukromí";
+"news_privacy_body" = "S těmito úpravami jsme mohli zrušit také podmínky zpracování. Zásadní změnou je, že nadále nebudeme evidovat telefonní čísla a ani jiné osobní údaje uživatelů eRoušky.";
