@@ -12,8 +12,8 @@ import SafariServices
 extension UIViewController {
 
     /// show default error alert, localization keys are expected
-    func show(error: Error, title: String = "error") {
-        showAlert(title: title, message: error.localizedDescription)
+    func show(error: Error, title: String = "error", okTitle: String = "ok", okHandler: (() -> Void)? = nil) {
+        showAlert(title: title, message: error.localizedDescription, okTitle: okTitle, okHandler: okHandler)
     }
 
     /// show alert, localization keys are expected

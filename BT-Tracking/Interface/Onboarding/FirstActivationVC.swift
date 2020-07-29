@@ -37,20 +37,20 @@ final class FirstActivationVC: UIViewController {
     // MARK: - Actions
     
     @IBAction private func continueAction() {
-        if viewModel.bluetoothAuthorized {
+        if viewModel.exposureNotificationAuthorized {
             UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
                 DispatchQueue.main.async { [weak self] in
                     if settings.authorizationStatus == .notDetermined {
                         // Request authorization
-                        self?.performSegue(withIdentifier: "notification", sender: nil)
+                        self?.performSegue(withIdentifier: "exposureNotification", sender: nil)
                     } else {
                         // Already authorized or denied
-                        self?.performSegue(withIdentifier: "activation", sender: nil)
+                        self?.performSegue(withIdentifier: "privacy", sender: nil)
                     }
                 }
             }
         } else {
-            performSegue(withIdentifier: "bluetooth", sender: nil)
+            performSegue(withIdentifier: "exposureNotification", sender: nil)
         }
     }
     

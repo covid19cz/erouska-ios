@@ -35,7 +35,7 @@ final class UnregisterFinishVC: UIViewController {
     // MARK: - Actions
 
     @IBAction private func closeButtonDidTap(_ sender: RoundedButtonFilled) {
-        let storyboard = UIStoryboard(name: "Signup", bundle: nil)
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
     }
 

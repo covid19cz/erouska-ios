@@ -1,5 +1,5 @@
 //
-//  NotificationPermissionController.swift
+//  ExposureNotificationPermissionVC.swift
 // eRouska
 //
 //  Created by Tomas Svoboda on 06/04/2020.
@@ -9,11 +9,11 @@
 import UIKit
 import UserNotifications
 
-final class NotificationPermissionVC: UIViewController {
+final class ExposureNotificationPermissionVC: UIViewController {
 
     // MARK: -
 
-    private let viewModel = NotificationPermissionVM()
+    private let viewModel = ExposureNotificationPermissionVM()
 
     // MARK: - Outlets
 
@@ -35,12 +35,12 @@ final class NotificationPermissionVC: UIViewController {
     // MARK: - Action
     
     @IBAction func continueAction(_ sender: Any) {
-        requestPermission()
+        requestExposureNotificationPresmission()
     }
 
 }
 
-private extension NotificationPermissionVC {
+private extension ExposureNotificationPermissionVC {
 
     func setupStrings() {
         navigationItem.localizedTitle(viewModel.title)
@@ -54,13 +54,23 @@ private extension NotificationPermissionVC {
 
     // MARK: - Request permission
 
-    func requestPermission() {
+    func requestExposureNotificationPresmission() {
+        viewModel.exposureService.activate { [weak self] error in
+            if let error = error {
+                self?.show(error: error, okHandler: { self?.requestNotificationPermission() })
+            } else {
+                self?.requestNotificationPermission()
+            }
+        }
+    }
+
+    func requestNotificationPermission() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(
             options: authOptions,
             completionHandler: { [weak self] _, _ in
                 DispatchQueue.main.async { [weak self] in
-                    self?.performSegue(withIdentifier: "activation", sender: nil)
+                    self?.performSegue(withIdentifier: "privacy", sender: nil)
                 }
         })
         UIApplication.shared.registerForRemoteNotifications()

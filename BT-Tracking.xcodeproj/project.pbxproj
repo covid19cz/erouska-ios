@@ -12,7 +12,6 @@
 		46269D0824472BBF00FA3DB2 /* ScanningInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */; };
 		4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
 		4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
-		4657C454243BD03D009E0E85 /* NotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657C453243BD03D009E0E85 /* NotificationPermissionVC.swift */; };
 		46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */; };
 		5E110F9C2433C4AD0059712A /* UnregisterFinishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */; };
 		5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
@@ -65,13 +64,10 @@
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
 		8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
 		8083D8A9244640A0007FA4E9 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
-		8083D8AA244640A0007FA4E9 /* FirstActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActivationVC.swift */; };
 		8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A95242CA27800EB0B6C /* HelpVC.swift */; };
-		8083D8AD244640A0007FA4E9 /* AccountActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationVC.swift */; };
 		8083D8AE244640A0007FA4E9 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */; };
 		8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
-		8083D8B2244640A0007FA4E9 /* NotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657C453243BD03D009E0E85 /* NotificationPermissionVC.swift */; };
 		8083D8B3244640A0007FA4E9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A97242CAB5000EB0B6C /* Image.swift */; };
 		8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppVC.swift */; };
 		8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDC2242A6E93001D9DCD /* ContactsVC.swift */; };
@@ -85,10 +81,8 @@
 		8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
 		8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
 		8083D8C7244640A0007FA4E9 /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
-		8083D8C8244640A0007FA4E9 /* CompleteActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */; };
 		8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCE2446028E00D0C810 /* InputValidation.swift */; };
-		8083D8CD244640A0007FA4E9 /* BluetoothActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationVC.swift */; };
 		8083D8CE244640A0007FA4E9 /* SendReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportVC.swift */; };
 		8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		8083D8D0244640A0007FA4E9 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
@@ -106,7 +100,6 @@
 		8083D8E7244640A0007FA4E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		8083D8E8244640A0007FA4E9 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 		8083D8E9244640A0007FA4E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80BE18BF2433C18200C4A9E6 /* Localizable.strings */; };
-		8083D8EA244640A0007FA4E9 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BB476124227C2500F552FC /* Signup.storyboard */; };
 		8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 		8083D8EC244640A0007FA4E9 /* DataList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* DataList.storyboard */; };
 		8083D9142446F779007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
@@ -128,10 +121,7 @@
 		80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BD024AF8D550088D256 /* SwiftyMarkdown */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
 		80B94557242B96560052CD9F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
-		80BB476224227C2500F552FC /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BB476124227C2500F552FC /* Signup.storyboard */; };
 		80BB47642422865B00F552FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
-		80BB476624236ED100F552FC /* BluetoothActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476524236ED100F552FC /* BluetoothActivationVC.swift */; };
-		80BB476824238CBB00F552FC /* AccountActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB476724238CBB00F552FC /* AccountActivationVC.swift */; };
 		80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80BE18BF2433C18200C4A9E6 /* Localizable.strings */; };
 		80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FC52445CCAC00D0C810 /* GradientView.swift */; };
 		80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */; };
@@ -139,22 +129,14 @@
 		80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */; };
 		80BF9C262424D55800150108 /* SendReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendReportVC.swift */; };
 		80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */; };
-		80CA44B4244AD979008E22F8 /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B3244AD979008E22F8 /* FirstActivationVM.swift */; };
 		80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
-		80CA44CE244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44CD244AE458008E22F8 /* BluetoothActivationVM.swift */; };
-		80CA44CF244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44CD244AE458008E22F8 /* BluetoothActivationVM.swift */; };
-		80CA44D2244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D1244AE783008E22F8 /* NotificationPermissionVM.swift */; };
-		80CA44D3244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D1244AE783008E22F8 /* NotificationPermissionVM.swift */; };
-		80CA44D6244AEBDE008E22F8 /* AccountActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */; };
-		80CA44D8244AF22B008E22F8 /* CompleteActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */; };
 		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
 		80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
 		80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
 		80CA44E2244B4518008E22F8 /* UnregisterUserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */; };
 		80CA44E4244B464B008E22F8 /* UnregisterFinishVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
-		80D5F7E52423D8740010EF51 /* CompleteActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */; };
 		80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
 		80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
 		80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 80DF5FB824CB579E00332D25 /* AlamofireImage */; };
@@ -167,13 +149,12 @@
 		80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BD2477184000F86389 /* SwiftProtobuf */; };
 		80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
 		80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
-		8B67740B562698E5590B4757 /* Pods_eRouska_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
-		BD979AE924255BD1004001ED /* FirstActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AE824255BD1004001ED /* FirstActivationVC.swift */; };
 		BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppVC.swift */; };
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
 		BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
+		D4BBD52AF75F3BC730CEFFA6 /* Pods_eRouska.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A893F3D64B0A55E25D52FA49 /* Pods_eRouska.framework */; };
 		D61DFE5524C1A936002E1B2E /* ForceUpdate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */; };
 		D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */; };
 		D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */; };
@@ -186,19 +167,31 @@
 		D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */; };
 		D6340C6224C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6324C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
-		D6340C6524C5976000E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
 		D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
 		D6340C6824C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */; };
 		D6340C6924C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */; };
 		D6340C6B24C5A27700E550A1 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6A24C5A27700E550A1 /* Device.swift */; };
 		D6340C6C24C5A27700E550A1 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6A24C5A27700E550A1 /* Device.swift */; };
+		D6CD28E224CF24DC005847AA /* FirstActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */; };
+		D6CD28E324CF24DC005847AA /* FirstActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */; };
+		D6CD28E424CF24DC005847AA /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */; };
+		D6CD28E524CF24DD005847AA /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */; };
+		D6CD28E624CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */; };
+		D6CD28E724CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */; };
+		D6CD28E824CF24DD005847AA /* PrivacyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */; };
+		D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */; };
+		D6CD28EA24CF24DD005847AA /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */; };
+		D6CD28EB24CF24DD005847AA /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */; };
+		D6CD28EC24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */; };
+		D6CD28ED24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */; };
+		D6CD28EE24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
+		D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
+		D6CD28F124CF288E005847AA /* FakeServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28F024CF288E005847AA /* FakeServer.swift */; };
+		D6CD28F224CF288E005847AA /* FakeServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28F024CF288E005847AA /* FakeServer.swift */; };
 		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
-		FFC32E9E244B74E00008104C /* CompleteActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */; };
 		FFC32E9F244B74F50008104C /* UnregisterUserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */; };
 		FFC32EA0244B75020008104C /* UnregisterFinishVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */; };
-		FFC32EA1244B75120008104C /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B3244AD979008E22F8 /* FirstActivationVM.swift */; };
-		FFC32EA2244B75280008104C /* AccountActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */; };
 		FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */; };
 		FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */; };
 		FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
@@ -207,13 +200,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.debug.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.debug.xcconfig"; sourceTree = "<group>"; };
 		36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.debug.xcconfig"; sourceTree = "<group>"; };
 		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
 		46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDataCell.swift; sourceTree = "<group>"; };
 		46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningInfoCell.swift; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		4651F9B724505A7B0003D23D /* RemoteTitles.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RemoteTitles.strings; sourceTree = "<group>"; };
-		4657C453243BD03D009E0E85 /* NotificationPermissionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionVC.swift; sourceTree = "<group>"; };
 		46A0D529242CC38900FAE9EA /* UnregisterUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnregisterUser.storyboard; sourceTree = "<group>"; };
 		5E110F9B2433C4AD0059712A /* UnregisterFinishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterFinishVC.swift; sourceTree = "<group>"; };
 		5EE9D814242F74F5002F833C /* DataHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHeaderCell.swift; sourceTree = "<group>"; };
@@ -259,10 +252,7 @@
 		8084DEF624AF86C1001FBB16 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		80B94554242B7B460052CD9F /* ActiveAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVM.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		80BB476124227C2500F552FC /* Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
 		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		80BB476524236ED100F552FC /* BluetoothActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivationVC.swift; sourceTree = "<group>"; };
-		80BB476724238CBB00F552FC /* AccountActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationVC.swift; sourceTree = "<group>"; };
 		80BE18C02433C18200C4A9E6 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80BE18C22433C18800C4A9E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80BE3FC52445CCAC00D0C810 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -271,20 +261,14 @@
 		80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		80BF9C252424D55800150108 /* SendReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportVC.swift; sourceTree = "<group>"; };
 		80C9B102243267EF00CFCDA7 /* UnregisterUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterUserVC.swift; sourceTree = "<group>"; };
-		80CA44B3244AD979008E22F8 /* FirstActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstActivationVM.swift; sourceTree = "<group>"; };
 		80CA44B5244ADA44008E22F8 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		80CA44CB244ADD8A008E22F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		80CA44CD244AE458008E22F8 /* BluetoothActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothActivationVM.swift; sourceTree = "<group>"; };
-		80CA44D1244AE783008E22F8 /* NotificationPermissionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionVM.swift; sourceTree = "<group>"; };
-		80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationVM.swift; sourceTree = "<group>"; };
-		80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationVM.swift; sourceTree = "<group>"; };
 		80CA44DB244B3769008E22F8 /* HelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVM.swift; sourceTree = "<group>"; };
 		80CA44DF244B404F008E22F8 /* ContactsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVM.swift; sourceTree = "<group>"; };
 		80CA44E1244B4518008E22F8 /* UnregisterUserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterUserVM.swift; sourceTree = "<group>"; };
 		80CA44E3244B464B008E22F8 /* UnregisterFinishVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnregisterFinishVM.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
-		80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteActivationVC.swift; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionInfoVC.swift; sourceTree = "<group>"; };
 		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
@@ -296,14 +280,13 @@
 		92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.release.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig"; sourceTree = "<group>"; };
 		991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.release.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.release.xcconfig"; sourceTree = "<group>"; };
 		A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A893F3D64B0A55E25D52FA49 /* Pods_eRouska.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
-		BD979AE824255BD1004001ED /* FirstActivationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstActivationVC.swift; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVC.swift; sourceTree = "<group>"; };
 		BDB07FBF24254A8F00834E79 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		BDBB00D724261D5C00871FE4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		C4E1A1B424311D3800108325 /* RemoteValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteValues.swift; sourceTree = "<group>"; };
-		CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForceUpdate.storyboard; sourceTree = "<group>"; };
 		D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVC.swift; sourceTree = "<group>"; };
 		D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVM.swift; sourceTree = "<group>"; };
@@ -313,8 +296,17 @@
 		D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVC.swift; sourceTree = "<group>"; };
 		D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVM.swift; sourceTree = "<group>"; };
 		D6340C6A24C5A27700E550A1 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstActivationVC.swift; sourceTree = "<group>"; };
+		D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureNotificationPermissionVM.swift; sourceTree = "<group>"; };
+		D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVM.swift; sourceTree = "<group>"; };
+		D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
+		D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureNotificationPermissionVC.swift; sourceTree = "<group>"; };
+		D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstActivationVM.swift; sourceTree = "<group>"; };
+		D6CD28F024CF288E005847AA /* FakeServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeServer.swift; sourceTree = "<group>"; };
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.release.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.release.xcconfig"; sourceTree = "<group>"; };
 		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
 		FFC4432524460D78002D2A6D /* MarkdownBackups.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = MarkdownBackups.strings; sourceTree = "<group>"; };
@@ -325,7 +317,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B67740B562698E5590B4757 /* Pods_eRouska_Dev.framework in Frameworks */,
 				809F9D9524AF8C8700D34CC9 /* RxRealm in Frameworks */,
 				809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */,
 				809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */,
@@ -336,6 +327,7 @@
 				809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */,
 				80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */,
 				80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */,
+				D4BBD52AF75F3BC730CEFFA6 /* Pods_eRouska.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +363,8 @@
 				991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */,
 				36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */,
 				92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */,
+				0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */,
+				F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -400,9 +394,9 @@
 		5357F8D365121189A6E32250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CF0FDC49265CF641AA4D6C38 /* Pods_eRouska_Dev.framework */,
 				A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */,
 				901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */,
+				A893F3D64B0A55E25D52FA49 /* Pods_eRouska.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -453,8 +447,8 @@
 		8054C0C9241FE66A008907B8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				D6CD28DA24CF24DC005847AA /* Onboarding */,
 				D61DFE5324C1A904002E1B2E /* Force Update */,
-				80BB476024227C1400F552FC /* Signup */,
 				BD0191452424330200707341 /* Active */,
 				80ECB96A24292F9600E57601 /* Data List */,
 				80CA44D9244AFC0A008E22F8 /* Contacts */,
@@ -489,6 +483,7 @@
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
 				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
+				D6CD28F024CF288E005847AA /* FakeServer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -589,24 +584,6 @@
 				46269D0524472BAF00FA3DB2 /* AboutDataCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		80BB476024227C1400F552FC /* Signup */ = {
-			isa = PBXGroup;
-			children = (
-				80BB476124227C2500F552FC /* Signup.storyboard */,
-				BD979AE824255BD1004001ED /* FirstActivationVC.swift */,
-				80CA44B3244AD979008E22F8 /* FirstActivationVM.swift */,
-				80BB476524236ED100F552FC /* BluetoothActivationVC.swift */,
-				80CA44CD244AE458008E22F8 /* BluetoothActivationVM.swift */,
-				4657C453243BD03D009E0E85 /* NotificationPermissionVC.swift */,
-				80CA44D1244AE783008E22F8 /* NotificationPermissionVM.swift */,
-				80BB476724238CBB00F552FC /* AccountActivationVC.swift */,
-				80CA44D5244AEBDE008E22F8 /* AccountActivationVM.swift */,
-				80D5F7E42423D8730010EF51 /* CompleteActivationVC.swift */,
-				80CA44D7244AF22B008E22F8 /* CompleteActivationVM.swift */,
-			);
-			path = Signup;
 			sourceTree = "<group>";
 		};
 		80BE3FC72445CCD700D0C810 /* Base */ = {
@@ -712,6 +689,20 @@
 			path = "Force Update";
 			sourceTree = "<group>";
 		};
+		D6CD28DA24CF24DC005847AA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */,
+				D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */,
+				D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */,
+				D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */,
+				D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */,
+				D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */,
+				D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		FFC4432724461357002D2A6D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -726,9 +717,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8054C0AC241D492F008907B8 /* eRouska Dev */ = {
+		8054C0AC241D492F008907B8 /* eRouska */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska Dev" */;
+			buildConfigurationList = 8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska" */;
 			buildPhases = (
 				E0A1723CD1B050C9925359D5 /* [CP] Check Pods Manifest.lock */,
 				8054C0A9241D492F008907B8 /* Sources */,
@@ -741,7 +732,7 @@
 			);
 			dependencies = (
 			);
-			name = "eRouska Dev";
+			name = eRouska;
 			packageProductDependencies = (
 				80FC71BB2477180400F86389 /* SwiftProtobuf */,
 				809F9D8924AF8BFB00D34CC9 /* RxSwift */,
@@ -834,7 +825,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8054C0AC241D492F008907B8 /* eRouska Dev */,
+				8054C0AC241D492F008907B8 /* eRouska */,
 				8083D8A5244640A0007FA4E9 /* eRouska Prod */,
 			);
 		};
@@ -848,12 +839,12 @@
 				BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */,
 				46A0D52A242CC38900FAE9EA /* UnregisterUser.storyboard in Resources */,
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
+				D6CD28E424CF24DC005847AA /* Onboarding.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				D61DFE5524C1A936002E1B2E /* ForceUpdate.storyboard in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
 				4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */,
 				80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */,
-				80BB476224227C2500F552FC /* Signup.storyboard in Resources */,
 				FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */,
 				8064DF6E244EF3B7005E8AA3 /* GoogleService-Info.plist in Resources */,
 				80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */,
@@ -868,11 +859,11 @@
 				8083D8E4244640A0007FA4E9 /* Help.storyboard in Resources */,
 				8083D8E5244640A0007FA4E9 /* UnregisterUser.storyboard in Resources */,
 				8083D8E6244640A0007FA4E9 /* LaunchScreen.storyboard in Resources */,
+				D6CD28E524CF24DD005847AA /* Onboarding.storyboard in Resources */,
 				D61DFE5A24C1AFDA002E1B2E /* ForceUpdate.storyboard in Resources */,
 				8083D8E7244640A0007FA4E9 /* Assets.xcassets in Resources */,
 				8083D8E8244640A0007FA4E9 /* Active.storyboard in Resources */,
 				8083D8E9244640A0007FA4E9 /* Localizable.strings in Resources */,
-				8083D8EA244640A0007FA4E9 /* Signup.storyboard in Resources */,
 				8064DF70244EF3C0005E8AA3 /* GoogleService-Info.plist in Resources */,
 				4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */,
 				8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */,
@@ -966,15 +957,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-eRouska/Pods-eRouska-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-eRouska/Pods-eRouska-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eRouska/Pods-eRouska-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E0A1723CD1B050C9925359D5 /* [CP] Check Pods Manifest.lock */ = {
@@ -992,7 +983,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-eRouska Dev-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-eRouska-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1009,22 +1000,19 @@
 				8064DF7C244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
 				803C5B252429346500E49414 /* DataListVM.swift in Sources */,
 				80C9B103243267EF00CFCDA7 /* UnregisterUserVC.swift in Sources */,
-				BD979AE924255BD1004001ED /* FirstActivationVC.swift in Sources */,
 				80CA44E2244B4518008E22F8 /* UnregisterUserVM.swift in Sources */,
 				8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */,
 				80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */,
-				80BB476824238CBB00F552FC /* AccountActivationVC.swift in Sources */,
 				803C5B23242932BF00E49414 /* DataListVC.swift in Sources */,
 				D6340C6224C1F46D00E550A1 /* Version.swift in Sources */,
 				80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */,
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
 				8083D9142446F779007FA4E9 /* Markdown.swift in Sources */,
-				4657C454243BD03D009E0E85 /* NotificationPermissionVC.swift in Sources */,
 				80631A98242CAB5000EB0B6C /* Image.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */,
 				8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */,
 				8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
-                8084DEF724AF86C1001FBB16 /* ReportService.swift in Sources */,
+				8084DEF724AF86C1001FBB16 /* ReportService.swift in Sources */,
 				D6340C6824C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
@@ -1032,49 +1020,48 @@
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
-				80CA44D8244AF22B008E22F8 /* CompleteActivationVM.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
 				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
 				80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */,
+				D6CD28EA24CF24DD005847AA /* PrivacyVC.swift in Sources */,
 				8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */,
 				80FC71B7247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
-				80CA44CE244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
-				80CA44D6244AEBDE008E22F8 /* AccountActivationVM.swift in Sources */,
+				D6CD28EC24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */,
 				8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */,
-				80CA44D2244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */,
 				D6340C6B24C5A27700E550A1 /* Device.swift in Sources */,
 				46269D0824472BBF00FA3DB2 /* ScanningInfoCell.swift in Sources */,
 				80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */,
 				80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */,
 				46269D0624472BAF00FA3DB2 /* AboutDataCell.swift in Sources */,
 				5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */,
-				80D5F7E52423D8740010EF51 /* CompleteActivationVC.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				80BE3FCF2446028E00D0C810 /* InputValidation.swift in Sources */,
-				80BB476624236ED100F552FC /* BluetoothActivationVC.swift in Sources */,
 				8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
+				D6CD28E224CF24DC005847AA /* FirstActivationVC.swift in Sources */,
 				80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */,
 				80BF9C262424D55800150108 /* SendReportVC.swift in Sources */,
 				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
+				D6CD28F124CF288E005847AA /* FakeServer.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */,
 				80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */,
 				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
-				80CA44B4244AD979008E22F8 /* FirstActivationVM.swift in Sources */,
 				8064DF92244F420A005E8AA3 /* AboutTeam.swift in Sources */,
 				D61DFE6024C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
+				D6CD28EE24CF24DD005847AA /* FirstActivationVM.swift in Sources */,
 				80ECB96624290DA900E57601 /* Collection.swift in Sources */,
 				80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */,
 				80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */,
 				80610BD024363D7B00E031C8 /* Auth.swift in Sources */,
 				80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */,
 				8064DF8E244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
+				D6CD28E824CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				80CA44E4244B464B008E22F8 /* UnregisterFinishVM.swift in Sources */,
@@ -1083,6 +1070,7 @@
 				5E110F9C2433C4AD0059712A /* UnregisterFinishVC.swift in Sources */,
 				D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */,
+				D6CD28E624CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,20 +1082,17 @@
 				8064DF7D244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
 				8064DF8F244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */,
-				80CA44CF244AE458008E22F8 /* BluetoothActivationVM.swift in Sources */,
 				8083D8A9244640A0007FA4E9 /* UnregisterUserVC.swift in Sources */,
-				8083D8AA244640A0007FA4E9 /* FirstActivationVC.swift in Sources */,
 				80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */,
 				8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
 				8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */,
-				8083D8AD244640A0007FA4E9 /* AccountActivationVC.swift in Sources */,
 				80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */,
 				8083D8AE244640A0007FA4E9 /* DataListVC.swift in Sources */,
 				8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */,
 				8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */,
-				8083D8B2244640A0007FA4E9 /* NotificationPermissionVC.swift in Sources */,
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
+				D6CD28E724CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
 				80FC71B8247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
@@ -1121,19 +1106,17 @@
 				8083D8BB244640A0007FA4E9 /* MulticastDelegate.swift in Sources */,
 				8083D8BD244640A0007FA4E9 /* RemoteValues.swift in Sources */,
 				8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */,
-				FFC32E9E244B74E00008104C /* CompleteActivationVM.swift in Sources */,
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
+				D6CD28F224CF288E005847AA /* FakeServer.swift in Sources */,
 				FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */,
-				80CA44D3244AE783008E22F8 /* NotificationPermissionVM.swift in Sources */,
+				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				FFC32EA0244B75020008104C /* UnregisterFinishVM.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
 				8083D8C7244640A0007FA4E9 /* DataHeaderCell.swift in Sources */,
-				8083D8C8244640A0007FA4E9 /* CompleteActivationVC.swift in Sources */,
 				8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */,
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
-				8083D8CD244640A0007FA4E9 /* BluetoothActivationVC.swift in Sources */,
 				80591185246DB86B002CD687 /* ExposureService.swift in Sources */,
 				8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				8064DF93244F420A005E8AA3 /* AboutTeam.swift in Sources */,
@@ -1142,16 +1125,17 @@
 				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
 				8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */,
-				FFC32EA2244B75280008104C /* AccountActivationVM.swift in Sources */,
 				D61DFE5D24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
-				FFC32EA1244B75120008104C /* FirstActivationVM.swift in Sources */,
 				8064DF79244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
 				FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */,
 				FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */,
+				D6CD28ED24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */,
+				D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */,
 				8083D8D4244640A0007FA4E9 /* Collection.swift in Sources */,
 				8084DEF124AF84F3001FBB16 /* AppDependency.swift in Sources */,
 				8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
+				D6CD28EB24CF24DD005847AA /* PrivacyVC.swift in Sources */,
 				8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */,
 				8083D8D9244640A0007FA4E9 /* App.swift in Sources */,
 				D61DFE6124C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
@@ -1162,6 +1146,7 @@
 				8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */,
 				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
+				D6CD28E324CF24DC005847AA /* FirstActivationVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1315,7 +1300,7 @@
 		};
 		8054C0C2241D4932008907B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */;
+			baseConfigurationReference = 0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1341,7 +1326,7 @@
 		};
 		8054C0C3241D4932008907B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */;
+			baseConfigurationReference = F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1431,7 +1416,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska Dev" */ = {
+		8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8054C0C2241D4932008907B8 /* Debug */,

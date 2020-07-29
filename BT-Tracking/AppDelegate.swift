@@ -215,9 +215,8 @@ private extension AppDelegate {
         } else if RemoteValues.minSupportedVersion > App.appVersion {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
             presentingAnyForceUpdateScreen = true
-        } else if !Auth.isLoggedIn {
-            try? Auth.auth().signOut()
-            rootViewController = UIStoryboard(name: "Signup", bundle: nil).instantiateInitialViewController()
+        } else if AppSettings.eHRID == nil {
+            rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
         } else {
             rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
         }

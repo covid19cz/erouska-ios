@@ -13,39 +13,15 @@
 "welcome_body" = "Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí nákaza koronavirem, telefonicky vás kontaktuje pracovník hygienické stanice.\n\nKdyž se potvrdí nákaza u vás, hygienická stanice bude kontaktovat všechny ostatní uživatele aplikace, s kterými jste se potkali.";
 "welcome_body_more" = "Více o nezávislých auditech";
 
-"bluetooth_permission_title" = "Povolení Bluetooth";
-"bluetooth_permission_headline" = "eRouška pro správné fungování potřebuje používat Bluetooth";
-"bluetooth_permission_body" = "Bluetooth nikdy nevypínejte, aby aplikace mohla správně fungovat.\n\nNasbíraná data můžete odeslat pouze vy, a to ve chvíli, kdy vás k tomu vyzve pracovník hygienické stanice.";
-"bluetooth_permission_enable" = "Povolit Bluetooth";
+"exposure_notification_title" = "Oznámení";
+"exposure_notification_headline" = "eRouška potřebuje pro správné fungování zapnuté oznámení o kontaktu s COVID-19";
+"exposure_notification_body" = "Tato oznámení vás upozorní, pokud jste byli v blízkosti uživatele eRoušky s pozitivním testem na nákazu COVID-19.\n\nPodstatou správného fungování je sdílení a shromažďování náhodných identifikačních čísel, která se automaticky mění. Uživatele eRoušky není možno podle těchto identifikátorů rozpoznat.";
+"exposure_notification_continue" = "Zapnout";
 
-"notifications_title" = "Ověření";
-"notifications_headline" = "Potřebujeme ověřit, že nejste robot";
-"notifications_body" = "Aby eRouška chránila vás i vaše blízké, musí ji používat jen reální lidé. Proto vás potřebujeme ověřit jednoduchým testem, který proběhne bez vašeho zásahu.\n\nStačí, abyste klepli na tlačítko „Pokračovat”, eRouška se spojí se serverem a zašle vašemu telefonu oznámení pro automatické ověření, které je nutné povolit. Tak vás jednoduše ověříme.";
-"notifications_continue" = "Pokračovat";
-
-"login_title" = "Telefonní číslo";
-"login_headline" = "Zadejte telefonní číslo, na které vás bude kontaktovat pracovník hygienické stanice pouze v případě, že se u někoho z vašeho okolí potvrdí nákaza koronavirem.";
-"login_phone_prefix" = "+420";
-"login_phone_placeholder" = "Telefonní číslo (povinné)";
-"login_permission_title" = "Souhlasím s podmínkami";
-"login_permission_footer" = "Souhlasím, aby Ministerstvo zdravotnictví pracovalo se zadaným telefonním číslem a údaji o setkání s jinými uživateli aplikace podle podmínek zpracování za účelem epidemiologického šetření.";
-"login_permission_footer_more" = "Podmínky zpracování";
-"login_permission_alert" = "Souhlas s podmínkami zpracování je nezbytný pro aktivaci aplikace. Bez vašeho souhlasu nemůže aplikace fungovat.";
-"login_continue" = "Pokračovat";
-"login_error_too_many_requests_title" = "Telefonní číslo jsme dočasně zablokovali";
-"login_error_too_many_requests_message" = "Několikrát jste zkusili neúspěšně ověřit telefonní číslo. Za chvíli to zkuste znovu.";
-"login_error_verification_title" = "Nepodařilo se nám ověřit telefonní číslo";
-"login_error_verification_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
-
-"login_code_title" = "Ověřovací kód";
-"login_code_headline" = "Na telefonní číslo %@ jsme vám zaslali SMS s ověřovacím kódem.";
-"login_code_body" = "Platnost kódu vyprší za %@.";
-"login_code_placeholder" = "Ověřovací kód(povinné)";
-"login_code_continue" = "Ověřit";
-"login_code_error_title" = "Chyba při aktivaci";
-"login_code_error_wrong_code" = "Ověřovací kód není správně zadaný.";
-"login_code_error_expired_title" = "Vypršela platnost ověřovacího kódu";
-"login_code_error_expired_message" = "Zkontrolujte telefonní číslo a nechte si odeslat nový ověřovací kód.";
+"privacy_title" = "Soukromí";
+"privacy_headline" = "Myslíme na vaše soukromí, odesílání dat máte vždy pod kontrolou";
+"privacy_body" = "eRouška neobsahuje žádné vaše osobní údaje a sbírá pouze anonymní data o ostatních eRouškách, se kterými se setkáte.\n\nNěkolik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní údaje bez vašeho vědomí. Odešlete je vy sami a pouze hygienikům.";
+"privacy_continue" = "Dokončit aktivaci";
 
 "active_head_enabled" = "eRouška je aktivní";
 "active_head_paused" = "eRouška je pozastavená";

@@ -35,30 +35,16 @@ final class UnregisterUserVC: UIViewController {
     // MARK: - Actions
 
     @IBAction private func unregisterAction() {
-        showProgress()
-        
-        AppDelegate.dependency.functions.httpsCallable("deleteUser").call() { [weak self] result, error in
-            guard let self = self else { return }
-            self.hideProgress()
+        #if !PROD
+        FileLogger.shared.purgeLogs()
+        #endif
+        Log.log("deleteUser request success finished")
 
-            if let error = error as NSError?,
-                error.code != AuthErrorCode.userNotFound.rawValue {
-                Log.log("deleteUser request failed with error: \(error.localizedDescription)")
-                self.show(error: error, title: self.viewModel.errorTitle)
-                return
-            }
+        AppDelegate.dependency.exposureService.deactivate { _ in }
 
-            #if !PROD
-            FileLogger.shared.purgeLogs()
-            #endif
-            Log.log("deleteUser request success finished")
+        AppSettings.deleteAllData()
 
-            AppDelegate.dependency.exposureService.deactivate { _ in }
-
-            AppSettings.deleteAllData()
-
-            self.performSegue(withIdentifier: "finish", sender: nil)
-        }
+        self.performSegue(withIdentifier: "finish", sender: nil)
     }
 
 }

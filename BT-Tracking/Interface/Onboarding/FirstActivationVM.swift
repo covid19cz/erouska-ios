@@ -1,18 +1,17 @@
 //
 //  FirstActivationVM.swift
-//  eRouska
+// eRouska
 //
 //  Created by Lukáš Foldýna on 18/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
 import Foundation
-import CoreBluetooth
 
 struct FirstActivationVM {
 
-    var bluetoothAuthorized: Bool {
-        return CBPeripheralManager.authorization == .allowedAlways
+    var exposureNotificationAuthorized: Bool {
+        return AppDelegate.dependency.exposureService.authorizationStatus == .authorized
     }
 
     let title = "app_name"
