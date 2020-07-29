@@ -15,14 +15,14 @@ final class NewsVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pagesStackView: UIStackView!
     @IBOutlet weak var pageSizeReferenceView: UIView!
-    @IBOutlet weak var closeButton: RoundedButtonFilled!
+    @IBOutlet weak var actionButton: RoundedButtonFilled!
     @IBOutlet weak var pageControl: UIPageControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.localizedTitle(viewModel.title)
-        closeButton.localizedTitle(viewModel.closeButton)
+        actionButton.localizedTitle(viewModel.closeButton)
 
         let nib = UINib(nibName: "NewsPageView", bundle: nil)
         pagesStackView.arrangedSubviews.forEach {
@@ -50,19 +50,27 @@ final class NewsVC: UIViewController {
     }
 
     @IBAction func actionButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if pageControl.currentPage == viewModel.newsPages.count - 1 {
+            dismiss(animated: true, completion: nil)
+        } else {
+            pageControl.currentPage += 1
+            scrollToPage(at: pageControl.currentPage)
+        }
     }
 
     @IBAction func pageControlValueChanged(_ sender: Any) {
-        var rectToScroll = pageSizeReferenceView.bounds
-        rectToScroll.origin.x = CGFloat(pageControl.currentPage) * pageSizeReferenceView.bounds.width
-        scrollView.scrollRectToVisible(rectToScroll, animated: true)
-        updateView(for: pageControl.currentPage)
+        scrollToPage(at: pageControl.currentPage)
     }
 
     private func updateView(for page: Int) {
-        pageControl.isHidden = page == viewModel.newsPages.count - 1
-        closeButton.isHidden = page != viewModel.newsPages.count - 1
+        actionButton.localizedTitle(page == viewModel.newsPages.count - 1 ? viewModel.closeButton : viewModel.continueButton)
+    }
+
+    private func scrollToPage(at index: Int) {
+        var rectToScroll = pageSizeReferenceView.bounds
+        rectToScroll.origin.x = CGFloat(pageControl.currentPage) * pageSizeReferenceView.bounds.width
+        scrollView.scrollRectToVisible(rectToScroll, animated: true)
+        updateView(for: index)
     }
 }
 

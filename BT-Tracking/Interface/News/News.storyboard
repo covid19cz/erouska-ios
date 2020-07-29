@@ -99,7 +99,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="NUH-o3-nlG"/>
                     <connections>
-                        <outlet property="closeButton" destination="1Ra-Da-io7" id="yf7-jB-pKa"/>
+                        <outlet property="actionButton" destination="1Ra-Da-io7" id="Bf7-gJ-00y"/>
                         <outlet property="pageControl" destination="fmM-LI-9wG" id="fST-Mj-8YM"/>
                         <outlet property="pageSizeReferenceView" destination="pFo-BI-0aY" id="JoV-CX-G77"/>
                         <outlet property="pagesStackView" destination="dy9-wn-TjU" id="4hz-8Q-VGX"/>
