@@ -78,7 +78,10 @@ class ExposureService: ExposureServicing {
     }
 
     func activate(callback: Callback?) {
-        guard !isEnabled, !isActive else { return }
+        guard !isEnabled, !isActive else {
+            callback?(nil)
+            return
+        }
 
         switch manager.exposureNotificationStatus {
         case .active, .paused:
@@ -121,7 +124,10 @@ class ExposureService: ExposureServicing {
     }
 
     func deactivate(callback: Callback?) {
-        guard isEnabled else { return }
+        guard isEnabled else {
+            callback?(nil)
+            return
+        }
 
         manager.setExposureNotificationEnabled(false) { [weak self] error in
             guard error == nil else {
