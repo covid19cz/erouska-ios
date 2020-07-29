@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CyS-xw-OKW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--NewsVC-->
+        <scene sceneID="PrJ-01-azz">
+            <objects>
+                <viewController id="s25-xW-x39" customClass="NewsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ufm-Pn-dRM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFo-BI-0aY">
+                                <rect key="frame" x="0.0" y="148.5" width="414" height="609.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2z-dj-4NO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dy9-wn-TjU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dy9-wn-TjU" firstAttribute="leading" secondItem="h2z-dj-4NO" secondAttribute="leading" id="44T-pB-n1Z"/>
+                                    <constraint firstAttribute="bottom" secondItem="dy9-wn-TjU" secondAttribute="bottom" id="F2w-8E-jZD"/>
+                                    <constraint firstAttribute="trailing" secondItem="dy9-wn-TjU" secondAttribute="trailing" id="XqB-kx-LTU"/>
+                                    <constraint firstItem="dy9-wn-TjU" firstAttribute="top" secondItem="h2z-dj-4NO" secondAttribute="top" id="k08-35-vMC"/>
+                                    <constraint firstItem="dy9-wn-TjU" firstAttribute="height" secondItem="h2z-dj-4NO" secondAttribute="height" placeholder="YES" id="mVJ-s7-7cs"/>
+                                    <constraint firstItem="dy9-wn-TjU" firstAttribute="width" secondItem="h2z-dj-4NO" secondAttribute="width" placeholder="YES" id="sog-Hq-ddn"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="s25-xW-x39" id="74X-iF-KpB"/>
+                                </connections>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZf-PZ-KS2" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="708" width="414" height="154"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8dj-k3-HKT">
+                                        <rect key="frame" x="20" y="50" width="374" height="88"/>
+                                        <subviews>
+                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-LI-9wG">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="Hw4-Yl-qCK"/>
+                                                </constraints>
+                                                <color key="pageIndicatorTintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="currentPageIndicatorTintColor" name="AccentColor"/>
+                                                <connections>
+                                                    <action selector="pageControlValueChanged:" destination="s25-xW-x39" eventType="valueChanged" id="3xW-fR-qHI"/>
+                                                </connections>
+                                            </pageControl>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ra-Da-io7" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="euv-6m-8Bx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Aktualizovat">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="actionButtonPressed:" destination="s25-xW-x39" eventType="touchUpInside" id="SoK-Th-oDd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="8dj-k3-HKT" secondAttribute="trailing" id="7No-D5-NyS"/>
+                                    <constraint firstItem="8dj-k3-HKT" firstAttribute="leading" secondItem="SZf-PZ-KS2" secondAttribute="leadingMargin" id="Qp1-8e-Nos"/>
+                                    <constraint firstItem="8dj-k3-HKT" firstAttribute="top" secondItem="SZf-PZ-KS2" secondAttribute="top" constant="50" id="qA6-gi-dVj"/>
+                                    <constraint firstAttribute="bottom" secondItem="8dj-k3-HKT" secondAttribute="bottom" constant="16" id="v98-io-wg6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="h2z-dj-4NO" firstAttribute="leading" secondItem="N6y-yQ-9DI" secondAttribute="leading" id="ErD-Qw-X51"/>
+                            <constraint firstItem="8dj-k3-HKT" firstAttribute="top" secondItem="h2z-dj-4NO" secondAttribute="bottom" id="G73-pv-50x"/>
+                            <constraint firstItem="h2z-dj-4NO" firstAttribute="top" secondItem="Ufm-Pn-dRM" secondAttribute="top" id="Hsh-bm-xsj"/>
+                            <constraint firstItem="pFo-BI-0aY" firstAttribute="top" secondItem="N6y-yQ-9DI" secondAttribute="top" id="NJI-yH-Wo9"/>
+                            <constraint firstItem="pFo-BI-0aY" firstAttribute="leading" secondItem="N6y-yQ-9DI" secondAttribute="leading" id="WKF-v5-8JD"/>
+                            <constraint firstItem="8dj-k3-HKT" firstAttribute="top" secondItem="pFo-BI-0aY" secondAttribute="bottom" id="ZJO-yP-8R7"/>
+                            <constraint firstItem="N6y-yQ-9DI" firstAttribute="trailing" secondItem="h2z-dj-4NO" secondAttribute="trailing" id="ZdR-uk-xEY"/>
+                            <constraint firstItem="SZf-PZ-KS2" firstAttribute="leading" secondItem="N6y-yQ-9DI" secondAttribute="leading" id="cAS-6F-MhU"/>
+                            <constraint firstItem="N6y-yQ-9DI" firstAttribute="trailing" secondItem="pFo-BI-0aY" secondAttribute="trailing" id="hgE-HS-GvQ"/>
+                            <constraint firstItem="N6y-yQ-9DI" firstAttribute="trailing" secondItem="SZf-PZ-KS2" secondAttribute="trailing" id="nn6-BC-VmU"/>
+                            <constraint firstItem="N6y-yQ-9DI" firstAttribute="bottom" secondItem="SZf-PZ-KS2" secondAttribute="bottom" id="piZ-nn-KBO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="N6y-yQ-9DI"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NUH-o3-nlG"/>
+                    <connections>
+                        <outlet property="actionButton" destination="1Ra-Da-io7" id="Bf7-gJ-00y"/>
+                        <outlet property="pageControl" destination="fmM-LI-9wG" id="fST-Mj-8YM"/>
+                        <outlet property="pageSizeReferenceView" destination="pFo-BI-0aY" id="JoV-CX-G77"/>
+                        <outlet property="pagesStackView" destination="dy9-wn-TjU" id="4hz-8Q-VGX"/>
+                        <outlet property="scrollView" destination="h2z-dj-4NO" id="hvs-XP-NlF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zvC-i7-JtN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1246.376811594203" y="6.6964285714285712"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="O1T-jB-rFM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CyS-xw-OKW" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ble-VT-p5O">
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="s25-xW-x39" kind="relationship" relationship="rootViewController" id="o9N-Eh-qg0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94s-Z2-Tl7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="273.91304347826087" y="7.3660714285714279"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

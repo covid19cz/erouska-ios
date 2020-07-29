@@ -205,6 +205,7 @@ private extension AppDelegate {
         self.window = window
 
         let rootViewController: UIViewController?
+        var shouldPresentNews = false
 
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "UnsupportedDeviceVC")
@@ -216,12 +217,23 @@ private extension AppDelegate {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
             presentingAnyForceUpdateScreen = true
         } else if AppSettings.eHRID == nil {
-            rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
+            if Auth.auth().currentUser != nil {
+                rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "OnboardingActivatedUser")
+                shouldPresentNews = true
+            } else {
+                rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
+            }
         } else {
             rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
         }
 
         window.rootViewController = rootViewController
+
+        if shouldPresentNews, !AppSettings.v2_0NewsLaunched {
+            AppSettings.v2_0NewsLaunched = true
+            guard let newsViewController = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+            rootViewController?.present(newsViewController, animated: true)
+        }
     }
 
     private func setupBackgroundMode() {
