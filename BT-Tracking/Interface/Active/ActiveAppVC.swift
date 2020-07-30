@@ -281,7 +281,7 @@ private extension ActiveAppVC {
     func openBluetoothSettings() {
         let url: URL?
         if viewModel.scanner.state == .poweredOff {
-            url = URL(string: "App-Prefs::root=Settings&path=Bluetooth")
+            url = URL(string: "prefs:root=Bluetooth")
         } else {
             url = URL(string: UIApplication.openSettingsURLString)
         }
