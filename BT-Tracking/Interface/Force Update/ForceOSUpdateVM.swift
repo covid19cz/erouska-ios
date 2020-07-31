@@ -6,7 +6,7 @@
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct ForceOSUpdateVM {
 
@@ -16,5 +16,5 @@ struct ForceOSUpdateVM {
 
     let updateButton = "force_update_button"
 
-    let settingsURL = URL(string: "prefs:root=General&path=SOFTWARE_UPDATE_LINK")!
+    let settingsURL = URL(string: UIApplication.openSettingsURLString)!
 }
