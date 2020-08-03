@@ -15,14 +15,14 @@ struct AppSettings {
         case backgroundModeAlertShown
         case appFirstTimeLaunched
         case lastUploadDate
-        case lastDataPurgeDate
 
         case v2_0NewsLaunched
+
+        // Deprecated
+        case lastDataPurgeDate
     }
 
     static let firebaseRegion = "europe-west1"
-    
-    static let TUIDRotation: Int = 60 * 60
 
     static var state: ActiveAppVM.State? {
         get {
@@ -40,16 +40,6 @@ struct AppSettings {
         }
         set {
             set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
-        }
-    }
-
-    static var lastPurgeDate: Date? {
-        get {
-            let rawValue = double(forKey: .lastDataPurgeDate)
-            return Date(timeIntervalSince1970: TimeInterval(rawValue))
-        }
-        set {
-            set(withKey: .lastDataPurgeDate, value: newValue?.timeIntervalSince1970)
         }
     }
     
