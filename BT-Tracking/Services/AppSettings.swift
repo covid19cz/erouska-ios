@@ -16,7 +16,6 @@ struct AppSettings {
         case appFirstTimeLaunched
         case lastUploadDate
         case lastDataPurgeDate
-        case eHRID
 
         case v2_0NewsLaunched
     }
@@ -72,16 +71,6 @@ struct AppSettings {
         }
     }
 
-    static var eHRID: String? {
-        get {
-            let value = string(forKey: .eHRID)
-            return value.isEmpty ? nil : value
-        }
-        set {
-            set(withKey: .eHRID, value: newValue)
-        }
-    }
-
     static var v2_0NewsLaunched: Bool {
         get {
             return bool(forKey: .v2_0NewsLaunched)
@@ -92,10 +81,11 @@ struct AppSettings {
     }
 
     static func deleteAllData() {
+        KeychainService.eHRID = nil
+
         AppSettings.state = nil
         AppSettings.lastUploadDate = nil
         AppSettings.backgroundModeAlertShown = false
-        AppSettings.eHRID = nil
     }
 
     // MARK: - Private
