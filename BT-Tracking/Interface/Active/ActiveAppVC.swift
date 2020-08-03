@@ -19,11 +19,7 @@ final class ActiveAppVC: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var tipsLabel: UILabel!
     @IBOutlet private weak var actionButton: Button!
-    @IBOutlet private weak var firstTipLabel: UILabel!
-    @IBOutlet private weak var secondTipLabel: UILabel!
-    @IBOutlet private var tipsViews: [UIView]!
     @IBOutlet private weak var footerLabel: UILabel!
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
@@ -199,15 +195,10 @@ private extension ActiveAppVC {
     }
 
     func updateInterface() {
-        let isActive = viewModel.state != .enabled
-        tipsViews.forEach { $0.isHidden = isActive }
         imageView.image = viewModel.state.image
         headlineLabel.localizedText(viewModel.state.headline)
         headlineLabel.textColor = viewModel.state.color
         titleLabel.text = viewModel.state.title
-        tipsLabel.localizedText(viewModel.tips)
-        firstTipLabel.localizedText(viewModel.firstTip)
-        secondTipLabel.localizedText(viewModel.secondTip)
         if let footer = viewModel.state.footer {
             footerLabel.localizedText(footer, values: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
         } else {

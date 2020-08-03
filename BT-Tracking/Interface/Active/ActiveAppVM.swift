@@ -102,15 +102,6 @@ final class ActiveAppVM {
                 return "active_button_disabled"
             }
         }
-
-        var actionStyle: Button.Style {
-            switch self {
-            case .enabled:
-                return .clear
-            default:
-                return .filled
-            }
-        }
     }
 
     let title = "app_name"
@@ -119,10 +110,6 @@ final class ActiveAppVM {
 
     let shareApp = "share_app"
     let shareAppMessage = "share_app_message"
-
-    let tips = "active_tips_title"
-    let firstTip = "active_tip_1"
-    let secondTip = "active_tip_2"
 
     let menuAbout = "about"
     let menuDebug = "debug"
