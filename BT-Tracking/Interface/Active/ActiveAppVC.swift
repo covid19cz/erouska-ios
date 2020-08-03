@@ -175,14 +175,14 @@ private extension ActiveAppVC {
                 self?.checkForExposureService()
 
                 guard let error = error else { return }
-                self?.show(error: error)
+                log("ActiveAppVC: failed to active exposures \(error)")
             }
         case .paused:
             viewModel.exposureService.deactivate { [weak self] error in
                 self?.checkForExposureService()
 
                 guard let error = error else { return }
-                self?.show(error: error)
+                log("ActiveAppVC: failed to disable exposures \(error)")
             }
         }
     }
