@@ -12,6 +12,21 @@ import UIKit
 
 struct KeychainService {
 
+    static var eHRID: String? {
+        get {
+            let value = stringValue(for: .eHRID)
+            return value?.isEmpty == true ? nil : value
+        }
+        set {
+            if let value = newValue {
+                saveValue(with: .eHRID, value: value)
+            } else {
+                removeValue(with: .eHRID)
+            }
+        }
+    }
+
+    // MARK: - Deprecated
     static var BUID: String? {
         get {
             return stringValue(for: .BUID)
@@ -43,6 +58,9 @@ struct KeychainService {
 private extension KeychainService {
 
     enum Keys: String {
+        case eHRID
+
+        // Deprecated
         case BUID
         case TUIDs
     }

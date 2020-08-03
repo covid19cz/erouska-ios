@@ -15,15 +15,14 @@ struct AppSettings {
         case backgroundModeAlertShown
         case appFirstTimeLaunched
         case lastUploadDate
-        case lastDataPurgeDate
-        case eHRID
 
         case v2_0NewsLaunched
+
+        // Deprecated
+        case lastDataPurgeDate
     }
 
     static let firebaseRegion = "europe-west1"
-    
-    static let TUIDRotation: Int = 60 * 60
 
     static var state: ActiveAppVM.State? {
         get {
@@ -41,16 +40,6 @@ struct AppSettings {
         }
         set {
             set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
-        }
-    }
-
-    static var lastPurgeDate: Date? {
-        get {
-            let rawValue = double(forKey: .lastDataPurgeDate)
-            return Date(timeIntervalSince1970: TimeInterval(rawValue))
-        }
-        set {
-            set(withKey: .lastDataPurgeDate, value: newValue?.timeIntervalSince1970)
         }
     }
     
@@ -72,16 +61,6 @@ struct AppSettings {
         }
     }
 
-    static var eHRID: String? {
-        get {
-            let value = string(forKey: .eHRID)
-            return value.isEmpty ? nil : value
-        }
-        set {
-            set(withKey: .eHRID, value: newValue)
-        }
-    }
-
     static var v2_0NewsLaunched: Bool {
         get {
             return bool(forKey: .v2_0NewsLaunched)
@@ -92,10 +71,11 @@ struct AppSettings {
     }
 
     static func deleteAllData() {
+        KeychainService.eHRID = nil
+
         AppSettings.state = nil
         AppSettings.lastUploadDate = nil
         AppSettings.backgroundModeAlertShown = false
-        AppSettings.eHRID = nil
     }
 
     // MARK: - Private

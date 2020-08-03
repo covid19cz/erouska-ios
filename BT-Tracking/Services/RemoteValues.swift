@@ -57,14 +57,6 @@ extension AppDelegate {
 }
 
 enum RemoteConfigValueKey: String {
-    case collectionSeconds
-    case waitingSeconds
-    case criticalExpositionRssi
-
-    case smsErrorTimeoutSeconds
-    case uploadWaitingMinutes
-    case persistDataDays
-
     case faqLink
     case importantLink
     case proclamationLink
@@ -89,14 +81,6 @@ enum RemoteConfigValueKey: String {
 struct RemoteValues {
 
     static let defaults: [RemoteConfigValueKey: Any?] = [
-        .collectionSeconds: 120,
-        .waitingSeconds: 0,
-        .criticalExpositionRssi: -75,
-
-        .smsErrorTimeoutSeconds: 15 * 60,
-        .uploadWaitingMinutes: 15,
-        .persistDataDays: 14,
-
         .faqLink: "https://koronavirus.mzcr.cz/otazky-a-odpovedi/",
         .importantLink: "https://koronavirus.mzcr.cz",
         .proclamationLink: "https://koronavirus.mzcr.cz",
@@ -117,40 +101,6 @@ struct RemoteValues {
         .unsupportedDeviceLink: "https://koronavirus.mzcr.cz",
         .shouldCheckOSVersion: false,
     ]
-
-    /// doba scanování v sekundách, default = 120
-    static var collectionSeconds: Int {
-        return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.collectionSeconds)
-    }
-
-    /// doba čekání mezi scany, default = 0
-    static var waitingSeconds: Int {
-        return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.waitingSeconds)
-    }
-
-    /// pro in-app statistiky, úroveň rssi kdy je kontakt nebezpečný, číslo, default = -75
-    static var criticalExpositionRssi: Int {
-        return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.criticalExpositionRssi)
-    }
-
-    /// timeout na automatické ověření SMS, default = 20
-    static var smsErrorTimeoutSeconds: TimeInterval {
-        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.smsErrorTimeoutSeconds))
-    }
-
-    /// doba mezi uploady, v minutách, číslo, default = 15min
-    static var uploadWaitingMinutes: TimeInterval {
-        return TimeInterval(AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.uploadWaitingMinutes) * 60 * 60)
-    }
-    
-    /// počet dní, jak dlouho se mají držet data v telefonu ve dnech, default = 14
-    static var persistDataDays: Int {
-        return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.persistDataDays)
-    }
-    
-    static var persistDataInterval: TimeInterval {
-        return TimeInterval(persistDataDays * 60 * 60 * 24)
-    }
     
     /// odkaz na FAQ - vede z obrazovky Kontakty
     static var faqLink: String {
