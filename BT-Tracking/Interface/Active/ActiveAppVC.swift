@@ -30,6 +30,14 @@ final class ActiveAppVC: UIViewController {
     
     // MARK: -
 
+    deinit {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,16 +79,6 @@ final class ActiveAppVC: UIViewController {
         )
 
         checkBackgroundModeIfNeeded()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(
-            self,
-            name: UIApplication.didBecomeActiveNotification,
-            object: nil
-        )
     }
 
     // MARK: - Actions
@@ -152,6 +150,9 @@ final class ActiveAppVC: UIViewController {
     @objc private func applicationDidBecomeActive() {
         checkForBluetooth()
         checkForExposureService()
+        if viewModel.state == .disabledExposures {
+            updateScanner()
+        }
     }
 }
 
