@@ -25,10 +25,12 @@
 
 "active_head_enabled" = "eRouška je aktivní";
 "active_head_paused" = "eRouška je pozastavená";
-"active_head_disabled" = "Zapněte Bluetooth";
+"active_head_disabled_bluetooth" = "Zapněte Bluetooth";
+"active_head_disabled_exposures" = "Zapněte Oznámení o kontaktu s COVID-19";
 
 "active_title_enabled" = "Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.\n\nNa rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.";
-"active_title_paused" = "Aplikace je aktuálně pozastavená a nesbírá žádná data o vašem okolí.\n\nSpusťte znovu sběr dat a chraňte sebe i své okolí. Nezapomínejte na to v momentě, kdy opouštíte svůj domov.";
+"active_title_disabled_bluetooth" = "Aplikace je aktuálně pozastavená a nesbírá žádná data o vašem okolí.\n\nSpusťte znovu sběr dat a chraňte sebe i své okolí. Nezapomínejte na to v momentě, kdy opouštíte svůj domov.";
+"active_title_disabled_exposures" = "eRouška nyní nemůže komunikovat s jinými eRouškami ve vašem okolí.\n\nZapněte Oznámení o kontaktu s COVID-19 pomocí tlačítka \"Zapnout\".";
 "active_title_disabled" = "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout\".";
 
 "active_tips_title" = "Tipy pro snížení spotřeby baterie";

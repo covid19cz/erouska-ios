@@ -77,8 +77,6 @@
 	<string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>bluetooth-central</string>
-		<string>bluetooth-peripheral</string>
 		<string>fetch</string>
 		<string>processing</string>
 		<string>remote-notification</string>

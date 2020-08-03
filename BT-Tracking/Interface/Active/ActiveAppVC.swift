@@ -50,6 +50,7 @@ final class ActiveAppVC: UIViewController {
         updateInterface()
         layoutCardView()
         checkForBluetooth()
+        checkForExposureService()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -69,7 +70,6 @@ final class ActiveAppVC: UIViewController {
             object: nil
         )
 
-        checkForBluetooth()
         checkBackgroundModeIfNeeded()
     }
     
@@ -92,7 +92,7 @@ final class ActiveAppVC: UIViewController {
 
     private func resumeScanning() {
         AppSettings.state = .enabled
-        updateViewModel()
+        updateViewModel(scanner: true)
     }
 
     @IBAction private func shareAppAction() {
@@ -112,8 +112,10 @@ final class ActiveAppVC: UIViewController {
             pauseScanning()
         case .paused:
             resumeScanning()
-        case .disabled:
+        case .disabledBluetooth:
             openBluetoothSettings()
+        case .disabledExposures:
+            openExposuresSettings()
         }
     }
 
@@ -149,28 +151,35 @@ final class ActiveAppVC: UIViewController {
     
     @objc private func applicationDidBecomeActive() {
         checkForBluetooth()
+        checkForExposureService()
     }
 }
 
 private extension ActiveAppVC {
 
-    func updateViewModel() {
+    func updateViewModel(scanner: Bool = false) {
         viewModel = ActiveAppVM(bluetoothActive: viewModel.lastBluetoothState)
 
-        updateScanner()
+        if scanner {
+            updateScanner()
+        }
         updateInterface()
         setupStrings()
     }
 
     func updateScanner() {
         switch viewModel.state {
-        case .enabled, .disabled:
+        case .enabled, .disabledBluetooth, .disabledExposures:
             viewModel.exposureService.activate { [weak self] error in
+                self?.checkForExposureService()
+
                 guard let error = error else { return }
                 self?.show(error: error)
             }
         case .paused:
             viewModel.exposureService.deactivate { [weak self] error in
+                self?.checkForExposureService()
+
                 guard let error = error else { return }
                 self?.show(error: error)
             }
@@ -228,6 +237,30 @@ private extension ActiveAppVC {
         let state = viewModel.exposureService.isBluetoothOn
         guard viewModel.lastBluetoothState != state else { return }
         viewModel.lastBluetoothState = state
+        updateViewModel(scanner: true)
+    }
+
+    func checkForExposureService() {
+        guard viewModel.lastBluetoothState != false else { return }
+
+        let state: ActiveAppVM.State
+        switch AppDelegate.dependency.exposureService.status {
+        case .active:
+            state = .enabled
+        case .paused:
+            state = .paused
+        case .bluetoothOff:
+            state = .disabledBluetooth
+        case .restricted, .disabled:
+            state = .disabledExposures
+        case .unknown:
+            return
+        @unknown default:
+            return
+        }
+
+        guard viewModel.state != state else { return }
+        AppSettings.state = state
         updateViewModel()
     }
 
@@ -261,6 +294,11 @@ private extension ActiveAppVC {
         }
 
         guard let URL = url else { return }
+        UIApplication.shared.open(URL)
+    }
+
+    func openExposuresSettings() {
+        guard let URL = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(URL)
     }
 }
