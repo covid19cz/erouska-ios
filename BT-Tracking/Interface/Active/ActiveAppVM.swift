@@ -13,7 +13,8 @@ final class ActiveAppVM {
     enum State: String {
         case enabled
         case paused
-        case disabled
+        case disabledBluetooth = "disabled"
+        case disabledExposures
 
         var tabBarIcon: UIImage? {
             if #available(iOS 13.0, *) {
@@ -23,7 +24,7 @@ final class ActiveAppVM {
                     name = "wifi"
                 case .paused:
                     name = "wifi.slash"
-                case .disabled:
+                case .disabledBluetooth, .disabledExposures:
                     name = "wifi.exclamationmark"
                 }
                 return UIImage(systemName: name)
@@ -38,7 +39,7 @@ final class ActiveAppVM {
                 return #colorLiteral(red: 0.6116178036, green: 0.7910612226, blue: 0.3123690188, alpha: 1)
             case .paused:
                 return #colorLiteral(red: 0.8926691413, green: 0.5397555232, blue: 0.1979260743, alpha: 1)
-            case .disabled:
+            case .disabledBluetooth, .disabledExposures:
                 return #colorLiteral(red: 0.8860370517, green: 0.2113904059, blue: 0.3562591076, alpha: 1)
             }
         }
@@ -49,8 +50,10 @@ final class ActiveAppVM {
                 return UIImage(named: "ScanActive")
             case .paused:
                 return UIImage(named: "BluetoothPaused")
-            case .disabled:
+            case .disabledBluetooth:
                 return UIImage(named: "BluetoothOff")
+            case .disabledExposures:
+                return UIImage(named: "ExposuresOff")
             }
         }
 
@@ -60,8 +63,10 @@ final class ActiveAppVM {
                 return "active_head_enabled"
             case .paused:
                 return "active_head_paused"
-            case .disabled:
-                return "active_head_disabled"
+            case .disabledBluetooth:
+                return "active_head_disabled_bluetooth"
+            case .disabledExposures:
+                return "active_head_disabled_exposures"
             }
         }
 
@@ -71,8 +76,10 @@ final class ActiveAppVM {
                 return RemoteValues.activeTitleEnabled
             case .paused:
                 return Localizable("active_title_paused")
-            case .disabled:
-                return Localizable("active_title_disabled")
+            case .disabledBluetooth:
+                return Localizable("active_title_disabled_bluetooth")
+            case .disabledExposures:
+                return Localizable("active_title_disabled_exposures")
             }
         }
 
@@ -91,7 +98,7 @@ final class ActiveAppVM {
                 return "active_button_enabled"
             case .paused:
                 return "active_button_paused"
-            case .disabled:
+            case .disabledBluetooth, .disabledExposures:
                 return "active_button_disabled"
             }
         }
@@ -144,9 +151,9 @@ final class ActiveAppVM {
         self.lastBluetoothState = bluetoothActive
 
         if !bluetoothActive {
-            state = .disabled
+            state = .disabledBluetooth
         } else {
-            state = (AppSettings.state == .disabled ? .enabled : AppSettings.state) ?? .enabled
+            state = AppSettings.state ?? .enabled
         }
     }
 

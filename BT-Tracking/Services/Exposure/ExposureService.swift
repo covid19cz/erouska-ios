@@ -21,6 +21,7 @@ protocol ExposureServicing: class {
     var status: ENStatus { get }
     var authorizationStatus: ENAuthorizationStatus { get }
 
+    typealias ActivationCallback = (ExposureError?) -> Void
     func activate(callback: Callback?)
     func deactivate(callback: Callback?)
 
@@ -65,11 +66,7 @@ class ExposureService: ExposureServicing {
     init() {
         manager = ENManager()
         manager.activate { _ in
-            if ENManager.authorizationStatus == .authorized && !self.manager.exposureNotificationEnabled {
-                self.manager.setExposureNotificationEnabled(true) { _ in
-                    // No error handling for attempts to enable on launch
-                }
-            }
+
         }
     }
 
@@ -83,39 +80,35 @@ class ExposureService: ExposureServicing {
             return
         }
 
-        switch manager.exposureNotificationStatus {
-        case .active, .paused:
-            callback?(nil)
-        case .disabled:
-            manager.setExposureNotificationEnabled(true) { error in
-                guard error == nil else {
-                    callback?(error)
-                    return
+        let activationCallback: ENErrorHandler = { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                if self.manager.exposureNotificationStatus == .restricted {
+                    callback?(ExposureError.restrictedAccess)
+                } else {
+                    callback?(ExposureError.error(error))
                 }
+                return
             }
-        case .unknown:
-            manager.setExposureNotificationEnabled(true) { [weak self] error in
-                guard error == nil else {
-                    callback?(error)
-                    return
-                }
 
-                guard let self = self else { return }
+            DispatchQueue.main.async {
                 log("Exposure isActive: \(self.isActive)")
                 log("Exposure isEnabled: \(self.isEnabled)")
                 log("Exposure rawStatus: \(self.status.rawValue)")
 
                 guard !self.isEnabled else { return }
                 self.manager.activate { error in
-                    guard error == nil else {
-                        callback?(error)
-                        return
-                    }
                     callback?(nil)
                 }
             }
-        case .restricted:
-            callback?(ExposureError.restrictedAccess)
+        }
+
+        switch manager.exposureNotificationStatus {
+        case .active, .paused:
+            callback?(nil)
+        case .disabled, .unknown, .restricted:
+            // Restricted should be not "activatable" but on actual device it always shows as restricted before activation
+            manager.setExposureNotificationEnabled(true, completionHandler: activationCallback)
         case .bluetoothOff:
             callback?(ExposureError.bluetoothOff)
         @unknown default:
@@ -129,15 +122,11 @@ class ExposureService: ExposureServicing {
             return
         }
 
-        manager.setExposureNotificationEnabled(false) { [weak self] error in
+        manager.setExposureNotificationEnabled(false) { error in
             guard error == nil else {
                 callback?(error)
                 return
             }
-
-            self?.manager.invalidate()
-            self?.manager = ENManager()
-
             callback?(nil)
          }
     }

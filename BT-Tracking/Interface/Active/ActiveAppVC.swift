@@ -30,6 +30,14 @@ final class ActiveAppVC: UIViewController {
     
     // MARK: -
 
+    deinit {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,6 +58,7 @@ final class ActiveAppVC: UIViewController {
         updateInterface()
         layoutCardView()
         checkForBluetooth()
+        checkForExposureService()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -69,18 +78,7 @@ final class ActiveAppVC: UIViewController {
             object: nil
         )
 
-        checkForBluetooth()
         checkBackgroundModeIfNeeded()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(
-            self,
-            name: UIApplication.didBecomeActiveNotification,
-            object: nil
-        )
     }
 
     // MARK: - Actions
@@ -112,8 +110,10 @@ final class ActiveAppVC: UIViewController {
             pauseScanning()
         case .paused:
             resumeScanning()
-        case .disabled:
+        case .disabledBluetooth:
             openBluetoothSettings()
+        case .disabledExposures:
+            openExposuresSettings()
         }
     }
 
@@ -122,6 +122,9 @@ final class ActiveAppVC: UIViewController {
         #if !PROD
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
+        }))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
+            self?.debugCancelRegistrationAction()
         }))
         #endif
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuAbout), style: .default, handler: { [weak self] _ in
@@ -139,6 +142,14 @@ final class ActiveAppVC: UIViewController {
         present(controller, animated: true)
     }
 
+    private func debugCancelRegistrationAction() {
+        AppDelegate.dependency.exposureService.deactivate { _ in
+            AppSettings.deleteAllData()
+            try? Auth.auth().signOut()
+            AppDelegate.shared.updateInterface()
+        }
+    }
+
     private func aboutAction() {
         let storyboard = UIStoryboard(name: "Help", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "About")
@@ -149,30 +160,40 @@ final class ActiveAppVC: UIViewController {
     
     @objc private func applicationDidBecomeActive() {
         checkForBluetooth()
+        checkForExposureService()
+        if viewModel.state == .disabledExposures {
+            updateScanner()
+        }
     }
 }
 
 private extension ActiveAppVC {
 
-    func updateViewModel() {
+    func updateViewModel(updateScanner: Bool = true) {
         viewModel = ActiveAppVM(bluetoothActive: viewModel.lastBluetoothState)
 
-        updateScanner()
+        if updateScanner {
+            self.updateScanner()
+        }
         updateInterface()
         setupStrings()
     }
 
     func updateScanner() {
         switch viewModel.state {
-        case .enabled, .disabled:
+        case .enabled, .disabledBluetooth, .disabledExposures:
             viewModel.exposureService.activate { [weak self] error in
+                self?.checkForExposureService()
+
                 guard let error = error else { return }
-                self?.show(error: error)
+                log("ActiveAppVC: failed to active exposures \(error)")
             }
         case .paused:
             viewModel.exposureService.deactivate { [weak self] error in
+                self?.checkForExposureService()
+
                 guard let error = error else { return }
-                self?.show(error: error)
+                log("ActiveAppVC: failed to disable exposures \(error)")
             }
         }
     }
@@ -231,6 +252,30 @@ private extension ActiveAppVC {
         updateViewModel()
     }
 
+    func checkForExposureService() {
+        guard viewModel.lastBluetoothState != false else { return }
+
+        let state: ActiveAppVM.State
+        switch AppDelegate.dependency.exposureService.status {
+        case .active:
+            state = .enabled
+        case .paused, .disabled:
+            state = .paused
+        case .bluetoothOff:
+            state = .disabledBluetooth
+        case .restricted:
+            state = .disabledExposures
+        case .unknown:
+            state = AppSettings.state ?? .enabled
+        @unknown default:
+            return
+        }
+
+        guard viewModel.state != state else { return }
+        AppSettings.state = state
+        updateViewModel(updateScanner: false)
+    }
+
     func checkBackgroundModeIfNeeded() {
         guard !AppSettings.backgroundModeAlertShown, UIApplication.shared.backgroundRefreshStatus == .denied else { return }
         AppSettings.backgroundModeAlertShown = true
@@ -261,6 +306,11 @@ private extension ActiveAppVC {
         }
 
         guard let URL = url else { return }
+        UIApplication.shared.open(URL)
+    }
+
+    func openExposuresSettings() {
+        guard let URL = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(URL)
     }
 }

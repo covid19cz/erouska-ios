@@ -1,4 +1,4 @@
-platform :ios, '11.0'
+platform :ios, '13.5'
 use_frameworks!
 inhibit_all_warnings!
 
