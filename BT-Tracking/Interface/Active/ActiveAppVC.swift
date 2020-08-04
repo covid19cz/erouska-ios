@@ -124,7 +124,7 @@ final class ActiveAppVC: UIViewController {
             self?.debugAction()
         }))
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
-            self?.debugCancelRegisrationAction()
+            self?.debugCancelRegistrationAction()
         }))
         #endif
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuAbout), style: .default, handler: { [weak self] _ in
@@ -142,7 +142,7 @@ final class ActiveAppVC: UIViewController {
         present(controller, animated: true)
     }
 
-    private func debugCancelRegisrationAction() {
+    private func debugCancelRegistrationAction() {
         AppDelegate.dependency.exposureService.deactivate { _ in
             AppSettings.deleteAllData()
             try? Auth.auth().signOut()
