@@ -66,11 +66,7 @@ class ExposureService: ExposureServicing {
     init() {
         manager = ENManager()
         manager.activate { _ in
-            if ENManager.authorizationStatus == .authorized, !self.manager.exposureNotificationEnabled {
-                self.manager.setExposureNotificationEnabled(true) { _ in
-                    // No error handling for attempts to enable on launch
-                }
-            }
+
         }
     }
 
@@ -126,15 +122,11 @@ class ExposureService: ExposureServicing {
             return
         }
 
-        manager.setExposureNotificationEnabled(false) { [weak self] error in
+        manager.setExposureNotificationEnabled(false) { error in
             guard error == nil else {
                 callback?(error)
                 return
             }
-
-            self?.manager.invalidate()
-            self?.manager = ENManager()
-
             callback?(nil)
          }
     }

@@ -259,14 +259,14 @@ private extension ActiveAppVC {
         switch AppDelegate.dependency.exposureService.status {
         case .active:
             state = .enabled
-        case .paused:
+        case .paused, .disabled:
             state = .paused
         case .bluetoothOff:
             state = .disabledBluetooth
-        case .restricted, .disabled:
+        case .restricted:
             state = .disabledExposures
         case .unknown:
-            return
+            state = AppSettings.state ?? .enabled
         @unknown default:
             return
         }
