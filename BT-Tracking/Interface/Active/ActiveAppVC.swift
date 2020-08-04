@@ -90,7 +90,7 @@ final class ActiveAppVC: UIViewController {
 
     private func resumeScanning() {
         AppSettings.state = .enabled
-        updateViewModel(scanner: true)
+        updateViewModel()
     }
 
     @IBAction private func shareAppAction() {
@@ -143,9 +143,11 @@ final class ActiveAppVC: UIViewController {
     }
 
     private func debugCancelRegisrationAction() {
-        AppSettings.deleteAllData()
-        try? Auth.auth().signOut()
-        AppDelegate.shared.updateInterface()
+        AppDelegate.dependency.exposureService.deactivate { _ in
+            AppSettings.deleteAllData()
+            try? Auth.auth().signOut()
+            AppDelegate.shared.updateInterface()
+        }
     }
 
     private func aboutAction() {
@@ -167,7 +169,7 @@ final class ActiveAppVC: UIViewController {
 
 private extension ActiveAppVC {
 
-    func updateViewModel(scanner: Bool = false) {
+    func updateViewModel(scanner: Bool = true) {
         viewModel = ActiveAppVM(bluetoothActive: viewModel.lastBluetoothState)
 
         if scanner {
@@ -247,7 +249,7 @@ private extension ActiveAppVC {
         let state = viewModel.exposureService.isBluetoothOn
         guard viewModel.lastBluetoothState != state else { return }
         viewModel.lastBluetoothState = state
-        updateViewModel(scanner: true)
+        updateViewModel()
     }
 
     func checkForExposureService() {
@@ -271,7 +273,7 @@ private extension ActiveAppVC {
 
         guard viewModel.state != state else { return }
         AppSettings.state = state
-        updateViewModel()
+        updateViewModel(scanner: false)
     }
 
     func checkBackgroundModeIfNeeded() {

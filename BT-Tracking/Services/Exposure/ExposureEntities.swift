@@ -9,12 +9,30 @@
 import Foundation
 import ExposureNotification
 
-enum ExposureError: String, Error {
+enum ExposureError: Error {
     case bluetoothOff
     case restrictedAccess
     case noData
     case unknown
     case alreadyRunning
+    case error(Error)
+
+    var key: String {
+        switch self {
+        case .bluetoothOff:
+            return "bluetoothOff"
+        case .restrictedAccess:
+            return "restrictedAccess"
+        case .noData:
+            return "noData"
+        case .unknown:
+            return "unknown"
+        case .alreadyRunning:
+            return "alreadyRunning"
+        case .error:
+            return "error"
+        }
+    }
 }
 
 struct Exposure: Codable, Equatable {
