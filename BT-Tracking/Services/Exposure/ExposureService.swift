@@ -48,7 +48,7 @@ class ExposureService: ExposureServicing {
     private var manager: ENManager
 
     var isActive: Bool {
-        return manager.exposureNotificationStatus == .active
+        return [ENStatus.active, .paused].contains(manager.exposureNotificationStatus)
     }
 
     var isEnabled: Bool {

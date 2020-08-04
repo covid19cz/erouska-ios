@@ -113,7 +113,7 @@ final class ActiveAppVC: UIViewController {
         case .disabledBluetooth:
             openBluetoothSettings()
         case .disabledExposures:
-            openExposuresSettings()
+            openSettings()
         }
     }
 
@@ -257,9 +257,9 @@ private extension ActiveAppVC {
 
         let state: ActiveAppVM.State
         switch AppDelegate.dependency.exposureService.status {
-        case .active:
+        case .active, .paused:
             state = .enabled
-        case .paused, .disabled:
+        case .disabled:
             state = .paused
         case .bluetoothOff:
             state = .disabledBluetooth
@@ -306,11 +306,6 @@ private extension ActiveAppVC {
         }
 
         guard let URL = url else { return }
-        UIApplication.shared.open(URL)
-    }
-
-    func openExposuresSettings() {
-        guard let URL = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(URL)
     }
 }
