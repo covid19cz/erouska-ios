@@ -123,6 +123,9 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
+            self?.debugCancelRegisrationAction()
+        }))
         #endif
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuAbout), style: .default, handler: { [weak self] _ in
             self?.aboutAction()
@@ -137,6 +140,12 @@ final class ActiveAppVC: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
+    }
+
+    private func debugCancelRegisrationAction() {
+        AppSettings.deleteAllData()
+        try? Auth.auth().signOut()
+        AppDelegate.shared.updateInterface()
     }
 
     private func aboutAction() {

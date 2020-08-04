@@ -42,6 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow? = nil
 
+    func updateInterface() {
+        setupInterface()
+    }
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         log("\n\n\n-START--------------------------------\n")
 
@@ -177,7 +181,7 @@ private extension AppDelegate {
         Realm.Configuration.defaultConfiguration = configuration
     }
 
-    private func checkFetchedMinSupportedVersion() {
+    func checkFetchedMinSupportedVersion() {
         guard !presentingAnyForceUpdateScreen else { return }
 
         var viewControllerIdentifier: String?
@@ -198,7 +202,7 @@ private extension AppDelegate {
         window?.rootViewController?.present(viewController, animated: true)
     }
     
-    private func setupInterface() {
+    func setupInterface() {
         let window = UIWindow()
         window.backgroundColor = .black
         window.makeKeyAndVisible()
@@ -236,7 +240,7 @@ private extension AppDelegate {
         }
     }
 
-    private func setupBackgroundMode() {
+    func setupBackgroundMode() {
         let dateFormat = DateFormatter()
         dateFormat.timeStyle = .short
         dateFormat.dateStyle = .short
@@ -319,7 +323,7 @@ private extension AppDelegate {
         scheduleBackgroundTaskIfNeeded()
     }
 
-    private  func scheduleBackgroundTaskIfNeeded() {
+    func scheduleBackgroundTaskIfNeeded() {
         guard Self.dependency.exposureService.authorizationStatus == .authorized else { return }
         let taskRequest = BGProcessingTaskRequest(identifier: Self.backgroundTaskIdentifier)
         taskRequest.requiresNetworkConnectivity = true
@@ -331,12 +335,12 @@ private extension AppDelegate {
         }
     }
     
-    private func clearKeychainIfNeeded() {
+    func clearKeychainIfNeeded() {
         KeychainService.BUID = nil
         KeychainService.TUIDs = nil
     }
 
-    private func isDeviceSupported() -> Bool {
+    func isDeviceSupported() -> Bool {
         #if targetEnvironment(simulator)
         return true
         #else
