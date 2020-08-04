@@ -169,11 +169,11 @@ final class ActiveAppVC: UIViewController {
 
 private extension ActiveAppVC {
 
-    func updateViewModel(scanner: Bool = true) {
+    func updateViewModel(updateScanner: Bool = true) {
         viewModel = ActiveAppVM(bluetoothActive: viewModel.lastBluetoothState)
 
-        if scanner {
-            updateScanner()
+        if updateScanner {
+            self.updateScanner()
         }
         updateInterface()
         setupStrings()
@@ -273,7 +273,7 @@ private extension ActiveAppVC {
 
         guard viewModel.state != state else { return }
         AppSettings.state = state
-        updateViewModel(scanner: false)
+        updateViewModel(updateScanner: false)
     }
 
     func checkBackgroundModeIfNeeded() {
