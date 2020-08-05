@@ -264,7 +264,7 @@
                                                                                     <constraint firstItem="Dqs-Rj-Q2J" firstAttribute="leading" secondItem="TT2-5W-m3v" secondAttribute="leading" id="cjn-QN-APm"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eRouška je aktivní" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jq8-JX-g6N">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eRouška je aktivní" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jq8-JX-g6N">
                                                                                 <rect key="frame" x="50" y="0.0" width="178" height="48"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                                 <color key="textColor" red="0.54901960780000003" green="0.76078431369999999" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
