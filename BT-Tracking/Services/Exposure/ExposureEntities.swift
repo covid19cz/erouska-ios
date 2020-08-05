@@ -59,6 +59,13 @@ struct ExposureDiagnosisKey: Codable, Equatable {
     let rollingStartNumber: ENIntervalNumber
     let transmissionRiskLevel: ENRiskLevel
 
+    private enum CodingKeys: String, CodingKey {
+        case keyData = "key"
+        case rollingPeriod
+        case rollingStartNumber
+        case transmissionRiskLevel = "transmissionRisk"
+    }
+
     init(key: ENTemporaryExposureKey) {
         self.keyData = key.keyData
         self.rollingPeriod = key.rollingPeriod

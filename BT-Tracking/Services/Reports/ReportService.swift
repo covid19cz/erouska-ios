@@ -12,6 +12,8 @@ import FirebaseStorage
 import FirebaseAuth
 import CommonCrypto
 import Security
+import Alamofire
+import Zip
 
 enum ReportError: String, Error {
     case noData
@@ -46,45 +48,49 @@ class ReportService: ReportServicing {
 
     func uploadKeys(keys: [ExposureDiagnosisKey], callback: @escaping UploadKeysCallback) {
         isUploading = true
-        let storage = Storage.storage()
-        let storageReference = storage.reference()
-        let encoder = JSONEncoder()
-
         func reportFailure(_ error: Error) {
             log("ReportService Upload error: \(error)")
-            isUploading = false
-            callback(.failure(error))
+            DispatchQueue.main.async {
+                self.isUploading = false
+                callback(.failure(error))
+            }
             return
         }
 
         func reportSuccess() {
             log("ReportService Upload done")
-            isUploading = false
-            AppSettings.lastUploadDate = Date()
-            callback(.success(true))
+            DispatchQueue.main.async {
+                self.isUploading = false
+                AppSettings.lastUploadDate = Date()
+                callback(.success(true))
+            }
         }
 
-        do {
-            let data = try encoder.encode(keys)
+        let randomInt = Int.random(in: 0...1000)
+        let randomBase64 = Data(count: randomInt + 1000).base64EncodedString()
 
-            let path = "\(folderPattern)/\(Auth.auth().currentUser?.uid ?? "")/"
-            let fileReference = storageReference.child("\(path)/\(filePattern)")
-            let storageMetadata = StorageMetadata()
-            let metadata = [
-                "version": "1",
-                "buid": KeychainService.BUID ?? ""
-            ]
-            storageMetadata.customMetadata = metadata
+        let report = Report(
+            temporaryExposureKeys: keys,
+            regions: ["CZ"],
+            appPackageName: Bundle.main.bundleIdentifier ?? "iOS",
+            verificationPayload: "",
+            hmackey: "",
+            symptomOnsetInterval: 0,
+            revisionToken: "",
+            padding: randomBase64,
+            platform: "ios"
+        )
 
-            fileReference.putData(data, metadata: storageMetadata) { metadata, error in
-                if let error = error {
-                    reportFailure(error)
-                } else {
-                    reportSuccess()
-                }
+        AF.request("https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish", method: .post, parameters: report, encoder: JSONParameterEncoder.default)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: ReportResult.self) { response in
+            debugPrint("Response: \(response)")
+            switch response.result {
+            case .success:
+                reportSuccess()
+            case .failure(let error):
+                reportFailure(error)
             }
-        } catch {
-            reportFailure(error)
         }
     }
 
@@ -92,77 +98,83 @@ class ReportService: ReportServicing {
 
     func downloadKeys(callback: @escaping DownloadKeysCallback) {
         isDownloading = true
-        let storage = Storage.storage()
-        let storageReference = storage.reference()
 
         func reportFailure(_ error: Error) {
             log("ReportService Download error: \(error)")
-            isDownloading = false
-            callback(.failure(error))
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                callback(.failure(error))
+            }
         }
 
-        func reportSuccess(_ reports: [ExposureDiagnosisKey]) {
+        func reportSuccess(_ reports: [URL]) {
             log("ReportService Download done")
-            isDownloading = false
-            archiveDiagnosisKeys(keys: reports, completion: { result in
-                switch result {
-                case .success(let URLs):
-                    callback(.success(URLs))
-                case .failure(let error):
-                    reportFailure(error)
-                }
-            })
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                callback(.success(reports))
+            }
         }
 
-        let folderReference = storageReference.child(folderPattern)
-        folderReference.listAll { [weak self] result, error in
-            guard let self = self else { return }
+        let baseURL = "https://storage.googleapis.com/exposure-notification-export-dngya/"
+        let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
 
-            if let error = error {
+        let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        guard let documentsURL = directoryURLs.first else {
+            reportFailure(ReportError.unknown)
+            return
+        }
+
+        AF.request(baseURL + "/index.txt", method: .get)
+            .validate(statusCode: 200..<300)
+            .responseString { response in
+            switch response.result {
+            case .success(let result):
+                debugPrint("Response: \(response)")
+                let URLs = result.split(separator: "\n").compactMap { URL(string: baseURL + String($0)) }
+                for URL in URLs {
+                    try? FileManager.default.removeItem(at: documentsURL.appendingPathComponent(URL.lastPathComponent))
+                    try? FileManager.default.removeItem(at: documentsURL.appendingPathComponent(URL.lastPathComponent).deletingPathExtension())
+
+                    AF.download(URL, to: destination)
+                        .validate(statusCode: 200..<300)
+                        .response { response in
+                            debugPrint("Response: \(response)")
+                            switch response.result {
+                            case .success(let downloadedURL):
+                                guard let downloadedURL = downloadedURL else {
+                                    reportFailure(ReportError.noData)
+                                    return
+                                }
+
+                                do {
+                                    let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
+                                    let files = (try? FileManager.default.contentsOfDirectory(at: unzipDirectory, includingPropertiesForKeys: [], options: [.skipsHiddenFiles])) ?? []
+                                    reportSuccess(files)
+                                } catch {
+                                    reportFailure(error)
+                                }
+                            case .failure(let error):
+                                reportFailure(error)
+                            }
+                    }
+                    break
+                }
+            case .failure(let error):
                 reportFailure(error)
-                return
-            }
-
-            var count = 0
-            var reports: [ExposureDiagnosisKey] = []
-            let decoder = JSONDecoder()
-
-            if result.prefixes.count == 0 {
-                reportFailure(ReportError.noData)
-                return
-            }
-
-            for folder in result.prefixes {
-                folder.child(self.filePattern).getData(maxSize: 1024 * 100) { data, error in
-                    count += 1
-                    if let error = error {
-                        reportFailure(error)
-                        return
-                    }
-
-                    let decoded = try? decoder.decode([ExposureDiagnosisKey].self, from: data ?? Data())
-                    if let values = decoded {
-                        reports.append(contentsOf: values)
-                    }
-
-                    if count == result.prefixes.count {
-                        reportSuccess(reports)
-                        return
-                    }
-                }
             }
         }
+
     }
 
     func fetchExposureConfiguration(callback: @escaping ConfigurationCallback) {
         let dataFromServer = """
         {
-        "minimumRiskScore":0,
-        "attenuationDurationThresholds":[50, 70],
-        "attenuationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-        "daysSinceLastExposureLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-        "durationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-        "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]
+        "minimumRiskScore": 0,
+        "attenuationDurationThresholds": [50, 70],
+        "attenuationLevelValues": [1, 2, 3, 4, 5, 6, 7, 8],
+        "daysSinceLastExposureLevelValues": [1, 2, 3, 4, 5, 6, 7, 8],
+        "durationLevelValues": [1, 2, 3, 4, 5, 6, 7, 8],
+        "transmissionRiskLevelValues": [1, 2, 3, 4, 5, 6, 7, 8]
         }
         """.data(using: .utf8)!
 
@@ -178,93 +190,6 @@ class ReportService: ReportServicing {
             callback(.success(exposureConfiguration))
         } catch {
             callback(.failure(error))
-        }
-    }
-
-}
-
-private extension ReportService {
-
-    // Exposure package simulation (from apple sample code)
-    static let privateKeyECData = Data(base64Encoded: """
-    MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgKJNe9P8hzcbVkoOYM4hJFkLERNKvtC8B40Y/BNpfxMeh\
-    RANCAASfuKEs4Z9gHY23AtuMv1PvDcp4Uiz6lTbA/p77if0yO2nXBL7th8TUbdHOsUridfBZ09JqNQYKtaU9BalkyodM
-    """)!
-
-    func archiveDiagnosisKeys(keys: [ExposureDiagnosisKey], completion: (Result<[URL], Error>) -> Void) {
-        let fileName = UUID().uuidString
-
-        do {
-            let attributes = [
-                kSecAttrKeyType: kSecAttrKeyTypeEC,
-                kSecAttrKeyClass: kSecAttrKeyClassPrivate,
-                kSecAttrKeySizeInBits: 256
-                ] as CFDictionary
-
-            var cfError: Unmanaged<CFError>? = nil
-
-            let privateKeyData = Self.privateKeyECData.suffix(65) + Self.privateKeyECData.subdata(in: 36..<68)
-            guard let secKey = SecKeyCreateWithData(privateKeyData as CFData, attributes, &cfError) else {
-                throw cfError!.takeRetainedValue()
-            }
-
-            let signatureInfo = SignatureInfo.with { signatureInfo in
-                signatureInfo.appBundleID = Bundle.main.bundleIdentifier!
-                signatureInfo.verificationKeyVersion = "v1"
-                signatureInfo.verificationKeyID = "310"
-                signatureInfo.signatureAlgorithm = "SHA256withECDSA"
-            }
-
-            // In a real implementation, the file at remoteURL would be downloaded from a server
-            // This sample generates and saves a binary and signature pair of files based on the locally stored diagnosis keys
-            let export = TemporaryExposureKeyExport.with { export in
-                export.batchNum = 1
-                export.batchSize = 1
-                export.region = "310"
-                export.signatureInfos = [signatureInfo]
-                export.keys = keys.shuffled().map { diagnosisKey in
-                    TemporaryExposureKey.with { temporaryExposureKey in
-                        temporaryExposureKey.keyData = diagnosisKey.keyData
-                        temporaryExposureKey.transmissionRiskLevel = Int32(diagnosisKey.transmissionRiskLevel)
-                        temporaryExposureKey.rollingStartIntervalNumber = Int32(diagnosisKey.rollingStartNumber)
-                        temporaryExposureKey.rollingPeriod = Int32(diagnosisKey.rollingPeriod)
-                    }
-                }
-            }
-
-            let exportData = "EK Export v1    ".data(using: .utf8)! + (try export.serializedData())
-
-            var exportHash = Data(count: Int(CC_SHA256_DIGEST_LENGTH))
-            _ = exportData.withUnsafeBytes { exportDataBuffer in
-                exportHash.withUnsafeMutableBytes { exportHashBuffer in
-                    CC_SHA256(exportDataBuffer.baseAddress, CC_LONG(exportDataBuffer.count), exportHashBuffer.bindMemory(to: UInt8.self).baseAddress)
-                }
-            }
-
-            guard let signedHash = SecKeyCreateSignature(secKey, .ecdsaSignatureDigestX962SHA256, exportHash as CFData, &cfError) as Data? else {
-                throw cfError!.takeRetainedValue()
-            }
-
-            let tekSignatureList = TEKSignatureList.with { tekSignatureList in
-                tekSignatureList.signatures = [TEKSignature.with { tekSignature in
-                    tekSignature.signatureInfo = signatureInfo
-                    tekSignature.signature = signedHash
-                    tekSignature.batchNum = 1
-                    tekSignature.batchSize = 1
-                    }]
-            }
-
-            let cachesDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
-            let localBinURL = cachesDirectory.appendingPathComponent(fileName + ".bin")
-            try exportData.write(to: localBinURL)
-
-            let localSigURL = cachesDirectory.appendingPathComponent(fileName + ".sig")
-            try tekSignatureList.serializedData().write(to: localSigURL)
-
-            completion(.success([localBinURL, localSigURL]))
-        } catch {
-            completion(.failure(error))
         }
     }
 
