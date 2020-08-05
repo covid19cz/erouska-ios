@@ -331,7 +331,7 @@ private extension AppDelegate {
         do {
             try BGTaskScheduler.shared.submit(taskRequest)
         } catch {
-            Log.log("Bakcground: Unable to schedule background task: \(error)")
+            Log.log("Background: Unable to schedule background task: \(error)")
         }
     }
     

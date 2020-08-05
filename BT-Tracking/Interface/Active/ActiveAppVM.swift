@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class ActiveAppVM {
 
@@ -121,27 +122,40 @@ final class ActiveAppVM {
     let backgroundModeAction = "active_background_mode_settings"
     let backgroundModeCancel = "active_background_mode_cancel"
 
-    private(set) var state: State
-
-    func cardShadowColor(traitCollection: UITraitCollection) -> CGColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
-        } else {
-            return UIColor.black.withAlphaComponent(0.2).cgColor
-        }
+    var state: State {
+        return try! observableState.value()
     }
+    private(set) var observableState: BehaviorSubject<State>
+    private let disposeBag = DisposeBag()
 
     let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
-    var lastBluetoothState: Bool // true enabled
 
-    init(bluetoothActive: Bool) {
-        self.lastBluetoothState = bluetoothActive
-
-        if !bluetoothActive {
-            state = .disabledBluetooth
-        } else {
-            state = AppSettings.state ?? .enabled
-        }
+    init() {
+        observableState = BehaviorSubject<State>(value: .paused)
+        exposureService.readyToUse
+            .subscribe { [weak self] _ in
+                self?.updateStateIfNeeded()
+            }.disposed(by: disposeBag)
     }
 
+    func cardShadowColor(traitCollection: UITraitCollection) -> CGColor {
+        return UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+    }
+
+    func updateStateIfNeeded() {
+        switch exposureService.status {
+        case .active:
+            observableState.onNext(.enabled)
+        case .paused, .disabled:
+            observableState.onNext(.paused)
+        case .bluetoothOff:
+            observableState.onNext(.disabledBluetooth)
+        case .restricted:
+            observableState.onNext(.disabledExposures)
+        case .unknown:
+            observableState.onNext(.paused)
+        @unknown default:
+            return
+        }
+    }
 }

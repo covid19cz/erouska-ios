@@ -9,8 +9,11 @@
 import Foundation
 import ExposureNotification
 import UserNotifications
+import RxSwift
 
 protocol ExposureServicing: class {
+
+    var readyToUse: Completable { get }
 
     // Activation
     typealias Callback = (Error?) -> Void
@@ -43,6 +46,8 @@ protocol ExposureServicing: class {
 
 class ExposureService: ExposureServicing {
 
+    var readyToUse: Completable
+
     typealias Callback = (Error?) -> Void
 
     private var manager: ENManager
@@ -65,8 +70,15 @@ class ExposureService: ExposureServicing {
 
     init() {
         manager = ENManager()
-        manager.activate { _ in
-
+        readyToUse = Completable.create { [manager] completable in
+            manager.activate { error in
+                if let error = error {
+                    completable(.error(error))
+                } else {
+                    completable(.completed)
+                }
+            }
+            return Disposables.create()
         }
     }
 
@@ -75,6 +87,7 @@ class ExposureService: ExposureServicing {
     }
 
     func activate(callback: Callback?) {
+        print("ExposureService: activating")
         guard !isEnabled, !isActive else {
             callback?(nil)
             return
@@ -92,14 +105,7 @@ class ExposureService: ExposureServicing {
             }
 
             DispatchQueue.main.async {
-                log("Exposure isActive: \(self.isActive)")
-                log("Exposure isEnabled: \(self.isEnabled)")
-                log("Exposure rawStatus: \(self.status.rawValue)")
-
-                guard !self.isEnabled else { return }
-                self.manager.activate { error in
-                    callback?(nil)
-                }
+                callback?(nil)
             }
         }
 
@@ -117,6 +123,7 @@ class ExposureService: ExposureServicing {
     }
 
     func deactivate(callback: Callback?) {
+        print("ExposureService: deactivating")
         guard isEnabled else {
             callback?(nil)
             return
