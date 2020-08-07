@@ -15,14 +15,6 @@ import Security
 import Alamofire
 import Zip
 
-enum ReportError: String, Error {
-    case noData
-    case noFile
-    case cancelled
-    case unknown
-    case alreadyRunning
-}
-
 protocol ReportServicing: class {
 
     var healthAuthority: String { get set }
@@ -92,6 +84,10 @@ class ReportService: ReportServicing {
         let report = Report(
             temporaryExposureKeys: keys,
             healthAuthority: healthAuthority,
+            verificationPayload: nil,
+            hmacKey: nil,
+            symptomOnsetInterval: nil,
+            traveler: false,
             revisionToken: nil,
             padding: randomBase64
         )
@@ -135,7 +131,7 @@ class ReportService: ReportServicing {
         let destinationURL = self.downloadDestinationURL
         let destination: DownloadRequest.Destination = { temporaryURL, response in
             let url = destinationURL.appendingPathComponent(response.suggestedFilename!)
-            return (url, .removePreviousFile)
+            return (url, [.removePreviousFile, .createIntermediateDirectories])
         }
         var downloads: [DownloadRequest] = []
 
