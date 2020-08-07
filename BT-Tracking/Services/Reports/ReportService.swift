@@ -50,7 +50,7 @@ class ReportService: ReportServicing {
 
     private let uploadURL = URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
 
-    private let downloadBaseURL = URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud//")!
+    private let downloadBaseURL = URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!
     private var downloadDestinationURL: URL {
         let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let documentsURL = directoryURLs.first else {
@@ -58,7 +58,7 @@ class ReportService: ReportServicing {
         }
         return documentsURL
     }
-    private let downloadIndex = "index.txt"
+    private let downloadIndex = "/index.txt"
 
     private(set) var isUploading: Bool = false
 
@@ -142,7 +142,8 @@ class ReportService: ReportServicing {
         AF.request(downloadBaseURL.appendingPathComponent(downloadIndex), method: .get)
             .validate(statusCode: 200..<300)
             .responseString { [weak self] response in
-                debugPrint("Response index: \(response)")
+                print("Response index")
+                debugPrint(response)
                 guard let self = self else { return }
 
                 let dispatchGroup = DispatchGroup()
@@ -160,7 +161,8 @@ class ReportService: ReportServicing {
                         let download = AF.download(remoteURL, to: destination)
                             .validate(statusCode: 200..<300)
                             .response { response in
-                                debugPrint("Response file: \(response)")
+                                print("Response file")
+                                debugPrint(response)
 
                                 switch response.result {
                                 case .success(let downloadedURL):
