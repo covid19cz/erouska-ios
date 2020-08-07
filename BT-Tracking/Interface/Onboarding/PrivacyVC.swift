@@ -67,7 +67,7 @@ private extension PrivacyVC {
             self?.hideProgress()
             if let error = error as NSError? {
                 self?.show(error: error)
-            } else if let eHRID = result?.data as? String {
+            } else if let eHRID = (result?.data as? [String: Any])?["ehrid"] as? String {
                 KeychainService.eHRID = eHRID
                 let storyboard = UIStoryboard(name: "Active", bundle: nil)
                 AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
