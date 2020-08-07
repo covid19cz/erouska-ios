@@ -14,6 +14,7 @@ class Button: UIButton {
         case filled
         case clear
         case disabled
+        case exposureBanner
 
         var backgroundColor: UIColor {
             switch self {
@@ -23,6 +24,8 @@ class Button: UIButton {
                 return .clear
             case .disabled:
                 return .clear
+            case .exposureBanner:
+                return .white
             }
         }
 
@@ -34,6 +37,8 @@ class Button: UIButton {
                 return .systemBlue
             case .disabled:
                 return .systemGray
+            case .exposureBanner:
+                return UIColor(rgb: 0xDE1A1A)
             }
         }
 
@@ -43,7 +48,7 @@ class Button: UIButton {
             button.layer.cornerRadius = 16
             button.layer.masksToBounds = true
 
-            button.layer.borderWidth = self == .filled ? 0 : 1
+            button.layer.borderWidth = [.filled, .exposureBanner].contains(self) ? 0 : 1
             button.layer.borderColor = borderColor?.cgColor
 
             button.titleLabel?.textAlignment = .center
@@ -76,7 +81,7 @@ class Button: UIButton {
 
     private var borderColor: UIColor? {
         switch style {
-        case .filled:
+        case .filled, .exposureBanner:
             return nil
         case .clear, .disabled:
             if #available(iOS 13.0, *) {
@@ -123,6 +128,14 @@ final class RoundedButtonClear: Button {
 
     override func awakeFromNib() {
         style = .clear
+        super.awakeFromNib()
+    }
+}
+
+final class ExposureBannerButton: Button {
+
+    override func awakeFromNib() {
+        style = .exposureBanner
         super.awakeFromNib()
     }
 }

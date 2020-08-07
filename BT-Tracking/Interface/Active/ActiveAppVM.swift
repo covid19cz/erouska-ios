@@ -123,6 +123,10 @@ final class ActiveAppVM {
     let backgroundModeAction = "active_background_mode_settings"
     let backgroundModeCancel = "active_background_mode_cancel"
 
+    let exposureTitle = "active_exposure_title" // TODO: Make remote config
+    let exposureBannerClose = "close"
+    let exposureMoreInfo = "active_exposure_more_info"
+
     var state: State {
         return try! observableState.value()
     }

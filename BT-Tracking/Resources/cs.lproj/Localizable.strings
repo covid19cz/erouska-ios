@@ -43,6 +43,9 @@
 "active_background_mode_settings" = "Upravit nastavení";
 "active_background_mode_cancel" = "Zavřít";
 
+"active_exposure_title" = "Setkali jste se s osobou, u které byla prokázána nákaza virem Covid-19. Sledujte svůj zdravotní stav.";
+"active_exposure_more_info" = "Více informací";
+
 "cancel_registration_button" = "Zrušit registraci";
 
 "share_app" = "Sdílet aplikaci";
