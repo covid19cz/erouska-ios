@@ -50,7 +50,11 @@ struct VerificationCode: Decodable {
 
 struct VerificationTokenRequst: Encodable {
 
-    let code: String
+    let verificationCode: String
+
+    private enum CodingKeys: String, CodingKey {
+        case verificationCode = "VerificationCode"
+    }
 
 }
 
