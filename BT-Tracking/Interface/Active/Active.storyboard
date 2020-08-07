@@ -426,7 +426,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                     <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="45a-ir-C72"/>
                         <rightBarButtonItems>
-                            <barButtonItem title="Další možnosti" image="ellipsis.circle.fill" largeContentSizeImage="Další možnosti" id="aAa-9L-bkG">
+                            <barButtonItem title="Další možnosti" image="ellipsis.circle.fill" id="aAa-9L-bkG">
                                 <connections>
                                     <action selector="moreActionWithSender:" destination="SLc-31-c7B" id="zr6-Iy-Ztd"/>
                                 </connections>
@@ -459,7 +459,6 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
         </scene>
     </scenes>
     <resources>
-        <image name="Další možnosti" width="128" height="128"/>
         <image name="ScanActive" width="48" height="48"/>
         <image name="ellipsis.circle.fill" width="24" height="24"/>
     </resources>
