@@ -8,22 +8,20 @@
 
 import UIKit
 import FirebaseAuth
+import RxSwift
 
 final class ActiveAppVC: UIViewController {
 
-    private var viewModel = ActiveAppVM(bluetoothActive: true)
-    
+    private var viewModel = ActiveAppVM()
+    private let disposeBag = DisposeBag()
+
     // MARK: - Outlets
 
     @IBOutlet private weak var mainStackView: UIStackView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var tipsLabel: UILabel!
     @IBOutlet private weak var actionButton: Button!
-    @IBOutlet private weak var firstTipLabel: UILabel!
-    @IBOutlet private weak var secondTipLabel: UILabel!
-    @IBOutlet private var tipsViews: [UIView]!
     @IBOutlet private weak var footerLabel: UILabel!
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
@@ -41,9 +39,11 @@ final class ActiveAppVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupStrings()
-        updateScanner()
-        updateInterface()
+        viewModel.observableState.subscribe(
+            onNext: { [weak self] _ in
+                self?.updateInterface()
+            }
+        ).disposed(by: disposeBag)
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,23 +54,20 @@ final class ActiveAppVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        updateInterface()
-        layoutCardView()
-        checkForBluetooth()
-        checkForExposureService()
+
+        updateViewModel()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
-        guard #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
+        guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
         cardView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(applicationDidBecomeActive),
@@ -83,14 +80,18 @@ final class ActiveAppVC: UIViewController {
 
     // MARK: - Actions
 
-    func pauseScanning() {
-        AppSettings.state = .paused
-        updateViewModel()
+    private func pauseScanning() {
+        updateScanner(activate: false) { [weak self] in
+            AppSettings.state = .paused
+            self?.updateViewModel()
+        }
     }
 
     private func resumeScanning() {
-        AppSettings.state = .enabled
-        updateViewModel()
+        updateScanner(activate: true) { [weak self] in
+            AppSettings.state = .enabled
+            self?.updateViewModel()
+        }
     }
 
     @IBAction private func shareAppAction() {
@@ -159,55 +160,41 @@ final class ActiveAppVC: UIViewController {
     // MARK: -
     
     @objc private func applicationDidBecomeActive() {
-        checkForBluetooth()
-        checkForExposureService()
-        if viewModel.state == .disabledExposures {
-            updateScanner()
-        }
+        updateViewModel()
     }
 }
 
 private extension ActiveAppVC {
 
-    func updateViewModel(updateScanner: Bool = true) {
-        viewModel = ActiveAppVM(bluetoothActive: viewModel.lastBluetoothState)
-
-        if updateScanner {
-            self.updateScanner()
-        }
-        updateInterface()
-        setupStrings()
+    func updateViewModel() {
+        viewModel.updateStateIfNeeded()
     }
 
-    func updateScanner() {
-        switch viewModel.state {
-        case .enabled, .disabledBluetooth, .disabledExposures:
+    func updateScanner(activate: Bool, completion: @escaping () -> Void) {
+        if activate {
             viewModel.exposureService.activate { [weak self] error in
-                self?.checkForExposureService()
-
-                guard let error = error else { return }
-                log("ActiveAppVC: failed to active exposures \(error)")
+                if let error = error {
+                    self?.show(error: error)
+                    log("ActiveAppVC: failed to active exposures \(error)")
+                }
+                completion()
             }
-        case .paused:
+        } else {
             viewModel.exposureService.deactivate { [weak self] error in
-                self?.checkForExposureService()
-
-                guard let error = error else { return }
-                log("ActiveAppVC: failed to disable exposures \(error)")
+                if let error = error {
+                    self?.show(error: error)
+                    log("ActiveAppVC: failed to disable exposures \(error)")
+                }
+                completion()
             }
         }
     }
 
     func updateInterface() {
-        let isActive = viewModel.state != .enabled
-        tipsViews.forEach { $0.isHidden = isActive }
         imageView.image = viewModel.state.image
         headlineLabel.localizedText(viewModel.state.headline)
         headlineLabel.textColor = viewModel.state.color
         titleLabel.text = viewModel.state.title
-        tipsLabel.localizedText(viewModel.tips)
-        firstTipLabel.localizedText(viewModel.firstTip)
-        secondTipLabel.localizedText(viewModel.secondTip)
         if let footer = viewModel.state.footer {
             footerLabel.localizedText(footer, values: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
         } else {
@@ -221,6 +208,8 @@ private extension ActiveAppVC {
             actionButtonWidthConstraint.constant = viewModel.state == .enabled ? 110 : 100
             actionButton.layoutIfNeeded()
         }
+
+        setupStrings()
     }
 
     func setupStrings() {
@@ -243,37 +232,6 @@ private extension ActiveAppVC {
         cardView.layer.shadowOffset = CGSize(width: 0, height: 1)
         cardView.layer.shadowRadius = 2
         cardView.layer.shadowOpacity = 1
-    }
-
-    func checkForBluetooth() {
-        let state = viewModel.exposureService.isBluetoothOn
-        guard viewModel.lastBluetoothState != state else { return }
-        viewModel.lastBluetoothState = state
-        updateViewModel()
-    }
-
-    func checkForExposureService() {
-        guard viewModel.lastBluetoothState != false else { return }
-
-        let state: ActiveAppVM.State
-        switch AppDelegate.dependency.exposureService.status {
-        case .active, .paused:
-            state = .enabled
-        case .disabled:
-            state = .paused
-        case .bluetoothOff:
-            state = .disabledBluetooth
-        case .restricted:
-            state = .disabledExposures
-        case .unknown:
-            state = AppSettings.state ?? .enabled
-        @unknown default:
-            return
-        }
-
-        guard viewModel.state != state else { return }
-        AppSettings.state = state
-        updateViewModel(updateScanner: false)
     }
 
     func checkBackgroundModeIfNeeded() {
@@ -305,7 +263,7 @@ private extension ActiveAppVC {
             url = URL(string: UIApplication.openSettingsURLString)
         }
 
-        guard let URL = url else { return }
+        guard let URL = url, UIApplication.shared.canOpenURL(URL) else { return }
         UIApplication.shared.open(URL)
     }
 }

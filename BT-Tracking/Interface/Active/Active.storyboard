@@ -232,16 +232,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRX-7H-oZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="606.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="446.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qcL-c9-sLJ">
-                                                <rect key="frame" x="20" y="20" width="374" height="566.5"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="406.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6s-Qx-Qlh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="460"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="300"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-pw-itY">
-                                                                <rect key="frame" x="14" y="14" width="346" height="432"/>
+                                                                <rect key="frame" x="14" y="14" width="346" height="272"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tfE-3E-o2N">
                                                                         <rect key="frame" x="0.0" y="0.0" width="346" height="48"/>
@@ -264,7 +264,7 @@
                                                                                     <constraint firstItem="Dqs-Rj-Q2J" firstAttribute="leading" secondItem="TT2-5W-m3v" secondAttribute="leading" id="cjn-QN-APm"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eRouška je aktivní" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jq8-JX-g6N">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eRouška je aktivní" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jq8-JX-g6N">
                                                                                 <rect key="frame" x="50" y="0.0" width="178" height="48"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                                 <color key="textColor" red="0.54901960780000003" green="0.76078431369999999" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -302,7 +302,7 @@
                                                                         </constraints>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mby-Ad-cEI">
-                                                                        <rect key="frame" x="0.0" y="63" width="346" height="174.5"/>
+                                                                        <rect key="frame" x="0.0" y="63" width="346" height="209"/>
                                                                         <string key="text">Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.
 Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.</string>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -310,49 +310,6 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                         <nil key="highlightedColor"/>
                                                                         <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Tipy pro snížení spotřeby baterie" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-oF-dXd">
-                                                                        <rect key="frame" x="0.0" y="252.5" width="346" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                        <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
-                                                                    </label>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ldG-Ym-Pd8">
-                                                                        <rect key="frame" x="0.0" y="288" width="346" height="64.5"/>
-                                                                        <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhoneDown" translatesAutoresizingMaskIntoConstraints="NO" id="Bwt-9v-Cg8">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="64.5"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="width" constant="50" id="Ofd-Um-axp"/>
-                                                                                </constraints>
-                                                                            </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" text="Na stole otočte telefon obrazovkou dolů. Obrazovka automaticky zhasne." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD8-Ge-3oY">
-                                                                                <rect key="frame" x="60" y="0.0" width="286" height="64.5"/>
-                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                                <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
-                                                                            </label>
-                                                                        </subviews>
-                                                                    </stackView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7l3-kB-L1x">
-                                                                        <rect key="frame" x="0.0" y="367.5" width="346" height="64.5"/>
-                                                                        <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhonePocket" translatesAutoresizingMaskIntoConstraints="NO" id="MVy-h6-ySg">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="64.5"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="width" constant="50" id="VPa-Pu-v03"/>
-                                                                                </constraints>
-                                                                            </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" text="Do kapsy dávejte telefon nabíjecím konektorem nahoru. Zakrytá obrazovka automaticky zhasne." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXe-oc-aKu">
-                                                                                <rect key="frame" x="60" y="0.0" width="286" height="64.5"/>
-                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                                <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
-                                                                            </label>
-                                                                        </subviews>
-                                                                    </stackView>
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
@@ -365,7 +322,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANQ-eO-rpO">
-                                                        <rect key="frame" x="0.0" y="480" width="374" height="86.5"/>
+                                                        <rect key="frame" x="0.0" y="320" width="374" height="86.5"/>
                                                         <string key="text">Když budete označeni jako nakažení, kontaktujeme vás na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, které byly ve vašem okolí v sekci Moje data.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
@@ -423,17 +380,11 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="actionButton" destination="UDA-eb-fmL" id="ZBv-1y-h9d"/>
                         <outlet property="actionButtonWidthConstraint" destination="hHl-s3-yn0" id="fKm-lg-qoS"/>
                         <outlet property="cardView" destination="S6s-Qx-Qlh" id="jMg-jX-DaZ"/>
-                        <outlet property="firstTipLabel" destination="XD8-Ge-3oY" id="Qak-rD-hDL"/>
                         <outlet property="footerLabel" destination="ANQ-eO-rpO" id="Tkh-MA-V6M"/>
                         <outlet property="headlineLabel" destination="jq8-JX-g6N" id="NVv-Mg-JGG"/>
                         <outlet property="imageView" destination="Dqs-Rj-Q2J" id="LT3-Yz-mgS"/>
                         <outlet property="mainStackView" destination="IbU-pw-itY" id="mUd-gK-QSO"/>
-                        <outlet property="secondTipLabel" destination="IXe-oc-aKu" id="Hyi-h5-SVz"/>
-                        <outlet property="tipsLabel" destination="VfP-oF-dXd" id="Fpd-UO-nXw"/>
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
-                        <outletCollection property="tipsViews" destination="VfP-oF-dXd" collectionClass="NSMutableArray" id="pMh-xa-Pfg"/>
-                        <outletCollection property="tipsViews" destination="ldG-Ym-Pd8" collectionClass="NSMutableArray" id="rLE-97-vC9"/>
-                        <outletCollection property="tipsViews" destination="7l3-kB-L1x" collectionClass="NSMutableArray" id="B6L-a7-mLN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -443,8 +394,6 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
     </scenes>
     <resources>
         <image name="Další možnosti" width="128" height="128"/>
-        <image name="PhoneDown" width="48" height="48"/>
-        <image name="PhonePocket" width="48" height="48"/>
         <image name="ScanActive" width="48" height="48"/>
         <image name="ellipsis.circle.fill" width="24" height="24"/>
     </resources>
