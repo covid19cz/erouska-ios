@@ -11,6 +11,8 @@ import Foundation
 
 enum VerificatioTestType: String, Codable {
     case likely
+    case confirmed
+    case negative
 }
 
 struct VerificationCodeRequst: Encodable {

@@ -95,13 +95,14 @@ final class ReportService: ReportServicing {
         AF.request(uploadURL, method: .post, parameters: report, encoder: JSONParameterEncoder.default)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: ReportResult.self) { response in
-            debugPrint("Response: \(response)")
-            switch response.result {
-            case .success:
-                reportSuccess()
-            case .failure(let error):
-                reportFailure(error)
-            }
+                print("Response upload")
+                debugPrint(response)
+                switch response.result {
+                case .success:
+                    reportSuccess()
+                case .failure(let error):
+                    reportFailure(error)
+                }
         }
     }
 
