@@ -34,7 +34,7 @@ protocol ReportServicing: class {
 
 }
 
-class ReportService: ReportServicing {
+final class ReportService: ReportServicing {
 
     var healthAuthority = "cz.covid19cz.erouska.dev"
 
