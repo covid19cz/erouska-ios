@@ -226,7 +226,7 @@ private extension ActiveAppVC {
             actionButton.layoutIfNeeded()
         }
 
-        exposureTitleLabel.localizedText(viewModel.exposureTitle)
+        exposureTitleLabel.text = viewModel.exposureTitle
         exposureCloseButton.localizedTitle(viewModel.exposureBannerClose)
         exposureMoreInfoButton.localizedTitle(viewModel.exposureMoreInfo)
 
