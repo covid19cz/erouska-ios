@@ -19,10 +19,12 @@ protocol ReportServicing: class {
 
     var healthAuthority: String { get set }
 
+    func calculateHmacKey(keys: [ExposureDiagnosisKey]) -> String
+
     typealias UploadKeysCallback = (Result<Bool, Error>) -> Void
 
     var isUploading: Bool { get }
-    func uploadKeys(keys: [ExposureDiagnosisKey], callback: @escaping UploadKeysCallback)
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacKey: String, callback: @escaping UploadKeysCallback)
 
     typealias DownloadKeysCallback = (Result<[URL], Error>) -> Void
 
@@ -52,9 +54,16 @@ final class ReportService: ReportServicing {
     }
     private let downloadIndex = "/index.txt"
 
+    func calculateHmacKey(keys: [ExposureDiagnosisKey]) -> String {
+        let stringKeys = keys.map {
+            "\($0.keyData.base64EncodedString()).\($0.rollingStartNumber).\($0.rollingPeriod).\($0.transmissionRiskLevel)"
+        }
+        return (stringKeys.joined(separator: ",").data(using: .utf8) ?? Data()).base64EncodedString()
+    }
+
     private(set) var isUploading: Bool = false
 
-    func uploadKeys(keys: [ExposureDiagnosisKey], callback: @escaping UploadKeysCallback) {
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacKey: String, callback: @escaping UploadKeysCallback) {
         guard !isUploading else {
             callback(.failure(ReportError.alreadyRunning))
             return
@@ -84,8 +93,8 @@ final class ReportService: ReportServicing {
         let report = Report(
             temporaryExposureKeys: keys,
             healthAuthority: healthAuthority,
-            verificationPayload: nil,
-            hmacKey: nil,
+            verificationPayload: verificationPayload,
+            hmacKey: hmacKey,
             symptomOnsetInterval: nil,
             traveler: false,
             revisionToken: nil,

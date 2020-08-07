@@ -9,6 +9,11 @@
 import Foundation
 
 
+enum VerificatioError: Error {
+    case noData
+    case responseError(String)
+}
+
 enum VerificatioTestType: String, Codable {
     case likely
     case confirmed
@@ -79,7 +84,7 @@ struct VerificationCertificateRequest: Encodable {
 
 struct VerificationCertificate: Decodable {
 
-    let certificate: Date?
+    let certificate: String?
     let error: String?
 
     private enum CodingKeys: String, CodingKey {

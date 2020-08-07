@@ -197,18 +197,6 @@ private extension DataListVC {
     }
 
     func sendReport() {
-        let controller = UIAlertController(title: "Ktery druh klicu?", message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: "Test keys", style: .default, handler: { _ in
-            self.sendReport(with: .test)
-        }))
-        controller.addAction(UIAlertAction(title: "Keys", style: .default, handler: { _ in
-            self.sendReport(with: .real)
-        }))
-        controller.addAction(UIAlertAction(title: "Zrusit", style: .cancel, handler: nil))
-        present(controller, animated: true, completion: nil)
-    }
-
-    func sendReport(with type: ReportType) {
         #if DEBUG
         #else
         guard (AppSettings.lastUploadDate ?? Date.distantPast) + RemoteValues.uploadWaitingMinutes < Date() else {
@@ -222,21 +210,65 @@ private extension DataListVC {
             return
         }
 
-        showProgress()
+        let controller = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        controller.addTextField { textField in
+            textField.placeholder = "Verification Code"
+            textField.keyboardType = .numberPad
+            textField.returnKeyType = .done
+        }
+        controller.addAction(UIAlertAction(title: NSLocalizedString("Verify", comment: ""), style: .default, handler: { [weak self] _ in
+            self?.verifyCode(controller.textFields?.first?.text ?? "")
+        }))
+        controller.addAction(UIAlertAction(title: NSLocalizedString("active_background_mode_cancel", comment: ""), style: .cancel, handler: nil))
+        present(controller, animated: true, completion: nil)
+    }
 
+    func verifyCode(_ code: String) {
+        showProgress()
+        AppDelegate.dependency.verification.verify(with: code) { [weak self] result in
+            switch result {
+            case .success(let token):
+                self?.askForTypeOfKeys(token: token)
+            case .failure(let error):
+                log("DataListVC: Failed to verify code \(error)")
+                self?.hideProgress()
+                self?.showSendDataErrorFailed()
+            }
+        }
+    }
+
+    func askForTypeOfKeys(token: String) {
+        let controller = UIAlertController(title: "Ktery druh klicu?", message: nil, preferredStyle: .actionSheet)
+        controller.addAction(UIAlertAction(title: "Test keys", style: .default, handler: { [weak self] _ in
+            self?.sendReport(with: .test, token: token)
+        }))
+        controller.addAction(UIAlertAction(title: "Keys", style: .default, handler: {[weak self]  _ in
+            self?.sendReport(with: .real, token: token)
+        }))
+        controller.addAction(UIAlertAction(title: NSLocalizedString("active_background_mode_cancel", comment: ""), style: .cancel, handler: nil))
+        present(controller, animated: true, completion: nil)
+    }
+
+    func sendReport(with type: ReportType, token: String) {
+        let verificationService = AppDelegate.dependency.verification
+        let reportService = AppDelegate.dependency.reporter
         let exposureService = AppDelegate.dependency.exposureService
-        let callback: ExposureServicing.KeysCallback = { result in
+        let callback: ExposureServicing.KeysCallback = { [weak self]  result in
+            guard let self = self else { return }
+
             switch result {
             case .success(let keys):
-                AppDelegate.dependency.reporter.uploadKeys(keys: keys, callback: { [weak self] result in
-                    self?.hideProgress()
+                let hmacKey = reportService.calculateHmacKey(keys: keys)
+                verificationService.requestCertificate(token: token, hmacKey: hmacKey) { result in
                     switch result {
-                    case .success:
-                        self?.performSegue(withIdentifier: "sendReport", sender: nil)
-                    case .failure:
-                        self?.showSendDataErrorFailed()
+                    case .success(let certificate):
+                        self.uploadKeys(keys: keys, verificationPayload: certificate, hmacKey: hmacKey)
+                    case .failure(let error):
+                        log("DataListVC: Failed to get verification payload \(error)")
+                        self.hideProgress()
+                        self.showSendDataErrorFailed()
                     }
-                })
+                }
             case .failure(let error):
                 log("DataListVC: Failed to get exposure keys \(error)")
                 self.hideProgress()
@@ -250,6 +282,18 @@ private extension DataListVC {
         case .real:
             exposureService.getDiagnosisKeys(callback: callback)
         }
+    }
+
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacKey: String) {
+        AppDelegate.dependency.reporter.uploadKeys(keys: keys, verificationPayload: verificationPayload, hmacKey: hmacKey, callback: { [weak self] result in
+            self?.hideProgress()
+            switch result {
+            case .success:
+                self?.performSegue(withIdentifier: "sendReport", sender: nil)
+            case .failure:
+                self?.showSendDataErrorFailed()
+            }
+        })
     }
 
     func showDownloadDataErrorFailed(_ error: Error) {
