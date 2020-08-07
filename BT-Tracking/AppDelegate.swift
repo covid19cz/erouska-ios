@@ -250,13 +250,18 @@ private extension AppDelegate {
             // Notify the user if bluetooth is off
             Self.dependency.exposureService.showBluetoothOffUserNotificationIfNeeded()
 
+            func reportFailure(_ error: Error) {
+                task.setTaskCompleted(success: false)
+                Log.log("AppDelegate: Failed to detect exposures \(error)")
+            }
+
             // Perform the exposure detection
-            Self.dependency.reporter.fetchExposureConfiguration { result in
+            let progress = Self.dependency.reporter.downloadKeys { result in
                 switch result {
-                case .success(let configuration):
-                    Self.dependency.reporter.downloadKeys { result in
+                case .success(let URLs):
+                    Self.dependency.reporter.fetchExposureConfiguration { result in
                         switch result {
-                        case .success(let URLs):
+                        case .success(let configuration):
                             AppDelegate.dependency.exposureService.detectExposures(
                                 configuration: configuration,
                                 URLs: URLs
@@ -295,25 +300,22 @@ private extension AppDelegate {
 
                                     task.setTaskCompleted(success: true)
                                 case .failure(let error):
-                                    task.setTaskCompleted(success: false)
-                                    Log.log("AppDelegate: Failed to detect exposures \(error)")
+                                    reportFailure(error)
                                 }
                             }
                         case .failure(let error):
-                            task.setTaskCompleted(success: false)
-                            Log.log("AppDelegate: Failed to detect exposures \(error)")
+                            reportFailure(error)
                         }
                     }
                 case .failure(let error):
-                    task.setTaskCompleted(success: false)
-                    Log.log("AppDelegate: Failed to detect exposures \(error)")
+                    reportFailure(error)
                 }
             }
 
             // Handle running out of time
             task.expirationHandler = {
+                progress.cancel()
                 Log.log("Background task timeout")
-                // TODO: handle error, NSLocalizedString("BACKGROUND_TIMEOUT", comment: "Error")
             }
 
             // Schedule the next background task

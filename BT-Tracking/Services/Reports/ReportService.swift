@@ -17,11 +17,15 @@ import Zip
 
 enum ReportError: String, Error {
     case noData
+    case noFile
+    case cancelled
     case unknown
     case alreadyRunning
 }
 
 protocol ReportServicing: class {
+
+    var healthAuthority: String { get set }
 
     typealias UploadKeysCallback = (Result<Bool, Error>) -> Void
 
@@ -31,7 +35,7 @@ protocol ReportServicing: class {
     typealias DownloadKeysCallback = (Result<[URL], Error>) -> Void
 
     var isDownloading: Bool { get }
-    func downloadKeys(callback: @escaping DownloadKeysCallback)
+    func downloadKeys(callback: @escaping DownloadKeysCallback) -> Progress
 
     typealias ConfigurationCallback = (Result<ENExposureConfiguration, Error>) -> Void
     func fetchExposureConfiguration(callback: @escaping ConfigurationCallback)
@@ -40,14 +44,31 @@ protocol ReportServicing: class {
 
 class ReportService: ReportServicing {
 
-    private var folderPattern: String = "exposure"
-    private var filePattern: String = "exposure.json"
+    var healthAuthority = "cz.covid19cz.erouska.dev"
+
     private var timeout: TimeInterval = 30
+
+    private let uploadURL = URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
+
+    private let downloadBaseURL = URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud//")!
+    private var downloadDestinationURL: URL {
+        let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        guard let documentsURL = directoryURLs.first else {
+            fatalError("No documents directory!")
+        }
+        return documentsURL
+    }
+    private let downloadIndex = "index.txt"
 
     private(set) var isUploading: Bool = false
 
     func uploadKeys(keys: [ExposureDiagnosisKey], callback: @escaping UploadKeysCallback) {
+        guard !isUploading else {
+            callback(.failure(ReportError.alreadyRunning))
+            return
+        }
         isUploading = true
+
         func reportFailure(_ error: Error) {
             log("ReportService Upload error: \(error)")
             DispatchQueue.main.async {
@@ -68,20 +89,14 @@ class ReportService: ReportServicing {
 
         let randomInt = Int.random(in: 0...1000)
         let randomBase64 = Data(count: randomInt + 1000).base64EncodedString()
-
         let report = Report(
             temporaryExposureKeys: keys,
-            regions: ["CZ"],
-            appPackageName: Bundle.main.bundleIdentifier ?? "iOS",
-            verificationPayload: "",
-            hmackey: "",
-            symptomOnsetInterval: 0,
-            revisionToken: "",
-            padding: randomBase64,
-            platform: "ios"
+            healthAuthority: healthAuthority,
+            revisionToken: nil,
+            padding: randomBase64
         )
 
-        AF.request("https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish", method: .post, parameters: report, encoder: JSONParameterEncoder.default)
+        AF.request(uploadURL, method: .post, parameters: report, encoder: JSONParameterEncoder.default)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: ReportResult.self) { response in
             debugPrint("Response: \(response)")
@@ -96,74 +111,109 @@ class ReportService: ReportServicing {
 
     private(set) var isDownloading: Bool = false
 
-    func downloadKeys(callback: @escaping DownloadKeysCallback) {
+    func downloadKeys(callback: @escaping DownloadKeysCallback) -> Progress {
+        let progress = Progress()
+
+        guard !isDownloading else {
+            callback(.failure(ReportError.alreadyRunning))
+            return progress
+        }
         isDownloading = true
 
         func reportFailure(_ error: Error) {
             log("ReportService Download error: \(error)")
-            DispatchQueue.main.async {
-                self.isDownloading = false
-                callback(.failure(error))
-            }
+            isDownloading = false
+            callback(.failure(error))
         }
 
         func reportSuccess(_ reports: [URL]) {
             log("ReportService Download done")
-            DispatchQueue.main.async {
-                self.isDownloading = false
-                callback(.success(reports))
-            }
+            isDownloading = false
+            callback(.success(reports))
         }
 
-        let baseURL = "https://storage.googleapis.com/exposure-notification-export-dngya/"
-        let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
-
-        let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        guard let documentsURL = directoryURLs.first else {
-            reportFailure(ReportError.unknown)
-            return
+        let destinationURL = self.downloadDestinationURL
+        let destination: DownloadRequest.Destination = { temporaryURL, response in
+            let url = destinationURL.appendingPathComponent(response.suggestedFilename!)
+            return (url, .removePreviousFile)
         }
+        var downloads: [DownloadRequest] = []
 
-        AF.request(baseURL + "/index.txt", method: .get)
+        AF.request(downloadBaseURL.appendingPathComponent(downloadIndex), method: .get)
             .validate(statusCode: 200..<300)
-            .responseString { response in
-            switch response.result {
-            case .success(let result):
-                debugPrint("Response: \(response)")
-                let URLs = result.split(separator: "\n").compactMap { URL(string: baseURL + String($0)) }
-                for URL in URLs {
-                    try? FileManager.default.removeItem(at: documentsURL.appendingPathComponent(URL.lastPathComponent))
-                    try? FileManager.default.removeItem(at: documentsURL.appendingPathComponent(URL.lastPathComponent).deletingPathExtension())
+            .responseString { [weak self] response in
+                debugPrint("Response index: \(response)")
+                guard let self = self else { return }
 
-                    AF.download(URL, to: destination)
-                        .validate(statusCode: 200..<300)
-                        .response { response in
-                            debugPrint("Response: \(response)")
-                            switch response.result {
-                            case .success(let downloadedURL):
-                                guard let downloadedURL = downloadedURL else {
-                                    reportFailure(ReportError.noData)
-                                    return
+                let dispatchGroup = DispatchGroup()
+                var localURLResults: [Result<[URL], Error>] = []
+
+                switch response.result {
+                case let .success(result):
+                    let remoteURLs = result.split(separator: "\n").compactMap { self.downloadBaseURL.appendingPathComponent(String($0)) }
+
+                    for remoteURL in remoteURLs {
+                        dispatchGroup.enter()
+
+                        try? FileManager.default.removeItem(at: destinationURL.appendingPathComponent(remoteURL.lastPathComponent).deletingPathExtension())
+
+                        let download = AF.download(remoteURL, to: destination)
+                            .validate(statusCode: 200..<300)
+                            .response { response in
+                                debugPrint("Response file: \(response)")
+
+                                switch response.result {
+                                case .success(let downloadedURL):
+                                    guard let downloadedURL = downloadedURL else {
+                                        localURLResults.append(.failure(ReportError.noFile))
+                                        break
+                                    }
+                                    do {
+                                        let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
+                                        let fileURLs = try FileManager.default.contentsOfDirectory(at: unzipDirectory, includingPropertiesForKeys: [], options: [.skipsHiddenFiles])
+                                        localURLResults.append(.success(fileURLs))
+                                    } catch {
+                                        localURLResults.append(.failure(error))
+                                    }
+                                case .failure(let error):
+                                    localURLResults.append(.failure(error))
                                 }
 
-                                do {
-                                    let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
-                                    let files = (try? FileManager.default.contentsOfDirectory(at: unzipDirectory, includingPropertiesForKeys: [], options: [.skipsHiddenFiles])) ?? []
-                                    reportSuccess(files)
-                                } catch {
-                                    reportFailure(error)
+                                if progress.isCancelled {
+                                    downloads.forEach { $0.cancel() }
                                 }
-                            case .failure(let error):
-                                reportFailure(error)
-                            }
+                                dispatchGroup.leave()
+                        }
+                        progress.addChild(download.downloadProgress, withPendingUnitCount: 1)
+                        downloads.append(download)
                     }
-                    break
+                case let .failure(error):
+                    DispatchQueue.main.async {
+                        reportFailure(error)
+                    }
                 }
-            case .failure(let error):
-                reportFailure(error)
-            }
+
+                dispatchGroup.notify(queue: .main) {
+                    if progress.isCancelled {
+                        reportFailure(ReportError.cancelled)
+                        return
+                    }
+
+                    var localURLs: [URL] = []
+                    for result in localURLResults {
+                        switch result {
+                        case let .success(URLs):
+                            localURLs.append(contentsOf: URLs)
+                        case let .failure(error):
+                            reportFailure(error)
+                            return
+                        }
+                    }
+                    reportSuccess(localURLs)
+                }
         }
 
+        return progress
     }
 
     func fetchExposureConfiguration(callback: @escaping ConfigurationCallback) {

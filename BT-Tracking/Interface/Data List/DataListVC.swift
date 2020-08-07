@@ -67,7 +67,7 @@ final class DataListVC: UIViewController, UITableViewDelegate {
         AppDelegate.dependency.reporter.fetchExposureConfiguration { [weak self] result in
             switch result {
             case .success(let configuration):
-                AppDelegate.dependency.reporter.downloadKeys { [weak self] result in
+                _ = AppDelegate.dependency.reporter.downloadKeys { [weak self] result in
                     switch result {
                     case .success(let URLs):
                         AppDelegate.dependency.exposureService.detectExposures(

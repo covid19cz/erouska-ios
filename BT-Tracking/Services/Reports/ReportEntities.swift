@@ -11,17 +11,12 @@ import Foundation
 struct Report: Encodable {
 
     let temporaryExposureKeys: [ExposureDiagnosisKey]
-    let regions: [String]
-    let appPackageName: String
-    let verificationPayload: String?
-    let hmackey: String
-    let symptomOnsetInterval: Int
+    let healthAuthority: String
     let revisionToken: String?
-    let padding: String?
-    let platform: String
+    let padding: String
 
     private enum CodingKeys: String, CodingKey {
-        case appPackageName = "healthAuthorityID"
+        case healthAuthority = "healthAuthorityID"
         case temporaryExposureKeys
         case revisionToken
         case padding
