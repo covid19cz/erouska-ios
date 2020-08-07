@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFunctions
 
 final class PrivacyVC: UIViewController {
 
@@ -53,15 +54,25 @@ private extension PrivacyVC {
 
     func activateApp() {
         showProgress()
-        Server.shared.requesteHRID { [weak self] result in
+
+        let request: [String: Any] = [
+            "platform": "ios",
+            "platformVersion": Version.currentOSVersion.rawValue,
+            "manufacturer": "apple",
+            "model": UIDevice.current.modelName,
+            "locale": Locale.current.languageCode ?? ""
+        ]
+
+        viewModel.functions.httpsCallable("RegisterEhrid").call(request) { [weak self] result, error in
             self?.hideProgress()
-            switch result {
-            case .success(let eHRID):
+            if let error = error as NSError? {
+                self?.show(error: error)
+            } else if let eHRID = (result?.data as? [String: Any])?["ehrid"] as? String {
                 KeychainService.eHRID = eHRID
                 let storyboard = UIStoryboard(name: "Active", bundle: nil)
                 AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
-            case .failure(let error):
-                self?.show(error: error)
+            } else {
+                // TODO: Show wrong response format error
             }
         }
     }

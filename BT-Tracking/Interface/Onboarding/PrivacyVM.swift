@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFunctions
 
 struct PrivacyVM {
 
@@ -21,4 +22,6 @@ struct PrivacyVM {
     let body = "privacy_body"
 
     let continueButton = "privacy_continue"
+
+    let functions: Functions = AppDelegate.dependency.functions
 }
