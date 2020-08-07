@@ -71,6 +71,17 @@ final class ExposureRealm: Object {
         attenuationValue = Int(exposure.attenuationValue)
         attenuationDurations.append(objectsIn: exposure.attenuationDurations)
     }
+
+    func toExposure() -> Exposure {
+        return Exposure(
+            date: date,
+            duration: duration,
+            totalRiskScore: ENRiskScore(totalRiskScore),
+            transmissionRiskLevel: ENRiskLevel(transmissionRiskLevel),
+            attenuationValue: ENAttenuation(attenuationValue),
+            attenuationDurations: attenuationDurations.toArray()
+        )
+    }
 }
 
 struct ExposureConfiguration: Codable {

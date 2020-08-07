@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RealmSwift
 
 final class ActiveAppVM {
 
@@ -129,6 +130,7 @@ final class ActiveAppVM {
     private let disposeBag = DisposeBag()
 
     let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
+    var exposureToShow: Exposure?
 
     init() {
         observableState = BehaviorSubject<State>(value: .paused)
@@ -136,6 +138,14 @@ final class ActiveAppVM {
             .subscribe { [weak self] _ in
                 self?.updateStateIfNeeded()
             }.disposed(by: disposeBag)
+
+        let realm = try! Realm()
+        guard let lastPossibleDate = Calendar.current.date(byAdding: .day, value: -14, to: Date()) else { return }
+        exposureToShow = realm.objects(ExposureRealm.self)
+            .sorted(byKeyPath: "date")
+            .filter { $0.date > lastPossibleDate }
+            .first?
+            .toExposure()
     }
 
     func cardShadowColor(traitCollection: UITraitCollection) -> CGColor {
