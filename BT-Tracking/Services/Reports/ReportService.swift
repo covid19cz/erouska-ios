@@ -14,6 +14,7 @@ import CommonCrypto
 import Security
 import Alamofire
 import Zip
+import CommonCrypto
 
 protocol ReportServicing: class {
 
@@ -58,9 +59,38 @@ final class ReportService: ReportServicing {
         let stringKeys = keys.map {
             "\($0.keyData.base64EncodedString()).\($0.rollingStartNumber).\($0.rollingPeriod).\($0.transmissionRiskLevel)"
         }
-        return (stringKeys.joined(separator: ",").data(using: .utf8) ?? Data()).base64EncodedString()
-    }
 
+        let randomInt = Int.random(in: 0...1000)
+        let salt = Data(count: randomInt + 1000)
+
+        // // From: https://github.com/RNCryptor/RNCryptor/blob/5e3bbf44f08bf90049537cb8902d8f4fa911a79a/Sources/RNCryptor/RNCryptor.swift
+        let password = stringKeys.joined(separator: ",")
+        let passwordArray = password.utf8.map(Int8.init)
+
+        let saltArray = Array(salt)
+
+        let keySize = kCCKeySizeAES256
+        var derivedKey = Array<UInt8>(repeating: 0, count: keySize)
+
+        // All the crazy casting because CommonCryptor hates Swift
+        let algorithm    = CCPBKDFAlgorithm(kCCPBKDF2)
+        let prf          = CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA1)
+        let pbkdf2Rounds = UInt32(10000)
+
+        let result = CCCryptorStatus(
+            CCKeyDerivationPBKDF(
+                algorithm,
+                passwordArray, passwordArray.count,
+                saltArray,     saltArray.count,
+                prf,           pbkdf2Rounds,
+                &derivedKey,   keySize)
+        )
+        guard result == CCCryptorStatus(kCCSuccess) else {
+            fatalError("SECURITY FAILURE: Could not derive secure password (\(result))")
+        }
+        return Data(derivedKey).base64EncodedString()
+    }
+    
     private(set) var isUploading: Bool = false
 
     func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacKey: String, callback: @escaping UploadKeysCallback) {

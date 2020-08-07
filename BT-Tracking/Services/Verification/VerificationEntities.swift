@@ -28,33 +28,23 @@ struct VerificationCodeRequst: Encodable {
     let symptomDate: String
 
     private enum CodingKeys: String, CodingKey {
-        case testType = "TestType"
-        case symptomDate = "SymptomDate"
+        case testType = "testtype"
+        case symptomDate
     }
 
 }
 
 struct VerificationCode: Decodable {
 
-    let verificationCode: String?
+    let code: String?
     let expiresAt: Date?
     let error: String?
-
-    private enum CodingKeys: String, CodingKey {
-        case verificationCode = "VerificationCode"
-        case expiresAt = "ExpiresAt"
-        case error = "Error"
-    }
 
 }
 
 struct VerificationTokenRequst: Encodable {
 
-    let verificationCode: String
-
-    private enum CodingKeys: String, CodingKey {
-        case verificationCode = "VerificationCode"
-    }
+    let code: String
 
 }
 
@@ -62,25 +52,25 @@ struct VerificationToken: Decodable {
 
     let testType: VerificatioTestType?
     let symptomDate: String?
-    let verificationToken: String?
+    let token: String?
     let error: String?
 
     private enum CodingKeys: String, CodingKey {
-        case testType = "TestType"
-        case symptomDate = "SymptomDate"
-        case verificationToken = "VerificationToken"
-        case error = "Error"
+        case testType = "testtype"
+        case symptomDate
+        case token = "token"
+        case error
     }
 
 }
 
 struct VerificationCertificateRequest: Encodable {
 
-    let verificationToken: String
+    let token: String
     let hmacKey: String
 
     private enum CodingKeys: String, CodingKey {
-        case verificationToken = "VerificationToken"
+        case token = "token"
         case hmacKey = "ekeyhmac"
     }
 
@@ -90,10 +80,5 @@ struct VerificationCertificate: Decodable {
 
     let certificate: String?
     let error: String?
-
-    private enum CodingKeys: String, CodingKey {
-        case certificate = "Certificate"
-        case error = "Error"
-    }
 
 }

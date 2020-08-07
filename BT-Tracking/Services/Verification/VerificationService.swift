@@ -51,7 +51,7 @@ final class VerificationService: VerificationServicing {
         var headers = HTTPHeaders()
         headers.add(HTTPHeader(name: headerApiKey, value: deviceKey))
 
-        let request = VerificationTokenRequst(verificationCode: code)
+        let request = VerificationTokenRequst(code: code)
 
         AF.request(URL(string: "api/verify", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
@@ -59,7 +59,7 @@ final class VerificationService: VerificationServicing {
                 debugPrint(response)
                 switch response.result {
                 case .success(let result):
-                    if let token = result.verificationToken {
+                    if let token = result.token {
                         callback(.success(token))
                     } else if let error = result.error {
                         callback(.failure(VerificatioError.responseError(error)))
@@ -76,7 +76,7 @@ final class VerificationService: VerificationServicing {
         var headers = HTTPHeaders()
         headers.add(HTTPHeader(name: headerApiKey, value: deviceKey))
 
-        let request = VerificationCertificateRequest(verificationToken: token, hmacKey: hmacKey)
+        let request = VerificationCertificateRequest(token: token, hmacKey: hmacKey)
 
         AF.request(URL(string: "api/certificate", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
