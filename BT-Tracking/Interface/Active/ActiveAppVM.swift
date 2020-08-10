@@ -117,6 +117,7 @@ final class ActiveAppVM {
     let menuDebug = "debug"
     let menuCancelRegistration = "cancel_registration_button"
     let menuCancel = "close"
+    let menuRiskyEncounters = "risky_encounters_button"
 
     let backgroundModeTitle = "active_background_mode_title"
     let backgroundModeMessage = "active_background_mode_title"
