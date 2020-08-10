@@ -54,10 +54,6 @@ final class RiskyEncountersVC: UIViewController {
         // TODO:
     }
 
-    @IBAction func showPreviousRiskyEncounters(_ sender: Any) {
-        // TODO:
-    }
-
     @objc func close() {
         dismiss(animated: true)
     }
