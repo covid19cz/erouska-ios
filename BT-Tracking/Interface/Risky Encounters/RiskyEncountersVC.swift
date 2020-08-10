@@ -25,7 +25,9 @@ final class RiskyEncountersVC: UIViewController {
         super.viewDidLoad()
 
         title = Localizable(viewModel.title)
-        positiveView.isHidden = viewModel.riskyEncouterDateToShow != nil
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
+
+        setupPositiveView()
     }
 
     @IBAction func showMainSymptoms(_ sender: Any) {
@@ -38,5 +40,16 @@ final class RiskyEncountersVC: UIViewController {
 
     @IBAction func showPreviousRiskyEncounters(_ sender: Any) {
         // TODO:
+    }
+
+    @objc func close() {
+        dismiss(animated: true)
+    }
+
+    private func setupPositiveView() {
+        positiveView.isHidden = viewModel.riskyEncouterDateToShow == nil
+
+        positiveView.titleLabel.text = viewModel.headline
+        positiveView.bodyLabel.text = viewModel.body
     }
 }

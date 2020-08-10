@@ -13,15 +13,28 @@ struct RiskyEncountersVM {
     var riskyEncouterDateToShow: Date?
 
     let title = "risky_encounters_title"
+    let headline: String
+    let body = RemoteValues.riskyEncountersBody
 
     init() {
-        guard let lastPossibleDate = Calendar.current.date(byAdding: .day, value: -14, to: Date()) else { return }
+        guard let lastPossibleDate = Calendar.current.date(byAdding: .day, value: -14, to: Date()) else {
+            headline = ""
+            return
+        }
 
         let realm = try! Realm()
-        riskyEncouterDateToShow = realm.objects(ExposureRealm.self)
+        let exposures = realm.objects(ExposureRealm.self)
             .sorted(byKeyPath: "date")
             .filter { $0.date > lastPossibleDate }
-            .first?
-            .date
+
+        riskyEncouterDateToShow = exposures.first?.date
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd. MM. yyyy"
+        if let date = riskyEncouterDateToShow {
+            headline = String(format: RemoteValues.riskyEncountersTitle, dateFormatter.string(from: date))
+        } else {
+            headline = ""
+        }
     }
 }

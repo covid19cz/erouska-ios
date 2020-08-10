@@ -129,9 +129,11 @@ final class ActiveAppVC: UIViewController {
 
     @IBAction private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuRiskyEncounters), style: .default, handler: { [weak self] _ in
-            self?.riskyEncountersAction()
-        }))
+        if viewModel.exposureToShow != nil {
+            controller.addAction(UIAlertAction(title: Localizable(viewModel.menuRiskyEncounters), style: .default, handler: { [weak self] _ in
+                self?.riskyEncountersAction()
+            }))
+        }
         #if !PROD
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
@@ -153,7 +155,7 @@ final class ActiveAppVC: UIViewController {
     }
 
     @IBAction func exposureMoreInfo(_ sender: Any) {
-        // TODO: Show screen Rizikové setkání - positive
+        riskyEncountersAction()
     }
 
     private func debugAction() {
