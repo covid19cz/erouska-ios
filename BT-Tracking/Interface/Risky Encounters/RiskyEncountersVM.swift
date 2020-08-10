@@ -10,24 +10,21 @@ import Foundation
 import RealmSwift
 
 struct RiskyEncountersVM {
-    var riskyEncouterDateToShow: Date?
+    let riskyEncouterDateToShow: Date?
+    let shouldShowPreviousRiskyEncounters: Bool
 
     let title = "risky_encounters_title"
     let headline: String
     let body = RemoteValues.riskyEncountersBody
 
     init() {
-        guard let lastPossibleDate = Calendar.current.date(byAdding: .day, value: -14, to: Date()) else {
-            headline = ""
-            return
-        }
-
         let realm = try! Realm()
-        let exposures = realm.objects(ExposureRealm.self)
-            .sorted(byKeyPath: "date")
-            .filter { $0.date > lastPossibleDate }
-
-        riskyEncouterDateToShow = exposures.first?.date
+        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+        shouldShowPreviousRiskyEncounters = !exposures.isEmpty
+        riskyEncouterDateToShow = exposures
+            .filter { $0.date > Calendar.current.date(byAdding: .day, value: -14, to: Date())! }
+            .first?
+            .date
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd. MM. yyyy"

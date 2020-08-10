@@ -11,13 +11,18 @@ import UIKit
 final class RiskyEncountersPositiveView: UIStackView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
-    @IBOutlet weak var mainSymptomsButton: UIButton!
-    @IBOutlet weak var preventTransmissionButton: UIButton!
-    @IBOutlet weak var previousRiskyEncountersButton: UIButton!
 }
 
 final class RiskyEncountersVC: UIViewController {
     @IBOutlet weak var positiveView: RiskyEncountersPositiveView!
+    @IBOutlet weak var negativeView: UIStackView!
+
+    @IBOutlet weak var mainSymptomsButton: UIButton!
+    @IBOutlet weak var mainSymptomsSeparator: UIView!
+    @IBOutlet weak var preventTransmissionButton: UIButton!
+    @IBOutlet weak var preventTransmissionSeparator: UIView!
+    @IBOutlet weak var previousRiskyEncountersButton: UIButton!
+    @IBOutlet weak var previousRiskyEncountersSeparator: UIView!
 
     private let viewModel = RiskyEncountersVM()
 
@@ -27,7 +32,18 @@ final class RiskyEncountersVC: UIViewController {
         title = Localizable(viewModel.title)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
 
-        setupPositiveView()
+        positiveView.isHidden = viewModel.riskyEncouterDateToShow == nil
+        negativeView.isHidden = !positiveView.isHidden
+
+        [mainSymptomsButton, mainSymptomsSeparator, preventTransmissionButton, preventTransmissionSeparator].forEach {
+            $0?.isHidden = positiveView.isHidden
+        }
+        [previousRiskyEncountersButton, previousRiskyEncountersSeparator].forEach {
+            $0?.isHidden = !viewModel.shouldShowPreviousRiskyEncounters
+        }
+
+        positiveView.titleLabel.text = viewModel.headline
+        positiveView.bodyLabel.text = viewModel.body
     }
 
     @IBAction func showMainSymptoms(_ sender: Any) {
@@ -44,12 +60,5 @@ final class RiskyEncountersVC: UIViewController {
 
     @objc func close() {
         dismiss(animated: true)
-    }
-
-    private func setupPositiveView() {
-        positiveView.isHidden = viewModel.riskyEncouterDateToShow == nil
-
-        positiveView.titleLabel.text = viewModel.headline
-        positiveView.bodyLabel.text = viewModel.body
     }
 }
