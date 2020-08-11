@@ -18,13 +18,7 @@ final class DataListVM {
     // MARK: - Localization
 
     let tabTitle = "data_list_title"
-    var tabIcon: UIImage? {
-        if #available(iOS 13, *) {
-            return UIImage(systemName: "doc.plaintext")
-        } else {
-            return UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
-        }
-    }
+    let tabIcon = UIImage(systemName: "wallet.pass")
 
     let title = "data_list_title"
     let infoButton = "data_list_info_button"

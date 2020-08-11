@@ -136,7 +136,10 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: Localizable("Debug: Zkontrolovat reporty (keys)"), style: .default, handler: { [weak self] _ in
+            self?.debugProcessReports()
+        }))
+        controller.addAction(UIAlertAction(title: "Debug: " + Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
             self?.debugCancelRegistrationAction()
         }))
         #endif
@@ -148,19 +151,73 @@ final class ActiveAppVC: UIViewController {
         present(controller, animated: true)
     }
 
-    @IBAction func closeExposureBanner(_ sender: Any) {
+    @IBAction private func closeExposureBanner(_ sender: Any) {
         exposureBannerView.isHidden = true
     }
 
-    @IBAction func exposureMoreInfo(_ sender: Any) {
+    @IBAction private func exposureMoreInfo(_ sender: Any) {
         riskyEncountersAction()
     }
+
 
     private func debugAction() {
         let storyboard = UIStoryboard(name: "Debug", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
+    }
+
+    private func debugProcessReports() {
+        showProgress()
+
+        let dateFormat = DateFormatter()
+        dateFormat.timeStyle = .short
+        dateFormat.dateStyle = .short
+
+        AppDelegate.dependency.reporter.fetchExposureConfiguration { [weak self] result in
+            switch result {
+            case .success(let configuration):
+                _ = AppDelegate.dependency.reporter.downloadKeys { [weak self] result in
+                    switch result {
+                    case .success(let URLs):
+                        AppDelegate.dependency.exposureService.detectExposures(
+                            configuration: configuration,
+                            URLs: URLs
+                        ) { [weak self] result in
+                            self?.hideProgress()
+                            switch result {
+                            case .success(var exposures):
+                                exposures.sort { $0.date < $1.date }
+
+                                var result = ""
+                                for exposure in exposures {
+                                    let signals = exposure.attenuationDurations.map { "\($0)" }
+                                    result += "EXP: \(dateFormat.string(from: exposure.date))" +
+                                        ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
+                                        + "attenuation value: \(exposure.attenuationValue)\n"
+                                        + "signal attenuations: \(signals.joined(separator: ", "))\n"
+                                }
+                                if result == "" {
+                                    result = "None";
+                                }
+
+                                log("EXP: \(exposures)")
+                                log("EXP: \(result)")
+                                self?.showAlert(title: "Exposures", message: result)
+                            case .failure(let error):
+                                self?.show(error: error)
+                            }
+                        }
+                    case .failure(let error):
+                        self?.hideProgress()
+                        self?.show(error: error)
+                    }
+                }
+            case .failure(let error):
+                self?.hideProgress()
+                self?.show(error: error)
+            }
+        }
     }
 
     private func debugCancelRegistrationAction() {

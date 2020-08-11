@@ -456,12 +456,12 @@
 		8054C0C9241FE66A008907B8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				D63E443324DD85C2007B6728 /* Risky Encounters */,
 				D65E57D124D04960000F2402 /* News */,
 				D6CD28DA24CF24DC005847AA /* Onboarding */,
 				D61DFE5324C1A904002E1B2E /* Force Update */,
 				BD0191452424330200707341 /* Active */,
 				80ECB96A24292F9600E57601 /* Data List */,
+				D63E443324DD85C2007B6728 /* Risky Encounters */,
 				80CA44D9244AFC0A008E22F8 /* Contacts */,
 				BDB07FBE24254A7B00834E79 /* Help */,
 				46F21CA3242243F400C01DFA /* Debug */,
@@ -721,8 +721,8 @@
 			isa = PBXGroup;
 			children = (
 				D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */,
-				D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */,
 				D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */,
+				D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */,
 			);
 			path = "Risky Encounters";
 			sourceTree = "<group>";

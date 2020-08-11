@@ -13,13 +13,7 @@ struct HelpVM {
     let title = "help_title"
 
     let tabTitle = "help_tab_title"
-    var tabIcon: UIImage? {
-        if #available(iOS 13, *) {
-            return UIImage(systemName: "questionmark.circle")
-        } else {
-            return UIImage(named: "questionmark.circle")?.resize(toWidth: 26)
-        }
-    }
+    let tabIcon = UIImage(systemName: "questionmark.circle")
 
     let about = "about"
 
