@@ -27,7 +27,7 @@ enum InputValidation {
         case .number:
             return 9...20
         case .code:
-            return 6...6
+            return 8...8
         }
     }
 

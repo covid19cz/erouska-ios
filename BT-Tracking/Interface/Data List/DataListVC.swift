@@ -85,13 +85,6 @@ private extension DataListVC {
         tableView.rx.setDelegate(self)
             .disposed(by: bag)
 
-        tableView.rx.modelSelected(DataListVM.Section.Item.self)
-            .filter { $0 == .aboutData }
-            .subscribe(onNext: { [weak self] _ in
-                self?.navigationController?.pushViewController(DataCollectionInfoVC(), animated: true)
-            })
-            .disposed(by: bag)
-
         dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .none, deleteAnimation: .fade)
 
         viewModel.selectedSegmentIndex.accept(0)
