@@ -1,6 +1,6 @@
 //
 //  LogController.swift
-// eRouska
+//  eRouska
 //
 //  Created by Tomas Svoboda on 16/03/2020.
 //  Copyright © 2020 hatchery41. All rights reserved.
