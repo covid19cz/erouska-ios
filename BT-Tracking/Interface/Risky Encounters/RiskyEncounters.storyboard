@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oe9-A2-FLU">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="MGu-Cd-FGC">
+            <objects>
+                <navigationController id="oe9-A2-FLU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="nre-R2-B1h">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gZh-aT-PbI" kind="relationship" relationship="rootViewController" id="u7I-OA-uG7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zY3-m4-ZZG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1154" y="21"/>
+        </scene>
+        <!--Risky EncountersVC-->
+        <scene sceneID="YMQ-hO-9HB">
+            <objects>
+                <viewController id="gZh-aT-PbI" customClass="RiskyEncountersVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TAO-8Z-F0c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lti-uv-oJr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aiS-ou-VZA">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1DU-9J-asE" customClass="RiskyEncountersPositiveView" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="10" width="374" height="736"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="19w-qz-ORk" customClass="RiskyEncountersPositiveView" customModule="eRouska" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="181"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dne 14. 5. 2020 jste se setkali s osobou u které byla potvrzena nákaza virem COVID-19." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kf-ox-kl2">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="42.5"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQJ-CB-QON">
+                                                                <rect key="frame" x="0.0" y="50.5" width="374" height="130.5"/>
+                                                                <string key="text">Pokud se u vás v průběhu 14 dnů od kontaktu s nakaženým objeví příznaky respiračního onemocnění, kontaktujte telefonicky svého praktického lékaře a řiďte se jeho pokyny. V případě akutních potíží kontaktujte nejbližší pohotovost.</string>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <connections>
+                                                            <outlet property="bodyLabel" destination="aQJ-CB-QON" id="bhM-40-V83"/>
+                                                            <outlet property="titleLabel" destination="4kf-ox-kl2" id="bRx-CQ-Hh4"/>
+                                                        </connections>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="E8l-iD-QYj">
+                                                        <rect key="frame" x="0.0" y="189" width="374" height="344"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7Q-xg-DUH">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="70" id="Kyn-kL-gxB"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RiskyEncountersNegative" translatesAutoresizingMaskIntoConstraints="NO" id="nr5-J2-JfB">
+                                                                <rect key="frame" x="0.0" y="86" width="374" height="130"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="130" id="8WT-8y-gqJ"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V posledních 14 dnech nebyla ve vaší blízkosti žádná osoba s potvrzenou nákazou virem COVID-19" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7h-y5-ZGF">
+                                                                <rect key="frame" x="0.0" y="232" width="374" height="57.5"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                <color key="textColor" red="0.5490196078431373" green="0.76078431372549016" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Na rizikové setkání vás upozorníme pomocí oznámení." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5j5-dW-ocr">
+                                                                <rect key="frame" x="0.0" y="305.5" width="374" height="38.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ipy-vK-G6r">
+                                                        <rect key="frame" x="0.0" y="541" width="374" height="195"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7V-Cd-eLR" userLabel="Spacing view">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="24" id="Kr1-6K-mRT"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvu-kI-Fzg">
+                                                                <rect key="frame" x="0.0" y="40" width="374" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Hlavní příznaky" image="MainSymptoms">
+                                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="showMainSymptoms:" destination="gZh-aT-PbI" eventType="touchUpInside" id="UVI-5d-l2p"/>
+                                                                </connections>
+                                                            </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKk-rW-IUF">
+                                                                <rect key="frame" x="0.0" y="80" width="374" height="1"/>
+                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="zko-2y-L8G"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezj-3S-9Zg">
+                                                                <rect key="frame" x="0.0" y="97" width="374" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Jak zabránit přenosu" image="PreventTransmission">
+                                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="showPreventTransmission:" destination="gZh-aT-PbI" eventType="touchUpInside" id="Xpw-c2-L0t"/>
+                                                                </connections>
+                                                            </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9a-SP-aRE">
+                                                                <rect key="frame" x="0.0" y="137" width="374" height="1"/>
+                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="l5D-Gn-p8c"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="762-yj-SGB">
+                                                                <rect key="frame" x="0.0" y="154" width="374" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Předchozí riziková setkání" image="PreviousRiskyEncounters">
+                                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="showPreviousRiskyEncounters:" destination="gZh-aT-PbI" eventType="touchUpInside" id="QEf-p2-THS"/>
+                                                                </connections>
+                                                            </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfC-aS-Cys">
+                                                                <rect key="frame" x="0.0" y="194" width="374" height="1"/>
+                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="PAR-kb-lge"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="1DU-9J-asE" secondAttribute="bottom" constant="16" id="Arg-If-opL"/>
+                                            <constraint firstItem="1DU-9J-asE" firstAttribute="leading" secondItem="aiS-ou-VZA" secondAttribute="leadingMargin" id="EMb-AM-Pfr"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="1DU-9J-asE" secondAttribute="trailing" id="klY-k7-Ncg"/>
+                                            <constraint firstItem="1DU-9J-asE" firstAttribute="top" secondItem="aiS-ou-VZA" secondAttribute="top" constant="10" id="rrh-sW-ivB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aiS-ou-VZA" firstAttribute="width" secondItem="pgN-vL-rS9" secondAttribute="width" id="VYx-Hr-FVf"/>
+                                    <constraint firstItem="aiS-ou-VZA" firstAttribute="top" secondItem="3ss-Be-06f" secondAttribute="top" id="Yrr-qv-pwU"/>
+                                    <constraint firstItem="aiS-ou-VZA" firstAttribute="bottom" secondItem="3ss-Be-06f" secondAttribute="bottom" id="dei-lk-PEb"/>
+                                    <constraint firstItem="aiS-ou-VZA" firstAttribute="centerX" secondItem="pgN-vL-rS9" secondAttribute="centerX" id="sml-vh-9eq"/>
+                                    <constraint firstItem="aiS-ou-VZA" firstAttribute="leading" secondItem="3ss-Be-06f" secondAttribute="leading" id="udd-gx-Lcm"/>
+                                    <constraint firstItem="aiS-ou-VZA" firstAttribute="trailing" secondItem="3ss-Be-06f" secondAttribute="trailing" id="wNm-wa-cQA"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="3ss-Be-06f"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="pgN-vL-rS9"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Lti-uv-oJr" firstAttribute="trailing" secondItem="Qby-oP-4Mc" secondAttribute="trailing" id="3LM-Oq-C3N"/>
+                            <constraint firstItem="Lti-uv-oJr" firstAttribute="top" secondItem="TAO-8Z-F0c" secondAttribute="top" id="NNy-ag-aGA"/>
+                            <constraint firstItem="Qby-oP-4Mc" firstAttribute="bottom" secondItem="Lti-uv-oJr" secondAttribute="bottom" id="dEP-Q3-AvL"/>
+                            <constraint firstItem="Lti-uv-oJr" firstAttribute="leading" secondItem="Qby-oP-4Mc" secondAttribute="leading" id="uSs-MR-jkL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qby-oP-4Mc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tmS-8j-llS"/>
+                    <connections>
+                        <outlet property="mainSymptomsButton" destination="gvu-kI-Fzg" id="2FD-YU-bYk"/>
+                        <outlet property="mainSymptomsSeparator" destination="wKk-rW-IUF" id="ZXO-hy-PEy"/>
+                        <outlet property="negativeView" destination="E8l-iD-QYj" id="pCt-0J-IHo"/>
+                        <outlet property="positiveView" destination="19w-qz-ORk" id="L0f-QK-9BV"/>
+                        <outlet property="preventTransmissionButton" destination="Ezj-3S-9Zg" id="Aql-Fb-AZF"/>
+                        <outlet property="preventTransmissionSeparator" destination="s9a-SP-aRE" id="0ZZ-Lq-JXj"/>
+                        <outlet property="previousRiskyEncountersButton" destination="762-yj-SGB" id="hhe-RA-exD"/>
+                        <outlet property="previousRiskyEncountersSeparator" destination="zfC-aS-Cys" id="mQg-Su-mZ8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eaQ-3V-xBZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-304.34782608695656" y="20.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MainSymptoms" width="24" height="24"/>
+        <image name="PreventTransmission" width="24" height="24"/>
+        <image name="PreviousRiskyEncounters" width="24" height="24"/>
+        <image name="RiskyEncountersNegative" width="130" height="130"/>
+    </resources>
+</document>

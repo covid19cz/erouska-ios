@@ -78,6 +78,9 @@ enum RemoteConfigValueKey: String {
     case shouldCheckOSVersion
 
     case exposureBannerTitle
+
+    case riskyEncountersTitle
+    case riskyEncountersBody
 }
 
 struct RemoteValues {
@@ -104,6 +107,9 @@ struct RemoteValues {
         .shouldCheckOSVersion: false,
 
         .exposureBannerTitle: activeExposureTitleDefault,
+
+        .riskyEncountersTitle: riskyEncountersTitleDefault,
+        .riskyEncountersBody: riskyEncountersBodyDefault,
     ]
     
     /// odkaz na FAQ - vede z obrazovky Kontakty
@@ -196,6 +202,14 @@ struct RemoteValues {
     static var exposureBannerTitle: String {
         return AppDelegate.shared.remoteConfigString(forKey: .exposureBannerTitle)
     }
+
+    static var riskyEncountersTitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersTitle)
+    }
+
+    static var riskyEncountersBody: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersBody)
+    }
 }
 
 // MARK: - Backup
@@ -234,5 +248,13 @@ private extension RemoteValues {
 
     static var activeExposureTitleDefault: String {
         return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeExposureTitleDefault")
+    }
+
+    static var riskyEncountersTitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersTitleDefault")
+    }
+
+    static var riskyEncountersBodyDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersBodyDefault")
     }
 }

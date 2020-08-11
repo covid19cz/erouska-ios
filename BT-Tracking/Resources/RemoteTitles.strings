@@ -11,3 +11,6 @@
 "activeTitleEnabledDefaultEn" = "Na rušných místech rozpoznává ostatní eRoušky pouze v případě, že ji necháte na obrazovce a nezamknete telefon.";
 
 "activeExposureTitleDefault" = "Setkali jste se s osobou, u které byla prokázána nákaza virem Covid-19. Sledujte svůj zdravotní stav.";
+
+"riskyEncountersTitleDefault" = "Dne %@ jste se setkali s osobou u které byla potvrzena nákaza virem Covid-19";
+"riskyEncountersBodyDefault" = "Pokud se u vás v průběhu 14 dnů od kontaktu s nakaženým objeví příznaky respiračního onemocnění, kontaktujte telefonicky svého praktického lékaře a řiďte se jeho pokyny. Mimo ordinační dobu lékaře v případě akutních potíží kontaktujte nejbližší pohotovost.\n\nJestliže se u vás neprojevují příznaky onemocnění, nemusíte zůstávat doma. Dodržujte zásady bezpečného kontaktu.";
