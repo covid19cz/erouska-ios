@@ -30,7 +30,7 @@ final class RiskyEncountersVC: UIViewController {
         super.viewDidLoad()
 
         title = Localizable(viewModel.title)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
 
         positiveView.isHidden = viewModel.riskyEncouterDateToShow == nil
         negativeView.isHidden = !positiveView.isHidden
