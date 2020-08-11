@@ -112,8 +112,6 @@ final class ExposureService: ExposureServicing {
         switch manager.exposureNotificationStatus {
         case .active, .paused:
             callback?(nil)
-        case .unauthorized:
-            manager.setExposureNotificationEnabled(true, completionHandler: activationCallback)
         case .disabled, .unknown, .restricted:
             // Restricted should be not "activatable" but on actual device it always shows as restricted before activation
             manager.setExposureNotificationEnabled(true, completionHandler: activationCallback)
