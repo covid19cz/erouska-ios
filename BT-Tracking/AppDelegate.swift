@@ -246,17 +246,20 @@ private extension AppDelegate {
         dateFormat.dateStyle = .short
 
         BGTaskScheduler.shared.register(forTaskWithIdentifier: Self.backgroundTaskIdentifier, using: .main) { task in
+            Log.log("AppDelegate: Start background check")
 
             // Notify the user if bluetooth is off
             Self.dependency.exposureService.showBluetoothOffUserNotificationIfNeeded()
 
             func reportFailure(_ error: Error) {
                 task.setTaskCompleted(success: false)
-                Log.log("AppDelegate: Failed to detect exposures \(error)")
+                Log.log("AppDelegate: BG failed to detect exposures \(error)")
             }
 
             // Perform the exposure detection
             let progress = Self.dependency.reporter.downloadKeys { result in
+                Log.log("AppDelegate: BG did download keys \(result)")
+
                 switch result {
                 case .success(let URLs):
                     Self.dependency.reporter.fetchExposureConfiguration { result in
@@ -297,7 +300,7 @@ private extension AppDelegate {
                                     UNUserNotificationCenter.current().add(request) { error in
                                         DispatchQueue.main.async {
                                             if let error = error {
-                                                Log.log("AppDelegate: Error showing error user notification \(error)")
+                                                Log.log("AppDelegate: BG error showing error user notification \(error)")
                                             }
                                         }
                                     }
@@ -319,7 +322,7 @@ private extension AppDelegate {
             // Handle running out of time
             task.expirationHandler = {
                 progress.cancel()
-                Log.log("Background task timeout")
+                Log.log("AppDelegate: BG timeout")
             }
 
             // Schedule the next background task
