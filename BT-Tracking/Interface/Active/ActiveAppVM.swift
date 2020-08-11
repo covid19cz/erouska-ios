@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RealmSwift
 
 final class ActiveAppVM {
 
@@ -116,11 +117,16 @@ final class ActiveAppVM {
     let menuDebug = "debug"
     let menuCancelRegistration = "cancel_registration_button"
     let menuCancel = "close"
+    let menuRiskyEncounters = "risky_encounters_button"
 
     let backgroundModeTitle = "active_background_mode_title"
     let backgroundModeMessage = "active_background_mode_title"
     let backgroundModeAction = "active_background_mode_settings"
     let backgroundModeCancel = "active_background_mode_cancel"
+
+    let exposureTitle = RemoteValues.exposureBannerTitle
+    let exposureBannerClose = "close"
+    let exposureMoreInfo = "active_exposure_more_info"
 
     var state: State {
         return try! observableState.value()
@@ -129,6 +135,7 @@ final class ActiveAppVM {
     private let disposeBag = DisposeBag()
 
     let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
+    var exposureToShow: Exposure?
 
     init() {
         observableState = BehaviorSubject<State>(value: .paused)
@@ -136,6 +143,14 @@ final class ActiveAppVM {
             .subscribe { [weak self] _ in
                 self?.updateStateIfNeeded()
             }.disposed(by: disposeBag)
+
+        let realm = try! Realm()
+        guard let lastPossibleDate = Calendar.current.date(byAdding: .day, value: -14, to: Date()) else { return }
+        exposureToShow = realm.objects(ExposureRealm.self)
+            .sorted(byKeyPath: "date")
+            .filter { $0.date > lastPossibleDate }
+            .first?
+            .toExposure()
     }
 
     func cardShadowColor(traitCollection: UITraitCollection) -> CGColor {

@@ -8,6 +8,7 @@
 
 import Foundation
 import ExposureNotification
+import RealmSwift
 
 enum ExposureError: Error {
     case bluetoothOff
@@ -44,6 +45,45 @@ struct Exposure: Codable, Equatable {
     let attenuationValue: ENAttenuation
     var attenuationDurations: [Int]
 
+}
+
+final class ExposureRealm: Object {
+    @objc dynamic var id: String = ""
+    @objc dynamic var date: Date = Date()
+
+    // Need to save all properties?
+    @objc dynamic var duration: Double = 0
+    @objc dynamic var totalRiskScore: Int = 0
+    @objc dynamic var transmissionRiskLevel: Int = 0
+    @objc dynamic var attenuationValue: Int = 0
+    let attenuationDurations = List<Int>()
+
+    override class func primaryKey() -> String {
+        return "id"
+    }
+
+    convenience init(_ exposure: Exposure) {
+        self.init()
+
+        id = UUID().uuidString
+        date = exposure.date
+        duration = exposure.duration
+        totalRiskScore = Int(exposure.totalRiskScore)
+        transmissionRiskLevel = Int(exposure.transmissionRiskLevel)
+        attenuationValue = Int(exposure.attenuationValue)
+        attenuationDurations.append(objectsIn: exposure.attenuationDurations)
+    }
+
+    func toExposure() -> Exposure {
+        return Exposure(
+            date: date,
+            duration: duration,
+            totalRiskScore: ENRiskScore(totalRiskScore),
+            transmissionRiskLevel: ENRiskLevel(transmissionRiskLevel),
+            attenuationValue: ENAttenuation(attenuationValue),
+            attenuationDurations: attenuationDurations.toArray()
+        )
+    }
 }
 
 struct ExposureConfiguration: Codable {

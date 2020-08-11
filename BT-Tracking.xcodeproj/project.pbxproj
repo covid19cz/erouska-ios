@@ -169,6 +169,12 @@
 		D6340C6B24C5A27700E550A1 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6A24C5A27700E550A1 /* Device.swift */; };
 		D6340C6C24C5A27700E550A1 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6A24C5A27700E550A1 /* Device.swift */; };
 		D63A264424DB023100C34CCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D63A264324DB023100C34CCF /* GoogleService-Info.plist */; };
+		D63E443524DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */; };
+		D63E443624DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */; };
+		D63E443824DD8640007B6728 /* RiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */; };
+		D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */; };
+		D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */; };
+		D63E443C24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */; };
 		D65E57D324D04976000F2402 /* NewsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E57D224D04976000F2402 /* NewsVM.swift */; };
 		D65E57D424D04976000F2402 /* NewsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E57D224D04976000F2402 /* NewsVM.swift */; };
 		D65E57D624D056C8000F2402 /* NewsPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65E57D524D056C8000F2402 /* NewsPageView.xib */; };
@@ -299,6 +305,9 @@
 		D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVM.swift; sourceTree = "<group>"; };
 		D6340C6A24C5A27700E550A1 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		D63A264324DB023100C34CCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RiskyEncounters.storyboard; sourceTree = "<group>"; };
+		D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersVM.swift; sourceTree = "<group>"; };
+		D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersVC.swift; sourceTree = "<group>"; };
 		D65E57D224D04976000F2402 /* NewsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVM.swift; sourceTree = "<group>"; };
 		D65E57D524D056C8000F2402 /* NewsPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsPageView.xib; sourceTree = "<group>"; };
 		D65E57D824D056D6000F2402 /* NewsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageView.swift; sourceTree = "<group>"; };
@@ -445,6 +454,7 @@
 		8054C0C9241FE66A008907B8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				D63E443324DD85C2007B6728 /* Risky Encounters */,
 				D65E57D124D04960000F2402 /* News */,
 				D6CD28DA24CF24DC005847AA /* Onboarding */,
 				D61DFE5324C1A904002E1B2E /* Force Update */,
@@ -697,6 +707,16 @@
 			path = "Force Update";
 			sourceTree = "<group>";
 		};
+		D63E443324DD85C2007B6728 /* Risky Encounters */ = {
+			isa = PBXGroup;
+			children = (
+				D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */,
+				D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */,
+				D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */,
+			);
+			path = "Risky Encounters";
+			sourceTree = "<group>";
+		};
 		D65E57D124D04960000F2402 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -866,6 +886,7 @@
 				D6CD28E424CF24DC005847AA /* Onboarding.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				D61DFE5524C1A936002E1B2E /* ForceUpdate.storyboard in Resources */,
+				D63E443524DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
 				D65E57DF24D05D83000F2402 /* News.storyboard in Resources */,
 				4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */,
@@ -891,6 +912,7 @@
 				8083D8E8244640A0007FA4E9 /* Active.storyboard in Resources */,
 				8083D8E9244640A0007FA4E9 /* Localizable.strings in Resources */,
 				8064DF70244EF3C0005E8AA3 /* GoogleService-Info.plist in Resources */,
+				D63E443624DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */,
 				4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */,
 				D65E57E024D05D83000F2402 /* News.storyboard in Resources */,
 				8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */,
@@ -1043,6 +1065,7 @@
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
 				80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */,
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
+				D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
 				80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */,
@@ -1094,6 +1117,7 @@
 				8064DF8E244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				D6CD28E824CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
+				D63E443824DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
@@ -1174,7 +1198,9 @@
 				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
 				D65E57DA24D056D6000F2402 /* NewsPageView.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
+				D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
 				D6CD28E324CF24DC005847AA /* FirstActivationVC.swift in Sources */,
+				D63E443C24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

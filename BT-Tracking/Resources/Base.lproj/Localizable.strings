@@ -43,6 +43,8 @@
 "active_background_mode_settings" = "Upravit nastavení";
 "active_background_mode_cancel" = "Zavřít";
 
+"active_exposure_more_info" = "Více informací";
+
 "cancel_registration_button" = "Zrušit registraci";
 
 "share_app" = "Sdílet aplikaci";
@@ -135,3 +137,6 @@
 "news_always_active_body" = "Telefon nemusíte nosit v kapse se zapnutou obrazovkou a pokládat obrazovkou na stůl. Normálně ho používejte a zamykejte, eRouška bude vždy aktivní.";
 "news_privacy_title" = "Myslíme na vaše soukromí";
 "news_privacy_body" = "S těmito úpravami jsme mohli zrušit také podmínky zpracování. Zásadní změnou je, že nadále nebudeme evidovat telefonní čísla a ani jiné osobní údaje uživatelů eRoušky.";
+
+"risky_encounters_button" = "Rizikové setkání";
+"risky_encounters_title" = "Rizikové setkání";

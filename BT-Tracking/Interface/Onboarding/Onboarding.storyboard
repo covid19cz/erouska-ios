@@ -28,7 +28,7 @@
             <objects>
                 <navigationController storyboardIdentifier="OnboardingActivatedUser" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p2x-zN-qDB" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="pwp-HQ-gJB">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -185,7 +185,6 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
         <!--Oznámení-->
         <scene sceneID="jUx-xc-0bA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Qw-d5-W1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="dvc-aR-w5e" customClass="ExposureNotificationPermissionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V0D-vL-Rwb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -294,6 +293,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                         <segue destination="z8b-H4-SCk" kind="show" identifier="privacy" id="q0K-IR-cSV"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Qw-d5-W1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-293" y="-31"/>
         </scene>

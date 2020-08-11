@@ -76,6 +76,11 @@ enum RemoteConfigValueKey: String {
     case minSupportedVersion
     case unsupportedDeviceLink
     case shouldCheckOSVersion
+
+    case exposureBannerTitle
+
+    case riskyEncountersTitle
+    case riskyEncountersBody
 }
 
 struct RemoteValues {
@@ -100,55 +105,60 @@ struct RemoteValues {
         .minSupportedVersion: Version("1.0.0"),
         .unsupportedDeviceLink: "https://koronavirus.mzcr.cz",
         .shouldCheckOSVersion: false,
+
+        .exposureBannerTitle: activeExposureTitleDefault,
+
+        .riskyEncountersTitle: riskyEncountersTitleDefault,
+        .riskyEncountersBody: riskyEncountersBodyDefault,
     ]
     
     /// odkaz na FAQ - vede z obrazovky Kontakty
     static var faqLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.faqLink)
+        return AppDelegate.shared.remoteConfigString(forKey: .faqLink)
     }
 
     /// odkaz na důležité kontakty - vede z obrazovky Kontakty
     static var importantLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.importantLink)
+        return AppDelegate.shared.remoteConfigString(forKey: .importantLink)
     }
 
     /// odkaz na prohlášení o podpoře - vede z úvodní obrazovky a z nápovědy
     static var proclamationLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.proclamationLink)
+        return AppDelegate.shared.remoteConfigString(forKey: .proclamationLink)
     }
 
     /// Podminky zpracovan
     static var termsAndConditionsLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.termsAndConditionsLink)
+        return AppDelegate.shared.remoteConfigString(forKey: .termsAndConditionsLink)
     }
 
     /// Odkaz na tým - erouska.cz/tym
     static var aboutLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.aboutLink)
+        return AppDelegate.shared.remoteConfigString(forKey: .aboutLink)
     }
 
     /// Authors json
     static var aboutJson: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.aboutJson)
+        return AppDelegate.shared.remoteConfigString(forKey: .aboutJson)
     }
 
     /// Homepage - erouska.cz
     static var homepageLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.homepageLink)
+        return AppDelegate.shared.remoteConfigString(forKey: .homepageLink)
     }
 
     static var shareAppDynamicLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
+        return AppDelegate.shared.remoteConfigString(forKey: .shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// Help markdown
     static var helpMarkdown: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.helpMarkdown)
+        return AppDelegate.shared.remoteConfigString(forKey: .helpMarkdown)
     }
 
     /// Data collection markdown
     static var dataCollectionMarkdown: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.dataCollectionMarkdown)
+        return AppDelegate.shared.remoteConfigString(forKey: .dataCollectionMarkdown)
     }
     
     /// Main screen title enabled text
@@ -177,16 +187,28 @@ struct RemoteValues {
 
     /// Min supported app version. Used for force update.
     static var minSupportedVersion: Version {
-        let rawAppVersion = AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.minSupportedVersion)
+        let rawAppVersion = AppDelegate.shared.remoteConfigString(forKey: .minSupportedVersion)
         return Version(rawAppVersion)
     }
 
     static var unsupportedDeviceLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: RemoteConfigValueKey.unsupportedDeviceLink)
+        return AppDelegate.shared.remoteConfigString(forKey: .unsupportedDeviceLink)
     }
 
     static var shouldCheckOSVersion: Bool {
-        return AppDelegate.shared.remoteConfigInt(forKey: RemoteConfigValueKey.shouldCheckOSVersion) == 1
+        return AppDelegate.shared.remoteConfigInt(forKey: .shouldCheckOSVersion) == 1
+    }
+
+    static var exposureBannerTitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .exposureBannerTitle)
+    }
+
+    static var riskyEncountersTitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersTitle)
+    }
+
+    static var riskyEncountersBody: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersBody)
     }
 }
 
@@ -222,5 +244,17 @@ private extension RemoteValues {
     
     static var activeTitleEnabledDefaultEn: String {
         return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefaultEn")
+    }
+
+    static var activeExposureTitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeExposureTitleDefault")
+    }
+
+    static var riskyEncountersTitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersTitleDefault")
+    }
+
+    static var riskyEncountersBodyDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersBodyDefault")
     }
 }

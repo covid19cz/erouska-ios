@@ -25,6 +25,11 @@ final class ActiveAppVC: UIViewController {
     @IBOutlet private weak var footerLabel: UILabel!
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
+
+    @IBOutlet private weak var exposureBannerView: UIView!
+    @IBOutlet private weak var exposureTitleLabel: UILabel!
+    @IBOutlet private weak var exposureCloseButton: Button!
+    @IBOutlet private weak var exposureMoreInfoButton: Button!
     
     // MARK: -
 
@@ -44,12 +49,16 @@ final class ActiveAppVC: UIViewController {
                 self?.updateInterface()
             }
         ).disposed(by: disposeBag)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
 
-        layoutCardView()
+        exposureBannerView.isHidden = viewModel.exposureToShow == nil
+
+        [cardView, exposureBannerView].forEach {
+            $0!.layer.cornerRadius = 9.0
+            $0!.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
+            $0!.layer.shadowOffset = CGSize(width: 0, height: 1)
+            $0!.layer.shadowRadius = 2
+            $0!.layer.shadowOpacity = 1
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +129,9 @@ final class ActiveAppVC: UIViewController {
 
     @IBAction private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuRiskyEncounters), style: .default, handler: { [weak self] _ in
+            self?.riskyEncountersAction()
+        }))
         #if !PROD
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
@@ -134,6 +146,14 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancel), style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
+    }
+
+    @IBAction func closeExposureBanner(_ sender: Any) {
+        exposureBannerView.isHidden = true
+    }
+
+    @IBAction func exposureMoreInfo(_ sender: Any) {
+        riskyEncountersAction()
     }
 
     private func debugAction() {
@@ -155,6 +175,13 @@ final class ActiveAppVC: UIViewController {
         let storyboard = UIStoryboard(name: "Help", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "About")
         navigationController?.pushViewController(controller, animated: true)
+    }
+
+    private func riskyEncountersAction() {
+        let storyboard = UIStoryboard(name: "RiskyEncounters", bundle: nil)
+        guard let controller = storyboard.instantiateInitialViewController() else { return }
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
     }
 
     // MARK: -
@@ -209,6 +236,10 @@ private extension ActiveAppVC {
             actionButton.layoutIfNeeded()
         }
 
+        exposureTitleLabel.text = viewModel.exposureTitle
+        exposureCloseButton.localizedTitle(viewModel.exposureBannerClose)
+        exposureMoreInfoButton.localizedTitle(viewModel.exposureMoreInfo)
+
         setupStrings()
     }
 
@@ -219,19 +250,6 @@ private extension ActiveAppVC {
 
         navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
         navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
-    }
-
-    func layoutCardView() {
-        cardView.layoutIfNeeded()
-
-        // Card shape
-        cardView.layer.cornerRadius = 9.0
-
-        // Card shadow
-        cardView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
-        cardView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        cardView.layer.shadowRadius = 2
-        cardView.layer.shadowOpacity = 1
     }
 
     func checkBackgroundModeIfNeeded() {
