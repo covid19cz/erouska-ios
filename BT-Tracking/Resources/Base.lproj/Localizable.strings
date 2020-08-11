@@ -142,3 +142,9 @@
 "risky_encounters_title" = "Rizikové setkání";
 
 "previous_risky_encounters_title" = "Předchozí riziková setkání";
+
+"main_symptoms_title" = "Hlavní příznaky";
+"main_symptoms_headline" = "Příznaky se mohou objevit 2–14 dní po rizikovém setkání.";
+
+"prevent_transmission_title" = "Jak zabránit přenosu";
+"prevent_transmission_headline" = "Koronavirus se přenáší hlavně kapénkovou infekcí, která je přenášena vzduchem. Zasahuje nejačastěji sliznice horních a dolních dýchacích cest a spojivky. Přenášet se může také kontaminovanými předměty.";

@@ -46,12 +46,14 @@ final class RiskyEncountersVC: UIViewController {
         positiveView.bodyLabel.text = viewModel.body
     }
 
-    @IBAction func showMainSymptoms(_ sender: Any) {
-        // TODO:
-    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let viewController = segue.destination as? RiskyEncountersListVC else { return }
 
-    @IBAction func showPreventTransmission(_ sender: Any) {
-        // TODO:
+        if segue.identifier == "mainSymptoms" {
+            viewController.viewModel = MainSymptomsVM()
+        } else if segue.identifier == "preventTransmission" {
+            viewController.viewModel = PreventTransmissionVM()
+        }
     }
 
     @objc func close() {
