@@ -323,16 +323,22 @@ private extension AppDelegate {
             }
 
             // Schedule the next background task
-            self.scheduleBackgroundTaskIfNeeded()
+            self.scheduleBackgroundTaskIfNeeded(next: true)
         }
 
         scheduleBackgroundTaskIfNeeded()
     }
 
-    func scheduleBackgroundTaskIfNeeded() {
+    func scheduleBackgroundTaskIfNeeded(next: Bool = false) {
         guard Self.dependency.exposureService.authorizationStatus == .authorized else { return }
         let taskRequest = BGProcessingTaskRequest(identifier: Self.backgroundTaskIdentifier)
         taskRequest.requiresNetworkConnectivity = true
+        if next {
+            // start after next 8 hours
+            let earliestBeginDate = Date(timeIntervalSinceNow: 8 * 60 * 60)
+            taskRequest.earliestBeginDate = earliestBeginDate
+            Log.log("Background: Schedule next task to: \(earliestBeginDate)")
+        }
 
         do {
             try BGTaskScheduler.shared.submit(taskRequest)
