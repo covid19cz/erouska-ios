@@ -37,8 +37,6 @@ final class ReportService: ReportServicing {
 
     private let healthAuthority = "cz.covid19cz.erouska.dev"
 
-    private var timeout: TimeInterval = 30
-
     private let uploadURL = URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
 
     private let downloadBaseURL = URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!
