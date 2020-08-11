@@ -265,6 +265,7 @@ private extension AppDelegate {
                                 case .success(var exposures):
                                     exposures.sort { $0.date < $1.date }
 
+                                    let realm = try! Realm()
                                     var result = ""
                                     for exposure in exposures {
                                         let signals = exposure.attenuationDurations.map { "\($0)" }
@@ -272,6 +273,9 @@ private extension AppDelegate {
                                             ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
                                             + "attenuation value: \(exposure.attenuationValue)\n"
                                             + "signal attenuations: \(signals.joined(separator: ", "))\n"
+                                    }
+                                    try! realm.write() {
+                                        exposures.forEach { realm.add(ExposureRealm($0)) }
                                     }
                                     if result == "" {
                                         result = "None";

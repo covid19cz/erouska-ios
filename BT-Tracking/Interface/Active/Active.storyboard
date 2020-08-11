@@ -232,13 +232,75 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRX-7H-oZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="446.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="790"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qcL-c9-sLJ">
-                                                <rect key="frame" x="20" y="20" width="374" height="406.5"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="750"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlx-RT-boE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="323.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="e2P-se-2W0">
+                                                                <rect key="frame" x="14" y="14" width="346" height="295.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5Y-jp-bR1">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="248.5"/>
+                                                                        <string key="text">Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.
+Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.</string>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
+                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="6J6-PZ-jWb">
+                                                                        <rect key="frame" x="0.0" y="263.5" width="346" height="32"/>
+                                                                        <subviews>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-ty-mbL">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="212" height="32"/>
+                                                                            </view>
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQp-na-S8Q" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                                <rect key="frame" x="233" y="0.0" width="46" height="32"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="32" id="k0g-3E-s5h"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <state key="normal" title="Button">
+                                                                                    <color key="titleColor" red="0.87058823529999996" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                </state>
+                                                                                <connections>
+                                                                                    <action selector="closeExposureBanner:" destination="SLc-31-c7B" eventType="touchUpInside" id="d6g-sI-WDp"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocf-F5-uU9" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                                <rect key="frame" x="300" y="0.0" width="46" height="32"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="32" id="qrd-JC-Ug0"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <state key="normal" title="Button">
+                                                                                    <color key="titleColor" red="0.87058823529999996" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                </state>
+                                                                                <connections>
+                                                                                    <action selector="exposureMoreInfo:" destination="SLc-31-c7B" eventType="touchUpInside" id="Lvg-0J-LaK"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.87058823529411766" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="e2P-se-2W0" firstAttribute="leading" secondItem="Rlx-RT-boE" secondAttribute="leading" constant="14" id="RVL-j6-LJn"/>
+                                                            <constraint firstAttribute="bottom" secondItem="e2P-se-2W0" secondAttribute="bottom" constant="14" id="aZj-lm-mSC"/>
+                                                            <constraint firstItem="e2P-se-2W0" firstAttribute="top" secondItem="Rlx-RT-boE" secondAttribute="top" constant="14" id="hgy-Ad-OBJ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="e2P-se-2W0" secondAttribute="trailing" constant="14" id="vey-a9-gst"/>
+                                                        </constraints>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6s-Qx-Qlh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="300"/>
+                                                        <rect key="frame" x="0.0" y="343.5" width="374" height="300"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-pw-itY">
                                                                 <rect key="frame" x="14" y="14" width="346" height="272"/>
@@ -322,7 +384,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANQ-eO-rpO">
-                                                        <rect key="frame" x="0.0" y="320" width="374" height="86.5"/>
+                                                        <rect key="frame" x="0.0" y="663.5" width="374" height="86.5"/>
                                                         <string key="text">Když budete označeni jako nakažení, kontaktujeme vás na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, které byly ve vašem okolí v sekci Moje data.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
@@ -364,7 +426,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                     <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="45a-ir-C72"/>
                         <rightBarButtonItems>
-                            <barButtonItem title="Další možnosti" image="ellipsis.circle.fill" largeContentSizeImage="Další možnosti" id="aAa-9L-bkG">
+                            <barButtonItem title="Další možnosti" image="ellipsis.circle.fill" id="aAa-9L-bkG">
                                 <connections>
                                     <action selector="moreActionWithSender:" destination="SLc-31-c7B" id="zr6-Iy-Ztd"/>
                                 </connections>
@@ -380,6 +442,10 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="actionButton" destination="UDA-eb-fmL" id="ZBv-1y-h9d"/>
                         <outlet property="actionButtonWidthConstraint" destination="hHl-s3-yn0" id="fKm-lg-qoS"/>
                         <outlet property="cardView" destination="S6s-Qx-Qlh" id="jMg-jX-DaZ"/>
+                        <outlet property="exposureBannerView" destination="Rlx-RT-boE" id="Zld-Ms-EbM"/>
+                        <outlet property="exposureCloseButton" destination="OQp-na-S8Q" id="usl-3e-3Pw"/>
+                        <outlet property="exposureMoreInfoButton" destination="Ocf-F5-uU9" id="Y96-fj-Vjm"/>
+                        <outlet property="exposureTitleLabel" destination="I5Y-jp-bR1" id="8yL-iy-Q2D"/>
                         <outlet property="footerLabel" destination="ANQ-eO-rpO" id="Tkh-MA-V6M"/>
                         <outlet property="headlineLabel" destination="jq8-JX-g6N" id="NVv-Mg-JGG"/>
                         <outlet property="imageView" destination="Dqs-Rj-Q2J" id="LT3-Yz-mgS"/>
@@ -389,11 +455,10 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1213.5999999999999" y="892.61083743842369"/>
+            <point key="canvasLocation" x="1213.0434782608697" y="891.96428571428567"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Další možnosti" width="128" height="128"/>
         <image name="ScanActive" width="48" height="48"/>
         <image name="ellipsis.circle.fill" width="24" height="24"/>
     </resources>

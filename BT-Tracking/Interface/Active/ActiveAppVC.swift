@@ -25,6 +25,11 @@ final class ActiveAppVC: UIViewController {
     @IBOutlet private weak var footerLabel: UILabel!
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
+
+    @IBOutlet private weak var exposureBannerView: UIView!
+    @IBOutlet private weak var exposureTitleLabel: UILabel!
+    @IBOutlet private weak var exposureCloseButton: Button!
+    @IBOutlet private weak var exposureMoreInfoButton: Button!
     
     // MARK: -
 
@@ -44,12 +49,16 @@ final class ActiveAppVC: UIViewController {
                 self?.updateInterface()
             }
         ).disposed(by: disposeBag)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
 
-        layoutCardView()
+        exposureBannerView.isHidden = viewModel.exposureToShow == nil
+
+        [cardView, exposureBannerView].forEach {
+            $0!.layer.cornerRadius = 9.0
+            $0!.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
+            $0!.layer.shadowOffset = CGSize(width: 0, height: 1)
+            $0!.layer.shadowRadius = 2
+            $0!.layer.shadowOpacity = 1
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,6 +145,14 @@ final class ActiveAppVC: UIViewController {
         present(controller, animated: true)
     }
 
+    @IBAction func closeExposureBanner(_ sender: Any) {
+        exposureBannerView.isHidden = true
+    }
+
+    @IBAction func exposureMoreInfo(_ sender: Any) {
+        // TODO: Show screen Rizikové setkání - positive
+    }
+
     private func debugAction() {
         let storyboard = UIStoryboard(name: "Debug", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
@@ -209,6 +226,10 @@ private extension ActiveAppVC {
             actionButton.layoutIfNeeded()
         }
 
+        exposureTitleLabel.text = viewModel.exposureTitle
+        exposureCloseButton.localizedTitle(viewModel.exposureBannerClose)
+        exposureMoreInfoButton.localizedTitle(viewModel.exposureMoreInfo)
+
         setupStrings()
     }
 
@@ -219,19 +240,6 @@ private extension ActiveAppVC {
 
         navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
         navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
-    }
-
-    func layoutCardView() {
-        cardView.layoutIfNeeded()
-
-        // Card shape
-        cardView.layer.cornerRadius = 9.0
-
-        // Card shadow
-        cardView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
-        cardView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        cardView.layer.shadowRadius = 2
-        cardView.layer.shadowOpacity = 1
     }
 
     func checkBackgroundModeIfNeeded() {
