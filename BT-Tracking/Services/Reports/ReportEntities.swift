@@ -14,6 +14,7 @@ enum ReportError: String, Error {
     case cancelled
     case unknown
     case alreadyRunning
+    case stringEncodingFailure
 }
 
 struct Report: Encodable {

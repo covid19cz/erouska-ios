@@ -10,22 +10,18 @@ import Foundation
 import ExposureNotification
 import FirebaseStorage
 import FirebaseAuth
-import CommonCrypto
-import Security
 import Alamofire
 import Zip
-import CommonCrypto
+import CryptoKit
 
 protocol ReportServicing: class {
 
-    var healthAuthority: String { get set }
-
-    func calculateHmacKey(keys: [ExposureDiagnosisKey]) -> String
+    func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String
 
     typealias UploadKeysCallback = (Result<Bool, Error>) -> Void
 
     var isUploading: Bool { get }
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacKey: String, callback: @escaping UploadKeysCallback)
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback)
 
     typealias DownloadKeysCallback = (Result<[URL], Error>) -> Void
 
@@ -39,7 +35,7 @@ protocol ReportServicing: class {
 
 final class ReportService: ReportServicing {
 
-    var healthAuthority = "cz.covid19cz.erouska.dev"
+    private let healthAuthority = "cz.covid19cz.erouska.dev"
 
     private var timeout: TimeInterval = 30
 
@@ -55,45 +51,35 @@ final class ReportService: ReportServicing {
     }
     private let downloadIndex = "/index.txt"
 
-    func calculateHmacKey(keys: [ExposureDiagnosisKey]) -> String {
-        let stringKeys = keys.map {
-            "\($0.keyData.base64EncodedString()).\($0.rollingStartNumber).\($0.rollingPeriod).\($0.transmissionRiskLevel)"
+    func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String {
+        // Sort by the key.
+        let sortedKeys = keys.sorted { (lhs, rhs) -> Bool in
+            lhs.keyData.base64EncodedString() < rhs.keyData.base64EncodedString()
         }
 
-        let randomInt = Int.random(in: 0...1000)
-        let salt = Data(count: randomInt + 1000)
-
-        // // From: https://github.com/RNCryptor/RNCryptor/blob/5e3bbf44f08bf90049537cb8902d8f4fa911a79a/Sources/RNCryptor/RNCryptor.swift
-        let password = stringKeys.joined(separator: ",")
-        let passwordArray = password.utf8.map(Int8.init)
-
-        let saltArray = Array(salt)
-
-        let keySize = kCCKeySizeAES256
-        var derivedKey = Array<UInt8>(repeating: 0, count: keySize)
-
-        // All the crazy casting because CommonCryptor hates Swift
-        let algorithm    = CCPBKDFAlgorithm(kCCPBKDF2)
-        let prf          = CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA1)
-        let pbkdf2Rounds = UInt32(10000)
-
-        let result = CCCryptorStatus(
-            CCKeyDerivationPBKDF(
-                algorithm,
-                passwordArray, passwordArray.count,
-                saltArray,     saltArray.count,
-                prf,           pbkdf2Rounds,
-                &derivedKey,   keySize)
-        )
-        guard result == CCCryptorStatus(kCCSuccess) else {
-            fatalError("SECURITY FAILURE: Could not derive secure password (\(result))")
+        // Build the cleartext.
+        let perKeyClearText: [String] = sortedKeys.map { key in
+            [key.keyData.base64EncodedString(),
+             String(key.rollingStartNumber),
+             String(key.rollingPeriod),
+             String(key.transmissionRiskLevel)].joined(separator: ".")
         }
-        return Data(derivedKey).base64EncodedString()
+        let clearText = perKeyClearText.joined(separator: ",")
+
+        guard let clearData = clearText.data(using: .utf8) else {
+            throw ReportError.stringEncodingFailure
+        }
+
+        let hmacKey = SymmetricKey(data: secret)
+        let authenticationCode = HMAC<SHA256>.authenticationCode(for: clearData, using: hmacKey)
+        return authenticationCode.withUnsafeBytes { bytes in
+            return Data(bytes)
+        }.base64EncodedString()
     }
     
     private(set) var isUploading: Bool = false
 
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacKey: String, callback: @escaping UploadKeysCallback) {
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback) {
         guard !isUploading else {
             callback(.failure(ReportError.alreadyRunning))
             return
@@ -118,13 +104,13 @@ final class ReportService: ReportServicing {
             }
         }
 
-        let randomInt = Int.random(in: 0...1000)
-        let randomBase64 = Data(count: randomInt + 1000).base64EncodedString()
+        let randomInt = Int.random(in: 0...100)
+        let randomBase64 = Data.random(count: randomInt + 100).base64EncodedString()
         let report = Report(
             temporaryExposureKeys: keys,
             healthAuthority: healthAuthority,
             verificationPayload: verificationPayload,
-            hmacKey: hmacKey,
+            hmacKey: hmacSecret.base64EncodedString(),
             symptomOnsetInterval: nil,
             traveler: false,
             revisionToken: nil,

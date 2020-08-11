@@ -132,6 +132,7 @@
 		80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
 		80CCE5C424DD812900DC36EE /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C324DD812800DC36EE /* VerificationService.swift */; };
 		80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C524DD913200DC36EE /* VerificationEntities.swift */; };
+		80D2345124E2FDD200F684AA /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 80D2345024E2FDD200F684AA /* Crypto */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
 		80DF2F002448421F00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
 		80DF2F012448428B00C3037F /* DataCollectionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DF2EFF2448421F00C3037F /* DataCollectionInfoVC.swift */; };
@@ -339,6 +340,7 @@
 				800E611424DAE98B00C63567 /* Zip in Frameworks */,
 				809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */,
 				80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */,
+				80D2345124E2FDD200F684AA /* Crypto in Frameworks */,
 				809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */,
 				8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */,
 				80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */,
@@ -487,6 +489,7 @@
 				8051FDA1245ACD7900B2D5EA /* Exposure */,
 				8084DEF524AF86B0001FBB16 /* Reports */,
 				80CCE5C224DD811700DC36EE /* Verification */,
+				80D2344E24E2F69000F684AA /* Background */,
 				8084DEEB24AF8030001FBB16 /* CountryCodes */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
@@ -656,6 +659,13 @@
 			path = Verification;
 			sourceTree = "<group>";
 		};
+		80D2344E24E2F69000F684AA /* Background */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
 		80ECB96A24292F9600E57601 /* Data List */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +797,7 @@
 				8091E08124CB3CDF00E0E877 /* AlamofireImage */,
 				804BE48C24D9A30A00D40C07 /* Alamofire */,
 				800E611324DAE98B00C63567 /* Zip */,
+				80D2345024E2FDD200F684AA /* Crypto */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
@@ -865,6 +876,7 @@
 				8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				804BE48B24D9A30A00D40C07 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */,
+				80D2344F24E2FDD200F684AA /* XCRemoteSwiftPackageReference "swift-crypto" */,
 			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
@@ -1573,6 +1585,14 @@
 				minimumVersion = 1.2.2;
 			};
 		};
+		80D2344F24E2FDD200F684AA /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-crypto";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 		80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-protobuf/";
@@ -1678,6 +1698,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
 			productName = SwiftyMarkdown;
+		};
+		80D2345024E2FDD200F684AA /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80D2344F24E2FDD200F684AA /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
 		};
 		80DF5FB824CB579E00332D25 /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;

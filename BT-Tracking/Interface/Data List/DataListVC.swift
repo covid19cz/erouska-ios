@@ -253,21 +253,28 @@ private extension DataListVC {
         let verificationService = AppDelegate.dependency.verification
         let reportService = AppDelegate.dependency.reporter
         let exposureService = AppDelegate.dependency.exposureService
-        let callback: ExposureServicing.KeysCallback = { [weak self]  result in
+        let callback: ExposureServicing.KeysCallback = { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case .success(let keys):
-                let hmacKey = reportService.calculateHmacKey(keys: keys)
-                verificationService.requestCertificate(token: token, hmacKey: hmacKey) { result in
-                    switch result {
-                    case .success(let certificate):
-                        self.uploadKeys(keys: keys, verificationPayload: certificate, hmacKey: hmacKey)
-                    case .failure(let error):
-                        log("DataListVC: Failed to get verification payload \(error)")
-                        self.hideProgress()
-                        self.showSendDataErrorFailed()
+                do {
+                    let secret = Data.random(count: 32)
+                    let hmacKey = try reportService.calculateHmacKey(keys: keys, secret: secret)
+                    verificationService.requestCertificate(token: token, hmacKey: hmacKey) { result in
+                        switch result {
+                        case .success(let certificate):
+                            self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret)
+                        case .failure(let error):
+                            log("DataListVC: Failed to get verification payload \(error)")
+                            self.hideProgress()
+                            self.showSendDataErrorFailed()
+                        }
                     }
+                } catch {
+                    log("DataListVC: Failed to get hmac for keys \(error)")
+                    self.hideProgress()
+                    self.showSendDataErrorFailed()
                 }
             case .failure(let error):
                 log("DataListVC: Failed to get exposure keys \(error)")
@@ -284,8 +291,8 @@ private extension DataListVC {
         }
     }
 
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacKey: String) {
-        AppDelegate.dependency.reporter.uploadKeys(keys: keys, verificationPayload: verificationPayload, hmacKey: hmacKey, callback: { [weak self] result in
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data) {
+        AppDelegate.dependency.reporter.uploadKeys(keys: keys, verificationPayload: verificationPayload, hmacSecret: hmacSecret, callback: { [weak self] result in
             self?.hideProgress()
             switch result {
             case .success:
