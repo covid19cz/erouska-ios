@@ -24,6 +24,7 @@ final class SendReportVC: UIViewController {
         super.viewDidLoad()
 
         navigationItem.localizedTitle("data_send_title")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
         titleLabel.localizedText("data_send_title_label")
         headlineLabel.localizedText("data_send_headline")

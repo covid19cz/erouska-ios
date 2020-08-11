@@ -196,7 +196,7 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-Ye-sGl">
-                                <rect key="frame" x="20" y="56" width="374" height="752"/>
+                                <rect key="frame" x="20" y="108" width="374" height="700"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0l-Ah-UvZ" userLabel="Space View">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="5"/>
@@ -246,11 +246,11 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-fY-ke2" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="413" width="374" height="260"/>
+                                        <rect key="frame" x="0.0" y="413" width="374" height="208"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sR-Eb-tvx" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="688" width="374" height="44"/>
+                                        <rect key="frame" x="0.0" y="636" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="pTc-1t-X1g"/>
                                         </constraints>
@@ -263,7 +263,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5V-cH-HmX" userLabel="Space View">
-                                        <rect key="frame" x="0.0" y="747" width="374" height="5"/>
+                                        <rect key="frame" x="0.0" y="695" width="374" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="z3a-IS-m4H"/>
@@ -297,9 +297,9 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
         <!--Navigation Controller-->
         <scene sceneID="eLS-8v-LTC">
             <objects>
-                <navigationController id="Bzh-9z-YpA" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N5Z-GI-g8d">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                <navigationController storyboardIdentifier="SendReportNav" id="Bzh-9z-YpA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="N5Z-GI-g8d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

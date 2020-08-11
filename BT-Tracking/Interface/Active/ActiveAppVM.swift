@@ -113,11 +113,12 @@ final class ActiveAppVM {
     let shareApp = "share_app"
     let shareAppMessage = "share_app_message"
 
-    let menuAbout = "about"
+    let menuRiskyEncounters = "risky_encounters_button"
+    let menuSendReports = "data_list_send_button"
     let menuDebug = "debug"
     let menuCancelRegistration = "cancel_registration_button"
+    let menuAbout = "about"
     let menuCancel = "close"
-    let menuRiskyEncounters = "risky_encounters_button"
 
     let backgroundModeTitle = "active_background_mode_title"
     let backgroundModeMessage = "active_background_mode_title"

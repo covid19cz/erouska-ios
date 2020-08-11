@@ -132,11 +132,14 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuRiskyEncounters), style: .default, handler: { [weak self] _ in
             self?.riskyEncountersAction()
         }))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuSendReports), style: .default, handler: { [weak self] _ in
+            self?.sendReportsAction()
+        }))
         #if !PROD
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
-        controller.addAction(UIAlertAction(title: Localizable("Debug: Zkontrolovat reporty (keys)"), style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: Localizable("Debug: Zkontrolovat reporty"), style: .default, handler: { [weak self] _ in
             self?.debugProcessReports()
         }))
         controller.addAction(UIAlertAction(title: "Debug: " + Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
@@ -159,86 +162,16 @@ final class ActiveAppVC: UIViewController {
         riskyEncountersAction()
     }
 
-
-    private func debugAction() {
-        let storyboard = UIStoryboard(name: "Debug", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
-    }
-
-    private func debugProcessReports() {
-        showProgress()
-
-        let dateFormat = DateFormatter()
-        dateFormat.timeStyle = .short
-        dateFormat.dateStyle = .short
-
-        AppDelegate.dependency.reporter.fetchExposureConfiguration { [weak self] result in
-            switch result {
-            case .success(let configuration):
-                _ = AppDelegate.dependency.reporter.downloadKeys { [weak self] result in
-                    switch result {
-                    case .success(let URLs):
-                        AppDelegate.dependency.exposureService.detectExposures(
-                            configuration: configuration,
-                            URLs: URLs
-                        ) { [weak self] result in
-                            self?.hideProgress()
-                            switch result {
-                            case .success(var exposures):
-                                exposures.sort { $0.date < $1.date }
-
-                                var result = ""
-                                for exposure in exposures {
-                                    let signals = exposure.attenuationDurations.map { "\($0)" }
-                                    result += "EXP: \(dateFormat.string(from: exposure.date))" +
-                                        ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
-                                        + "attenuation value: \(exposure.attenuationValue)\n"
-                                        + "signal attenuations: \(signals.joined(separator: ", "))\n"
-                                }
-                                if result == "" {
-                                    result = "None";
-                                }
-
-                                log("EXP: \(exposures)")
-                                log("EXP: \(result)")
-                                self?.showAlert(title: "Exposures", message: result)
-                            case .failure(let error):
-                                self?.show(error: error)
-                            }
-                        }
-                    case .failure(let error):
-                        self?.hideProgress()
-                        self?.show(error: error)
-                    }
-                }
-            case .failure(let error):
-                self?.hideProgress()
-                self?.show(error: error)
-            }
-        }
-    }
-
-    private func debugCancelRegistrationAction() {
-        AppDelegate.dependency.exposureService.deactivate { _ in
-            AppSettings.deleteAllData()
-            try? Auth.auth().signOut()
-            AppDelegate.shared.updateInterface()
-        }
-    }
-
-    private func aboutAction() {
-        let storyboard = UIStoryboard(name: "Help", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "About")
-        navigationController?.pushViewController(controller, animated: true)
+    private func sendReportsAction() {
+        performSegue(withIdentifier: "sendReport", sender: nil)
     }
 
     private func riskyEncountersAction() {
-        let storyboard = UIStoryboard(name: "RiskyEncounters", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() else { return }
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
+        performSegue(withIdentifier: "riskyEncounters", sender: nil)
+    }
+
+    private func aboutAction() {
+        performSegue(withIdentifier: "about", sender: nil)
     }
 
     // MARK: -
@@ -324,6 +257,8 @@ private extension ActiveAppVC {
         controller.preferredAction = controller.actions.first
         present(controller, animated: true)
     }
+
+    // MARK: - Open external
     
     func openSettings() {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
@@ -341,4 +276,75 @@ private extension ActiveAppVC {
         guard let URL = url, UIApplication.shared.canOpenURL(URL) else { return }
         UIApplication.shared.open(URL)
     }
+
+    // MARK: - Debug
+
+    func debugAction() {
+        let storyboard = UIStoryboard(name: "Debug", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
+    }
+
+    func debugProcessReports() {
+        showProgress()
+
+        let dateFormat = DateFormatter()
+        dateFormat.timeStyle = .short
+        dateFormat.dateStyle = .short
+
+        AppDelegate.dependency.reporter.fetchExposureConfiguration { [weak self] result in
+            switch result {
+            case .success(let configuration):
+                _ = AppDelegate.dependency.reporter.downloadKeys { [weak self] result in
+                    switch result {
+                    case .success(let URLs):
+                        AppDelegate.dependency.exposureService.detectExposures(
+                            configuration: configuration,
+                            URLs: URLs
+                        ) { [weak self] result in
+                            self?.hideProgress()
+                            switch result {
+                            case .success(var exposures):
+                                exposures.sort { $0.date < $1.date }
+
+                                var result = ""
+                                for exposure in exposures {
+                                    let signals = exposure.attenuationDurations.map { "\($0)" }
+                                    result += "EXP: \(dateFormat.string(from: exposure.date))" +
+                                        ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
+                                        + "attenuation value: \(exposure.attenuationValue)\n"
+                                        + "signal attenuations: \(signals.joined(separator: ", "))\n"
+                                }
+                                if result == "" {
+                                    result = "None";
+                                }
+
+                                log("EXP: \(exposures)")
+                                log("EXP: \(result)")
+                                self?.showAlert(title: "Exposures", message: result)
+                            case .failure(let error):
+                                self?.show(error: error)
+                            }
+                        }
+                    case .failure(let error):
+                        self?.hideProgress()
+                        self?.show(error: error)
+                    }
+                }
+            case .failure(let error):
+                self?.hideProgress()
+                self?.show(error: error)
+            }
+        }
+    }
+
+    func debugCancelRegistrationAction() {
+        AppDelegate.dependency.exposureService.deactivate { _ in
+            AppSettings.deleteAllData()
+            try? Auth.auth().signOut()
+            AppDelegate.shared.updateInterface()
+        }
+    }
+
 }
