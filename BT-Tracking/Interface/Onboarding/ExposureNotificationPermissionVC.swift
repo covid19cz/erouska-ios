@@ -1,6 +1,6 @@
 //
 //  ExposureNotificationPermissionVC.swift
-// eRouska
+//  eRouska
 //
 //  Created by Tomas Svoboda on 06/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  AppSettings.swift
-// eRouska
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 24/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -12,8 +12,11 @@ struct AppSettings {
 
     private enum Keys: String {
         case appState
-        case backgroundModeAlertShown
         case appFirstTimeLaunched
+        case backgroundModeAlertShown
+
+        case lastDownloadFileName
+        case lastProcessedFileName
         case lastUploadDate
 
         case v2_0NewsLaunched
@@ -22,8 +25,10 @@ struct AppSettings {
         case lastDataPurgeDate
     }
 
+    /// Firebase Region
     static let firebaseRegion = "europe-west1"
 
+    /// Last application state (paused, running, ...)
     static var state: ActiveAppVM.State? {
         get {
             return ActiveAppVM.State(rawValue: string(forKey: .appState))
@@ -33,25 +38,7 @@ struct AppSettings {
         }
     }
 
-    static var lastUploadDate: Date? {
-        get {
-            let rawValue = double(forKey: .lastUploadDate)
-            return Date(timeIntervalSince1970: TimeInterval(rawValue))
-        }
-        set {
-            set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
-        }
-    }
-    
-    static var backgroundModeAlertShown: Bool {
-        get {
-            return bool(forKey: .backgroundModeAlertShown)
-        }
-        set {
-            set(withKey: .backgroundModeAlertShown, value: newValue)
-        }
-    }
-    
+    /// Check if it's first time launch
     static var appFirstTimeLaunched: Bool {
         get {
             return bool(forKey: .appFirstTimeLaunched)
@@ -61,6 +48,48 @@ struct AppSettings {
         }
     }
 
+    /// If background mode off alert was shown
+    static var backgroundModeAlertShown: Bool {
+        get {
+            return bool(forKey: .backgroundModeAlertShown)
+        }
+        set {
+            set(withKey: .backgroundModeAlertShown, value: newValue)
+        }
+    }
+
+    /// Last download file batch
+    static var lastDownloadFileName: String? {
+        get {
+            return string(forKey: .lastDownloadFileName)
+        }
+        set {
+            set(withKey: .lastDownloadFileName, value: newValue)
+        }
+    }
+
+    /// Last process file batch
+    static var lastProcessedFileName: String? {
+        get {
+            return string(forKey: .lastProcessedFileName)
+        }
+        set {
+            set(withKey: .lastProcessedFileName, value: newValue)
+        }
+    }
+
+    /// When it app last time uploaded keys
+    static var lastUploadDate: Date? {
+        get {
+            let rawValue = double(forKey: .lastUploadDate)
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+        }
+        set {
+            set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
+        }
+    }
+
+    /// Check if it's migration to new version
     static var v2_0NewsLaunched: Bool {
         get {
             return bool(forKey: .v2_0NewsLaunched)
@@ -70,12 +99,17 @@ struct AppSettings {
         }
     }
 
+    /// Cleanup data after logout
     static func deleteAllData() {
         KeychainService.eHRID = nil
 
-        AppSettings.state = nil
-        AppSettings.lastUploadDate = nil
-        AppSettings.backgroundModeAlertShown = false
+        backgroundModeAlertShown = false
+
+        state = nil
+
+        lastDownloadFileName = nil
+        lastProcessedFileName = nil
+        lastUploadDate = nil
     }
 
     // MARK: - Private

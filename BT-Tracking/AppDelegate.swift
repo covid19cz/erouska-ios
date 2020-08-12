@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-// eRouska
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 14/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -246,17 +246,25 @@ private extension AppDelegate {
         dateFormat.dateStyle = .short
 
         BGTaskScheduler.shared.register(forTaskWithIdentifier: Self.backgroundTaskIdentifier, using: .main) { task in
+            Log.log("AppDelegate: Start background check")
 
             // Notify the user if bluetooth is off
             Self.dependency.exposureService.showBluetoothOffUserNotificationIfNeeded()
 
+            func reportFailure(_ error: Error) {
+                task.setTaskCompleted(success: false)
+                Log.log("AppDelegate: BG failed to detect exposures \(error)")
+            }
+
             // Perform the exposure detection
-            Self.dependency.reporter.fetchExposureConfiguration { result in
+            let progress = Self.dependency.reporter.downloadKeys { result in
+                Log.log("AppDelegate: BG did download keys \(result)")
+
                 switch result {
-                case .success(let configuration):
-                    Self.dependency.reporter.downloadKeys { result in
+                case .success(let URLs):
+                    Self.dependency.reporter.fetchExposureConfiguration { result in
                         switch result {
-                        case .success(let URLs):
+                        case .success(let configuration):
                             AppDelegate.dependency.exposureService.detectExposures(
                                 configuration: configuration,
                                 URLs: URLs
@@ -292,45 +300,48 @@ private extension AppDelegate {
                                     UNUserNotificationCenter.current().add(request) { error in
                                         DispatchQueue.main.async {
                                             if let error = error {
-                                                Log.log("AppDelegate: Error showing error user notification \(error)")
+                                                Log.log("AppDelegate: BG error showing error user notification \(error)")
                                             }
                                         }
                                     }
 
                                     task.setTaskCompleted(success: true)
                                 case .failure(let error):
-                                    task.setTaskCompleted(success: false)
-                                    Log.log("AppDelegate: Failed to detect exposures \(error)")
+                                    reportFailure(error)
                                 }
                             }
                         case .failure(let error):
-                            task.setTaskCompleted(success: false)
-                            Log.log("AppDelegate: Failed to detect exposures \(error)")
+                            reportFailure(error)
                         }
                     }
                 case .failure(let error):
-                    task.setTaskCompleted(success: false)
-                    Log.log("AppDelegate: Failed to detect exposures \(error)")
+                    reportFailure(error)
                 }
             }
 
             // Handle running out of time
             task.expirationHandler = {
-                Log.log("Background task timeout")
-                // TODO: handle error, NSLocalizedString("BACKGROUND_TIMEOUT", comment: "Error")
+                progress.cancel()
+                Log.log("AppDelegate: BG timeout")
             }
 
             // Schedule the next background task
-            self.scheduleBackgroundTaskIfNeeded()
+            self.scheduleBackgroundTaskIfNeeded(next: true)
         }
 
         scheduleBackgroundTaskIfNeeded()
     }
 
-    func scheduleBackgroundTaskIfNeeded() {
+    func scheduleBackgroundTaskIfNeeded(next: Bool = false) {
         guard Self.dependency.exposureService.authorizationStatus == .authorized else { return }
         let taskRequest = BGProcessingTaskRequest(identifier: Self.backgroundTaskIdentifier)
         taskRequest.requiresNetworkConnectivity = true
+        if next {
+            // start after next 8 hours
+            let earliestBeginDate = Date(timeIntervalSinceNow: 8 * 60 * 60)
+            taskRequest.earliestBeginDate = earliestBeginDate
+            Log.log("Background: Schedule next task to: \(earliestBeginDate)")
+        }
 
         do {
             try BGTaskScheduler.shared.submit(taskRequest)

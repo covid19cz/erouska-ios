@@ -451,11 +451,40 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="imageView" destination="Dqs-Rj-Q2J" id="LT3-Yz-mgS"/>
                         <outlet property="mainStackView" destination="IbU-pw-itY" id="mUd-gK-QSO"/>
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
+                        <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
+                        <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" modalPresentationStyle="fullScreen" id="HRF-xK-4t2"/>
+                        <segue destination="z3e-t5-SVC" kind="show" identifier="about" id="7iH-sH-Ztm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1213.0434782608697" y="891.96428571428567"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="bVh-d8-uQ9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="About" id="z3e-t5-SVC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="02V-k0-agv"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MqQ-k0-vwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1898" y="1000"/>
+        </scene>
+        <!--RiskyEncounters-->
+        <scene sceneID="jrU-h5-lVn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RiskyEncounters" id="qqD-nV-Znl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ycg-Wv-T2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1954" y="794"/>
+        </scene>
+        <!--SendReportNav-->
+        <scene sceneID="ICw-CE-1Wd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DataList" referencedIdentifier="SendReportNav" id="48F-yW-Dk4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-Tx-30g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1940" y="892"/>
         </scene>
     </scenes>
     <resources>

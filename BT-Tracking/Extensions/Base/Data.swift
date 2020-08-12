@@ -1,6 +1,6 @@
 //
 //  Data.swift
-// eRouska
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 22/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -19,6 +19,14 @@ extension Data {
     func hexEncodedString(options: HexEncodingOptions = []) -> String {
         let format = options.contains(.upperCase) ? "%02hhX" : "%02hhx"
         return map { String(format: format, $0) }.joined()
+    }
+
+    static func random(count: Int) -> Data {
+        var result = Data(count: count)
+        _ = result.withUnsafeMutableBytes {
+            SecRandomCopyBytes(kSecRandomDefault, count, $0.baseAddress!)
+        }
+        return result
     }
     
 }

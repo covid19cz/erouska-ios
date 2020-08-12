@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcd-UM-9Nt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcd-UM-9Nt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Moje data-->
+        <!--Aktualne-->
         <scene sceneID="9SL-Tc-jfn">
             <objects>
                 <viewController id="xGP-gf-Asp" customClass="DataListVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +19,7 @@
                         <subviews>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-6R-8L4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="scanningInfoCell" id="rQQ-mb-mfv" customClass="ScanningInfoCell" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="114.5"/>
@@ -83,9 +85,6 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                                                         <segment title="First"/>
                                                         <segment title="Second"/>
                                                     </segments>
-                                                    <connections>
-                                                        <action selector="segmentedControlValueChanged:" destination="xGP-gf-Asp" eventType="valueChanged" id="uxA-eT-6Gp"/>
-                                                    </connections>
                                                 </segmentedControl>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7qt-kI-e8T">
                                                     <rect key="frame" x="20" y="76.5" width="374" height="0.0"/>
@@ -94,25 +93,25 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                                                             <rect key="frame" x="0.0" y="0.0" width="86" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Čas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXY-Vj-Hwr" userLabel="Čas">
                                                             <rect key="frame" x="96" y="0.0" width="86" height="0.0"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUW-Iz-u7t">
                                                             <rect key="frame" x="192" y="0.0" width="86" height="0.0"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="RSSI" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vs9-H1-vvU" userLabel="RSII Label">
                                                             <rect key="frame" x="288" y="0.0" width="86" height="0.0"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -138,83 +137,44 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCh-ML-OPo" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="20" y="644" width="374" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="szS-kG-hSf"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-2n-5Ns">
+                                <rect key="frame" x="183" y="438" width="48.5" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Vyhodnotit data">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                </state>
-                                <connections>
-                                    <action selector="processReports" destination="xGP-gf-Asp" eventType="touchUpInside" id="Trf-HI-vMG"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qq0-b5-X4V" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="703" width="414" height="110"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twl-oa-ZjU" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="50" width="374" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="J1p-JE-8H3"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <state key="normal" title="Odeslat data">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sendReportAction:" destination="xGP-gf-Asp" eventType="touchUpInside" id="6BP-dP-TRU"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Twl-oa-ZjU" secondAttribute="bottom" constant="16" id="0fe-9Q-Dzw"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="Twl-oa-ZjU" secondAttribute="trailing" id="2cB-fE-drM"/>
-                                    <constraint firstItem="Twl-oa-ZjU" firstAttribute="top" secondItem="qq0-b5-X4V" secondAttribute="top" constant="50" id="Qma-s7-fF6"/>
-                                    <constraint firstItem="Twl-oa-ZjU" firstAttribute="leading" secondItem="qq0-b5-X4V" secondAttribute="leadingMargin" id="kn8-7W-NMW"/>
-                                </constraints>
-                            </view>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bDv-0K-1Gq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qq0-b5-X4V" firstAttribute="top" secondItem="jCh-ML-OPo" secondAttribute="bottom" constant="15" id="386-Df-RCC"/>
+                            <constraint firstItem="xN1-2n-5Ns" firstAttribute="centerX" secondItem="48y-Xq-MiP" secondAttribute="centerX" id="5wm-Jk-c8p"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="CmS-06-K9h"/>
-                            <constraint firstItem="bDv-0K-1Gq" firstAttribute="bottom" secondItem="qq0-b5-X4V" secondAttribute="bottom" id="F7R-0P-rOa"/>
                             <constraint firstItem="bDv-0K-1Gq" firstAttribute="bottom" secondItem="Mfj-6R-8L4" secondAttribute="bottom" id="HjX-4B-895"/>
-                            <constraint firstItem="qq0-b5-X4V" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="Irq-7h-nuL"/>
-                            <constraint firstItem="bDv-0K-1Gq" firstAttribute="trailing" secondItem="qq0-b5-X4V" secondAttribute="trailing" id="Ley-eV-kz9"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="trailing" secondItem="bDv-0K-1Gq" secondAttribute="trailing" id="O4n-r6-oAF"/>
-                            <constraint firstItem="jCh-ML-OPo" firstAttribute="width" secondItem="Twl-oa-ZjU" secondAttribute="width" id="mTC-sR-pmE"/>
-                            <constraint firstItem="jCh-ML-OPo" firstAttribute="centerX" secondItem="qq0-b5-X4V" secondAttribute="centerX" id="qBg-9s-3dK"/>
+                            <constraint firstItem="xN1-2n-5Ns" firstAttribute="centerY" secondItem="48y-Xq-MiP" secondAttribute="centerY" id="rMd-5O-UEh"/>
                             <constraint firstItem="Mfj-6R-8L4" firstAttribute="top" secondItem="48y-Xq-MiP" secondAttribute="top" id="zLY-H9-QHN"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bDv-0K-1Gq"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Moje data" largeTitleDisplayMode="always" id="Alq-cw-sQ5"/>
+                    <navigationItem key="navigationItem" title="Aktualne" largeTitleDisplayMode="always" id="Alq-cw-sQ5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="buttonsView" destination="qq0-b5-X4V" id="WPz-cm-HAA"/>
-                        <outlet property="sendButton" destination="Twl-oa-ZjU" id="rd6-bs-2yo"/>
                         <outlet property="tableView" destination="Mfj-6R-8L4" id="jlS-jK-bU3"/>
-                        <segue destination="Bzh-9z-YpA" kind="presentation" identifier="sendReport" id="5OC-gk-9SW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3VF-V1-L93" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900.00000000000011" y="139.95535714285714"/>
         </scene>
-        <!--Moje Data-->
+        <!--Aktualne-->
         <scene sceneID="Tfn-xI-ecm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dcd-UM-9Nt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Moje Data" id="02c-Vw-4z2"/>
+                    <tabBarItem key="tabBarItem" title="Aktualne" id="02c-Vw-4z2"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qag-Ae-DEK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -229,17 +189,17 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
         <!--Aplikace je aktivní-->
         <scene sceneID="oJp-dl-J5f">
             <objects>
-                <viewController id="DYf-Vd-0PA" userLabel="Aplikace je aktivní" customClass="SendReportVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DYf-Vd-0PA" userLabel="Aplikace je aktivní" customClass="SendResultVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="obQ-Xn-QYg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-Ye-sGl">
-                                <rect key="frame" x="20" y="56" width="374" height="752"/>
+                                <rect key="frame" x="20" y="140" width="374" height="722"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0l-Ah-UvZ" userLabel="Space View">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="AyS-cJ-DC6"/>
                                         </constraints>
@@ -285,11 +245,11 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-fY-ke2" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="413" width="374" height="260"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <rect key="frame" x="0.0" y="413" width="374" height="230"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sR-Eb-tvx" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="688" width="374" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sR-Eb-tvx" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="658" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="pTc-1t-X1g"/>
                                         </constraints>
@@ -302,8 +262,8 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5V-cH-HmX" userLabel="Space View">
-                                        <rect key="frame" x="0.0" y="747" width="374" height="5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <rect key="frame" x="0.0" y="717" width="374" height="5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="z3a-IS-m4H"/>
                                         </constraints>
@@ -311,17 +271,17 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Es3-Ia-z2R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bI2-Ye-sGl" firstAttribute="top" secondItem="Es3-Ia-z2R" secondAttribute="top" id="1ml-52-W1H"/>
                             <constraint firstItem="bI2-Ye-sGl" firstAttribute="leading" secondItem="obQ-Xn-QYg" secondAttribute="leadingMargin" id="l0D-6l-Cla"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bI2-Ye-sGl" secondAttribute="trailing" id="t6Y-MA-vt1"/>
                             <constraint firstItem="Es3-Ia-z2R" firstAttribute="bottom" secondItem="bI2-Ye-sGl" secondAttribute="bottom" id="vNb-mG-GfL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Es3-Ia-z2R"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Odesláno" id="Yey-Fh-VuT"/>
+                    <navigationItem key="navigationItem" title="Odesláno" largeTitleDisplayMode="always" id="Yey-Fh-VuT"/>
                     <connections>
                         <outlet property="bodyLabel" destination="8Ee-su-jfJ" id="jvm-nI-phf"/>
                         <outlet property="closeButton" destination="7sR-Eb-tvx" id="5F3-UW-gTJ"/>
@@ -331,26 +291,144 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSz-x2-r7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2664" y="140"/>
+            <point key="canvasLocation" x="1858" y="846"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eLS-8v-LTC">
             <objects>
-                <navigationController id="Bzh-9z-YpA" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N5Z-GI-g8d">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                <navigationController storyboardIdentifier="SendReportNav" id="Bzh-9z-YpA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="N5Z-GI-g8d">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="DYf-Vd-0PA" kind="relationship" relationship="rootViewController" id="Ibi-Dw-LFw"/>
+                        <segue destination="zvy-kc-9kj" kind="relationship" relationship="rootViewController" id="Ypc-de-7Vt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpE-fX-Sqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="140"/>
+            <point key="canvasLocation" x="-10" y="847"/>
+        </scene>
+        <!--Odeslat data-->
+        <scene sceneID="4vg-im-RmD">
+            <objects>
+                <viewController id="zvy-kc-9kj" customClass="SendReportsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yg9-Ss-Qfx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JF-YD-BYo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-0T-yUk">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="171.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NvA-Qs-2jt">
+                                                <rect key="frame" x="20" y="10" width="374" height="145.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjN-iy-0lg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="86.5"/>
+                                                        <string key="text">V případě potvrzené nákazy virem COVID-19 vás bude kontaktovat pracovník hygienické stanice. Odešle vám SMS zprávu obsahující ověřovací kód pro povolení odeslání dat.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ověřovací kód(povinné)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JVW-2a-xGp">
+                                                        <rect key="frame" x="0.0" y="101.5" width="374" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="gJJ-Bj-NMd"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" textContentType="one-time-code"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="zvy-kc-9kj" id="MDH-mC-0bS"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="NvA-Qs-2jt" firstAttribute="top" secondItem="dEO-0T-yUk" secondAttribute="top" constant="10" id="HpI-Xc-gSO"/>
+                                            <constraint firstAttribute="bottom" secondItem="NvA-Qs-2jt" secondAttribute="bottom" constant="16" id="Ieh-F2-0kb"/>
+                                            <constraint firstItem="NvA-Qs-2jt" firstAttribute="leading" secondItem="dEO-0T-yUk" secondAttribute="leadingMargin" id="Mi9-E3-MYW"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="NvA-Qs-2jt" secondAttribute="trailing" id="iTv-1W-kaa"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="centerX" secondItem="2e9-tV-4A9" secondAttribute="centerX" id="5Oh-sR-1bh"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="width" secondItem="2e9-tV-4A9" secondAttribute="width" id="6J6-0F-bCQ"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="trailing" secondItem="7fL-Ov-c9N" secondAttribute="trailing" id="AdH-TZ-cRT"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="leading" secondItem="7fL-Ov-c9N" secondAttribute="leading" id="Ux8-nB-CQ5"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="top" secondItem="7fL-Ov-c9N" secondAttribute="top" id="YZk-65-YRb"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="bottom" secondItem="7fL-Ov-c9N" secondAttribute="bottom" id="sTr-H5-xje"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="7fL-Ov-c9N"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="2e9-tV-4A9"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5h1-J1-hAM" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="752" width="414" height="94"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-pA-DIv" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="50" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="imW-cX-YzH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <state key="normal" title="Ověřit a odeslat data">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendReportsAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="uiY-Ba-5M6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kZu-pA-DIv" firstAttribute="top" secondItem="5h1-J1-hAM" secondAttribute="top" constant="50" id="Zqx-gN-ete"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="kZu-pA-DIv" secondAttribute="trailing" id="gCa-Jt-cgi"/>
+                                    <constraint firstItem="kZu-pA-DIv" firstAttribute="leading" secondItem="5h1-J1-hAM" secondAttribute="leadingMargin" id="vCs-ML-Nrr"/>
+                                    <constraint firstAttribute="bottom" secondItem="kZu-pA-DIv" secondAttribute="bottom" id="xsY-gX-DCL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BfJ-zc-yQn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BfJ-zc-yQn" firstAttribute="trailing" secondItem="5h1-J1-hAM" secondAttribute="trailing" id="DUn-Ng-wnW"/>
+                            <constraint firstItem="0JF-YD-BYo" firstAttribute="leading" secondItem="BfJ-zc-yQn" secondAttribute="leading" id="Ml4-pz-x0j"/>
+                            <constraint firstItem="5h1-J1-hAM" firstAttribute="leading" secondItem="BfJ-zc-yQn" secondAttribute="leading" id="mJd-dh-RgV"/>
+                            <constraint firstItem="BfJ-zc-yQn" firstAttribute="bottom" secondItem="5h1-J1-hAM" secondAttribute="bottom" constant="16" id="rVR-u2-a2j"/>
+                            <constraint firstItem="0JF-YD-BYo" firstAttribute="top" secondItem="yg9-Ss-Qfx" secondAttribute="top" id="uqC-Pj-MF9"/>
+                            <constraint firstItem="BfJ-zc-yQn" firstAttribute="bottom" secondItem="0JF-YD-BYo" secondAttribute="bottom" id="xaG-ya-5Tt"/>
+                            <constraint firstItem="0JF-YD-BYo" firstAttribute="trailing" secondItem="BfJ-zc-yQn" secondAttribute="trailing" id="yTN-uQ-i4p"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Odeslat data" largeTitleDisplayMode="always" id="d5t-5h-yU0"/>
+                    <connections>
+                        <outlet property="actionButton" destination="kZu-pA-DIv" id="HeK-ug-ubo"/>
+                        <outlet property="buttonsBottomConstraint" destination="rVR-u2-a2j" id="wg6-3z-JH7"/>
+                        <outlet property="buttonsView" destination="5h1-J1-hAM" id="0dB-VC-lqa"/>
+                        <outlet property="codeTextField" destination="JVW-2a-xGp" id="EIG-wa-I0I"/>
+                        <outlet property="headlineLabel" destination="MjN-iy-0lg" id="b8d-JC-NmI"/>
+                        <outlet property="scrollView" destination="0JF-YD-BYo" id="kId-FU-enZ"/>
+                        <segue destination="DYf-Vd-0PA" kind="show" identifier="result" id="kRd-QM-Rd2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAZ-K8-4FE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="846"/>
         </scene>
     </scenes>
     <resources>
         <image name="ScanActive" width="48" height="48"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
