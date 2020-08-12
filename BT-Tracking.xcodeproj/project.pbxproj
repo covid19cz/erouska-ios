@@ -167,6 +167,20 @@
 		D61DFE6124C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */; };
 		D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */; };
 		D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */; };
+		D6231C9D24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */; };
+		D6231C9E24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */; };
+		D6231C9F24E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */; };
+		D6231CA024E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */; };
+		D6231CA124E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9C24E400B10023BDC8 /* RiskyEncountersListVC.swift */; };
+		D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9C24E400B10023BDC8 /* RiskyEncountersListVC.swift */; };
+		D6231CA524E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */; };
+		D6231CA624E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */; };
+		D6231CA724E400C70023BDC8 /* MainSymptomsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CA424E400C70023BDC8 /* MainSymptomsVM.swift */; };
+		D6231CA824E400C70023BDC8 /* MainSymptomsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CA424E400C70023BDC8 /* MainSymptomsVM.swift */; };
+		D6231CAB24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */; };
+		D6231CAC24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */; };
+		D6231CAD24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */; };
+		D6231CAE24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */; };
 		D6340C6224C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6324C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
@@ -207,6 +221,7 @@
 		D6CD28ED24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */; };
 		D6CD28EE24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
 		D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
+		D6EB581724E40043007A34A6 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D6EB581624E40043007A34A6 /* SDWebImage */; };
 		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */; };
@@ -307,6 +322,13 @@
 		D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVM.swift; sourceTree = "<group>"; };
 		D61DFE5F24C1BD15002E1B2E /* ForceOSUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceOSUpdateVC.swift; sourceTree = "<group>"; };
 		D61DFE6224C1BD2C002E1B2E /* ForceOSUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceOSUpdateVM.swift; sourceTree = "<group>"; };
+		D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskyEncountersListVM.swift; sourceTree = "<group>"; };
+		D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskyEncountersListCell.swift; sourceTree = "<group>"; };
+		D6231C9C24E400B10023BDC8 /* RiskyEncountersListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskyEncountersListVC.swift; sourceTree = "<group>"; };
+		D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreventTransmissionVM.swift; sourceTree = "<group>"; };
+		D6231CA424E400C70023BDC8 /* MainSymptomsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSymptomsVM.swift; sourceTree = "<group>"; };
+		D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousRiskyEncountersVM.swift; sourceTree = "<group>"; };
+		D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousRiskyEncountersVC.swift; sourceTree = "<group>"; };
 		D6340C6124C1F46D00E550A1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVC.swift; sourceTree = "<group>"; };
 		D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVM.swift; sourceTree = "<group>"; };
@@ -350,6 +372,7 @@
 				809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */,
 				8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */,
 				80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */,
+				D6EB581724E40043007A34A6 /* SDWebImage in Frameworks */,
 				809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */,
 				80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */,
 				804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */,
@@ -727,12 +750,27 @@
 			path = "Force Update";
 			sourceTree = "<group>";
 		};
+		D6231C9924E400B10023BDC8 /* Risky Encounters List */ = {
+			isa = PBXGroup;
+			children = (
+				D6231C9C24E400B10023BDC8 /* RiskyEncountersListVC.swift */,
+				D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */,
+				D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */,
+			);
+			path = "Risky Encounters List";
+			sourceTree = "<group>";
+		};
 		D63E443324DD85C2007B6728 /* Risky Encounters */ = {
 			isa = PBXGroup;
 			children = (
 				D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */,
 				D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */,
 				D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */,
+				D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */,
+				D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */,
+				D6231CA424E400C70023BDC8 /* MainSymptomsVM.swift */,
+				D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */,
+				D6231C9924E400B10023BDC8 /* Risky Encounters List */,
 			);
 			path = "Risky Encounters";
 			sourceTree = "<group>";
@@ -808,6 +846,7 @@
 				804BE48C24D9A30A00D40C07 /* Alamofire */,
 				800E611324DAE98B00C63567 /* Zip */,
 				80D2345024E2FDD200F684AA /* Crypto */,
+				D6EB581624E40043007A34A6 /* SDWebImage */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
@@ -890,6 +929,7 @@
 				804BE48B24D9A30A00D40C07 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */,
 				80D2344F24E2FDD200F684AA /* XCRemoteSwiftPackageReference "swift-crypto" */,
+				D6EB581524E40043007A34A6 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
@@ -1088,7 +1128,10 @@
 				D6340C6824C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
+				D6231C9F24E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */,
 				80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */,
+				D6231CA124E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
+				D6231CAD24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
@@ -1096,11 +1139,14 @@
 				80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
 				804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */,
+				D6231CA724E400C70023BDC8 /* MainSymptomsVM.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */,
 				D65E57D924D056D6000F2402 /* NewsPageView.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
+				D6231C9D24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */,
 				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
+				D6231CA524E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */,
 				D6CD28EA24CF24DD005847AA /* PrivacyVC.swift in Sources */,
 				8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */,
@@ -1150,6 +1196,7 @@
 				D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */,
 				D6CD28E624CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */,
+				D6231CAB24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1160,6 +1207,7 @@
 				D6340C6324C1F46D00E550A1 /* Version.swift in Sources */,
 				8064DF7D244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
 				80D2345A24E320D700F684AA /* SendReportsVM.swift in Sources */,
+				D6231CAC24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */,
 				8064DF8F244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				8083D8A8244640A0007FA4E9 /* DataListVM.swift in Sources */,
 				80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */,
@@ -1174,6 +1222,7 @@
 				D6CD28E724CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
+				D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				80FC71B8247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */,
 				8083D8B7244640A0007FA4E9 /* Data.swift in Sources */,
@@ -1187,9 +1236,11 @@
 				8083D8BD244640A0007FA4E9 /* RemoteValues.swift in Sources */,
 				8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */,
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
+				D6231CA024E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */,
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
+				D6231CAE24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
 				8083D8C7244640A0007FA4E9 /* DataHeaderCell.swift in Sources */,
@@ -1214,16 +1265,19 @@
 				8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
 				D6CD28EB24CF24DD005847AA /* PrivacyVC.swift in Sources */,
+				D6231CA824E400C70023BDC8 /* MainSymptomsVM.swift in Sources */,
 				D65E57DD24D05D73000F2402 /* NewsVC.swift in Sources */,
 				8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */,
 				8083D8D9244640A0007FA4E9 /* App.swift in Sources */,
 				D61DFE6124C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
+				D6231C9E24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */,
 				8084DEF324AF85F3001FBB16 /* CountryCodesService.swift in Sources */,
 				D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
 				8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */,
 				D65E57E324D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
 				D65E57DA24D056D6000F2402 /* NewsPageView.swift in Sources */,
+				D6231CA624E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
 				D6CD28E324CF24DC005847AA /* FirstActivationVC.swift in Sources */,
@@ -1616,6 +1670,14 @@
 				minimumVersion = 1.9.0;
 			};
 		};
+		D6EB581524E40043007A34A6 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1748,6 +1810,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
 			productName = SwiftProtobuf;
+		};
+		D6EB581624E40043007A34A6 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6EB581524E40043007A34A6 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
