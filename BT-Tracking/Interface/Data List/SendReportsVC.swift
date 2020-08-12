@@ -229,10 +229,6 @@ private extension SendReportsVC {
         })
     }
 
-    func showDownloadDataErrorFailed(_ error: Error) {
-        show(error: error)
-    }
-
     func showVerifyError() {
         showAlert(
             title: viewModel.sendDataErrorWrongCodeTitle,
