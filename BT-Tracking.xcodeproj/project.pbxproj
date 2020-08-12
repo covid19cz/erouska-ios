@@ -14,9 +14,12 @@
 		4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
 		5EE9D815242F74F5002F833C /* DataHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9D814242F74F5002F833C /* DataHeaderCell.swift */; };
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
+		800E611424DAE98B00C63567 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 800E611324DAE98B00C63567 /* Zip */; };
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		803C5B23242932BF00E49414 /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B22242932BF00E49414 /* DataListVC.swift */; };
 		803C5B252429346500E49414 /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5B242429346500E49414 /* DataListVM.swift */; };
+		804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BE48924D9A11A00D40C07 /* ReportEntities.swift */; };
+		804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 804BE48C24D9A30A00D40C07 /* Alamofire */; };
 		805192A024AF8E2700765392 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8051929F24AF8E2700765392 /* RxCocoa */; };
 		805192A224AF8E2700765392 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A124AF8E2700765392 /* RxSwift */; };
 		805192A424AF8E2700765392 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A324AF8E2700765392 /* RxDataSources */; };
@@ -218,6 +221,7 @@
 		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		803C5B22242932BF00E49414 /* DataListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVC.swift; sourceTree = "<group>"; };
 		803C5B242429346500E49414 /* DataListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVM.swift; sourceTree = "<group>"; };
+		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
 		8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureService.swift; sourceTree = "<group>"; };
 		8054C0AD241D492F008907B8 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 			files = (
 				809F9D9524AF8C8700D34CC9 /* RxRealm in Frameworks */,
 				809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */,
+				800E611424DAE98B00C63567 /* Zip in Frameworks */,
 				809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */,
 				80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */,
 				809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */,
@@ -335,6 +340,7 @@
 				80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */,
 				809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */,
 				80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */,
+				804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */,
 				80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */,
 				D4BBD52AF75F3BC730CEFFA6 /* Pods_eRouska.framework in Frameworks */,
 			);
@@ -558,6 +564,7 @@
 		8084DEF524AF86B0001FBB16 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
+				804BE48924D9A11A00D40C07 /* ReportEntities.swift */,
 				8084DEF624AF86C1001FBB16 /* ReportService.swift */,
 			);
 			path = Reports;
@@ -764,6 +771,8 @@
 				80AB9BCD24AF8D0B0088D256 /* Reachability */,
 				80AB9BD024AF8D550088D256 /* SwiftyMarkdown */,
 				8091E08124CB3CDF00E0E877 /* AlamofireImage */,
+				804BE48C24D9A30A00D40C07 /* Alamofire */,
+				800E611324DAE98B00C63567 /* Zip */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
@@ -840,6 +849,8 @@
 				80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */,
 				80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */,
 				8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				804BE48B24D9A30A00D40C07 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
@@ -1044,6 +1055,7 @@
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
+				804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */,
 				D65E57D924D056D6000F2402 /* NewsPageView.swift in Sources */,
@@ -1465,6 +1477,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		804BE48B24D9A30A00D40C07 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
 		8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
@@ -1540,6 +1568,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		800E611324DAE98B00C63567 /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
+		804BE48C24D9A30A00D40C07 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 804BE48B24D9A30A00D40C07 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		8051929F24AF8E2700765392 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 809F9D8824AF8BFB00D34CC9 /* XCRemoteSwiftPackageReference "RxSwift" */;
