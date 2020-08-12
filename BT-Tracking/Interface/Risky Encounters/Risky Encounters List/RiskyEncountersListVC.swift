@@ -36,10 +36,6 @@ final class RiskyEncountersListVC: UIViewController {
 
 extension RiskyEncountersListVC: UITableViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.content?.items.count ?? 0
     }
