@@ -140,11 +140,9 @@ private extension SendReportsVC {
         AppDelegate.dependency.verification.verify(with: code) { [weak self] result in
             switch result {
             case .success(let token):
-                #if DEBUG
-                self?.debugAskForTypeOfKeys(token: token)
-                #elseif PROD
+                #if PROD
                 self?.sendReport(with: .normal, token: token)
-                else
+                #else
                 self?.debugAskForTypeOfKeys(token: token)
                 #endif
             case .failure(let error):
