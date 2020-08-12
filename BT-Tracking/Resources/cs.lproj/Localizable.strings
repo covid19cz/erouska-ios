@@ -50,7 +50,7 @@
 "share_app" = "Sdílet aplikaci";
 "share_app_message" = "Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na %@/";
 
-"data_list_title" = "Moje data";
+"data_list_title" = "Aktuálně";
 "data_list_headline" = "Zde je výpis eRoušek, které se vyskytly ve vašem okolí. Zobrazení neindikuje nakažení ostatních uživatelů.\nVyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone při zhasnutém displeji méně účinné.";
 "data_list_info_button" = "Informace o sběru dat";
 "data_list_delete_button" = "Smazat data";
@@ -62,21 +62,17 @@
 "data_list_header_id" = "ID";
 "data_list_header_signal" = "RSSI";
 
-"data_list_send_question_title" = "Požádal vás pracovník hygienické stanice o zaslání seznamu telefonů, se kterými jste se setkali?";
-"data_list_send_question_message" = "S odeslanými daty bude Ministerstvo zdravotnictví a jemu podřízení hygienici pracovat na základě vašeho souhlasu podle podmínek zpracování.";
-"data_list_send_question_yes" = "Ano, odeslat";
-"data_list_send_question_no" = "Ne";
+"data_list_send_title" = "Odeslat data";
+"data_list_send_headline" = "V případě potvrzené nákazy virem COVID-19 vás bude kontaktovat pracovník hygienické stanice. Odešle vám SMS zprávu obsahující ověřovací kód pro povolení odeslání dat.";
+"data_list_send_placeholder" = "Ověřovací kód(povinné)";
+"data_list_send_action_title" = "Ověřit a odeslat data";
 
-"data_list_send_error_wait" = "Data jsme už odeslali. Prosím počkejte 15 minut a pošlete je znovu.";
 "data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";
 "data_list_send_error_failed_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
 "data_list_send_error_file_title" = "Nepodařilo se vytvořit soubor se setkáními";
-"data_list_send_error_only_after_message" = "Sdílejte data jen v případě, že vás pracovník hygienické stanice poprosí o jejich zaslání. To se stane pouze tehdy, když budete v okruhu lidí nakažených koronavirem, nebo test prokáže vaši nákazu.";
-
-"data_delete_title" = "Smazat data";
-"data_delete_body" = "Opravdu chcete smazat všechna naměřená data?\n\nHygienici tak přijdou o možnost využít vaše kontakty v případě, že budete nakažen.\n\nPo smazání dat dojde k automatickému pozastavení eRoušky.";
-"data_delete_delete_button" = "Smazat všechna data";
-"data_delete_success" = "Všechna data jsme odstranili a eRoušku pozastavili";
+"data_list_send_error_no_keys" = "Nemáte žádné klíče k odeslání, zkuste to později.";
+"data_list_send_error_wrong_code_title" = "Neplatný ověřovací kód";
+"data_list_send_error_worng_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
 
 "data_send_title" = "Odesláno";
 "data_send_title_label" = "Data jste úspěsně odeslali";

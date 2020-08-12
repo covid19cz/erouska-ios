@@ -1,5 +1,5 @@
 //
-//  SendReport.swift
+//  ReportEntities.swift
 //  eRouska
 //
 //  Created by Lukáš Foldýna on 04/08/2020.
@@ -14,6 +14,7 @@ enum ReportError: String, Error {
     case cancelled
     case unknown
     case alreadyRunning
+    case stringEncodingFailure
 }
 
 struct Report: Encodable {

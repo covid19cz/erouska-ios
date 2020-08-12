@@ -10,19 +10,18 @@ import Foundation
 import ExposureNotification
 import FirebaseStorage
 import FirebaseAuth
-import CommonCrypto
-import Security
 import Alamofire
 import Zip
+import CryptoKit
 
 protocol ReportServicing: class {
 
-    var healthAuthority: String { get set }
+    func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String
 
     typealias UploadKeysCallback = (Result<Bool, Error>) -> Void
 
     var isUploading: Bool { get }
-    func uploadKeys(keys: [ExposureDiagnosisKey], callback: @escaping UploadKeysCallback)
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback)
 
     typealias DownloadKeysCallback = (Result<[URL], Error>) -> Void
 
@@ -34,11 +33,9 @@ protocol ReportServicing: class {
 
 }
 
-class ReportService: ReportServicing {
+final class ReportService: ReportServicing {
 
-    var healthAuthority = "cz.covid19cz.erouska.dev"
-
-    private var timeout: TimeInterval = 30
+    private let healthAuthority = "cz.covid19cz.erouska.dev"
 
     private let uploadURL = URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
 
@@ -52,9 +49,35 @@ class ReportService: ReportServicing {
     }
     private let downloadIndex = "/index.txt"
 
+    func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String {
+        // Sort by the key.
+        let sortedKeys = keys.sorted { (lhs, rhs) -> Bool in
+            lhs.keyData.base64EncodedString() < rhs.keyData.base64EncodedString()
+        }
+
+        // Build the cleartext.
+        let perKeyClearText: [String] = sortedKeys.map { key in
+            [key.keyData.base64EncodedString(),
+             String(key.rollingStartNumber),
+             String(key.rollingPeriod),
+             String(key.transmissionRiskLevel)].joined(separator: ".")
+        }
+        let clearText = perKeyClearText.joined(separator: ",")
+
+        guard let clearData = clearText.data(using: .utf8) else {
+            throw ReportError.stringEncodingFailure
+        }
+
+        let hmacKey = SymmetricKey(data: secret)
+        let authenticationCode = HMAC<SHA256>.authenticationCode(for: clearData, using: hmacKey)
+        return authenticationCode.withUnsafeBytes { bytes in
+            return Data(bytes)
+        }.base64EncodedString()
+    }
+    
     private(set) var isUploading: Bool = false
 
-    func uploadKeys(keys: [ExposureDiagnosisKey], callback: @escaping UploadKeysCallback) {
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback) {
         guard !isUploading else {
             callback(.failure(ReportError.alreadyRunning))
             return
@@ -79,13 +102,13 @@ class ReportService: ReportServicing {
             }
         }
 
-        let randomInt = Int.random(in: 0...1000)
-        let randomBase64 = Data(count: randomInt + 1000).base64EncodedString()
+        let randomInt = Int.random(in: 0...100)
+        let randomBase64 = Data.random(count: randomInt + 100).base64EncodedString()
         let report = Report(
             temporaryExposureKeys: keys,
             healthAuthority: healthAuthority,
-            verificationPayload: nil,
-            hmacKey: nil,
+            verificationPayload: verificationPayload,
+            hmacKey: hmacSecret.base64EncodedString(),
             symptomOnsetInterval: nil,
             traveler: false,
             revisionToken: nil,
@@ -95,13 +118,14 @@ class ReportService: ReportServicing {
         AF.request(uploadURL, method: .post, parameters: report, encoder: JSONParameterEncoder.default)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: ReportResult.self) { response in
-            debugPrint("Response: \(response)")
-            switch response.result {
-            case .success:
-                reportSuccess()
-            case .failure(let error):
-                reportFailure(error)
-            }
+                print("Response upload")
+                debugPrint(response)
+                switch response.result {
+                case .success:
+                    reportSuccess()
+                case .failure(let error):
+                    reportFailure(error)
+                }
         }
     }
 

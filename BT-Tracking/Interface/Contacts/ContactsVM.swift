@@ -11,13 +11,7 @@ import UIKit
 struct ContactsVM {
 
     let tabTitle = "contacts_title"
-    var tabIcon: UIImage? {
-        if #available(iOS 13, *) {
-            return UIImage(systemName: "phone")
-        } else {
-            return UIImage(named: "phone")?.resize(toWidth: 26)
-        }
-    }
+    let tabIcon = UIImage(systemName: "phone")
 
     let title = "contacts_title"
 

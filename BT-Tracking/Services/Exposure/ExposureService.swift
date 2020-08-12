@@ -44,7 +44,7 @@ protocol ExposureServicing: class {
 
 }
 
-class ExposureService: ExposureServicing {
+final class ExposureService: ExposureServicing {
 
     var readyToUse: Completable
 
