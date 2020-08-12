@@ -18,7 +18,7 @@ final class DataListVM {
     // MARK: - Localization
 
     let tabTitle = "data_list_title"
-    let tabIcon = UIImage(systemName: "wallet.pass")
+    let tabIcon = UIImage(systemName: "doc.plaintext")
 
     let title = "data_list_title"
     let infoButton = "data_list_info_button"
