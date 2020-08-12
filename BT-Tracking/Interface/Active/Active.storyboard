@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -96,10 +94,10 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="756"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1y8-d8-PjO">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="497"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="519"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2X4-TO-6PI">
-                                                <rect key="frame" x="20" y="10" width="374" height="471"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="493"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Máte podezření na koronavirus?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7N-dW-0In">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -113,7 +111,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-QQ-KxS">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-QQ-KxS">
                                                         <rect key="frame" x="0.0" y="93" width="374" height="30"/>
                                                         <state key="normal" title="Důležité kontakty"/>
                                                         <connections>
@@ -122,7 +120,7 @@
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCV-og-Xxr" userLabel="Medium Space View">
                                                         <rect key="frame" x="0.0" y="138" width="374" height="10"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="jc5-8b-SBk"/>
                                                         </constraints>
@@ -134,39 +132,39 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veškeré otázky a nejasnosti týkající se koronaviru by vám měli zodpovědět na webu MZČR nebo  na bezplatné infolince 1212." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3J8-Xr-8E5">
-                                                        <rect key="frame" x="0.0" y="198.5" width="374" height="64.5"/>
+                                                        <rect key="frame" x="0.0" y="198.5" width="374" height="86.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ltc-7d-rWH">
-                                                        <rect key="frame" x="0.0" y="278" width="374" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ltc-7d-rWH">
+                                                        <rect key="frame" x="0.0" y="300" width="374" height="30"/>
                                                         <state key="normal" title="Často kladené otázky"/>
                                                         <connections>
                                                             <action selector="faqAction" destination="PPZ-by-KGR" eventType="touchUpInside" id="7Pt-B4-OxC"/>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsA-sP-Cx0" userLabel="Medium Space View">
-                                                        <rect key="frame" x="0.0" y="323" width="374" height="10"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <rect key="frame" x="0.0" y="345" width="374" height="10"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="HpA-FL-XSv"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O aplikaci eRouška" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inP-AV-6wj">
-                                                        <rect key="frame" x="0.0" y="348" width="374" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="370" width="374" height="20.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Potřebujete poradit s aplikací nebo vás zajímá jak funguje? Podívejte se na web erouska.cz." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWx-Eo-EH7">
-                                                        <rect key="frame" x="0.0" y="383.5" width="374" height="42.5"/>
+                                                        <rect key="frame" x="0.0" y="405.5" width="374" height="42.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALn-Nw-MAG">
-                                                        <rect key="frame" x="0.0" y="441" width="374" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALn-Nw-MAG">
+                                                        <rect key="frame" x="0.0" y="463" width="374" height="30"/>
                                                         <state key="normal" title="Přejít na web erouska.cz"/>
                                                         <connections>
                                                             <action selector="webAction" destination="PPZ-by-KGR" eventType="touchUpInside" id="c72-W2-fpQ"/>
@@ -175,7 +173,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="2X4-TO-6PI" secondAttribute="bottom" constant="16" id="01R-UH-O8Z"/>
                                             <constraint firstItem="2X4-TO-6PI" firstAttribute="top" secondItem="1y8-d8-PjO" secondAttribute="top" constant="10" id="g3M-fv-V0b"/>
@@ -196,14 +194,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="KLZ-Yt-dbU"/>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="u4L-1o-dHI"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="bce-ix-LBm" firstAttribute="top" secondItem="mhY-QC-TiG" secondAttribute="topMargin" id="5dc-z6-exZ"/>
                             <constraint firstItem="u4L-1o-dHI" firstAttribute="trailing" secondItem="bce-ix-LBm" secondAttribute="trailing" id="E82-U0-AWU"/>
                             <constraint firstItem="bce-ix-LBm" firstAttribute="leading" secondItem="u4L-1o-dHI" secondAttribute="leading" id="hQR-me-S2a"/>
                             <constraint firstAttribute="bottom" secondItem="bce-ix-LBm" secondAttribute="bottom" id="rsP-RM-tYC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="u4L-1o-dHI"/>
                     </view>
                     <navigationItem key="navigationItem" title="Kontakty" id="4V9-tV-lEk"/>
                     <connections>
@@ -260,7 +258,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-ty-mbL">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="212" height="32"/>
                                                                             </view>
-                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQp-na-S8Q" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQp-na-S8Q" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
                                                                                 <rect key="frame" x="233" y="0.0" width="46" height="32"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
@@ -274,7 +272,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                                     <action selector="closeExposureBanner:" destination="SLc-31-c7B" eventType="touchUpInside" id="d6g-sI-WDp"/>
                                                                                 </connections>
                                                                             </button>
-                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocf-F5-uU9" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocf-F5-uU9" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
                                                                                 <rect key="frame" x="300" y="0.0" width="46" height="32"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
@@ -321,7 +319,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                                         </constraints>
                                                                                     </imageView>
                                                                                 </subviews>
-                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                                 <constraints>
                                                                                     <constraint firstItem="Dqs-Rj-Q2J" firstAttribute="centerY" secondItem="TT2-5W-m3v" secondAttribute="centerY" id="3mD-kC-R5E"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="Dqs-Rj-Q2J" secondAttribute="trailing" id="I9A-fD-ZFn"/>
@@ -337,9 +335,9 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ED1-W9-IXD">
                                                                                 <rect key="frame" x="236" y="0.0" width="110" height="48"/>
                                                                                 <subviews>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-eb-fmL" customClass="MainScanningButton" customModule="eRouska" customModuleProvider="target">
+                                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-eb-fmL" customClass="MainScanningButton" customModule="eRouska" customModuleProvider="target">
                                                                                         <rect key="frame" x="0.0" y="8" width="110" height="32"/>
-                                                                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="32" id="DMf-Rt-tSx"/>
                                                                                             <constraint firstAttribute="width" constant="110" id="hHl-s3-yn0"/>
@@ -353,7 +351,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
-                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                                 <constraints>
                                                                                     <constraint firstItem="UDA-eb-fmL" firstAttribute="leading" secondItem="ED1-W9-IXD" secondAttribute="leading" id="N87-xl-UU8"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="UDA-eb-fmL" secondAttribute="trailing" id="R10-uC-TO6"/>
@@ -377,7 +375,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="IbU-pw-itY" secondAttribute="bottom" constant="14" id="2IF-PK-7Fs"/>
                                                             <constraint firstItem="IbU-pw-itY" firstAttribute="leading" secondItem="S6s-Qx-Qlh" secondAttribute="leading" constant="14" id="ACQ-7k-z7k"/>
@@ -395,7 +393,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailingMargin" secondItem="qcL-c9-sLJ" secondAttribute="trailing" id="FxJ-Bi-YAJ"/>
                                             <constraint firstItem="qcL-c9-sLJ" firstAttribute="top" secondItem="SRX-7H-oZ1" secondAttribute="top" constant="20" id="HAw-Km-4dC"/>
@@ -415,14 +413,14 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                 <viewLayoutGuide key="frameLayoutGuide" id="ggr-sE-XeN"/>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="IN0-jh-QW1"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="aWN-IR-79w" firstAttribute="top" secondItem="hh6-32-Hb4" secondAttribute="top" id="5oC-zr-nLn"/>
                             <constraint firstItem="IN0-jh-QW1" firstAttribute="trailing" secondItem="aWN-IR-79w" secondAttribute="trailing" id="7W4-9u-9Mw"/>
                             <constraint firstItem="aWN-IR-79w" firstAttribute="leading" secondItem="IN0-jh-QW1" secondAttribute="leading" id="WSN-C2-bgf"/>
                             <constraint firstItem="IN0-jh-QW1" firstAttribute="bottom" secondItem="aWN-IR-79w" secondAttribute="bottom" id="dBR-yn-5KX"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="IN0-jh-QW1"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
@@ -454,7 +452,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="mainStackView" destination="IbU-pw-itY" id="mUd-gK-QSO"/>
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
-                        <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" id="HRF-xK-4t2"/>
+                        <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" modalPresentationStyle="fullScreen" id="HRF-xK-4t2"/>
                         <segue destination="z3e-t5-SVC" kind="show" identifier="about" id="7iH-sH-Ztm"/>
                     </connections>
                 </viewController>
@@ -492,11 +490,5 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
     <resources>
         <image name="ScanActive" width="48" height="48"/>
         <image name="ellipsis.circle.fill" width="24" height="24"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

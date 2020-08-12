@@ -81,6 +81,9 @@ enum RemoteConfigValueKey: String {
 
     case riskyEncountersTitle
     case riskyEncountersBody
+
+    case symptomsContentJson
+    case preventionContentJson
 }
 
 struct RemoteValues {
@@ -209,6 +212,30 @@ struct RemoteValues {
 
     static var riskyEncountersBody: String {
         return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersBody)
+    }
+
+    static var symptomsContent: RiskyEncountersListContent? {
+        return parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .symptomsContentJson))
+    }
+
+    static var preventionContent: RiskyEncountersListContent? {
+        return parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .preventionContentJson))
+    }
+
+    private static func parseRiskyEncountersListContent(from rawJson: String) -> RiskyEncountersListContent? {
+        guard let json = rawJson.data(using: .utf8) else { return nil }
+        do {
+            let remoteContent = try JSONDecoder().decode(RiskyEncountersListRemoteContent.self, from: json)
+            return RiskyEncountersListContent(
+                headline: remoteContent.title,
+                items: remoteContent.items.compactMap {
+                    guard let imageUrl = URL(string: $0.iconUrl) else { return nil }
+                    return AsyncImageTitleViewModel(imageUrl: imageUrl, title: $0.label)
+                }
+            )
+        } catch {
+            return nil
+        }
     }
 }
 
