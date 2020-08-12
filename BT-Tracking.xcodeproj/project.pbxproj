@@ -816,9 +816,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8054C0AC241D492F008907B8 /* eRouska */ = {
+		8054C0AC241D492F008907B8 /* eRouska Dev */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska" */;
+			buildConfigurationList = 8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska Dev" */;
 			buildPhases = (
 				E0A1723CD1B050C9925359D5 /* [CP] Check Pods Manifest.lock */,
 				8054C0A9241D492F008907B8 /* Sources */,
@@ -831,7 +831,7 @@
 			);
 			dependencies = (
 			);
-			name = eRouska;
+			name = "eRouska Dev";
 			packageProductDependencies = (
 				80FC71BB2477180400F86389 /* SwiftProtobuf */,
 				809F9D8924AF8BFB00D34CC9 /* RxSwift */,
@@ -935,7 +935,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8054C0AC241D492F008907B8 /* eRouska */,
+				8054C0AC241D492F008907B8 /* eRouska Dev */,
 				8083D8A5244640A0007FA4E9 /* eRouska Prod */,
 			);
 		};
@@ -1553,7 +1553,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska" */ = {
+		8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska Dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8054C0C2241D4932008907B8 /* Debug */,

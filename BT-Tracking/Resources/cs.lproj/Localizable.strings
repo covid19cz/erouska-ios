@@ -72,7 +72,7 @@
 "data_list_send_error_file_title" = "Nepodařilo se vytvořit soubor se setkáními";
 "data_list_send_error_no_keys" = "Nemáte žádné klíče k odeslání, zkuste to později.";
 "data_list_send_error_wrong_code_title" = "Neplatný ověřovací kód";
-"data_list_send_error_worng_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
+"data_list_send_error_wrong_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
 
 "data_send_title" = "Odesláno";
 "data_send_title_label" = "Data jste úspěsně odeslali";

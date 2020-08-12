@@ -9,7 +9,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>cs</string>
 	<key>CFBundleDisplayName</key>
-	<string></string>
+	<string>eRouška Dev</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -17,7 +17,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>eRouška DEV</string>
+	<string>eRouskaDev</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -43,26 +43,6 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.covid19cz.BT-Tracking5</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.covid19cz.BT-Tracking5</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.covid19cz.BT-Tracking6</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.covid19cz.BT-Tracking6</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.1077972356575-rflvasannh2k4hh3475994j1dhk99qkh</string>
@@ -75,8 +55,6 @@
 	<string>CZ</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
@@ -94,6 +72,8 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+        <string>bluetooth-le</string>
+        <string>telephony</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
@@ -109,5 +89,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 </dict>
 </plist>
