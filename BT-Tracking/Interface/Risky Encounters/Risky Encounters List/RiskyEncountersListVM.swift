@@ -10,11 +10,25 @@ import Foundation
 
 protocol RiskyEncountersListVM {
     var title: String { get }
-    var headline: String { get }
-    var items: [AsyncImageTitleViewModel] { get }
+    var content: RiskyEncountersListContent? { get }
+}
+
+struct RiskyEncountersListContent {
+    let headline: String
+    let items: [AsyncImageTitleViewModel]
 }
 
 struct AsyncImageTitleViewModel {
     let imageUrl: URL
     let title: String
+}
+
+struct RiskyEncountersListRemoteContent: Decodable {
+    let title: String
+    let items: [Item]
+
+    struct Item: Decodable {
+        let iconUrl: String
+        let label: String
+    }
 }

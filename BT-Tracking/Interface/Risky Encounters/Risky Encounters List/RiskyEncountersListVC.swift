@@ -19,7 +19,7 @@ final class RiskyEncountersListVC: UIViewController {
         super.viewDidLoad()
 
         title = Localizable(viewModel.title)
-        titleLabel.text = Localizable(viewModel.headline)
+        titleLabel.text = Localizable(viewModel.content?.headline ?? "")
 
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 76
@@ -41,12 +41,14 @@ extension RiskyEncountersListVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.items.count
+        return viewModel.content?.items.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: mainSymptomCellReusableIndetifier) as! RiskyEncountersListCell
-        cell.config(with: viewModel.items[indexPath.row])
+        if let item = viewModel.content?.items[indexPath.row] {
+            cell.config(with: item)
+        }
         return cell
     }
 }
