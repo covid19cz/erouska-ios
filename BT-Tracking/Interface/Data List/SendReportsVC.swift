@@ -49,7 +49,6 @@ final class SendReportsVC: UIViewController {
 
         setupTextField()
         setupStrings()
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -87,14 +86,7 @@ final class SendReportsVC: UIViewController {
 extension SendReportsVC: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let type: InputValidation
-        if textField == codeTextField {
-            type = .code
-        } else {
-            return true
-        }
-
-        return validateTextChange(with: type, textField: textField, changeCharactersIn: range, newString: string)
+        return validateTextChange(with: .code, textField: textField, changeCharactersIn: range, newString: string)
     }
 
 }
@@ -125,14 +117,14 @@ private extension SendReportsVC {
     func reportShowProgress() {
         showProgress()
 
-        isModalInPresentation = false
+        isModalInPresentation = true
         navigationItem.setLeftBarButton(nil, animated: true)
     }
 
     func reportHideProgress() {
         hideProgress()
 
-        //isModalInPresentation = true
+        isModalInPresentation = false
         navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction)), animated: true)
     }
 
@@ -148,7 +140,11 @@ private extension SendReportsVC {
         AppDelegate.dependency.verification.verify(with: code) { [weak self] result in
             switch result {
             case .success(let token):
-                self?.askForTypeOfKeys(token: token)
+                #if PROD || DEBUG
+                self?.sendReport(with: .normal, token: token)
+                #else
+                self?.debugAskForTypeOfKeys(token: token)
+                #endif
             case .failure(let error):
                 log("DataListVC: Failed to verify code \(error)")
                 self?.reportHideProgress()
@@ -157,7 +153,7 @@ private extension SendReportsVC {
         }
     }
 
-    func askForTypeOfKeys(token: String) {
+    func debugAskForTypeOfKeys(token: String) {
         let controller = UIAlertController(title: "Který druh klíčů?", message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Test Keys", style: .default, handler: { [weak self] _ in
             self?.sendReport(with: .test, token: token)

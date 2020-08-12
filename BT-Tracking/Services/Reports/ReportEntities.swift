@@ -1,5 +1,5 @@
 //
-//  SendReport.swift
+//  ReportEntities.swift
 //  eRouska
 //
 //  Created by Lukáš Foldýna on 04/08/2020.
