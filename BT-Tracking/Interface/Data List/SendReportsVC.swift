@@ -113,7 +113,7 @@ private extension SendReportsVC {
 
     func setupStrings() {
         title = viewModel.title
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
         headlineLabel.text = viewModel.headline
         codeTextField.placeholder = viewModel.placeholder
@@ -126,14 +126,14 @@ private extension SendReportsVC {
         showProgress()
 
         isModalInPresentation = false
-        navigationItem.setRightBarButton(nil, animated: true)
+        navigationItem.setLeftBarButton(nil, animated: true)
     }
 
     func reportHideProgress() {
         hideProgress()
 
         //isModalInPresentation = true
-        navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction)), animated: true)
+        navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction)), animated: true)
     }
 
     // MARK: - Reports

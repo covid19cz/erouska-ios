@@ -24,18 +24,11 @@ final class SendResultVC: UIViewController {
 
         navigationItem.localizedTitle("data_send_title")
         navigationItem.hidesBackButton = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
         titleLabel.localizedText("data_send_title_label")
         headlineLabel.localizedText("data_send_headline")
         bodyLabel.localizedText("data_send_body")
         closeButton.localizedTitle("data_send_close_button")
-    }
-
-    // MARK: - Actions
-
-    @IBAction private func closeAction() {
-        dismiss(animated: true)
     }
 
 }
