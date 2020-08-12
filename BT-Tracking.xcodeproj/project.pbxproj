@@ -142,6 +142,9 @@
 		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
 		80ECB96624290DA900E57601 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
 		80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* DataList.storyboard */; };
+		80F3131524E3FE8500A93CCD /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 80F3131424E3FE8500A93CCD /* Zip */; };
+		80F3131724E3FE9100A93CCD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 80F3131624E3FE9100A93CCD /* Alamofire */; };
+		80F3131924E3FE9100A93CCD /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 80F3131824E3FE9100A93CCD /* Crypto */; };
 		80FC71B7247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */; };
 		80FC71B8247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */; };
 		80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BB2477180400F86389 /* SwiftProtobuf */; };
@@ -364,12 +367,15 @@
 				805192A224AF8E2700765392 /* RxSwift in Frameworks */,
 				805192A624AF8E2700765392 /* RxKeyboard in Frameworks */,
 				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
+				80F3131924E3FE9100A93CCD /* Crypto in Frameworks */,
 				805192A424AF8E2700765392 /* RxDataSources in Frameworks */,
+				80F3131524E3FE8500A93CCD /* Zip in Frameworks */,
 				80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */,
 				805192AC24AF8E2700765392 /* Reachability in Frameworks */,
 				805192A024AF8E2700765392 /* RxCocoa in Frameworks */,
 				805192AE24AF8E2700765392 /* SwiftyMarkdown in Frameworks */,
 				80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */,
+				80F3131724E3FE9100A93CCD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,6 +840,9 @@
 				805192AB24AF8E2700765392 /* Reachability */,
 				805192AD24AF8E2700765392 /* SwiftyMarkdown */,
 				80DF5FB824CB579E00332D25 /* AlamofireImage */,
+				80F3131424E3FE8500A93CCD /* Zip */,
+				80F3131624E3FE9100A93CCD /* Alamofire */,
+				80F3131824E3FE9100A93CCD /* Crypto */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska.app */;
@@ -1714,6 +1723,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
+		};
+		80F3131424E3FE8500A93CCD /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
+		80F3131624E3FE9100A93CCD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 804BE48B24D9A30A00D40C07 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		80F3131824E3FE9100A93CCD /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80D2344F24E2FDD200F684AA /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
 		};
 		80FC71BB2477180400F86389 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
