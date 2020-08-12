@@ -11,5 +11,5 @@ import Foundation
 struct PreventTransmissionVM: RiskyEncountersListVM {
     let title = "prevent_transmission_title"
     let headline = "prevent_transmission_headline"
-    let items: [AsyncImageTitleViewModel] = []
+    let items: [AsyncImageTitleViewModel] = RemoteValues.preventionContentJson
 }

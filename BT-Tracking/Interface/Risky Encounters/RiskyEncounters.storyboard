@@ -268,7 +268,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cJL-tK-o7o">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cJL-tK-o7o">
                                 <rect key="frame" x="0.0" y="148.5" width="414" height="713.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8e5-2P-UM4">
@@ -290,7 +290,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainSymptomCell" rowHeight="76" id="oPh-tW-CYU" customClass="RiskyEncountersListCell" customModule="eRouska" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RiskyEncountersListCell" rowHeight="76" id="oPh-tW-CYU" customClass="RiskyEncountersListCell" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="79.5" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oPh-tW-CYU" id="5QH-83-YC8">
@@ -312,12 +312,13 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="edd-2z-3UW" secondAttribute="bottom" constant="8" id="BMs-UK-j3Y"/>
-                                                <constraint firstItem="edd-2z-3UW" firstAttribute="top" secondItem="5QH-83-YC8" secondAttribute="top" constant="8" id="Fw6-9n-dka"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="edd-2z-3UW" secondAttribute="bottom" constant="8" id="BMs-UK-j3Y"/>
+                                                <constraint firstItem="edd-2z-3UW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5QH-83-YC8" secondAttribute="top" constant="8" id="Fw6-9n-dka"/>
                                                 <constraint firstItem="nVz-Y2-Cvv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5QH-83-YC8" secondAttribute="topMargin" constant="8" id="Jxn-aZ-RMg"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="nVz-Y2-Cvv" secondAttribute="trailing" constant="16" id="Nq4-ZR-imX"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="nVz-Y2-Cvv" secondAttribute="bottom" constant="8" id="XYw-KD-rIA"/>
                                                 <constraint firstItem="nVz-Y2-Cvv" firstAttribute="centerY" secondItem="5QH-83-YC8" secondAttribute="centerY" id="dPj-NO-Fnz"/>
+                                                <constraint firstItem="edd-2z-3UW" firstAttribute="centerY" secondItem="5QH-83-YC8" secondAttribute="centerY" id="vlL-yX-5SB"/>
                                                 <constraint firstItem="nVz-Y2-Cvv" firstAttribute="leading" secondItem="edd-2z-3UW" secondAttribute="trailing" constant="24" id="wDk-kE-iPC"/>
                                                 <constraint firstItem="edd-2z-3UW" firstAttribute="leading" secondItem="5QH-83-YC8" secondAttribute="leading" constant="16" id="wpu-Et-kaO"/>
                                             </constraints>

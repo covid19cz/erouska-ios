@@ -11,5 +11,5 @@ import Foundation
 struct MainSymptomsVM: RiskyEncountersListVM {
     let title = "main_symptoms_title"
     let headline = "main_symptoms_headline"
-    let items: [AsyncImageTitleViewModel] = []
+    let items: [AsyncImageTitleViewModel] = RemoteValues.symptomsContentJson
 }

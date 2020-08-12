@@ -22,10 +22,12 @@ final class RiskyEncountersListVC: UIViewController {
         titleLabel.text = Localizable(viewModel.headline)
 
         tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 76
+        tableView.rowHeight = UITableView.automaticDimension
     }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
 
         guard let header = tableView.tableHeaderView else { return }
         header.frame.size.height = header.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0)).height
