@@ -43,12 +43,19 @@ final class SendReportsVC: UIViewController {
     @IBOutlet private weak var actionButton: Button!
 
     override func viewDidLoad() {
-
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
 
         setupTextField()
         setupStrings()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if Device.current == .iPhoneSE {
+            navigationController?.navigationBar.prefersLargeTitles = false
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
