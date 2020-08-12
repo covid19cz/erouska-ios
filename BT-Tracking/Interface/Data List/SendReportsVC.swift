@@ -140,10 +140,10 @@ private extension SendReportsVC {
         AppDelegate.dependency.verification.verify(with: code) { [weak self] result in
             switch result {
             case .success(let token):
-                #if PROD || DEBUG
-                self?.sendReport(with: .normal, token: token)
-                #else
+                #if DEBUG || !PROD
                 self?.debugAskForTypeOfKeys(token: token)
+                #else
+                self?.sendReport(with: .normal, token: token)
                 #endif
             case .failure(let error):
                 log("DataListVC: Failed to verify code \(error)")
