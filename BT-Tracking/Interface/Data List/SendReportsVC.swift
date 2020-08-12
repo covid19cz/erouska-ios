@@ -36,7 +36,6 @@ final class SendReportsVC: UIViewController {
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var headlineLabel: UILabel!
-    @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var codeTextField: UITextField!
 
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
@@ -113,8 +112,12 @@ private extension SendReportsVC {
     }
 
     func setupStrings() {
-        title = "Odeslat Data"
+        title = viewModel.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+
+        headlineLabel.text = viewModel.headline
+        codeTextField.placeholder = viewModel.placeholder
+        actionButton.localizedTitle(viewModel.actionTitle)
     }
 
     // MARK: - Progress
@@ -177,7 +180,7 @@ private extension SendReportsVC {
             case .success(let keys):
                 guard !keys.isEmpty else {
                     self.reportHideProgress()
-                    self.showAlert(title: "Nemáte žádné klíče k odeslání, zkuste to později.", message: "")
+                    self.showNoKeysError()
                     return
                 }
 
@@ -232,13 +235,17 @@ private extension SendReportsVC {
 
     func showVerifyError() {
         showAlert(
-            title: "Neplatný ověřovací kód",
-            message: "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.",
+            title: viewModel.sendDataErrorWrongCodeTitle,
+            message: viewModel.sendDataErrorWrongCodeMessage,
             okHandler: { [weak self] in
                 self?.codeTextField.text = nil
                 self?.codeTextField.becomeFirstResponder()
             }
         )
+    }
+
+    func showNoKeysError() {
+        showAlert(title: viewModel.sendDataErrorNoKeys, message: "")
     }
 
     func showSendDataError() {

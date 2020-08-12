@@ -55,7 +55,6 @@ private extension DataListVC {
 
     func setupStrings() {
         navigationItem.localizedTitle(viewModel.title)
-        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.deleteButton)
     }
 
     func setupTabBar() {
