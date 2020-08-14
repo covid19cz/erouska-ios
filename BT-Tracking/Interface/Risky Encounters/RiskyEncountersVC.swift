@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class RiskyEncountersPositiveView: UIStackView {
     @IBOutlet weak var titleLabel: UILabel!
@@ -25,6 +26,13 @@ final class RiskyEncountersVC: UIViewController {
     @IBOutlet weak var previousRiskyEncountersSeparator: UIView!
 
     private let viewModel = RiskyEncountersVM()
+    private let disposeBag = DisposeBag()
+
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd. MM. yyyy"
+        return dateFormatter
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +40,34 @@ final class RiskyEncountersVC: UIViewController {
         title = Localizable(viewModel.title)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
-        positiveView.isHidden = viewModel.riskyEncouterDateToShow == nil
-        negativeView.isHidden = !positiveView.isHidden
-
-        [mainSymptomsButton, mainSymptomsSeparator, preventTransmissionButton, preventTransmissionSeparator].forEach {
-            $0?.isHidden = positiveView.isHidden
-        }
-        [previousRiskyEncountersButton, previousRiskyEncountersSeparator].forEach {
-            $0?.isHidden = !viewModel.shouldShowPreviousRiskyEncounters
-        }
-
-        positiveView.titleLabel.text = viewModel.headline
         positiveView.bodyLabel.text = viewModel.body
+
+        viewModel.riskyEncouterDateToShow.subscribe(
+            onNext: { [weak self] dateToShow in
+                guard let self = self else { return }
+                self.positiveView.isHidden = dateToShow == nil
+                self.negativeView.isHidden = dateToShow != nil
+
+                [self.mainSymptomsButton, self.mainSymptomsSeparator, self.preventTransmissionButton, self.preventTransmissionSeparator].forEach {
+                    $0?.isHidden = self.positiveView.isHidden
+                }
+
+                if let date = dateToShow {
+                    self.positiveView.titleLabel.text = String(format: RemoteValues.riskyEncountersTitle, self.dateFormatter.string(from: date))
+                } else {
+                    self.positiveView.titleLabel.text = ""
+                }
+            }
+        ).disposed(by: disposeBag)
+
+        viewModel.shouldShowPreviousRiskyEncounters.subscribe(
+            onNext: { [weak self] shouldShowPreviousRiskyEncounters in
+                guard let self = self else { return }
+                [self.previousRiskyEncountersButton, self.previousRiskyEncountersSeparator].forEach {
+                    $0?.isHidden = !shouldShowPreviousRiskyEncounters
+                }
+            }
+        ).disposed(by: disposeBag)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

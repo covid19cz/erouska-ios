@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import SDWebImage
+import AlamofireImage
 
 final class RiskyEncountersListCell: UITableViewCell {
     @IBOutlet weak var customImageView: UIImageView!
     @IBOutlet weak var customTextLabel: UILabel!
 
     func config(with symptom: AsyncImageTitleViewModel) {
-        customImageView.sd_setImage(with: symptom.imageUrl, placeholderImage: nil) // TODO: add placeholder image
+        customImageView.af.setImage(withURL: symptom.imageUrl, placeholderImage: nil) // TODO: add placeholder image
         customTextLabel.text = symptom.title
     }
 }
