@@ -8,16 +8,20 @@
 
 import Foundation
 import RealmSwift
+import RxSwift
+import RxRealm
 
 struct PreviousRiskyEncountersVM {
-    let previousExposures: [Exposure]
+    let previousExposures: Observable<[Exposure]>
 
     let title = "previous_risky_encounters_title"
 
     init() {
         let realm = try! Realm()
-        previousExposures = realm.objects(ExposureRealm.self)
-            .sorted(byKeyPath: "date")
-            .map { $0.toExposure() }
+        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+        previousExposures = Observable.collection(from: exposures)
+            .map { collection in
+                collection.toArray().map { $0.toExposure() }
+            }
     }
 }

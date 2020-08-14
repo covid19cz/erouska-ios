@@ -8,30 +8,28 @@
 
 import Foundation
 import RealmSwift
+import RxRealm
+import RxSwift
 
 struct RiskyEncountersVM {
-    let riskyEncouterDateToShow: Date?
-    let shouldShowPreviousRiskyEncounters: Bool
+    let riskyEncouterDateToShow: Observable<Date?>
+    let shouldShowPreviousRiskyEncounters: Observable<Bool>
 
     let title = "risky_encounters_title"
-    let headline: String
+    let headline = RemoteValues.riskyEncountersTitle
     let body = RemoteValues.riskyEncountersBody
 
     init() {
         let realm = try! Realm()
         let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
-        shouldShowPreviousRiskyEncounters = !exposures.isEmpty
-        riskyEncouterDateToShow = exposures
-            .filter { $0.date > Calendar.current.date(byAdding: .day, value: -14, to: Date())! }
-            .first?
-            .date
+        riskyEncouterDateToShow = Observable.collection(from: exposures)
+            .map {
+                $0.filter { $0.date > Calendar.current.date(byAdding: .day, value: -14, to: Date())! }.first?.date
+            }
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd. MM. yyyy"
-        if let date = riskyEncouterDateToShow {
-            headline = String(format: RemoteValues.riskyEncountersTitle, dateFormatter.string(from: date))
-        } else {
-            headline = ""
-        }
+        shouldShowPreviousRiskyEncounters = Observable.collection(from: exposures)
+            .map {
+                !$0.isEmpty
+            }
     }
 }

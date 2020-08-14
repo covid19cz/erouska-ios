@@ -51,7 +51,11 @@ final class ActiveAppVC: UIViewController {
             }
         ).disposed(by: disposeBag)
 
-        exposureBannerView.isHidden = viewModel.exposureToShow == nil
+        viewModel.exposureToShow.subscribe(
+            onNext: { [weak self] exposure in
+                self?.exposureBannerView.isHidden = exposure == nil
+            }
+        ).disposed(by: disposeBag)
 
         [cardView, exposureBannerView].forEach {
             $0!.layer.cornerRadius = 9.0

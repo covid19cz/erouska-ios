@@ -236,10 +236,6 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="EpM-Vc-Yck" id="Q8d-jO-BwQ"/>
-                                    <outlet property="delegate" destination="EpM-Vc-Yck" id="yF5-87-29Z"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
