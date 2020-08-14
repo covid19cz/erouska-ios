@@ -11,7 +11,7 @@ import UserNotifications
 
 final class FirstActivationVC: UIViewController {
 
-    // NARK: -
+    // MARK: -
 
     private let viewModel = FirstActivationVM()
 
@@ -20,7 +20,6 @@ final class FirstActivationVC: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var bodyLabel: UILabel!
-    @IBOutlet private weak var moreButton: UIButton!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var continueButton: Button!
     @IBOutlet private weak var howItWorksButton: Button!
@@ -53,11 +52,6 @@ final class FirstActivationVC: UIViewController {
             performSegue(withIdentifier: "exposureNotification", sender: nil)
         }
     }
-    
-    @IBAction private func auditsURLAction(_ sender: Any) {
-        guard let url = URL(string: RemoteValues.proclamationLink) else { return }
-        openURL(URL: url)
-    }
 
 }
 
@@ -68,7 +62,6 @@ private extension FirstActivationVC {
 
         headlineLabel.localizedText(viewModel.headline)
         bodyLabel.localizedText(viewModel.body)
-        moreButton.localizedTitle(viewModel.moreButton)
         continueButton.localizedTitle(viewModel.continueButton)
         howItWorksButton.localizedTitle(viewModel.howItWorksButton)
     }

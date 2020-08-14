@@ -28,7 +28,7 @@
             <objects>
                 <navigationController storyboardIdentifier="OnboardingActivatedUser" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p2x-zN-qDB" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="pwp-HQ-gJB">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -51,10 +51,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZfN-Wf-0Tr">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="453.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="412.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Z8K-a5-9af">
-                                                <rect key="frame" x="20" y="10" width="374" height="443.5"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="402.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="MinLogo" translatesAutoresizingMaskIntoConstraints="NO" id="66w-ec-UFz">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="29.5"/>
@@ -78,14 +78,6 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oov-W7-Pez">
-                                                        <rect key="frame" x="0.0" y="415.5" width="374" height="28"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                        <state key="normal" title="Více o nezávislých auditech"/>
-                                                        <connections>
-                                                            <action selector="auditsURLAction:" destination="oaY-Hs-CGd" eventType="touchUpInside" id="Rcs-zc-lpe"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -172,7 +164,6 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                         <outlet property="continueButton" destination="xcM-Dc-gvk" id="fic-6a-bbx"/>
                         <outlet property="headlineLabel" destination="8Oi-Bd-XR7" id="JRx-lU-TJo"/>
                         <outlet property="howItWorksButton" destination="dlF-aM-41q" id="K5N-Se-fud"/>
-                        <outlet property="moreButton" destination="Oov-W7-Pez" id="rgN-Pl-8Eq"/>
                         <outlet property="scrollView" destination="24Z-Eg-bLm" id="rfg-mo-Dec"/>
                         <segue destination="dvc-aR-w5e" kind="show" identifier="exposureNotification" id="pLC-gk-Fi0"/>
                         <segue destination="z8b-H4-SCk" kind="show" identifier="privacy" id="jn2-n4-hCy"/>
@@ -424,9 +415,9 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="q0K-IR-cSV"/>
+        <segue reference="jn2-n4-hCy"/>
         <segue reference="L1U-uL-jOo"/>
-        <segue reference="ax8-0W-kDt"/>
+        <segue reference="pLC-gk-Fi0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ExposureNotificationPermission" width="130" height="130"/>
