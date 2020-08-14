@@ -221,7 +221,6 @@
 		D6CD28ED24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */; };
 		D6CD28EE24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
 		D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
-		D6EB581724E40043007A34A6 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D6EB581624E40043007A34A6 /* SDWebImage */; };
 		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46269D0724472BBF00FA3DB2 /* ScanningInfoCell.swift */; };
@@ -372,7 +371,6 @@
 				809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */,
 				8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */,
 				80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */,
-				D6EB581724E40043007A34A6 /* SDWebImage in Frameworks */,
 				809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */,
 				80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */,
 				804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */,
@@ -846,7 +844,6 @@
 				804BE48C24D9A30A00D40C07 /* Alamofire */,
 				800E611324DAE98B00C63567 /* Zip */,
 				80D2345024E2FDD200F684AA /* Crypto */,
-				D6EB581624E40043007A34A6 /* SDWebImage */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
@@ -929,7 +926,6 @@
 				804BE48B24D9A30A00D40C07 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */,
 				80D2344F24E2FDD200F684AA /* XCRemoteSwiftPackageReference "swift-crypto" */,
-				D6EB581524E40043007A34A6 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
@@ -1670,14 +1666,6 @@
 				minimumVersion = 1.9.0;
 			};
 		};
-		D6EB581524E40043007A34A6 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.8.4;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1810,11 +1798,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
 			productName = SwiftProtobuf;
-		};
-		D6EB581624E40043007A34A6 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6EB581524E40043007A34A6 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
