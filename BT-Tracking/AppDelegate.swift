@@ -13,12 +13,10 @@ import FirebaseFunctions
 import FirebaseRemoteConfig
 import RealmSwift
 import RxSwift
-import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    static let backgroundTaskIdentifier = Bundle.main.bundleIdentifier! + ".exposure-notification"
     private var inBackgroundStage: Bool = false {
         didSet {
             Self.inBackground = inBackgroundStage
@@ -27,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private(set) static var inBackground: Bool = false
     private let bag = DisposeBag()
-    private var backgroundFetch: UIBackgroundTaskIdentifier?
     private var presentingAnyForceUpdateScreen = false
 
     // MARK: - Globals
@@ -118,31 +115,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler(.noData)
         }
     }
-    
-    // MARK: - Background fetch
-    
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        backgroundFetch = application.beginBackgroundTask (expirationHandler: { [weak self] in
-            log("AppDelegate background: Background task expired")
-            application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
-            self?.backgroundFetch = nil
-        })
-        fetchRemoteValues(background: true)
-            .subscribe(onSuccess: { [weak self] _ in
-                log("AppDelegate background: Remote config updated")
-                completionHandler(.newData)
-                application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
-                self?.backgroundFetch = nil
-                log("AppDelegate background: newData")
-            }, onError: { [weak self] error in
-                log("AppDelegate background: Remote config error")
-                completionHandler(.failed)
-                application.endBackgroundTask(self?.backgroundFetch ?? .invalid)
-                self?.backgroundFetch = nil
-                log("AppDelegate background: failed")
-            })
-            .disposed(by: bag)
-    }
 
 }
 
@@ -187,7 +159,7 @@ private extension AppDelegate {
         var viewControllerIdentifier: String?
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
             viewControllerIdentifier = "UnsupportedDeviceVC"
-        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version("13.5") {
+        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(Self.dependency.configuration.minSupportedVersion) {
             viewControllerIdentifier = "ForceOSUpdateVC"
         } else if RemoteValues.minSupportedVersion > App.appVersion {
             viewControllerIdentifier = "ForceUpdateVC"
@@ -214,7 +186,7 @@ private extension AppDelegate {
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "UnsupportedDeviceVC")
             presentingAnyForceUpdateScreen = true
-        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version("13.5") {
+        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(Self.dependency.configuration.minSupportedVersion) {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceOSUpdateVC")
             presentingAnyForceUpdateScreen = true
         } else if RemoteValues.minSupportedVersion > App.appVersion {
@@ -241,115 +213,9 @@ private extension AppDelegate {
     }
 
     func setupBackgroundMode() {
-        let dateFormat = DateFormatter()
-        dateFormat.timeStyle = .short
-        dateFormat.dateStyle = .short
-
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: Self.backgroundTaskIdentifier, using: .main) { task in
-            Log.log("AppDelegate: Start background check")
-
-            // Notify the user if bluetooth is off
-            Self.dependency.exposureService.showBluetoothOffUserNotificationIfNeeded()
-
-            func reportFailure(_ error: Error) {
-                task.setTaskCompleted(success: false)
-                Log.log("AppDelegate: BG failed to detect exposures \(error)")
-            }
-
-            // Perform the exposure detection
-            let progress = Self.dependency.reporter.downloadKeys { result in
-                Log.log("AppDelegate: BG did download keys \(result)")
-
-                switch result {
-                case .success(let URLs):
-                    Self.dependency.reporter.fetchExposureConfiguration { result in
-                        switch result {
-                        case .success(let configuration):
-                            AppDelegate.dependency.exposureService.detectExposures(
-                                configuration: configuration,
-                                URLs: URLs
-                            ) { result in
-                                switch result {
-                                case .success(var exposures):
-                                    exposures.sort { $0.date < $1.date }
-
-                                    let realm = try! Realm()
-                                    var result = ""
-                                    for exposure in exposures {
-                                        let signals = exposure.attenuationDurations.map { "\($0)" }
-                                        result += "EXP: \(dateFormat.string(from: exposure.date))" +
-                                            ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
-                                            + "attenuation value: \(exposure.attenuationValue)\n"
-                                            + "signal attenuations: \(signals.joined(separator: ", "))\n"
-                                    }
-                                    try! realm.write() {
-                                        exposures.forEach { realm.add(ExposureRealm($0)) }
-                                    }
-                                    if result == "" {
-                                        result = "None";
-                                    }
-
-                                    log("EXP: \(exposures)")
-                                    log("EXP: \(result)")
-
-                                    let content = UNMutableNotificationContent()
-                                    content.title = "Exposures"
-                                    content.body = result
-                                    content.sound = .default
-                                    let request = UNNotificationRequest(identifier: "exposures", content: content, trigger: nil)
-                                    UNUserNotificationCenter.current().add(request) { error in
-                                        DispatchQueue.main.async {
-                                            if let error = error {
-                                                Log.log("AppDelegate: BG error showing error user notification \(error)")
-                                            }
-                                        }
-                                    }
-
-                                    task.setTaskCompleted(success: true)
-                                case .failure(let error):
-                                    reportFailure(error)
-                                }
-                            }
-                        case .failure(let error):
-                            reportFailure(error)
-                        }
-                    }
-                case .failure(let error):
-                    reportFailure(error)
-                }
-            }
-
-            // Handle running out of time
-            task.expirationHandler = {
-                progress.cancel()
-                Log.log("AppDelegate: BG timeout")
-            }
-
-            // Schedule the next background task
-            self.scheduleBackgroundTaskIfNeeded(next: true)
-        }
-
-        scheduleBackgroundTaskIfNeeded()
+        Self.dependency.background.scheduleBackgroundTaskIfNeeded()
     }
 
-    func scheduleBackgroundTaskIfNeeded(next: Bool = false) {
-        guard Self.dependency.exposureService.authorizationStatus == .authorized else { return }
-        let taskRequest = BGProcessingTaskRequest(identifier: Self.backgroundTaskIdentifier)
-        taskRequest.requiresNetworkConnectivity = true
-        if next {
-            // start after next 8 hours
-            let earliestBeginDate = Date(timeIntervalSinceNow: 8 * 60 * 60)
-            taskRequest.earliestBeginDate = earliestBeginDate
-            Log.log("Background: Schedule next task to: \(earliestBeginDate)")
-        }
-
-        do {
-            try BGTaskScheduler.shared.submit(taskRequest)
-        } catch {
-            Log.log("Background: Unable to schedule background task: \(error)")
-        }
-    }
-    
     func clearKeychainIfNeeded() {
         KeychainService.BUID = nil
         KeychainService.TUIDs = nil

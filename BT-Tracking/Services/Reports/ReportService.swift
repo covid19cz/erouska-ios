@@ -35,11 +35,11 @@ protocol ReportServicing: class {
 
 final class ReportService: ReportServicing {
 
-    private let healthAuthority = "cz.covid19cz.erouska.dev"
+    private let healthAuthority: String
 
-    private let uploadURL = URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
+    private let uploadURL: URL
 
-    private let downloadBaseURL = URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!
+    private let downloadBaseURL: URL
     private var downloadDestinationURL: URL {
         let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let documentsURL = directoryURLs.first else {
@@ -48,6 +48,12 @@ final class ReportService: ReportServicing {
         return documentsURL
     }
     private let downloadIndex = "/index.txt"
+
+    init(configuration: Configuration) {
+        healthAuthority = configuration.healthAuthority
+        uploadURL = configuration.uploadURL
+        downloadBaseURL = configuration.downloadsURL
+    }
 
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String {
         // Sort by the key.
@@ -118,8 +124,11 @@ final class ReportService: ReportServicing {
         AF.request(uploadURL, method: .post, parameters: report, encoder: JSONParameterEncoder.default)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: ReportResult.self) { response in
+                #if DEBUG
                 print("Response upload")
                 debugPrint(response)
+                #endif
+
                 switch response.result {
                 case .success:
                     reportSuccess()
@@ -162,16 +171,28 @@ final class ReportService: ReportServicing {
         AF.request(downloadBaseURL.appendingPathComponent(downloadIndex), method: .get)
             .validate(statusCode: 200..<300)
             .responseString { [weak self] response in
+                #if DEBUG
                 print("Response index")
                 debugPrint(response)
+                #endif
                 guard let self = self else { return }
 
                 let dispatchGroup = DispatchGroup()
                 var localURLResults: [Result<[URL], Error>] = []
+                var lastRemoteURL: URL?
 
                 switch response.result {
                 case let .success(result):
-                    let remoteURLs = result.split(separator: "\n").compactMap { self.downloadBaseURL.appendingPathComponent(String($0)) }
+                    let parsedURLs = result.split(separator: "\n").compactMap { self.downloadBaseURL.appendingPathComponent(String($0)) }
+                    var remoteURLs: [URL] = []
+                    for url in parsedURLs {
+                        remoteURLs.append(url)
+                        if url.lastPathComponent == AppSettings.lastProcessedFileName {
+                            remoteURLs.removeAll()
+                        }
+                    }
+
+                    lastRemoteURL = remoteURLs.last
 
                     for remoteURL in remoteURLs {
                         dispatchGroup.enter()
@@ -181,8 +202,10 @@ final class ReportService: ReportServicing {
                         let download = AF.download(remoteURL, to: destination)
                             .validate(statusCode: 200..<300)
                             .response { response in
+                                #if DEBUG
                                 print("Response file")
                                 debugPrint(response)
+                                #endif
 
                                 switch response.result {
                                 case .success(let downloadedURL):
@@ -230,6 +253,10 @@ final class ReportService: ReportServicing {
                             reportFailure(error)
                             return
                         }
+                    }
+
+                    if let lastURL = lastRemoteURL {
+                        AppSettings.lastProcessedFileName = lastURL.lastPathComponent
                     }
                     reportSuccess(localURLs)
                 }

@@ -12,16 +12,20 @@ import FirebaseFunctions
 
 class AppDependency {
 
-    private(set) lazy var exposureService: ExposureServicing = ExposureService()
-
     var deviceToken: Data?
+
+    let configuration = Configuration()
 
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
 
-    lazy var countryCodes: CountryCodesServicing = CountryCodeService()
+    private(set) lazy var exposureService: ExposureServicing = ExposureService()
 
-    lazy var reporter: ReportServicing = ReportService()
+    private(set) lazy var countryCodes: CountryCodesServicing = CountryCodeService()
 
-    lazy var verification: VerificationServicing = VerificationService()
+    private(set) lazy var reporter: ReportServicing = ReportService(configuration: configuration)
+
+    private(set) lazy var verification: VerificationServicing = VerificationService(configuration: configuration)
+
+    private(set) lazy var background = BackgroundService(exposureService: exposureService, reporter: reporter)
 
 }

@@ -24,11 +24,17 @@ protocol VerificationServicing: class {
 
 final class VerificationService: VerificationServicing {
 
-    private let serverURL = URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!
+    private let serverURL: URL
     private let headerApiKey = "X-API-Key"
 
-    private let adminKey: String = ""
-    private let deviceKey: String = "Ar9VQ1tZS1ANU0LLPGw8nUnavJNBDCaTGEaEQbydvTYFgnW7oqQkTCLUxhk6azLm8IjTtCRVqQIi/wNscvniGw"
+    private let adminKey: String
+    private let deviceKey: String
+
+    init(configuration: Configuration) {
+        serverURL = configuration.verificationURL
+        adminKey = configuration.verificationAdminKey
+        deviceKey = configuration.verificationDeviceKey
+    }
 
     func requestCode(with request: VerificationCodeRequst, callback: @escaping CodeCallback) {
         var headers = HTTPHeaders()
@@ -37,7 +43,10 @@ final class VerificationService: VerificationServicing {
         AF.request(URL(string: "api/code", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: VerificationCode.self) { response in
+                #if DEBUG
                 debugPrint(response)
+                #endif
+
                 switch response.result {
                 case .success(let result):
                     callback(.success(result))
@@ -56,7 +65,10 @@ final class VerificationService: VerificationServicing {
         AF.request(URL(string: "api/verify", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: VerificationToken.self) { response in
+                #if DEBUG
                 debugPrint(response)
+                #endif
+
                 switch response.result {
                 case .success(let result):
                     if let token = result.token {
@@ -81,7 +93,10 @@ final class VerificationService: VerificationServicing {
         AF.request(URL(string: "api/certificate", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: VerificationCertificate.self) { response in
+                #if DEBUG
                 debugPrint(response)
+                #endif
+
                 switch response.result {
                 case .success(let result):
                     if let certificate = result.certificate {
