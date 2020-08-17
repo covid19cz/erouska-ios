@@ -15,7 +15,6 @@ struct AppSettings {
         case appFirstTimeLaunched
         case backgroundModeAlertShown
 
-        case lastDownloadFileName
         case lastProcessedFileName
         case lastUploadDate
 
@@ -58,17 +57,7 @@ struct AppSettings {
         }
     }
 
-    /// Last download file batch
-    static var lastDownloadFileName: String? {
-        get {
-            return string(forKey: .lastDownloadFileName)
-        }
-        set {
-            set(withKey: .lastDownloadFileName, value: newValue)
-        }
-    }
-
-    /// Last process file batch
+    /// Last processed file name
     static var lastProcessedFileName: String? {
         get {
             return string(forKey: .lastProcessedFileName)
@@ -107,7 +96,6 @@ struct AppSettings {
 
         state = nil
 
-        lastDownloadFileName = nil
         lastProcessedFileName = nil
         lastUploadDate = nil
     }

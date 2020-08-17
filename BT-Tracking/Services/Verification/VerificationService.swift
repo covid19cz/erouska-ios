@@ -37,7 +37,10 @@ final class VerificationService: VerificationServicing {
         AF.request(URL(string: "api/code", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: VerificationCode.self) { response in
+                #if DEBUG
                 debugPrint(response)
+                #endif
+
                 switch response.result {
                 case .success(let result):
                     callback(.success(result))
@@ -56,7 +59,10 @@ final class VerificationService: VerificationServicing {
         AF.request(URL(string: "api/verify", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: VerificationToken.self) { response in
+                #if DEBUG
                 debugPrint(response)
+                #endif
+
                 switch response.result {
                 case .success(let result):
                     if let token = result.token {
@@ -81,7 +87,10 @@ final class VerificationService: VerificationServicing {
         AF.request(URL(string: "api/certificate", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: VerificationCertificate.self) { response in
+                #if DEBUG
                 debugPrint(response)
+                #endif
+
                 switch response.result {
                 case .success(let result):
                     if let certificate = result.certificate {
