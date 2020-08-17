@@ -13,7 +13,7 @@ struct HelpVM {
     let title = "help_title"
 
     let tabTitle = "help_tab_title"
-    let tabIcon = UIImage(systemName: "questionmark.circle")
+    let tabIcon = UIImage(named: "Help")
 
     let about = "about"
 

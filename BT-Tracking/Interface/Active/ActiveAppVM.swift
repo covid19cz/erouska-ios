@@ -19,21 +19,17 @@ final class ActiveAppVM {
         case disabledBluetooth = "disabled"
         case disabledExposures
 
-        var tabBarIcon: UIImage? {
-            if #available(iOS 13.0, *) {
-                let name: String
-                switch self {
-                case .enabled:
-                    name = "wifi"
-                case .paused:
-                    name = "wifi.slash"
-                case .disabledBluetooth, .disabledExposures:
-                    name = "wifi.exclamationmark"
-                }
-                return UIImage(systemName: name)
-            } else {
-                return UIImage(named: "wifi")?.resize(toWidth: 30)
+        var tabBarIcon: (UIImage?, UIImage?) {
+            let name: String
+            switch self {
+            case .enabled:
+                name = "HomeActive"
+            case .paused:
+                name = "HomePaused"
+            case .disabledBluetooth, .disabledExposures:
+                name = "HomeDisabled"
             }
+            return (UIImage(named: name), UIImage(named: "\(name)Selected"))
         }
 
         var color: UIColor {

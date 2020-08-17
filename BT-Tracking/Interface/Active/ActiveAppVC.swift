@@ -24,8 +24,6 @@ final class ActiveAppVC: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var actionButton: Button!
     @IBOutlet private weak var footerLabel: UILabel!
-    @IBOutlet private weak var cardView: UIView!
-    @IBOutlet private weak var actionButtonWidthConstraint: NSLayoutConstraint!
 
     @IBOutlet private weak var exposureBannerView: UIView!
     @IBOutlet private weak var exposureTitleLabel: UILabel!
@@ -57,13 +55,11 @@ final class ActiveAppVC: UIViewController {
             }
         ).disposed(by: disposeBag)
 
-        [cardView, exposureBannerView].forEach {
-            $0!.layer.cornerRadius = 9.0
-            $0!.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
-            $0!.layer.shadowOffset = CGSize(width: 0, height: 1)
-            $0!.layer.shadowRadius = 2
-            $0!.layer.shadowOpacity = 1
-        }
+        exposureBannerView.layer.cornerRadius = 9.0
+        exposureBannerView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
+        exposureBannerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        exposureBannerView.layer.shadowRadius = 2
+        exposureBannerView.layer.shadowOpacity = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +72,7 @@ final class ActiveAppVC: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
 
         guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
-        cardView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
+        exposureBannerView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -224,13 +220,6 @@ private extension ActiveAppVC {
         }
         actionButton.localizedTitle(viewModel.state.actionTitle)
 
-        // Apply element size fix for iPhone SE size screens only
-        cardView.layoutIfNeeded()
-        if cardView.bounds.width <= 288 {
-            actionButtonWidthConstraint.constant = viewModel.state == .enabled ? 110 : 100
-            actionButton.layoutIfNeeded()
-        }
-
         exposureTitleLabel.text = viewModel.exposureTitle
         exposureCloseButton.localizedTitle(viewModel.exposureBannerClose)
         exposureMoreInfoButton.localizedTitle(viewModel.exposureMoreInfo)
@@ -244,7 +233,8 @@ private extension ActiveAppVC {
         navigationItem.rightBarButtonItems?.last?.localizedTitle(viewModel.shareApp)
 
         navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
-        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon
+        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon.0
+        navigationController?.tabBarItem.selectedImage = viewModel.state.tabBarIcon.1
     }
 
     func checkBackgroundModeIfNeeded() {
