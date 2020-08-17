@@ -69,25 +69,25 @@ final class ActiveAppVM {
             }
         }
 
-        var title: String {
+        var title: String? {
             switch self {
             case .enabled:
                 return RemoteValues.activeTitleEnabled
-            case .paused:
-                return Localizable("active_title_paused")
-            case .disabledBluetooth:
-                return Localizable("active_title_disabled_bluetooth")
-            case .disabledExposures:
-                return Localizable("active_title_disabled_exposures")
+            default:
+                return nil
             }
         }
 
-        var footer: String? {
+        var text: String {
             switch self {
             case .enabled:
                 return "active_footer"
-            default:
-                return nil
+            case .paused:
+                return "active_title_paused"
+            case .disabledBluetooth:
+                return "active_title_disabled_bluetooth"
+            case .disabledExposures:
+                return "active_title_disabled_exposures"
             }
         }
 

@@ -18,18 +18,18 @@ final class ActiveAppVC: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet private weak var mainStackView: UIStackView!
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var headlineLabel: UILabel!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var actionButton: Button!
-    @IBOutlet private weak var footerLabel: UILabel!
-
     @IBOutlet private weak var exposureBannerView: UIView!
     @IBOutlet private weak var exposureTitleLabel: UILabel!
     @IBOutlet private weak var exposureCloseButton: Button!
     @IBOutlet private weak var exposureMoreInfoButton: Button!
-    
+
+    @IBOutlet private weak var mainStackView: UIStackView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var actionButton: Button!
+
     // MARK: -
 
     deinit {
@@ -221,11 +221,7 @@ private extension ActiveAppVC {
         headlineLabel.localizedText(viewModel.state.headline)
         headlineLabel.textColor = viewModel.state.color
         titleLabel.text = viewModel.state.title
-        if let footer = viewModel.state.footer {
-            footerLabel.localizedText(footer, values: Auth.auth().currentUser?.phoneNumber?.phoneFormatted ?? "")
-        } else {
-            footerLabel.text = nil
-        }
+        textLabel.localizedText(viewModel.state.text)
         actionButton.localizedTitle(viewModel.state.actionTitle)
         actionButton.style = viewModel.state == .enabled ? .clear : .filled
 

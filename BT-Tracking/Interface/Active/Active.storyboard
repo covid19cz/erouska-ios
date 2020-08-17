@@ -319,7 +319,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                 <rect key="frame" x="0.0" y="180.5" width="374" height="130.5"/>
                                                                 <string key="text">Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.
 Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.</string>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
@@ -416,10 +416,10 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="exposureCloseButton" destination="OQp-na-S8Q" id="usl-3e-3Pw"/>
                         <outlet property="exposureMoreInfoButton" destination="Ocf-F5-uU9" id="Y96-fj-Vjm"/>
                         <outlet property="exposureTitleLabel" destination="I5Y-jp-bR1" id="8yL-iy-Q2D"/>
-                        <outlet property="footerLabel" destination="ANQ-eO-rpO" id="Tkh-MA-V6M"/>
                         <outlet property="headlineLabel" destination="jq8-JX-g6N" id="NVv-Mg-JGG"/>
                         <outlet property="imageView" destination="Dqs-Rj-Q2J" id="LT3-Yz-mgS"/>
                         <outlet property="mainStackView" destination="IbU-pw-itY" id="mUd-gK-QSO"/>
+                        <outlet property="textLabel" destination="ANQ-eO-rpO" id="Gle-hH-WWb"/>
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
                         <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" modalPresentationStyle="fullScreen" id="HRF-xK-4t2"/>
