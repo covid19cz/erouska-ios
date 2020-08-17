@@ -125,6 +125,8 @@
 		80BE3FCF2446028E00D0C810 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCE2446028E00D0C810 /* InputValidation.swift */; };
 		80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */; };
 		80BF9C262424D55800150108 /* SendResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendResultVC.swift */; };
+		80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */; };
+		80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */; };
 		80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
@@ -289,6 +291,8 @@
 		80BE3FCE2446028E00D0C810 /* InputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		80BF9C252424D55800150108 /* SendResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultVC.swift; sourceTree = "<group>"; };
+		80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
+		80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntities.swift; sourceTree = "<group>"; };
 		80CA44B5244ADA44008E22F8 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		80CA44CB244ADD8A008E22F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80CA44DB244B3769008E22F8 /* HelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVM.swift; sourceTree = "<group>"; };
@@ -692,6 +696,8 @@
 		80D2344E24E2F69000F684AA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */,
+				80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */,
 			);
 			path = Background;
 			sourceTree = "<group>";
@@ -1131,6 +1137,7 @@
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
+				80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
 				80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
@@ -1176,6 +1183,7 @@
 				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
 				8064DF92244F420A005E8AA3 /* AboutTeam.swift in Sources */,
+				80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */,
 				D61DFE6024C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
 				D6CD28EE24CF24DD005847AA /* FirstActivationVM.swift in Sources */,
 				80ECB96624290DA900E57601 /* Collection.swift in Sources */,

@@ -12,17 +12,19 @@ import FirebaseFunctions
 
 class AppDependency {
 
-    private(set) lazy var exposureService: ExposureServicing = ExposureService()
-
     var deviceToken: Data?
 
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
 
-    lazy var countryCodes: CountryCodesServicing = CountryCodeService()
+    private(set) lazy var exposureService: ExposureServicing = ExposureService()
 
-    lazy var reporter: ReportServicing = ReportService()
+    private(set) lazy var countryCodes: CountryCodesServicing = CountryCodeService()
 
-    lazy var verification: VerificationServicing = VerificationService()
+    private(set) lazy var reporter: ReportServicing = ReportService()
+
+    private(set) lazy var verification: VerificationServicing = VerificationService()
+
+    private(set) lazy var background = BackgroundService(exposureService: exposureService, reporter: reporter)
 
     func resetAdvertising() {
         guard KeychainService.BUID != nil else { return } // TODO: Should be eHRID?
