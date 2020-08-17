@@ -97,8 +97,10 @@ final class ActiveAppVM {
                 return "active_button_enabled"
             case .paused:
                 return "active_button_paused"
-            case .disabledBluetooth, .disabledExposures:
-                return "active_button_disabled"
+            case .disabledBluetooth:
+                return "active_button_disabled_bluetooth"
+            case .disabledExposures:
+                return "active_button_disabled_exposures"
             }
         }
     }

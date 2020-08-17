@@ -32,9 +32,10 @@
 "active_title_disabled_exposures" = "eRouška nyní nemůže komunikovat s jinými eRouškami ve vašem okolí.\n\nZapněte Oznámení o kontaktu s COVID-19 pomocí tlačítka \"Zapnout\".";
 "active_title_disabled_bluetooth" = "Bez zapnutého Bluetooth nemůžeme vytvářet seznam telefonů ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout\".";
 
-"active_button_enabled" = "Pozastavit";
-"active_button_paused" = "Spustit";
-"active_button_disabled" = "Zapnout";
+"active_button_enabled" = "Pozastavit eRoušku";
+"active_button_paused" = "Spustit eRoušku";
+"active_button_disabled_bluetooth" = "Zapnout Bluetooth";
+"active_button_disabled_exposures" = "Zapnout";
 "active_footer" = "Upozorníme vás v případě možného podezření na nákazu COVID-19 a zobrazíme vám informace potřebné pro kontaktování hygienické stanice.";
 
 "active_background_mode_title" = "Aktualizace na pozadí";

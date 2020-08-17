@@ -209,6 +209,14 @@ private extension ActiveAppVC {
     }
 
     func updateInterface() {
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
+        navigationItem.rightBarButtonItems?.last?.localizedTitle(viewModel.shareApp)
+
+        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon.0
+        navigationController?.tabBarItem.selectedImage = viewModel.state.tabBarIcon.1
+
         imageView.image = viewModel.state.image
         headlineLabel.localizedText(viewModel.state.headline)
         headlineLabel.textColor = viewModel.state.color
@@ -219,22 +227,11 @@ private extension ActiveAppVC {
             footerLabel.text = nil
         }
         actionButton.localizedTitle(viewModel.state.actionTitle)
+        actionButton.style = viewModel.state == .enabled ? .clear : .filled
 
         exposureTitleLabel.text = viewModel.exposureTitle
         exposureCloseButton.localizedTitle(viewModel.exposureBannerClose)
         exposureMoreInfoButton.localizedTitle(viewModel.exposureMoreInfo)
-
-        setupStrings()
-    }
-
-    func setupStrings() {
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
-        navigationItem.rightBarButtonItems?.last?.localizedTitle(viewModel.shareApp)
-
-        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
-        navigationController?.tabBarItem.image = viewModel.state.tabBarIcon.0
-        navigationController?.tabBarItem.selectedImage = viewModel.state.tabBarIcon.1
     }
 
     func checkBackgroundModeIfNeeded() {
