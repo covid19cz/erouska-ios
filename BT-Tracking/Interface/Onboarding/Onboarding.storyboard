@@ -12,7 +12,7 @@
             <objects>
                 <navigationController id="0Ap-yb-531" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="eP2-jB-Ric">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -137,6 +137,9 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                                 <state key="normal" title="Jak to funguje">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="1kz-Ak-A0u" kind="show" id="ZO1-7v-kja"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,6 +184,16 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTW-oV-yhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1326" y="-31"/>
+        </scene>
+        <!--Help-->
+        <scene sceneID="Nzr-xG-ici">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Help" id="1kz-Ak-A0u" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wdB-M2-xGK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Vp-hc-Yex" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1325" y="475"/>
         </scene>
         <!--Oznámení-->
         <scene sceneID="jUx-xc-0bA">
@@ -424,9 +437,9 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="q0K-IR-cSV"/>
+        <segue reference="jn2-n4-hCy"/>
         <segue reference="L1U-uL-jOo"/>
-        <segue reference="ax8-0W-kDt"/>
+        <segue reference="pLC-gk-Fi0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ExposureNotificationPermission" width="130" height="130"/>
