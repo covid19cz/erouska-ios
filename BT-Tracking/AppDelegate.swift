@@ -13,7 +13,6 @@ import FirebaseFunctions
 import FirebaseRemoteConfig
 import RealmSwift
 import RxSwift
-import Realm
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
