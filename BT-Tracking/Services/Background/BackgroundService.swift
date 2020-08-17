@@ -65,7 +65,43 @@ struct BackgroundService {
         }
     }
 
-    // MARK: - Deadman notifications
+    // MARK: - Bluetooth notification
+
+    func showBluetoothOffUserNotificationIfNeeded() {
+        let notificationCenter = UNUserNotificationCenter.current()
+
+        // bundleIdentifier is defined in Info.plist and can never be nil!
+        guard let bundleID = Bundle.main.bundleIdentifier else {
+            Log.log("BGNotification: Could not access bundle identifier")
+            return
+        }
+        let identifier = bundleID + ".notifications.bluetooth_off"
+
+        if exposureService.authorizationStatus == .authorized, !exposureService.isBluetoothOn {
+            let content = UNMutableNotificationContent()
+            content.title = NSLocalizedString("bluetooth_off_title", comment: "")
+            content.body = NSLocalizedString("bluetooth_off_body", comment: "")
+            content.sound = .default
+
+            let request = UNNotificationRequest(
+                identifier: identifier,
+                content: content,
+                trigger: nil
+
+            )
+            notificationCenter.add(request) { error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        Log.log("BGNotification: Error showing user notification \(error)")
+                    }
+                }
+            }
+        } else {
+            notificationCenter.removeDeliveredNotifications(withIdentifiers: [identifier])
+        }
+    }
+
+    // MARK: - Deadman notification
 
     /// Taken from: https://github.com/corona-warn-app/cwa-app-ios
     /// Schedules a local notification to fire 36 hours from now.
@@ -77,7 +113,7 @@ struct BackgroundService {
 
         let content = UNMutableNotificationContent()
         content.title = NSLocalizedString("deadman_notificaiton_title", comment: "")
-        content.body = NSLocalizedString("deadman_notificaiton_message", comment: "")
+        content.body = NSLocalizedString("deadman_notificaiton_body", comment: "")
         content.sound = .default
 
         let trigger = UNTimeIntervalNotificationTrigger(
@@ -98,8 +134,10 @@ struct BackgroundService {
         )
 
         notificationCenter.add(request) { error in
-            if error != nil {
-                Log.log("BGNotification: Deadman notification could not be scheduled.")
+            DispatchQueue.main.async {
+                if let error = error {
+                    Log.log("BGNotification: Error showing user notification \(error)")
+                }
             }
         }
     }
@@ -110,7 +148,7 @@ private extension BackgroundService {
 
     func performTask(_ task: BGTask) -> Progress {
         // Notify the user if bluetooth is off
-        exposureService.showBluetoothOffUserNotificationIfNeeded()
+        showBluetoothOffUserNotificationIfNeeded()
 
         func reportFailure(_ error: Error) {
             task.setTaskCompleted(success: false)

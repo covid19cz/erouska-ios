@@ -24,11 +24,17 @@ protocol VerificationServicing: class {
 
 final class VerificationService: VerificationServicing {
 
-    private let serverURL = URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!
+    private let serverURL: URL
     private let headerApiKey = "X-API-Key"
 
-    private let adminKey: String = ""
-    private let deviceKey: String = "Ar9VQ1tZS1ANU0LLPGw8nUnavJNBDCaTGEaEQbydvTYFgnW7oqQkTCLUxhk6azLm8IjTtCRVqQIi/wNscvniGw"
+    private let adminKey: String
+    private let deviceKey: String
+
+    init(configuration: Configuration) {
+        serverURL = configuration.verificationURL
+        adminKey = configuration.verificationAdminKey
+        deviceKey = configuration.verificationDeviceKey
+    }
 
     func requestCode(with request: VerificationCodeRequst, callback: @escaping CodeCallback) {
         var headers = HTTPHeaders()

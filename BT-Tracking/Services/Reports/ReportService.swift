@@ -35,11 +35,11 @@ protocol ReportServicing: class {
 
 final class ReportService: ReportServicing {
 
-    private let healthAuthority = "cz.covid19cz.erouska.dev"
+    private let healthAuthority: String
 
-    private let uploadURL = URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
+    private let uploadURL: URL
 
-    private let downloadBaseURL = URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!
+    private let downloadBaseURL: URL
     private var downloadDestinationURL: URL {
         let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let documentsURL = directoryURLs.first else {
@@ -48,6 +48,12 @@ final class ReportService: ReportServicing {
         return documentsURL
     }
     private let downloadIndex = "/index.txt"
+
+    init(configuration: Configuration) {
+        healthAuthority = configuration.healthAuthority
+        uploadURL = configuration.uploadURL
+        downloadBaseURL = configuration.downloadsURL
+    }
 
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String {
         // Sort by the key.

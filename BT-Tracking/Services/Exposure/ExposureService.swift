@@ -8,7 +8,6 @@
 
 import Foundation
 import ExposureNotification
-import UserNotifications
 import RxSwift
 
 protocol ExposureServicing: class {
@@ -40,7 +39,6 @@ protocol ExposureServicing: class {
 
     // Bluetooth
     var isBluetoothOn: Bool { get }
-    func showBluetoothOffUserNotificationIfNeeded()
 
 }
 
@@ -210,26 +208,6 @@ final class ExposureService: ExposureServicing {
 
     var isBluetoothOn: Bool {
         return manager.exposureNotificationStatus != .bluetoothOff
-    }
-
-    func showBluetoothOffUserNotificationIfNeeded() {
-        let identifier = "bluetooth_off"
-        if ENManager.authorizationStatus == .authorized, manager.exposureNotificationStatus == .bluetoothOff {
-            let content = UNMutableNotificationContent()
-            content.title = NSLocalizedString("bluetooth_off_title", comment: "bluetooth_off_title")
-            content.body = NSLocalizedString("bluetooth_off_body", comment: "bluetooth_off_body")
-            content.sound = .default
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
-            UNUserNotificationCenter.current().add(request) { error in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        Log.log("ExposureService: Error showing error user notification \(error)")
-                    }
-                }
-            }
-        } else {
-            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [identifier])
-        }
     }
 
 }

@@ -127,6 +127,7 @@
 		80BF9C262424D55800150108 /* SendResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendResultVC.swift */; };
 		80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */; };
 		80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */; };
+		80C5CECC24EAB0140011B53B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CECB24EAB0140011B53B /* Configuration.swift */; };
 		80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
@@ -293,6 +294,7 @@
 		80BF9C252424D55800150108 /* SendResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultVC.swift; sourceTree = "<group>"; };
 		80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
 		80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntities.swift; sourceTree = "<group>"; };
+		80C5CECB24EAB0140011B53B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		80CA44B5244ADA44008E22F8 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		80CA44CB244ADD8A008E22F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80CA44DB244B3769008E22F8 /* HelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVM.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				80D2344E24E2F69000F684AA /* Background */,
 				8084DEEB24AF8030001FBB16 /* CountryCodes */,
 				805BE9752424DDE3001A93B3 /* Logger */,
+				80C5CECB24EAB0140011B53B /* Configuration.swift */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
 				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
@@ -783,8 +786,8 @@
 			isa = PBXGroup;
 			children = (
 				D65E57DE24D05D83000F2402 /* News.storyboard */,
-				D65E57D224D04976000F2402 /* NewsVM.swift */,
 				D65E57DB24D05D73000F2402 /* NewsVC.swift */,
+				D65E57D224D04976000F2402 /* NewsVM.swift */,
 				D65E57D524D056C8000F2402 /* NewsPageView.xib */,
 				D65E57E124D060DF000F2402 /* NewsPageVM.swift */,
 				D65E57D824D056D6000F2402 /* NewsPageView.swift */,
@@ -796,12 +799,12 @@
 			isa = PBXGroup;
 			children = (
 				D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */,
-				D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */,
 				D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */,
-				D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */,
+				D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */,
 				D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */,
-				D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */,
+				D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */,
 				D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */,
+				D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1195,6 +1198,7 @@
 				D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
 				D63E443824DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
+				80C5CECC24EAB0140011B53B /* Configuration.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
 				D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
