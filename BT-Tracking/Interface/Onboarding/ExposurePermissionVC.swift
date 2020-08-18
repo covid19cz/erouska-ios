@@ -1,5 +1,5 @@
 //
-//  ExposureNotificationPermissionVC.swift
+//  ExposurePermissionVC.swift
 //  eRouska
 //
 //  Created by Tomas Svoboda on 06/04/2020.
@@ -9,11 +9,11 @@
 import UIKit
 import UserNotifications
 
-final class ExposureNotificationPermissionVC: UIViewController {
+final class ExposurePermissionVC: UIViewController {
 
     // MARK: -
 
-    private let viewModel = ExposureNotificationPermissionVM()
+    private let viewModel = ExposurePermissionVM()
 
     // MARK: - Outlets
 
@@ -35,12 +35,12 @@ final class ExposureNotificationPermissionVC: UIViewController {
     // MARK: - Action
     
     @IBAction func continueAction(_ sender: Any) {
-        requestExposureNotificationPresmission()
+        requestExposurePresmission()
     }
 
 }
 
-private extension ExposureNotificationPermissionVC {
+private extension ExposurePermissionVC {
 
     func setupStrings() {
         navigationItem.localizedTitle(viewModel.title)
@@ -54,12 +54,34 @@ private extension ExposureNotificationPermissionVC {
 
     // MARK: - Request permission
 
-    func requestExposureNotificationPresmission() {
+    func requestExposurePresmission() {
         viewModel.exposureService.activate { [weak self] error in
+            guard let self = self else { return }
             if let error = error {
-                self?.show(error: error, okHandler: { self?.requestNotificationPermission() })
+                log("ExposurePermissionVC: failed to active exposures \(error)")
+
+                switch error {
+                case .activationError(let code):
+                    switch code {
+                    case .notAuthorized, .notEnabled:
+                        // user didn't allow exposure, can do it later
+                        self.requestNotificationPermission()
+                    case .unsupported:
+                        self.performSegue(withIdentifier: "unsupported", sender: nil)
+                    case .restricted:
+                        self.showAlert(
+                            title: self.viewModel.errorRestiredTitle,
+                            message: self.viewModel.errorRestiredBody,
+                            okHandler: { self.requestNotificationPermission() }
+                        )
+                    default:
+                        self.showUnknownError(error)
+                    }
+                default:
+                    self.showUnknownError(error)
+                }
             } else {
-                self?.requestNotificationPermission()
+                self.requestNotificationPermission()
             }
         }
     }
@@ -74,6 +96,18 @@ private extension ExposureNotificationPermissionVC {
                 }
         })
         UIApplication.shared.registerForRemoteNotifications()
+    }
+
+    func showUnknownError(_ error: Error) {
+        #if DEBUG
+        show(error: error, okHandler: { self.requestNotificationPermission() })
+        #else
+        showAlert(
+            title: viewModel.errorUnknownTitle,
+            message: viewModel.errorUnknownBody,
+            okHandler: { self.requestNotificationPermission() }
+        )
+        #endif
     }
 
 }

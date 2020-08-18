@@ -24,7 +24,7 @@ protocol ExposureServicing: class {
     var authorizationStatus: ENAuthorizationStatus { get }
 
     typealias ActivationCallback = (ExposureError?) -> Void
-    func activate(callback: Callback?)
+    func activate(callback: ActivationCallback?)
     func deactivate(callback: Callback?)
 
     // Keys
@@ -84,7 +84,7 @@ final class ExposureService: ExposureServicing {
         manager.invalidate()
     }
 
-    func activate(callback: Callback?) {
+    func activate(callback: ActivationCallback?) {
         print("ExposureService: activating")
         guard !isEnabled, !isActive else {
             callback?(nil)
@@ -94,7 +94,9 @@ final class ExposureService: ExposureServicing {
         let activationCallback: ENErrorHandler = { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                if self.manager.exposureNotificationStatus == .restricted {
+                if let code = ENError.Code(rawValue: (error as NSError).code) {
+                    callback?(ExposureError.activationError(code))
+                } else if self.manager.exposureNotificationStatus == .restricted {
                     callback?(ExposureError.restrictedAccess)
                 } else {
                     callback?(ExposureError.error(error))

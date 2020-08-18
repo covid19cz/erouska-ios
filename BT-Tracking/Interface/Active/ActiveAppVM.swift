@@ -128,6 +128,15 @@ final class ActiveAppVM {
     let exposureBannerClose = "close"
     let exposureMoreInfo = "active_exposure_more_info"
 
+    let errorActivationRestiredTitle = "exposure_activation_restricted_title"
+    let errorActivationRestiredBody = "exposure_activation_restricted_body"
+
+    let errorActivationUnknownTitle = "exposure_activation_unknown_title"
+    let errorActivationUnknownBody = "exposure_activation_unknown_body"
+
+    let errorDeactivationUnknownTitle = "exposure_deactivation_unknown_title"
+    let errorDeactivationUnknownBody = "exposure_deactivation_unknown_body"
+
     var state: State {
         return try! observableState.value()
     }
