@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ExposureNotificationPermissionVM {
+struct ExposurePermissionVM {
 
     let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
 
@@ -23,4 +23,11 @@ struct ExposureNotificationPermissionVM {
     let body = "exposure_notification_body"
 
     let continueButton = "exposure_notification_continue"
+
+    let errorRestiredTitle = "exposure_restricted_title"
+    let errorRestiredBody = "exposure_restricted_body"
+
+    let errorUnknownTitle = "exposure_unknown_title"
+    let errorUnknownBody = "exposure_unknown_body"
+
 }

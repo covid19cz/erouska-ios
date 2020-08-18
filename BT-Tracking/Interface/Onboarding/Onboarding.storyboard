@@ -12,7 +12,7 @@
             <objects>
                 <navigationController id="0Ap-yb-531" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="eP2-jB-Ric">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -28,7 +28,7 @@
             <objects>
                 <navigationController storyboardIdentifier="OnboardingActivatedUser" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p2x-zN-qDB" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="pwp-HQ-gJB">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -198,7 +198,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
         <!--Oznámení-->
         <scene sceneID="jUx-xc-0bA">
             <objects>
-                <viewController id="dvc-aR-w5e" customClass="ExposureNotificationPermissionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dvc-aR-w5e" customClass="ExposurePermissionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V0D-vL-Rwb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -304,6 +304,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                         <outlet property="headlineLabel" destination="6pG-LU-L7P" id="Ek4-21-zfT"/>
                         <outlet property="scrollView" destination="wMA-Rb-cNB" id="Rgk-Z5-ty9"/>
                         <segue destination="z8b-H4-SCk" kind="show" identifier="privacy" id="q0K-IR-cSV"/>
+                        <segue destination="ftw-ib-ah7" kind="show" identifier="unsupported" id="gTJ-5J-TQO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qw-d5-W1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -319,6 +320,16 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skn-wB-dkH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="270" y="476"/>
+        </scene>
+        <!--UnsupportedDeviceVC-->
+        <scene sceneID="yBo-fP-pYr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ForceUpdate" referencedIdentifier="UnsupportedDeviceVC" id="ftw-ib-ah7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8d5-0O-Jvj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dFH-Ds-H2l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-251" y="475"/>
         </scene>
         <!--Soukromí-->
         <scene sceneID="lG1-xr-VqA">
@@ -437,7 +448,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jn2-n4-hCy"/>
+        <segue reference="q0K-IR-cSV"/>
         <segue reference="L1U-uL-jOo"/>
         <segue reference="pLC-gk-Fi0"/>
     </inferredMetricsTieBreakers>

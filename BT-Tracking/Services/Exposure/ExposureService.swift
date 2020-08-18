@@ -94,7 +94,9 @@ final class ExposureService: ExposureServicing {
         let activationCallback: ENErrorHandler = { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                if self.manager.exposureNotificationStatus == .restricted {
+                if let code = ENError.Code(rawValue: (error as NSError).code) {
+                    callback?(ExposureError.activationError(code))
+                } else if self.manager.exposureNotificationStatus == .restricted {
                     callback?(ExposureError.restrictedAccess)
                 } else {
                     callback?(ExposureError.error(error))

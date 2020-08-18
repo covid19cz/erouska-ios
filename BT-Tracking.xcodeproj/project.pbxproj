@@ -214,14 +214,14 @@
 		D6CD28E324CF24DC005847AA /* FirstActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */; };
 		D6CD28E424CF24DC005847AA /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */; };
 		D6CD28E524CF24DD005847AA /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */; };
-		D6CD28E624CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */; };
-		D6CD28E724CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */; };
+		D6CD28E624CF24DD005847AA /* ExposurePermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DD24CF24DC005847AA /* ExposurePermissionVM.swift */; };
+		D6CD28E724CF24DD005847AA /* ExposurePermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DD24CF24DC005847AA /* ExposurePermissionVM.swift */; };
 		D6CD28E824CF24DD005847AA /* PrivacyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */; };
 		D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */; };
 		D6CD28EA24CF24DD005847AA /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */; };
 		D6CD28EB24CF24DD005847AA /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */; };
-		D6CD28EC24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */; };
-		D6CD28ED24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */; };
+		D6CD28EC24CF24DD005847AA /* ExposurePermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E024CF24DC005847AA /* ExposurePermissionVC.swift */; };
+		D6CD28ED24CF24DD005847AA /* ExposurePermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E024CF24DC005847AA /* ExposurePermissionVC.swift */; };
 		D6CD28EE24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
 		D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */; };
 		FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
@@ -350,10 +350,10 @@
 		D65E57E124D060DF000F2402 /* NewsPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageVM.swift; sourceTree = "<group>"; };
 		D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstActivationVC.swift; sourceTree = "<group>"; };
 		D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
-		D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureNotificationPermissionVM.swift; sourceTree = "<group>"; };
+		D6CD28DD24CF24DC005847AA /* ExposurePermissionVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposurePermissionVM.swift; sourceTree = "<group>"; };
 		D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVM.swift; sourceTree = "<group>"; };
 		D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
-		D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureNotificationPermissionVC.swift; sourceTree = "<group>"; };
+		D6CD28E024CF24DC005847AA /* ExposurePermissionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposurePermissionVC.swift; sourceTree = "<group>"; };
 		D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstActivationVM.swift; sourceTree = "<group>"; };
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
@@ -799,12 +799,12 @@
 			isa = PBXGroup;
 			children = (
 				D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */,
-				D6CD28E024CF24DC005847AA /* ExposureNotificationPermissionVC.swift */,
-				D6CD28DD24CF24DC005847AA /* ExposureNotificationPermissionVM.swift */,
-				D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */,
-				D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */,
 				D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */,
 				D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */,
+				D6CD28E024CF24DC005847AA /* ExposurePermissionVC.swift */,
+				D6CD28DD24CF24DC005847AA /* ExposurePermissionVM.swift */,
+				D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */,
+				D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1160,7 +1160,7 @@
 				80CCE5C424DD812900DC36EE /* VerificationService.swift in Sources */,
 				D65E57E224D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
-				D6CD28EC24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */,
+				D6CD28EC24CF24DD005847AA /* ExposurePermissionVC.swift in Sources */,
 				8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */,
 				80D2345324E31DFF00F684AA /* SendReportsVC.swift in Sources */,
 				D6340C6B24C5A27700E550A1 /* Device.swift in Sources */,
@@ -1203,7 +1203,7 @@
 				D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
 				D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */,
-				D6CD28E624CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */,
+				D6CD28E624CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
 				D6231CAB24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1227,7 +1227,7 @@
 				80D2345424E31DFF00F684AA /* SendReportsVC.swift in Sources */,
 				8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */,
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
-				D6CD28E724CF24DD005847AA /* ExposureNotificationPermissionVM.swift in Sources */,
+				D6CD28E724CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
 				D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
@@ -1266,7 +1266,7 @@
 				8064DF79244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
 				FFC32EA3244B75390008104C /* ScanningInfoCell.swift in Sources */,
 				FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */,
-				D6CD28ED24CF24DD005847AA /* ExposureNotificationPermissionVC.swift in Sources */,
+				D6CD28ED24CF24DD005847AA /* ExposurePermissionVC.swift in Sources */,
 				D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */,
 				8083D8D4244640A0007FA4E9 /* Collection.swift in Sources */,
 				8084DEF124AF84F3001FBB16 /* AppDependency.swift in Sources */,

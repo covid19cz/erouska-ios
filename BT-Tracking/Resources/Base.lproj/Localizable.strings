@@ -145,3 +145,9 @@
 
 "deadman_notificaiton_title" = "Otevřete aplikaci eRouška";
 "deadman_notificaiton_body" = "Zkontrolujete tak, zda jste se setkali s osobou u níž byla potvrzená nákaza virem COVID-19.";
+
+"exposure_restricted_title" = "Oznámení";
+"exposure_restricted_body" = "eRouškce se nepodařilo aktivovat oznámení o kontaktu s COVID-19. Pravděpodobně je sledování deaktivované v systému. Prosím aktivujte jej a potom zkuste znovu.";
+
+"exposure_unknown_title" = "Oznámení";
+"exposure_unknown_body" = "eRouškce se nepodařilo aktivovat oznámení o kontaktu s COVID-19. Zkontrolujte si vaše nastavení v systému a potom zkuste aktivovat znovu.";
