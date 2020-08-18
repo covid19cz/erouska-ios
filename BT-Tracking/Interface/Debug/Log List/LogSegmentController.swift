@@ -23,7 +23,7 @@ final class LogSegmentController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.tabBarItem.image = UIImage(systemName: "doc.plaintext")
+        navigationController?.tabBarItem.image = UIImage(named: "MyData")
 
         navigationItem.largeTitleDisplayMode = .never
     }

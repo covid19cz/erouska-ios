@@ -50,7 +50,6 @@ struct KeychainService {
             } else {
                 removeValue(with: .TUIDs)
             }
-            AppDelegate.dependency.resetAdvertising()
         }
     }
 }

@@ -72,7 +72,7 @@
                                                                     <constraint firstAttribute="height" constant="70" id="Kyn-kL-gxB"/>
                                                                 </constraints>
                                                             </view>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RiskyEncountersNegative" translatesAutoresizingMaskIntoConstraints="NO" id="nr5-J2-JfB">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ScanActive" translatesAutoresizingMaskIntoConstraints="NO" id="nr5-J2-JfB">
                                                                 <rect key="frame" x="0.0" y="86" width="374" height="130"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="130" id="8WT-8y-gqJ"/>
@@ -357,6 +357,6 @@
         <image name="MainSymptoms" width="24" height="24"/>
         <image name="PreventTransmission" width="24" height="24"/>
         <image name="PreviousRiskyEncounters" width="24" height="24"/>
-        <image name="RiskyEncountersNegative" width="130" height="130"/>
+        <image name="ScanActive" width="130" height="130"/>
     </resources>
 </document>
