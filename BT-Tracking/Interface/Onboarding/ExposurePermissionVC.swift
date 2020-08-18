@@ -57,7 +57,9 @@ private extension ExposurePermissionVC {
     func requestExposurePresmission() {
         viewModel.exposureService.activate { [weak self] error in
             guard let self = self else { return }
-            if let error = error as? ExposureError {
+            if let error = error {
+                log("ExposurePermissionVC: failed to active exposures \(error)")
+
                 switch error {
                 case .activationError(let code):
                     switch code {

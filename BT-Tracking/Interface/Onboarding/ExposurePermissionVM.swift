@@ -24,10 +24,10 @@ struct ExposurePermissionVM {
 
     let continueButton = "exposure_notification_continue"
 
-    let errorRestiredTitle = "exposure_restricted_title"
-    let errorRestiredBody = "exposure_restricted_body"
+    let errorRestiredTitle = "exposure_activation_restricted_title"
+    let errorRestiredBody = "exposure_activation_restricted_body"
 
-    let errorUnknownTitle = "exposure_unknown_title"
-    let errorUnknownBody = "exposure_unknown_body"
+    let errorUnknownTitle = "exposure_activation_unknown_title"
+    let errorUnknownBody = "exposure_activation_unknown_body"
 
 }

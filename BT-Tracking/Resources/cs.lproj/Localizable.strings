@@ -147,11 +147,14 @@
 "deadman_notificaiton_title" = "Otevřete aplikaci eRouška";
 "deadman_notificaiton_body" = "Zkontrolujete tak, zda jste se setkali s osobou u níž byla potvrzená nákaza virem COVID-19.";
 
-"exposure_restricted_title" = "Chyba oznámení";
-"exposure_restricted_body" = "eRouškce se nepodařilo aktivovat oznámení o kontaktu s COVID-19. Pravděpodobně je sledování deaktivované v systému. Prosím aktivujte jej a potom zkuste znovu. Pokud chyba přetrvává, kontaktujte nás na info@erouska.cz.";
+"exposure_activation_restricted_title" = "Nepodařilo se aktivovat oznámení";
+"exposure_activation_restricted_body" = "eRouškce se nepodařilo aktivovat oznámení o kontaktu s COVID-19. Oznámení je vypnuté v systému, zkontrolujte si vaše nastavení. Pokud problém přetrvává, kontaktujte nás na info@erouska.cz.";
 
-"exposure_unknown_title" = "Chyba oznámení";
-"exposure_unknown_body" = "eRouškce se nepodařilo aktivovat oznámení o kontaktu s COVID-19. Zkontrolujte si vaše nastavení v systému a potom zkuste aktivovat znovu. Pokud chyba přetrvává, kontaktujte nás na info@erouska.cz.";
+"exposure_activation_unknown_title" = "Nepodařilo se aktivovat oznámení";
+"exposure_activation_unknown_body" = "eRouškce se nepodařilo aktivovat oznámení o kontaktu s COVID-19. Zkontrolujte si vaše nastavení. Pokud problém přetrvává, kontaktujte nás na info@erouska.cz.";
+
+"exposure_deactivation_unknown_title" = "Nepodařilo se deaktivovat oznámení";
+"exposure_deactivation_unknown_body" = "eRouškce se nepodařilo deaktivovat oznámení o kontaktu s COVID-19. Pokud problém přetrvává, kontaktujte nás na info@erouska.cz.";
 
 "error_title" = "Chyba";
 

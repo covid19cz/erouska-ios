@@ -24,7 +24,7 @@ protocol ExposureServicing: class {
     var authorizationStatus: ENAuthorizationStatus { get }
 
     typealias ActivationCallback = (ExposureError?) -> Void
-    func activate(callback: Callback?)
+    func activate(callback: ActivationCallback?)
     func deactivate(callback: Callback?)
 
     // Keys
@@ -84,7 +84,7 @@ final class ExposureService: ExposureServicing {
         manager.invalidate()
     }
 
-    func activate(callback: Callback?) {
+    func activate(callback: ActivationCallback?) {
         print("ExposureService: activating")
         guard !isEnabled, !isActive else {
             callback?(nil)
