@@ -191,8 +191,27 @@ private extension ActiveAppVC {
     func updateScanner(activate: Bool, completion: @escaping () -> Void) {
         if activate {
             viewModel.exposureService.activate { [weak self] error in
+                guard let self = self else { return }
+
                 if let error = error {
-                    self?.show(error: error)
+                    switch error {
+                    case .activationError(let code):
+                        switch code {
+                        case .notAuthorized, .notEnabled:
+                            break
+                        case .unsupported:
+                            break // it shouldn't be possible
+                        case .restricted:
+                            self.showAlert(
+                                title: self.viewModel.errorActivationRestiredTitle,
+                                message: self.viewModel.errorActivationRestiredBody
+                            )
+                        default:
+                            self.showExposureUnknownError(error, activation: true)
+                        }
+                    default:
+                        self.showExposureUnknownError(error, activation: true)
+                    }
                     log("ActiveAppVC: failed to active exposures \(error)")
                 }
                 completion()
@@ -200,7 +219,7 @@ private extension ActiveAppVC {
         } else {
             viewModel.exposureService.deactivate { [weak self] error in
                 if let error = error {
-                    self?.show(error: error)
+                    self?.showExposureUnknownError(error, activation: false)
                     log("ActiveAppVC: failed to disable exposures \(error)")
                 }
                 completion()
@@ -244,6 +263,18 @@ private extension ActiveAppVC {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.backgroundModeCancel), style: .default))
         controller.preferredAction = controller.actions.first
         present(controller, animated: true)
+    }
+
+    func showExposureUnknownError(_ error: Error, activation: Bool) {
+        #if DEBUG
+        show(error: error)
+        #else
+        if activation {
+            showAlert(title: viewModel.errorActivationUnknownTitle, message: viewModel.errorActivationUnknownBody)
+        } else {
+            showAlert(title: viewModel.errorDeactivationUnknownTitle, message: viewModel.errorDeactivationUnknownBody)
+        }
+        #endif
     }
 
     // MARK: - Open external
