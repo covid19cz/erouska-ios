@@ -30,3 +30,13 @@ struct ErrorVM {
         self.action = action
     }
 }
+
+extension ErrorVM {
+
+    static let unknown = ErrorVM(
+        headline: Localizable("error_unknown_headline"),
+        text: Localizable("error_unknown_text"),
+        actionTitle: Localizable("error_unknown_title_action"),
+        action: .close
+    )
+}

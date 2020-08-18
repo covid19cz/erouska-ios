@@ -79,12 +79,7 @@ private extension PrivacyVC {
                         action: { self?.activateApp() }
                     )
                 } else {
-                    viewModel = ErrorVM(
-                        headline: Localizable("error_unknown_headline"),
-                        text: Localizable("error_unknown_text"),
-                        actionTitle: Localizable("error_unknown_title_action"),
-                        action: .close
-                    )
+                    viewModel = ErrorVM.unknown
                 }
                 if let errorVC = ErrorVC.instantiateViewController(with: viewModel) {
                     self?.present(errorVC, animated: true)
