@@ -28,10 +28,4 @@ class AppDependency {
 
     private(set) lazy var background = BackgroundService(exposureService: exposureService, reporter: reporter)
 
-    func resetAdvertising() {
-        guard KeychainService.BUID != nil else { return } // TODO: Should be eHRID?
-        guard exposureService.status == .active || exposureService.status == .paused else { return }
-        exposureService.deactivate { _ in }
-    }
-
 }

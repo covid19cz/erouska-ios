@@ -22,8 +22,6 @@ struct FirstActivationVM {
 
     let body = "welcome_body"
 
-    let moreButton = "welcome_body_more"
-
     let continueButton = "welcome_activation"
 
     let howItWorksButton = "welcome_help"

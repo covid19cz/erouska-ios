@@ -11,7 +11,7 @@ import UIKit
 struct ContactsVM {
 
     let tabTitle = "contacts_title"
-    let tabIcon = UIImage(systemName: "phone")
+    let tabIcon = UIImage(named: "Contacts")
 
     let title = "contacts_title"
 
