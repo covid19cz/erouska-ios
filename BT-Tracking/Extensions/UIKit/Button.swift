@@ -84,11 +84,7 @@ class Button: UIButton {
         case .filled, .exposureBanner:
             return nil
         case .clear, .disabled:
-            if #available(iOS 13.0, *) {
-                return UIColor(named: "ButtonBorder")?.resolvedColor(with: traitCollection).withAlphaComponent(0.12) ?? UIColor.clear
-            } else {
-                return UIColor(named: "ButtonBorder")?.withAlphaComponent(0.12) ?? UIColor.clear
-            }
+            return UIColor(named: "ButtonBorder")?.resolvedColor(with: traitCollection).withAlphaComponent(0.12) ?? UIColor.clear
         }
     }
 
@@ -115,11 +111,7 @@ final class MainScanningButton: Button {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        if #available(iOS 13.0, *) {
-            backgroundColor = UIColor.systemGray6
-        } else {
-            backgroundColor = UIColor(red: 237/255.0, green: 238/255.0, blue: 240/255.0, alpha: 1)
-        }
+        backgroundColor = UIColor.systemGray6
         setTitleColor(.systemBlue, for: .normal)
     }
 }

@@ -21,11 +21,7 @@ final class AboutPersonCell: UITableViewCell {
 
         avatarView.layer.masksToBounds = true
         avatarView.layer.cornerRadius = 3
-        if #available(iOS 13.0, *) {
-            avatarView.backgroundColor = .systemGray6
-        } else {
-            avatarView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
-        }
+        avatarView.backgroundColor = .systemGray6
     }
 
     override func prepareForReuse() {

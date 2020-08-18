@@ -10,6 +10,9 @@ import UIKit
 
 final class HelpVC: MarkdownController {
 
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var chatbotButton: UIButton!
+
     // MARK: -
 
     private let viewModel = HelpVM()
@@ -31,6 +34,12 @@ final class HelpVC: MarkdownController {
 
         navigationItem.localizedTitle(viewModel.title)
         navigationItem.rightBarButtonItem?.localizedTitle(viewModel.about)
+
+        stackView.addArrangedSubview(contentView)
+    }
+
+    @IBAction func showChatbot(_ sender: Any) {
+        openURL(URL: viewModel.configuration.chatbotURL)
     }
 
 }
