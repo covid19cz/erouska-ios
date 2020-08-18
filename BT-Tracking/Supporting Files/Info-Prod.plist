@@ -45,6 +45,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ENAPIVersion</key>
+	<integer>1</integer>
 	<key>ENDeveloperRegion</key>
 	<string>CZ</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
@@ -68,11 +70,11 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
-    <array>
-        <string>armv7</string>
-        <string>bluetooth-le</string>
-        <string>telephony</string>
-    </array>
+	<array>
+		<string>armv7</string>
+		<string>bluetooth-le</string>
+		<string>telephony</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

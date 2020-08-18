@@ -397,7 +397,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                     <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="45a-ir-C72"/>
                         <rightBarButtonItems>
-                            <barButtonItem title="Další možnosti" image="ellipsis.circle.fill" id="aAa-9L-bkG">
+                            <barButtonItem title="Další možnosti" image="ellipsis.circle.fill" catalog="system" id="aAa-9L-bkG">
                                 <connections>
                                     <action selector="moreActionWithSender:" destination="SLc-31-c7B" id="zr6-Iy-Ztd"/>
                                 </connections>
@@ -421,7 +421,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="textLabel" destination="ANQ-eO-rpO" id="Gle-hH-WWb"/>
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
-                        <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" modalPresentationStyle="fullScreen" id="HRF-xK-4t2"/>
+                        <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" id="HRF-xK-4t2"/>
                         <segue destination="z3e-t5-SVC" kind="show" identifier="about" id="7iH-sH-Ztm"/>
                     </connections>
                 </viewController>
@@ -458,6 +458,6 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
     </scenes>
     <resources>
         <image name="ScanActive" width="130" height="130"/>
-        <image name="ellipsis.circle.fill" width="24" height="24"/>
+        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
