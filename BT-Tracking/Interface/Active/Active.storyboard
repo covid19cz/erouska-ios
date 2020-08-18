@@ -305,7 +305,6 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ScanActive" translatesAutoresizingMaskIntoConstraints="NO" id="Dqs-Rj-Q2J">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="130" id="YRC-9Z-H5E"/>
                                                                     <constraint firstAttribute="height" constant="130" id="uhr-Mr-DYd"/>
                                                                 </constraints>
                                                             </imageView>
