@@ -23,10 +23,10 @@ protocol ReportServicing: class {
     var isUploading: Bool { get }
     func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback)
 
-    typealias DownloadKeysCallback = (Result<[URL], Error>) -> Void
+    typealias DownloadKeysCallback = (Result<ReportKeys, Error>) -> Void
 
     var isDownloading: Bool { get }
-    func downloadKeys(callback: @escaping DownloadKeysCallback) -> Progress
+    func downloadKeys(lastProcessedFileName: String?, callback: @escaping DownloadKeysCallback) -> Progress
 
     typealias ConfigurationCallback = (Result<ENExposureConfiguration, Error>) -> Void
     func fetchExposureConfiguration(callback: @escaping ConfigurationCallback)
@@ -140,7 +140,7 @@ final class ReportService: ReportServicing {
 
     private(set) var isDownloading: Bool = false
 
-    func downloadKeys(callback: @escaping DownloadKeysCallback) -> Progress {
+    func downloadKeys(lastProcessedFileName: String?, callback: @escaping DownloadKeysCallback) -> Progress {
         let progress = Progress()
 
         guard !isDownloading else {
@@ -155,10 +155,10 @@ final class ReportService: ReportServicing {
             callback(.failure(error))
         }
 
-        func reportSuccess(_ reports: [URL]) {
+        func reportSuccess(_ reports: [URL], lastProcessFileName: String?) {
             log("ReportService Download done")
             isDownloading = false
-            callback(.success(reports))
+            callback(.success(ReportKeys(URLs: reports, lastProcessedFileName: lastProcessFileName)))
         }
 
         let destinationURL = self.downloadDestinationURL
@@ -255,10 +255,7 @@ final class ReportService: ReportServicing {
                         }
                     }
 
-                    if let lastURL = lastRemoteURL {
-                        AppSettings.lastProcessedFileName = lastURL.lastPathComponent
-                    }
-                    reportSuccess(localURLs)
+                    reportSuccess(localURLs, lastProcessFileName: lastRemoteURL?.lastPathComponent)
                 }
         }
 

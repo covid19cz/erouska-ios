@@ -145,6 +145,7 @@ final class ActiveAppVM {
     private let disposeBag = DisposeBag()
 
     let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
+    let reporter: ReportServicing = AppDelegate.dependency.reporter
 
     init() {
         observableState = BehaviorSubject<State>(value: .paused)

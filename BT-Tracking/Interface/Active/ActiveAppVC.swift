@@ -124,7 +124,11 @@ final class ActiveAppVC: UIViewController {
         case .disabledBluetooth:
             openBluetoothSettings()
         case .disabledExposures:
-            openSettings()
+            if viewModel.exposureService.authorizationStatus == .unknown {
+                resumeScanning()
+            } else {
+                openSettings()
+            }
         }
     }
 
@@ -298,6 +302,8 @@ private extension ActiveAppVC {
 
     // MARK: - Debug
 
+    #if PROD
+    #else
     func debugAction() {
         let storyboard = UIStoryboard(name: "Debug", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
@@ -312,22 +318,32 @@ private extension ActiveAppVC {
         dateFormat.timeStyle = .short
         dateFormat.dateStyle = .short
 
-        AppDelegate.dependency.reporter.fetchExposureConfiguration { [weak self] result in
+        viewModel.reporter.fetchExposureConfiguration { [weak self] result in
             switch result {
             case .success(let configuration):
-                _ = AppDelegate.dependency.reporter.downloadKeys { [weak self] result in
+                _ = self?.viewModel.reporter.downloadKeys(lastProcessedFileName: nil) { [weak self] result in
                     switch result {
-                    case .success(let URLs):
-                        AppDelegate.dependency.exposureService.detectExposures(
+                    case .success(let keys):
+                        self?.viewModel.exposureService.detectExposures(
                             configuration: configuration,
-                            URLs: URLs
+                            URLs: keys.URLs
                         ) { [weak self] result in
                             self?.hideProgress()
                             switch result {
                             case .success(var exposures):
                                 exposures.sort { $0.date < $1.date }
 
+                                guard !exposures.isEmpty else {
+                                    log("EXP: no exposures, skip!")
+                                    self?.showAlert(title: "Exposures", message: "No exposures detected, device is clear.")
+                                    return
+                                }
+
                                 let realm = try! Realm()
+                                try! realm.write() {
+                                    exposures.forEach { realm.add(ExposureRealm($0)) }
+                                }
+
                                 var result = ""
                                 for exposure in exposures {
                                     let signals = exposure.attenuationDurations.map { "\($0)" }
@@ -336,9 +352,7 @@ private extension ActiveAppVC {
                                         + "attenuation value: \(exposure.attenuationValue)\n"
                                         + "signal attenuations: \(signals.joined(separator: ", "))\n"
                                 }
-                                try! realm.write() {
-                                    exposures.forEach { realm.add(ExposureRealm($0)) }
-                                }
+
                                 if result == "" {
                                     result = "None";
                                 }
@@ -369,5 +383,6 @@ private extension ActiveAppVC {
             AppDelegate.shared.updateInterface()
         }
     }
+    #endif
 
 }

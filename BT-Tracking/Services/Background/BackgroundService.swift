@@ -156,22 +156,22 @@ private extension BackgroundService {
         }
 
         // Perform the exposure detection
-        return reporter.downloadKeys { result in
+        return reporter.downloadKeys(lastProcessedFileName: AppSettings.lastProcessedFileName) { result in
             Log.log("BGTask: did download keys \(result)")
 
             switch result {
-            case .success(let URLs):
+            case .success(let keys):
                 self.reporter.fetchExposureConfiguration { result in
                     switch result {
                     case .success(let configuration):
                         self.exposureService.detectExposures(
                             configuration: configuration,
-                            URLs: URLs
+                            URLs: keys.URLs
                         ) { result in
                             switch result {
                             case .success(var exposures):
                                 exposures.sort { $0.date < $1.date }
-                                self.handleExposures(exposures)
+                                self.handleExposures(exposures, lastProcessedFileName: keys.lastProcessedFileName)
 
                                 task.setTaskCompleted(success: true)
                             case .failure(let error):
@@ -188,12 +188,32 @@ private extension BackgroundService {
         }
     }
 
-    func handleExposures(_ exposures: [Exposure]) {
+    func handleExposures(_ exposures: [Exposure], lastProcessedFileName: String?) {
+        if let fileName = lastProcessedFileName {
+            AppSettings.lastProcessedFileName = fileName
+        }
+
+        guard !exposures.isEmpty else {
+            log("EXP: no exposures, skip!")
+
+            #if PROD
+            #else
+            showExposureNotification(result: "EXP: No exposures detected, device is clear.")
+            #endif
+            return
+        }
+
+        let realm = try! Realm()
+        try! realm.write() {
+            exposures.forEach { realm.add(ExposureRealm($0)) }
+        }
+
+        #if PROD
+        #else
         let dateFormat = DateFormatter()
         dateFormat.timeStyle = .short
         dateFormat.dateStyle = .short
 
-        let realm = try! Realm()
         var result = ""
         for exposure in exposures {
             let signals = exposure.attenuationDurations.map { "\($0)" }
@@ -202,9 +222,6 @@ private extension BackgroundService {
                 + "attenuation value: \(exposure.attenuationValue)\n"
                 + "signal attenuations: \(signals.joined(separator: ", "))\n"
         }
-        try! realm.write() {
-            exposures.forEach { realm.add(ExposureRealm($0)) }
-        }
         if result == "" {
             result = "None";
         }
@@ -212,6 +229,11 @@ private extension BackgroundService {
         log("EXP: \(exposures)")
         log("EXP: \(result)")
 
+        showExposureNotification(result: result)
+        #endif
+    }
+
+    func showExposureNotification(result: String) {
         guard let bundleID = Bundle.main.bundleIdentifier else {
             Log.log("BGNotification: Could not access bundle identifier")
             return
@@ -225,10 +247,11 @@ private extension BackgroundService {
         UNUserNotificationCenter.current().add(request) { error in
             DispatchQueue.main.async {
                 if let error = error {
-                    Log.log("BGTask: error showing error user notification \(error)")
+                    Log.log("BGNotification: error showing error user notification \(error)")
                 }
             }
         }
+
     }
 
 }
