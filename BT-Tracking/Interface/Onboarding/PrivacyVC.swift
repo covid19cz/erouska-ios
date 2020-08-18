@@ -65,14 +65,30 @@ private extension PrivacyVC {
 
         viewModel.functions.httpsCallable("RegisterEhrid").call(request) { [weak self] result, error in
             self?.hideProgress()
-            if let error = error as NSError? {
-                self?.show(error: error)
-            } else if let eHRID = (result?.data as? [String: Any])?["ehrid"] as? String {
+            if let eHRID = (result?.data as? [String: Any])?["ehrid"] as? String {
                 KeychainService.eHRID = eHRID
                 let storyboard = UIStoryboard(name: "Active", bundle: nil)
                 AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
             } else {
-                // TODO: Show wrong response format error
+                let viewModel: ErrorVM
+                if let error = error, (error as NSError).code == NSURLErrorNotConnectedToInternet {
+                    viewModel = ErrorVM(
+                        headline: Localizable("error_activation_internet_headline"),
+                        text: Localizable("error_activation_internet_text"),
+                        actionTitle: Localizable("error_activation_internet_title_action"),
+                        action: { self?.activateApp() }
+                    )
+                } else {
+                    viewModel = ErrorVM(
+                        headline: Localizable("error_unknown_headline"),
+                        text: Localizable("error_unknown_text"),
+                        actionTitle: Localizable("error_unknown_title_action"),
+                        action: .close
+                    )
+                }
+                if let errorVC = ErrorVC.instantiateViewController(with: viewModel) {
+                    self?.present(errorVC, animated: true)
+                }
             }
         }
     }

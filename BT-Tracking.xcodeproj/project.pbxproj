@@ -184,6 +184,12 @@
 		D6231CAC24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */; };
 		D6231CAD24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */; };
 		D6231CAE24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */; };
+		D6231CB224EBC0510023BDC8 /* Error.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6231CB124EBC0510023BDC8 /* Error.storyboard */; };
+		D6231CB324EBC0510023BDC8 /* Error.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6231CB124EBC0510023BDC8 /* Error.storyboard */; };
+		D6231CB524EBC0760023BDC8 /* ErrorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CB424EBC0760023BDC8 /* ErrorVC.swift */; };
+		D6231CB624EBC0760023BDC8 /* ErrorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CB424EBC0760023BDC8 /* ErrorVC.swift */; };
+		D6231CB824EBC3630023BDC8 /* ErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CB724EBC3630023BDC8 /* ErrorVM.swift */; };
+		D6231CB924EBC3630023BDC8 /* ErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CB724EBC3630023BDC8 /* ErrorVM.swift */; };
 		D6340C6224C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6324C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
@@ -334,6 +340,9 @@
 		D6231CA424E400C70023BDC8 /* MainSymptomsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSymptomsVM.swift; sourceTree = "<group>"; };
 		D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousRiskyEncountersVM.swift; sourceTree = "<group>"; };
 		D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousRiskyEncountersVC.swift; sourceTree = "<group>"; };
+		D6231CB124EBC0510023BDC8 /* Error.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Error.storyboard; sourceTree = "<group>"; };
+		D6231CB424EBC0760023BDC8 /* ErrorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVC.swift; sourceTree = "<group>"; };
+		D6231CB724EBC3630023BDC8 /* ErrorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVM.swift; sourceTree = "<group>"; };
 		D6340C6124C1F46D00E550A1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVC.swift; sourceTree = "<group>"; };
 		D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVM.swift; sourceTree = "<group>"; };
@@ -492,6 +501,7 @@
 		8054C0C9241FE66A008907B8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				D6231CAF24EBC03A0023BDC8 /* Error */,
 				D65E57D124D04960000F2402 /* News */,
 				D6CD28DA24CF24DC005847AA /* Onboarding */,
 				D61DFE5324C1A904002E1B2E /* Force Update */,
@@ -767,6 +777,16 @@
 			path = "Risky Encounters List";
 			sourceTree = "<group>";
 		};
+		D6231CAF24EBC03A0023BDC8 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				D6231CB124EBC0510023BDC8 /* Error.storyboard */,
+				D6231CB424EBC0760023BDC8 /* ErrorVC.swift */,
+				D6231CB724EBC3630023BDC8 /* ErrorVM.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		D63E443324DD85C2007B6728 /* Risky Encounters */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,6 +972,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */,
+				D6231CB224EBC0510023BDC8 /* Error.storyboard in Resources */,
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
 				D6CD28E424CF24DC005847AA /* Onboarding.storyboard in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
@@ -986,6 +1007,7 @@
 				4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */,
 				D65E57E024D05D83000F2402 /* News.storyboard in Resources */,
 				8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */,
+				D6231CB324EBC0510023BDC8 /* Error.storyboard in Resources */,
 				8083D8EC244640A0007FA4E9 /* DataList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1126,6 +1148,7 @@
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
 				8083D9142446F779007FA4E9 /* Markdown.swift in Sources */,
 				80631A98242CAB5000EB0B6C /* Image.swift in Sources */,
+				D6231CB824EBC3630023BDC8 /* ErrorVM.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */,
 				8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */,
 				8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
@@ -1177,6 +1200,7 @@
 				D6CD28E224CF24DC005847AA /* FirstActivationVC.swift in Sources */,
 				80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */,
 				80BF9C262424D55800150108 /* SendResultVC.swift in Sources */,
+				D6231CB524EBC0760023BDC8 /* ErrorVC.swift in Sources */,
 				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				D65E57D324D04976000F2402 /* NewsVM.swift in Sources */,
@@ -1233,6 +1257,7 @@
 				D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				80FC71B8247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */,
+				D6231CB924EBC3630023BDC8 /* ErrorVM.swift in Sources */,
 				8083D8B7244640A0007FA4E9 /* Data.swift in Sources */,
 				8083D8B8244640A0007FA4E9 /* KeychainService.swift in Sources */,
 				80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */,
@@ -1248,6 +1273,7 @@
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
+				D6231CB624EBC0760023BDC8 /* ErrorVC.swift in Sources */,
 				D6231CAE24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
