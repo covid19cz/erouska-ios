@@ -29,14 +29,7 @@ struct Markdown {
         md.h2.fontStyle = .bold
 
         let attributedText = NSMutableAttributedString(attributedString: md.attributedString())
-        var textColor: UIColor {
-            if #available(iOS 13.0, *) {
-                return .label
-            } else {
-                return .black
-            }
-        }
-        attributedText.addAttribute(.foregroundColor, value: textColor, range: NSMakeRange(0, attributedText.length))
+        attributedText.addAttribute(.foregroundColor, value: UIColor.label, range: NSMakeRange(0, attributedText.length))
         return attributedText
     }
 }
