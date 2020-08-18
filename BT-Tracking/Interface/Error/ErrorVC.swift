@@ -32,6 +32,7 @@ final class ErrorVC: UIViewController {
 
         title = Localizable("error_title")
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizable("help"), style: .plain, target: self, action: #selector(showHelp))
 
         headlineLabel.text = viewModel?.headline
         textLabel.text = viewModel?.text
@@ -43,13 +44,21 @@ final class ErrorVC: UIViewController {
         case .close:
             close()
         case .closeAndCustom(let customAction):
-            close(completion: customAction)
+            closeWith(completion: customAction)
         case .none:
             break
         }
     }
 
-    @objc func close(completion: (() -> Void)? = nil) {
+    @objc func close() {
+        dismiss(animated: true)
+    }
+
+    @objc func showHelp() {
+        performSegue(withIdentifier: "Help", sender: nil)
+    }
+
+    func closeWith(completion: @escaping () -> Void) {
         dismiss(animated: true, completion: completion)
     }
 }

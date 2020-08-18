@@ -71,7 +71,7 @@ private extension PrivacyVC {
                 AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
             } else {
                 let viewModel: ErrorVM
-                if let error = error, (error as NSError).code == NSURLErrorNotConnectedToInternet {
+                if let error = error, (error as NSError).domain == NSURLErrorDomain, [NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost, NSURLErrorTimedOut].contains((error as NSError).code) {
                     viewModel = ErrorVM(
                         headline: Localizable("error_activation_internet_headline"),
                         text: Localizable("error_activation_internet_text"),

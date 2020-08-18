@@ -110,11 +110,22 @@
                         <outlet property="headlineLabel" destination="LVl-4u-bFe" id="aPP-aO-nEk"/>
                         <outlet property="imageView" destination="3yh-Qx-bWt" id="w6x-Xb-ala"/>
                         <outlet property="textLabel" destination="LZ9-xd-SkZ" id="Q5P-py-3uI"/>
+                        <segue destination="r7f-oX-bVv" kind="show" identifier="Help" id="sG6-i6-bPL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSx-Ny-LYC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="666.66666666666674" y="93.75"/>
+        </scene>
+        <!--Help-->
+        <scene sceneID="fB3-u5-2Y2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Help" id="r7f-oX-bVv" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vyr-Yx-aOK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ddL-Wf-Isx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1364" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GP2-p3-aO6">
@@ -122,7 +133,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P2s-fN-K6F" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="23H-Og-2aq">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
