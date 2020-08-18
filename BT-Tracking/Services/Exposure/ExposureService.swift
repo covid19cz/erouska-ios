@@ -177,6 +177,12 @@ final class ExposureService: ExposureServicing {
                 log("ExposureService summary \(summary)")
                 let userExplanation = NSLocalizedString("Bylo detekovano nakazeni!", comment: "User notification")
                 log("ExposureService getExposureInfo")
+
+                guard summary.matchedKeyCount == 0 else {
+                    callback(.success([]))
+                    return
+                }
+
                 self.manager.getExposureInfo(summary: summary, userExplanation: userExplanation) { exposures, error in
                     if let error = error {
                         self.detectingExposures = false

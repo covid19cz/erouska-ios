@@ -51,10 +51,14 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ENAPIVersion</key>
+	<integer>1</integer>
 	<key>ENDeveloperRegion</key>
 	<string>CZ</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
@@ -72,8 +76,8 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
-        <string>bluetooth-le</string>
-        <string>telephony</string>
+		<string>bluetooth-le</string>
+		<string>telephony</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
@@ -89,7 +93,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 </dict>
 </plist>

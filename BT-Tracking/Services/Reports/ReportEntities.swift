@@ -78,3 +78,10 @@ struct ReportResult: Decodable {
     let code: String?
 
 }
+
+struct ReportKeys {
+
+    let URLs: [URL]
+    let lastProcessedFileName: String?
+
+}
