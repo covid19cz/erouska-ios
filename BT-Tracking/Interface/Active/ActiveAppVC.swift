@@ -144,6 +144,9 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
+        controller.addAction(UIAlertAction(title: Localizable("Debug: Vlozit falesne setkani"), style: .default, handler: { [weak self] _ in
+            self?.debugInsertFakeExposure()
+        }))
         controller.addAction(UIAlertAction(title: Localizable("Debug: Zkontrolovat reporty"), style: .default, handler: { [weak self] _ in
             self?.debugProcessReports()
         }))
@@ -383,6 +386,18 @@ private extension ActiveAppVC {
             AppDelegate.shared.updateInterface()
         }
     }
+
+    func debugInsertFakeExposure() {
+        let exposures = [
+            Exposure(date: Date(), duration: 213, totalRiskScore: 2, transmissionRiskLevel: 4, attenuationValue: 4, attenuationDurations: [21, 1, 4, 5])
+        ]
+
+        let realm = try! Realm()
+        try! realm.write() {
+            exposures.forEach { realm.add(ExposureRealm($0)) }
+        }
+    }
+
     #endif
 
 }
