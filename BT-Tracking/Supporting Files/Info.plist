@@ -55,14 +55,20 @@
 	<integer>1</integer>
 	<key>ENDeveloperRegion</key>
 	<string>CZ</string>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+	<true/>
 	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS</key>
+	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-    <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
 	<key>UIBackgroundModes</key>
@@ -93,9 +99,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
-    <true/>
-    <key>GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS</key>
-    <false/>
 </dict>
 </plist>
