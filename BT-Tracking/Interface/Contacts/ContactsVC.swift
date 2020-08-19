@@ -16,74 +16,38 @@ final class ContactsVC: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var importantHeadlineLabel: UILabel!
-    @IBOutlet weak var importantBodyLabel: UILabel!
-    @IBOutlet weak var importantButton: UIButton!
-
-    @IBOutlet weak var helpHeadlineLabel: UILabel!
-    @IBOutlet weak var helpBodyLabel: UILabel!
-    @IBOutlet weak var helpFaqButton: UIButton!
-
-    @IBOutlet weak var aboutHeadlineLabel: UILabel!
-    @IBOutlet weak var aboutBodyLabel: UILabel!
-    @IBOutlet weak var aboutButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
 
     // MARK: -
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        setupTabBar()
+        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.image = viewModel.tabIcon
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupStrings()
-    }
-
-    // MARK: - Actions
-
-    @IBAction private func importantContactsAction() {
-        if let url = URL(string: RemoteValues.importantLink) {
-            openURL(URL: url)
-        }
-    }
-
-    @IBAction private func faqAction() {
-        if let url = URL(string: RemoteValues.faqLink) {
-            openURL(URL: url)
-        }
-    }
-
-    @IBAction private func webAction() {
-        guard let url = URL(string: RemoteValues.homepageLink) else { return }
-        openURL(URL: url)
-    }
-
-}
-
-private extension ContactsVC {
-
-    func setupStrings() {
         navigationItem.localizedTitle(viewModel.title)
 
-        importantHeadlineLabel.localizedText(viewModel.importantHeadline)
-        importantBodyLabel.localizedText(viewModel.importantBody)
-        importantButton.localizedTitle(viewModel.importantButton)
+        tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 210
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+}
 
-        helpHeadlineLabel.localizedText(viewModel.helpHeadline)
-        helpBodyLabel.localizedText(viewModel.helpBody)
-        helpFaqButton.localizedTitle(viewModel.helpFaqButton)
+extension ContactsVC: UITableViewDataSource {
 
-        aboutHeadlineLabel.localizedText(viewModel.aboutHeadline)
-        aboutBodyLabel.localizedText(viewModel.aboutBody)
-        aboutButton.localizedTitle(viewModel.aboutButton)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.contacts.count
     }
 
-    func setupTabBar() {
-        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
-        navigationController?.tabBarItem.image = viewModel.tabIcon
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell
+        cell.config(with: viewModel.contacts[indexPath.row])
+        cell.openLinkClosure = { [weak self] in self?.openURL(URL: $0) }
+        return cell
     }
-
 }

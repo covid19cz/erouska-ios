@@ -57,12 +57,9 @@ extension AppDelegate {
 }
 
 enum RemoteConfigValueKey: String {
-    case faqLink
-    case importantLink
     case proclamationLink
     case termsAndConditionsLink
     case aboutLink
-    case homepageLink
     case shareAppDynamicLink
     
     case helpMarkdown
@@ -84,17 +81,15 @@ enum RemoteConfigValueKey: String {
 
     case symptomsContentJson
     case preventionContentJson
+    case contactsContentJson
 }
 
 struct RemoteValues {
 
     static let defaults: [RemoteConfigValueKey: Any?] = [
-        .faqLink: "https://koronavirus.mzcr.cz/otazky-a-odpovedi/",
-        .importantLink: "https://koronavirus.mzcr.cz",
         .proclamationLink: "https://koronavirus.mzcr.cz",
         .termsAndConditionsLink: "https://koronavirus.mzcr.cz",
         .aboutLink: "http://erouska.cz",
-        .homepageLink: "http://erouska.cz",
         .shareAppDynamicLink: "https://covid19cz.page.link/share",
         
         .helpMarkdown: helpMarkdownBackup,
@@ -114,16 +109,6 @@ struct RemoteValues {
         .riskyEncountersTitle: riskyEncountersTitleDefault,
         .riskyEncountersBody: riskyEncountersBodyDefault,
     ]
-    
-    /// odkaz na FAQ - vede z obrazovky Kontakty
-    static var faqLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .faqLink)
-    }
-
-    /// odkaz na důležité kontakty - vede z obrazovky Kontakty
-    static var importantLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .importantLink)
-    }
 
     /// odkaz na prohlášení o podpoře - vede z úvodní obrazovky a z nápovědy
     static var proclamationLink: String {
@@ -143,11 +128,6 @@ struct RemoteValues {
     /// Authors json
     static var aboutJson: String {
         return AppDelegate.shared.remoteConfigString(forKey: .aboutJson)
-    }
-
-    /// Homepage - erouska.cz
-    static var homepageLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .homepageLink)
     }
 
     static var shareAppDynamicLink: String {
@@ -235,6 +215,18 @@ struct RemoteValues {
             )
         } catch {
             return nil
+        }
+    }
+
+    static var contactsContent: [Contact] {
+        guard let json = AppDelegate.shared.remoteConfigString(forKey: .contactsContentJson).data(using: .utf8) else { return [] }
+        do {
+            return try JSONDecoder().decode([ContactContent].self, from: json).compactMap {
+                guard let link = URL(string: $0.link) else { return nil }
+                return Contact(title: $0.title, text: $0.text, linkTitle: $0.linkTitle, link: link)
+            }
+        } catch {
+            return []
         }
     }
 }
