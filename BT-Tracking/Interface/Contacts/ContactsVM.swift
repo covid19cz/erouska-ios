@@ -15,16 +15,21 @@ struct ContactsVM {
 
     let title = "contacts_title"
 
-    let importantHeadline = "contacts_important_headline"
-    let importantBody = "contacts_important_body"
-    let importantButton = "contacts_important_button"
+    let contacts = RemoteValues.contactsContent
 
-    let helpHeadline = "contacts_help_headline"
-    let helpBody = "contacts_help_body"
-    let helpFaqButton = "contacts_help_faq_button"
+}
 
-    let aboutHeadline = "contacts_about_headline"
-    let aboutBody = "contacts_about_body"
-    let aboutButton = "contacts_about_button"
+struct Contact {
+    let title: String
+    let text: String
+    let linkTitle: String
+    let link: URL
+}
 
+
+struct ContactContent: Decodable {
+    let title: String
+    let text: String
+    let linkTitle: String
+    let link: String
 }

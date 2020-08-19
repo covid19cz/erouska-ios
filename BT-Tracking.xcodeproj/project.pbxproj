@@ -190,6 +190,8 @@
 		D6231CB624EBC0760023BDC8 /* ErrorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CB424EBC0760023BDC8 /* ErrorVC.swift */; };
 		D6231CB824EBC3630023BDC8 /* ErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CB724EBC3630023BDC8 /* ErrorVM.swift */; };
 		D6231CB924EBC3630023BDC8 /* ErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CB724EBC3630023BDC8 /* ErrorVM.swift */; };
+		D6231CBB24ED3AE50023BDC8 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CBA24ED3AE50023BDC8 /* ContactCell.swift */; };
+		D6231CBC24ED3AE50023BDC8 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CBA24ED3AE50023BDC8 /* ContactCell.swift */; };
 		D6340C6224C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6324C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
@@ -343,6 +345,7 @@
 		D6231CB124EBC0510023BDC8 /* Error.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Error.storyboard; sourceTree = "<group>"; };
 		D6231CB424EBC0760023BDC8 /* ErrorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVC.swift; sourceTree = "<group>"; };
 		D6231CB724EBC3630023BDC8 /* ErrorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVM.swift; sourceTree = "<group>"; };
+		D6231CBA24ED3AE50023BDC8 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		D6340C6124C1F46D00E550A1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVC.swift; sourceTree = "<group>"; };
 		D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVM.swift; sourceTree = "<group>"; };
@@ -693,6 +696,7 @@
 			children = (
 				8075EDC2242A6E93001D9DCD /* ContactsVC.swift */,
 				80CA44DF244B404F008E22F8 /* ContactsVM.swift */,
+				D6231CBA24ED3AE50023BDC8 /* ContactCell.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -1158,6 +1162,7 @@
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
 				D6231C9F24E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */,
 				80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */,
+				D6231CBB24ED3AE50023BDC8 /* ContactCell.swift in Sources */,
 				D6231CA124E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				D6231CAD24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
@@ -1299,6 +1304,7 @@
 				8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
 				D6CD28EB24CF24DD005847AA /* PrivacyVC.swift in Sources */,
+				D6231CBC24ED3AE50023BDC8 /* ContactCell.swift in Sources */,
 				D6231CA824E400C70023BDC8 /* MainSymptomsVM.swift in Sources */,
 				D65E57DD24D05D73000F2402 /* NewsVC.swift in Sources */,
 				8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */,
