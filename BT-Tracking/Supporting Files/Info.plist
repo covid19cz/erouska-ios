@@ -61,8 +61,8 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
 	<key>UIBackgroundModes</key>
@@ -93,5 +93,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+    <true/>
+    <key>GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS</key>
+    <false/>
 </dict>
 </plist>
