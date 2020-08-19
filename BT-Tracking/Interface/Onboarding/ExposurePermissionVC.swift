@@ -63,12 +63,11 @@ private extension ExposurePermissionVC {
                 switch error {
                 case .activationError(let code):
                     switch code {
-                    case .notAuthorized, .notEnabled:
-                        // user didn't allow exposure, can do it later
-                        self.requestNotificationPermission()
+                    case .notAuthorized:
+                        self.navigationController?.popViewController(animated: true)
                     case .unsupported:
                         self.performSegue(withIdentifier: "unsupported", sender: nil)
-                    case .restricted:
+                    case .restricted, .notEnabled:
                         self.showAlert(
                             title: self.viewModel.errorRestiredTitle,
                             message: self.viewModel.errorRestiredBody,
