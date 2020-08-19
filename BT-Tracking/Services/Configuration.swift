@@ -12,6 +12,8 @@ struct Configuration {
 
     let minSupportedVersion = "13.5"
 
+    let showExposureForDays = 10
+
     let healthAuthority = "cz.covid19cz.erouska.dev"
 
     let uploadURL = URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
