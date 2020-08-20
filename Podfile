@@ -8,9 +8,10 @@ def firebase_pods
   pod 'Firebase/Functions', '~> 6.22.0'
   pod 'Firebase/Storage', '~> 6.22.0'
   pod 'Firebase/RemoteConfig', '~> 6.22.0'
+  pod 'Firebase/Analytics', '~> 6.22.0'
 end
 
-target "eRouska" do
+target "eRouska Dev" do
   firebase_pods
 end
 

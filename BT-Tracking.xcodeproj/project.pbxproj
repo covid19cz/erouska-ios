@@ -154,12 +154,12 @@
 		80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BD2477184000F86389 /* SwiftProtobuf */; };
 		80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
 		80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
+		9033C80125A5023DB6B1BF45 /* Pods_eRouska_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB22CCC6748EFFF61D8FB629 /* Pods_eRouska_Dev.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 		BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppVC.swift */; };
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
 		BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
-		D4BBD52AF75F3BC730CEFFA6 /* Pods_eRouska.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A893F3D64B0A55E25D52FA49 /* Pods_eRouska.framework */; };
 		D61DFE5524C1A936002E1B2E /* ForceUpdate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */; };
 		D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */; };
 		D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */; };
@@ -323,7 +323,6 @@
 		92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.release.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig"; sourceTree = "<group>"; };
 		991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.release.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.release.xcconfig"; sourceTree = "<group>"; };
 		A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A893F3D64B0A55E25D52FA49 /* Pods_eRouska.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVC.swift; sourceTree = "<group>"; };
 		BDB07FBF24254A8F00834E79 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
@@ -370,6 +369,7 @@
 		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
 		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.release.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.release.xcconfig"; sourceTree = "<group>"; };
+		FB22CCC6748EFFF61D8FB629 /* Pods_eRouska_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
 		FFC4432524460D78002D2A6D /* MarkdownBackups.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = MarkdownBackups.strings; sourceTree = "<group>"; };
@@ -393,7 +393,7 @@
 				80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */,
 				804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */,
 				80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */,
-				D4BBD52AF75F3BC730CEFFA6 /* Pods_eRouska.framework in Frameworks */,
+				9033C80125A5023DB6B1BF45 /* Pods_eRouska_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +453,7 @@
 			children = (
 				A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */,
 				901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */,
-				A893F3D64B0A55E25D52FA49 /* Pods_eRouska.framework */,
+				FB22CCC6748EFFF61D8FB629 /* Pods_eRouska_Dev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1102,15 +1102,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska/Pods-eRouska-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska/Pods-eRouska-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eRouska/Pods-eRouska-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E0A1723CD1B050C9925359D5 /* [CP] Check Pods Manifest.lock */ = {
@@ -1128,7 +1128,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-eRouska-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-eRouska Dev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1475,7 +1475,7 @@
 		};
 		8054C0C2241D4932008907B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */;
+			baseConfigurationReference = C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1502,7 +1502,7 @@
 		};
 		8054C0C3241D4932008907B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */;
+			baseConfigurationReference = DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
