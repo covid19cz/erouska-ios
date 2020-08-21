@@ -59,19 +59,30 @@ private extension ExposurePermissionVC {
             guard let self = self else { return }
             if let error = error {
                 log("ExposurePermissionVC: failed to active exposures \(error)")
-
                 switch error {
                 case .activationError(let code):
                     switch code {
                     case .notAuthorized:
-                        self.navigationController?.popViewController(animated: true)
+                        self.showAlert(
+                            title: self.viewModel.errorRestiredTitle,
+                            message: self.viewModel.errorRestiredBody,
+                            okTitle: self.viewModel.errorSettingsTitle,
+                            okHandler: { [weak self] in self?.openSettings() },
+                            action: (title: self.viewModel.errorCancelTitle, handler: { [weak self] in
+                                self?.navigationController?.popViewController(animated: true)
+                            })
+                        )
                     case .unsupported:
                         self.performSegue(withIdentifier: "unsupported", sender: nil)
                     case .restricted, .notEnabled:
                         self.showAlert(
                             title: self.viewModel.errorRestiredTitle,
                             message: self.viewModel.errorRestiredBody,
-                            okHandler: { self.requestNotificationPermission() }
+                            okTitle: self.viewModel.errorSettingsTitle,
+                            okHandler: { [weak self] in self?.openSettings() },
+                            action: (title: self.viewModel.errorCancelTitle, handler: { [weak self] in
+                                self?.requestNotificationPermission()
+                            })
                         )
                     default:
                         self.showUnknownError(error)
@@ -84,6 +95,7 @@ private extension ExposurePermissionVC {
             }
         }
     }
+    
 
     func requestNotificationPermission() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -95,6 +107,11 @@ private extension ExposurePermissionVC {
                 }
         })
         UIApplication.shared.registerForRemoteNotifications()
+    }
+
+    func openSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
+        UIApplication.shared.open(settingsUrl)
     }
 
     func showUnknownError(_ error: Error) {

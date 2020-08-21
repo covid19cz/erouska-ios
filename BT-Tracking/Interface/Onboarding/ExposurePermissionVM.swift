@@ -26,6 +26,8 @@ struct ExposurePermissionVM {
 
     let errorRestiredTitle = "exposure_activation_restricted_title"
     let errorRestiredBody = "exposure_activation_restricted_body"
+    let errorSettingsTitle = "exposure_activation_restricted_settings_action"
+    let errorCancelTitle = "exposure_activation_restricted_cancel_action"
 
     let errorUnknownTitle = "exposure_activation_unknown_title"
     let errorUnknownBody = "exposure_activation_unknown_body"

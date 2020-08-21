@@ -130,6 +130,8 @@ final class ActiveAppVM {
 
     let errorActivationRestiredTitle = "exposure_activation_restricted_title"
     let errorActivationRestiredBody = "exposure_activation_restricted_body"
+    let errorActivationSettingsTitle = "exposure_activation_restricted_settings_action"
+    let errorActivationCancelTitle = "exposure_activation_restricted_cancel_action"
 
     let errorActivationUnknownTitle = "exposure_activation_unknown_title"
     let errorActivationUnknownBody = "exposure_activation_unknown_body"

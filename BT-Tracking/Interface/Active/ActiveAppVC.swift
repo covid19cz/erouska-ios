@@ -211,7 +211,10 @@ private extension ActiveAppVC {
                         case .restricted:
                             self.showAlert(
                                 title: self.viewModel.errorActivationRestiredTitle,
-                                message: self.viewModel.errorActivationRestiredBody
+                                message: self.viewModel.errorActivationRestiredBody,
+                                okTitle: self.viewModel.errorActivationSettingsTitle,
+                                okHandler: { [weak self] in self?.openSettings() },
+                                action: (title: self.viewModel.errorActivationCancelTitle, handler: nil)
                             )
                         default:
                             self.showExposureUnknownError(error, activation: true)
