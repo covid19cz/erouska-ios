@@ -15,6 +15,7 @@ final class ActiveAppVC: UIViewController {
 
     private var viewModel = ActiveAppVM()
     private let disposeBag = DisposeBag()
+    private var firstAppear = true
 
     // MARK: - Outlets
 
@@ -72,13 +73,6 @@ final class ActiveAppVC: UIViewController {
         updateViewModel()
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
-        exposureBannerView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -90,6 +84,18 @@ final class ActiveAppVC: UIViewController {
         )
 
         checkBackgroundModeIfNeeded()
+
+        if firstAppear {
+            firstAppear = false
+            viewModel.backgroundService.performTask()
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
+        exposureBannerView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
     }
 
     // MARK: - Actions
@@ -255,7 +261,12 @@ private extension ActiveAppVC {
         headlineLabel.localizedText(viewModel.state.headline)
         headlineLabel.textColor = viewModel.state.color
         titleLabel.text = viewModel.state.title
-        textLabel.localizedText(viewModel.state.text)
+        if viewModel.state == .enabled, let update = AppSettings.lastProcessedDate {
+            let text = Localizable(viewModel.state.text) + "\n\n" + String(format: Localizable(viewModel.lastUpdateText), viewModel.dateFormatter.string(from: update))
+            textLabel.text = text
+        } else {
+            textLabel.localizedText(viewModel.state.text)
+        }
         actionButton.localizedTitle(viewModel.state.actionTitle)
         actionButton.style = viewModel.state == .enabled ? .clear : .filled
 
@@ -324,11 +335,6 @@ private extension ActiveAppVC {
 
     func debugProcessReports() {
         showProgress()
-
-        let dateFormat = DateFormatter()
-        dateFormat.timeStyle = .short
-        dateFormat.dateStyle = .short
-
         viewModel.reporter.fetchExposureConfiguration { [weak self] result in
             switch result {
             case .success(let configuration):
@@ -339,14 +345,16 @@ private extension ActiveAppVC {
                             configuration: configuration,
                             URLs: keys.URLs
                         ) { [weak self] result in
-                            self?.hideProgress()
+                            guard let self = self else { return }
+                            self.hideProgress()
+
                             switch result {
                             case .success(var exposures):
                                 exposures.sort { $0.date < $1.date }
 
                                 guard !exposures.isEmpty else {
                                     log("EXP: no exposures, skip!")
-                                    self?.showAlert(title: "Exposures", message: "No exposures detected, device is clear.")
+                                    self.showAlert(title: "Exposures", message: "No exposures detected, device is clear.")
                                     return
                                 }
 
@@ -358,7 +366,7 @@ private extension ActiveAppVC {
                                 var result = ""
                                 for exposure in exposures {
                                     let signals = exposure.attenuationDurations.map { "\($0)" }
-                                    result += "EXP: \(dateFormat.string(from: exposure.date))" +
+                                    result += "EXP: \(self.viewModel.dateFormatter.string(from: exposure.date))" +
                                         ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
                                         + "attenuation value: \(exposure.attenuationValue)\n"
                                         + "signal attenuations: \(signals.joined(separator: ", "))\n"
@@ -370,9 +378,9 @@ private extension ActiveAppVC {
 
                                 log("EXP: \(exposures)")
                                 log("EXP: \(result)")
-                                self?.showAlert(title: "Exposures", message: result)
+                                self.showAlert(title: "Exposures", message: result)
                             case .failure(let error):
-                                self?.show(error: error)
+                                self.show(error: error)
                             }
                         }
                     case .failure(let error):

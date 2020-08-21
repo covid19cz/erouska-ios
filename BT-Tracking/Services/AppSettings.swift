@@ -72,6 +72,7 @@ struct AppSettings {
     static var lastProcessedDate: Date? {
         get {
             let rawValue = double(forKey: .lastProcessedDate)
+            guard rawValue != 0 else { return nil }
             return Date(timeIntervalSince1970: TimeInterval(rawValue))
         }
         set {
@@ -83,6 +84,7 @@ struct AppSettings {
     static var lastUploadDate: Date? {
         get {
             let rawValue = double(forKey: .lastUploadDate)
+            guard rawValue != 0 else { return nil }
             return Date(timeIntervalSince1970: TimeInterval(rawValue))
         }
         set {

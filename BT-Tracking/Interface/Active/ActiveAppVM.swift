@@ -112,6 +112,8 @@ final class ActiveAppVM {
     let shareApp = "share_app"
     let shareAppMessage = "share_app_message"
 
+    let lastUpdateText = "active_data_update"
+
     let menuRiskyEncounters = "risky_encounters_button"
     let menuSendReports = "data_list_send_button"
     let menuDebug = "debug"
@@ -139,6 +141,13 @@ final class ActiveAppVM {
     let errorDeactivationUnknownTitle = "exposure_deactivation_unknown_title"
     let errorDeactivationUnknownBody = "exposure_deactivation_unknown_body"
 
+    var dateFormatter: DateFormatter {
+        let formatrer = DateFormatter()
+        formatrer.timeStyle = .short
+        formatrer.dateStyle = .short
+        return formatrer
+    }
+
     var state: State {
         return try! observableState.value()
     }
@@ -148,6 +157,7 @@ final class ActiveAppVM {
 
     let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
     let reporter: ReportServicing = AppDelegate.dependency.reporter
+    let backgroundService = AppDelegate.dependency.background
 
     init() {
         observableState = BehaviorSubject<State>(value: .paused)

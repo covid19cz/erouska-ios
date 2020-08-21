@@ -11,10 +11,11 @@ import UIKit
 import RealmSwift
 import BackgroundTasks
 
-struct BackgroundService {
+final class BackgroundService {
 
     let exposureService: ExposureServicing
     let reporter: ReportServicing
+    private(set) var isRunning: Bool = false
 
     let taskIdentifier = BackgroundTaskIdentifier.exposureNotification
 
@@ -42,6 +43,11 @@ struct BackgroundService {
             // Schedule the next background task
             self.scheduleBackgroundTaskIfNeeded(next: true)
         }
+    }
+
+    func performTask() {
+        guard !isRunning else { return }
+        _ = self.performTask(nil)
     }
 
     func scheduleBackgroundTaskIfNeeded(next: Bool = false) {
@@ -146,12 +152,15 @@ struct BackgroundService {
 
 private extension BackgroundService {
 
-    func performTask(_ task: BGTask) -> Progress {
+    func performTask(_ task: BGTask?) -> Progress {
+        isRunning = true
+
         // Notify the user if bluetooth is off
         showBluetoothOffUserNotificationIfNeeded()
 
         func reportFailure(_ error: Error) {
-            task.setTaskCompleted(success: false)
+            task?.setTaskCompleted(success: false)
+            isRunning = false
             Log.log("BGTask: failed to detect exposures \(error)")
         }
 
@@ -161,6 +170,15 @@ private extension BackgroundService {
 
             switch result {
             case .success(let keys):
+                guard !keys.URLs.isEmpty else {
+                    AppSettings.lastProcessedDate = Date()
+
+                    self.isRunning = false
+
+                    task?.setTaskCompleted(success: true)
+                    return
+                }
+
                 self.reporter.fetchExposureConfiguration { result in
                     switch result {
                     case .success(let configuration):
@@ -171,9 +189,12 @@ private extension BackgroundService {
                             switch result {
                             case .success(var exposures):
                                 exposures.sort { $0.date < $1.date }
-                                self.handleExposures(exposures, lastProcessedFileName: keys.lastProcessedFileName)
+                                AppSettings.lastProcessedDate = Date()
 
-                                task.setTaskCompleted(success: true)
+                                self.handleExposures(exposures, lastProcessedFileName: keys.lastProcessedFileName)
+                                self.isRunning = false
+
+                                task?.setTaskCompleted(success: true)
                             case .failure(let error):
                                 reportFailure(error)
                             }
