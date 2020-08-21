@@ -110,7 +110,7 @@
                                                                 <color key="tintColor" name="IconsColor"/>
                                                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Hlavní příznaky" image="MainSymptoms">
-                                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="titleColor" systemColor="labelColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <segue destination="zR7-Mo-d0y" kind="show" identifier="mainSymptoms" id="HzC-Ng-00F"/>
@@ -129,7 +129,7 @@
                                                                 <color key="tintColor" name="IconsColor"/>
                                                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Jak zabránit přenosu" image="PreventTransmission">
-                                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="titleColor" systemColor="labelColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <segue destination="zR7-Mo-d0y" kind="show" identifier="preventTransmission" id="f5x-uY-GqC"/>
@@ -148,7 +148,7 @@
                                                                 <color key="tintColor" name="IconsColor"/>
                                                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Předchozí riziková setkání" image="PreviousRiskyEncounters">
-                                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="titleColor" systemColor="labelColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <segue destination="EpM-Vc-Yck" kind="show" id="PZA-rj-UzS"/>
@@ -365,8 +365,11 @@
         <image name="PreviousRiskyEncounters" width="24" height="24"/>
         <image name="ScanActive" width="130" height="130"/>
         <namedColor name="IconsColor">
-            <color red="0.85000002384185791" green="0.85000002384185791" blue="0.85000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.25900000631809234" green="0.25900000631809234" blue="0.25900000631809234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

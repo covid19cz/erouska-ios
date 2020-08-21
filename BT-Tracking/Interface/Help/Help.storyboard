@@ -45,7 +45,7 @@
                                         <color key="tintColor" name="IconsColor"/>
                                         <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Napište Anežce – podpoře eRoušky" image="Chat">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <connections>
                                             <action selector="showChatbot:" destination="7JY-JN-dnV" eventType="touchUpInside" id="h9h-1X-BQ5"/>
@@ -188,10 +188,13 @@
     <resources>
         <image name="Chat" width="24" height="24"/>
         <namedColor name="IconsColor">
-            <color red="0.85000002384185791" green="0.85000002384185791" blue="0.85000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.25900000631809234" green="0.25900000631809234" blue="0.25900000631809234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
