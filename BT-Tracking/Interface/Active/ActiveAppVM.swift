@@ -160,7 +160,7 @@ final class ActiveAppVM {
 
         exposureToShow = Observable.collection(from: exposures)
             .map {
-                $0.filter { $0.date > lastPossibleDate }.first?.toExposure()
+                $0.filter { $0.date > lastPossibleDate }.last?.toExposure()
             }
 
         exposureService.readyToUse

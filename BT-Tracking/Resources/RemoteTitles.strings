@@ -6,9 +6,9 @@
   Copyright © 2020 Covid19CZ. All rights reserved.
 */
 
-"activeTitleEnabledDefault" = "Na rušných místech rozpoznává ostatní eRoušky pouze v případě, že ji necháte na obrazovce a nezamknete telefon.";
+"activeTitleEnabledDefault" = "Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.";
 
-"activeTitleEnabledDefaultEn" = "Na rušných místech rozpoznává ostatní eRoušky pouze v případě, že ji necháte na obrazovce a nezamknete telefon.";
+"activeTitleEnabledDefaultEn" = "Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.";
 
 "activeExposureTitleDefault" = "Setkali jste se s osobou, u které byla prokázána nákaza virem Covid-19. Sledujte svůj zdravotní stav.";
 

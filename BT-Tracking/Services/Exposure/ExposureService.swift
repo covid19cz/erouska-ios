@@ -194,6 +194,7 @@ final class ExposureService: ExposureServicing {
 
                     let newExposures = (exposures ?? []).map { exposure in
                         Exposure(
+                            id: UUID(),
                             date: exposure.date,
                             duration: exposure.duration,
                             totalRiskScore: exposure.totalRiskScore,

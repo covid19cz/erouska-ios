@@ -51,7 +51,11 @@ final class ActiveAppVC: UIViewController {
 
         viewModel.exposureToShow.subscribe(
             onNext: { [weak self] exposure in
-                self?.exposureBannerView.isHidden = exposure == nil
+                if let exposure = exposure, AppSettings.lastExposureWarningId != exposure.id.uuidString {
+                    AppSettings.lastExposureWarningClosed = false
+                    AppSettings.lastExposureWarningId = exposure.id.uuidString
+                }
+                self?.exposureBannerView.isHidden = exposure == nil || AppSettings.lastExposureWarningClosed == true
             }
         ).disposed(by: disposeBag)
 
@@ -163,6 +167,7 @@ final class ActiveAppVC: UIViewController {
     }
 
     @IBAction private func closeExposureBanner(_ sender: Any) {
+        AppSettings.lastExposureWarningClosed = true
         exposureBannerView.isHidden = true
     }
 
@@ -392,7 +397,7 @@ private extension ActiveAppVC {
 
     func debugInsertFakeExposure() {
         let exposures = [
-            Exposure(date: Date(), duration: 213, totalRiskScore: 2, transmissionRiskLevel: 4, attenuationValue: 4, attenuationDurations: [21, 1, 4, 5])
+            Exposure(id: UUID(), date: Date(), duration: 213, totalRiskScore: 2, transmissionRiskLevel: 4, attenuationValue: 4, attenuationDurations: [21, 1, 4, 5])
         ]
 
         let realm = try! Realm()

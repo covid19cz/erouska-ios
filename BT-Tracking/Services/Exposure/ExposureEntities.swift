@@ -41,6 +41,7 @@ enum ExposureError: Error {
 
 struct Exposure: Codable, Equatable {
 
+    let id: UUID
     let date: Date
     let duration: TimeInterval
     let totalRiskScore: ENRiskScore
@@ -68,7 +69,7 @@ final class ExposureRealm: Object {
     convenience init(_ exposure: Exposure) {
         self.init()
 
-        id = UUID().uuidString
+        id = exposure.id.uuidString
         date = exposure.date
         duration = exposure.duration
         totalRiskScore = Int(exposure.totalRiskScore)
@@ -79,6 +80,7 @@ final class ExposureRealm: Object {
 
     func toExposure() -> Exposure {
         return Exposure(
+            id: UUID(uuidString: id) ?? UUID(),
             date: date,
             duration: duration,
             totalRiskScore: ENRiskScore(totalRiskScore),

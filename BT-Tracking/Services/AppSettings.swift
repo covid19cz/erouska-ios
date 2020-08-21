@@ -16,12 +16,13 @@ struct AppSettings {
         case backgroundModeAlertShown
 
         case lastProcessedFileName
+        case lastProcessedDate
         case lastUploadDate
 
-        case v2_0NewsLaunched
+        case lastExposureWarningId
+        case lastExposureWarningClosed
 
-        // Deprecated
-        case lastDataPurgeDate
+        case v2_0NewsLaunched
     }
 
     /// Firebase Region
@@ -67,6 +68,17 @@ struct AppSettings {
         }
     }
 
+    /// When was last processed time
+    static var lastProcessedDate: Date? {
+        get {
+            let rawValue = double(forKey: .lastProcessedDate)
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+        }
+        set {
+            set(withKey: .lastProcessedDate, value: newValue?.timeIntervalSince1970)
+        }
+    }
+
     /// When it app last time uploaded keys
     static var lastUploadDate: Date? {
         get {
@@ -75,6 +87,26 @@ struct AppSettings {
         }
         set {
             set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
+        }
+    }
+
+    /// Last shown exposure warning id
+    static var lastExposureWarningId: String? {
+        get {
+            return string(forKey: .lastExposureWarningId)
+        }
+        set {
+            set(withKey: .lastExposureWarningId, value: newValue)
+        }
+    }
+
+    /// If user closed last show exposure warning
+    static var lastExposureWarningClosed: Bool {
+        get {
+            return bool(forKey: .lastExposureWarningClosed)
+        }
+        set {
+            set(withKey: .lastExposureWarningClosed, value: newValue)
         }
     }
 
