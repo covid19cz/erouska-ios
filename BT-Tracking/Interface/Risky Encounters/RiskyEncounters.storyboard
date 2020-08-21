@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oe9-A2-FLU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oe9-A2-FLU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,7 +70,7 @@
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7Q-xg-DUH">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="70" id="Kyn-kL-gxB"/>
                                                                 </constraints>
@@ -104,6 +107,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvu-kI-Fzg">
                                                                 <rect key="frame" x="0.0" y="40" width="374" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <color key="tintColor" name="IconsColor"/>
                                                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Hlavní příznaky" image="MainSymptoms">
                                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
@@ -114,7 +118,7 @@
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKk-rW-IUF">
                                                                 <rect key="frame" x="0.0" y="80" width="374" height="1"/>
-                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="zko-2y-L8G"/>
                                                                 </constraints>
@@ -122,6 +126,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezj-3S-9Zg">
                                                                 <rect key="frame" x="0.0" y="97" width="374" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <color key="tintColor" name="IconsColor"/>
                                                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Jak zabránit přenosu" image="PreventTransmission">
                                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
@@ -132,7 +137,7 @@
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9a-SP-aRE">
                                                                 <rect key="frame" x="0.0" y="137" width="374" height="1"/>
-                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="l5D-Gn-p8c"/>
                                                                 </constraints>
@@ -140,6 +145,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="762-yj-SGB">
                                                                 <rect key="frame" x="0.0" y="154" width="374" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <color key="tintColor" name="IconsColor"/>
                                                                 <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Předchozí riziková setkání" image="PreviousRiskyEncounters">
                                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
@@ -150,7 +156,7 @@
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfC-aS-Cys">
                                                                 <rect key="frame" x="0.0" y="194" width="374" height="1"/>
-                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="PAR-kb-lge"/>
                                                                 </constraints>
@@ -160,7 +166,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="1DU-9J-asE" secondAttribute="bottom" constant="16" id="Arg-If-opL"/>
                                             <constraint firstItem="1DU-9J-asE" firstAttribute="leading" secondItem="aiS-ou-VZA" secondAttribute="leadingMargin" id="EMb-AM-Pfr"/>
@@ -181,14 +187,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="pgN-vL-rS9"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Qby-oP-4Mc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Lti-uv-oJr" firstAttribute="trailing" secondItem="Qby-oP-4Mc" secondAttribute="trailing" id="3LM-Oq-C3N"/>
                             <constraint firstItem="Lti-uv-oJr" firstAttribute="top" secondItem="TAO-8Z-F0c" secondAttribute="top" id="NNy-ag-aGA"/>
                             <constraint firstItem="Qby-oP-4Mc" firstAttribute="bottom" secondItem="Lti-uv-oJr" secondAttribute="bottom" id="dEP-Q3-AvL"/>
                             <constraint firstItem="Lti-uv-oJr" firstAttribute="leading" secondItem="Qby-oP-4Mc" secondAttribute="leading" id="uSs-MR-jkL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Qby-oP-4Mc"/>
                     </view>
                     <navigationItem key="navigationItem" id="tmS-8j-llS"/>
                     <connections>
@@ -216,7 +222,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B15-3C-fHy">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PreviousRiskyEncountersCell" textLabel="DVU-fc-hFb" style="IBUITableViewCellStyleDefault" id="AJa-6t-yNw">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -238,14 +244,14 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4LZ-Ha-kde"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4LZ-Ha-kde" firstAttribute="bottom" secondItem="B15-3C-fHy" secondAttribute="bottom" id="7lA-aq-5b1"/>
                             <constraint firstItem="4LZ-Ha-kde" firstAttribute="trailing" secondItem="B15-3C-fHy" secondAttribute="trailing" id="Yal-eW-K2u"/>
                             <constraint firstItem="B15-3C-fHy" firstAttribute="top" secondItem="LAa-2U-rhV" secondAttribute="top" id="igm-Fv-I99"/>
                             <constraint firstItem="B15-3C-fHy" firstAttribute="leading" secondItem="4LZ-Ha-kde" secondAttribute="leading" id="sJK-Ro-Aul"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4LZ-Ha-kde"/>
                     </view>
                     <navigationItem key="navigationItem" title="Předchozí rizikové setkání" id="ejN-Le-jcB"/>
                     <connections>
@@ -265,8 +271,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cJL-tK-o7o">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="713.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8e5-2P-UM4">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
                                     <subviews>
@@ -277,7 +283,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="xuX-xy-8Ox" secondAttribute="trailing" constant="16" id="K9G-BB-4xy"/>
                                         <constraint firstAttribute="bottom" secondItem="xuX-xy-8Ox" secondAttribute="bottom" constant="16" id="OiF-HC-rli"/>
@@ -330,14 +336,14 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="O5W-IR-JQd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="O5W-IR-JQd" firstAttribute="bottom" secondItem="cJL-tK-o7o" secondAttribute="bottom" id="1Ju-ET-9Xh"/>
                             <constraint firstItem="cJL-tK-o7o" firstAttribute="top" secondItem="O5W-IR-JQd" secondAttribute="top" id="H4W-xp-USC"/>
                             <constraint firstItem="O5W-IR-JQd" firstAttribute="trailing" secondItem="cJL-tK-o7o" secondAttribute="trailing" id="cjh-M6-rQe"/>
                             <constraint firstItem="cJL-tK-o7o" firstAttribute="leading" secondItem="O5W-IR-JQd" secondAttribute="leading" id="n3R-m7-M94"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="O5W-IR-JQd"/>
                     </view>
                     <navigationItem key="navigationItem" title="Hlavní příznaky" id="1hr-yr-UPD"/>
                     <connections>
@@ -358,5 +364,14 @@
         <image name="PreventTransmission" width="24" height="24"/>
         <image name="PreviousRiskyEncounters" width="24" height="24"/>
         <image name="ScanActive" width="130" height="130"/>
+        <namedColor name="IconsColor">
+            <color red="0.85000002384185791" green="0.85000002384185791" blue="0.85000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
