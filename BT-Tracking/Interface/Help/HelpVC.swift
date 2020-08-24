@@ -11,7 +11,6 @@ import UIKit
 final class HelpVC: MarkdownController {
 
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var chatbotButton: UIButton!
 
     // MARK: -
 
@@ -36,14 +35,33 @@ final class HelpVC: MarkdownController {
         navigationItem.localizedTitle(viewModel.title)
         navigationItem.rightBarButtonItem?.localizedTitle(viewModel.about)
 
-        chatbotButton.setTitle(Localizable(viewModel.chatbot), for: .normal)
-        chatbotButton.titleLabel?.numberOfLines = 2
-
         stackView.addArrangedSubview(contentView)
     }
 
-    @IBAction func showChatbot(_ sender: Any) {
+}
+
+extension HelpVC: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell")!
+        cell.imageView?.image = UIImage(named: "Chat")?.withRenderingMode(.alwaysOriginal)
+        cell.textLabel?.text = Localizable(viewModel.chatbot)
+        return cell
+    }
+}
+
+extension HelpVC: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         openURL(URL: viewModel.configuration.chatbotURL)
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 }

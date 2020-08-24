@@ -17,16 +17,15 @@ final class RiskyEncountersPositiveView: UIStackView {
 final class RiskyEncountersVC: UIViewController {
     @IBOutlet weak var positiveView: RiskyEncountersPositiveView!
     @IBOutlet weak var negativeView: UIStackView!
-
-    @IBOutlet weak var mainSymptomsButton: UIView!
-    @IBOutlet weak var mainSymptomsSeparator: UIView!
-    @IBOutlet weak var preventTransmissionButton: UIView!
-    @IBOutlet weak var preventTransmissionSeparator: UIView!
-    @IBOutlet weak var previousRiskyEncountersButton: UIView!
-    @IBOutlet weak var previousRiskyEncountersSeparator: UIView!
+    @IBOutlet weak var tableView: UITableView!
 
     private let viewModel = RiskyEncountersVM()
     private let disposeBag = DisposeBag()
+    private var menuItems = [RiskyEncountersVM.MenuItem]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     private lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -45,11 +44,17 @@ final class RiskyEncountersVC: UIViewController {
         viewModel.riskyEncouterDateToShow.subscribe(
             onNext: { [weak self] dateToShow in
                 guard let self = self else { return }
-                self.positiveView.isHidden = dateToShow == nil
-                self.negativeView.isHidden = dateToShow != nil
+                let isPositive = dateToShow != nil
+                self.positiveView.isHidden = !isPositive
+                self.negativeView.isHidden = isPositive
 
-                [self.mainSymptomsButton, self.mainSymptomsSeparator, self.preventTransmissionButton, self.preventTransmissionSeparator].forEach {
-                    $0?.isHidden = self.positiveView.isHidden
+                [RiskyEncountersVM.MenuItem.mainSymptoms, .preventTransmission].enumerated().forEach { index, item in
+                    if let itemIndex = self.menuItems.firstIndex(of: item) {
+                        self.menuItems.remove(at: itemIndex)
+                    }
+                    if isPositive {
+                        self.menuItems.insert(item, at: index)
+                    }
                 }
 
                 if let date = dateToShow {
@@ -63,8 +68,11 @@ final class RiskyEncountersVC: UIViewController {
         viewModel.shouldShowPreviousRiskyEncounters.subscribe(
             onNext: { [weak self] shouldShowPreviousRiskyEncounters in
                 guard let self = self else { return }
-                [self.previousRiskyEncountersButton, self.previousRiskyEncountersSeparator].forEach {
-                    $0?.isHidden = !shouldShowPreviousRiskyEncounters
+                if let itemIndex = self.menuItems.firstIndex(of: .previousRiskyEncounters) {
+                    self.menuItems.remove(at: itemIndex)
+                }
+                if shouldShowPreviousRiskyEncounters {
+                    self.menuItems.append(.previousRiskyEncounters)
                 }
             }
         ).disposed(by: disposeBag)
@@ -82,5 +90,39 @@ final class RiskyEncountersVC: UIViewController {
 
     @IBAction private func closeAction() {
         dismiss(animated: true)
+    }
+}
+
+extension RiskyEncountersVC: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell")!
+        let item = menuItems[indexPath.row]
+        cell.imageView?.image = item.icon.withRenderingMode(.alwaysOriginal)
+        cell.textLabel?.text = item.localizedTitle
+        return cell
+    }
+}
+
+extension RiskyEncountersVC: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch menuItems[indexPath.row] {
+        case .mainSymptoms:
+            performSegue(withIdentifier: "mainSymptoms", sender: nil)
+        case .preventTransmission:
+            performSegue(withIdentifier: "preventTransmission", sender: nil)
+        case .previousRiskyEncounters:
+            performSegue(withIdentifier: "previousRiskyEncounters", sender: nil)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }

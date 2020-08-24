@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7JY-JN-dnV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7JY-JN-dnV">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,40 +33,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="W4f-17-c1o">
-                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="W4f-17-c1o">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOY-js-zb8">
-                                        <rect key="frame" x="16" y="16" width="343" height="540"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="tintColor" name="IconsColor"/>
-                                        <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Napište Anežce – podpoře eRoušky" image="Chat">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                        </state>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E0y-lK-mEg" customClass="IntrinsicTableView" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BasicCell" textLabel="wxY-b3-pMT" imageView="dvA-gm-jVl" rowHeight="57" style="IBUITableViewCellStyleDefault" id="wFa-eb-PvS">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="57"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wFa-eb-PvS" id="7uR-1D-EP3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="57"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Napište Anežce – podpoře eRoušky" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wxY-b3-pMT">
+                                                            <rect key="frame" x="54" y="0.0" width="287" height="57"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Chat" id="dvA-gm-jVl">
+                                                            <rect key="frame" x="15" y="16.333333333333332" width="24" height="24"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
                                         <connections>
-                                            <action selector="showChatbot:" destination="7JY-JN-dnV" eventType="touchUpInside" id="h9h-1X-BQ5"/>
+                                            <outlet property="dataSource" destination="7JY-JN-dnV" id="qW9-Pe-QLK"/>
+                                            <outlet property="delegate" destination="7JY-JN-dnV" id="afv-rQ-Zbk"/>
                                         </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-Dm-lff">
-                                        <rect key="frame" x="16" y="572" width="343" height="1"/>
-                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="PpR-qi-gF3"/>
-                                        </constraints>
-                                    </view>
+                                    </tableView>
                                 </subviews>
-                                <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                             </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="lJW-ar-lRj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="W4f-17-c1o" firstAttribute="leading" secondItem="lJW-ar-lRj" secondAttribute="leading" id="LCF-ZU-5Tq"/>
                             <constraint firstItem="W4f-17-c1o" firstAttribute="top" secondItem="lJW-ar-lRj" secondAttribute="top" id="Nv3-n7-pjS"/>
                             <constraint firstItem="W4f-17-c1o" firstAttribute="trailing" secondItem="lJW-ar-lRj" secondAttribute="trailing" id="m4t-Ph-SRe"/>
                             <constraint firstItem="lJW-ar-lRj" firstAttribute="bottom" secondItem="W4f-17-c1o" secondAttribute="bottom" id="vHy-Cd-ctX"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="lJW-ar-lRj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Jak to funguje" id="XMX-lW-XTz">
                         <barButtonItem key="rightBarButtonItem" title="O aplikaci" id="jdD-iU-eUi">
@@ -79,7 +88,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="chatbotButton" destination="qOY-js-zb8" id="ka0-D0-rSV"/>
                         <outlet property="stackView" destination="W4f-17-c1o" id="Mak-v4-cEu"/>
                     </connections>
                 </viewController>
@@ -97,7 +105,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ab6-pa-cAo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
-                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="infoCell" id="Lry-c8-ofD" customClass="AboutInfoCell" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="175.66667175292969"/>
@@ -107,7 +115,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJ8-Lh-nbk">
-                                                    <rect key="frame" x="16" y="15" width="343" height="145.66666666666666"/>
+                                                    <rect key="frame" x="15" y="15" width="345" height="145.66666666666666"/>
                                                     <string key="text">Aplikace vznikla v rámci iniciativy Covid19CZ. Vyvíjeli jsme ji s důrazem na ochranu soukromí, abychom ji bez obav mohli používat i my. Data se ukládají jen do vašeho zařízení a nelze z nich zjistit, kde jste se pohybovali. Děkujeme, že aplikaci používáte a věříme, že se nám společně podaří epidemii zvládnout</string>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <nil key="textColor"/>
@@ -129,11 +137,11 @@
                                         <rect key="frame" x="0.0" y="231.00000381469727" width="375" height="57.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nfl-0s-zb9" id="lre-Ne-5tj">
-                                            <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="57.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="57.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QT5-ud-ey1">
-                                                    <rect key="frame" x="16" y="10" width="323.66666666666669" height="37.333333333333336"/>
+                                                    <rect key="frame" x="15" y="10" width="326" height="37.333333333333336"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tim-yR-E3O">
                                                             <rect key="frame" x="0.0" y="0.0" width="37.333333333333336" height="37.333333333333336"/>
@@ -143,7 +151,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMl-BL-TIg">
-                                                            <rect key="frame" x="52.333333333333343" y="0.0" width="271.33333333333326" height="37.333333333333336"/>
+                                                            <rect key="frame" x="52.333333333333343" y="0.0" width="273.66666666666663" height="37.333333333333336"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -166,14 +174,14 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="lNY-bS-RjC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ab6-pa-cAo" firstAttribute="top" secondItem="uGb-ca-TTJ" secondAttribute="top" id="7SE-f1-A2H"/>
                             <constraint firstItem="lNY-bS-RjC" firstAttribute="trailing" secondItem="ab6-pa-cAo" secondAttribute="trailing" id="Hk2-U8-kwZ"/>
                             <constraint firstItem="lNY-bS-RjC" firstAttribute="bottom" secondItem="ab6-pa-cAo" secondAttribute="bottom" id="bCW-Ur-Cqz"/>
                             <constraint firstItem="ab6-pa-cAo" firstAttribute="leading" secondItem="lNY-bS-RjC" secondAttribute="leading" id="c3I-f0-UFn"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="lNY-bS-RjC"/>
                     </view>
                     <navigationItem key="navigationItem" title="O aplikaci" id="jtT-R5-WXE"/>
                     <connections>
@@ -187,20 +195,5 @@
     </scenes>
     <resources>
         <image name="Chat" width="24" height="24"/>
-        <namedColor name="IconsColor">
-            <color red="0.25900000631809234" green="0.25900000631809234" blue="0.25900000631809234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
