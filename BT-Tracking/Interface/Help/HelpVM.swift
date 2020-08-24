@@ -17,6 +17,8 @@ struct HelpVM {
 
     let about = "about"
 
+    let chatbot = "help_chatbot"
+
     var markdownContent: String {
         return RemoteValues.helpMarkdown
     }

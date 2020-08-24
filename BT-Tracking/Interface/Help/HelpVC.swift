@@ -26,7 +26,8 @@ final class HelpVC: MarkdownController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        setupTabBar()
+        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.image = viewModel.tabIcon
     }
 
     override func viewDidLoad() {
@@ -35,20 +36,14 @@ final class HelpVC: MarkdownController {
         navigationItem.localizedTitle(viewModel.title)
         navigationItem.rightBarButtonItem?.localizedTitle(viewModel.about)
 
+        chatbotButton.setTitle(Localizable(viewModel.chatbot), for: .normal)
+        chatbotButton.titleLabel?.numberOfLines = 2
+
         stackView.addArrangedSubview(contentView)
     }
 
     @IBAction func showChatbot(_ sender: Any) {
         openURL(URL: viewModel.configuration.chatbotURL)
-    }
-
-}
-
-private extension HelpVC {
-
-    func setupTabBar() {
-        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
-        navigationController?.tabBarItem.image = viewModel.tabIcon
     }
 
 }

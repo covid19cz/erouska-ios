@@ -18,11 +18,11 @@ final class RiskyEncountersVC: UIViewController {
     @IBOutlet weak var positiveView: RiskyEncountersPositiveView!
     @IBOutlet weak var negativeView: UIStackView!
 
-    @IBOutlet weak var mainSymptomsButton: UIButton!
+    @IBOutlet weak var mainSymptomsButton: UIView!
     @IBOutlet weak var mainSymptomsSeparator: UIView!
-    @IBOutlet weak var preventTransmissionButton: UIButton!
+    @IBOutlet weak var preventTransmissionButton: UIView!
     @IBOutlet weak var preventTransmissionSeparator: UIView!
-    @IBOutlet weak var previousRiskyEncountersButton: UIButton!
+    @IBOutlet weak var previousRiskyEncountersButton: UIView!
     @IBOutlet weak var previousRiskyEncountersSeparator: UIView!
 
     private let viewModel = RiskyEncountersVM()
