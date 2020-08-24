@@ -678,6 +678,7 @@
 				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 				80CA44B5244ADA44008E22F8 /* Localization.swift */,
 				D6340C6A24C5A27700E550A1 /* Device.swift */,
+				D6231CBD24F39BC90023BDC8 /* IntrinsicTableView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -690,7 +691,6 @@
 				8083D9132446F779007FA4E9 /* Markdown.swift */,
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 				D6340C6124C1F46D00E550A1 /* Version.swift */,
-				D6231CBD24F39BC90023BDC8 /* IntrinsicTableView.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";

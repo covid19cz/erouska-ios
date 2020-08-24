@@ -53,9 +53,9 @@ class MarkdownController: UIViewController {
 
         textView.textContainerInset = UIEdgeInsets(
             top: 16,
-            left: view.layoutMargins.left,
+            left: 11,
             bottom: 16,
-            right: view.layoutMargins.right
+            right: 11
         )
     }
 
