@@ -91,17 +91,6 @@ final class ExposureRealm: Object {
     }
 }
 
-struct ExposureConfiguration: Codable {
-
-    let minimumRiskScore: ENRiskScore
-    let attenuationDurationThresholds: [Int]
-    let attenuationLevelValues: [ENRiskLevelValue]
-    let daysSinceLastExposureLevelValues: [ENRiskLevelValue]
-    let durationLevelValues: [ENRiskLevelValue]
-    let transmissionRiskLevelValues: [ENRiskLevelValue]
-
-}
-
 struct ExposureDiagnosisKey: Codable, Equatable {
     
     /// Key must be the base64 (RFC 4648) encoded 16 byte exposure key from the device.

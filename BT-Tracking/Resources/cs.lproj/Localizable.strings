@@ -168,3 +168,5 @@
 "error_activation_internet_headline" = "Aktivaci aplikace nelze dokončit";
 "error_activation_internet_text" = "Zkontrolujte připojení k internetu a aktivaci aplikace zkuste znovu. Pokud chyba přetrvává, kontaktujte nás na info@erouska.cz.";
 "error_activation_internet_title_action" = "Zkusit znovu";
+
+"exposure_detected_title" = "Setkali jste se s osobou, u které byla prokázana nákaza virem COVID-19.";

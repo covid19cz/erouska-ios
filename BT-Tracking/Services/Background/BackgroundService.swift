@@ -179,26 +179,19 @@ private extension BackgroundService {
                     return
                 }
 
-                self.reporter.fetchExposureConfiguration { result in
+                self.exposureService.detectExposures(
+                    configuration: ExposureConfiguration(),
+                    URLs: keys.URLs
+                ) { result in
                     switch result {
-                    case .success(let configuration):
-                        self.exposureService.detectExposures(
-                            configuration: configuration,
-                            URLs: keys.URLs
-                        ) { result in
-                            switch result {
-                            case .success(var exposures):
-                                exposures.sort { $0.date < $1.date }
-                                AppSettings.lastProcessedDate = Date()
+                    case .success(var exposures):
+                        exposures.sort { $0.date < $1.date }
+                        AppSettings.lastProcessedDate = Date()
 
-                                self.handleExposures(exposures, lastProcessedFileName: keys.lastProcessedFileName)
-                                self.isRunning = false
+                        self.handleExposures(exposures, lastProcessedFileName: keys.lastProcessedFileName)
+                        self.isRunning = false
 
-                                task?.setTaskCompleted(success: true)
-                            case .failure(let error):
-                                reportFailure(error)
-                            }
-                        }
+                        task?.setTaskCompleted(success: true)
                     case .failure(let error):
                         reportFailure(error)
                     }

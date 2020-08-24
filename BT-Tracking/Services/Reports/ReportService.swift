@@ -28,9 +28,6 @@ protocol ReportServicing: class {
     var isDownloading: Bool { get }
     func downloadKeys(lastProcessedFileName: String?, callback: @escaping DownloadKeysCallback) -> Progress
 
-    typealias ConfigurationCallback = (Result<ENExposureConfiguration, Error>) -> Void
-    func fetchExposureConfiguration(callback: @escaping ConfigurationCallback)
-
 }
 
 final class ReportService: ReportServicing {
@@ -260,33 +257,6 @@ final class ReportService: ReportServicing {
         }
 
         return progress
-    }
-
-    func fetchExposureConfiguration(callback: @escaping ConfigurationCallback) {
-        let dataFromServer = """
-        {
-        "minimumRiskScore": 0,
-        "attenuationDurationThresholds": [50, 70],
-        "attenuationLevelValues": [1, 2, 3, 4, 5, 6, 7, 8],
-        "daysSinceLastExposureLevelValues": [1, 2, 3, 4, 5, 6, 7, 8],
-        "durationLevelValues": [1, 2, 3, 4, 5, 6, 7, 8],
-        "transmissionRiskLevelValues": [1, 2, 3, 4, 5, 6, 7, 8]
-        }
-        """.data(using: .utf8)!
-
-        do {
-            let codableExposureConfiguration = try JSONDecoder().decode(ExposureConfiguration.self, from: dataFromServer)
-            let exposureConfiguration = ENExposureConfiguration()
-            exposureConfiguration.minimumRiskScore = codableExposureConfiguration.minimumRiskScore
-            exposureConfiguration.attenuationLevelValues = codableExposureConfiguration.attenuationLevelValues as [NSNumber]
-            exposureConfiguration.daysSinceLastExposureLevelValues = codableExposureConfiguration.daysSinceLastExposureLevelValues as [NSNumber]
-            exposureConfiguration.durationLevelValues = codableExposureConfiguration.durationLevelValues as [NSNumber]
-            exposureConfiguration.transmissionRiskLevelValues = codableExposureConfiguration.transmissionRiskLevelValues as [NSNumber]
-            exposureConfiguration.metadata = ["attenuationDurationThresholds": codableExposureConfiguration.attenuationDurationThresholds]
-            callback(.success(exposureConfiguration))
-        } catch {
-            callback(.failure(error))
-        }
     }
 
 }
