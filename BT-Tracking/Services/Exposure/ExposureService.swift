@@ -35,7 +35,7 @@ protocol ExposureServicing: class {
     // Detection
     typealias DetectCallback = (Result<[Exposure], Error>) -> Void
     var detectingExposures: Bool { get }
-    func detectExposures(configuration: ENExposureConfiguration, URLs: [URL], callback: @escaping DetectCallback)
+    func detectExposures(configuration: ExposureConfiguration, URLs: [URL], callback: @escaping DetectCallback)
 
     // Bluetooth
     var isBluetoothOn: Bool { get }
@@ -160,55 +160,70 @@ final class ExposureService: ExposureServicing {
 
     private(set) var detectingExposures = false
 
-    func detectExposures(configuration: ENExposureConfiguration, URLs: [URL], callback: @escaping DetectCallback) {
+    func detectExposures(configuration: ExposureConfiguration, URLs: [URL], callback: @escaping DetectCallback) {
         guard !detectingExposures else {
             callback(.failure(ExposureError.alreadyRunning))
             return
         }
         detectingExposures = true
 
-        log("ExposureService detectExposures")
-        self.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: URLs) { summary, error in
+        func finish(error: Error? = nil, exposures: [Exposure] = []) {
             if let error = error {
-                self.detectingExposures = false
                 callback(.failure(error))
-                return
+            } else {
+                callback(.success(exposures))
+            }
+
+            URLs.forEach { try? FileManager.default.removeItem(at: $0) }
+            detectingExposures = false
+        }
+
+        log("ExposureService detectExposures")
+        self.manager.detectExposures(configuration: configuration.configuration, diagnosisKeyURLs: URLs) { summary, error in
+            if let error = error {
+                finish(error: error)
             } else if let summary = summary {
                 log("ExposureService summary \(summary)")
-                let userExplanation = NSLocalizedString("Bylo detekovano nakazeni!", comment: "User notification")
-                log("ExposureService getExposureInfo")
 
-                guard summary.matchedKeyCount == 0 else {
-                    callback(.success([]))
-                    return
-                }
+                let computedThreshold: Double = (Double(truncating: summary.attenuationDurations[0]) * configuration.factorLow +
+                    Double(truncating: summary.attenuationDurations[1]) * configuration.factorHigh) / 60 // (minute)
+                log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) computed threshold: \(computedThreshold) (low:\(configuration.factorLow) high: \(configuration.factorHigh)) required \(configuration.triggerThreshold)")
 
-                self.manager.getExposureInfo(summary: summary, userExplanation: userExplanation) { exposures, error in
-                    if let error = error {
-                        self.detectingExposures = false
-                        callback(.failure(error))
+                if computedThreshold >= Double(configuration.triggerThreshold) {
+                    log("ExposureService Summary meets requiremnts")
+
+                    guard summary.matchedKeyCount == 0 else {
+                        finish()
                         return
                     }
+                    log("ExposureService getExposureInfo")
 
-                    log("ExposureService Exposures \(exposures ?? [])")
-
-                    let newExposures = (exposures ?? []).map { exposure in
-                        Exposure(
-                            id: UUID(),
-                            date: exposure.date,
-                            duration: exposure.duration,
-                            totalRiskScore: exposure.totalRiskScore,
-                            transmissionRiskLevel: exposure.transmissionRiskLevel,
-                            attenuationValue: exposure.attenuationValue,
-                            attenuationDurations: exposure.attenuationDurations.map { $0.intValue }
-                        )
+                    self.manager.getExposureInfo(summary: summary, userExplanation: Localizable("exposure_detected_title")) { exposures, error in
+                        if let error = error {
+                            finish(error: error)
+                        } else if let exposures = exposures {
+                            finish(exposures: exposures.map {
+                                Exposure(
+                                    id: UUID(),
+                                    date: $0.date,
+                                    duration: $0.duration,
+                                    totalRiskScore: $0.totalRiskScore,
+                                    transmissionRiskLevel: $0.transmissionRiskLevel,
+                                    attenuationValue: $0.attenuationValue,
+                                    attenuationDurations: $0.attenuationDurations.map { $0.intValue }
+                                )
+                            })
+                            log("ExposureService Exposures \(exposures)")
+                        } else {
+                            finish(error: ExposureError.noData)
+                        }
                     }
-                    self.detectingExposures = false
-                    callback(.success((newExposures)))
+                } else {
+                    log("ExposureService Summary does not meet requirements")
+                    finish()
                 }
             } else {
-                self.detectingExposures = false
-                callback(.failure(ExposureError.noData))
+                finish(error: ExposureError.noData)
             }
         }
     }
