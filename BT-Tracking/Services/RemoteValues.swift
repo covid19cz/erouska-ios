@@ -195,23 +195,24 @@ struct RemoteValues {
     }
 
     static var symptomsContent: RiskyEncountersListContent? {
-        return parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .symptomsContentJson))
+        return parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .symptomsContentJson), prevention: false)
     }
 
     static var preventionContent: RiskyEncountersListContent? {
-        return parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .preventionContentJson))
+        return parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .preventionContentJson), prevention: true)
     }
 
-    private static func parseRiskyEncountersListContent(from rawJson: String) -> RiskyEncountersListContent? {
+    private static func parseRiskyEncountersListContent(from rawJson: String, prevention: Bool) -> RiskyEncountersListContent? {
         guard let json = rawJson.data(using: .utf8) else { return nil }
         do {
             let remoteContent = try JSONDecoder().decode(RiskyEncountersListRemoteContent.self, from: json)
             return RiskyEncountersListContent(
-                headline: remoteContent.title,
+                headline: prevention ? nil : remoteContent.title,
                 items: remoteContent.items.compactMap {
                     guard let imageUrl = URL(string: $0.iconUrl) else { return nil }
                     return AsyncImageTitleViewModel(imageUrl: imageUrl, title: $0.label)
-                }
+                },
+                footer: prevention ? remoteContent.title : nil
             )
         } catch {
             return nil

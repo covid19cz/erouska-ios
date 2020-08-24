@@ -14,8 +14,9 @@ protocol RiskyEncountersListVM {
 }
 
 struct RiskyEncountersListContent {
-    let headline: String
+    let headline: String?
     let items: [AsyncImageTitleViewModel]
+    let footer: String?
 }
 
 struct AsyncImageTitleViewModel {
