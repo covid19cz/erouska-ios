@@ -10,8 +10,35 @@ import Foundation
 import RealmSwift
 import RxRealm
 import RxSwift
+import UIKit
 
 struct RiskyEncountersVM {
+    enum MenuItem {
+        case mainSymptoms, preventTransmission, previousRiskyEncounters
+
+        var icon: UIImage {
+            switch self {
+            case .mainSymptoms:
+                return UIImage(named: "MainSymptoms")!
+            case .preventTransmission:
+                return UIImage(named: "PreventTransmission")!
+            case .previousRiskyEncounters:
+                return UIImage(named: "PreviousRiskyEncounters")!
+            }
+        }
+
+        var localizedTitle: String {
+            switch self {
+            case .mainSymptoms:
+                return Localizable("main_symptoms_title")
+            case .preventTransmission:
+                return Localizable("prevent_transmission_title")
+            case .previousRiskyEncounters:
+                return Localizable("previous_risky_encounters_title")
+            }
+        }
+    }
+
     let riskyEncouterDateToShow: Observable<Date?>
     let shouldShowPreviousRiskyEncounters: Observable<Bool>
 
