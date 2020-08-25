@@ -77,7 +77,8 @@ enum RemoteConfigValueKey: String {
     case exposureBannerTitle
 
     case riskyEncountersTitle
-    case riskyEncountersBody
+    case riskyEncountersWithSymptoms
+    case riskyEncountersWithoutSymptoms
 
     case symptomsContentJson
     case preventionContentJson
@@ -107,7 +108,8 @@ struct RemoteValues {
         .exposureBannerTitle: activeExposureTitleDefault,
 
         .riskyEncountersTitle: riskyEncountersTitleDefault,
-        .riskyEncountersBody: riskyEncountersBodyDefault,
+        .riskyEncountersWithSymptoms: riskyEncountersWithSymptomsDefault,
+        .riskyEncountersWithoutSymptoms: riskyEncountersWithoutSymptomsDefault,
     ]
 
     /// odkaz na prohlášení o podpoře - vede z úvodní obrazovky a z nápovědy
@@ -190,8 +192,12 @@ struct RemoteValues {
         return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersTitle)
     }
 
-    static var riskyEncountersBody: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersBody)
+    static var riskyEncountersWithSymptoms: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersWithSymptoms)
+    }
+
+    static var riskyEncountersWithoutSymptoms: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersWithoutSymptoms)
     }
 
     static var symptomsContent: RiskyEncountersListContent? {
@@ -274,7 +280,11 @@ private extension RemoteValues {
         return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersTitleDefault")
     }
 
-    static var riskyEncountersBodyDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersBodyDefault")
+    static var riskyEncountersWithSymptomsDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithSymptomsDefault")
+    }
+
+    static var riskyEncountersWithoutSymptomsDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithoutSymptomsDefault")
     }
 }

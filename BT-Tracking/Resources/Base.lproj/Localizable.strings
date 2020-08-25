@@ -139,6 +139,10 @@
 
 "risky_encounters_button" = "Rizikové setkání";
 "risky_encounters_title" = "Rizikové setkání";
+"risky_encounters_positive_with_symptoms_header" = "Mám příznaky";
+"risky_encounters_positive_without_symptoms_header" = "Nemám příznaky";
+"risky_encounters_negative_title" = "V posledních 10 dnech nebyla ve vaší blízkosti identifikována žádná osoba s potvrzenou nákazou virem COVID-19";
+"risky_encounters_negative_body" = "Na rizikové setkání vás upozorníme pomocí oznámení.";
 
 "previous_risky_encounters_title" = "Předchozí riziková setkání";
 
