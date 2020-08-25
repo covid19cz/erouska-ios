@@ -9,8 +9,9 @@
 import UIKit
 
 final class RiskyEncountersListVC: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var footerLabel: UILabel!
 
     var viewModel: RiskyEncountersListVM!
     private let mainSymptomCellReusableIndetifier = "RiskyEncountersListCell"
@@ -19,18 +20,28 @@ final class RiskyEncountersListVC: UIViewController {
         super.viewDidLoad()
 
         title = Localizable(viewModel.title)
-        titleLabel.text = Localizable(viewModel.content?.headline ?? "")
+        headerLabel.text = viewModel.content?.headline
+        footerLabel.text = viewModel.content?.footer
 
-        tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 76
         tableView.rowHeight = UITableView.automaticDimension
+        if headerLabel.text == nil {
+            tableView.tableHeaderView = nil
+        }
+        if footerLabel.text == nil {
+            tableView.tableFooterView = nil
+        }
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        guard let header = tableView.tableHeaderView else { return }
-        header.frame.size.height = header.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0)).height
+        if let header = tableView.tableHeaderView {
+            header.frame.size.height = header.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0)).height
+        }
+        if let footer = tableView.tableFooterView {
+            footer.frame.size.height = footer.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0)).height
+        }
     }
 }
 

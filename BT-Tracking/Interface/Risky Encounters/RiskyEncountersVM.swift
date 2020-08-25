@@ -39,12 +39,22 @@ struct RiskyEncountersVM {
         }
     }
 
+    let menuItems = [MenuItem.mainSymptoms, .preventTransmission, .previousRiskyEncounters]
+
     let riskyEncouterDateToShow: Observable<Date?>
     let shouldShowPreviousRiskyEncounters: Observable<Bool>
 
     let title = "risky_encounters_title"
-    let headline = RemoteValues.riskyEncountersTitle
-    let body = RemoteValues.riskyEncountersBody
+
+    let withSymptomsHeaderKey = "risky_encounters_positive_with_symptoms_header"
+    let withSymptoms = RemoteValues.riskyEncountersWithSymptoms
+    let withoutSymptomsHeaderKey = "risky_encounters_positive_without_symptoms_header"
+    let withoutSymptoms = RemoteValues.riskyEncountersWithoutSymptoms
+
+    let negativeTitleKey = "risky_encounters_negative_title"
+    let negativeBodyKey = "risky_encounters_negative_body"
+
+    let previousRiskyEncountersButtonKey = "previous_risky_encounters_title"
 
     init() {
         let showForDays = AppDelegate.dependency.configuration.showExposureForDays
