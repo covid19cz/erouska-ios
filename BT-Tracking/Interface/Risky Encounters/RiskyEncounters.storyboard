@@ -35,13 +35,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aiS-ou-VZA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="945.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="947.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1DU-9J-asE" customClass="RiskyEncountersPositiveView" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="10" width="414" height="919.5"/>
+                                                <rect key="frame" x="0.0" y="10" width="414" height="921.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="19w-qz-ORk" customClass="RiskyEncountersPositiveView" customModule="eRouska" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="367.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="369.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dne 14. 5. 2020 jste se setkali s osobou u které byla potvrzena nákaza virem COVID-19." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kf-ox-kl2">
                                                                 <rect key="frame" x="20" y="0.0" width="374" height="42.5"/>
@@ -63,39 +63,39 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mám příznaky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJg-jC-2uK">
-                                                                <rect key="frame" x="20" y="71.5" width="374" height="17"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <rect key="frame" x="20" y="71.5" width="374" height="18"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQJ-CB-QON">
-                                                                <rect key="frame" x="20" y="96.5" width="374" height="130.5"/>
+                                                                <rect key="frame" x="20" y="97.5" width="374" height="130.5"/>
                                                                 <string key="text">Pokud se u vás v průběhu 10 dnů od kontaktu s nakaženým objevily příznaky respiračního onemocnění, kontaktujte telefonicky svého praktického lékaře a řiďte se jeho pokyny. V případě akutních potíží kontaktujte nejbližší lékařskou pohotovost.</string>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqk-kJ-iyN" userLabel="Spacing view">
-                                                                <rect key="frame" x="20" y="235" width="374" height="4"/>
+                                                                <rect key="frame" x="20" y="236" width="374" height="4"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="4" id="gAZ-Lw-AZm"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0r-Ws-kbj" userLabel="Separator">
-                                                                <rect key="frame" x="20" y="247" width="374" height="1"/>
+                                                                <rect key="frame" x="20" y="248" width="374" height="1"/>
                                                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="jGb-2C-Rhx"/>
                                                                 </constraints>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nemám příznaky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogA-Wx-FmQ">
-                                                                <rect key="frame" x="20" y="256" width="374" height="17"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nemám příznaky" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogA-Wx-FmQ">
+                                                                <rect key="frame" x="20" y="257" width="374" height="18"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax2-ff-npI">
-                                                                <rect key="frame" x="20" y="281" width="374" height="86.5"/>
+                                                                <rect key="frame" x="20" y="283" width="374" height="86.5"/>
                                                                 <string key="text">Jestliže se u vás neprojevují hlavní příznaky onemocnění virem COVID-19, nemusíte zůstávat doma. Dodržujte zásady bezpečného kontaktu a sledujte svůj zdravotní stav.</string>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <nil key="textColor"/>
@@ -112,7 +112,7 @@
                                                         </connections>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="E8l-iD-QYj" customClass="RiskyEncountersNegativeView" customModule="eRouska" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="367.5" width="414" height="404"/>
+                                                        <rect key="frame" x="0.0" y="369.5" width="414" height="404"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7Q-xg-DUH">
                                                                 <rect key="frame" x="20" y="0.0" width="374" height="70"/>
@@ -158,7 +158,7 @@
                                                         </connections>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ipy-vK-G6r">
-                                                        <rect key="frame" x="0.0" y="771.5" width="414" height="148"/>
+                                                        <rect key="frame" x="0.0" y="773.5" width="414" height="148"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7V-Cd-eLR" userLabel="Spacing view">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
@@ -231,7 +231,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qby-oP-4Mc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tmS-8j-llS"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="tmS-8j-llS"/>
                     <connections>
                         <outlet property="menuItemsStack" destination="Ipy-vK-G6r" id="V9B-lM-8LC"/>
                         <outlet property="negativeView" destination="E8l-iD-QYj" id="pCt-0J-IHo"/>
@@ -287,7 +287,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4LZ-Ha-kde"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Předchozí rizikové setkání" id="ejN-Le-jcB"/>
+                    <navigationItem key="navigationItem" title="Předchozí rizikové setkání" largeTitleDisplayMode="never" id="ejN-Le-jcB"/>
                     <connections>
                         <outlet property="tableView" destination="B15-3C-fHy" id="1wz-GS-uSn"/>
                     </connections>
@@ -305,7 +305,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cJL-tK-o7o">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="713.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8e5-2P-UM4">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
@@ -397,7 +397,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O5W-IR-JQd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Hlavní příznaky" id="1hr-yr-UPD"/>
+                    <navigationItem key="navigationItem" title="Hlavní příznaky" largeTitleDisplayMode="never" id="1hr-yr-UPD"/>
                     <connections>
                         <outlet property="footerLabel" destination="ZAY-hI-b6J" id="IEJ-jd-yD1"/>
                         <outlet property="headerLabel" destination="xuX-xy-8Ox" id="QV1-yo-p7a"/>
