@@ -85,6 +85,7 @@ extension CurrentDataVC: UITableViewDataSource {
         cell.textLabel?.text = item.title
         cell.detailTextLabel?.text = item.subtitle
         cell.selectionStyle = section.selectableItems ? .default : .none
+        cell.accessoryType = section.selectableItems ? .disclosureIndicator : .none
 
         return cell
     }
