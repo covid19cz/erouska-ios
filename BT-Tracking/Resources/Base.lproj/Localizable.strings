@@ -175,3 +175,14 @@
 "error_activation_internet_title_action" = "Zkusit znovu";
 
 "exposure_detected_title" = "Setkali jste se s osobou, u které byla prokázana nákaza virem COVID-19.";
+
+"current_data_footer" = "Poslední aktualizace %@";
+"current_data_measures" = "Aktuální opatření";
+"current_data_item_header" = "Aktuální situace v číslech";
+"current_data_item_tests" = "%@ provedených testů";
+"current_data_item_confirmed" = "%@ celkem potvrzených případů";
+"current_data_item_active" = "%@ aktivních případů";
+"current_data_item_healthy" = "%@ vyléčených";
+"current_data_item_deaths" = "%@ úmrtí";
+"current_data_item_hospitalized" = "%@ aktuálně hospitalizovaných";
+"current_data_item_yesterday" = "Za včerejší den +%@";

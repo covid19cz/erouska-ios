@@ -1,191 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcd-UM-9Nt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Aktualne-->
-        <scene sceneID="9SL-Tc-jfn">
-            <objects>
-                <viewController id="xGP-gf-Asp" customClass="DataListVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="48y-Xq-MiP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-6R-8L4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="scanningInfoCell" id="rQQ-mb-mfv" customClass="ScanningInfoCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="114.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rQQ-mb-mfv" id="aOi-BW-Tas">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="114.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol9-D7-UNq">
-                                                    <rect key="frame" x="20" y="8" width="374" height="98.5"/>
-                                                    <string key="text">Zde je výpis eRoušek, které se vyskytly ve vašem okolí. Zobrazení neindikuje nakažení ostatních uživatelů.
-Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone při zhasnutém displeji méně účinné.</string>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="ol9-D7-UNq" secondAttribute="bottom" constant="8" id="1JO-NA-Qr9"/>
-                                                <constraint firstItem="ol9-D7-UNq" firstAttribute="top" secondItem="aOi-BW-Tas" secondAttribute="top" constant="8" id="579-Nf-r0p"/>
-                                                <constraint firstItem="ol9-D7-UNq" firstAttribute="trailing" secondItem="aOi-BW-Tas" secondAttribute="trailingMargin" id="Ssq-w1-Jlm"/>
-                                                <constraint firstItem="ol9-D7-UNq" firstAttribute="leading" secondItem="aOi-BW-Tas" secondAttribute="leadingMargin" id="jXe-a7-W6p"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="infoLabel" destination="ol9-D7-UNq" id="Kxg-YR-n4k"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="aboutDataCell" id="QL1-SZ-dvk" customClass="AboutDataCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="142.5" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QL1-SZ-dvk" id="NYQ-NM-WfI">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informace o sběru dat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohr-3K-HoG">
-                                                    <rect key="frame" x="20" y="13" width="355" height="18"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ohr-3K-HoG" firstAttribute="leading" secondItem="NYQ-NM-WfI" secondAttribute="leadingMargin" id="1fm-eV-odo"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ohr-3K-HoG" secondAttribute="trailing" id="2Jf-Z0-d80"/>
-                                                <constraint firstItem="ohr-3K-HoG" firstAttribute="centerY" secondItem="NYQ-NM-WfI" secondAttribute="centerY" id="Z60-Tp-tKH"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="ohr-3K-HoG" id="qSA-TM-ohx"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="headerCell" id="hrm-hi-eTh" customClass="DataHeaderCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="186" width="414" height="87.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hrm-hi-eTh" id="ef2-pf-HFK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="87.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YQx-Z1-9BV">
-                                                    <rect key="frame" x="20" y="25" width="374" height="32.5"/>
-                                                    <segments>
-                                                        <segment title="First"/>
-                                                        <segment title="Second"/>
-                                                    </segments>
-                                                </segmentedControl>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7qt-kI-e8T">
-                                                    <rect key="frame" x="20" y="76.5" width="374" height="0.0"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Datum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ddb-lD-lb4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="0.0"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Čas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXY-Vj-Hwr" userLabel="Čas">
-                                                            <rect key="frame" x="96" y="0.0" width="86" height="0.0"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUW-Iz-u7t">
-                                                            <rect key="frame" x="192" y="0.0" width="86" height="0.0"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="RSSI" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vs9-H1-vvU" userLabel="RSII Label">
-                                                            <rect key="frame" x="288" y="0.0" width="86" height="0.0"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="7qt-kI-e8T" secondAttribute="bottom" id="34U-Or-CIR"/>
-                                                <constraint firstItem="7qt-kI-e8T" firstAttribute="leading" secondItem="ef2-pf-HFK" secondAttribute="leadingMargin" id="IdL-YL-8QN"/>
-                                                <constraint firstItem="7qt-kI-e8T" firstAttribute="top" secondItem="YQx-Z1-9BV" secondAttribute="bottom" constant="20" id="XlF-6N-WUv"/>
-                                                <constraint firstItem="YQx-Z1-9BV" firstAttribute="leading" secondItem="ef2-pf-HFK" secondAttribute="leadingMargin" id="YRd-2f-ixb"/>
-                                                <constraint firstItem="YQx-Z1-9BV" firstAttribute="top" secondItem="ef2-pf-HFK" secondAttribute="top" constant="25" id="aWY-Oh-qn6"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="YQx-Z1-9BV" secondAttribute="trailing" id="baH-7F-nW4"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="7qt-kI-e8T" secondAttribute="trailing" id="ow4-ti-BFj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dateLabel" destination="Ddb-lD-lb4" id="Ev4-Nm-Ro7"/>
-                                            <outlet property="idLabel" destination="IUW-Iz-u7t" id="ftO-Tl-XUz"/>
-                                            <outlet property="segmentedControl" destination="YQx-Z1-9BV" id="Qgj-vm-4Vv"/>
-                                            <outlet property="signalLabel" destination="Vs9-H1-vvU" id="SNR-Kz-REa"/>
-                                            <outlet property="timeLabel" destination="vXY-Vj-Hwr" id="nON-Ra-jHe"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-2n-5Ns">
-                                <rect key="frame" x="183" y="438" width="48.5" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="bDv-0K-1Gq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="xN1-2n-5Ns" firstAttribute="centerX" secondItem="48y-Xq-MiP" secondAttribute="centerX" id="5wm-Jk-c8p"/>
-                            <constraint firstItem="Mfj-6R-8L4" firstAttribute="leading" secondItem="bDv-0K-1Gq" secondAttribute="leading" id="CmS-06-K9h"/>
-                            <constraint firstItem="bDv-0K-1Gq" firstAttribute="bottom" secondItem="Mfj-6R-8L4" secondAttribute="bottom" id="HjX-4B-895"/>
-                            <constraint firstItem="Mfj-6R-8L4" firstAttribute="trailing" secondItem="bDv-0K-1Gq" secondAttribute="trailing" id="O4n-r6-oAF"/>
-                            <constraint firstItem="xN1-2n-5Ns" firstAttribute="centerY" secondItem="48y-Xq-MiP" secondAttribute="centerY" id="rMd-5O-UEh"/>
-                            <constraint firstItem="Mfj-6R-8L4" firstAttribute="top" secondItem="48y-Xq-MiP" secondAttribute="top" id="zLY-H9-QHN"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Aktualne" largeTitleDisplayMode="always" id="Alq-cw-sQ5"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="tableView" destination="Mfj-6R-8L4" id="jlS-jK-bU3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3VF-V1-L93" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="900.00000000000011" y="139.95535714285714"/>
-        </scene>
-        <!--Aktualne-->
-        <scene sceneID="Tfn-xI-ecm">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dcd-UM-9Nt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Aktualne" id="02c-Vw-4z2"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qag-Ae-DEK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="xGP-gf-Asp" kind="relationship" relationship="rootViewController" id="T6R-4q-io4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Yt-i5-7sC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-10.144927536231885" y="139.95535714285714"/>
-        </scene>
         <!--Aplikace je aktivní-->
         <scene sceneID="oJp-dl-J5f">
             <objects>
@@ -195,11 +16,11 @@ Vyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone p
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-Ye-sGl">
-                                <rect key="frame" x="20" y="140" width="374" height="722"/>
+                                <rect key="frame" x="20" y="148.5" width="374" height="713.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0l-Ah-UvZ" userLabel="Space View">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="AyS-cJ-DC6"/>
                                         </constraints>
@@ -245,11 +66,11 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BS3-fY-ke2" userLabel="Big Space View">
-                                        <rect key="frame" x="0.0" y="413" width="374" height="230"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="frame" x="0.0" y="413" width="374" height="221.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sR-Eb-tvx" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="658" width="374" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sR-Eb-tvx" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="649.5" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="pTc-1t-X1g"/>
                                         </constraints>
@@ -262,8 +83,8 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5V-cH-HmX" userLabel="Space View">
-                                        <rect key="frame" x="0.0" y="717" width="374" height="5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="frame" x="0.0" y="708.5" width="374" height="5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="z3a-IS-m4H"/>
                                         </constraints>
@@ -271,14 +92,14 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Es3-Ia-z2R"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="bI2-Ye-sGl" firstAttribute="top" secondItem="Es3-Ia-z2R" secondAttribute="top" id="1ml-52-W1H"/>
                             <constraint firstItem="bI2-Ye-sGl" firstAttribute="leading" secondItem="obQ-Xn-QYg" secondAttribute="leadingMargin" id="l0D-6l-Cla"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bI2-Ye-sGl" secondAttribute="trailing" id="t6Y-MA-vt1"/>
                             <constraint firstItem="Es3-Ia-z2R" firstAttribute="bottom" secondItem="bI2-Ye-sGl" secondAttribute="bottom" id="vNb-mG-GfL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Es3-Ia-z2R"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Odesláno" largeTitleDisplayMode="always" id="Yey-Fh-VuT"/>
@@ -298,7 +119,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
             <objects>
                 <navigationController storyboardIdentifier="SendReportNav" id="Bzh-9z-YpA" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="N5Z-GI-g8d">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -347,7 +168,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="NvA-Qs-2jt" firstAttribute="top" secondItem="dEO-0T-yUk" secondAttribute="top" constant="10" id="HpI-Xc-gSO"/>
                                             <constraint firstAttribute="bottom" secondItem="NvA-Qs-2jt" secondAttribute="bottom" constant="16" id="Ieh-F2-0kb"/>
@@ -370,7 +191,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5h1-J1-hAM" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="752" width="414" height="94"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-pA-DIv" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-pA-DIv" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="20" y="50" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="imW-cX-YzH"/>
@@ -393,8 +214,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="BfJ-zc-yQn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="BfJ-zc-yQn" firstAttribute="trailing" secondItem="5h1-J1-hAM" secondAttribute="trailing" id="DUn-Ng-wnW"/>
                             <constraint firstItem="0JF-YD-BYo" firstAttribute="leading" secondItem="BfJ-zc-yQn" secondAttribute="leading" id="Ml4-pz-x0j"/>
@@ -404,6 +224,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                             <constraint firstItem="BfJ-zc-yQn" firstAttribute="bottom" secondItem="0JF-YD-BYo" secondAttribute="bottom" id="xaG-ya-5Tt"/>
                             <constraint firstItem="0JF-YD-BYo" firstAttribute="trailing" secondItem="BfJ-zc-yQn" secondAttribute="trailing" id="yTN-uQ-i4p"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="BfJ-zc-yQn"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Odeslat data" largeTitleDisplayMode="always" id="d5t-5h-yU0"/>
@@ -423,12 +244,6 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
         </scene>
     </scenes>
     <resources>
-        <image name="ScanActive" width="48" height="48"/>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="ScanActive" width="130" height="130"/>
     </resources>
 </document>
