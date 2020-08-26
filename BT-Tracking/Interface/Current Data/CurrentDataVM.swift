@@ -28,7 +28,7 @@ final class CurrentDataVM {
     let tabTitle = "data_list_title"
     let tabIcon = UIImage(named: "MyData")
 
-    let measuresURL = URL(string: "https://koronavirus.mzcr.cz/aktualni-opatreni/")! // TODO: Make remote configurable
+    let measuresURL = URL(string: RemoteValues.currentMeasuresUrl)!
 
     var sections: [Section] = [] {
         didSet {
@@ -41,12 +41,9 @@ final class CurrentDataVM {
         }
     }
     let needToUpdateView: BehaviorSubject<Void>
+    let obervableErrors: BehaviorSubject<Error?>
 
-    private var currentData: CurrentDataRealm? {
-        didSet {
-            sections = sections(from: currentData)
-        }
-    }
+    private var currentData: CurrentDataRealm?
 
     private let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -61,11 +58,20 @@ final class CurrentDataVM {
     }()
 
     init() {
-        needToUpdateView = BehaviorSubject<Void>.init(value: ())
+        needToUpdateView = BehaviorSubject<Void>(value: ())
+        obervableErrors = BehaviorSubject<Error?>(value: nil)
 
         let realm = try! Realm()
-        currentData = realm.objects(CurrentDataRealm.self).first
+        currentData = realm.objects(CurrentDataRealm.self).last
         sections = sections(from: currentData)
+
+        if currentData == nil {
+            let currentData = CurrentDataRealm()
+            try? realm.write {
+                realm.add(currentData)
+            }
+            self.currentData = currentData
+        }
 
         updateFooter()
     }
@@ -77,38 +83,34 @@ final class CurrentDataVM {
             if Calendar.current.date(byAdding: components, to: lastFetchedDate)! > Date() { return }
         }
 
-        AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(["date": "20200824"]) { [weak self] result, error in
+        AppDelegate.dependency.functions.httpsCallable("GetCovidData").call([:]) { [weak self] result, error in
+            guard let self = self else { return }
             if let result = result?.data as? [String: Any] {
-                let data = CurrentDataRealm(
-                    testsTotal: result["testsTotal"] as! Int,
-                    testsIncrease: result["testsIncrease"] as! Int,
-                    confirmedCasesTotal: result["confirmedCasesTotal"] as! Int,
-                    confirmedCasesIncrease: result["confirmedCasesIncrease"] as! Int,
-                    activeCasesTotal: result["activeCasesTotal"] as! Int,
-                    activeCasesIncrease: result["activeCasesIncrease"] as! Int,
-                    curedTotal: result["curedTotal"] as! Int,
-                    curedIncrease: result["curedIncrease"] as! Int,
-                    deceasedTotal: result["deceasedTotal"] as! Int,
-                    deceasedIncrease: result["deceasedIncrease"] as! Int,
-                    currentlyHospitalizedTotal: result["currentlyHospitalizedTotal"] as! Int,
-                    currentlyHospitalizedIncrease: result["currentlyHospitalizedIncrease"] as! Int
-                )
-                self?.saveFetchedData(data)
-                self?.currentData = data
-            } else {
-                dump(error) // TODO:
+                let realm = try! Realm()
+                try! realm.write {
+                    if let value = result["testsTotal"] as? Int { self.currentData?.testsTotal = value }
+                    if let value = result["testsIncrease"] as? Int { self.currentData?.testsIncrease = value }
+                    if let value = result["confirmedCasesTotal"] as? Int { self.currentData?.confirmedCasesTotal = value }
+                    if let value = result["confirmedCasesIncrease"] as? Int { self.currentData?.confirmedCasesIncrease = value }
+                    if let value = result["activeCasesTotal"] as? Int { self.currentData?.activeCasesTotal = value }
+                    if let value = result["activeCasesIncrease"] as? Int { self.currentData?.activeCasesIncrease = value }
+                    if let value = result["curedTotal"] as? Int { self.currentData?.curedTotal = value }
+                    if let value = result["curedIncrease"] as? Int { self.currentData?.curedIncrease = value }
+                    if let value = result["deceasedTotal"] as? Int { self.currentData?.deceasedTotal = value }
+                    if let value = result["deceasedIncrease"] as? Int { self.currentData?.deceasedIncrease = value }
+                    if let value = result["currentlyHospitalizedTotal"] as? Int { self.currentData?.currentlyHospitalizedTotal = value }
+                    if let value = result["currentlyHospitalizedIncrease"] as? Int { self.currentData?.currentlyHospitalizedIncrease = value }
+
+                    self.sections = self.sections(from: self.currentData)
+                    AppSettings.currentDataLastFetchDate = Date()
+                    self.updateFooter()
+                }
+            } else if let error = error {
+                if AppSettings.currentDataLastFetchDate == nil {
+                    self.obervableErrors.onNext(error)
+                }
             }
         }
-    }
-
-    private func saveFetchedData(_ currentDate: CurrentDataRealm) {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.delete(realm.objects(CurrentDataRealm.self))
-            realm.add(currentDate)
-        }
-        AppSettings.currentDataLastFetchDate = Date()
-        updateFooter()
     }
 
     private func updateFooter() {
