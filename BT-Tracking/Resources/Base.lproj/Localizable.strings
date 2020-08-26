@@ -10,7 +10,7 @@
 "welcome_help" = "Jak to funguje";
 "welcome_activation" = "Pokračovat k aktivaci";
 "welcome_title" = "Díky eRoušce ochráníte sebe  i ostatní ve svém okolí";
-"welcome_body" = "Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí nákaza koronavirem, eRouška vás upozorní.\n\nKdyž se potvrdí nákaza u vás, eRouška upozorní všechny ostatní uživatele aplikace, se kterými jste se potkali.";
+"welcome_body" = "Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí nákaza koronavirem, eRouška vyhodnotí, zda se jedná o rizkový kontakt a upozorní vás.\n\nKdyž se potvrdí nákaza u vás, eRouška upozorní všechny ostatní uživatele aplikace, se kterými jste se potkali.";
 "welcome_body_more" = "Více o nezávislých auditech";
 
 "exposure_notification_title" = "Oznámení";
@@ -20,7 +20,7 @@
 
 "privacy_title" = "Soukromí";
 "privacy_headline" = "Myslíme na vaše soukromí, odesílání dat máte vždy pod kontrolou";
-"privacy_body" = "eRouška neobsahuje žádné vaše osobní údaje a sbírá pouze anonymní data o ostatních eRouškách, se kterými se setkáte.";
+"privacy_body" = "eRouška neobsahuje žádné vaše osobní údaje a sbírá pouze anonymní data o ostatních eRouškách, se kterými se setkáte.\n\nDetailní informace o zpracování osobních údajů a další podmínky používání aplikace najdete v podmínkách zpracování.";
 "privacy_continue" = "Dokončit aktivaci";
 
 "active_head_enabled" = "eRouška je aktivní";
@@ -29,7 +29,7 @@
 "active_head_disabled_exposures" = "Zapněte Oznámení o kontaktu s COVID-19";
 
 "active_title_enabled" = "Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.";
-"active_title_paused" = "Aplikace je aktuálně pozastavená a nesbírá žádná data o vašem okolí.\n\nSpusťte znovu sběr dat a chraňte sebe i své okolí. Nezapomínejte na to v momentě, kdy opouštíte svůj domov.";
+"active_title_paused" = "Aplikace je aktuálně pozastavená a nesbírá žádná data o ostatních eRouškách ve vašem okolí.\n\nSpusťte znovu sběr dat a chraňte sebe i své okolí. Nezapomínejte na to zejména v situaci, kdy opouštíte svůj domov.";
 "active_title_disabled_exposures" = "eRouška nyní nemůže komunikovat s jinými eRouškami ve vašem okolí.\n\nZapněte Oznámení o kontaktu s COVID-19 pomocí tlačítka \"Zapnout\".";
 "active_title_disabled_bluetooth" = "Bez zapnutého Bluetooth nemůže eRouška vytvářet seznam eRoušek ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout Bluetooth\".";
 
@@ -79,7 +79,7 @@
 "data_send_title" = "Odesláno";
 "data_send_title_label" = "Data jste úspěsně odeslali";
 "data_send_headline" = "Děkujeme, že pomáháte bojovat proti šíření koronaviru. ";
-"data_send_body" = "Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nZůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygieniků.";
+"data_send_body" = "Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nŘiďte se pokyny hygieniků a lékařů.";
 "data_send_close_button" = "Zavřít";
 
 "contacts_title" = "Kontakty";
@@ -107,7 +107,8 @@
 "unregister_finish_close" = "Zavřít";
 
 "about_title" = "O aplikaci";
-"about_info" = "Aplikace vznikla v rámci iniciativy Covid19CZ. Vyvíjeli jsme ji s důrazem na ochranu soukromí, abychom ji bez obav mohli používat i my. Data se ukládají jen do vašeho zařízení a nelze z nich zjistit, kde jste se pohybovali. Děkujeme, že aplikaci používáte a věříme, že se nám společně podaří epidemii zvládnout.";
+"about_info" = "Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT). Předchozí verzi aplikace eRouška vytvořil ým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.";
+"about_conditions_of_use" = "Podmínky použití";
 
 "force_update_title" = "Důležitá aktualizace eRoušky";
 "force_update_body" = "Je připravená důležitá aktualizace eRoušky. Chcete-li pokračovat v jejím používání, proveďte aktualizaci na nejnovější verzi.";
@@ -135,10 +136,11 @@
 "news_always_active_title" = "eRouška funguje vždy a všude";
 "news_always_active_body" = "Telefon nemusíte nosit v kapse se zapnutou obrazovkou a pokládat obrazovkou na stůl. Normálně ho používejte a zamykejte, eRouška bude vždy aktivní.";
 "news_privacy_title" = "Myslíme na vaše soukromí";
-"news_privacy_body" = "S těmito úpravami jsme mohli zrušit také podmínky zpracování. Zásadní změnou je, že nadále nebudeme evidovat telefonní čísla a ani jiné osobní údaje uživatelů eRoušky.";
+"news_privacy_body" = "S těmito úpravami se změnily i podmínky zpracování. Zásadní změnou je, že nadále nebudeme evidovat telefonní čísla žádného uživatele eRoušky a nebudeme ho vyžadovat při registraci.";
 
 "risky_encounters_button" = "Rizikové setkání";
 "risky_encounters_title" = "Rizikové setkání";
+"risky_encounters_positive_title" = "\n\nV případě, že vás bude kontaktovat pracovník hygiencké stanice, postupujte podle jeho pokynů.";
 "risky_encounters_positive_with_symptoms_header" = "Mám příznaky";
 "risky_encounters_positive_without_symptoms_header" = "Nemám příznaky";
 "risky_encounters_negative_title" = "V posledních 10 dnech nebyla ve vaší blízkosti identifikována žádná osoba s potvrzenou nákazou virem COVID-19";

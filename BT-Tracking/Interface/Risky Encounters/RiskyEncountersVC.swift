@@ -62,7 +62,7 @@ final class RiskyEncountersVC: UIViewController {
                 self.menuItemsStack.isHidden = !isPositive
 
                 if let date = dateToShow {
-                    self.positiveView.titleLabel.text = String(format: RemoteValues.riskyEncountersTitle, self.dateFormatter.string(from: date))
+                    self.positiveView.titleLabel.text = String(format: RemoteValues.riskyEncountersTitle, self.dateFormatter.string(from: date)) + Localizable("risky_encounters_positive_title")
                 } else {
                     self.positiveView.titleLabel.text = ""
                 }
