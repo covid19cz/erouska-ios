@@ -56,7 +56,9 @@ extension AboutVC: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // TODO:
+
+        guard let url = URL(string: viewModel.conditionsOfUseLink) else { return }
+        openURL(URL: url)
     }
 }
 

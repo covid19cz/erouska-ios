@@ -85,6 +85,7 @@ enum RemoteConfigValueKey: String {
     case contactsContentJson
 
     case currentMeasuresUrl
+    case conditionsOfUseUrl
 }
 
 struct RemoteValues {
@@ -114,6 +115,7 @@ struct RemoteValues {
         .riskyEncountersWithoutSymptoms: riskyEncountersWithoutSymptomsDefault,
 
         .currentMeasuresUrl: "https://koronavirus.mzcr.cz/aktualni-opatreni/",
+        .conditionsOfUseUrl: "https://erouska.cz",
     ]
 
     /// odkaz na prohlášení o podpoře - vede z úvodní obrazovky a z nápovědy
@@ -243,6 +245,10 @@ struct RemoteValues {
 
     static var currentMeasuresUrl: String {
         return AppDelegate.shared.remoteConfigString(forKey: .currentMeasuresUrl)
+    }
+
+    static var conditionsOfUseUrl: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .conditionsOfUseUrl)
     }
 }
 
