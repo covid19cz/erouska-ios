@@ -200,6 +200,8 @@
 		D6231CC624F52CD00023BDC8 /* CurrentData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6231CC424F52CD00023BDC8 /* CurrentData.storyboard */; };
 		D6231CC824F52FB70023BDC8 /* CurrentDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CC724F52FB70023BDC8 /* CurrentDataVM.swift */; };
 		D6231CC924F52FB70023BDC8 /* CurrentDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CC724F52FB70023BDC8 /* CurrentDataVM.swift */; };
+		D6231CCB24F6610C0023BDC8 /* CurrentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CCA24F6610B0023BDC8 /* CurrentData.swift */; };
+		D6231CCC24F6610C0023BDC8 /* CurrentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CCA24F6610B0023BDC8 /* CurrentData.swift */; };
 		D6340C6224C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6324C1F46D00E550A1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6124C1F46D00E550A1 /* Version.swift */; };
 		D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
@@ -357,6 +359,7 @@
 		D6231CC124F52CBB0023BDC8 /* CurrentDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataVC.swift; sourceTree = "<group>"; };
 		D6231CC424F52CD00023BDC8 /* CurrentData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentData.storyboard; sourceTree = "<group>"; };
 		D6231CC724F52FB70023BDC8 /* CurrentDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataVM.swift; sourceTree = "<group>"; };
+		D6231CCA24F6610B0023BDC8 /* CurrentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentData.swift; sourceTree = "<group>"; };
 		D6340C6124C1F46D00E550A1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVC.swift; sourceTree = "<group>"; };
 		D6340C6724C5977500E550A1 /* UnsupportedDeviceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedDeviceVM.swift; sourceTree = "<group>"; };
@@ -811,6 +814,7 @@
 				D6231CC424F52CD00023BDC8 /* CurrentData.storyboard */,
 				D6231CC124F52CBB0023BDC8 /* CurrentDataVC.swift */,
 				D6231CC724F52FB70023BDC8 /* CurrentDataVM.swift */,
+				D6231CCA24F6610B0023BDC8 /* CurrentData.swift */,
 			);
 			path = "Current Data";
 			sourceTree = "<group>";
@@ -1241,6 +1245,7 @@
 				FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */,
 				80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */,
 				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
+				D6231CCB24F6610C0023BDC8 /* CurrentData.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
 				8064DF92244F420A005E8AA3 /* AboutTeam.swift in Sources */,
 				80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */,
@@ -1308,6 +1313,7 @@
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				FFC32EA4244B75450008104C /* AboutDataCell.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
+				D6231CCC24F6610C0023BDC8 /* CurrentData.swift in Sources */,
 				D6231CB624EBC0760023BDC8 /* ErrorVC.swift in Sources */,
 				D6231CAE24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,

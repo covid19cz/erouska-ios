@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import RxSwift
 
 final class CurrentDataVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerLabel: UILabel!
 
     private let viewModel = CurrentDataVM()
+    private let disposeBag = DisposeBag()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +26,27 @@ final class CurrentDataVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel.needToUpdateView.subscribe(onNext: { [weak self] in
+            self?.hideProgress()
+            self?.tableView.reloadData()
+            self?.footerLabel.text = self?.viewModel.footer
+        }).disposed(by: disposeBag)
+
         footerLabel.text = viewModel.footer
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        viewModel.fetchCurrentDataIfNeeded()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if viewModel.sections.isEmpty {
+            showProgress()
+        }
     }
 
     override func viewDidLayoutSubviews() {

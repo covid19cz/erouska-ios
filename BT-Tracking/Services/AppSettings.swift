@@ -23,6 +23,8 @@ struct AppSettings {
         case lastExposureWarningClosed
 
         case v2_0NewsLaunched
+
+        case currentDataLastFetchDate
     }
 
     /// Firebase Region
@@ -119,6 +121,18 @@ struct AppSettings {
         }
         set {
             set(withKey: .v2_0NewsLaunched, value: newValue)
+        }
+    }
+
+    /// Last time when app fetched current data
+    static var currentDataLastFetchDate: Date? {
+        get {
+            let rawValue = double(forKey: .currentDataLastFetchDate)
+            guard rawValue != 0 else { return nil }
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+        }
+        set {
+            set(withKey: .currentDataLastFetchDate, value: newValue?.timeIntervalSince1970)
         }
     }
 
