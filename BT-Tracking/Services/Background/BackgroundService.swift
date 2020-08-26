@@ -180,7 +180,7 @@ private extension BackgroundService {
                 }
 
                 self.exposureService.detectExposures(
-                    configuration: ExposureConfiguration(),
+                    configuration: RemoteValues.exposureConfiguration,
                     URLs: keys.URLs
                 ) { result in
                     switch result {

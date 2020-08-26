@@ -340,7 +340,7 @@ private extension ActiveAppVC {
             switch result {
             case .success(let keys):
                 self?.viewModel.exposureService.detectExposures(
-                    configuration: ExposureConfiguration(),
+                    configuration: RemoteValues.exposureConfiguration,
                     URLs: keys.URLs
                 ) { [weak self] result in
                     guard let self = self else { return }

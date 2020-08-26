@@ -44,7 +44,7 @@ final class ReportService: ReportServicing {
         }
         return documentsURL
     }
-    private let downloadIndex = "/index.txt"
+    private let downloadIndex = "index.txt"
 
     init(configuration: Configuration) {
         healthAuthority = configuration.healthAuthority
@@ -231,7 +231,12 @@ final class ReportService: ReportServicing {
                     }
                 case let .failure(error):
                     DispatchQueue.main.async {
-                        reportFailure(error)
+                        switch error {
+                        case .responseSerializationFailed(reason: .inputDataNilOrZeroLength):
+                            reportSuccess([], lastProcessFileName: nil)
+                        default:
+                            reportFailure(error)
+                        }
                     }
                 }
 

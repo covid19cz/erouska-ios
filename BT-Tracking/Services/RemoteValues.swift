@@ -85,6 +85,8 @@ enum RemoteConfigValueKey: String {
     case contactsContentJson
 
     case currentMeasuresUrl
+
+    case appleExposureConfigurationV1
 }
 
 struct RemoteValues {
@@ -243,6 +245,17 @@ struct RemoteValues {
 
     static var currentMeasuresUrl: String {
         return AppDelegate.shared.remoteConfigString(forKey: .currentMeasuresUrl)
+    }
+
+    static var exposureConfiguration: ExposureConfiguration {
+        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV1).data(using: .utf8) else {
+            return ExposureConfiguration()
+        }
+        do {
+            return try JSONDecoder().decode(ExposureConfiguration.self, from: json)
+        } catch {
+            return ExposureConfiguration()
+        }
     }
 }
 
