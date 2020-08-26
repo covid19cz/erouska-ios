@@ -13,18 +13,6 @@ import RxSwift
 
 final class CurrentDataVM {
 
-    struct Section {
-        let header: String?
-        let selectableItems: Bool
-        let items: [Item]
-    }
-
-    struct Item {
-        let iconName: String
-        let title: String
-        let subtitle: String?
-    }
-
     let tabTitle = "data_list_title"
     let tabIcon = UIImage(named: "MyData")
 
@@ -164,4 +152,19 @@ final class CurrentDataVM {
         guard let formattedValue = numberFormatter.string(for: value) else { return "" }
         return String(format: Localizable(key), formattedValue)
     }
+}
+
+extension CurrentDataVM {
+
+     struct Section {
+         let header: String?
+         let selectableItems: Bool
+         let items: [Item]
+     }
+
+     struct Item {
+         let iconName: String
+         let title: String
+         let subtitle: String?
+     }
 }
