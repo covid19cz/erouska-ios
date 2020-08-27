@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFo-BI-0aY">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="609.5"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="618"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2z-dj-4NO">
@@ -30,11 +30,14 @@
                                 <constraints>
                                     <constraint firstItem="dy9-wn-TjU" firstAttribute="leading" secondItem="h2z-dj-4NO" secondAttribute="leading" id="44T-pB-n1Z"/>
                                     <constraint firstAttribute="bottom" secondItem="dy9-wn-TjU" secondAttribute="bottom" id="F2w-8E-jZD"/>
+                                    <constraint firstItem="dy9-wn-TjU" firstAttribute="centerY" secondItem="h2z-dj-4NO" secondAttribute="centerY" id="M8K-fu-WFm"/>
                                     <constraint firstAttribute="trailing" secondItem="dy9-wn-TjU" secondAttribute="trailing" id="XqB-kx-LTU"/>
-                                    <constraint firstItem="dy9-wn-TjU" firstAttribute="top" secondItem="h2z-dj-4NO" secondAttribute="top" id="k08-35-vMC"/>
+                                    <constraint firstItem="dy9-wn-TjU" firstAttribute="top" secondItem="gGL-NR-jCh" secondAttribute="top" id="k08-35-vMC"/>
                                     <constraint firstItem="dy9-wn-TjU" firstAttribute="height" secondItem="h2z-dj-4NO" secondAttribute="height" placeholder="YES" id="mVJ-s7-7cs"/>
                                     <constraint firstItem="dy9-wn-TjU" firstAttribute="width" secondItem="h2z-dj-4NO" secondAttribute="width" placeholder="YES" id="sog-Hq-ddn"/>
                                 </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="gGL-NR-jCh"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="HBC-b4-t8X"/>
                                 <connections>
                                     <outlet property="delegate" destination="s25-xW-x39" id="74X-iF-KpB"/>
                                 </connections>
@@ -116,7 +119,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CyS-xw-OKW" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ble-VT-p5O">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

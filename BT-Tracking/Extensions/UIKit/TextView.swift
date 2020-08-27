@@ -19,6 +19,11 @@ extension UITextView {
             range: NSMakeRange(0, attributedOriginalText.length)
         )
         attributedOriginalText.addAttribute(
+            .foregroundColor,
+            value: textColor ?? .label,
+            range: NSMakeRange(0, attributedOriginalText.length)
+        )
+        attributedOriginalText.addAttribute(
             .link,
             value: urlString,
             range: attributedOriginalText.mutableString.range(of: hyperLink)
