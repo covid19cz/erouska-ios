@@ -9,6 +9,6 @@
 import Foundation
 
 struct PreventTransmissionVM: RiskyEncountersListVM {
-    let title = "prevent_transmission_title"
+    let localizedTitle = RemoteValues.spreadPreventionUITitle
     var content: RiskyEncountersListContent? = RemoteValues.preventionContent
 }

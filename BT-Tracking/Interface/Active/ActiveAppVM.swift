@@ -72,7 +72,7 @@ final class ActiveAppVM {
         var title: String? {
             switch self {
             case .enabled:
-                return RemoteValues.activeTitleEnabled
+                return "active_title_highlighted_enabled"
             default:
                 return nil
             }
@@ -114,7 +114,7 @@ final class ActiveAppVM {
 
     let lastUpdateText = "active_data_update"
 
-    let menuRiskyEncounters = "risky_encounters_button"
+    let menuRiskyEncounters = RemoteValues.exposureUITitle
     let menuSendReports = "data_list_send_button"
     let menuDebug = "debug"
     let menuCancelRegistration = "cancel_registration_button"
