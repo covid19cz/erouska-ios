@@ -65,7 +65,8 @@ private extension PrivacyVC {
             "platformVersion": Version.currentOSVersion.rawValue,
             "manufacturer": "apple",
             "model": UIDevice.current.modelName,
-            "locale": Locale.current.languageCode ?? ""
+            "locale": Locale.current.languageCode ?? "",
+            "pushRegistrationToken": AppDelegate.dependency.deviceToken?.hexEncodedString() ?? "💩"
         ]
 
         viewModel.functions.httpsCallable("RegisterEhrid").call(request) { [weak self] result, error in
