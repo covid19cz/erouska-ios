@@ -19,7 +19,7 @@ final class PrivacyVC: UIViewController {
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var headlineLabel: UILabel!
-    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var bodyTextView: UITextView!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var continueButton: RoundedButtonFilled!
 
@@ -29,7 +29,22 @@ final class PrivacyVC: UIViewController {
         super.viewDidLoad()
 
         buttonsView.connect(with: scrollView)
-        setupStrings()
+
+        navigationItem.localizedTitle(viewModel.title)
+        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
+        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
+
+        headlineLabel.localizedText(viewModel.headline)
+        continueButton.localizedTitle(viewModel.continueButton)
+
+        bodyTextView.textContainerInset = .zero
+        bodyTextView.textContainer.lineFragmentPadding = 0
+
+        bodyTextView.hyperLink(
+            originalText: Localizable(viewModel.body),
+            hyperLink: Localizable(viewModel.bodyLinkTitle),
+            urlString: viewModel.bodyLink
+        )
     }
 
     // MARK: - Action
@@ -41,16 +56,6 @@ final class PrivacyVC: UIViewController {
 }
 
 private extension PrivacyVC {
-
-    func setupStrings() {
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
-        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
-
-        headlineLabel.localizedText(viewModel.headline)
-        bodyLabel.localizedText(viewModel.body)
-        continueButton.localizedTitle(viewModel.continueButton)
-    }
 
     func activateApp() {
         showProgress()
@@ -88,4 +93,12 @@ private extension PrivacyVC {
         }
     }
 
+}
+
+extension PrivacyVC: UITextViewDelegate {
+
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        openURL(URL: URL)
+        return false
+    }
 }

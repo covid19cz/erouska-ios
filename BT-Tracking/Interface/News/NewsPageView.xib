@@ -20,7 +20,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yYt-gs-0bx">
-                                    <rect key="frame" x="20" y="253" width="374" height="346"/>
+                                    <rect key="frame" x="20" y="244.5" width="374" height="363.5"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ForceUpdate" translatesAutoresizingMaskIntoConstraints="NO" id="5xo-u1-8gi">
                                             <rect key="frame" x="16" y="16" width="342" height="199"/>
@@ -31,12 +31,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Je připravená důležitá aktualizace eRoušky. Chcete-li pokračovat v jejím používání, proveďte aktualizaci na nejnovější verzi." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhd-Ko-Bvs">
-                                            <rect key="frame" x="16" y="265.5" width="342" height="64.5"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Je připravená důležitá aktualizace eRoušky. Chcete-li pokračovat v jejím používání, proveďte aktualizaci na nejnovější verzi." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8KR-gi-cHo">
+                                            <rect key="frame" x="16" y="265.5" width="342" height="82"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                                 </stackView>
@@ -74,7 +75,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="bodyLabel" destination="uhd-Ko-Bvs" id="7XL-NL-KLQ"/>
+                <outlet property="bodyTextView" destination="8KR-gi-cHo" id="SF1-ar-I3l"/>
                 <outlet property="headlineLabel" destination="oXP-pI-Too" id="aDm-Fd-qQJ"/>
                 <outlet property="imageView" destination="5xo-u1-8gi" id="U55-Ed-X16"/>
                 <outlet property="scrollView" destination="krq-aB-fo7" id="XlP-fr-qlv"/>

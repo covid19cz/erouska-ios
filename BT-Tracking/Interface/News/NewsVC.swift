@@ -32,6 +32,7 @@ final class NewsVC: UIViewController {
             let page = nib.instantiate(withOwner: nil, options: nil).first as! NewsPageView
             page.viewModel = pageModel
             page.translatesAutoresizingMaskIntoConstraints = true
+            page.bodyTextView.delegate = self
             pagesStackView.addArrangedSubview(page)
         }
         pageControl.numberOfPages = viewModel.newsPages.count
@@ -80,5 +81,13 @@ extension NewsVC: UIScrollViewDelegate {
         let currentPage = max(0, Int(scrollView.contentOffset.x / pageSizeReferenceView.bounds.width))
         pageControl.currentPage = currentPage
         updateView(for: currentPage)
+    }
+}
+
+extension NewsVC: UITextViewDelegate {
+
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        openURL(URL: URL)
+        return false
     }
 }
