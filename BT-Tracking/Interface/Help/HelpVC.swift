@@ -58,7 +58,8 @@ extension HelpVC: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        openURL(URL: viewModel.configuration.chatbotURL)
+        guard let url = URL(string: viewModel.chatbotLink) else { return }
+        openURL(URL: url)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

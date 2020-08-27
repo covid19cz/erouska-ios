@@ -41,7 +41,7 @@ final class RiskyEncountersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = Localizable(viewModel.title)
+        title = viewModel.title
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
         positiveView.withSymptomsHeaderLabel.text = Localizable(viewModel.withSymptomsHeaderKey)
@@ -49,9 +49,9 @@ final class RiskyEncountersVC: UIViewController {
         positiveView.withoutSymptomsHeaderLabel.text = Localizable(viewModel.withoutSymptomsHeaderKey)
         positiveView.withoutSymptomsLabel.text = viewModel.withoutSymptoms
 
-        negativeView.titleLabel.localizedText(viewModel.negativeTitleKey)
-        negativeView.bodyLabel.localizedText(viewModel.negativeBodyKey)
-        negativeView.previousRiskyEncountersButton.localizedTitle(viewModel.previousRiskyEncountersButtonKey)
+        negativeView.titleLabel.text = viewModel.negativeTitle
+        negativeView.bodyLabel.text = viewModel.negativeBody
+        negativeView.previousRiskyEncountersButton.localizedTitle(viewModel.previousRiskyEncountersButton)
 
         viewModel.riskyEncouterDateToShow.subscribe(
             onNext: { [weak self] dateToShow in

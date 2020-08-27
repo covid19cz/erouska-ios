@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RiskyEncountersListVM {
-    var title: String { get }
+    var localizedTitle: String { get }
     var content: RiskyEncountersListContent? { get }
 }
 
