@@ -23,8 +23,6 @@ struct Configuration {
 
     let verificationURL = URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!
 
-    let chatbotURL = URL(string: "https://erouska.cz/#chat-open")!
-
     let verificationAdminKey: String = ""
     let verificationDeviceKey: String = "Ar9VQ1tZS1ANU0LLPGw8nUnavJNBDCaTGEaEQbydvTYFgnW7oqQkTCLUxhk6azLm8IjTtCRVqQIi/wNscvniGw"
 

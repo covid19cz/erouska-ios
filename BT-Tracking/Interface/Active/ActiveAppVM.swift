@@ -114,7 +114,7 @@ final class ActiveAppVM {
 
     let lastUpdateText = "active_data_update"
 
-    let menuRiskyEncounters = "risky_encounters_button"
+    let menuRiskyEncounters = RemoteValues.exposureUITitle
     let menuSendReports = "data_list_send_button"
     let menuDebug = "debug"
     let menuCancelRegistration = "cancel_registration_button"

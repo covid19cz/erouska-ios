@@ -11,3 +11,11 @@
 "riskyEncountersTitleDefault" = "Dne %@ jste se setkali s osobou u které byla potvrzena nákaza koronavirem.\n\nV případě, že vás bude kontaktovat pracovník hygiencké stanice, postupujte podle jeho pokynů.";
 "riskyEncountersWithSymptomsDefault" = "Pokud se u vás v průběhu 14 dnů od kontaktu s nakaženým objevily příznaky respiračního onemocnění, kontaktujte telefonicky svého praktického lékaře a řiďte se jeho pokyny. Mimo jeho pracovní dobu kontaktujte telefonicky nejbližší lékařskou pohotovost. V případě závažných zdravotních obtíží volejte 155.";
 "riskyEncountersWithoutSymptomsDefault" = "Jestliže se u vás neprojevují hlavní příznaky onemocnění COVID-19, nemusíte zůstávat doma. Dodržujte zásady zodpovědného chování a sledujte svůj zdravotní stav.";
+
+"noEncounterHeaderDefault" = "V posledních 14 dnech nebyla ve vaší blízkosti žádná osoba s potvrzenou nákazou virem COVID-19";
+"noEncounterBodyDefault" = "Na rizikové setkání vás upozorníme pomocí oznámení.";
+
+"exposureUITitleDefault" = "Rizikové setkání";
+"symptomsUITitleDefault" = "Hlavní příznaky";
+"spreadPreventionUITitleDefault" = "Zásady zodpovědného chování";
+"recentExposuresUITitleDefault" = "Předchozí riziková setkání";

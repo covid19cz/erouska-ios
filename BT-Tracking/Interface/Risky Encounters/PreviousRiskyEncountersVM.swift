@@ -14,7 +14,7 @@ import RxRealm
 struct PreviousRiskyEncountersVM {
     let previousExposures: Observable<[Exposure]>
 
-    let title = "previous_risky_encounters_title"
+    let title = RemoteValues.recentExposuresUITitle
 
     init() {
         let realm = try! Realm()

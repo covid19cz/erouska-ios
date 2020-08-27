@@ -77,6 +77,16 @@ enum RemoteConfigValueKey: String {
 
     case currentMeasuresUrl
     case conditionsOfUseUrl
+
+    case noEncounterHeader
+    case noEncounterBody
+
+    case exposureUITitle
+    case symptomsUITitle
+    case spreadPreventionUITitle
+    case recentExposuresUITitle
+
+    case chatBotLink
 }
 
 struct RemoteValues {
@@ -98,6 +108,16 @@ struct RemoteValues {
 
         .currentMeasuresUrl: "https://koronavirus.mzcr.cz/aktualni-opatreni/",
         .conditionsOfUseUrl: "https://erouska.cz",
+
+        .noEncounterHeader: noEncounterHeaderDefault,
+        .noEncounterBody: noEncounterBodyDefault,
+
+        .exposureUITitle: exposureUITitleDefault,
+        .symptomsUITitle: symptomsUITitleDefault,
+        .spreadPreventionUITitle: spreadPreventionUITitleDefault,
+        .recentExposuresUITitle: recentExposuresUITitleDefault,
+
+        .chatBotLink: "https://erouska.cz/#chat-open",
     ]
 
     static var shareAppDynamicLink: String {
@@ -183,6 +203,34 @@ struct RemoteValues {
     static var conditionsOfUseUrl: String {
         return AppDelegate.shared.remoteConfigString(forKey: .conditionsOfUseUrl)
     }
+
+    static var noEncounterHeader: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .noEncounterHeader)
+    }
+
+    static var noEncounterBody: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .noEncounterBody)
+    }
+
+    static var exposureUITitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .exposureUITitle)
+    }
+
+    static var symptomsUITitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .symptomsUITitle)
+    }
+
+    static var spreadPreventionUITitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .spreadPreventionUITitle)
+    }
+
+    static var recentExposuresUITitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .recentExposuresUITitle)
+    }
+
+    static var chatBotLink: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .chatBotLink)
+    }
 }
 
 // MARK: - Backup
@@ -217,5 +265,29 @@ private extension RemoteValues {
 
     static var riskyEncountersWithoutSymptomsDefault: String {
         return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithoutSymptomsDefault")
+    }
+
+    static var noEncounterHeaderDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterHeaderDefault")
+    }
+
+    static var noEncounterBodyDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterBodyDefault")
+    }
+
+    static var exposureUITitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "exposureUITitleDefault")
+    }
+
+    static var symptomsUITitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "symptomsUITitleDefault")
+    }
+
+    static var spreadPreventionUITitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "spreadPreventionUITitleDefault")
+    }
+
+    static var recentExposuresUITitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "recentExposuresUITitleDefault")
     }
 }

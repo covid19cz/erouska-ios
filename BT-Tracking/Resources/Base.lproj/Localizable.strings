@@ -142,19 +142,9 @@
 "news_privacy_body" = "S těmito úpravami se změnily i podmínky zpracování. Zásadní změnou je, že nadále nebudeme evidovat telefonní čísla žádného uživatele eRoušky a nebudeme ho vyžadovat při registraci.";
 "news_privacy_body_link" = "podmínky zpracování";
 
-"risky_encounters_button" = "Rizikové setkání";
-"risky_encounters_title" = "Rizikové setkání";
 "risky_encounters_positive_title" = "\n\nV případě, že vás bude kontaktovat pracovník hygiencké stanice, postupujte podle jeho pokynů.";
 "risky_encounters_positive_with_symptoms_header" = "Mám příznaky";
 "risky_encounters_positive_without_symptoms_header" = "Nemám příznaky";
-"risky_encounters_negative_title" = "V posledních 10 dnech nebyla ve vaší blízkosti identifikována žádná osoba s potvrzenou nákazou virem COVID-19";
-"risky_encounters_negative_body" = "Na rizikové setkání vás upozorníme pomocí oznámení.";
-
-"previous_risky_encounters_title" = "Předchozí riziková setkání";
-
-"main_symptoms_title" = "Hlavní příznaky";
-
-"prevent_transmission_title" = "Zásady zodpovědného chování";
 
 "deadman_notificaiton_title" = "Otevřete aplikaci eRouška";
 "deadman_notificaiton_body" = "Zkontrolujete tak, zda jste se setkali s osobou u níž byla potvrzená nákaza virem COVID-19.";

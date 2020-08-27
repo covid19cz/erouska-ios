@@ -30,11 +30,11 @@ struct RiskyEncountersVM {
         var localizedTitle: String {
             switch self {
             case .mainSymptoms:
-                return Localizable("main_symptoms_title")
+                return RemoteValues.symptomsUITitle
             case .preventTransmission:
-                return Localizable("prevent_transmission_title")
+                return RemoteValues.spreadPreventionUITitle
             case .previousRiskyEncounters:
-                return Localizable("previous_risky_encounters_title")
+                return RemoteValues.recentExposuresUITitle
             }
         }
     }
@@ -44,17 +44,17 @@ struct RiskyEncountersVM {
     let riskyEncouterDateToShow: Observable<Date?>
     let shouldShowPreviousRiskyEncounters: Observable<Bool>
 
-    let title = "risky_encounters_title"
+    let title = RemoteValues.exposureUITitle
 
     let withSymptomsHeaderKey = "risky_encounters_positive_with_symptoms_header"
     let withSymptoms = RemoteValues.riskyEncountersWithSymptoms
     let withoutSymptomsHeaderKey = "risky_encounters_positive_without_symptoms_header"
     let withoutSymptoms = RemoteValues.riskyEncountersWithoutSymptoms
 
-    let negativeTitleKey = "risky_encounters_negative_title"
-    let negativeBodyKey = "risky_encounters_negative_body"
+    let negativeTitle = RemoteValues.noEncounterHeader
+    let negativeBody =  RemoteValues.noEncounterBody
 
-    let previousRiskyEncountersButtonKey = "previous_risky_encounters_title"
+    let previousRiskyEncountersButton = RemoteValues.recentExposuresUITitle
 
     init() {
         let showForDays = AppDelegate.dependency.configuration.showExposureForDays
