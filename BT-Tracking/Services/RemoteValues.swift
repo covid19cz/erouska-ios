@@ -57,24 +57,15 @@ extension AppDelegate {
 }
 
 enum RemoteConfigValueKey: String {
-    case proclamationLink
-    case termsAndConditionsLink
-    case aboutLink
     case shareAppDynamicLink
     
     case helpMarkdown
-    case dataCollectionMarkdown
-
-    case aboutJson
-    
-    case activeTitleEnabled
-    case activeTitleEnabled_en
 
     case minSupportedVersion
     case unsupportedDeviceLink
     case shouldCheckOSVersion
 
-    case exposureBannerTitle
+    case exposureBannerTitle = "encounterWarning"
 
     case riskyEncountersTitle
     case riskyEncountersWithSymptoms
@@ -91,18 +82,9 @@ enum RemoteConfigValueKey: String {
 struct RemoteValues {
 
     static let defaults: [RemoteConfigValueKey: Any?] = [
-        .proclamationLink: "https://koronavirus.mzcr.cz",
-        .termsAndConditionsLink: "https://koronavirus.mzcr.cz",
-        .aboutLink: "http://erouska.cz",
         .shareAppDynamicLink: "https://covid19cz.page.link/share",
         
         .helpMarkdown: helpMarkdownBackup,
-        .dataCollectionMarkdown: dataCollectionMarkdownBackup,
-
-        .aboutJson: aboutJsonBackup,
-        
-        .activeTitleEnabled: activeTitleEnabledDefault,
-        .activeTitleEnabled_en: activeTitleEnabledDefaultEn,
 
         .minSupportedVersion: Version("1.0.0"),
         .unsupportedDeviceLink: "https://koronavirus.mzcr.cz",
@@ -118,26 +100,6 @@ struct RemoteValues {
         .conditionsOfUseUrl: "https://erouska.cz",
     ]
 
-    /// odkaz na prohlášení o podpoře - vede z úvodní obrazovky a z nápovědy
-    static var proclamationLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .proclamationLink)
-    }
-
-    /// Podminky zpracovan
-    static var termsAndConditionsLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .termsAndConditionsLink)
-    }
-
-    /// Odkaz na tým - erouska.cz/tym
-    static var aboutLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .aboutLink)
-    }
-
-    /// Authors json
-    static var aboutJson: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .aboutJson)
-    }
-
     static var shareAppDynamicLink: String {
         return AppDelegate.shared.remoteConfigString(forKey: .shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -145,35 +107,6 @@ struct RemoteValues {
     /// Help markdown
     static var helpMarkdown: String {
         return AppDelegate.shared.remoteConfigString(forKey: .helpMarkdown)
-    }
-
-    /// Data collection markdown
-    static var dataCollectionMarkdown: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .dataCollectionMarkdown)
-    }
-    
-    /// Main screen title enabled text
-    static var activeTitleEnabled: String {
-
-        enum SupportedLanguage: String {
-            case cs, en
-        }
-
-        var language = SupportedLanguage.cs
-        if let preferredLocalization = Bundle.main.preferredLocalizations.first, let preferredLanguage = SupportedLanguage(rawValue: preferredLocalization) {
-            language = preferredLanguage
-        }
-
-        var key: RemoteConfigValueKey {
-            switch language {
-            case .en: return .activeTitleEnabled_en
-            default: return .activeTitleEnabled
-            }
-        }
-
-        return AppDelegate.shared.remoteConfigString(forKey: key)
-            .replacingOccurrences(of: "\\n", with: "\n")
-            .replacingOccurrences(of: "\\", with: "")
     }
 
     /// Min supported app version. Used for force update.
@@ -268,22 +201,6 @@ private extension RemoteValues {
 
     static var helpMarkdownBackup: String {
         return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
-    }
-
-    static var dataCollectionMarkdownBackup: String {
-        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "dataCollectionInfoBackup")
-    }
-
-    static var aboutJsonBackup: String {
-        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "aboutJsonBackup")
-    }
-
-    static var activeTitleEnabledDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefault")
-    }
-    
-    static var activeTitleEnabledDefaultEn: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefaultEn")
     }
 
     static var activeExposureTitleDefault: String {

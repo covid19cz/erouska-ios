@@ -72,7 +72,7 @@ final class ActiveAppVM {
         var title: String? {
             switch self {
             case .enabled:
-                return RemoteValues.activeTitleEnabled
+                return "active_title_highlighted_enabled"
             default:
                 return nil
             }

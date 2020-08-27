@@ -29,6 +29,8 @@
 "active_head_disabled_bluetooth" = "Zapněte Bluetooth";
 "active_head_disabled_exposures" = "Zapněte Oznámení o kontaktu s COVID-19";
 
+"active_title_highlighted_enabled" = "Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.";
+
 "active_title_enabled" = "Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.";
 "active_title_paused" = "Aplikace je aktuálně pozastavená a nesbírá žádná data o ostatních eRouškách ve vašem okolí.\n\nSpusťte znovu sběr dat a chraňte sebe i své okolí. Nezapomínejte na to zejména v situaci, kdy opouštíte svůj domov.";
 "active_title_disabled_exposures" = "eRouška nyní nemůže komunikovat s jinými eRouškami ve vašem okolí.\n\nZapněte Oznámení o kontaktu s COVID-19 pomocí tlačítka \"Zapnout\".";
