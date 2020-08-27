@@ -12,4 +12,20 @@ struct NewsPageVM {
     let imageName: String
     let headline: String
     let body: String
+    let bodyLinkTitle: String?
+    let bodyLink: String?
+
+    init(
+        imageName: String,
+        headline: String,
+        body: String,
+        bodyLinkTitle: String? = nil,
+        bodyLink: String? = nil
+    ) {
+        self.imageName = imageName
+        self.headline = headline
+        self.body = body
+        self.bodyLinkTitle = bodyLinkTitle
+        self.bodyLink = bodyLink
+    }
 }

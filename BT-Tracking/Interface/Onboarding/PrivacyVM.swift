@@ -21,6 +21,10 @@ struct PrivacyVM {
 
     let body = "privacy_body"
 
+    let bodyLinkTitle = "privacy_body_link"
+
+    let bodyLink = RemoteValues.conditionsOfUseUrl
+
     let continueButton = "privacy_continue"
 
     let functions: Functions = AppDelegate.dependency.functions
