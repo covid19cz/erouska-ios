@@ -52,7 +52,7 @@ final class CurrentDataVC: UIViewController {
         super.viewDidAppear(animated)
 
         if viewModel.sections.isEmpty {
-            showProgress()
+            showProgress(fromView: true)
         }
     }
 
