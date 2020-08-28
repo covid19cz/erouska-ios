@@ -81,7 +81,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lJW-ar-lRj"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Jak to funguje" largeTitleDisplayMode="never" id="XMX-lW-XTz">
+                    <navigationItem key="navigationItem" title="Jak to funguje" id="XMX-lW-XTz">
                         <barButtonItem key="rightBarButtonItem" title="O aplikaci" id="jdD-iU-eUi">
                             <connections>
                                 <segue destination="y7d-j4-fB7" kind="show" id="pac-c2-jBb"/>
