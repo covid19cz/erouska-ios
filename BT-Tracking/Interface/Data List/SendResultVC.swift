@@ -31,4 +31,10 @@ final class SendResultVC: UIViewController {
         closeButton.localizedTitle("data_send_close_button")
     }
 
+    // MARK: - Action
+
+    @IBAction private func closeAction() {
+        dismiss(animated: true, completion: nil)
+    }
+
 }

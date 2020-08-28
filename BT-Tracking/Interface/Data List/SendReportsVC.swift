@@ -183,6 +183,7 @@ private extension SendReportsVC {
             case .success(let keys):
                 guard !keys.isEmpty else {
                     self.reportHideProgress()
+                    self.resultAction()
                     self.showNoKeysError()
                     return
                 }
@@ -211,6 +212,7 @@ private extension SendReportsVC {
 
                 switch error {
                 case .noData:
+                    self.resultAction()
                     self.showNoKeysError()
                 default:
                     self.showSendDataError()
