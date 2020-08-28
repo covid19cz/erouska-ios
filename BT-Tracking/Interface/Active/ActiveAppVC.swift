@@ -260,7 +260,7 @@ private extension ActiveAppVC {
         imageView.image = viewModel.state.image
         headlineLabel.localizedText(viewModel.state.headline)
         headlineLabel.textColor = viewModel.state.color
-        titleLabel.text = viewModel.state.title
+        titleLabel.localizedText(viewModel.state.title ?? "")
         if viewModel.state == .enabled, let update = AppSettings.lastProcessedDate {
             let text = Localizable(viewModel.state.text) + "\n\n" + String(format: Localizable(viewModel.lastUpdateText), viewModel.dateFormatter.string(from: update))
             textLabel.text = text
