@@ -150,23 +150,27 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuSendReports), style: .default, handler: { [weak self] _ in
             self?.sendReportsAction()
         }))
-        #if !PROD
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
-            self?.debugAction()
-        }))
-        controller.addAction(UIAlertAction(title: Localizable("Debug: Vlozit falesne setkani"), style: .default, handler: { [weak self] _ in
-            self?.debugInsertFakeExposure()
-        }))
-        controller.addAction(UIAlertAction(title: Localizable("Debug: Zkontrolovat reporty"), style: .default, handler: { [weak self] _ in
-            self?.debugProcessReports()
-        }))
-        controller.addAction(UIAlertAction(title: "Debug: " + Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
-            self?.debugCancelRegistrationAction()
-        }))
-        #endif
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuAbout), style: .default, handler: { [weak self] _ in
             self?.aboutAction()
         }))
+        #if !PROD
+        controller.addAction(UIAlertAction(title: "", style: .default, handler: nil))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
+            self?.debugAction()
+        }))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " novinky", style: .default, handler: { [weak self] _ in
+            self?.debugShowNews()
+        }))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " aktivace", style: .default, handler: { [weak self] _ in
+            self?.debugCancelRegistrationAction()
+        }))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " rizikového setkání", style: .default, handler: { [weak self] _ in
+            self?.debugInsertFakeExposure()
+        }))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
+            self?.debugProcessReports()
+        }))
+        #endif
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancel), style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
@@ -405,6 +409,13 @@ private extension ActiveAppVC {
         try! realm.write() {
             exposures.forEach { realm.add(ExposureRealm($0)) }
         }
+    }
+
+    func debugShowNews() {
+        AppSettings.v2_0NewsLaunched = true
+        guard let controller = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
     }
 
     #endif

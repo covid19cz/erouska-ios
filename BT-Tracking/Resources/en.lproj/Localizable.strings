@@ -3,7 +3,7 @@
 "back" = "Zpět";
 "ok" = "OK";
 "error" = "Chyba";
-"debug" = "Debug";
+"debug" = "Test";
 "about" = "O aplikaci";
 "close" = "Zavřít";
 
@@ -50,7 +50,7 @@
 
 "active_exposure_more_info" = "Více informací";
 
-"cancel_registration_button" = "Zrušit registraci";
+"cancel_registration_button" = "Zrušit aktivaci";
 
 "share_app" = "Sdílet aplikaci";
 "share_app_message" = "Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření koronaviru. Aplikace sbírá anonymní údaje o telefonech v blízkosti, aby pracovníci hygieny mohli snadněji dohledat potencionálně nakažené. Čím víc nás bude, tím lépe to bude fungovat. Aplikaci najdeš na %@/";
@@ -100,17 +100,8 @@
 "help_chatbot" = "Napište Anežce – podpoře eRoušky";
 "help_tab_title" = "Nápověda";
 
-"unregister_user_title" = "Zrušit registraci";
-"unregister_user_body" = "Opravdu chcete zrušit registraci svého telefonního čísla?\n\nPo zrušení registrace vás nemůžeme kontaktovat v případě, že dojde k potvrzení nákazy koronavirem u někoho z vašeho okolí.\n\nDojde-li k potvrzení nákazy u vás, nebudeme mít možnost kontaktovat nikoho z vašeho okolí.\n\nZrušením registrace dojde k vypnutí aplikace ve všech zařízeních registrovaných s tímto telefonním číslem %@.";
-"unregister_user_button" = "Zrušit registraci";
-"unregister_user_error_title" = "Chyba při zrušení registrace";
-
-"unregister_finish_title" = "Zrušit registraci";
-"unregister_finish_headline" = "Registraci vašeho telefonního čísla jsme zrušili";
-"unregister_finish_close" = "Zavřít";
-
 "about_title" = "O aplikaci";
-"about_info" = "Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT). Předchozí verzi aplikace eRouška vytvořil ým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.";
+"about_info" = "Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT).\n\nPředchozí verzi aplikace eRouška vytvořil tým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.";
 "about_conditions_of_use" = "Podmínky použití";
 
 "force_update_title" = "Důležitá aktualizace eRoušky";
@@ -181,4 +172,4 @@
 "current_data_item_healthy" = "%@ vyléčených";
 "current_data_item_deaths" = "%@ úmrtí";
 "current_data_item_hospitalized" = "%@ aktuálně hospitalizovaných";
-"current_data_item_yesterday" = "Za včerejší den +%@";
+"current_data_item_yesterday" = "Za včerejší den %@";

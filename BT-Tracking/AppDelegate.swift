@@ -203,8 +203,9 @@ private extension AppDelegate {
 
         if shouldPresentNews, !AppSettings.v2_0NewsLaunched {
             AppSettings.v2_0NewsLaunched = true
-            guard let newsViewController = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
-            rootViewController?.present(newsViewController, animated: true)
+            guard let controller = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+            controller.modalPresentationStyle = .fullScreen
+            rootViewController?.present(controller, animated: true)
         }
     }
 
