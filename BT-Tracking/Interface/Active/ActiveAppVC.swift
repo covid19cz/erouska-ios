@@ -402,6 +402,9 @@ private extension ActiveAppVC {
         try! realm.write() {
             exposures.forEach { realm.add(ExposureRealm($0)) }
         }
+
+        let data = ["ehrid": KeychainService.eHRID]
+        AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
     }
 
     func debugShowNews() {
