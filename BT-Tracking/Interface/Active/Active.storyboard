@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -94,7 +92,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="snT-dK-zmg">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" rowHeight="210" id="5bm-Aw-0OQ" customClass="ContactCell" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="210"/>
@@ -118,7 +116,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-QQ-KxS">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-QQ-KxS">
                                                             <rect key="frame" x="16" y="111" width="382" height="67"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                             <state key="normal" title="Důležité kontakty"/>
@@ -149,14 +147,14 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="W1I-Z4-IfU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="snT-dK-zmg" firstAttribute="leading" secondItem="W1I-Z4-IfU" secondAttribute="leading" id="HU4-T7-g4d"/>
                             <constraint firstItem="W1I-Z4-IfU" firstAttribute="trailing" secondItem="snT-dK-zmg" secondAttribute="trailing" id="MUT-On-hA8"/>
                             <constraint firstItem="snT-dK-zmg" firstAttribute="top" secondItem="W1I-Z4-IfU" secondAttribute="top" id="cDn-5s-Rce"/>
                             <constraint firstItem="W1I-Z4-IfU" firstAttribute="bottom" secondItem="snT-dK-zmg" secondAttribute="bottom" id="p7U-LJ-j0w"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="W1I-Z4-IfU"/>
                     </view>
                     <navigationItem key="navigationItem" id="nja-ff-DBc"/>
                     <connections>
@@ -205,7 +203,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-ty-mbL">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="304" height="32"/>
                                                                             </view>
-                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQp-na-S8Q" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQp-na-S8Q" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
                                                                                 <rect key="frame" x="325" y="0.0" width="0.0" height="32"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
@@ -219,7 +217,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                                     <action selector="closeExposureBanner:" destination="SLc-31-c7B" eventType="touchUpInside" id="d6g-sI-WDp"/>
                                                                                 </connections>
                                                                             </button>
-                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocf-F5-uU9" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocf-F5-uU9" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
                                                                                 <rect key="frame" x="346" y="0.0" width="0.0" height="32"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
@@ -282,7 +280,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailingMargin" secondItem="qcL-c9-sLJ" secondAttribute="trailing" id="FxJ-Bi-YAJ"/>
                                             <constraint firstItem="qcL-c9-sLJ" firstAttribute="top" secondItem="SRX-7H-oZ1" secondAttribute="top" constant="20" id="HAw-Km-4dC"/>
@@ -304,9 +302,9 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvm-E0-8xO" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="703" width="414" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-eb-fmL" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-eb-fmL" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="16" y="50" width="382" height="44"/>
-                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="DMf-Rt-tSx"/>
                                         </constraints>
@@ -319,7 +317,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="UDA-eb-fmL" firstAttribute="leading" secondItem="gvm-E0-8xO" secondAttribute="leading" constant="16" id="GWq-24-WKi"/>
                                     <constraint firstItem="UDA-eb-fmL" firstAttribute="top" secondItem="gvm-E0-8xO" secondAttribute="top" constant="50" id="KtG-8M-7OQ"/>
@@ -328,8 +326,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="IN0-jh-QW1"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="UDA-eb-fmL" firstAttribute="top" secondItem="aWN-IR-79w" secondAttribute="bottom" id="5RP-O1-x3j"/>
                             <constraint firstItem="aWN-IR-79w" firstAttribute="top" secondItem="hh6-32-Hb4" secondAttribute="top" id="5oC-zr-nLn"/>
@@ -339,6 +336,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                             <constraint firstItem="gvm-E0-8xO" firstAttribute="leading" secondItem="IN0-jh-QW1" secondAttribute="leading" id="Pnj-Rg-HSd"/>
                             <constraint firstItem="aWN-IR-79w" firstAttribute="leading" secondItem="IN0-jh-QW1" secondAttribute="leading" id="WSN-C2-bgf"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="IN0-jh-QW1"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
@@ -369,22 +367,11 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
                         <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" id="HRF-xK-4t2"/>
-                        <segue destination="z3e-t5-SVC" kind="show" identifier="about" id="7iH-sH-Ztm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1213.0434782608697" y="891.96428571428567"/>
-        </scene>
-        <!--About-->
-        <scene sceneID="bVh-d8-uQ9">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="About" id="z3e-t5-SVC" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="02V-k0-agv"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MqQ-k0-vwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1898" y="1000"/>
         </scene>
         <!--RiskyEncounters-->
         <scene sceneID="jrU-h5-lVn">
@@ -400,17 +387,11 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 <viewControllerPlaceholder storyboardName="DataList" referencedIdentifier="SendReportNav" id="48F-yW-Dk4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-Tx-30g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1940" y="892"/>
+            <point key="canvasLocation" x="1949" y="989"/>
         </scene>
     </scenes>
     <resources>
         <image name="ScanActive" width="130" height="130"/>
         <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

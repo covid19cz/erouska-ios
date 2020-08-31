@@ -150,9 +150,6 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuSendReports), style: .default, handler: { [weak self] _ in
             self?.sendReportsAction()
         }))
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuAbout), style: .default, handler: { [weak self] _ in
-            self?.aboutAction()
-        }))
         #if !PROD
         controller.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
@@ -191,10 +188,6 @@ final class ActiveAppVC: UIViewController {
 
     private func riskyEncountersAction() {
         performSegue(withIdentifier: "riskyEncounters", sender: nil)
-    }
-
-    private func aboutAction() {
-        performSegue(withIdentifier: "about", sender: nil)
     }
 
     // MARK: -
