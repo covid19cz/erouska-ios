@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RealmSwift
 import BackgroundTasks
+import FirebaseFunctions
 
 final class BackgroundService {
 
@@ -221,6 +222,9 @@ private extension BackgroundService {
         try! realm.write() {
             exposures.forEach { realm.add(ExposureRealm($0)) }
         }
+
+        let data = ["ehrid": KeychainService.eHRID]
+        AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
 
         #if PROD
         #else
