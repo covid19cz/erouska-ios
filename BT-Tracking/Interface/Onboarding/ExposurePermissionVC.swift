@@ -63,27 +63,15 @@ private extension ExposurePermissionVC {
                 case .activationError(let code):
                     switch code {
                     case .notAuthorized:
-                        self.showAlert(
-                            title: self.viewModel.errorRestiredTitle,
-                            message: self.viewModel.errorRestiredBody,
-                            okTitle: self.viewModel.errorSettingsTitle,
-                            okHandler: { [weak self] in self?.openSettings() },
-                            action: (title: self.viewModel.errorCancelTitle, handler: { [weak self] in
-                                self?.navigationController?.popViewController(animated: true)
-                            })
-                        )
+                        self.showPermissionDeniedAlert(canceAction: { [weak self] in
+                            self?.navigationController?.popViewController(animated: true)
+                        })
                     case .unsupported:
                         self.performSegue(withIdentifier: "unsupported", sender: nil)
                     case .restricted, .notEnabled:
-                        self.showAlert(
-                            title: self.viewModel.errorRestiredTitle,
-                            message: self.viewModel.errorRestiredBody,
-                            okTitle: self.viewModel.errorSettingsTitle,
-                            okHandler: { [weak self] in self?.openSettings() },
-                            action: (title: self.viewModel.errorCancelTitle, handler: { [weak self] in
-                                self?.requestNotificationPermission()
-                            })
-                        )
+                        self.showPermissionDeniedAlert(canceAction: { [weak self] in
+                            self?.requestNotificationPermission()
+                        })
                     default:
                         self.showUnknownError(error)
                     }
@@ -101,9 +89,15 @@ private extension ExposurePermissionVC {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(
             options: authOptions,
-            completionHandler: { [weak self] _, _ in
+            completionHandler: { [weak self] granted, _ in
                 DispatchQueue.main.async { [weak self] in
-                    self?.performSegue(withIdentifier: "privacy", sender: nil)
+                    if granted {
+                        self?.performSegue(withIdentifier: "privacy", sender: nil)
+                    } else {
+                        self?.showPermissionDeniedAlert(canceAction: { [weak self] in
+                            self?.performSegue(withIdentifier: "privacy", sender: nil)
+                        })
+                    }
                 }
         })
         UIApplication.shared.registerForRemoteNotifications()
@@ -124,6 +118,16 @@ private extension ExposurePermissionVC {
             okHandler: { self.requestNotificationPermission() }
         )
         #endif
+    }
+
+    func showPermissionDeniedAlert(canceAction: @escaping () -> Void) {
+        showAlert(
+            title: viewModel.errorRestiredTitle,
+            message: viewModel.errorRestiredBody,
+            okTitle: viewModel.errorSettingsTitle,
+            okHandler: { [weak self] in self?.openSettings() },
+            action: (title: viewModel.errorCancelTitle, handler: canceAction)
+        )
     }
 
 }
