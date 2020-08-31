@@ -310,7 +310,7 @@ private extension ActiveAppVC {
     func openBluetoothSettings() {
         let url: URL?
         if !viewModel.exposureService.isBluetoothOn {
-            url = URL(string: "App-Prefs::root=Settings&path=Bluetooth")
+            url = URL(string: UIApplication.openSettingsURLString)
         } else {
             url = URL(string: UIApplication.openSettingsURLString)
         }
