@@ -117,40 +117,40 @@ final class CurrentDataVM {
                 Item(
                     iconName: "CurrentData/Tests",
                     title: titleValue(data.testsTotal, withKey: "current_data_item_tests"),
-                    subtitle: titleValue(data.testsIncrease, withKey: "current_data_item_yesterday", showPlus: true)
+                    subtitle: titleValue(data.testsIncrease, withKey: "current_data_item_yesterday", showSign: true)
                 ),
                 Item(
                     iconName: "CurrentData/Covid",
                     title: titleValue(data.confirmedCasesTotal, withKey: "current_data_item_confirmed"),
-                    subtitle: titleValue(data.confirmedCasesIncrease, withKey: "current_data_item_yesterday", showPlus: true)
+                    subtitle: titleValue(data.confirmedCasesIncrease, withKey: "current_data_item_yesterday", showSign: true)
                 ),
                 Item(
                     iconName: "CurrentData/Active",
                     title: titleValue(data.activeCasesTotal, withKey: "current_data_item_active"),
-                    subtitle: titleValue(data.activeCasesIncrease, withKey: "current_data_item_yesterday", showPlus: true)
+                    subtitle: titleValue(data.activeCasesIncrease, withKey: "current_data_item_yesterday", showSign: true)
                 ),
                 Item(
                     iconName: "CurrentData/Healthy",
                     title: titleValue(data.curedTotal, withKey: "current_data_item_healthy"),
-                    subtitle: titleValue(data.curedIncrease, withKey: "current_data_item_yesterday", showPlus: true)
+                    subtitle: titleValue(data.curedIncrease, withKey: "current_data_item_yesterday", showSign: true)
                 ),
                 Item(
                     iconName: "CurrentData/Death",
                     title: titleValue(data.deceasedTotal, withKey: "current_data_item_deaths"),
-                    subtitle: titleValue(data.deceasedIncrease, withKey: "current_data_item_yesterday", showPlus: true)
+                    subtitle: titleValue(data.deceasedIncrease, withKey: "current_data_item_yesterday", showSign: true)
                 ),
                 Item(
                     iconName: "CurrentData/Hospital",
                     title: titleValue(data.currentlyHospitalizedTotal, withKey: "current_data_item_hospitalized"),
-                    subtitle: titleValue(data.currentlyHospitalizedIncrease, withKey: "current_data_item_yesterday", showPlus: true)
+                    subtitle: titleValue(data.currentlyHospitalizedIncrease, withKey: "current_data_item_yesterday", showSign: true)
                 ),
             ])
         ]
     }
 
-    private func titleValue(_ value: Int, withKey key: String, showPlus: Bool = false) -> String {
+    private func titleValue(_ value: Int, withKey key: String, showSign: Bool = false) -> String {
         guard let formattedValue = numberFormatter.string(for: value) else { return "" }
-        return String(format: Localizable(key), showPlus && value > 0 ? "+" + formattedValue : formattedValue)
+        return String(format: Localizable(key), showSign && value > 0 ? "+" + formattedValue : formattedValue)
     }
 }
 

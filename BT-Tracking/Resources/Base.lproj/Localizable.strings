@@ -68,7 +68,7 @@
 "data_list_header_signal" = "RSSI";
 
 "data_list_send_title" = "Odeslat data";
-"data_list_send_headline" = "V případě potvrzené nákazy virem COVID-19 vás bude kontaktovat pracovník hygienické stanice. Odešle vám SMS zprávu obsahující ověřovací kód pro povolení odeslání dat.";
+"data_list_send_headline" = "V případě potvrzené nákazy koronavirem vás bude kontaktovat pracovník hygienické stanice. Odešle vám SMS zprávu obsahující ověřovací kód pro povolení odeslání dat.";
 "data_list_send_placeholder" = "Ověřovací kód(povinné)";
 "data_list_send_action_title" = "Ověřit a odeslat data";
 
