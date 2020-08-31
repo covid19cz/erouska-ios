@@ -121,7 +121,7 @@ final class ActiveAppVM {
     let menuCancel = "close"
 
     let backgroundModeTitle = "active_background_mode_title"
-    let backgroundModeMessage = "active_background_mode_title"
+    let backgroundModeMessage = "active_background_mode_message"
     let backgroundModeAction = "active_background_mode_settings"
     let backgroundModeCancel = "active_background_mode_cancel"
 
