@@ -188,7 +188,7 @@ private extension AppDelegate {
         } else if RemoteValues.minSupportedVersion > App.appVersion {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
             presentingAnyForceUpdateScreen = true
-        } else if KeychainService.eHRID == nil {
+        } else if KeychainService.eHRID == nil || !AppSettings.eHRIDActivated {
             if Auth.auth().currentUser != nil {
                 rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "OnboardingActivatedUser")
                 shouldPresentNews = true

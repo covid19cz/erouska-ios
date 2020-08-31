@@ -73,6 +73,7 @@ private extension PrivacyVC {
             self?.hideProgress()
             if let eHRID = (result?.data as? [String: Any])?["ehrid"] as? String {
                 KeychainService.eHRID = eHRID
+                AppSettings.eHRIDActivated = true
                 let storyboard = UIStoryboard(name: "Active", bundle: nil)
                 AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
             } else {
