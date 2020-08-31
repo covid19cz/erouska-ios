@@ -25,6 +25,8 @@ struct AppSettings {
         case v2_0NewsLaunched
 
         case currentDataLastFetchDate
+
+        case eHRIDActivated
     }
 
     /// Firebase Region
@@ -136,9 +138,22 @@ struct AppSettings {
         }
     }
 
+    /// If current eHRID value from Keychain is activated or needs to reactivate.
+    /// Using this value for handling app reinstallation.
+    static var eHRIDActivated: Bool {
+        get {
+            return bool(forKey: .eHRIDActivated)
+        }
+        set {
+            set(withKey: .eHRIDActivated, value: newValue)
+        }
+    }
+
     /// Cleanup data after logout
     static func deleteAllData() {
         KeychainService.eHRID = nil
+
+        eHRIDActivated = false
 
         backgroundModeAlertShown = false
 
