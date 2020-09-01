@@ -15,17 +15,47 @@ struct Configuration {
 
     let showExposureForDays = 10
 
-    let healthAuthority = "cz.covid19cz.erouska.dev"
+    var healthAuthority: String {
+        #if PROD
+        return "cz.covid19cz.erouska.dev"
+        #else
+        return "cz.covid19cz.erouska.dev"
+        #endif
+    }
 
-    let uploadURL = URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
+    var uploadURL: URL {
+        #if PROD
+        return URL(string: "https://exposure-fghz64a2xa-ew.a.run.app/v1/publish")!
+        #else
+        return URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
+        #endif
+    }
 
-    let downloadsURL = URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!
+    var downloadsURL: URL {
+        #if PROD
+        return URL(string: "https://storage.googleapis.com/exposure-notification-export-qhqcx/erouska/")!
+        #else
+        return URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud//")!
+        #endif
+    }
 
-    let verificationURL = URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!
+    var verificationURL: URL {
+        #if PROD
+        return URL(string: "https://apiserver-jyvw4xgota-ew.a.run.app")!
+        #else
+        return URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!
+        #endif
+    }
 
     let chatbotURL = URL(string: "https://erouska.cz/#chat-open")!
 
     let verificationAdminKey: String = ""
-    let verificationDeviceKey: String = "Ar9VQ1tZS1ANU0LLPGw8nUnavJNBDCaTGEaEQbydvTYFgnW7oqQkTCLUxhk6azLm8IjTtCRVqQIi/wNscvniGw"
+    var verificationDeviceKey: String {
+        #if PROD
+        return ""
+        #else
+        return "Ar9VQ1tZS1ANU0LLPGw8nUnavJNBDCaTGEaEQbydvTYFgnW7oqQkTCLUxhk6azLm8IjTtCRVqQIi/wNscvniGw"
+        #endif
+    }
 
 }
