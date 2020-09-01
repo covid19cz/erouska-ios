@@ -6,6 +6,7 @@
 "debug" = "Test";
 "about" = "O aplikaci";
 "close" = "Zavřít";
+"turn_on" = "Zapnout";
 
 "welcome_help" = "Jak to funguje";
 "welcome_activation" = "Pokračovat k aktivaci";
@@ -78,6 +79,8 @@
 "data_list_send_error_no_keys" = "Nemáte žádné klíče k odeslání, zkuste to později.";
 "data_list_send_error_wrong_code_title" = "Neplatný ověřovací kód";
 "data_list_send_error_wrong_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
+"data_list_send_error_disabled_title" = "Data nyní nemůžete odeslat";
+"data_list_send_error_disabled_message" = "V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.";
 
 "data_send_title" = "Odesláno";
 "data_send_title_label" = "Data jste úspěsně odeslali";

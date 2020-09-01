@@ -139,6 +139,11 @@ final class ActiveAppVM {
     let errorDeactivationUnknownTitle = "exposure_deactivation_unknown_title"
     let errorDeactivationUnknownBody = "exposure_deactivation_unknown_body"
 
+    let errorSendDataTitle = "data_list_send_error_disabled_title"
+    let errorSendDataMessage = "data_list_send_error_disabled_message"
+    let errorSendDataActionClose = "close"
+    let errorSendDataActionTurnOn = "turn_on"
+
     var dateFormatter: DateFormatter {
         let formatrer = DateFormatter()
         formatrer.timeStyle = .short

@@ -183,7 +183,16 @@ final class ActiveAppVC: UIViewController {
     }
 
     private func sendReportsAction() {
-        performSegue(withIdentifier: "sendReport", sender: nil)
+        if viewModel.state == .disabledExposures {
+            showAlert(
+                title: Localizable(viewModel.errorSendDataTitle),
+                message: Localizable(viewModel.errorSendDataMessage),
+                okTitle: Localizable(viewModel.errorSendDataActionClose),
+                action: (Localizable(viewModel.errorSendDataActionTurnOn), { [weak self] in self?.openSettings() })
+            )
+        } else {
+            performSegue(withIdentifier: "sendReport", sender: nil)
+        }
     }
 
     private func riskyEncountersAction() {
