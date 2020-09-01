@@ -40,7 +40,9 @@ struct NewsVM {
         NewsPageVM(
             imageName: "News_Privacy",
             headline: "news_privacy_title",
-            body: "news_privacy_body"
+            body: "news_privacy_body",
+            bodyLinkTitle: "news_privacy_body_link",
+            bodyLink: RemoteValues.conditionsOfUseUrl
         )
     ]
 }

@@ -25,7 +25,7 @@ final class PreviousRiskyEncountersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = Localizable(viewModel.title)
+        title = viewModel.title
 
         viewModel.previousExposures.bind(to: tableView.rx.items) { [dateFormatter] tv, ip, element in
             let cell = tv.dequeueReusableCell(withIdentifier: "PreviousRiskyEncountersCell")!

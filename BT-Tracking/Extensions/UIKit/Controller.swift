@@ -13,7 +13,7 @@ extension UIViewController {
 
     /// show default error alert, localization keys are expected
     func show(error: Error, title: String = "error", okTitle: String = "ok", okHandler: (() -> Void)? = nil) {
-        showAlert(title: title, message: error.localizedDescription, okTitle: okTitle, okHandler: okHandler)
+        showAlert(title: title, message: "\(error)", okTitle: okTitle, okHandler: okHandler)
     }
 
     /// show alert, localization keys are expected
@@ -45,9 +45,16 @@ extension UIViewController {
     private static let progressTag = 42
 
     /// shows overlay over current UIViewController's window, if it has one
-    func showProgress() {
-        guard let window = view.window else { return }
+    func showProgress(fromView: Bool = false) {
+        let window: UIView
 
+        if fromView {
+            window = view
+        } else if let view = view.window {
+            window = view
+        } else {
+            return
+        }
         let overlay = UIView()
         overlay.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         overlay.translatesAutoresizingMaskIntoConstraints = false
@@ -66,8 +73,8 @@ extension UIViewController {
 
             overlay.leadingAnchor.constraint(equalTo: window.leadingAnchor),
             overlay.trailingAnchor.constraint(equalTo: window.trailingAnchor),
-            overlay.topAnchor.constraint(equalTo: window.topAnchor),
-            overlay.bottomAnchor.constraint(equalTo: window.bottomAnchor),
+            overlay.topAnchor.constraint(equalTo: fromView ? window.safeAreaLayoutGuide.topAnchor : window.topAnchor),
+            overlay.bottomAnchor.constraint(equalTo: fromView ? window.safeAreaLayoutGuide.bottomAnchor : window.bottomAnchor),
         ])
     }
 

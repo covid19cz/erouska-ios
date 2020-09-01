@@ -17,7 +17,11 @@ final class NewsPageView: UIView {
             guard let viewModel = viewModel else { return }
             imageView.image = UIImage(named: viewModel.imageName)
             headlineLabel.localizedText(viewModel.headline)
-            bodyLabel.localizedText(viewModel.body)
+            if let bodyLink = viewModel.bodyLink, let bodyLinkTitle = viewModel.bodyLinkTitle {
+                bodyTextView.hyperLink(originalText: Localizable(viewModel.body), hyperLink: Localizable(bodyLinkTitle), urlString: bodyLink)
+            } else {
+                bodyTextView.text = Localizable(viewModel.body)
+            }
         }
     }
 
@@ -26,5 +30,10 @@ final class NewsPageView: UIView {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var headlineLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet weak var bodyTextView: UITextView! {
+        didSet {
+            bodyTextView.textContainerInset = .zero
+            bodyTextView.textContainer.lineFragmentPadding = 0
+        }
+    }
 }

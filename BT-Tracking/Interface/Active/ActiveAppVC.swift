@@ -144,29 +144,30 @@ final class ActiveAppVC: UIViewController {
 
     @IBAction private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuRiskyEncounters), style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: viewModel.menuRiskyEncounters, style: .default, handler: { [weak self] _ in
             self?.riskyEncountersAction()
         }))
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuSendReports), style: .default, handler: { [weak self] _ in
             self?.sendReportsAction()
         }))
         #if !PROD
+        controller.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
-        controller.addAction(UIAlertAction(title: Localizable("Debug: Vlozit falesne setkani"), style: .default, handler: { [weak self] _ in
-            self?.debugInsertFakeExposure()
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " novinky", style: .default, handler: { [weak self] _ in
+            self?.debugShowNews()
         }))
-        controller.addAction(UIAlertAction(title: Localizable("Debug: Zkontrolovat reporty"), style: .default, handler: { [weak self] _ in
-            self?.debugProcessReports()
-        }))
-        controller.addAction(UIAlertAction(title: "Debug: " + Localizable(viewModel.menuCancelRegistration), style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " aktivace", style: .default, handler: { [weak self] _ in
             self?.debugCancelRegistrationAction()
         }))
-        #endif
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuAbout), style: .default, handler: { [weak self] _ in
-            self?.aboutAction()
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " rizikového setkání", style: .default, handler: { [weak self] _ in
+            self?.debugInsertFakeExposure()
         }))
+        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
+            self?.debugProcessReports()
+        }))
+        #endif
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancel), style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
@@ -187,10 +188,6 @@ final class ActiveAppVC: UIViewController {
 
     private func riskyEncountersAction() {
         performSegue(withIdentifier: "riskyEncounters", sender: nil)
-    }
-
-    private func aboutAction() {
-        performSegue(withIdentifier: "about", sender: nil)
     }
 
     // MARK: -
@@ -260,7 +257,7 @@ private extension ActiveAppVC {
         imageView.image = viewModel.state.image
         headlineLabel.localizedText(viewModel.state.headline)
         headlineLabel.textColor = viewModel.state.color
-        titleLabel.text = viewModel.state.title
+        titleLabel.localizedText(viewModel.state.title ?? "")
         if viewModel.state == .enabled, let update = AppSettings.lastProcessedDate {
             let text = Localizable(viewModel.state.text) + "\n\n" + String(format: Localizable(viewModel.lastUpdateText), viewModel.dateFormatter.string(from: update))
             textLabel.text = text
@@ -313,7 +310,7 @@ private extension ActiveAppVC {
     func openBluetoothSettings() {
         let url: URL?
         if !viewModel.exposureService.isBluetoothOn {
-            url = URL(string: "App-Prefs::root=Settings&path=Bluetooth")
+            url = URL(string: UIApplication.openSettingsURLString)
         } else {
             url = URL(string: UIApplication.openSettingsURLString)
         }
@@ -405,6 +402,16 @@ private extension ActiveAppVC {
         try! realm.write() {
             exposures.forEach { realm.add(ExposureRealm($0)) }
         }
+
+        let data = ["ehrid": KeychainService.eHRID]
+        AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+    }
+
+    func debugShowNews() {
+        AppSettings.v2_0NewsLaunched = true
+        guard let controller = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
     }
 
     #endif

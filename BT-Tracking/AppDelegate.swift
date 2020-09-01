@@ -188,7 +188,7 @@ private extension AppDelegate {
         } else if RemoteValues.minSupportedVersion > App.appVersion {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
             presentingAnyForceUpdateScreen = true
-        } else if KeychainService.eHRID == nil {
+        } else if KeychainService.eHRID == nil || !AppSettings.eHRIDActivated {
             if Auth.auth().currentUser != nil {
                 rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "OnboardingActivatedUser")
                 shouldPresentNews = true
@@ -203,8 +203,9 @@ private extension AppDelegate {
 
         if shouldPresentNews, !AppSettings.v2_0NewsLaunched {
             AppSettings.v2_0NewsLaunched = true
-            guard let newsViewController = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
-            rootViewController?.present(newsViewController, animated: true)
+            guard let controller = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+            controller.modalPresentationStyle = .fullScreen
+            rootViewController?.present(controller, animated: true)
         }
     }
 

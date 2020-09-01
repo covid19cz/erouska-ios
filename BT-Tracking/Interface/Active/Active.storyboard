@@ -118,6 +118,7 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-QQ-KxS">
                                                             <rect key="frame" x="16" y="111" width="382" height="67"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                             <state key="normal" title="Důležité kontakty"/>
                                                             <connections>
                                                                 <action selector="openLink" destination="5bm-Aw-0OQ" eventType="touchUpInside" id="Ua9-Kc-Tfo"/>
@@ -366,22 +367,11 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
                         <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" id="HRF-xK-4t2"/>
-                        <segue destination="z3e-t5-SVC" kind="show" identifier="about" id="7iH-sH-Ztm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1213.0434782608697" y="891.96428571428567"/>
-        </scene>
-        <!--About-->
-        <scene sceneID="bVh-d8-uQ9">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="About" id="z3e-t5-SVC" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="02V-k0-agv"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MqQ-k0-vwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1898" y="1000"/>
         </scene>
         <!--RiskyEncounters-->
         <scene sceneID="jrU-h5-lVn">
@@ -397,7 +387,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 <viewControllerPlaceholder storyboardName="DataList" referencedIdentifier="SendReportNav" id="48F-yW-Dk4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-Tx-30g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1940" y="892"/>
+            <point key="canvasLocation" x="1949" y="989"/>
         </scene>
     </scenes>
     <resources>

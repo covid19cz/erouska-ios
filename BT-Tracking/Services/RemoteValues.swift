@@ -57,24 +57,15 @@ extension AppDelegate {
 }
 
 enum RemoteConfigValueKey: String {
-    case proclamationLink
-    case termsAndConditionsLink
-    case aboutLink
     case shareAppDynamicLink
     
     case helpMarkdown
-    case dataCollectionMarkdown
-
-    case aboutJson
-    
-    case activeTitleEnabled
-    case activeTitleEnabled_en
 
     case minSupportedVersion
     case unsupportedDeviceLink
     case shouldCheckOSVersion
 
-    case exposureBannerTitle
+    case exposureBannerTitle = "encounterWarning"
 
     case riskyEncountersTitle
     case riskyEncountersWithSymptoms
@@ -85,6 +76,17 @@ enum RemoteConfigValueKey: String {
     case contactsContentJson
 
     case currentMeasuresUrl
+    case conditionsOfUseUrl
+
+    case noEncounterHeader
+    case noEncounterBody
+
+    case exposureUITitle
+    case symptomsUITitle
+    case spreadPreventionUITitle
+    case recentExposuresUITitle
+
+    case chatBotLink
 
     case appleExposureConfigurationV1
 }
@@ -92,18 +94,9 @@ enum RemoteConfigValueKey: String {
 struct RemoteValues {
 
     static let defaults: [RemoteConfigValueKey: Any?] = [
-        .proclamationLink: "https://koronavirus.mzcr.cz",
-        .termsAndConditionsLink: "https://koronavirus.mzcr.cz",
-        .aboutLink: "http://erouska.cz",
         .shareAppDynamicLink: "https://covid19cz.page.link/share",
         
         .helpMarkdown: helpMarkdownBackup,
-        .dataCollectionMarkdown: dataCollectionMarkdownBackup,
-
-        .aboutJson: aboutJsonBackup,
-        
-        .activeTitleEnabled: activeTitleEnabledDefault,
-        .activeTitleEnabled_en: activeTitleEnabledDefaultEn,
 
         .minSupportedVersion: Version("1.0.0"),
         .unsupportedDeviceLink: "https://koronavirus.mzcr.cz",
@@ -116,27 +109,18 @@ struct RemoteValues {
         .riskyEncountersWithoutSymptoms: riskyEncountersWithoutSymptomsDefault,
 
         .currentMeasuresUrl: "https://koronavirus.mzcr.cz/aktualni-opatreni/",
+        .conditionsOfUseUrl: "https://erouska.cz",
+
+        .noEncounterHeader: noEncounterHeaderDefault,
+        .noEncounterBody: noEncounterBodyDefault,
+
+        .exposureUITitle: exposureUITitleDefault,
+        .symptomsUITitle: symptomsUITitleDefault,
+        .spreadPreventionUITitle: spreadPreventionUITitleDefault,
+        .recentExposuresUITitle: recentExposuresUITitleDefault,
+
+        .chatBotLink: "https://erouska.cz/#chat-open",
     ]
-
-    /// odkaz na prohlášení o podpoře - vede z úvodní obrazovky a z nápovědy
-    static var proclamationLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .proclamationLink)
-    }
-
-    /// Podminky zpracovan
-    static var termsAndConditionsLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .termsAndConditionsLink)
-    }
-
-    /// Odkaz na tým - erouska.cz/tym
-    static var aboutLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .aboutLink)
-    }
-
-    /// Authors json
-    static var aboutJson: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .aboutJson)
-    }
 
     static var shareAppDynamicLink: String {
         return AppDelegate.shared.remoteConfigString(forKey: .shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
@@ -145,35 +129,6 @@ struct RemoteValues {
     /// Help markdown
     static var helpMarkdown: String {
         return AppDelegate.shared.remoteConfigString(forKey: .helpMarkdown)
-    }
-
-    /// Data collection markdown
-    static var dataCollectionMarkdown: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .dataCollectionMarkdown)
-    }
-    
-    /// Main screen title enabled text
-    static var activeTitleEnabled: String {
-
-        enum SupportedLanguage: String {
-            case cs, en
-        }
-
-        var language = SupportedLanguage.cs
-        if let preferredLocalization = Bundle.main.preferredLocalizations.first, let preferredLanguage = SupportedLanguage(rawValue: preferredLocalization) {
-            language = preferredLanguage
-        }
-
-        var key: RemoteConfigValueKey {
-            switch language {
-            case .en: return .activeTitleEnabled_en
-            default: return .activeTitleEnabled
-            }
-        }
-
-        return AppDelegate.shared.remoteConfigString(forKey: key)
-            .replacingOccurrences(of: "\\n", with: "\n")
-            .replacingOccurrences(of: "\\", with: "")
     }
 
     /// Min supported app version. Used for force update.
@@ -247,6 +202,39 @@ struct RemoteValues {
         return AppDelegate.shared.remoteConfigString(forKey: .currentMeasuresUrl)
     }
 
+    static var conditionsOfUseUrl: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .conditionsOfUseUrl)
+    }
+
+    static var noEncounterHeader: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .noEncounterHeader)
+    }
+
+    static var noEncounterBody: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .noEncounterBody)
+    }
+
+    static var exposureUITitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .exposureUITitle)
+    }
+
+    static var symptomsUITitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .symptomsUITitle)
+    }
+
+    static var spreadPreventionUITitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .spreadPreventionUITitle)
+    }
+
+    static var recentExposuresUITitle: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .recentExposuresUITitle)
+    }
+
+    static var chatBotLink: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .chatBotLink)
+    }
+
+
     static var exposureConfiguration: ExposureConfiguration {
         guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV1).data(using: .utf8) else {
             return ExposureConfiguration()
@@ -257,6 +245,7 @@ struct RemoteValues {
             return ExposureConfiguration()
         }
     }
+
 }
 
 // MARK: - Backup
@@ -277,22 +266,6 @@ private extension RemoteValues {
         return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
     }
 
-    static var dataCollectionMarkdownBackup: String {
-        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "dataCollectionInfoBackup")
-    }
-
-    static var aboutJsonBackup: String {
-        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "aboutJsonBackup")
-    }
-
-    static var activeTitleEnabledDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefault")
-    }
-    
-    static var activeTitleEnabledDefaultEn: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeTitleEnabledDefaultEn")
-    }
-
     static var activeExposureTitleDefault: String {
         return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeExposureTitleDefault")
     }
@@ -307,5 +280,29 @@ private extension RemoteValues {
 
     static var riskyEncountersWithoutSymptomsDefault: String {
         return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithoutSymptomsDefault")
+    }
+
+    static var noEncounterHeaderDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterHeaderDefault")
+    }
+
+    static var noEncounterBodyDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterBodyDefault")
+    }
+
+    static var exposureUITitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "exposureUITitleDefault")
+    }
+
+    static var symptomsUITitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "symptomsUITitleDefault")
+    }
+
+    static var spreadPreventionUITitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "spreadPreventionUITitleDefault")
+    }
+
+    static var recentExposuresUITitleDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "recentExposuresUITitleDefault")
     }
 }

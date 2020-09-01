@@ -147,10 +147,10 @@ private extension SendReportsVC {
         AppDelegate.dependency.verification.verify(with: code) { [weak self] result in
             switch result {
             case .success(let token):
-                #if PROD
-                self?.sendReport(with: .normal, token: token)
-                #else
+                #if DEBUG
                 self?.debugAskForTypeOfKeys(token: token)
+                #else
+                self?.sendReport(with: .normal, token: token)
                 #endif
             case .failure(let error):
                 log("DataListVC: Failed to verify code \(error)")
@@ -183,6 +183,7 @@ private extension SendReportsVC {
             case .success(let keys):
                 guard !keys.isEmpty else {
                     self.reportHideProgress()
+                    self.resultAction()
                     self.showNoKeysError()
                     return
                 }
@@ -208,7 +209,14 @@ private extension SendReportsVC {
             case .failure(let error):
                 log("DataListVC: Failed to get exposure keys \(error)")
                 self.reportHideProgress()
-                self.showSendDataError()
+
+                switch error {
+                case .noData:
+                    self.resultAction()
+                    self.showNoKeysError()
+                default:
+                    self.showSendDataError()
+                }
             }
         }
 

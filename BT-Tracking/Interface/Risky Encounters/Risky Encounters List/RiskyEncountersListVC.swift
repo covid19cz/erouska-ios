@@ -19,7 +19,7 @@ final class RiskyEncountersListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = Localizable(viewModel.title)
+        title = viewModel.localizedTitle
         headerLabel.text = viewModel.content?.headline
         footerLabel.text = viewModel.content?.footer
 

@@ -47,8 +47,6 @@ struct Configuration {
         #endif
     }
 
-    let chatbotURL = URL(string: "https://erouska.cz/#chat-open")!
-
     let verificationAdminKey: String = ""
     var verificationDeviceKey: String {
         #if PROD

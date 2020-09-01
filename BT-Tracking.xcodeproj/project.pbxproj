@@ -10,6 +10,12 @@
 		0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */; };
 		4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
 		4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
+		80026D9524FE491300BBDB36 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CECB24EAB0140011B53B /* Configuration.swift */; };
+		80026D9624FE492000BBDB36 /* BackgroundEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */; };
+		80026D9724FE492000BBDB36 /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */; };
+		80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C324DD812800DC36EE /* VerificationService.swift */; };
+		80026D9924FE492600BBDB36 /* VerificationEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C524DD913200DC36EE /* VerificationEntities.swift */; };
+		80026D9A24FE492B00BBDB36 /* ReportEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BE48924D9A11A00D40C07 /* ReportEntities.swift */; };
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
 		800E611424DAE98B00C63567 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 800E611324DAE98B00C63567 /* Zip */; };
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
@@ -40,18 +46,10 @@
 		80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A95242CA27800EB0B6C /* HelpVC.swift */; };
 		80631A98242CAB5000EB0B6C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A97242CAB5000EB0B6C /* Image.swift */; };
 		8064DF70244EF3C0005E8AA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */; };
-		8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF77244F3E94005E8AA3 /* AboutInfoCell.swift */; };
-		8064DF79244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF77244F3E94005E8AA3 /* AboutInfoCell.swift */; };
-		8064DF7C244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF7B244F3ED2005E8AA3 /* AboutPersonCell.swift */; };
-		8064DF7D244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF7B244F3ED2005E8AA3 /* AboutPersonCell.swift */; };
 		8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF84244F3FFD005E8AA3 /* AboutVC.swift */; };
 		8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF84244F3FFD005E8AA3 /* AboutVC.swift */; };
 		8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
 		8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
-		8064DF8E244F40E4005E8AA3 /* AboutPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF8D244F40E4005E8AA3 /* AboutPerson.swift */; };
-		8064DF8F244F40E4005E8AA3 /* AboutPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF8D244F40E4005E8AA3 /* AboutPerson.swift */; };
-		8064DF92244F420A005E8AA3 /* AboutTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF91244F420A005E8AA3 /* AboutTeam.swift */; };
-		8064DF93244F420A005E8AA3 /* AboutTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF91244F420A005E8AA3 /* AboutTeam.swift */; };
 		807053532427BA2500DC1034 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
 		807053582427C5AA00DC1034 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053572427C5AA00DC1034 /* InfoCell.swift */; };
 		8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDBF242A613F001D9DCD /* AppSettings.swift */; };
@@ -125,12 +123,6 @@
 		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
 		80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
 		80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
-		80CB040A24F6B25200C74D8D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CECB24EAB0140011B53B /* Configuration.swift */; };
-		80CB040B24F6B25600C74D8D /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C324DD812800DC36EE /* VerificationService.swift */; };
-		80CB040C24F6B25800C74D8D /* VerificationEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C524DD913200DC36EE /* VerificationEntities.swift */; };
-		80CB040D24F6B25B00C74D8D /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */; };
-		80CB040E24F6B25D00C74D8D /* BackgroundEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */; };
-		80CB040F24F6B27300C74D8D /* ReportEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BE48924D9A11A00D40C07 /* ReportEntities.swift */; };
 		80CCE5C424DD812900DC36EE /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C324DD812800DC36EE /* VerificationService.swift */; };
 		80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C524DD913200DC36EE /* VerificationEntities.swift */; };
 		80D2345124E2FDD200F684AA /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 80D2345024E2FDD200F684AA /* Crypto */; };
@@ -214,6 +206,8 @@
 		D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */; };
 		D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */; };
 		D63E443C24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */; };
+		D64BE02324F79AE000B751B6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BE02224F79AE000B751B6 /* TextView.swift */; };
+		D64BE02424F79AE000B751B6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BE02224F79AE000B751B6 /* TextView.swift */; };
 		D65E57D324D04976000F2402 /* NewsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E57D224D04976000F2402 /* NewsVM.swift */; };
 		D65E57D424D04976000F2402 /* NewsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E57D224D04976000F2402 /* NewsVM.swift */; };
 		D65E57D624D056C8000F2402 /* NewsPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65E57D524D056C8000F2402 /* NewsPageView.xib */; };
@@ -274,12 +268,8 @@
 		80631A95242CA27800EB0B6C /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		80631A97242CAB5000EB0B6C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8064DF77244F3E94005E8AA3 /* AboutInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInfoCell.swift; sourceTree = "<group>"; };
-		8064DF7B244F3ED2005E8AA3 /* AboutPersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPersonCell.swift; sourceTree = "<group>"; };
 		8064DF84244F3FFD005E8AA3 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		8064DF88244F4026005E8AA3 /* AboutVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVM.swift; sourceTree = "<group>"; };
-		8064DF8D244F40E4005E8AA3 /* AboutPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPerson.swift; sourceTree = "<group>"; };
-		8064DF91244F420A005E8AA3 /* AboutTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTeam.swift; sourceTree = "<group>"; };
 		807053522427BA2500DC1034 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		807053572427C5AA00DC1034 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		8075EDBF242A613F001D9DCD /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -359,6 +349,7 @@
 		D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RiskyEncounters.storyboard; sourceTree = "<group>"; };
 		D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersVM.swift; sourceTree = "<group>"; };
 		D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersVC.swift; sourceTree = "<group>"; };
+		D64BE02224F79AE000B751B6 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		D65E57D224D04976000F2402 /* NewsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVM.swift; sourceTree = "<group>"; };
 		D65E57D524D056C8000F2402 /* NewsPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsPageView.xib; sourceTree = "<group>"; };
 		D65E57D824D056D6000F2402 /* NewsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageView.swift; sourceTree = "<group>"; };
@@ -591,24 +582,6 @@
 			path = "Firebase Prod";
 			sourceTree = "<group>";
 		};
-		8064DF76244F3E82005E8AA3 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				8064DF77244F3E94005E8AA3 /* AboutInfoCell.swift */,
-				8064DF7B244F3ED2005E8AA3 /* AboutPersonCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		8064DF8C244F40DB005E8AA3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				8064DF91244F420A005E8AA3 /* AboutTeam.swift */,
-				8064DF8D244F40E4005E8AA3 /* AboutPerson.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		807053542427C4E800DC1034 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,6 +646,7 @@
 				80CA44B5244ADA44008E22F8 /* Localization.swift */,
 				D6340C6A24C5A27700E550A1 /* Device.swift */,
 				D6231CBD24F39BC90023BDC8 /* IntrinsicTableView.swift */,
+				D64BE02224F79AE000B751B6 /* TextView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -741,8 +715,6 @@
 		BDB07FBE24254A7B00834E79 /* Help */ = {
 			isa = PBXGroup;
 			children = (
-				8064DF8C244F40DB005E8AA3 /* Model */,
-				8064DF76244F3E82005E8AA3 /* Cells */,
 				BDB07FBF24254A8F00834E79 /* Help.storyboard */,
 				80631A95242CA27800EB0B6C /* HelpVC.swift */,
 				80CA44DB244B3769008E22F8 /* HelpVM.swift */,
@@ -1150,8 +1122,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8064DF7C244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
 				8054C0D624200BEC008907B8 /* LogSegmentController.swift in Sources */,
+				D64BE02324F79AE000B751B6 /* TextView.swift in Sources */,
 				80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */,
 				D6340C6224C1F46D00E550A1 /* Version.swift in Sources */,
 				80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */,
@@ -1161,7 +1133,6 @@
 				D6231CB824EBC3630023BDC8 /* ErrorVM.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */,
 				8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */,
-				8064DF78244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
 				8084DEF724AF86C1001FBB16 /* ReportService.swift in Sources */,
 				D6340C6824C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */,
 				807053532427BA2500DC1034 /* Data.swift in Sources */,
@@ -1220,7 +1191,6 @@
 				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
 				D6231CCB24F6610C0023BDC8 /* CurrentData.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
-				8064DF92244F420A005E8AA3 /* AboutTeam.swift in Sources */,
 				80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */,
 				D61DFE6024C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
 				D6CD28EE24CF24DD005847AA /* FirstActivationVM.swift in Sources */,
@@ -1228,7 +1198,6 @@
 				80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */,
 				80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */,
 				80610BD024363D7B00E031C8 /* Auth.swift in Sources */,
-				8064DF8E244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				D6CD28E824CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
 				D63E443824DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
@@ -1250,11 +1219,8 @@
 			files = (
 				D6340C6324C1F46D00E550A1 /* Version.swift in Sources */,
 				D6231CBF24F39BC90023BDC8 /* IntrinsicTableView.swift in Sources */,
-				8064DF7D244F3ED2005E8AA3 /* AboutPersonCell.swift in Sources */,
 				80D2345A24E320D700F684AA /* SendReportsVM.swift in Sources */,
 				D6231CAC24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */,
-				80CB040C24F6B25800C74D8D /* VerificationEntities.swift in Sources */,
-				8064DF8F244F40E4005E8AA3 /* AboutPerson.swift in Sources */,
 				80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */,
 				8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
@@ -1262,6 +1228,7 @@
 				8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */,
 				80D2345424E31DFF00F684AA /* SendReportsVC.swift in Sources */,
 				8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */,
+				80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */,
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
 				D6CD28E724CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
@@ -1272,9 +1239,9 @@
 				D6231CB924EBC3630023BDC8 /* ErrorVM.swift in Sources */,
 				8083D8B7244640A0007FA4E9 /* Data.swift in Sources */,
 				8083D8B8244640A0007FA4E9 /* KeychainService.swift in Sources */,
+				80026D9A24FE492B00BBDB36 /* ReportEntities.swift in Sources */,
 				80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */,
 				8083D8B9244640A0007FA4E9 /* GradientView.swift in Sources */,
-				80CB040F24F6B27300C74D8D /* ReportEntities.swift in Sources */,
 				8083D8BA244640A0007FA4E9 /* String.swift in Sources */,
 				D65E57D424D04976000F2402 /* NewsVM.swift in Sources */,
 				D6340C6924C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */,
@@ -1286,6 +1253,7 @@
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D6231CCC24F6610C0023BDC8 /* CurrentData.swift in Sources */,
+				80026D9924FE492600BBDB36 /* VerificationEntities.swift in Sources */,
 				D6231CB624EBC0760023BDC8 /* ErrorVC.swift in Sources */,
 				D6231CAE24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
@@ -1294,18 +1262,15 @@
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
 				80591185246DB86B002CD687 /* ExposureService.swift in Sources */,
 				8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */,
-				8064DF93244F420A005E8AA3 /* AboutTeam.swift in Sources */,
-				80CB040E24F6B25D00C74D8D /* BackgroundEntities.swift in Sources */,
 				80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */,
 				8083D8CE244640A0007FA4E9 /* SendResultVC.swift in Sources */,
 				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
-				80CB040A24F6B25200C74D8D /* Configuration.swift in Sources */,
+				D64BE02424F79AE000B751B6 /* TextView.swift in Sources */,
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
+				80026D9624FE492000BBDB36 /* BackgroundEntities.swift in Sources */,
 				8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */,
 				D61DFE5D24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
-				8064DF79244F3E94005E8AA3 /* AboutInfoCell.swift in Sources */,
 				FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */,
-				80CB040B24F6B25600C74D8D /* VerificationService.swift in Sources */,
 				D6CD28ED24CF24DD005847AA /* ExposurePermissionVC.swift in Sources */,
 				D6231CC924F52FB70023BDC8 /* CurrentDataVM.swift in Sources */,
 				D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */,
@@ -1313,7 +1278,6 @@
 				8084DEF124AF84F3001FBB16 /* AppDependency.swift in Sources */,
 				8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
 				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
-				80CB040D24F6B25B00C74D8D /* BackgroundService.swift in Sources */,
 				D6CD28EB24CF24DD005847AA /* PrivacyVC.swift in Sources */,
 				D6231CBC24ED3AE50023BDC8 /* ContactCell.swift in Sources */,
 				D6231CA824E400C70023BDC8 /* MainSymptomsVM.swift in Sources */,
@@ -1323,12 +1287,14 @@
 				D61DFE6124C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
 				D6231CC324F52CBC0023BDC8 /* CurrentDataVC.swift in Sources */,
 				D6231C9E24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */,
+				80026D9724FE492000BBDB36 /* BackgroundService.swift in Sources */,
 				8084DEF324AF85F3001FBB16 /* CountryCodesService.swift in Sources */,
 				D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
 				8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */,
 				D65E57E324D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
 				D65E57DA24D056D6000F2402 /* NewsPageView.swift in Sources */,
+				80026D9524FE491300BBDB36 /* Configuration.swift in Sources */,
 				D6231CA624E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
@@ -1494,7 +1460,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1521,7 +1487,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1547,7 +1513,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1575,7 +1541,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;

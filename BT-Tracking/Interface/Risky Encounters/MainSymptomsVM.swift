@@ -9,6 +9,6 @@
 import Foundation
 
 struct MainSymptomsVM: RiskyEncountersListVM {
-    let title = "main_symptoms_title"
+    let localizedTitle = RemoteValues.symptomsUITitle
     var content: RiskyEncountersListContent? = RemoteValues.symptomsContent
 }

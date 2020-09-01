@@ -39,7 +39,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ir-3v-kwu">
-                                            <rect key="frame" x="16" y="0.0" width="382" height="40"/>
+                                            <rect key="frame" x="16" y="0.0" width="382" height="30"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                                         <constraint firstAttribute="trailing" secondItem="2Ir-3v-kwu" secondAttribute="trailing" constant="16" id="TbZ-pv-rzP"/>
                                         <constraint firstItem="2Ir-3v-kwu" firstAttribute="top" secondItem="tOz-yK-rsW" secondAttribute="top" id="cZJ-V0-uhc"/>
                                         <constraint firstItem="2Ir-3v-kwu" firstAttribute="leading" secondItem="tOz-yK-rsW" secondAttribute="leading" constant="16" id="goa-Fj-3A0"/>
-                                        <constraint firstAttribute="bottom" secondItem="2Ir-3v-kwu" secondAttribute="bottom" id="h5f-52-xly"/>
+                                        <constraint firstAttribute="bottom" secondItem="2Ir-3v-kwu" secondAttribute="bottom" constant="10" id="h5f-52-xly"/>
                                     </constraints>
                                 </view>
                                 <prototypes>

@@ -28,7 +28,7 @@ protocol ExposureServicing: class {
     func deactivate(callback: Callback?)
 
     // Keys
-    typealias KeysCallback = (_ result: Result<[ExposureDiagnosisKey], Error>) -> Void
+    typealias KeysCallback = (_ result: Result<[ExposureDiagnosisKey], ExposureError>) -> Void
     func getDiagnosisKeys(callback: @escaping KeysCallback)
     func getTestDiagnosisKeys(callback: @escaping KeysCallback)
 
@@ -149,7 +149,7 @@ final class ExposureService: ExposureServicing {
     private func keysCallback(_ callback: @escaping KeysCallback) -> ENGetDiagnosisKeysHandler {
         return { keys, error in
             if let error = error {
-                callback(.failure(error))
+                callback(.failure(ExposureError.error(error)))
             } else if keys?.isEmpty == true {
                 callback(.failure(ExposureError.noData))
             } else if let keys = keys {
