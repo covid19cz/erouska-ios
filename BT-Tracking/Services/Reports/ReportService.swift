@@ -44,12 +44,13 @@ final class ReportService: ReportServicing {
         }
         return documentsURL
     }
-    private let downloadIndex = "index.txt"
+    private let downloadIndex: String
 
     init(configuration: Configuration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
         downloadBaseURL = configuration.downloadsURL
+        downloadIndex = configuration.downloadIndexName
     }
 
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String {
@@ -225,7 +226,7 @@ final class ReportService: ReportServicing {
                                     downloads.forEach { $0.cancel() }
                                 }
                                 dispatchGroup.leave()
-                        }
+                            }
                         progress.addChild(download.downloadProgress, withPendingUnitCount: 1)
                         downloads.append(download)
                     }

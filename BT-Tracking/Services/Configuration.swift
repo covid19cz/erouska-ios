@@ -31,11 +31,19 @@ struct Configuration {
         #endif
     }
 
+    var downloadIndexName: String {
+        #if PROD
+        return "index.txt"
+        #else
+        return "/index.txt"
+        #endif
+    }
+
     var downloadsURL: URL {
         #if PROD
-        return URL(string: "https://storage.googleapis.com/exposure-notification-export-qhqcx/erouska/")!
+        return URL(string: "https://storage.googleapis.com/exposure-notification-export-qhqcx/erouska")!
         #else
-        return URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud//")!
+        return URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!
         #endif
     }
 
