@@ -95,9 +95,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Self.dependency.deviceToken = deviceToken
 
         // update token on server
-        guard let buid = KeychainService.BUID else { return } // TODO: Should be eHRID?
+        guard let token = KeychainService.token else { return } // TODO: Should be eHRID?
         let data: [String: Any] = [
-            "buid": buid,
+            "idToken": token,
             "pushRegistrationToken": deviceToken.hexEncodedString()
         ]
 
@@ -188,7 +188,7 @@ private extension AppDelegate {
         } else if RemoteValues.minSupportedVersion > App.appVersion {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
             presentingAnyForceUpdateScreen = true
-        } else if KeychainService.eHRID == nil || !AppSettings.eHRIDActivated {
+        } else if KeychainService.token == nil || !AppSettings.activated {
             if Auth.auth().currentUser != nil {
                 rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "OnboardingActivatedUser")
                 shouldPresentNews = true

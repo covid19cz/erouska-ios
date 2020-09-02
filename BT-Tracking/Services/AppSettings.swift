@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 struct AppSettings {
 
@@ -26,7 +27,7 @@ struct AppSettings {
 
         case currentDataLastFetchDate
 
-        case eHRIDActivated
+        case activated
     }
 
     /// Firebase Region
@@ -138,22 +139,22 @@ struct AppSettings {
         }
     }
 
-    /// If current eHRID value from Keychain is activated or needs to reactivate.
+    /// If current customToken value from Keychain is activated or needs to reactivate.
     /// Using this value for handling app reinstallation.
-    static var eHRIDActivated: Bool {
+    static var activated: Bool {
         get {
-            return bool(forKey: .eHRIDActivated)
+            return bool(forKey: .activated)
         }
         set {
-            set(withKey: .eHRIDActivated, value: newValue)
+            set(withKey: .activated, value: newValue)
         }
     }
 
     /// Cleanup data after logout
     static func deleteAllData() {
-        KeychainService.eHRID = nil
+        KeychainService.token = nil
 
-        eHRIDActivated = false
+        activated = false
 
         backgroundModeAlertShown = false
 
@@ -161,6 +162,8 @@ struct AppSettings {
 
         lastProcessedFileName = nil
         lastUploadDate = nil
+
+        try? Auth.auth().signOut()
     }
 
     // MARK: - Private

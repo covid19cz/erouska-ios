@@ -71,9 +71,9 @@ private extension PrivacyVC {
 
         viewModel.functions.httpsCallable("RegisterEhrid").call(request) { [weak self] result, error in
             self?.hideProgress()
-            if let eHRID = (result?.data as? [String: Any])?["ehrid"] as? String {
-                KeychainService.eHRID = eHRID
-                AppSettings.eHRIDActivated = true
+            if let customToken = (result?.data as? [String: Any])?["customToken"] as? String {
+                KeychainService.token = customToken
+                AppSettings.activated = true
                 let storyboard = UIStoryboard(name: "Active", bundle: nil)
                 AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
             } else {
@@ -93,6 +93,7 @@ private extension PrivacyVC {
                 }
             }
         }
+
     }
 
 }

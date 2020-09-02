@@ -223,7 +223,7 @@ private extension BackgroundService {
             exposures.forEach { realm.add(ExposureRealm($0)) }
         }
 
-        let data = ["ehrid": KeychainService.eHRID]
+        let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
 
         #if PROD
