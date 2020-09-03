@@ -15,37 +15,53 @@ struct Configuration {
 
     let showExposureForDays = 10
 
-    let healthAuthority = "cz.covid19cz.erouska.dev"
+    var healthAuthority: String {
+        #if PROD
+        return "cz.covid19cz.erouska.dev"
+        #else
+        return "cz.covid19cz.erouska.dev"
+        #endif
+    }
 
-    let uploadURL = URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
+    var uploadURL: URL {
+        #if PROD
+        return URL(string: "https://exposure-fghz64a2xa-ew.a.run.app/v1/publish")!
+        #else
+        return URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!
+        #endif
+    }
 
-    let downloadsURL = URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!
+    var downloadIndexName: String {
+        #if PROD
+        return "index.txt"
+        #else
+        return "/index.txt"
+        #endif
+    }
 
-    let verificationURL = URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!
+    var downloadsURL: URL {
+        #if PROD
+        return URL(string: "https://storage.googleapis.com/exposure-notification-export-qhqcx/erouska")!
+        #else
+        return URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!
+        #endif
+    }
+
+    var verificationURL: URL {
+        #if PROD
+        return URL(string: "https://apiserver-jyvw4xgota-ew.a.run.app")!
+        #else
+        return URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!
+        #endif
+    }
 
     let verificationAdminKey: String = ""
-    let verificationDeviceKey: String = "Ar9VQ1tZS1ANU0LLPGw8nUnavJNBDCaTGEaEQbydvTYFgnW7oqQkTCLUxhk6azLm8IjTtCRVqQIi/wNscvniGw"
-
-}
-
-struct ExposureConfiguration {
-
-    let factorHigh = 0.17
-    let factorStandard = 1
-    let factorLow = 1.5
-    let lowerThreshold = 55
-    let higherThreshold = 63
-    let triggerThreshold = 15
-
-    var configuration: ENExposureConfiguration {
-        let configuration = ENExposureConfiguration()
-        configuration.minimumRiskScore = 0
-        configuration.attenuationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
-        configuration.daysSinceLastExposureLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
-        configuration.durationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
-        configuration.transmissionRiskLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
-        configuration.metadata = ["attenuationDurationThresholds": [lowerThreshold, higherThreshold]]
-        return configuration
+    var verificationDeviceKey: String {
+        #if PROD
+        return ""
+        #else
+        return "Ar9VQ1tZS1ANU0LLPGw8nUnavJNBDCaTGEaEQbydvTYFgnW7oqQkTCLUxhk6azLm8IjTtCRVqQIi/wNscvniGw"
+        #endif
     }
 
 }

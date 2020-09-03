@@ -87,6 +87,8 @@ enum RemoteConfigValueKey: String {
     case recentExposuresUITitle
 
     case chatBotLink
+
+    case appleExposureConfigurationV1
 }
 
 struct RemoteValues {
@@ -231,6 +233,19 @@ struct RemoteValues {
     static var chatBotLink: String {
         return AppDelegate.shared.remoteConfigString(forKey: .chatBotLink)
     }
+
+
+    static var exposureConfiguration: ExposureConfiguration {
+        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV1).data(using: .utf8) else {
+            return ExposureConfiguration()
+        }
+        do {
+            return try JSONDecoder().decode(ExposureConfiguration.self, from: json)
+        } catch {
+            return ExposureConfiguration()
+        }
+    }
+
 }
 
 // MARK: - Backup

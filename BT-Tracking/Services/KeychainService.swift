@@ -12,16 +12,16 @@ import UIKit
 
 struct KeychainService {
 
-    static var eHRID: String? {
+    static var token: String? {
         get {
-            let value = stringValue(for: .eHRID)
+            let value = stringValue(for: .token)
             return value?.isEmpty == true ? nil : value
         }
         set {
             if let value = newValue {
-                saveValue(with: .eHRID, value: value)
+                saveValue(with: .token, value: value)
             } else {
-                removeValue(with: .eHRID)
+                removeValue(with: .token)
             }
         }
     }
@@ -57,7 +57,7 @@ struct KeychainService {
 private extension KeychainService {
 
     enum Keys: String {
-        case eHRID
+        case token
 
         // Deprecated
         case BUID

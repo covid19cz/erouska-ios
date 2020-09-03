@@ -71,7 +71,8 @@ final class CurrentDataVM {
             if Calendar.current.date(byAdding: components, to: lastFetchedDate)! > Date() { return }
         }
 
-        AppDelegate.dependency.functions.httpsCallable("GetCovidData").call([:]) { [weak self] result, error in
+        let data = ["idToken": KeychainService.token]
+        AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
             guard let self = self else { return }
             if let result = result?.data as? [String: Any] {
                 let realm = try! Realm()

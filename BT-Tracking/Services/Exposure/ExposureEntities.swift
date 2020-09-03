@@ -39,6 +39,37 @@ enum ExposureError: Error {
     }
 }
 
+struct ExposureConfiguration: Decodable {
+
+    let factorHigh: Double
+    let factorStandard: Double
+    let factorLow: Double
+    let lowerThreshold: Int
+    let higherThreshold: Int
+    let triggerThreshold: Int
+
+    init() {
+        factorHigh = 0.17
+        factorStandard = 1
+        factorLow = 1.5
+        lowerThreshold = 55
+        higherThreshold = 63
+        triggerThreshold = 15
+    }
+
+    var configuration: ENExposureConfiguration {
+        let configuration = ENExposureConfiguration()
+        configuration.minimumRiskScore = 0
+        configuration.attenuationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
+        configuration.daysSinceLastExposureLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
+        configuration.durationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
+        configuration.transmissionRiskLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
+        configuration.metadata = ["attenuationDurationThresholds": [lowerThreshold, higherThreshold]]
+        return configuration
+    }
+
+}
+
 struct Exposure: Codable, Equatable {
 
     let id: UUID
