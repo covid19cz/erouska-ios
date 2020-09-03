@@ -58,6 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-FOREGROUND---------------------------\n")
 
         inBackgroundStage = false
+
+        fetchRemoteValues(background: false)
+            .subscribe(onSuccess: { [weak self] _ in
+                self?.checkFetchedMinSupportedVersion()
+            })
+            .disposed(by: bag)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -133,11 +139,6 @@ private extension AppDelegate {
 
         FirebaseApp.configure()
         setupDefaultValues()
-        fetchRemoteValues(background: false)
-            .subscribe(onSuccess: { [weak self] _ in
-                self?.checkFetchedMinSupportedVersion()
-            })
-            .disposed(by: bag)
 
         let configuration = Realm.Configuration(
             schemaVersion: 3,
