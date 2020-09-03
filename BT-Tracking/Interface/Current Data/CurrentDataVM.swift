@@ -96,6 +96,9 @@ final class CurrentDataVM {
                 }
             } else if let error = error {
                 if AppSettings.currentDataLastFetchDate == nil {
+                    self.sections = self.sections(from: self.currentData)
+                    self.updateFooter()
+
                     self.obervableErrors.onNext(error)
                 }
             }
