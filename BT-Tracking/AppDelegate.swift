@@ -101,7 +101,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             scannerStore.deleteOldRecordsIfNeeded()
         }
 
-        fetchRemoteValues()
+        fetchRemoteValues(background: false)
+            .subscribe(onSuccess: { [weak self] _ in
+                self?.checkFetchedMinSupportedVersion()
+            })
+            .disposed(by: bag)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -229,7 +233,6 @@ private extension AppDelegate {
 
         FirebaseApp.configure()
         setupDefaultValues()
-        fetchRemoteValues()
 
         #endif
 
@@ -245,14 +248,6 @@ private extension AppDelegate {
         if Auth.isLoggedIn {
             scannerStore.deleteOldRecordsIfNeeded()
         }
-    }
-
-    func fetchRemoteValues() {
-        fetchRemoteValues(background: false)
-            .subscribe(onSuccess: { [weak self] _ in
-                self?.checkFetchedMinSupportedVersion()
-            })
-            .disposed(by: bag)
     }
 
     private func checkFetchedMinSupportedVersion() {
