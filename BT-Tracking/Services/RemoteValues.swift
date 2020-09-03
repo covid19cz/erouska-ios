@@ -88,6 +88,7 @@ enum RemoteConfigValueKey: String {
 
     case chatBotLink
 
+    case verificationServerApiKey
     case appleExposureConfigurationV1
 }
 
@@ -234,6 +235,9 @@ struct RemoteValues {
         return AppDelegate.shared.remoteConfigString(forKey: .chatBotLink)
     }
 
+    static var verificationServerApiKey: String {
+        return AppDelegate.shared.remoteConfigString(forKey: .verificationServerApiKey)
+    }
 
     static var exposureConfiguration: ExposureConfiguration {
         guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV1).data(using: .utf8) else {

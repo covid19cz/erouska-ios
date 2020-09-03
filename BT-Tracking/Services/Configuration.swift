@@ -17,7 +17,7 @@ struct Configuration {
 
     var healthAuthority: String {
         #if PROD
-        return "cz.covid19cz.erouska.dev"
+        return "cz.covid19cz.erouska"
         #else
         return "cz.covid19cz.erouska.dev"
         #endif
@@ -33,7 +33,7 @@ struct Configuration {
 
     var downloadIndexName: String {
         #if PROD
-        return "index.txt"
+        return "erouska/index.txt"
         #else
         return "/index.txt"
         #endif
@@ -41,7 +41,7 @@ struct Configuration {
 
     var downloadsURL: URL {
         #if PROD
-        return URL(string: "https://storage.googleapis.com/exposure-notification-export-qhqcx/erouska")!
+        return URL(string: "https://storage.googleapis.com/exposure-notification-export-qhqcx/")!
         #else
         return URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!
         #endif
@@ -57,11 +57,7 @@ struct Configuration {
 
     let verificationAdminKey: String = ""
     var verificationDeviceKey: String {
-        #if PROD
-        return ""
-        #else
-        return "Ar9VQ1tZS1ANU0LLPGw8nUnavJNBDCaTGEaEQbydvTYFgnW7oqQkTCLUxhk6azLm8IjTtCRVqQIi/wNscvniGw"
-        #endif
+        return RemoteValues.verificationServerApiKey
     }
 
 }
