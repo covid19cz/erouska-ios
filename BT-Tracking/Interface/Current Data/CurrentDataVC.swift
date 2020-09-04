@@ -53,6 +53,8 @@ final class CurrentDataVC: UIViewController {
 
         if viewModel.sections.isEmpty {
             showProgress(fromView: true)
+        } else {
+            hideProgress()
         }
     }
 
