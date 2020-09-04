@@ -189,15 +189,24 @@ private extension AppDelegate {
         } else if RemoteValues.minSupportedVersion > App.appVersion {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
             presentingAnyForceUpdateScreen = true
-        } else if KeychainService.token == nil || !AppSettings.activated {
-            if Auth.auth().currentUser != nil {
+        } else if AppSettings.activated {
+            rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
+
+            // refresh token
+            Auth.auth().currentUser?.getIDToken(completion: { token, error in
+                if let token = token {
+                    KeychainService.token = token
+                }
+            })
+        } else {
+            // User with phone number is old user
+            if let user = Auth.auth().currentUser, (user.phoneNumber != nil && user.phoneNumber?.isEmpty == false) {
+                try? Auth.auth().signOut()
                 rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "OnboardingActivatedUser")
                 shouldPresentNews = true
             } else {
                 rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
             }
-        } else {
-            rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
         }
 
         window.rootViewController = rootViewController

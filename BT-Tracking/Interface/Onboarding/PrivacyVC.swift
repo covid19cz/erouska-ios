@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseFunctions
 
 final class PrivacyVC: UIViewController {
@@ -72,28 +73,44 @@ private extension PrivacyVC {
         viewModel.functions.httpsCallable("RegisterEhrid").call(request) { [weak self] result, error in
             self?.hideProgress()
             if let customToken = (result?.data as? [String: Any])?["customToken"] as? String {
-                KeychainService.token = customToken
-                AppSettings.activated = true
-                let storyboard = UIStoryboard(name: "Active", bundle: nil)
-                AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
+                Auth.auth().signIn(withCustomToken: customToken) { [weak self] result, error in
+                    if result != nil, result?.user.uid.isEmpty == false {
+                        Auth.auth().currentUser?.getIDToken(completion: { token, error in
+                            if let token = token {
+                                KeychainService.token = token
+                                AppSettings.activated = true
+                                let storyboard = UIStoryboard(name: "Active", bundle: nil)
+                                AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
+                            } else {
+                                self?.presentError(error)
+                            }
+                        })
+                    } else {
+                        self?.presentError(error)
+                    }
+                }
             } else {
-                let viewModel: ErrorVM
-                if let error = error, (error as NSError).domain == NSURLErrorDomain, [NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost, NSURLErrorTimedOut].contains((error as NSError).code) {
-                    viewModel = ErrorVM(
-                        headline: Localizable("error_activation_internet_headline"),
-                        text: Localizable("error_activation_internet_text"),
-                        actionTitle: Localizable("error_activation_internet_title_action"),
-                        action: { self?.activateApp() }
-                    )
-                } else {
-                    viewModel = ErrorVM.unknown
-                }
-                if let errorVC = ErrorVC.instantiateViewController(with: viewModel) {
-                    self?.present(errorVC, animated: true)
-                }
+                self?.presentError(error)
             }
         }
+    }
 
+    func presentError(_ error: Error?) {
+        let viewModel: ErrorVM
+        if let error = error, (error as NSError).domain == NSURLErrorDomain, [NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost, NSURLErrorTimedOut].contains((error as NSError).code) {
+            viewModel = ErrorVM(
+                headline: Localizable("error_activation_internet_headline"),
+                text: Localizable("error_activation_internet_text"),
+                actionTitle: Localizable("error_activation_internet_title_action"),
+                action: { self.activateApp() }
+            )
+        } else {
+            viewModel = ErrorVM.unknown
+        }
+
+        if let errorVC = ErrorVC.instantiateViewController(with: viewModel) {
+            present(errorVC, animated: true)
+        }
     }
 
 }

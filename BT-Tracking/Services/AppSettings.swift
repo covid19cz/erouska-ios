@@ -27,7 +27,7 @@ struct AppSettings {
 
         case currentDataLastFetchDate
 
-        case activated
+        case activated = "activated2"
     }
 
     /// Firebase Region

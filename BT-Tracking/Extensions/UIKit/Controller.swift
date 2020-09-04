@@ -55,6 +55,9 @@ extension UIViewController {
         } else {
             return
         }
+
+        guard window.viewWithTag(Self.progressTag) == nil else { return}
+
         let overlay = UIView()
         overlay.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         overlay.translatesAutoresizingMaskIntoConstraints = false
