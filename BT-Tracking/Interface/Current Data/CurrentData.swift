@@ -15,13 +15,9 @@ final class CurrentDataRealm: Object {
     @objc dynamic var confirmedCasesTotal: Int = 0
     @objc dynamic var confirmedCasesIncrease: Int = 0
     @objc dynamic var activeCasesTotal: Int = 0
-    @objc dynamic var activeCasesIncrease: Int = 0
     @objc dynamic var curedTotal: Int = 0
-    @objc dynamic var curedIncrease: Int = 0
     @objc dynamic var deceasedTotal: Int = 0
-    @objc dynamic var deceasedIncrease: Int = 0
     @objc dynamic var currentlyHospitalizedTotal: Int = 0
-    @objc dynamic var currentlyHospitalizedIncrease: Int = 0
 
     convenience init(
         testsTotal: Int,
@@ -29,13 +25,9 @@ final class CurrentDataRealm: Object {
         confirmedCasesTotal: Int,
         confirmedCasesIncrease: Int,
         activeCasesTotal: Int,
-        activeCasesIncrease: Int,
         curedTotal: Int,
-        curedIncrease: Int,
         deceasedTotal: Int,
-        deceasedIncrease: Int,
-        currentlyHospitalizedTotal: Int,
-        currentlyHospitalizedIncrease: Int
+        currentlyHospitalizedTotal: Int
     ) {
         self.init()
 
@@ -44,12 +36,8 @@ final class CurrentDataRealm: Object {
         self.confirmedCasesTotal = confirmedCasesTotal
         self.confirmedCasesIncrease = confirmedCasesIncrease
         self.activeCasesTotal = activeCasesTotal
-        self.activeCasesIncrease = activeCasesIncrease
         self.curedTotal = curedTotal
-        self.curedIncrease = curedIncrease
         self.deceasedTotal = deceasedTotal
-        self.deceasedIncrease = deceasedIncrease
         self.currentlyHospitalizedTotal = currentlyHospitalizedTotal
-        self.currentlyHospitalizedIncrease = currentlyHospitalizedIncrease
     }
 }

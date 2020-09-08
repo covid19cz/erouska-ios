@@ -141,7 +141,7 @@ private extension AppDelegate {
         setupDefaultValues()
 
         let configuration = Realm.Configuration(
-            schemaVersion: 3,
+            schemaVersion: 4,
             migrationBlock: { migration, oldSchemaVersion in
 
             }
