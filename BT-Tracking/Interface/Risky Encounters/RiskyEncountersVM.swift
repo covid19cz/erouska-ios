@@ -59,10 +59,13 @@ struct RiskyEncountersVM {
     init() {
         let showForDays = AppDelegate.dependency.configuration.showExposureForDays
         let realm = try! Realm()
-        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+        let exposures = realm
+            .objects(ExposureRealm.self)
+            .sorted(byKeyPath: "date")
+
         riskyEncouterDateToShow = Observable.collection(from: exposures)
             .map {
-                $0.filter { $0.date > Calendar.current.date(byAdding: .day, value: -showForDays, to: Date())! }.first?.date
+                $0.filter { $0.date > Calendar.current.date(byAdding: .day, value: -showForDays, to: Date())! }.last?.date
             }
 
         shouldShowPreviousRiskyEncounters = Observable.collection(from: exposures)
