@@ -20,9 +20,6 @@ struct AppSettings {
         case lastProcessedDate
         case lastUploadDate
 
-        case lastExposureWarningId
-        case lastExposureWarningClosed
-
         case v2_0NewsLaunched
 
         case currentDataLastFetchDate
@@ -94,26 +91,6 @@ struct AppSettings {
         }
         set {
             set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
-        }
-    }
-
-    /// Last shown exposure warning id
-    static var lastExposureWarningId: String? {
-        get {
-            return string(forKey: .lastExposureWarningId)
-        }
-        set {
-            set(withKey: .lastExposureWarningId, value: newValue)
-        }
-    }
-
-    /// If user closed last show exposure warning
-    static var lastExposureWarningClosed: Bool {
-        get {
-            return bool(forKey: .lastExposureWarningClosed)
-        }
-        set {
-            set(withKey: .lastExposureWarningClosed, value: newValue)
         }
     }
 
