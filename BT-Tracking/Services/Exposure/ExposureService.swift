@@ -192,7 +192,7 @@ final class ExposureService: ExposureServicing {
                 if computedThreshold >= Double(configuration.triggerThreshold) {
                     log("ExposureService Summary meets requiremnts")
 
-                    guard summary.matchedKeyCount == 0 else {
+                    guard summary.matchedKeyCount != 0 else {
                         finish()
                         return
                     }

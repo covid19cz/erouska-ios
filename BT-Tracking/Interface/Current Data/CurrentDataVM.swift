@@ -82,13 +82,9 @@ final class CurrentDataVM {
                     if let value = result["confirmedCasesTotal"] as? Int { self.currentData?.confirmedCasesTotal = value }
                     if let value = result["confirmedCasesIncrease"] as? Int { self.currentData?.confirmedCasesIncrease = value }
                     if let value = result["activeCasesTotal"] as? Int { self.currentData?.activeCasesTotal = value }
-                    if let value = result["activeCasesIncrease"] as? Int { self.currentData?.activeCasesIncrease = value }
                     if let value = result["curedTotal"] as? Int { self.currentData?.curedTotal = value }
-                    if let value = result["curedIncrease"] as? Int { self.currentData?.curedIncrease = value }
                     if let value = result["deceasedTotal"] as? Int { self.currentData?.deceasedTotal = value }
-                    if let value = result["deceasedIncrease"] as? Int { self.currentData?.deceasedIncrease = value }
                     if let value = result["currentlyHospitalizedTotal"] as? Int { self.currentData?.currentlyHospitalizedTotal = value }
-                    if let value = result["currentlyHospitalizedIncrease"] as? Int { self.currentData?.currentlyHospitalizedIncrease = value }
 
                     self.sections = self.sections(from: self.currentData)
                     AppSettings.currentDataLastFetchDate = Date()
@@ -115,7 +111,7 @@ final class CurrentDataVM {
         guard let data = currentData else { return [] }
         return [
             Section(header: nil, selectableItems: true, items: [
-                Item(iconName: "CurrentData/Measures", title: Localizable("current_data_measures"), subtitle: nil),
+                Item(iconName: "CurrentData/Measures", title: Localizable("current_data_measures")),
             ]),
             Section(header: Localizable("current_data_item_header"), selectableItems: false, items: [
                 Item(
@@ -130,23 +126,19 @@ final class CurrentDataVM {
                 ),
                 Item(
                     iconName: "CurrentData/Active",
-                    title: titleValue(data.activeCasesTotal, withKey: "current_data_item_active"),
-                    subtitle: titleValue(data.activeCasesIncrease, withKey: "current_data_item_yesterday", showSign: true)
+                    title: titleValue(data.activeCasesTotal, withKey: "current_data_item_active")
                 ),
                 Item(
                     iconName: "CurrentData/Healthy",
-                    title: titleValue(data.curedTotal, withKey: "current_data_item_healthy"),
-                    subtitle: titleValue(data.curedIncrease, withKey: "current_data_item_yesterday", showSign: true)
+                    title: titleValue(data.curedTotal, withKey: "current_data_item_healthy")
                 ),
                 Item(
                     iconName: "CurrentData/Death",
-                    title: titleValue(data.deceasedTotal, withKey: "current_data_item_deaths"),
-                    subtitle: titleValue(data.deceasedIncrease, withKey: "current_data_item_yesterday", showSign: true)
+                    title: titleValue(data.deceasedTotal, withKey: "current_data_item_deaths")
                 ),
                 Item(
                     iconName: "CurrentData/Hospital",
-                    title: titleValue(data.currentlyHospitalizedTotal, withKey: "current_data_item_hospitalized"),
-                    subtitle: titleValue(data.currentlyHospitalizedIncrease, withKey: "current_data_item_yesterday", showSign: true)
+                    title: titleValue(data.currentlyHospitalizedTotal, withKey: "current_data_item_hospitalized")
                 ),
             ])
         ]
@@ -170,5 +162,11 @@ extension CurrentDataVM {
          let iconName: String
          let title: String
          let subtitle: String?
+
+        init(iconName: String, title: String, subtitle: String? = nil) {
+            self.iconName = iconName
+            self.title = title
+            self.subtitle = subtitle
+        }
      }
 }
