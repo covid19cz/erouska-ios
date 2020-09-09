@@ -27,13 +27,13 @@ final class CurrentDataVC: UIViewController {
         super.viewDidLoad()
 
         viewModel.needToUpdateView.subscribe(onNext: { [weak self] in
-            self?.hideProgress()
+            self?.hideProgress(fromView: true)
             self?.tableView.reloadData()
             self?.footerLabel.text = self?.viewModel.footer
         }).disposed(by: disposeBag)
 
         viewModel.obervableErrors.subscribe(onNext: { [weak self] error in
-            self?.hideProgress()
+            self?.hideProgress(fromView: true)
             if let _ = error, let errorVC = ErrorVC.instantiateViewController(with: .unknown) {
                 self?.present(errorVC, animated: true)
             }
@@ -54,7 +54,7 @@ final class CurrentDataVC: UIViewController {
         if viewModel.sections.isEmpty {
             showProgress(fromView: true)
         } else {
-            hideProgress()
+            hideProgress(fromView: true)
         }
     }
 

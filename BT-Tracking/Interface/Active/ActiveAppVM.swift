@@ -165,7 +165,7 @@ final class ActiveAppVM {
     init() {
         observableState = BehaviorSubject<State>(value: .paused)
 
-        let lastPossibleDate = Calendar.current.date(byAdding: .day, value: -14, to: Date())!
+        let showForDays = AppDelegate.dependency.configuration.showExposureForDays
         let realm = try! Realm()
         let exposures = realm
             .objects(ExposureRealm.self)
@@ -173,7 +173,7 @@ final class ActiveAppVM {
 
         exposureToShow = Observable.collection(from: exposures)
             .map {
-                $0.filter { $0.date > lastPossibleDate }.last?.toExposure()
+                $0.filter { $0.date > Calendar.current.date(byAdding: .day, value: -showForDays, to: Date())! }.last?.toExposure()
             }
 
         exposureService.readyToUse

@@ -81,8 +81,8 @@ extension UIViewController {
         ])
     }
 
-    func hideProgress() {
-        view.window?.subviews.first { $0.tag == UIViewController.progressTag }?.removeFromSuperview()
+    func hideProgress(fromView: Bool = false) {
+        (fromView ? view : view.window)?.subviews.first { $0.tag == UIViewController.progressTag }?.removeFromSuperview()
     }
 
 }

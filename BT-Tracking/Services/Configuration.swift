@@ -13,7 +13,7 @@ struct Configuration {
 
     let minSupportedVersion = "13.5"
 
-    let showExposureForDays = 10
+    let showExposureForDays = 14
 
     var healthAuthority: String {
         #if PROD
