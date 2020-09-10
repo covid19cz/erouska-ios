@@ -14,7 +14,7 @@ struct AboutVM {
 
     let infoKey = "about_info"
 
-    let conditionsOfUseKey = "about_conditions_of_use"
+    let infoLink = "about_info_link"
 
     let conditionsOfUseLink = RemoteValues.conditionsOfUseUrl
 }

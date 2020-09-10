@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="68S-di-z6w">
-                                <rect key="frame" x="152.5" y="393.5" width="109" height="109"/>
+                                <rect key="frame" x="137" y="378" width="140" height="140"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenHands" translatesAutoresizingMaskIntoConstraints="NO" id="YLW-wJ-gTL">
                                 <rect key="frame" x="0.0" y="558" width="414" height="338"/>
@@ -41,10 +41,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchScreenHands" width="516" height="338"/>
-        <image name="LaunchScreenLogo" width="109" height="109"/>
+        <image name="LaunchScreenHands" width="490" height="338"/>
+        <image name="LaunchScreenLogo" width="140" height="140"/>
         <namedColor name="LaunchScreenBackground">
-            <color red="0.78823529411764703" green="0.88627450980392153" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78799998760223389" green="0.88599997758865356" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
