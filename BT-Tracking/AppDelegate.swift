@@ -200,7 +200,7 @@ private extension AppDelegate {
             })
         } else {
             // User with phone number is old user
-            if let currentUser = Auth.auth().currentUser, currentUser.phoneNumber != nil {
+            if Auth.auth().currentUser?.phoneNumber != nil {
                 try? Auth.auth().signOut()
                 rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "OnboardingActivatedUser")
                 shouldPresentNews = true
