@@ -103,7 +103,7 @@ struct RemoteValues {
         .unsupportedDeviceLink: "https://koronavirus.mzcr.cz",
         .shouldCheckOSVersion: false,
 
-        .exposureBannerTitle: activeExposureTitleDefault,
+        .exposureBannerTitle: encounterWarningDefault,
 
         .riskyEncountersTitle: riskyEncountersTitleDefault,
         .riskyEncountersWithSymptoms: riskyEncountersWithSymptomsDefault,
@@ -270,8 +270,8 @@ private extension RemoteValues {
         return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
     }
 
-    static var activeExposureTitleDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "activeExposureTitleDefault")
+    static var encounterWarningDefault: String {
+        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "encounterWarningDefault")
     }
 
     static var riskyEncountersTitleDefault: String {
