@@ -16,7 +16,7 @@ final class CurrentDataVM {
     let tabTitle = "data_list_title"
     let tabIcon = UIImage(named: "MyData")
 
-    let measuresURL = URL(string: RemoteValues.currentMeasuresUrl)!
+    let measuresURL = URL(string: RemoteValues.currentMeasuresUrl)
 
     var sections: [Section] = [] {
         didSet {

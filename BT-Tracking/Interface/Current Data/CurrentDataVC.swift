@@ -114,7 +114,7 @@ extension CurrentDataVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard indexPath.section == 0 else { return }
-        openURL(URL: viewModel.measuresURL)
+        guard indexPath.section == 0, let measuresURL = viewModel.measuresURL else { return }
+        openURL(URL: measuresURL)
     }
 }
