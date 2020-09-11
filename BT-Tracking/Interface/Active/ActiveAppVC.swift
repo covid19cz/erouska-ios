@@ -29,6 +29,7 @@ final class ActiveAppVC: UIViewController {
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var lastUpdateLabel: UILabel!
     @IBOutlet private weak var actionButton: Button!
 
     // MARK: -
@@ -267,12 +268,15 @@ private extension ActiveAppVC {
         headlineLabel.localizedText(viewModel.state.headline)
         headlineLabel.textColor = viewModel.state.color
         titleLabel.localizedText(viewModel.state.title ?? "")
+        textLabel.localizedText(viewModel.state.text)
+
         if viewModel.state == .enabled, let update = AppSettings.lastProcessedDate {
-            let text = Localizable(viewModel.state.text) + "\n\n" + String(format: Localizable(viewModel.lastUpdateText), viewModel.dateFormatter.string(from: update))
-            textLabel.text = text
+            lastUpdateLabel.text = String(format: Localizable(viewModel.lastUpdateText), viewModel.dateFormatter.string(from: update))
+            lastUpdateLabel.isHidden = false
         } else {
-            textLabel.localizedText(viewModel.state.text)
+            lastUpdateLabel.isHidden = true
         }
+
         actionButton.localizedTitle(viewModel.state.actionTitle)
         actionButton.style = viewModel.state == .enabled ? .clear : .filled
 
