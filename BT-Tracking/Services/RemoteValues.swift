@@ -44,15 +44,15 @@ extension AppDelegate {
     }
 
     func remoteConfigValue(forKey key: RemoteConfigValueKey) -> Any {
-        return RemoteConfig.remoteConfig()[key.rawValue]
+        return RemoteConfig.remoteConfig()[key.keyValue]
     }
 
     func remoteConfigInt(forKey key: RemoteConfigValueKey) -> Int {
-        return RemoteConfig.remoteConfig()[key.rawValue].numberValue?.intValue ?? 0
+        return RemoteConfig.remoteConfig()[key.keyValue].numberValue?.intValue ?? 0
     }
 
     func remoteConfigString(forKey key: RemoteConfigValueKey) -> String {
-        return RemoteConfig.remoteConfig()[key.rawValue].stringValue ?? ""
+        return RemoteConfig.remoteConfig()[key.keyValue].stringValue ?? ""
     }
 }
 
@@ -89,7 +89,11 @@ enum RemoteConfigValueKey: String {
     case chatBotLink
 
     case verificationServerApiKey
-    case appleExposureConfigurationV1
+    case appleExposureConfiguration
+
+    var keyValue: String {
+        return "v2_\(rawValue)"
+    }
 }
 
 struct RemoteValues {
@@ -240,7 +244,7 @@ struct RemoteValues {
     }
 
     static var exposureConfiguration: ExposureConfiguration {
-        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV1).data(using: .utf8) else {
+        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfiguration).data(using: .utf8) else {
             return ExposureConfiguration()
         }
         do {
