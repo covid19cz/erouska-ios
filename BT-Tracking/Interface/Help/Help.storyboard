@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7JY-JN-dnV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7JY-JN-dnV">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -104,72 +104,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tkt-aB-Jrl">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1S-K0-nhj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="Aqh-66-ioN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDX-RP-abS">
-                                            <rect key="frame" x="16" y="16" width="343" height="12"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    <constraints>
-                                        <constraint firstItem="gDX-RP-abS" firstAttribute="top" secondItem="Aqh-66-ioN" secondAttribute="top" constant="16" id="7sR-Pt-ZdT"/>
-                                        <constraint firstItem="gDX-RP-abS" firstAttribute="leading" secondItem="Aqh-66-ioN" secondAttribute="leading" constant="16" id="s91-os-v7u"/>
-                                        <constraint firstAttribute="bottom" secondItem="gDX-RP-abS" secondAttribute="bottom" constant="16" id="wKI-s9-bf0"/>
-                                        <constraint firstAttribute="trailing" secondItem="gDX-RP-abS" secondAttribute="trailing" constant="16" id="zq6-aj-3ee"/>
-                                    </constraints>
-                                </view>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BasicCell" textLabel="JiC-I7-zLl" rowHeight="60" style="IBUITableViewCellStyleDefault" id="fjv-Ja-2qK">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fjv-Ja-2qK" id="ajP-sP-mRp">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JiC-I7-zLl">
-                                                    <rect key="frame" x="15" y="0.0" width="326" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="y7d-j4-fB7" id="4rr-ws-ybE"/>
-                                    <outlet property="delegate" destination="y7d-j4-fB7" id="Euu-Vv-Wlx"/>
-                                </connections>
-                            </tableView>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="10w-5O-iCm">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3eb-ph-g5q">
+                                                <rect key="frame" x="16" y="16" width="343" height="214"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <string key="text">Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT). Předchozí verzi aplikace eRouška vytvořil ým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.</string>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="10w-5O-iCm" firstAttribute="centerX" secondItem="p1S-K0-nhj" secondAttribute="centerX" id="A9x-vw-wA1"/>
+                                    <constraint firstItem="10w-5O-iCm" firstAttribute="trailing" secondItem="j0W-dp-6ds" secondAttribute="trailing" id="MIR-g5-MGF"/>
+                                    <constraint firstItem="10w-5O-iCm" firstAttribute="top" secondItem="j0W-dp-6ds" secondAttribute="top" id="WTR-Xd-seC"/>
+                                    <constraint firstItem="10w-5O-iCm" firstAttribute="bottom" secondItem="j0W-dp-6ds" secondAttribute="bottom" id="ayF-Al-2b0"/>
+                                    <constraint firstItem="10w-5O-iCm" firstAttribute="leading" secondItem="j0W-dp-6ds" secondAttribute="leading" id="qz5-8T-jq8"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="j0W-dp-6ds"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="JxE-ML-aps"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="tkt-aB-Jrl" firstAttribute="leading" secondItem="z07-dL-5nc" secondAttribute="leading" id="1UO-h0-oxq"/>
-                            <constraint firstItem="z07-dL-5nc" firstAttribute="trailing" secondItem="tkt-aB-Jrl" secondAttribute="trailing" id="Qe8-M6-mCd"/>
-                            <constraint firstItem="z07-dL-5nc" firstAttribute="bottom" secondItem="tkt-aB-Jrl" secondAttribute="bottom" id="hbY-td-5yL"/>
-                            <constraint firstItem="tkt-aB-Jrl" firstAttribute="top" secondItem="YDT-xs-3tk" secondAttribute="top" id="ycG-iH-p7N"/>
+                            <constraint firstAttribute="trailing" secondItem="p1S-K0-nhj" secondAttribute="trailing" id="0DW-sr-XGY"/>
+                            <constraint firstItem="p1S-K0-nhj" firstAttribute="leading" secondItem="YDT-xs-3tk" secondAttribute="leading" id="Gua-mm-9gX"/>
+                            <constraint firstItem="p1S-K0-nhj" firstAttribute="top" secondItem="YDT-xs-3tk" secondAttribute="top" id="nEW-mb-AQs"/>
+                            <constraint firstItem="z07-dL-5nc" firstAttribute="bottom" secondItem="p1S-K0-nhj" secondAttribute="bottom" id="zdE-vU-mdo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z07-dL-5nc"/>
                     </view>
                     <navigationItem key="navigationItem" title="O aplikaci" largeTitleDisplayMode="always" id="nL1-dJ-Qvz"/>
                     <connections>
-                        <outlet property="tableView" destination="tkt-aB-Jrl" id="w9B-eY-Uf1"/>
-                        <outlet property="textLabel" destination="gDX-RP-abS" id="b0g-lR-FIo"/>
+                        <outlet property="textView" destination="3eb-ph-g5q" id="kUf-y8-il0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCa-xT-FG0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="565"/>
+            <point key="canvasLocation" x="1704.8" y="564.53201970443354"/>
         </scene>
     </scenes>
     <resources>
