@@ -76,6 +76,7 @@ final class CurrentDataVM {
             guard let self = self else { return }
             if let result = result?.data as? [String: Any] {
                 let realm = try! Realm()
+                
                 try! realm.write {
                     if let value = result["testsTotal"] as? Int { self.currentData?.testsTotal = value }
                     if let value = result["testsIncrease"] as? Int { self.currentData?.testsIncrease = value }
@@ -85,7 +86,9 @@ final class CurrentDataVM {
                     if let value = result["curedTotal"] as? Int { self.currentData?.curedTotal = value }
                     if let value = result["deceasedTotal"] as? Int { self.currentData?.deceasedTotal = value }
                     if let value = result["currentlyHospitalizedTotal"] as? Int { self.currentData?.currentlyHospitalizedTotal = value }
+                }
 
+                DispatchQueue.main.async {
                     self.sections = self.sections(from: self.currentData)
                     AppSettings.currentDataLastFetchDate = Date()
                     self.updateFooter()
