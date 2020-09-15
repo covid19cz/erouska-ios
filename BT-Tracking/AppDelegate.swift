@@ -139,6 +139,7 @@ private extension AppDelegate {
 
         FirebaseApp.configure()
         setupDefaultValues()
+        _ = fetchRemoteValues(background: false)
 
         let configuration = Realm.Configuration(
             schemaVersion: 4,

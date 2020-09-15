@@ -14,11 +14,9 @@ extension AppDelegate {
 
     func setupDefaultValues() {
         var remoteDefaults: [String: NSObject] = [:]
-        for (key, value) in RemoteValues.defaults {
-            guard let object = value as? NSObject else { continue }
-            remoteDefaults[key.rawValue] = object
+        RemoteConfigValueKey.allCases.forEach {
+            remoteDefaults[$0.keyValue] = $0.defaultValue as? NSObject
         }
-
         RemoteConfig.remoteConfig().setDefaults(remoteDefaults)
     }
 
@@ -56,7 +54,7 @@ extension AppDelegate {
     }
 }
 
-enum RemoteConfigValueKey: String {
+enum RemoteConfigValueKey: String, CaseIterable {
     case shareAppDynamicLink
     
     case helpMarkdown
@@ -94,38 +92,83 @@ enum RemoteConfigValueKey: String {
     var keyValue: String {
         return "v2_\(rawValue)"
     }
+
+    var defaultValue: Any {
+        switch self {
+        case .shareAppDynamicLink:
+            return "https://covid19cz.page.link/share"
+
+        case .helpMarkdown:
+            return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
+
+        case .minSupportedVersion:
+            return Version("2.1.0")
+        case .unsupportedDeviceLink:
+            return "https://koronavirus.mzcr.cz"
+        case .shouldCheckOSVersion:
+            return true
+
+        case .exposureBannerTitle:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "encounterWarningDefault")
+
+        case .riskyEncountersTitle:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersTitleDefault")
+        case .riskyEncountersWithSymptoms:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithSymptomsDefault")
+        case .riskyEncountersWithoutSymptoms:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithoutSymptomsDefault")
+
+        case .symptomsContentJson:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "symptomsContentJsonDefault")
+        case .preventionContentJson:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "preventionContentJsonDefault")
+        case .contactsContentJson:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "contactsContentJsonDefault")
+
+        case .currentMeasuresUrl:
+            return "https://koronavirus.mzcr.cz/aktualni-opatreni/"
+        case .conditionsOfUseUrl:
+            return "https://erouska.cz/podminky-pouzivani"
+
+        case .noEncounterHeader:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterHeaderDefault")
+        case .noEncounterBody:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterBodyDefault")
+
+        case .exposureUITitle:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "exposureUITitleDefault")
+        case .symptomsUITitle:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "symptomsUITitleDefault")
+        case .spreadPreventionUITitle:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "spreadPreventionUITitleDefault")
+        case .recentExposuresUITitle:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "recentExposuresUITitleDefault")
+
+        case .chatBotLink:
+            return "https://erouska.cz/#chat-open"
+
+        case .verificationServerApiKey:
+            return ""
+        case .appleExposureConfiguration:
+            return "{\"factorHigh\":0.17,\"factorStandard\":1,\"factorLow\":1.5,\"lowerThreshold\":55,\"higherThreshold\":63,\"triggerThreshold\":15}"
+        }
+    }
+
+    private func localValue(forResource resource: String, withExtension extension: String, withKey key: String) -> String {
+        guard
+            let path = Bundle.main.url(forResource: resource, withExtension: `extension`),
+            let dict = NSDictionary(contentsOf: path),
+            let value = dict.value(forKey: key) as? String
+            else {
+                print("Didn't found value for \(key)")
+                return ""
+        }
+        return value
+    }
+
 }
 
 struct RemoteValues {
-
-    static let defaults: [RemoteConfigValueKey: Any?] = [
-        .shareAppDynamicLink: "https://covid19cz.page.link/share",
-        
-        .helpMarkdown: helpMarkdownBackup,
-
-        .minSupportedVersion: Version("1.0.0"),
-        .unsupportedDeviceLink: "https://koronavirus.mzcr.cz",
-        .shouldCheckOSVersion: false,
-
-        .exposureBannerTitle: encounterWarningDefault,
-
-        .riskyEncountersTitle: riskyEncountersTitleDefault,
-        .riskyEncountersWithSymptoms: riskyEncountersWithSymptomsDefault,
-        .riskyEncountersWithoutSymptoms: riskyEncountersWithoutSymptomsDefault,
-
-        .currentMeasuresUrl: "https://koronavirus.mzcr.cz/aktualni-opatreni/",
-        .conditionsOfUseUrl: "https://erouska.cz",
-
-        .noEncounterHeader: noEncounterHeaderDefault,
-        .noEncounterBody: noEncounterBodyDefault,
-
-        .exposureUITitle: exposureUITitleDefault,
-        .symptomsUITitle: symptomsUITitleDefault,
-        .spreadPreventionUITitle: spreadPreventionUITitleDefault,
-        .recentExposuresUITitle: recentExposuresUITitleDefault,
-
-        .chatBotLink: "https://erouska.cz/#chat-open",
-    ]
 
     static var shareAppDynamicLink: String {
         return AppDelegate.shared.remoteConfigString(forKey: .shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
@@ -254,63 +297,4 @@ struct RemoteValues {
         }
     }
 
-}
-
-// MARK: - Backup
-
-private extension RemoteValues {
-
-    static func localValue(forResource resource: String, withExtension extension: String, withKey key: String) -> String {
-        guard
-            let path = Bundle.main.url(forResource: resource, withExtension: `extension`),
-            let dict = NSDictionary(contentsOf: path),
-            let value = dict.value(forKey: key) as? String
-        else { return "" }
-
-        return value
-    }
-
-    static var helpMarkdownBackup: String {
-        return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
-    }
-
-    static var encounterWarningDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "encounterWarningDefault")
-    }
-
-    static var riskyEncountersTitleDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersTitleDefault")
-    }
-
-    static var riskyEncountersWithSymptomsDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithSymptomsDefault")
-    }
-
-    static var riskyEncountersWithoutSymptomsDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithoutSymptomsDefault")
-    }
-
-    static var noEncounterHeaderDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterHeaderDefault")
-    }
-
-    static var noEncounterBodyDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterBodyDefault")
-    }
-
-    static var exposureUITitleDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "exposureUITitleDefault")
-    }
-
-    static var symptomsUITitleDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "symptomsUITitleDefault")
-    }
-
-    static var spreadPreventionUITitleDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "spreadPreventionUITitleDefault")
-    }
-
-    static var recentExposuresUITitleDefault: String {
-        return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "recentExposuresUITitleDefault")
-    }
 }
