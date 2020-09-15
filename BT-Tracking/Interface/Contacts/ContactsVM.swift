@@ -15,7 +15,9 @@ struct ContactsVM {
 
     let title = "contacts_title"
 
-    let contacts = RemoteValues.contactsContent
+    var contacts: [Contact] {
+        return RemoteValues.contactsContent
+    }
 
 }
 

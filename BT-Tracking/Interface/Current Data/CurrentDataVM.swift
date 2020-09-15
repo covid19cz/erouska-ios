@@ -16,7 +16,9 @@ final class CurrentDataVM {
     let tabTitle = "data_list_title"
     let tabIcon = UIImage(named: "MyData")
 
-    let measuresURL = URL(string: RemoteValues.currentMeasuresUrl)
+    var measuresURL: URL? {
+        return URL(string: RemoteValues.currentMeasuresUrl)
+    }
 
     var sections: [Section] = [] {
         didSet {
@@ -89,8 +91,10 @@ final class CurrentDataVM {
                 }
 
                 DispatchQueue.main.async {
-                    self.sections = self.sections(from: self.currentData)
                     AppSettings.currentDataLastFetchDate = Date()
+
+                    self.currentData = realm.objects(CurrentDataRealm.self).last
+                    self.sections = self.sections(from: self.currentData)
                     self.updateFooter()
                 }
             } else if let error = error {

@@ -114,7 +114,9 @@ final class ActiveAppVM {
 
     let lastUpdateText = "active_data_update"
 
-    let menuRiskyEncounters = RemoteValues.exposureUITitle
+    var menuRiskyEncounters: String {
+        return RemoteValues.exposureUITitle
+    }
     let menuSendReports = "data_list_send_button"
     let menuDebug = "debug"
     let menuCancel = "close"
@@ -124,7 +126,9 @@ final class ActiveAppVM {
     let backgroundModeAction = "active_background_mode_settings"
     let backgroundModeCancel = "active_background_mode_cancel"
 
-    let exposureTitle = RemoteValues.exposureBannerTitle
+    var exposureTitle: String {
+        return RemoteValues.exposureBannerTitle
+    }
     let exposureBannerClose = "close"
     let exposureMoreInfo = "active_exposure_more_info"
 

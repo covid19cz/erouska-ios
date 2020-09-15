@@ -36,6 +36,12 @@ final class ContactsVC: UIViewController {
         tableView.estimatedRowHeight = 210
         tableView.rowHeight = UITableView.automaticDimension
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.reloadData()
+    }
 }
 
 extension ContactsVC: UITableViewDataSource {

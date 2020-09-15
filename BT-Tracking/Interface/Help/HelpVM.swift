@@ -19,7 +19,9 @@ struct HelpVM {
 
     let chatbot = "help_chatbot"
 
-    let chatbotLink = RemoteValues.chatBotLink
+    var chatbotLink: String {
+        return RemoteValues.chatBotLink
+    }
 
     var markdownContent: String {
         return RemoteValues.helpMarkdown
