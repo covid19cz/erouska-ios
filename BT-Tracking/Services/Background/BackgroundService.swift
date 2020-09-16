@@ -11,6 +11,7 @@ import UIKit
 import RealmSwift
 import BackgroundTasks
 import FirebaseFunctions
+import FirebaseAnalytics
 
 final class BackgroundService {
 
@@ -154,6 +155,8 @@ final class BackgroundService {
 private extension BackgroundService {
 
     func performTask(_ task: BGTask?) -> Progress {
+        Analytics.logEvent("key_export_download_started", parameters: nil)
+
         isRunning = true
 
         // Notify the user if bluetooth is off
@@ -193,6 +196,8 @@ private extension BackgroundService {
                         self.isRunning = false
 
                         task?.setTaskCompleted(success: true)
+
+                        Analytics.logEvent("key_export_download_finished", parameters: nil)
                     case .failure(let error):
                         reportFailure(error)
                     }
