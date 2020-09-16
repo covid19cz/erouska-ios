@@ -58,6 +58,7 @@ final class ActiveAppVC: UIViewController {
                     AppSettings.lastExposureWarningId = exposure.id.uuidString
                 }
                 self?.exposureBannerView.isHidden = exposure == nil || AppSettings.lastExposureWarningClosed == true
+                self?.view.setNeedsLayout()
             }
         ).disposed(by: disposeBag)
 
@@ -72,6 +73,7 @@ final class ActiveAppVC: UIViewController {
         super.viewWillAppear(animated)
 
         updateViewModel()
+        view.setNeedsLayout()
     }
 
     override func viewDidAppear(_ animated: Bool) {
