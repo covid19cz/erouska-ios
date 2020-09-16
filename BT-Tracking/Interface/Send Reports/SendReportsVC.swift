@@ -43,6 +43,8 @@ final class SendReportsVC: UIViewController {
     @IBOutlet private weak var actionButton: Button!
 
     override func viewDidLoad() {
+        codeTextField.textContentType = .oneTimeCode
+
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
 
