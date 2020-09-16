@@ -88,7 +88,7 @@
 		8083D8E8244640A0007FA4E9 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 		8083D8E9244640A0007FA4E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80BE18BF2433C18200C4A9E6 /* Localizable.strings */; };
 		8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
-		8083D8EC244640A0007FA4E9 /* DataList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* DataList.storyboard */; };
+		8083D8EC244640A0007FA4E9 /* SendReports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* SendReports.storyboard */; };
 		8083D9142446F779007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodesService.swift */; };
@@ -134,7 +134,7 @@
 		80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 80DF5FB824CB579E00332D25 /* AlamofireImage */; };
 		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
 		80ECB96624290DA900E57601 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
-		80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* DataList.storyboard */; };
+		80ECB96C24292FB000E57601 /* SendReports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* SendReports.storyboard */; };
 		80F3131524E3FE8500A93CCD /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 80F3131424E3FE8500A93CCD /* Zip */; };
 		80F3131724E3FE9100A93CCD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 80F3131624E3FE9100A93CCD /* Alamofire */; };
 		80F3131924E3FE9100A93CCD /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 80F3131824E3FE9100A93CCD /* Crypto */; };
@@ -307,7 +307,7 @@
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
 		80ECB96524290DA900E57601 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		80ECB96B24292FB000E57601 /* DataList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DataList.storyboard; sourceTree = "<group>"; };
+		80ECB96B24292FB000E57601 /* SendReports.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SendReports.storyboard; sourceTree = "<group>"; };
 		80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureDiagnosisKeyFile.pb.swift; sourceTree = "<group>"; };
 		80FC71BF247718C700F86389 /* ExposureEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureEntities.swift; sourceTree = "<group>"; };
 		901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -507,7 +507,7 @@
 				D61DFE5324C1A904002E1B2E /* Force Update */,
 				BD0191452424330200707341 /* Active */,
 				D6231CC024F52C930023BDC8 /* Current Data */,
-				80ECB96A24292F9600E57601 /* Data List */,
+				80ECB96A24292F9600E57601 /* Send Reports */,
 				D63E443324DD85C2007B6728 /* Risky Encounters */,
 				80CA44D9244AFC0A008E22F8 /* Contacts */,
 				BDB07FBE24254A7B00834E79 /* Help */,
@@ -691,15 +691,15 @@
 			path = Background;
 			sourceTree = "<group>";
 		};
-		80ECB96A24292F9600E57601 /* Data List */ = {
+		80ECB96A24292F9600E57601 /* Send Reports */ = {
 			isa = PBXGroup;
 			children = (
-				80ECB96B24292FB000E57601 /* DataList.storyboard */,
+				80ECB96B24292FB000E57601 /* SendReports.storyboard */,
 				80D2345224E31DFF00F684AA /* SendReportsVC.swift */,
 				80D2345824E320D700F684AA /* SendReportsVM.swift */,
 				80BF9C252424D55800150108 /* SendResultVC.swift */,
 			);
-			path = "Data List";
+			path = "Send Reports";
 			sourceTree = "<group>";
 		};
 		BD0191452424330200707341 /* Active */ = {
@@ -967,7 +967,7 @@
 				D65E57D624D056C8000F2402 /* NewsPageView.xib in Resources */,
 				FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */,
 				D6231CC524F52CD00023BDC8 /* CurrentData.storyboard in Resources */,
-				80ECB96C24292FB000E57601 /* DataList.storyboard in Resources */,
+				80ECB96C24292FB000E57601 /* SendReports.storyboard in Resources */,
 				800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */,
 				D63A264424DB023100C34CCF /* GoogleService-Info.plist in Resources */,
 			);
@@ -992,7 +992,7 @@
 				D65E57E024D05D83000F2402 /* News.storyboard in Resources */,
 				8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */,
 				D6231CB324EBC0510023BDC8 /* Error.storyboard in Resources */,
-				8083D8EC244640A0007FA4E9 /* DataList.storyboard in Resources */,
+				8083D8EC244640A0007FA4E9 /* SendReports.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
