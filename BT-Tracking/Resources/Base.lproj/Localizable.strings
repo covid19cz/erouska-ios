@@ -164,7 +164,7 @@
 "error_activation_internet_text" = "Zkontrolujte připojení k internetu a aktivaci aplikace zkuste znovu. Pokud chyba přetrvává, kontaktujte nás na info@erouska.cz.";
 "error_activation_internet_title_action" = "Zkusit znovu";
 
-"exposure_detected_title" = "Setkali jste se s osobou, u které bylo potvrzeno onemocenění COVI-19. Aplikace získala přístup k údajům o datu, délce tohoto kontaktu a síle signálu.";
+"exposure_detected_title" = "Setkali jste se s osobou, u které bylo potvrzeno onemocenění COVI-19"; // only first part rest is from apple
 
 "current_data_footer" = "Poslední aktualizace %@";
 "current_data_measures" = "Aktuální opatření";
