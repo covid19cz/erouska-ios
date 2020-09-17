@@ -28,7 +28,6 @@
 		805192A424AF8E2700765392 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A324AF8E2700765392 /* RxDataSources */; };
 		805192A624AF8E2700765392 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A524AF8E2700765392 /* RxKeyboard */; };
 		805192A824AF8E2700765392 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A724AF8E2700765392 /* RxRealm */; };
-		805192AA24AF8E2700765392 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A924AF8E2700765392 /* DeviceKit */; };
 		805192AC24AF8E2700765392 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AB24AF8E2700765392 /* Reachability */; };
 		805192AE24AF8E2700765392 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AD24AF8E2700765392 /* SwiftyMarkdown */; };
 		8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */; };
@@ -100,12 +99,16 @@
 		8084DEF724AF86C1001FBB16 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* ReportService.swift */; };
 		8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* ReportService.swift */; };
 		8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8091E08124CB3CDF00E0E877 /* AlamofireImage */; };
+		8095C0EB2513BA7900A472C3 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 8095C0EA2513BA7900A472C3 /* FirebaseFunctions */; };
+		8095C0ED2513BA7900A472C3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8095C0EC2513BA7900A472C3 /* FirebaseAnalytics */; };
+		8095C0EF2513BA7900A472C3 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8095C0EE2513BA7900A472C3 /* FirebaseCrashlytics */; };
+		8095C0F12513BA7900A472C3 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 8095C0F02513BA7900A472C3 /* FirebaseRemoteConfig */; };
+		8095C0F32513BA7900A472C3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8095C0F22513BA7900A472C3 /* FirebaseAuth */; };
 		809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8924AF8BFB00D34CC9 /* RxSwift */; };
 		809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8B24AF8BFB00D34CC9 /* RxCocoa */; };
 		809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8E24AF8C2900D34CC9 /* RxDataSources */; };
 		809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9124AF8C3700D34CC9 /* RxKeyboard */; };
 		809F9D9524AF8C8700D34CC9 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9424AF8C8700D34CC9 /* RxRealm */; };
-		80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCA24AF8CBD0088D256 /* DeviceKit */; };
 		80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCD24AF8D0B0088D256 /* Reachability */; };
 		80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BD024AF8D550088D256 /* SwiftyMarkdown */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
@@ -244,12 +247,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.debug.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.debug.xcconfig"; sourceTree = "<group>"; };
-		36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.debug.xcconfig"; sourceTree = "<group>"; };
-		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		4651F9B724505A7B0003D23D /* RemoteTitles.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RemoteTitles.strings; sourceTree = "<group>"; };
-		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		802AFE4325135BC0004954AF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
@@ -314,14 +313,11 @@
 		80FC71B6247717BE00F86389 /* ExposureDiagnosisKeyFile.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureDiagnosisKeyFile.pb.swift; sourceTree = "<group>"; };
 		80FC71BF247718C700F86389 /* ExposureEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureEntities.swift; sourceTree = "<group>"; };
 		901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.release.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig"; sourceTree = "<group>"; };
-		991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.release.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.release.xcconfig"; sourceTree = "<group>"; };
 		A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVC.swift; sourceTree = "<group>"; };
 		BDB07FBF24254A8F00834E79 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		BDBB00D724261D5C00871FE4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		C4E1A1B424311D3800108325 /* RemoteValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteValues.swift; sourceTree = "<group>"; };
 		D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForceUpdate.storyboard; sourceTree = "<group>"; };
 		D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVC.swift; sourceTree = "<group>"; };
@@ -366,9 +362,6 @@
 		D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		D6CD28E024CF24DC005847AA /* ExposurePermissionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposurePermissionVC.swift; sourceTree = "<group>"; };
 		D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstActivationVM.swift; sourceTree = "<group>"; };
-		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
-		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
-		F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.release.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.release.xcconfig"; sourceTree = "<group>"; };
 		FB22CCC6748EFFF61D8FB629 /* Pods_eRouska_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
@@ -384,14 +377,18 @@
 				809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */,
 				800E611424DAE98B00C63567 /* Zip in Frameworks */,
 				809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */,
-				80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */,
 				80D2345124E2FDD200F684AA /* Crypto in Frameworks */,
 				809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */,
 				8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */,
 				80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */,
+				8095C0F12513BA7900A472C3 /* FirebaseRemoteConfig in Frameworks */,
 				809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */,
+				8095C0ED2513BA7900A472C3 /* FirebaseAnalytics in Frameworks */,
 				80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */,
+				8095C0F32513BA7900A472C3 /* FirebaseAuth in Frameworks */,
 				804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */,
+				8095C0EF2513BA7900A472C3 /* FirebaseCrashlytics in Frameworks */,
+				8095C0EB2513BA7900A472C3 /* FirebaseFunctions in Frameworks */,
 				80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */,
 				9033C80125A5023DB6B1BF45 /* Pods_eRouska_Dev.framework in Frameworks */,
 			);
@@ -405,7 +402,6 @@
 				805192A824AF8E2700765392 /* RxRealm in Frameworks */,
 				805192A224AF8E2700765392 /* RxSwift in Frameworks */,
 				805192A624AF8E2700765392 /* RxKeyboard in Frameworks */,
-				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
 				80F3131924E3FE9100A93CCD /* Crypto in Frameworks */,
 				805192A424AF8E2700765392 /* RxDataSources in Frameworks */,
 				80F3131524E3FE8500A93CCD /* Zip in Frameworks */,
@@ -421,23 +417,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05740D8C6D5179F12E3E9CF4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */,
-				415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */,
-				C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */,
-				DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */,
-				E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */,
-				991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */,
-				36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */,
-				92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */,
-				0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */,
-				F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		46F21CA3242243F400C01DFA /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,7 +452,6 @@
 			children = (
 				8054C0AF241D492F008907B8 /* BT-Tracking */,
 				8054C0AE241D492F008907B8 /* Products */,
-				05740D8C6D5179F12E3E9CF4 /* Pods */,
 				5357F8D365121189A6E32250 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -852,13 +830,17 @@
 				809F9D8E24AF8C2900D34CC9 /* RxDataSources */,
 				809F9D9124AF8C3700D34CC9 /* RxKeyboard */,
 				809F9D9424AF8C8700D34CC9 /* RxRealm */,
-				80AB9BCA24AF8CBD0088D256 /* DeviceKit */,
 				80AB9BCD24AF8D0B0088D256 /* Reachability */,
 				80AB9BD024AF8D550088D256 /* SwiftyMarkdown */,
 				8091E08124CB3CDF00E0E877 /* AlamofireImage */,
 				804BE48C24D9A30A00D40C07 /* Alamofire */,
 				800E611324DAE98B00C63567 /* Zip */,
 				80D2345024E2FDD200F684AA /* Crypto */,
+				8095C0EA2513BA7900A472C3 /* FirebaseFunctions */,
+				8095C0EC2513BA7900A472C3 /* FirebaseAnalytics */,
+				8095C0EE2513BA7900A472C3 /* FirebaseCrashlytics */,
+				8095C0F02513BA7900A472C3 /* FirebaseRemoteConfig */,
+				8095C0F22513BA7900A472C3 /* FirebaseAuth */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
@@ -887,7 +869,6 @@
 				805192A324AF8E2700765392 /* RxDataSources */,
 				805192A524AF8E2700765392 /* RxKeyboard */,
 				805192A724AF8E2700765392 /* RxRealm */,
-				805192A924AF8E2700765392 /* DeviceKit */,
 				805192AB24AF8E2700765392 /* Reachability */,
 				805192AD24AF8E2700765392 /* SwiftyMarkdown */,
 				80DF5FB824CB579E00332D25 /* AlamofireImage */,
@@ -934,13 +915,13 @@
 				809F9D8D24AF8C2900D34CC9 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				809F9D9024AF8C3700D34CC9 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
 				809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */,
-				80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */,
 				80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */,
 				8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				804BE48B24D9A30A00D40C07 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */,
 				80D2344F24E2FDD200F684AA /* XCRemoteSwiftPackageReference "swift-crypto" */,
+				8095C0E92513BA7800A472C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
@@ -1459,7 +1440,6 @@
 		};
 		8054C0C2241D4932008907B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1475,6 +1455,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
@@ -1486,7 +1467,6 @@
 		};
 		8054C0C3241D4932008907B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1502,6 +1482,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
@@ -1512,7 +1493,6 @@
 		};
 		8083D8F2244640A0007FA4E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1528,6 +1508,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
@@ -1540,7 +1521,6 @@
 		};
 		8083D8F3244640A0007FA4E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1556,6 +1536,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
@@ -1622,6 +1603,14 @@
 				minimumVersion = 4.1.0;
 			};
 		};
+		8095C0E92513BA7800A472C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = "6.32-spm-beta";
+				kind = branch;
+			};
+		};
 		809F9D8824AF8BFB00D34CC9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -1652,14 +1641,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.0.1;
-			};
-		};
-		80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devicekit/DeviceKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.2.0;
 			};
 		};
 		80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */ = {
@@ -1732,11 +1713,6 @@
 			package = 809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */;
 			productName = RxRealm;
 		};
-		805192A924AF8E2700765392 /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
-		};
 		805192AB24AF8E2700765392 /* Reachability */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */;
@@ -1751,6 +1727,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8091E08024CB3CDF00E0E877 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
+		};
+		8095C0EA2513BA7900A472C3 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8095C0E92513BA7800A472C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		8095C0EC2513BA7900A472C3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8095C0E92513BA7800A472C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		8095C0EE2513BA7900A472C3 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8095C0E92513BA7800A472C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		8095C0F02513BA7900A472C3 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8095C0E92513BA7800A472C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		8095C0F22513BA7900A472C3 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8095C0E92513BA7800A472C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 		809F9D8924AF8BFB00D34CC9 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1776,11 +1777,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */;
 			productName = RxRealm;
-		};
-		80AB9BCA24AF8CBD0088D256 /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
 		};
 		80AB9BCD24AF8D0B0088D256 /* Reachability */ = {
 			isa = XCSwiftPackageProductDependency;
