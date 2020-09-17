@@ -67,19 +67,18 @@ final class CurrentDataVM {
     }
 
     func fetchCurrentDataIfNeeded() {
-        if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
+        /*if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
             var components = DateComponents()
             components.hour = 3
             if Calendar.current.date(byAdding: components, to: lastFetchedDate)! > Date() { return }
-        }
+        }*/
 
         let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
             guard let self = self else { return }
             if let result = result?.data as? [String: Any] {
-                let realm = try! Realm()
-                
-                try! realm.write {
+                let realm = try? Realm()
+                try? realm?.write {
                     if let value = result["testsTotal"] as? Int { self.currentData?.testsTotal = value }
                     if let value = result["testsIncrease"] as? Int { self.currentData?.testsIncrease = value }
                     if let value = result["confirmedCasesTotal"] as? Int { self.currentData?.confirmedCasesTotal = value }
@@ -93,7 +92,6 @@ final class CurrentDataVM {
                 DispatchQueue.main.async {
                     AppSettings.currentDataLastFetchDate = Date()
 
-                    self.currentData = realm.objects(CurrentDataRealm.self).last
                     self.sections = self.sections(from: self.currentData)
                     self.updateFooter()
                 }

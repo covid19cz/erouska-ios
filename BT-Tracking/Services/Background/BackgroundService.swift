@@ -216,8 +216,7 @@ private extension BackgroundService {
         guard !exposures.isEmpty else {
             log("EXP: no exposures, skip!")
 
-            #if PROD
-            #else
+            #if !PROD || DEBUG
             showExposureNotification(result: "EXP: No exposures detected, device is clear.")
             #endif
             return
@@ -231,8 +230,7 @@ private extension BackgroundService {
         let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
 
-        #if PROD
-        #else
+        #if !PROD || DEBUG
         let dateFormat = DateFormatter()
         dateFormat.timeStyle = .short
         dateFormat.dateStyle = .short
