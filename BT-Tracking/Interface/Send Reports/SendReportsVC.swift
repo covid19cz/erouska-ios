@@ -10,7 +10,6 @@ import UIKit
 import Reachability
 import RxSwift
 import RxRelay
-import DeviceKit
 
 final class SendReportsVC: UIViewController {
 
@@ -55,7 +54,7 @@ final class SendReportsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if Device.current == .iPhoneSE {
+        if UIScreen.main.bounds.size.width == 320 {
             navigationController?.navigationBar.prefersLargeTitles = false
         }
     }

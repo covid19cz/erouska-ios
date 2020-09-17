@@ -33,7 +33,9 @@ extension AppDelegate {
                     single(.error(error))
                     return
                 }
-                RemoteConfig.remoteConfig().activate()
+
+                RemoteConfig.remoteConfig().activate { _, _ in }
+
                 log("AppDelegate\(background ? " background" : ""): Retrieved values from the Firebase Remote Config!")
                 single(.success(()))
             }
