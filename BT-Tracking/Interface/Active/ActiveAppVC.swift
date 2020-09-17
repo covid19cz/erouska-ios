@@ -67,6 +67,10 @@ final class ActiveAppVC: UIViewController {
         exposureBannerView.layer.shadowOffset = CGSize(width: 0, height: 1)
         exposureBannerView.layer.shadowRadius = 2
         exposureBannerView.layer.shadowOpacity = 1
+
+        AppDelegate.shared.openResultsCallback = { [weak self] in
+            self?.riskyEncountersAction()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,7 +157,7 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuSendReports), style: .default, handler: { [weak self] _ in
             self?.sendReportsAction()
         }))
-        #if !PROD
+        #if !PROD || DEBUG
         controller.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
             self?.debugAction()
@@ -336,8 +340,7 @@ private extension ActiveAppVC {
 
     // MARK: - Debug
 
-    #if PROD
-    #else
+    #if !PROD || DEBUG
     func debugAction() {
         let storyboard = UIStoryboard(name: "Debug", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")

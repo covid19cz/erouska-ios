@@ -19,6 +19,8 @@
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
 		800E611424DAE98B00C63567 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 800E611324DAE98B00C63567 /* Zip */; };
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
+		802AFE4425135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
+		802AFE4525135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
 		804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BE48924D9A11A00D40C07 /* ReportEntities.swift */; };
 		804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 804BE48C24D9A30A00D40C07 /* Alamofire */; };
 		805192A024AF8E2700765392 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8051929F24AF8E2700765392 /* RxCocoa */; };
@@ -249,6 +251,7 @@
 		4651F9B724505A7B0003D23D /* RemoteTitles.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RemoteTitles.strings; sourceTree = "<group>"; };
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		802AFE4325135BC0004954AF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
 		8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureService.swift; sourceTree = "<group>"; };
 		8054C0AD241D492F008907B8 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -658,6 +661,7 @@
 				80BE3FCE2446028E00D0C810 /* InputValidation.swift */,
 				8083D9132446F779007FA4E9 /* Markdown.swift */,
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
+				802AFE4325135BC0004954AF /* Notifications.swift */,
 				D6340C6124C1F46D00E550A1 /* Version.swift */,
 			);
 			path = Others;
@@ -1205,6 +1209,7 @@
 				80C5CECC24EAB0140011B53B /* Configuration.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
+				802AFE4425135BC0004954AF /* Notifications.swift in Sources */,
 				D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */,
 				D6CD28E624CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
@@ -1253,6 +1258,7 @@
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D6231CCC24F6610C0023BDC8 /* CurrentData.swift in Sources */,
+				802AFE4525135BC0004954AF /* Notifications.swift in Sources */,
 				80026D9924FE492600BBDB36 /* VerificationEntities.swift in Sources */,
 				D6231CB624EBC0760023BDC8 /* ErrorVC.swift in Sources */,
 				D6231CAE24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,

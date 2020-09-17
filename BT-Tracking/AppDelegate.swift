@@ -13,6 +13,7 @@ import FirebaseFunctions
 import FirebaseRemoteConfig
 import RealmSwift
 import RxSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     static var dependency = AppDependency()
+
+    var openResultsCallback: (() -> Void)?
     
     // MARK: - UIApplicationDelegate
 
@@ -120,18 +123,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case UserNotificationAction.openExposureDetectionResults.rawValue,
+             UserNotificationAction.openTestResults.rawValue:
+            openResultsCallback?()
+        default:
+            break
+        }
+        completionHandler()
+    }
+
+}
+
 private extension AppDelegate {
 
     func generalSetup() {
-        let generalCategory = UNNotificationCategory(
-            identifier: "Scanning",
-            actions: [],
-            intentIdentifiers: [],
-            options: .customDismissAction
-        )
-
         let center = UNUserNotificationCenter.current()
-        center.setNotificationCategories([generalCategory])
+        center.delegate = self
 
         #if DEBUG && TARGET_IPHONE_SIMULATOR
         Auth.auth().settings?.isAppVerificationDisabledForTesting = true
