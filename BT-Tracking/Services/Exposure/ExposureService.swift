@@ -32,6 +32,12 @@ protocol ExposureServicing: class {
     func getDiagnosisKeys(callback: @escaping KeysCallback)
     func getTestDiagnosisKeys(callback: @escaping KeysCallback)
 
+    // Traveler
+    typealias TravelerCallback = (Result<Bool, Error>) -> Void
+
+    @available(iOS 13.7, *)
+    func getUserTraveled(callback: @escaping TravelerCallback)
+
     // Detection
     typealias DetectCallback = (Result<[Exposure], Error>) -> Void
     var detectingExposures: Bool { get }
@@ -144,6 +150,17 @@ final class ExposureService: ExposureServicing {
 
     func getTestDiagnosisKeys(callback: @escaping KeysCallback) {
         manager.getTestDiagnosisKeys(completionHandler: keysCallback(callback))
+    }
+
+    @available(iOS 13.7, *)
+    func getUserTraveled(callback: @escaping TravelerCallback) {
+        manager.getUserTraveled(completionHandler: { traveler, error in
+            if let error = error {
+                callback(.failure(error))
+            } else {
+                callback(.success(traveler))
+            }
+        })
     }
 
     private func keysCallback(_ callback: @escaping KeysCallback) -> ENGetDiagnosisKeysHandler {

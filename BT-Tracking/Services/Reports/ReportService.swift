@@ -21,7 +21,7 @@ protocol ReportServicing: class {
     typealias UploadKeysCallback = (Result<Bool, Error>) -> Void
 
     var isUploading: Bool { get }
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback)
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, traveler: Bool, callback: @escaping UploadKeysCallback)
 
     typealias DownloadKeysCallback = (Result<ReportKeys, Error>) -> Void
 
@@ -81,7 +81,7 @@ final class ReportService: ReportServicing {
     
     private(set) var isUploading: Bool = false
 
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback) {
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, traveler: Bool, callback: @escaping UploadKeysCallback) {
         guard !isUploading else {
             callback(.failure(ReportError.alreadyRunning))
             return
@@ -114,7 +114,7 @@ final class ReportService: ReportServicing {
             verificationPayload: verificationPayload,
             hmacKey: hmacSecret.base64EncodedString(),
             symptomOnsetInterval: nil,
-            traveler: false,
+            traveler: traveler,
             revisionToken: nil,
             padding: randomBase64
         )

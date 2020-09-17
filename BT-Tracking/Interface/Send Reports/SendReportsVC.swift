@@ -149,11 +149,11 @@ private extension SendReportsVC {
         AppDelegate.dependency.verification.verify(with: code) { [weak self] result in
             switch result {
             case .success(let token):
-                #if DEBUG
-                self?.debugAskForTypeOfKeys(token: token)
-                #else
-                self?.sendReport(with: .normal, token: token)
-                #endif
+                if #available(iOS 13.7, *) {
+                    self?.askIfUserIsTraveler(token: token)
+                } else {
+                    self?.report(with: token)
+                }
             case .failure(let error):
                 log("DataListVC: Failed to verify code \(error)")
                 self?.reportHideProgress()
@@ -162,19 +162,43 @@ private extension SendReportsVC {
         }
     }
 
-    func debugAskForTypeOfKeys(token: String) {
+    func report(with token: String, traveler: Bool = false) {
+        #if DEBUG
+        debugAskForTypeOfKeys(token: token, traveler: traveler)
+        #else
+        sendReport(with: .normal, token: token, traveler: traveler)
+        #endif
+    }
+
+    func debugAskForTypeOfKeys(token: String, traveler: Bool) {
         let controller = UIAlertController(title: "Který druh klíčů?", message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Test Keys", style: .default, handler: { [weak self] _ in
-            self?.sendReport(with: .test, token: token)
+            self?.sendReport(with: .test, token: token, traveler: traveler)
         }))
         controller.addAction(UIAlertAction(title: "Normal Keys", style: .default, handler: {[weak self]  _ in
-            self?.sendReport(with: .normal, token: token)
+            self?.sendReport(with: .normal, token: token, traveler: traveler)
         }))
         controller.addAction(UIAlertAction(title: NSLocalizedString("active_background_mode_cancel", comment: ""), style: .cancel, handler: nil))
         present(controller, animated: true, completion: nil)
     }
 
-    func sendReport(with type: ReportType, token: String) {
+    @available (iOS 13.7, *)
+    func askIfUserIsTraveler(token: String) {
+        let exposureService = AppDelegate.dependency.exposureService
+        exposureService.getUserTraveled { [weak self] result in
+            switch result {
+            case let .success(traveler):
+                self?.report(with: token, traveler: traveler)
+            case let .failure(error):
+                #if DEBUG
+                self?.show(error: error)
+                #endif
+                self?.report(with: token)
+            }
+        }
+    }
+
+    func sendReport(with type: ReportType, token: String, traveler: Bool) {
         let verificationService = AppDelegate.dependency.verification
         let reportService = AppDelegate.dependency.reporter
         let exposureService = AppDelegate.dependency.exposureService
@@ -196,7 +220,7 @@ private extension SendReportsVC {
                     verificationService.requestCertificate(token: token, hmacKey: hmacKey) { result in
                         switch result {
                         case .success(let certificate):
-                            self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret)
+                            self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret, traveler: traveler)
                         case .failure(let error):
                             log("DataListVC: Failed to get verification payload \(error)")
                             self.reportHideProgress()
@@ -230,8 +254,14 @@ private extension SendReportsVC {
         }
     }
 
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data) {
-        AppDelegate.dependency.reporter.uploadKeys(keys: keys, verificationPayload: verificationPayload, hmacSecret: hmacSecret, callback: { [weak self] result in
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, traveler: Bool) {
+        AppDelegate.dependency.reporter.uploadKeys(
+            keys: keys,
+            verificationPayload:
+            verificationPayload,
+            hmacSecret: hmacSecret,
+            traveler: traveler)
+        { [weak self] result in
             self?.reportHideProgress()
             switch result {
             case .success:
@@ -239,7 +269,7 @@ private extension SendReportsVC {
             case .failure:
                 self?.showSendDataError()
             }
-        })
+        }
     }
 
     func showVerifyError() {
