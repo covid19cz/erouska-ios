@@ -149,10 +149,13 @@
 "exposure_activation_restricted_cancel_action" = "Nyní ne";
 
 "exposure_activation_unknown_title" = "Nepodařilo se aktivovat oznámení";
-"exposure_activation_unknown_body" = "eRouškce se nepodařilo aktivovat oznámení o kontaktu s COVID-19. Zkontrolujte si vaše nastavení. Pokud problém přetrvává, kontaktujte nás na info@erouska.cz.";
+"exposure_activation_unknown_body" = "eRouškce se nepodařilo aktivovat oznámení o kontaktu s COVID-19. Zkontrolujte si vaše nastavení. Pokud problém přetrvává, kontaktujte nás na info@erouska.cz. (Kód chyby: %@)";
+
+"exposure_activation_storage_title" = "Nepodařilo se aktivovat oznámení";
+"exposure_activation_storage_body" = "Oznámení o kontaktech s nákazou nelze aktivovat, protože máte nedostatek místa v zařízení. Uvolněte místo například odstraněním nevyužívaných aplikací a aktivaci proveďte znovu.";
 
 "exposure_deactivation_unknown_title" = "Nepodařilo se deaktivovat oznámení";
-"exposure_deactivation_unknown_body" = "eRouškce se nepodařilo deaktivovat oznámení o kontaktu s COVID-19. Pokud problém přetrvává, kontaktujte nás na info@erouska.cz.";
+"exposure_deactivation_unknown_body" = "eRouškce se nepodařilo deaktivovat oznámení o kontaktu s COVID-19. Pokud problém přetrvává, kontaktujte nás na info@erouska.cz. (Kód chyby: %@)";
 
 "error_title" = "Chyba";
 

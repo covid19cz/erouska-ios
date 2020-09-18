@@ -140,6 +140,9 @@ final class ActiveAppVM {
     let errorActivationUnknownTitle = "exposure_activation_unknown_title"
     let errorActivationUnknownBody = "exposure_activation_unknown_body"
 
+    let errorActivationStorageTitle = "exposure_activation_storage_title"
+    let errorActivationStorageBody = "exposure_activation_storage_body"
+
     let errorDeactivationUnknownTitle = "exposure_deactivation_unknown_title"
     let errorDeactivationUnknownBody = "exposure_deactivation_unknown_body"
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ExposureNotification
 import FirebaseAuth
 import RxSwift
 import RealmSwift
@@ -231,7 +232,17 @@ private extension ActiveAppVC {
                         case .notAuthorized, .notEnabled:
                             break
                         case .unsupported:
-                            break // it shouldn't be possible
+                            self.viewModel.exposureService.deactivate { [weak self] _ in
+                                self?.viewModel.exposureService.activate { [weak self] error in
+                                    guard let error = error else { return }
+                                    switch error {
+                                    case .activationError(let code):
+                                        self?.showExposureUnknownError(error, code: code, activation: true)
+                                    default:
+                                        self?.showExposureUnknownError(error, activation: true)
+                                    }
+                                }
+                            }
                         case .restricted:
                             self.showAlert(
                                 title: self.viewModel.errorActivationRestiredTitle,
@@ -240,8 +251,10 @@ private extension ActiveAppVC {
                                 okHandler: { [weak self] in self?.openSettings() },
                                 action: (title: self.viewModel.errorActivationCancelTitle, handler: nil)
                             )
+                        case .insufficientStorage, .insufficientMemory:
+                            self.showExposureStorageError()
                         default:
-                            self.showExposureUnknownError(error, activation: true)
+                            self.showExposureUnknownError(error, code: code, activation: true)
                         }
                     default:
                         self.showExposureUnknownError(error, activation: true)
@@ -307,16 +320,16 @@ private extension ActiveAppVC {
         present(controller, animated: true)
     }
 
-    func showExposureUnknownError(_ error: Error, activation: Bool) {
-        #if DEBUG
-        show(error: error)
-        #else
+    func showExposureStorageError() {
+        showAlert(title: viewModel.errorActivationStorageTitle, message: viewModel.errorActivationStorageBody)
+    }
+
+    func showExposureUnknownError(_ error: Error, code: ENError.Code = .unknown, activation: Bool) {
         if activation {
-            showAlert(title: viewModel.errorActivationUnknownTitle, message: viewModel.errorActivationUnknownBody)
+            showAlert(title: viewModel.errorActivationUnknownTitle, message: String(format: Localizable(viewModel.errorActivationUnknownBody), arguments: ["\(code.rawValue)"]))
         } else {
             showAlert(title: viewModel.errorDeactivationUnknownTitle, message: viewModel.errorDeactivationUnknownBody)
         }
-        #endif
     }
 
     // MARK: - Open external

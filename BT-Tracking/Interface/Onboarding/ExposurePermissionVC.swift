@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ExposureNotification
 import UserNotifications
 
 final class ExposurePermissionVC: UIViewController {
@@ -68,12 +69,14 @@ private extension ExposurePermissionVC {
                         })
                     case .unsupported:
                         self.performSegue(withIdentifier: "unsupported", sender: nil)
+                    case .insufficientStorage, .insufficientMemory:
+                        self.showExposureStorageError()
                     case .restricted, .notEnabled:
                         self.showPermissionDeniedAlert(canceAction: { [weak self] in
                             self?.requestNotificationPermission()
                         })
                     default:
-                        self.showUnknownError(error)
+                        self.showUnknownError(error, code: code)
                     }
                 default:
                     self.showUnknownError(error)
@@ -108,16 +111,16 @@ private extension ExposurePermissionVC {
         UIApplication.shared.open(settingsUrl)
     }
 
-    func showUnknownError(_ error: Error) {
-        #if DEBUG
-        show(error: error, okHandler: { self.requestNotificationPermission() })
-        #else
+    func showExposureStorageError() {
+        showAlert(title: viewModel.errorStorageTitle, message: viewModel.errorStorageBody)
+    }
+
+    func showUnknownError(_ error: Error, code: ENError.Code = .unknown) {
         showAlert(
             title: viewModel.errorUnknownTitle,
-            message: viewModel.errorUnknownBody,
+            message: String(format: Localizable(viewModel.errorUnknownBody), arguments: ["\(code.rawValue)"]),
             okHandler: { self.requestNotificationPermission() }
         )
-        #endif
     }
 
     func showPermissionDeniedAlert(canceAction: @escaping () -> Void) {
