@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import Reachability
 
 final class CurrentDataVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -34,6 +35,14 @@ final class CurrentDataVC: UIViewController {
 
         viewModel.obervableErrors.subscribe(onNext: { [weak self] error in
             self?.hideProgress(fromView: true)
+
+            // Don't show error when internet connection is not available
+            if let connection = try? Reachability().connection, connection == .unavailable {
+                self?.tableView.reloadData()
+                self?.footerLabel.text = self?.viewModel.footer
+                return
+            }
+
             if let _ = error, let errorVC = ErrorVC.instantiateViewController(with: .unknown) {
                 self?.present(errorVC, animated: true)
             }

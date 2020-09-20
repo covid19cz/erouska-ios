@@ -10,6 +10,7 @@ import UIKit
 import FirebaseFunctions
 import RealmSwift
 import RxSwift
+import Reachability
 
 final class CurrentDataVM {
 
@@ -67,6 +68,11 @@ final class CurrentDataVM {
     }
 
     func fetchCurrentDataIfNeeded() {
+        // Don't fetch when internet connection is not available
+        guard let connection = try? Reachability().connection, connection != .unavailable else {
+            return
+        }
+
         /*if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
             var components = DateComponents()
             components.hour = 3
