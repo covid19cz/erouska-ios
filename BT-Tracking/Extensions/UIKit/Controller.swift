@@ -39,7 +39,11 @@ extension UIViewController {
     }
 
     func openURL(URL: URL) {
-        present(SFSafariViewController(url: URL), animated: true)
+        if ["http", "https"].contains(URL.scheme) {
+            present(SFSafariViewController(url: URL), animated: true)
+        } else {
+            UIApplication.shared.open(URL, options: [:], completionHandler: nil)
+        }
     }
 
     private static let progressTag = 42
