@@ -214,7 +214,16 @@ final class ReportService: ReportServicing {
                                     do {
                                         let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
                                         let fileURLs = try FileManager.default.contentsOfDirectory(at: unzipDirectory, includingPropertiesForKeys: [], options: [.skipsHiddenFiles])
-                                        localURLResults.append(.success(fileURLs))
+                                        let uniqueName = UUID().uuidString
+                                        let changedNames: [URL] = try fileURLs.map {
+                                            var newURL = $0
+                                            newURL.deleteLastPathComponent()
+                                            newURL.appendPathComponent(uniqueName)
+                                            newURL.appendPathExtension($0.pathExtension)
+                                            try FileManager.default.moveItem(at: $0, to: newURL)
+                                            return newURL
+                                        }
+                                        localURLResults.append(.success(changedNames))
                                     } catch {
                                         localURLResults.append(.failure(error))
                                     }
