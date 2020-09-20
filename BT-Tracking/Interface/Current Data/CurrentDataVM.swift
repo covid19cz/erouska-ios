@@ -44,7 +44,8 @@ final class CurrentDataVM {
     }()
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd. MM. yyyy"
+        formatter.timeStyle = .none
+        formatter.dateStyle = .medium
         return formatter
     }()
 

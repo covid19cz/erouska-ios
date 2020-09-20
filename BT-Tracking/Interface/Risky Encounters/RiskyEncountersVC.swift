@@ -34,7 +34,8 @@ final class RiskyEncountersVC: UIViewController {
 
     private lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd. MM. yyyy"
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .medium
         return dateFormatter
     }()
 

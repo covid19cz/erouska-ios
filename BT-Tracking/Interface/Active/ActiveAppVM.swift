@@ -154,7 +154,7 @@ final class ActiveAppVM {
     var dateFormatter: DateFormatter {
         let formatrer = DateFormatter()
         formatrer.timeStyle = .short
-        formatrer.dateStyle = .short
+        formatrer.dateStyle = .medium
         return formatrer
     }
 

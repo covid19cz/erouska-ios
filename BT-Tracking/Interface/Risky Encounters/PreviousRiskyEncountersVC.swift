@@ -17,7 +17,7 @@ final class PreviousRiskyEncountersVC: UIViewController {
     private lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .long
+        dateFormatter.dateStyle = .medium
         return dateFormatter
     }()
     private let disposeBag = DisposeBag()
