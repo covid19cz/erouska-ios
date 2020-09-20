@@ -11,8 +11,16 @@ import RxSwift
 import Reachability
 
 final class CurrentDataVC: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var footerLabel: UILabel!
+
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var footerLabel: UILabel!
+
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var buttonsView: UIView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var actionButton: Button!
 
     private let viewModel = CurrentDataVM()
     private let disposeBag = DisposeBag()
@@ -27,25 +35,34 @@ final class CurrentDataVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        headlineLabel.localizedText("error_unknown_headline")
+        textLabel.localizedText("error_unknown_text")
+        actionButton.localizedTitle("error_unknown_title_refresh")
+
+        scrollView.alpha = 0
+        buttonsView.alpha = 0
+
         viewModel.needToUpdateView.subscribe(onNext: { [weak self] in
             self?.hideProgress(fromView: true)
+            self?.showError(show: false)
             self?.tableView.reloadData()
             self?.footerLabel.text = self?.viewModel.footer
         }).disposed(by: disposeBag)
 
         viewModel.obervableErrors.subscribe(onNext: { [weak self] error in
+            guard error != nil else { return }
+
             self?.hideProgress(fromView: true)
 
             // Don't show error when internet connection is not available
             if let connection = try? Reachability().connection, connection == .unavailable {
+                self?.showError(show: false)
                 self?.tableView.reloadData()
                 self?.footerLabel.text = self?.viewModel.footer
                 return
             }
 
-            if let _ = error, let errorVC = ErrorVC.instantiateViewController(with: .unknown) {
-                self?.present(errorVC, animated: true)
-            }
+            self?.showError(show: true)
         }).disposed(by: disposeBag)
 
         footerLabel.text = viewModel.footer
@@ -60,11 +77,7 @@ final class CurrentDataVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if viewModel.sections.isEmpty {
-            showProgress(fromView: true)
-        } else {
-            hideProgress(fromView: true)
-        }
+        viewModel.sections.isEmpty ? showProgress(fromView: true) : hideProgress(fromView: true)
     }
 
     override func viewDidLayoutSubviews() {
@@ -74,6 +87,13 @@ final class CurrentDataVC: UIViewController {
             footer.frame.size.height = footer.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0)).height
         }
     }
+
+    // MARK: - Actions
+
+    @IBAction private func toRefresh(_ sender: Any) {
+        viewModel.fetchCurrentDataIfNeeded()
+    }
+
 }
 
 extension CurrentDataVC: UITableViewDataSource {
@@ -126,4 +146,25 @@ extension CurrentDataVC: UITableViewDelegate {
         guard indexPath.section == 0, let measuresURL = viewModel.measuresURL else { return }
         openURL(URL: measuresURL)
     }
+
+}
+
+private extension CurrentDataVC {
+
+    func showError(show: Bool, animated: Bool = true) {
+        UIView.animate(withDuration: animated ? 0.25 : 0, delay: 0, options: .curveEaseInOut) {
+            if show {
+                self.tableView.alpha = 0
+
+                self.scrollView.alpha = 1
+                self.buttonsView.alpha = 1
+            } else {
+                self.tableView.alpha = 1
+
+                self.scrollView.alpha = 0
+                self.buttonsView.alpha = 0
+            }
+        }
+    }
+
 }

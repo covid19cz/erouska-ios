@@ -162,6 +162,7 @@
 "error_unknown_headline" = "Nastala neočekávaná chyba";
 "error_unknown_text" = "Za chvíli to zkuste znovu. Pokud chyba přetrvává, kontaktujte nás na info@erouska.cz.";
 "error_unknown_title_action" = "Zpět";
+"error_unknown_title_refresh" = "Opakovat";
 
 "error_activation_internet_headline" = "Aktivaci aplikace nelze dokončit";
 "error_activation_internet_text" = "Zkontrolujte připojení k internetu a aktivaci aplikace zkuste znovu. Pokud chyba přetrvává, kontaktujte nás na info@erouska.cz.";

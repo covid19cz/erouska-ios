@@ -100,14 +100,10 @@ final class CurrentDataVM {
 
                     self.sections = self.sections(from: self.currentData)
                     self.updateFooter()
+                    self.obervableErrors.onNext(nil)
                 }
             } else if let error = error {
-                if AppSettings.currentDataLastFetchDate == nil {
-                    self.sections = self.sections(from: self.currentData)
-                    self.updateFooter()
-
-                    self.obervableErrors.onNext(error)
-                }
+                self.obervableErrors.onNext(error)
             }
         }
     }
