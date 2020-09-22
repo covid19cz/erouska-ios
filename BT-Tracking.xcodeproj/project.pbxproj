@@ -293,6 +293,7 @@
 		80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsBackgroundView.swift; sourceTree = "<group>"; };
 		80BE3FCE2446028E00D0C810 /* InputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
+		80BF0490251A33640074C96A /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80BF9C252424D55800150108 /* SendResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultVC.swift; sourceTree = "<group>"; };
 		80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
 		80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntities.swift; sourceTree = "<group>"; };
@@ -926,6 +927,7 @@
 				en,
 				Base,
 				cs,
+				sk,
 			);
 			mainGroup = 8054C0A4241D492F008907B8;
 			packageReferences = (
@@ -1334,6 +1336,7 @@
 				80BE18C02433C18200C4A9E6 /* cs */,
 				80BE18C22433C18800C4A9E6 /* Base */,
 				80CA44CB244ADD8A008E22F8 /* en */,
+				80BF0490251A33640074C96A /* sk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1474,7 +1477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
@@ -1501,7 +1504,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
@@ -1527,7 +1530,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
@@ -1555,7 +1558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";

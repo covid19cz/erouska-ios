@@ -57,16 +57,7 @@
 "share_app_message" = "Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření onemocnění COVID-19. Aplikace dokáže anonymně a včas upozornit na rizikové setkání s nakaženým uživatelem a doporučit další postup. Najdeš ji na %@/";
 
 "data_list_title" = "Aktuálně";
-"data_list_headline" = "Zde je výpis eRoušek, které se vyskytly ve vašem okolí. Zobrazení neindikuje nakažení ostatních uživatelů.\nVyhledávání ostatních zařízení ve vašem okolí je na telefonech iPhone při zhasnutém displeji méně účinné.";
-"data_list_info_button" = "Informace o sběru dat";
-"data_list_delete_button" = "Smazat data";
 "data_list_send_button" = "Odeslat data";
-"data_list_section_all" = "Vše";
-"data_list_section_nearby" = "Blízká setkání";
-"data_list_header_date" = "Datum";
-"data_list_header_time" = "Čas";
-"data_list_header_id" = "ID";
-"data_list_header_signal" = "RSSI";
 
 "data_list_send_title" = "Odeslat data";
 "data_list_send_headline" = "V případě potvrzené nákazy onemocněním COVID-19 vás bude kontaktovat pracovník hygienické stanice. Odešle vám SMS zprávu obsahující ověřovací kód pro povolení odeslání dat.";
