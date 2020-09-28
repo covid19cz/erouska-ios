@@ -39,7 +39,7 @@
 "active_footer" = "We will warn you in case you encountered someone with COVID-19 and show you all important information.";
 "active_data_update" = "Last data update: %@. eRouška has not logged any risky encounter near you.";
 "active_background_mode_title" = "Updating in the background";
-"active_background_mode_message" = "eRouška needs to run in the background even after restarting the phone so you don't have to think about it.\n\nEnable "Updating in the background" in the app settings.";
+"active_background_mode_message" = "eRouška needs to run in the background even after restarting the phone so you don't have to think about it.\n\nEnable \"Updating in the background\" in the app settings.";
 "active_background_mode_settings" = "Change settings";
 "active_background_mode_cancel" = "Close";
 "active_exposure_more_info" = "More information";

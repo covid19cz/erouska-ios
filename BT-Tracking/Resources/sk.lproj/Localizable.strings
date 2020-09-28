@@ -46,8 +46,7 @@ Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "active_exposure_more_info" = "Viac informácií";
 "cancel_registration_button" = "Zrušiť aktiváciu";
 "share_app" = "Zdieľať aplikáciu";
-"share_app_message" = "Ahoj, používam aplikáciu eRouška. Nainštaluj si ju tiež a spoločne pomôžme zastaviť šírenie ochorenia COVID-19. Aplikácia zbiera anonymné údaje o telefónoch v blízkosti, aby pracovníci hygieny mohli jednoduchšie dohľadať potenciálne nakazených. Čím viac nás bude, tým lepšie to bude fungovať. Aplikáciu nájdeš na %@/
-";
+"share_app_message" = "Ahoj, používam aplikáciu eRouška. Nainštaluj si ju tiež a spoločne pomôžme zastaviť šírenie ochorenia COVID-19. Aplikácia zbiera anonymné údaje o telefónoch v blízkosti, aby pracovníci hygieny mohli jednoduchšie dohľadať potenciálne nakazených. Čím viac nás bude, tým lepšie to bude fungovať. Aplikáciu nájdeš na %@/";
 "data_list_title" = "Aktuálne";
 "data_list_send_title" = "Odoslať údaje";
 "data_list_send_headline" = "V prípade potvrdenej nákazy ochorením COVID-19 vás bude kontaktovať pracovník hygienickej stanice. Odošle vám SMS správu obsahujúcu overovací kód na povolenie odoslania dát.";
@@ -93,7 +92,7 @@ Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "unsupported_device_ipad_title" = "Tablety s operačným systémom iPadOS nie sú podporované";
 "unsupported_device_ipad_body" = "Nová verzia aplikácie eRouška funguje iba na telefónoch s operačným systémom iOS a Android.";
 "bluetooth_off_title" = "Zapnite Bluetooth";
-"bluetooth_off_body" = "Bez zapnutého Bluetooth nemôže eRouška vytvárať zoznam eRoušiek vo vašom okolí.\n\nZapnite ho pomocou tlačidla "Zapnúť Bluetooth".";
+"bluetooth_off_body" = "Bez zapnutého Bluetooth nemôže eRouška vytvárať zoznam eRoušiek vo vašom okolí.\n\nZapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "news_title" = "Novinky";
 "news_button_continue" = "Pokračovať";
 "news_button_close" = "Zatvoriť";
