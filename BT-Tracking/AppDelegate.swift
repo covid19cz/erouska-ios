@@ -62,11 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         inBackgroundStage = false
 
-        fetchRemoteValues(background: false)
-            .subscribe(onSuccess: { [weak self] _ in
-                self?.checkFetchedMinSupportedVersion()
-            })
-            .disposed(by: bag)
+        updateRemoteValues()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -121,6 +117,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler(.noData)
     }
 
+    // MARK: - Others
+
+    @objc private func didChangeLocale() {
+        updateRemoteValues()
+    }
+
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
@@ -164,6 +166,8 @@ private extension AppDelegate {
         )
 
         Realm.Configuration.defaultConfiguration = configuration
+
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocale), name: NSLocale.currentLocaleDidChangeNotification, object: nil)
     }
 
     func checkFetchedMinSupportedVersion() {
@@ -256,5 +260,13 @@ private extension AppDelegate {
         }
         return false
         #endif
+    }
+
+    func updateRemoteValues() {
+        fetchRemoteValues(background: false)
+            .subscribe(onSuccess: { [weak self] _ in
+                self?.checkFetchedMinSupportedVersion()
+            })
+            .disposed(by: bag)
     }
 }

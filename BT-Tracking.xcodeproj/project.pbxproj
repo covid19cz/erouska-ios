@@ -1475,7 +1475,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1502,7 +1502,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1528,7 +1528,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1556,7 +1556,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
