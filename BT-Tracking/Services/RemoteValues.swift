@@ -86,7 +86,10 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
     case chatBotLink
 
+    /// Deprecated
     case verificationServerApiKey
+
+    case appleServerConfiguration
     case appleExposureConfiguration
 
     var keyValue: String {
@@ -149,6 +152,13 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
         case .verificationServerApiKey:
             return ""
+
+        case .appleServerConfiguration:
+            #if PROD
+            return ServerConfiguration.production
+            #else
+            return ServerConfiguration.development
+            #endif
         case .appleExposureConfiguration:
             return "{\"factorHigh\":0.17,\"factorStandard\":1,\"factorLow\":1.5,\"lowerThreshold\":55,\"higherThreshold\":63,\"triggerThreshold\":15}"
         }
@@ -284,6 +294,17 @@ struct RemoteValues {
 
     static var verificationServerApiKey: String {
         return AppDelegate.shared.remoteConfigString(forKey: .verificationServerApiKey)
+    }
+
+    static var serverConfiguration: ServerConfiguration {
+        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleServerConfiguration).data(using: .utf8) else {
+            return RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
+        }
+        do {
+            return try JSONDecoder().decode(ServerConfiguration.self, from: json)
+        } catch {
+            return RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
+        }
     }
 
     static var exposureConfiguration: ExposureConfiguration {

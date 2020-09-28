@@ -27,6 +27,4 @@ struct HelpVM {
         return RemoteValues.helpMarkdown
     }
 
-    let configuration = AppDelegate.dependency.configuration
-
 }

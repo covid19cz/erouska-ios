@@ -172,7 +172,7 @@ final class ActiveAppVM {
     init() {
         observableState = BehaviorSubject<State>(value: .paused)
 
-        let showForDays = AppDelegate.dependency.configuration.showExposureForDays
+        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
         let realm = try! Realm()
         let exposures = realm
             .objects(ExposureRealm.self)

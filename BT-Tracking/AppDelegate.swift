@@ -172,7 +172,7 @@ private extension AppDelegate {
         var viewControllerIdentifier: String?
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
             viewControllerIdentifier = "UnsupportedDeviceVC"
-        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(Self.dependency.configuration.minSupportedVersion) {
+        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(RemoteValues.serverConfiguration.minSupportedVersion) {
             viewControllerIdentifier = "ForceOSUpdateVC"
         } else if RemoteValues.minSupportedVersion > App.appVersion {
             viewControllerIdentifier = "ForceUpdateVC"
@@ -199,7 +199,7 @@ private extension AppDelegate {
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "UnsupportedDeviceVC")
             presentingAnyForceUpdateScreen = true
-        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(Self.dependency.configuration.minSupportedVersion) {
+        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(RemoteValues.serverConfiguration.minSupportedVersion) {
             rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceOSUpdateVC")
             presentingAnyForceUpdateScreen = true
         } else if RemoteValues.minSupportedVersion > App.appVersion {

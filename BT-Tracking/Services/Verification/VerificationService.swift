@@ -30,7 +30,7 @@ final class VerificationService: VerificationServicing {
     private let adminKey: String
     private let deviceKey: String
 
-    init(configuration: Configuration) {
+    init(configuration: ServerConfiguration) {
         serverURL = configuration.verificationURL
         adminKey = configuration.verificationAdminKey
         deviceKey = configuration.verificationDeviceKey

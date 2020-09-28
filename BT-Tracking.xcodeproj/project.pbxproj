@@ -10,7 +10,7 @@
 		0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */; };
 		4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
 		4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
-		80026D9524FE491300BBDB36 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CECB24EAB0140011B53B /* Configuration.swift */; };
+		80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */; };
 		80026D9624FE492000BBDB36 /* BackgroundEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */; };
 		80026D9724FE492000BBDB36 /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */; };
 		80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C324DD812800DC36EE /* VerificationService.swift */; };
@@ -119,7 +119,7 @@
 		80BF9C262424D55800150108 /* SendResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendResultVC.swift */; };
 		80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */; };
 		80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */; };
-		80C5CECC24EAB0140011B53B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CECB24EAB0140011B53B /* Configuration.swift */; };
+		80C5CECC24EAB0140011B53B /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */; };
 		80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
@@ -297,7 +297,7 @@
 		80BF9C252424D55800150108 /* SendResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultVC.swift; sourceTree = "<group>"; };
 		80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
 		80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntities.swift; sourceTree = "<group>"; };
-		80C5CECB24EAB0140011B53B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
 		80CA44B5244ADA44008E22F8 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		80CA44CB244ADD8A008E22F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80CA44DB244B3769008E22F8 /* HelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVM.swift; sourceTree = "<group>"; };
@@ -543,7 +543,7 @@
 				80D2344E24E2F69000F684AA /* Background */,
 				8084DEEB24AF8030001FBB16 /* CountryCodes */,
 				805BE9752424DDE3001A93B3 /* Logger */,
-				80C5CECB24EAB0140011B53B /* Configuration.swift */,
+				80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
 				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
@@ -1208,7 +1208,7 @@
 				D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
 				D63E443824DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
-				80C5CECC24EAB0140011B53B /* Configuration.swift in Sources */,
+				80C5CECC24EAB0140011B53B /* ServerConfiguration.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
 				D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
 				802AFE4425135BC0004954AF /* Notifications.swift in Sources */,
@@ -1302,7 +1302,7 @@
 				D65E57E324D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
 				D65E57DA24D056D6000F2402 /* NewsPageView.swift in Sources */,
-				80026D9524FE491300BBDB36 /* Configuration.swift in Sources */,
+				80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */,
 				D6231CA624E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,

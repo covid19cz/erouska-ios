@@ -46,7 +46,7 @@ final class ReportService: ReportServicing {
     }
     private let downloadIndex: String
 
-    init(configuration: Configuration) {
+    init(configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
         downloadBaseURL = configuration.downloadsURL
