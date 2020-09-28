@@ -1,3 +1,5 @@
+// MARK: - Strings
+
 "app_name" = "eRouška";
 "help" = "Help";
 "back" = "Back";
@@ -7,111 +9,89 @@
 "about" = "About";
 "close" = "Close";
 "turn_on" = "Turn on";
-
 "welcome_help" = "How it works";
 "welcome_activation" = "Continue to activation";
 "welcome_title" = "eRouška protects both you and me";
-"welcome_body" = "The application will monitor your surroundings continuously and record identifiers of phones with the eRouška application you encounter.\n\nIf any of the users test positive for COVID-19, the app will notify you that there was a risky encounter.\n\nIf you test positive, the app will notify all application users that you encountered.";
+"welcome_body" = "The application will continuously monitor your surroundings and record identifiers of phones with the eRouška application you encounter.\n\nIf any of the users tests positive for COVID-19, the app will notify you that there was a risky encounter.\n\nIf you test positive, the app will notify all users that you encountered.";
 "welcome_body_more" = "More about independent audits";
-
 "exposure_notification_title" = "Notifications";
-"exposure_notification_headline" = "To work properly, eRouška requires notifications about COVID-19 exposure to be enabled";
+"exposure_notification_headline" = "To work properly, eRouška requires Exposure notifications to be enabled";
 "exposure_notification_body" = "These notifications will indicate that you have encountered a user with eRouška who was tested positive for COVID-19.\n\nThe app can only work correctly if it collects and shares random identifiers which change automatically. We cannot identify an eRouška user based on these identifiers.";
 "exposure_notification_continue" = "Turn on";
-
 "privacy_title" = "Privacy";
 "privacy_headline" = "We value your privacy. You are always in control of your data.";
 "privacy_body" = "eRouška does not keep any personal information about you and collects only anonymous data about other eRouška applications that you have encountered.\n\nYou can find more information about personal data processing and other conditions of use in Terms and conditions.";
 "privacy_body_link" = "Terms and conditions";
 "privacy_continue" = "Finish activation";
-
 "active_head_enabled" = "eRouška is active";
 "active_head_paused" = "eRouška is paused";
 "active_head_disabled_bluetooth" = "Enable Bluetooth";
-"active_head_disabled_exposures" = "Enable notifications about COVID-19 exposure";
-
+"active_head_disabled_exposures" = "Enable Exposure notifications";
 "active_title_highlighted_enabled" = "Application is running in the background and monitoring your surroundings. Please do not stop it. Keep Bluetooth enabled and use your phone as usual.";
-
 "active_title_enabled" = "Application is running in the background and monitoring your surroundings. Please do not stop it. Keep Bluetooth enabled and use your phone as usual.";
 "active_title_paused" = "Application is now paused and is not collecting any data about other eRouška applications nearby.\n\nResume data collection and keep yourself and others safe. Don't forget to do that especially when leaving your home.";
 "active_title_disabled_exposures" = "eRouška cannot communicate with other eRouška applications nearby.\n\nEnable COVID-19 exposure notifications by pressing \"Enable\".";
 "active_title_disabled_bluetooth" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \"Enable Bluetooth\".";
-
 "active_button_enabled" = "Pause eRouška";
 "active_button_paused" = "Resume eRouška";
 "active_button_disabled_bluetooth" = "Enable Bluetooth";
 "active_button_disabled_exposures" = "Enable";
-"active_footer" = "Last data update: %@. eRouška has not logged any risky encounter near you.";
+"active_footer" = "We will warn you in case you encountered someone with COVID-19 and show you all important information.";
 "active_data_update" = "Last data update: %@. eRouška has not logged any risky encounter near you.";
-
 "active_background_mode_title" = "Updating in the background";
 "active_background_mode_message" = "eRouška needs to run in the background even after restarting the phone so you don't have to think about it.\n\nEnable \"Updating in the background\" in the app settings.";
 "active_background_mode_settings" = "Change settings";
 "active_background_mode_cancel" = "Close";
-
 "active_exposure_more_info" = "More information";
-
-"cancel_registration_button" = "Cancel activation";
-
+"cancel_registration_button" = "Cancel registration";
 "share_app" = "Share application";
-"share_app_message" = "Hi, I'm using the eRouška application. Install it too and together we can help stop the spread of COVID-19. The application collects anonymous data about nearby phones so that the public health officers can trace the infection more easily. The more we are, the better it works. The application can be found at %@/";
-
+"share_app_message" = "Hi, I'm using the eRouška application. Install it too so we can help stop the spread of COVID-19. The application collects anonymous data about nearby phones so that the public health officers can trace the infection more easily. The more we are, the better it works. Download the app at %@/";
 "data_list_title" = "News";
-"data_list_send_button" = "Send data";
-
 "data_list_send_title" = "Send data";
 "data_list_send_headline" = "If you test positive for COVID-19 you will be contacted by a public health officer. You will receive an SMS message with the verification code for sending data.";
 "data_list_send_placeholder" = "Verification code (required)";
 "data_list_send_action_title" = "Verify and send data";
-
 "data_list_send_error_failed_title" = "We were not able to send data";
 "data_list_send_error_failed_message" = "Check you internet connection and try again.";
 "data_list_send_error_file_title" = "Failed to create the encounter log";
 "data_list_send_error_no_keys" = "No keys to send. Please try again later.";
 "data_list_send_error_wrong_code_title" = "Invalid verification code";
 "data_list_send_error_wrong_code_message" = "Request a new SMS message with a verification code from the public health officer.";
-"data_list_send_error_disabled_title" = "You currently cannot send data";
-"data_list_send_error_disabled_message" = "In the Settings section of your device, turn on Exposure Notifications with COVID-19.";
-
+"data_list_send_error_disabled_title" = "You cannot sent the data now";
+"data_list_send_error_disabled_message" = "Enable Exposure notifications in your phone's settings and then send the data.";
 "data_send_title" = "Sent";
 "data_send_title_label" = "You have successfiully sent the data";
 "data_send_headline" = "Thank you for fighting against the spread of COVID-19.";
 "data_send_body" = "Please cooperate with public health officers on tracing everyone that you encountered.\n\nFollow the instructions of public health officers and medical workers.";
 "data_send_close_button" = "Close";
-
 "contacts_title" = "Contacts";
 "contacts_important_headline" = "Thinking you are positive with COVID-19?";
 "contacts_important_body" = "Stay at home and call your general practitioner or your local public health office.";
 "contacts_important_button" = "Important contacts";
 "contacts_help_headline" = "Need help?";
-"contacts_help_body" = "You should find all answers about COVID-19 on the website of the Ministry of Health (MZČR).";
+"contacts_help_body" = "You should find all answers about COVID-19 on the website of the Ministry of Health.";
 "contacts_help_faq_button" = "Frequently asked questions";
 "contacts_about_headline" = "About eRouška";
 "contacts_about_body" = "Do you need help with the app or you are interested in how it works? Go to erouska.cz.";
 "contacts_about_button" = "Go to erouska.cz";
-
 "help_title" = "How it works";
 "help_chatbot" = "Chat with Anežka – eRouška support";
 "help_tab_title" = "Help";
-
 "about_title" = "About";
-"about_info" = "Starting with version 2.0, the eRouška application is developed by the Ministry of Health in collaboration with the National agency for communication and information technologies (NAKIT).\n\nEarlier versions of eRouška application were developed by a team of volunteers from the COVID19CZ community. Most of original eRouška developers continue to work on newer versions in the NAKIT team.\n\nDetailed information on the processing of personal data and other conditions of use of the app can be found in the Terms and conditions.";
+"about_info" = "Starting with version 2.0, the eRouška application is developed by the Ministry of Health in collaboration with the National agency for communication and information technologies (NAKIT).\n\nEarlier versions of eRouška application were developed by a team of volunteers from the COVID19CZ community. Most of original eRouška developers continue to work on newer versions in the NAKIT team.\n\nYou can find more information about personal data processing and other conditions of use in Terms and conditions.";
 "about_info_link" = "Terms and conditions";
-
 "force_update_title" = "Important eRouška update";
 "force_update_body" = "There is an important eRouška update. If you wish to continue using it, please update the app.";
 "force_update_button" = "Update";
 "force_os_update_title" = "Update phone to the newest iOS version";
-"force_os_update_body" = "Latest version of iOS (13.5 and higher) is needed to enable exposure notifications about encountering individuals with COVID-19.";
+"force_os_update_body" = "Latest version of iOS (13.5 and higher) is needed to enable Exposure notifications about encountering individuals with COVID-19.";
 "unsupported_device_title" = "Your device does not support iOS 13.5 or higher";
 "unsupported_device_body" = "Latest version of iOS (13.5 and higher) is needed for eRouška to work.";
 "unsupported_device_button" = "More information";
 "unsupported_device_ipad_title" = "Tablets with iPadOS are not supported";
 "unsupported_device_ipad_body" = "The new eRouška version only works on phones with iOS or Android operating system.";
-
 "bluetooth_off_title" = "Enable Bluetooth";
 "bluetooth_off_body" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \"Enable Bluetooth\".";
-
 "news_title" = "News";
 "news_button_continue" = "Continue";
 "news_button_close" = "Close";
@@ -126,41 +106,30 @@
 "news_privacy_title" = "We value your privacy.";
 "news_privacy_body" = "With these changes, terms of use were changed, too. The main change is that we no longer register phone numbers of eRouška users and they will not be required for registration.";
 "news_privacy_body_link" = "Terms and conditions";
-
 "risky_encounters_positive_title" = "\n\nIf a public health officer contacts you, follow their instructions.";
 "risky_encounters_positive_with_symptoms_header" = "I have symptoms";
 "risky_encounters_positive_without_symptoms_header" = "I do not have symptoms";
-
 "deadman_notificaiton_title" = "Open eRouška";
 "deadman_notificaiton_body" = "You can check whether you encountered someone who tested positive for COVID-19.";
-
-"exposure_activation_restricted_title" = "Without the exposure notifications, eRouška will be very limited";
-"exposure_activation_restricted_body" = "Please enable exposure notifications so that eRouška can warn you about risky encounters.";
+"exposure_activation_restricted_title" = "Without Exposure notifications, eRouška will be very limited";
+"exposure_activation_restricted_body" = "Please enable Exposure notifications so that eRouška can warn you about risky encounters.";
 "exposure_activation_restricted_settings_action" = "Go to settings";
 "exposure_activation_restricted_cancel_action" = "Not now";
-
 "exposure_activation_unknown_title" = "Failed to enable notifications";
-"exposure_activation_unknown_body" = "Failed to enable exposure notifications. Check your settings. If this problem persists, please contact us at info@erouska.cz. (Error code: %@)";
-
-"exposure_activation_storage_title" = "Failed to disable notifications";
-"exposure_activation_storage_body" = "Failed to disable exposure notifications. If this problem persists, please contact us at info@erouska.cz.";
-
-"exposure_deactivation_unknown_title" = "Unexpected error";
-"exposure_deactivation_unknown_body" = "Please try again later. If this problem persists, please contact us at info@erouska.cz. (Error code: %@)";
-
+"exposure_activation_unknown_body" = "Failed to enable Exposure notifications. Check your settings. If this problem persists, please contact us at info@erouska.cz. (Error code: %@)";
+"exposure_activation_storage_title" = "Failed to enable notifications";
+"exposure_activation_storage_body" = "Unable to enable Exposure notifications due to lack of storage in your device. Free up space by deleting unused apps and try again.";
+"exposure_deactivation_unknown_title" = "Failed to disable notifications";
+"exposure_deactivation_unknown_body" = "Failed to disable Exposure notifications. If this problem persists, please contact us at info@erouska.cz. (Error code: %@)";
 "error_title" = "Error";
-
 "error_unknown_headline" = "Unexpected error";
 "error_unknown_text" = "Please try again later. If this problem persists, please contact us at info@erouska.cz.";
 "error_unknown_title_action" = "Back";
 "error_unknown_title_refresh" = "Try again";
-
 "error_activation_internet_headline" = "Unable to finish app activation";
 "error_activation_internet_text" = "Check you internet connection and try again. If this problem persists, please contact us at info@erouska.cz.";
 "error_activation_internet_title_action" = "Try again";
-
-"exposure_detected_title" = "You have encountered someone who tested positive for COVID-19"; // only first part rest is from apple
-
+"exposure_detected_title" = "You have encountered someone who tested positive for COVID-19";
 "current_data_footer" = "Last update %@";
 "current_data_measures" = "Current measures";
 "current_data_item_header" = "Current situation in numbers";
