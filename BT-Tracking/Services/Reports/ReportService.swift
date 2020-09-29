@@ -16,6 +16,8 @@ import CryptoKit
 
 protocol ReportServicing: AnyObject {
 
+    func updateConfiguration(_ configuration: ServerConfiguration)
+
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String
 
     typealias UploadKeysCallback = (Result<Bool, Error>) -> Void
@@ -32,11 +34,11 @@ protocol ReportServicing: AnyObject {
 
 final class ReportService: ReportServicing {
 
-    private let healthAuthority: String
+    private var healthAuthority: String
 
-    private let uploadURL: URL
+    private var uploadURL: URL
 
-    private let downloadBaseURL: URL
+    private var downloadBaseURL: URL
     private var downloadDestinationURL: URL {
         let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let documentsURL = directoryURLs.first else {
@@ -44,9 +46,16 @@ final class ReportService: ReportServicing {
         }
         return documentsURL
     }
-    private let downloadIndex: String
+    private var downloadIndex: String
 
     init(configuration: ServerConfiguration) {
+        healthAuthority = configuration.healthAuthority
+        uploadURL = configuration.uploadURL
+        downloadBaseURL = configuration.downloadsURL
+        downloadIndex = configuration.downloadIndexName
+    }
+
+    func updateConfiguration(_ configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
         downloadBaseURL = configuration.downloadsURL

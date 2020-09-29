@@ -11,6 +11,8 @@ import Alamofire
 
 protocol VerificationServicing: AnyObject {
 
+    func updateConfiguration(_ configuration: ServerConfiguration)
+
     typealias CodeCallback = (Result<VerificationCode, Error>) -> Void
     func requestCode(with request: VerificationCodeRequest, callback: @escaping CodeCallback)
 
@@ -24,13 +26,19 @@ protocol VerificationServicing: AnyObject {
 
 final class VerificationService: VerificationServicing {
 
-    private let serverURL: URL
+    private var serverURL: URL
     private let headerApiKey = "X-API-Key"
 
-    private let adminKey: String
-    private let deviceKey: String
+    private var adminKey: String
+    private var deviceKey: String
 
     init(configuration: ServerConfiguration) {
+        serverURL = configuration.verificationURL
+        adminKey = configuration.verificationAdminKey
+        deviceKey = configuration.verificationDeviceKey
+    }
+    
+    func updateConfiguration(_ configuration: ServerConfiguration) {
         serverURL = configuration.verificationURL
         adminKey = configuration.verificationAdminKey
         deviceKey = configuration.verificationDeviceKey

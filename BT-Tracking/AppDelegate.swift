@@ -152,7 +152,7 @@ private extension AppDelegate {
 
         FirebaseApp.configure()
         setupDefaultValues()
-        _ = fetchRemoteValues(background: false)
+        updateRemoteValues()
 
         let configuration = Realm.Configuration(
             schemaVersion: 4,
@@ -262,6 +262,10 @@ private extension AppDelegate {
         fetchRemoteValues(background: false)
             .subscribe(onSuccess: { [weak self] _ in
                 self?.checkFetchedMinSupportedVersion()
+
+                let configuration = RemoteValues.serverConfiguration
+                Self.dependency.reporter.updateConfiguration(configuration)
+                Self.dependency.verification.updateConfiguration(configuration)
             })
             .disposed(by: bag)
     }
