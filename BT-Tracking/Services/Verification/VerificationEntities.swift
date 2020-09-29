@@ -9,20 +9,20 @@
 import Foundation
 
 
-enum VerificatioError: Error {
+enum VerificationError: Error {
     case noData
     case responseError(String)
 }
 
-enum VerificatioTestType: String, Codable {
+enum VerificationTestType: String, Codable {
     case likely
     case confirmed
     case negative
 }
 
-struct VerificationCodeRequst: Encodable {
+struct VerificationCodeRequest: Encodable {
 
-    let testType: VerificatioTestType
+    let testType: VerificationTestType
 
     /// YYYY-MM-DD
     let symptomDate: String
@@ -42,7 +42,7 @@ struct VerificationCode: Decodable {
 
 }
 
-struct VerificationTokenRequst: Encodable {
+struct VerificationTokenRequest: Encodable {
 
     let code: String
 
@@ -50,7 +50,7 @@ struct VerificationTokenRequst: Encodable {
 
 struct VerificationToken: Decodable {
 
-    let testType: VerificatioTestType?
+    let testType: VerificationTestType?
     let symptomDate: String?
     let token: String?
     let error: String?
