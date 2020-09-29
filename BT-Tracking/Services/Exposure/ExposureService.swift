@@ -190,7 +190,7 @@ final class ExposureService: ExposureServicing {
                 log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) computed threshold: \(computedThreshold) (low:\(configuration.factorLow) high: \(configuration.factorHigh)) required \(configuration.triggerThreshold)")
 
                 if computedThreshold >= Double(configuration.triggerThreshold) {
-                    log("ExposureService Summary meets requiremnts")
+                    log("ExposureService Summary meets requirements")
 
                     guard summary.matchedKeyCount != 0 else {
                         finish()

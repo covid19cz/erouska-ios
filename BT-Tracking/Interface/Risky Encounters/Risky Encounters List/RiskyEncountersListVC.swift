@@ -14,7 +14,7 @@ final class RiskyEncountersListVC: UIViewController {
     @IBOutlet weak var footerLabel: UILabel!
 
     var viewModel: RiskyEncountersListVM!
-    private let mainSymptomCellReusableIndetifier = "RiskyEncountersListCell"
+    private let mainSymptomCellReusableIdentifier = "RiskyEncountersListCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ extension RiskyEncountersListVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: mainSymptomCellReusableIndetifier) as! RiskyEncountersListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: mainSymptomCellReusableIdentifier) as! RiskyEncountersListCell
         if let item = viewModel.content?.items[indexPath.row] {
             cell.config(with: item)
         }

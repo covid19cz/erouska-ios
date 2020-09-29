@@ -12,7 +12,7 @@ import Alamofire
 protocol VerificationServicing: class {
 
     typealias CodeCallback = (Result<VerificationCode, Error>) -> Void
-    func requestCode(with request: VerificationCodeRequst, callback: @escaping CodeCallback)
+    func requestCode(with request: VerificationCodeRequest, callback: @escaping CodeCallback)
 
     typealias VerifyCallback = (Result<String, Error>) -> Void
     func verify(with code: String, callback: @escaping VerifyCallback)
@@ -36,7 +36,7 @@ final class VerificationService: VerificationServicing {
         deviceKey = configuration.verificationDeviceKey
     }
 
-    func requestCode(with request: VerificationCodeRequst, callback: @escaping CodeCallback) {
+    func requestCode(with request: VerificationCodeRequest, callback: @escaping CodeCallback) {
         var headers = HTTPHeaders()
         headers.add(HTTPHeader(name: headerApiKey, value: adminKey))
 
@@ -60,7 +60,7 @@ final class VerificationService: VerificationServicing {
         var headers = HTTPHeaders()
         headers.add(HTTPHeader(name: headerApiKey, value: deviceKey))
 
-        let request = VerificationTokenRequst(code: code)
+        let request = VerificationTokenRequest(code: code)
 
         AF.request(URL(string: "api/verify", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
@@ -74,9 +74,9 @@ final class VerificationService: VerificationServicing {
                     if let token = result.token {
                         callback(.success(token))
                     } else if let error = result.error {
-                        callback(.failure(VerificatioError.responseError(error)))
+                        callback(.failure(VerificationError.responseError(error)))
                     } else {
-                        callback(.failure(VerificatioError.noData))
+                        callback(.failure(VerificationError.noData))
                     }
                 case .failure(let error):
                     callback(.failure(error))
@@ -102,9 +102,9 @@ final class VerificationService: VerificationServicing {
                     if let certificate = result.certificate {
                         callback(.success(certificate))
                     } else if let error = result.error {
-                        callback(.failure(VerificatioError.responseError(error)))
+                        callback(.failure(VerificationError.responseError(error)))
                     } else {
-                        callback(.failure(VerificatioError.noData))
+                        callback(.failure(VerificationError.noData))
                     }
                 case .failure(let error):
                     callback(.failure(error))

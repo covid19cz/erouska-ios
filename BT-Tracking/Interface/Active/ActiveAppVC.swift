@@ -245,8 +245,8 @@ private extension ActiveAppVC {
                             }
                         case .restricted:
                             self.showAlert(
-                                title: self.viewModel.errorActivationRestiredTitle,
-                                message: self.viewModel.errorActivationRestiredBody,
+                                title: self.viewModel.errorActivationRestrictedTitle,
+                                message: self.viewModel.errorActivationRestrictedBody,
                                 okTitle: self.viewModel.errorActivationSettingsTitle,
                                 okHandler: { [weak self] in self?.openSettings() },
                                 action: (title: self.viewModel.errorActivationCancelTitle, handler: nil)
