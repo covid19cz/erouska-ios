@@ -32,7 +32,7 @@ final class CurrentDataVM {
         }
     }
     let needToUpdateView: BehaviorSubject<Void>
-    let obervableErrors: BehaviorSubject<Error?>
+    let observableErrors: BehaviorSubject<Error?>
 
     private var currentData: CurrentDataRealm?
 
@@ -51,7 +51,7 @@ final class CurrentDataVM {
 
     init() {
         needToUpdateView = BehaviorSubject<Void>(value: ())
-        obervableErrors = BehaviorSubject<Error?>(value: nil)
+        observableErrors = BehaviorSubject<Error?>(value: nil)
 
         let realm = try! Realm()
         currentData = realm.objects(CurrentDataRealm.self).last
@@ -101,10 +101,10 @@ final class CurrentDataVM {
 
                     self.sections = self.sections(from: self.currentData)
                     self.updateFooter()
-                    self.obervableErrors.onNext(nil)
+                    self.observableErrors.onNext(nil)
                 }
             } else if let error = error {
-                self.obervableErrors.onNext(error)
+                self.observableErrors.onNext(error)
             }
         }
     }

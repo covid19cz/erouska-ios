@@ -49,7 +49,7 @@ final class CurrentDataVC: UIViewController {
             self?.footerLabel.text = self?.viewModel.footer
         }).disposed(by: disposeBag)
 
-        viewModel.obervableErrors.subscribe(onNext: { [weak self] error in
+        viewModel.observableErrors.subscribe(onNext: { [weak self] error in
             guard error != nil else { return }
 
             self?.hideProgress(fromView: true)

@@ -132,8 +132,8 @@ final class ActiveAppVM {
     let exposureBannerClose = "close"
     let exposureMoreInfo = "active_exposure_more_info"
 
-    let errorActivationRestiredTitle = "exposure_activation_restricted_title"
-    let errorActivationRestiredBody = "exposure_activation_restricted_body"
+    let errorActivationRestrictedTitle = "exposure_activation_restricted_title"
+    let errorActivationRestrictedBody = "exposure_activation_restricted_body"
     let errorActivationSettingsTitle = "exposure_activation_restricted_settings_action"
     let errorActivationCancelTitle = "exposure_activation_restricted_cancel_action"
 
@@ -151,12 +151,12 @@ final class ActiveAppVM {
     let errorSendDataActionClose = "close"
     let errorSendDataActionTurnOn = "turn_on"
 
-    var dateFormatter: DateFormatter {
-        let formatrer = DateFormatter()
-        formatrer.timeStyle = .short
-        formatrer.dateStyle = .medium
-        return formatrer
-    }
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 
     var state: State {
         return try! observableState.value()

@@ -36,7 +36,7 @@ final class ExposurePermissionVC: UIViewController {
     // MARK: - Action
     
     @IBAction func continueAction(_ sender: Any) {
-        requestExposurePresmission()
+        requestExposurePermission()
     }
 
 }
@@ -55,7 +55,7 @@ private extension ExposurePermissionVC {
 
     // MARK: - Request permission
 
-    func requestExposurePresmission() {
+    func requestExposurePermission() {
         viewModel.exposureService.activate { [weak self] error in
             guard let self = self else { return }
             if let error = error {
