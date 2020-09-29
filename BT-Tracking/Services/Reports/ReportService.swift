@@ -14,7 +14,7 @@ import Alamofire
 import Zip
 import CryptoKit
 
-protocol ReportServicing: class {
+protocol ReportServicing: AnyObject {
 
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String
 
