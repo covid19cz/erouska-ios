@@ -24,8 +24,8 @@ struct ExposurePermissionVM {
 
     let continueButton = "exposure_notification_continue"
 
-    let errorRestiredTitle = "exposure_activation_restricted_title"
-    let errorRestiredBody = "exposure_activation_restricted_body"
+    let errorRestrictedTitle = "exposure_activation_restricted_title"
+    let errorRestrictedBody = "exposure_activation_restricted_body"
     let errorSettingsTitle = "exposure_activation_restricted_settings_action"
     let errorCancelTitle = "exposure_activation_restricted_cancel_action"
     

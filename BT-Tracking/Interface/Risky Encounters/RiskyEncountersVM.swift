@@ -41,7 +41,7 @@ struct RiskyEncountersVM {
 
     let menuItems = [MenuItem.mainSymptoms, .preventTransmission, .previousRiskyEncounters]
 
-    let riskyEncouterDateToShow: Observable<Date?>
+    let riskyEncounterDateToShow: Observable<Date?>
     let shouldShowPreviousRiskyEncounters: Observable<Bool>
 
     let title = RemoteValues.exposureUITitle
@@ -63,7 +63,7 @@ struct RiskyEncountersVM {
             .objects(ExposureRealm.self)
             .sorted(byKeyPath: "date")
 
-        riskyEncouterDateToShow = Observable.collection(from: exposures)
+        riskyEncounterDateToShow = Observable.collection(from: exposures)
             .map {
                 $0.filter { $0.date > Calendar.current.date(byAdding: .day, value: -showForDays, to: Date())! }.last?.date
             }

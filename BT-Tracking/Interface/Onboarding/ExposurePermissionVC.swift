@@ -64,7 +64,7 @@ private extension ExposurePermissionVC {
                 case .activationError(let code):
                     switch code {
                     case .notAuthorized:
-                        self.showPermissionDeniedAlert(canceAction: { [weak self] in
+                        self.showPermissionDeniedAlert(cancelAction: { [weak self] in
                             self?.navigationController?.popViewController(animated: true)
                         })
                     case .unsupported:
@@ -72,7 +72,7 @@ private extension ExposurePermissionVC {
                     case .insufficientStorage, .insufficientMemory:
                         self.showExposureStorageError()
                     case .restricted, .notEnabled:
-                        self.showPermissionDeniedAlert(canceAction: { [weak self] in
+                        self.showPermissionDeniedAlert(cancelAction: { [weak self] in
                             self?.requestNotificationPermission()
                         })
                     default:
@@ -97,7 +97,7 @@ private extension ExposurePermissionVC {
                     if granted {
                         self?.performSegue(withIdentifier: "privacy", sender: nil)
                     } else {
-                        self?.showPermissionDeniedAlert(canceAction: { [weak self] in
+                        self?.showPermissionDeniedAlert(cancelAction: { [weak self] in
                             self?.performSegue(withIdentifier: "privacy", sender: nil)
                         })
                     }
@@ -123,13 +123,13 @@ private extension ExposurePermissionVC {
         )
     }
 
-    func showPermissionDeniedAlert(canceAction: @escaping () -> Void) {
+    func showPermissionDeniedAlert(cancelAction: @escaping () -> Void) {
         showAlert(
-            title: viewModel.errorRestiredTitle,
-            message: viewModel.errorRestiredBody,
+            title: viewModel.errorRestrictedTitle,
+            message: viewModel.errorRestrictedBody,
             okTitle: viewModel.errorSettingsTitle,
             okHandler: { [weak self] in self?.openSettings() },
-            action: (title: viewModel.errorCancelTitle, handler: canceAction)
+            action: (title: viewModel.errorCancelTitle, handler: cancelAction)
         )
     }
 

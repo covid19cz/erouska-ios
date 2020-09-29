@@ -54,7 +54,7 @@ final class RiskyEncountersVC: UIViewController {
         negativeView.bodyLabel.text = viewModel.negativeBody
         negativeView.previousRiskyEncountersButton.localizedTitle(viewModel.previousRiskyEncountersButton)
 
-        viewModel.riskyEncouterDateToShow.subscribe(
+        viewModel.riskyEncounterDateToShow.subscribe(
             onNext: { [weak self] dateToShow in
                 guard let self = self else { return }
                 let isPositive = dateToShow != nil
