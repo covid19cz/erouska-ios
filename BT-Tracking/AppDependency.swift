@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import FirebaseFunctions
 
-class AppDependency {
+final class AppDependency {
 
     var deviceToken: Data?
 

@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-protocol VerificationServicing: class {
+protocol VerificationServicing: AnyObject {
 
     typealias CodeCallback = (Result<VerificationCode, Error>) -> Void
     func requestCode(with request: VerificationCodeRequest, callback: @escaping CodeCallback)

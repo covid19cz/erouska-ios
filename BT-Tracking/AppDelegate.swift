@@ -34,13 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
-    static var dependency = AppDependency()
+    static let dependency = AppDependency()
 
     var openResultsCallback: (() -> Void)?
     
     // MARK: - UIApplicationDelegate
 
-    var window: UIWindow? = nil
+    var window: UIWindow?
 
     func updateInterface() {
         setupInterface()
@@ -63,10 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         inBackgroundStage = false
 
         updateRemoteValues()
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

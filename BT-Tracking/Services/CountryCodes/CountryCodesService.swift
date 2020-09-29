@@ -9,7 +9,7 @@
 import Foundation
 import CoreTelephony
 
-protocol CountryCodesServicing: class {
+protocol CountryCodesServicing: AnyObject {
 
     typealias Callback = () -> Void
 
@@ -19,7 +19,7 @@ protocol CountryCodesServicing: class {
 
 }
 
-class CountryCodeService: CountryCodesServicing {
+final class CountryCodeService: CountryCodesServicing {
 
     private var networkInfo: CTTelephonyNetworkInfo
 

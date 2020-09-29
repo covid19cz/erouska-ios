@@ -10,7 +10,7 @@ import Foundation
 import ExposureNotification
 import RxSwift
 
-protocol ExposureServicing: class {
+protocol ExposureServicing: AnyObject {
 
     var readyToUse: Completable { get }
 
