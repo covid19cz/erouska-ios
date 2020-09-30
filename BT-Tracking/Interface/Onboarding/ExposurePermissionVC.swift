@@ -68,7 +68,7 @@ private extension ExposurePermissionVC {
                             self?.navigationController?.popViewController(animated: true)
                         })
                     case .unsupported:
-                        self.performSegue(withIdentifier: "unsupported", sender: nil)
+                        self.perform(segue: StoryboardSegue.Onboarding.unsupported)
                     case .insufficientStorage, .insufficientMemory:
                         self.showExposureStorageError()
                     case .restricted, .notEnabled:
@@ -94,10 +94,10 @@ private extension ExposurePermissionVC {
             completionHandler: { [weak self] granted, _ in
                 DispatchQueue.main.async { [weak self] in
                     if granted {
-                        self?.performSegue(withIdentifier: "privacy", sender: nil)
+                        self?.perform(segue: StoryboardSegue.Onboarding.privacy)
                     } else {
                         self?.showPermissionDeniedAlert(cancelAction: { [weak self] in
-                            self?.performSegue(withIdentifier: "privacy", sender: nil)
+                            self?.perform(segue: StoryboardSegue.Onboarding.privacy)
                         })
                     }
                 }

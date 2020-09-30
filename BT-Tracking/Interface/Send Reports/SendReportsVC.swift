@@ -84,7 +84,7 @@ final class SendReportsVC: UIViewController {
     }
 
     @IBAction private func resultAction() {
-        performSegue(withIdentifier: "result", sender: nil)
+        perform(segue: StoryboardSegue.SendReports.result)
     }
 
     @IBAction private func closeAction() {

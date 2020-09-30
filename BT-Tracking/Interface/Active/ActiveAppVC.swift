@@ -198,12 +198,12 @@ final class ActiveAppVC: UIViewController {
                 action: (L10n.turnOn, { [weak self] in self?.openSettings() })
             )
         } else {
-            performSegue(withIdentifier: "sendReport", sender: nil)
+            perform(segue: StoryboardSegue.Active.sendReport)
         }
     }
 
     private func riskyEncountersAction() {
-        performSegue(withIdentifier: "riskyEncounters", sender: nil)
+        perform(segue: StoryboardSegue.Active.riskyEncounters)
     }
 
     // MARK: -
@@ -363,8 +363,7 @@ private extension ActiveAppVC {
 
     #if !PROD || DEBUG
     func debugAction() {
-        let storyboard = UIStoryboard(name: "Debug", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
+        let controller = StoryboardScene.Debug.tabBar.instantiate()
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
@@ -456,7 +455,7 @@ private extension ActiveAppVC {
 
     func debugShowNews() {
         AppSettings.v2_0NewsLaunched = true
-        guard let controller = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+        let controller = StoryboardScene.News.initialScene.instantiate()
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }

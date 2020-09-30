@@ -169,20 +169,19 @@ private extension AppDelegate {
     func checkFetchedMinSupportedVersion() {
         guard !presentingAnyForceUpdateScreen else { return }
 
-        var viewControllerIdentifier: String?
+        var viewController: UIViewController
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
-            viewControllerIdentifier = "UnsupportedDeviceVC"
+            viewController = StoryboardScene.ForceUpdate.unsupportedDeviceVC.instantiate()
         } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(RemoteValues.serverConfiguration.minSupportedVersion) {
-            viewControllerIdentifier = "ForceOSUpdateVC"
+            viewController = StoryboardScene.ForceUpdate.forceOSUpdateVC.instantiate()
         } else if RemoteValues.minSupportedVersion > App.appVersion {
-            viewControllerIdentifier = "ForceUpdateVC"
+            viewController = StoryboardScene.ForceUpdate.forceUpdateVC.instantiate()
+        } else {
+            return
         }
-
-        guard let identifier = viewControllerIdentifier else { return }
 
         Self.dependency.exposureService.deactivate(callback: nil)
 
-        let viewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: identifier)
         viewController.modalPresentationStyle = .fullScreen
         window?.rootViewController?.present(viewController, animated: true)
     }
@@ -197,16 +196,16 @@ private extension AppDelegate {
         var shouldPresentNews = false
 
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
-            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "UnsupportedDeviceVC")
+            rootViewController = StoryboardScene.ForceUpdate.unsupportedDeviceVC.instantiate()
             presentingAnyForceUpdateScreen = true
         } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(RemoteValues.serverConfiguration.minSupportedVersion) {
-            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceOSUpdateVC")
+            rootViewController = StoryboardScene.ForceUpdate.forceOSUpdateVC.instantiate()
             presentingAnyForceUpdateScreen = true
         } else if RemoteValues.minSupportedVersion > App.appVersion {
-            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
+            rootViewController = StoryboardScene.ForceUpdate.forceUpdateVC.instantiate()
             presentingAnyForceUpdateScreen = true
         } else if AppSettings.activated, Auth.auth().currentUser != nil {
-            rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
+            rootViewController = StoryboardScene.Active.initialScene.instantiate()
 
             // refresh token
             Auth.auth().currentUser?.getIDToken(completion: { token, _ in
@@ -218,10 +217,10 @@ private extension AppDelegate {
             // User with phone number is old user
             if Auth.auth().currentUser?.phoneNumber != nil {
                 try? Auth.auth().signOut()
-                rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "OnboardingActivatedUser")
+                rootViewController = StoryboardScene.Onboarding.onboardingActivatedUser.instantiate()
                 shouldPresentNews = true
             } else {
-                rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
+                rootViewController = StoryboardScene.Onboarding.initialScene.instantiate()
             }
         }
 
@@ -229,7 +228,7 @@ private extension AppDelegate {
 
         if shouldPresentNews, !AppSettings.v2_0NewsLaunched {
             AppSettings.v2_0NewsLaunched = true
-            guard let controller = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+            let controller = StoryboardScene.News.initialScene.instantiate()
             controller.modalPresentationStyle = .fullScreen
             rootViewController?.present(controller, animated: true)
         }

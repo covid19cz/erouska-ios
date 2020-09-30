@@ -79,8 +79,7 @@ private extension PrivacyVC {
                             if let token = token {
                                 KeychainService.token = token
                                 AppSettings.activated = true
-                                let storyboard = UIStoryboard(name: "Active", bundle: nil)
-                                AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
+                                AppDelegate.shared.window?.rootViewController = StoryboardScene.Active.initialScene.instantiate()
                             } else {
                                 self?.presentError(error)
                             }

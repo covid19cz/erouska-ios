@@ -41,15 +41,15 @@ final class FirstActivationVC: UIViewController {
                 DispatchQueue.main.async { [weak self] in
                     if settings.authorizationStatus == .notDetermined {
                         // Request authorization
-                        self?.performSegue(withIdentifier: "exposureNotification", sender: nil)
+                        self?.perform(segue: StoryboardSegue.Onboarding.exposureNotification)
                     } else {
                         // Already authorized or denied
-                        self?.performSegue(withIdentifier: "privacy", sender: nil)
+                        self?.perform(segue: StoryboardSegue.Onboarding.privacy)
                     }
                 }
             }
         } else {
-            performSegue(withIdentifier: "exposureNotification", sender: nil)
+            perform(segue: StoryboardSegue.Onboarding.exposureNotification)
         }
     }
 

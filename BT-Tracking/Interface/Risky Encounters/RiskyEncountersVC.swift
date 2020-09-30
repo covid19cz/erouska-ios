@@ -117,10 +117,13 @@ final class RiskyEncountersVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let viewController = segue.destination as? RiskyEncountersListVC else { return }
 
-        if segue.identifier == "mainSymptoms" {
+        switch StoryboardSegue.RiskyEncounters(segue) {
+        case .mainSymptoms:
             viewController.viewModel = MainSymptomsVM()
-        } else if segue.identifier == "preventTransmission" {
+        case .preventTransmission:
             viewController.viewModel = PreventTransmissionVM()
+        default:
+            break
         }
     }
 
@@ -129,7 +132,7 @@ final class RiskyEncountersVC: UIViewController {
     }
 
     @IBAction private func showPreviousRiskyEncounters(_ sender: Any) {
-        performSegue(withIdentifier: "previousRiskyEncounters", sender: nil)
+        perform(segue: StoryboardSegue.RiskyEncounters.previousRiskyEncounters)
     }
 }
 
@@ -154,11 +157,11 @@ extension RiskyEncountersVC: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         switch viewModel.menuItems[indexPath.row] {
         case .mainSymptoms:
-            performSegue(withIdentifier: "mainSymptoms", sender: nil)
+            perform(segue: StoryboardSegue.RiskyEncounters.mainSymptoms)
         case .preventTransmission:
-            performSegue(withIdentifier: "preventTransmission", sender: nil)
+            perform(segue: StoryboardSegue.RiskyEncounters.preventTransmission)
         case .previousRiskyEncounters:
-            performSegue(withIdentifier: "previousRiskyEncounters", sender: nil)
+            perform(segue: StoryboardSegue.RiskyEncounters.previousRiskyEncounters)
         }
     }
 

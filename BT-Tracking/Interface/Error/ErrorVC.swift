@@ -18,11 +18,8 @@ final class ErrorVC: UIViewController {
     var viewModel: ErrorVM?
 
     static func instantiateViewController(with viewModel: ErrorVM) -> UIViewController? {
-        guard
-            let navVC = UIStoryboard(name: "Error", bundle: nil).instantiateInitialViewController() as? UINavigationController,
-            let errorVC = navVC.topViewController as? ErrorVC
-        else { return nil }
-
+        let navVC = StoryboardScene.Error.initialScene.instantiate()
+        guard let errorVC = navVC.topViewController as? ErrorVC else { return nil }
         errorVC.viewModel = viewModel
         return navVC
     }
@@ -55,7 +52,7 @@ final class ErrorVC: UIViewController {
     }
 
     @objc func showHelp() {
-        performSegue(withIdentifier: "Help", sender: nil)
+        perform(segue: StoryboardSegue.Error.help)
     }
 
     func closeWith(completion: @escaping () -> Void) {
