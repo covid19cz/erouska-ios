@@ -41,6 +41,6 @@ final class ForceUpdateVC: UIViewController {
     private func setupStrings() {
         headlineLabel.text = L10n.forceUpdateTitle
         bodyLabel.text = L10n.forceUpdateBody
-        updateButton.localizedTitle(L10n.forceUpdateButton)
+        updateButton.setTitle(L10n.forceUpdateButton)
     }
 }

@@ -50,7 +50,7 @@ private extension ExposurePermissionVC {
 
         headlineLabel.text = L10n.exposureNotificationHeadline
         bodyLabel.text = L10n.exposureNotificationBody
-        continueButton.localizedTitle(L10n.exposureNotificationContinue)
+        continueButton.setTitle(L10n.exposureNotificationContinue)
     }
 
     // MARK: - Request permission

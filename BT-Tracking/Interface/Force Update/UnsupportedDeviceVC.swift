@@ -42,6 +42,6 @@ final class UnsupportedDeviceVC: UIViewController {
     private func setupStrings() {
         headlineLabel.text = viewModel.headline
         bodyLabel.text = viewModel.body
-        moreInfoButton.localizedTitle(viewModel.moreInfoButton)
+        moreInfoButton.setTitle(viewModel.moreInfoButton)
     }
 }

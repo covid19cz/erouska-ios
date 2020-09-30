@@ -28,7 +28,7 @@ final class SendResultVC: UIViewController {
         titleLabel.text = L10n.dataSendTitleLabel
         headlineLabel.text = L10n.dataSendHeadline
         bodyLabel.text = L10n.dataSendBody
-        closeButton.localizedTitle(L10n.dataSendCloseButton)
+        closeButton.setTitle(L10n.dataSendCloseButton)
     }
 
     // MARK: - Action

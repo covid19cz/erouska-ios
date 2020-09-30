@@ -50,7 +50,7 @@ final class RiskyEncountersNegativeView: UIStackView {
     func setup(title: String, body: String, previousRiskyEncounters: String) {
         titleLabel.text = title
         bodyLabel.text = body
-        previousRiskyEncountersButton.localizedTitle(previousRiskyEncounters)
+        previousRiskyEncountersButton.setTitle(previousRiskyEncounters)
     }
 
 }

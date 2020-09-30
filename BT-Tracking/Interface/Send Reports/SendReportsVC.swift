@@ -114,12 +114,12 @@ private extension SendReportsVC {
     }
 
     func setupStrings() {
-        title = viewModel.title
+        title = L10n.dataListSendTitle
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
-        headlineLabel.text = viewModel.headline
-        codeTextField.placeholder = viewModel.placeholder
-        actionButton.localizedTitle(viewModel.actionTitle)
+        headlineLabel.text = L10n.dataListSendHeadline
+        codeTextField.placeholder = L10n.dataListSendPlaceholder
+        actionButton.setTitle(L10n.dataListSendActionTitle)
     }
 
     // MARK: - Progress
@@ -171,7 +171,7 @@ private extension SendReportsVC {
         controller.addAction(UIAlertAction(title: "Normal Keys", style: .default, handler: {[weak self]  _ in
             self?.sendReport(with: .normal, token: token)
         }))
-        controller.addAction(UIAlertAction(title: NSLocalizedString("active_background_mode_cancel", comment: ""), style: .cancel, handler: nil))
+        controller.addAction(UIAlertAction(title: L10n.activeBackgroundModeCancel, style: .cancel, handler: nil))
         present(controller, animated: true, completion: nil)
     }
 
@@ -248,8 +248,8 @@ private extension SendReportsVC {
 
     func showVerifyError() {
         showAlert(
-            title: viewModel.sendDataErrorWrongCodeTitle,
-            message: viewModel.sendDataErrorWrongCodeMessage,
+            title: L10n.dataListSendErrorWrongCodeTitle,
+            message: L10n.dataListSendErrorWrongCodeMessage,
             okHandler: { [weak self] in
                 self?.codeTextField.text = nil
                 self?.codeTextField.becomeFirstResponder()
@@ -258,13 +258,13 @@ private extension SendReportsVC {
     }
 
     func showNoKeysError() {
-        showAlert(title: viewModel.sendDataErrorNoKeys, message: "")
+        showAlert(title: L10n.dataListSendErrorNoKeys)
     }
 
     func showSendDataError() {
         showAlert(
-            title: viewModel.sendDataErrorFailedTitle,
-            message: viewModel.sendDataErrorFailedMessage
+            title: L10n.dataListSendErrorFailedTitle,
+            message: L10n.dataListSendErrorFailedMessage
         )
     }
 

@@ -22,7 +22,7 @@ final class NewsVC: UIViewController {
         super.viewDidLoad()
 
         title = L10n.newsTitle
-        actionButton.localizedTitle(L10n.newsButtonClose)
+        actionButton.setTitle(L10n.newsButtonClose)
 
         let nib = UINib(nibName: "NewsPageView", bundle: nil)
         pagesStackView.arrangedSubviews.forEach {
@@ -64,7 +64,7 @@ final class NewsVC: UIViewController {
     }
 
     private func updateView(for page: Int) {
-        actionButton.localizedTitle(page == viewModel.newsPages.count - 1 ? L10n.newsButtonClose : L10n.newsButtonContinue)
+        actionButton.setTitle(page == viewModel.newsPages.count - 1 ? L10n.newsButtonClose : L10n.newsButtonContinue)
     }
 
     private func scrollToPage(at index: Int) {

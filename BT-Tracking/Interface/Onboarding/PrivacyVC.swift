@@ -36,7 +36,7 @@ final class PrivacyVC: UIViewController {
         navigationItem.rightBarButtonItem?.title = L10n.back
 
         headlineLabel.text = L10n.privacyHeadline
-        continueButton.localizedTitle(L10n.privacyContinue)
+        continueButton.setTitle(L10n.privacyContinue)
 
         bodyTextView.textContainerInset = .zero
         bodyTextView.textContainer.lineFragmentPadding = 0

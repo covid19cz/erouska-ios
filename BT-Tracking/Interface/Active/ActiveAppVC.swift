@@ -295,12 +295,12 @@ private extension ActiveAppVC {
             lastUpdateLabel.isHidden = true
         }
 
-        actionButton.localizedTitle(viewModel.state.actionTitle)
+        actionButton.setTitle(viewModel.state.actionTitle)
         actionButton.style = viewModel.state == .enabled ? .clear : .filled
 
         exposureTitleLabel.text = viewModel.exposureTitle
-        exposureCloseButton.localizedTitle(L10n.close)
-        exposureMoreInfoButton.localizedTitle(L10n.activeExposureMoreInfo)
+        exposureCloseButton.setTitle(L10n.close)
+        exposureMoreInfoButton.setTitle(L10n.activeExposureMoreInfo)
     }
 
     func checkBackgroundModeIfNeeded() {

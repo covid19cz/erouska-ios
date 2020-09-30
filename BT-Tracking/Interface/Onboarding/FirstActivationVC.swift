@@ -62,7 +62,7 @@ private extension FirstActivationVC {
 
         headlineLabel.text = L10n.welcomeTitle
         bodyLabel.text = L10n.welcomeBody
-        continueButton.localizedTitle(L10n.welcomeActivation)
-        howItWorksButton.localizedTitle(L10n.welcomeHelp)
+        continueButton.setTitle(L10n.welcomeActivation)
+        howItWorksButton.setTitle(L10n.welcomeHelp)
     }
 }

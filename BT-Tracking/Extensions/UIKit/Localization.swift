@@ -10,7 +10,7 @@ import UIKit
 
 extension UIButton {
 
-    func localizedTitle(_ text: String) {
+    func setTitle(_ text: String) {
         setTitle(text, for: .normal)
     }
 

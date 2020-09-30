@@ -37,7 +37,7 @@ final class CurrentDataVC: UIViewController {
 
         headlineLabel.text = L10n.errorUnknownHeadline
         textLabel.text = L10n.errorUnknownText
-        actionButton.localizedTitle(L10n.errorUnknownTitleRefresh)
+        actionButton.setTitle(L10n.errorUnknownTitleRefresh)
 
         scrollView.alpha = 0
         buttonsView.alpha = 0
