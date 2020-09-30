@@ -110,9 +110,9 @@ extension CurrentDataVC: UITableViewDataSource {
         let section = viewModel.sections[indexPath.section]
         let item = section.items[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.subtitle == nil ? "BasicCell" : "SubtitleCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.subtitle == nil ? "BasicCell" : "SubtitleCell") ?? UITableViewCell()
 
-        cell.imageView?.image = UIImage(named: item.iconName)
+        cell.imageView?.image = item.iconAsset.image
         cell.textLabel?.text = item.title
         cell.detailTextLabel?.text = item.subtitle
         cell.selectionStyle = section.selectableItems ? .default : .none

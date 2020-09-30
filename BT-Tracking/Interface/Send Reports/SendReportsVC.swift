@@ -43,6 +43,8 @@ final class SendReportsVC: UIViewController {
     @IBOutlet private weak var actionButton: Button!
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         codeTextField.textContentType = .oneTimeCode
 
         buttonsView.connect(with: scrollView)
@@ -88,9 +90,8 @@ final class SendReportsVC: UIViewController {
     @IBAction private func closeAction() {
         dismiss(animated: true)
     }
-    
-}
 
+}
 
 extension SendReportsVC: UITextFieldDelegate {
 
@@ -231,7 +232,10 @@ private extension SendReportsVC {
     }
 
     func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data) {
-        AppDelegate.dependency.reporter.uploadKeys(keys: keys, verificationPayload: verificationPayload, hmacSecret: hmacSecret, callback: { [weak self] result in
+        AppDelegate.dependency.reporter.uploadKeys(
+            keys: keys,
+            verificationPayload: verificationPayload,
+            hmacSecret: hmacSecret) { [weak self] result in
             self?.reportHideProgress()
             switch result {
             case .success:
@@ -239,7 +243,7 @@ private extension SendReportsVC {
             case .failure:
                 self?.showSendDataError()
             }
-        })
+        }
     }
 
     func showVerifyError() {

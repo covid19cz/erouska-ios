@@ -73,7 +73,7 @@ final class ActiveAppVC: UIViewController {
             self?.riskyEncountersAction()
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -129,7 +129,7 @@ final class ActiveAppVC: UIViewController {
         let shareContent: [Any] = [message]
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?.last ?? navigationItem.rightBarButtonItem
-        
+
         present(activityViewController, animated: true)
     }
 
@@ -208,7 +208,7 @@ final class ActiveAppVC: UIViewController {
     }
 
     // MARK: -
-    
+
     @objc private func applicationDidBecomeActive() {
         updateViewModel()
     }
@@ -326,14 +326,20 @@ private extension ActiveAppVC {
 
     func showExposureUnknownError(_ error: Error, code: ENError.Code = .unknown, activation: Bool) {
         if activation {
-            showAlert(title: viewModel.errorActivationUnknownTitle, message: String(format: Localizable(viewModel.errorActivationUnknownBody), arguments: ["\(code.rawValue)"]))
+            showAlert(
+                title: viewModel.errorActivationUnknownTitle,
+                message: String(format: Localizable(viewModel.errorActivationUnknownBody), arguments: ["\(code.rawValue)"])
+            )
         } else {
-            showAlert(title: viewModel.errorDeactivationUnknownTitle, message: viewModel.errorDeactivationUnknownBody)
+            showAlert(
+                title: viewModel.errorDeactivationUnknownTitle,
+                message: viewModel.errorDeactivationUnknownBody
+            )
         }
     }
 
     // MARK: - Open external
-    
+
     func openSettings() {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
         UIApplication.shared.open(settingsUrl)
@@ -384,9 +390,9 @@ private extension ActiveAppVC {
                             return
                         }
 
-                        let realm = try! Realm()
-                        try! realm.write() {
-                            exposures.forEach { realm.add(ExposureRealm($0)) }
+                        let realm = try? Realm()
+                        try? realm?.write {
+                            exposures.forEach { realm?.add(ExposureRealm($0)) }
                         }
 
                         var result = ""
@@ -398,8 +404,8 @@ private extension ActiveAppVC {
                                 + "signal attenuations: \(signals.joined(separator: ", "))\n"
                         }
 
-                        if result == "" {
-                            result = "None";
+                        if result.isEmpty {
+                            result = "None"
                         }
 
                         log("EXP: \(exposures)")
@@ -426,12 +432,20 @@ private extension ActiveAppVC {
 
     func debugInsertFakeExposure() {
         let exposures = [
-            Exposure(id: UUID(), date: Date(), duration: 213, totalRiskScore: 2, transmissionRiskLevel: 4, attenuationValue: 4, attenuationDurations: [21, 1, 4, 5])
+            Exposure(
+                id: UUID(),
+                date: Date(),
+                duration: 213,
+                totalRiskScore: 2,
+                transmissionRiskLevel: 4,
+                attenuationValue: 4,
+                attenuationDurations: [21, 1, 4, 5]
+            )
         ]
 
-        let realm = try! Realm()
-        try! realm.write() {
-            exposures.forEach { realm.add(ExposureRealm($0)) }
+        let realm = try? Realm()
+        try? realm?.write {
+            exposures.forEach { realm?.add(ExposureRealm($0)) }
         }
 
         let data = ["idToken": KeychainService.token]

@@ -7,7 +7,7 @@
 //
 
 extension String {
-    
+
     var phoneFormatted: String {
         let countryCode = self.dropLast(9)
         let phone = String(self.suffix(9))

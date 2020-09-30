@@ -9,9 +9,9 @@
 import UIKit
 
 final class RiskyEncountersListVC: UIViewController {
-    @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var footerLabel: UILabel!
+    @IBOutlet private weak var headerLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var footerLabel: UILabel!
 
     var viewModel: RiskyEncountersListVM!
     private let mainSymptomCellReusableIdentifier = "RiskyEncountersListCell"
@@ -52,10 +52,10 @@ extension RiskyEncountersListVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: mainSymptomCellReusableIdentifier) as! RiskyEncountersListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: mainSymptomCellReusableIdentifier) as? RiskyEncountersListCell
         if let item = viewModel.content?.items[indexPath.row] {
-            cell.config(with: item)
+            cell?.config(with: item)
         }
-        return cell
+        return cell ?? UITableViewCell()
     }
 }

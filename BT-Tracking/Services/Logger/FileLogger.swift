@@ -9,25 +9,26 @@
 import Foundation
 
 final class FileLogger {
-    
-    static let shared = FileLogger()!
+
+    static let shared = FileLogger()
 
     private(set) var fileURL: URL
     private var fileHandle: FileHandle
 
-    init?() {
-        guard let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
+    init() {
+        let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? NSTemporaryDirectory()
+
         self.fileURL = URL(fileURLWithPath: documents).appendingPathComponent("application.log")
 
         if !FileManager.default.fileExists(atPath: fileURL.path) {
             FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
         }
-        guard let fileHandle = try? FileHandle(forWritingTo: fileURL) else { return nil }
-        fileHandle.seekToEndOfFile()
+        let fileHandle = try? FileHandle(forWritingTo: fileURL)
+        fileHandle?.seekToEndOfFile()
 
-        self.fileHandle = fileHandle
+        self.fileHandle = fileHandle ?? FileHandle()
     }
-    
+
     func writeLog(_ text: String) {
         let newText = "\n" + formatter.string(from: Date()) + " " + text
         guard let data = newText.data(using: .utf8) else {
@@ -36,7 +37,7 @@ final class FileLogger {
         }
         fileHandle.write(data)
     }
-    
+
     func getLog() -> String {
         do {
             return try String(contentsOf: fileURL, encoding: .utf8)
@@ -45,7 +46,7 @@ final class FileLogger {
             return ""
         }
     }
-    
+
     func purgeLogs() {
         do {
             fileHandle.closeFile()

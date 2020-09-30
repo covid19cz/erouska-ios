@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum VerificationError: Error {
     case noData
     case responseError(String)

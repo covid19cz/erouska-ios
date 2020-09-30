@@ -10,7 +10,7 @@ import UIKit
 
 final class HelpVC: MarkdownController {
 
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet private weak var stackView: UIStackView!
 
     // MARK: -
 
@@ -47,8 +47,8 @@ extension HelpVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell")!
-        cell.imageView?.image = UIImage(named: "Chat")?.withRenderingMode(.alwaysOriginal)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell") ?? UITableViewCell()
+        cell.imageView?.image = Asset.chat.image.withRenderingMode(.alwaysOriginal)
         cell.textLabel?.text = Localizable(viewModel.chatbot)
         return cell
     }

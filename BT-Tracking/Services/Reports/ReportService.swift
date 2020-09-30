@@ -64,7 +64,7 @@ final class ReportService: ReportServicing {
 
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String {
         // Sort by the key.
-        let sortedKeys = keys.sorted { (lhs, rhs) -> Bool in
+        let sortedKeys = keys.sorted { lhs, rhs -> Bool in
             lhs.keyData.base64EncodedString() < rhs.keyData.base64EncodedString()
         }
 
@@ -84,10 +84,10 @@ final class ReportService: ReportServicing {
         let hmacKey = SymmetricKey(data: secret)
         let authenticationCode = HMAC<SHA256>.authenticationCode(for: clearData, using: hmacKey)
         return authenticationCode.withUnsafeBytes { bytes in
-            return Data(bytes)
+            Data(bytes)
         }.base64EncodedString()
     }
-    
+
     private(set) var isUploading: Bool = false
 
     func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback) {
@@ -142,7 +142,7 @@ final class ReportService: ReportServicing {
                 case .failure(let error):
                     reportFailure(error)
                 }
-        }
+            }
     }
 
     private(set) var isDownloading: Bool = false
@@ -170,7 +170,7 @@ final class ReportService: ReportServicing {
 
         let destinationURL = self.downloadDestinationURL
         let destination: DownloadRequest.Destination = { temporaryURL, response in
-            let url = destinationURL.appendingPathComponent(response.suggestedFilename!)
+            let url = destinationURL.appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
             return (url, [.removePreviousFile, .createIntermediateDirectories])
         }
         var downloads: [DownloadRequest] = []
@@ -222,7 +222,10 @@ final class ReportService: ReportServicing {
                                     }
                                     do {
                                         let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
-                                        let fileURLs = try FileManager.default.contentsOfDirectory(at: unzipDirectory, includingPropertiesForKeys: [], options: [.skipsHiddenFiles])
+                                        let fileURLs = try FileManager.default.contentsOfDirectory(
+                                            at: unzipDirectory,
+                                            includingPropertiesForKeys: [], options: [.skipsHiddenFiles]
+                                        )
                                         let uniqueName = UUID().uuidString
                                         let changedNames: [URL] = try fileURLs.map {
                                             var newURL = $0
@@ -278,7 +281,7 @@ final class ReportService: ReportServicing {
 
                     reportSuccess(localURLs, lastProcessFileName: lastRemoteURL?.lastPathComponent)
                 }
-        }
+            }
 
         return progress
     }

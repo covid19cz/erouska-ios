@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class LayoutConstraintHelper : NSLayoutConstraint {
+@IBDesignable class LayoutConstraintHelper: NSLayoutConstraint {
     @IBInspectable var iP6AndSmaller: CGFloat = 0.0 {
         didSet { deviceConstant(0..<600, value: iP6AndSmaller) }
     }

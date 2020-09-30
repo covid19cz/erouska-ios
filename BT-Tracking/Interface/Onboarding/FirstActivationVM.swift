@@ -11,19 +11,7 @@ import Foundation
 struct FirstActivationVM {
 
     var exposureNotificationAuthorized: Bool {
-        return AppDelegate.dependency.exposureService.authorizationStatus == .authorized
+        AppDelegate.dependency.exposureService.authorizationStatus == .authorized
     }
-
-    let title = "app_name"
-
-    let back = "back"
-
-    let headline = "welcome_title"
-
-    let body = "welcome_body"
-
-    let continueButton = "welcome_activation"
-
-    let howItWorksButton = "welcome_help"
 
 }

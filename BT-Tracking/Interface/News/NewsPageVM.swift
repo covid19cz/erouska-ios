@@ -9,20 +9,14 @@
 import Foundation
 
 struct NewsPageVM {
-    let imageName: String
-    let headline: String
-    let body: String
-    let bodyLinkTitle: String?
+    let imageAsset: ImageAsset
+    let headline: Localization
+    let body: Localization
+    let bodyLinkTitle: Localization?
     let bodyLink: String?
 
-    init(
-        imageName: String,
-        headline: String,
-        body: String,
-        bodyLinkTitle: String? = nil,
-        bodyLink: String? = nil
-    ) {
-        self.imageName = imageName
+    init(imageAsset: ImageAsset, headline: Localization, body: Localization, bodyLinkTitle: Localization? = nil, bodyLink: String? = nil) {
+        self.imageAsset = imageAsset
         self.headline = headline
         self.body = body
         self.bodyLinkTitle = bodyLinkTitle

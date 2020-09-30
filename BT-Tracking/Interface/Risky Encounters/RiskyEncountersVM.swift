@@ -19,11 +19,11 @@ struct RiskyEncountersVM {
         var icon: UIImage {
             switch self {
             case .mainSymptoms:
-                return UIImage(named: "MainSymptoms")!
+                return Asset.mainSymptoms.image
             case .preventTransmission:
-                return UIImage(named: "PreventTransmission")!
+                return Asset.preventTransmission.image
             case .previousRiskyEncounters:
-                return UIImage(named: "PreviousRiskyEncounters")!
+                return Asset.previousRiskyEncounters.image
             }
         }
 
@@ -52,25 +52,26 @@ struct RiskyEncountersVM {
     let withoutSymptoms = RemoteValues.riskyEncountersWithoutSymptoms
 
     let negativeTitle = RemoteValues.noEncounterHeader
-    let negativeBody =  RemoteValues.noEncounterBody
+    let negativeBody = RemoteValues.noEncounterBody
 
     let previousRiskyEncountersButton = RemoteValues.recentExposuresUITitle
 
     init() {
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays
-        let realm = try! Realm()
-        let exposures = realm
-            .objects(ExposureRealm.self)
-            .sorted(byKeyPath: "date")
+        let realm = try? Realm()
+        guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
+            riskyEncounterDateToShow = .empty()
+            shouldShowPreviousRiskyEncounters = .of(false)
+            return
+        }
 
-        riskyEncounterDateToShow = Observable.collection(from: exposures)
-            .map {
-                $0.filter { $0.date > Calendar.current.date(byAdding: .day, value: -showForDays, to: Date())! }.last?.date
-            }
+        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
+        riskyEncounterDateToShow = Observable.collection(from: exposures).map {
+            $0.last(where: { $0.date > showForDate })?.date
+        }
 
-        shouldShowPreviousRiskyEncounters = Observable.collection(from: exposures)
-            .map {
-                !$0.isEmpty
-            }
+        shouldShowPreviousRiskyEncounters = Observable.collection(from: exposures).map {
+            !$0.isEmpty
+        }
     }
 }

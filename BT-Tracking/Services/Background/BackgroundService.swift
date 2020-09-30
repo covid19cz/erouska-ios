@@ -222,9 +222,9 @@ private extension BackgroundService {
             return
         }
 
-        let realm = try! Realm()
-        try! realm.write() {
-            exposures.forEach { realm.add(ExposureRealm($0)) }
+        let realm = try? Realm()
+        try? realm?.write {
+            exposures.forEach { realm?.add(ExposureRealm($0)) }
         }
 
         let data = ["idToken": KeychainService.token]
@@ -243,8 +243,8 @@ private extension BackgroundService {
                 + "attenuation value: \(exposure.attenuationValue)\n"
                 + "signal attenuations: \(signals.joined(separator: ", "))\n"
         }
-        if result == "" {
-            result = "None";
+        if result.isEmpty {
+            result = "None"
         }
 
         log("EXP: \(exposures)")

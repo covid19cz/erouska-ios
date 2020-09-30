@@ -11,12 +11,12 @@ import UIKit
 struct ContactsVM {
 
     let tabTitle = "contacts_title"
-    let tabIcon = UIImage(named: "Contacts")
+    let tabIcon = Asset.contacts.image
 
     let title = "contacts_title"
 
     var contacts: [Contact] {
-        return RemoteValues.contactsContent
+        RemoteValues.contactsContent
     }
 
 }
@@ -27,7 +27,6 @@ struct Contact {
     let linkTitle: String
     let link: URL
 }
-
 
 struct ContactContent: Decodable {
     let title: String

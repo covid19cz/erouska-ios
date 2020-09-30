@@ -19,40 +19,38 @@ final class ActiveAppVM {
         case disabledBluetooth = "disabled"
         case disabledExposures
 
-        var tabBarIcon: (UIImage?, UIImage?) {
-            let name: String
+        var tabBarIcon: (UIImage, UIImage) {
             switch self {
             case .enabled:
-                name = "HomeActive"
+                return (Asset.homeActive.image, Asset.homeActiveSelected.image)
             case .paused:
-                name = "HomePaused"
+                return (Asset.homePaused.image, Asset.homePausedSelected.image)
             case .disabledBluetooth, .disabledExposures:
-                name = "HomeDisabled"
+                return (Asset.homeDisabled.image, Asset.homePausedSelected.image)
             }
-            return (UIImage(named: name), UIImage(named: "\(name)Selected"))
         }
 
         var color: UIColor {
             switch self {
             case .enabled:
-                return #colorLiteral(red: 0.6116178036, green: 0.7910612226, blue: 0.3123690188, alpha: 1)
+                return Asset.appEnabled.color
             case .paused:
-                return #colorLiteral(red: 0.8926691413, green: 0.5397555232, blue: 0.1979260743, alpha: 1)
+                return Asset.appPaused.color
             case .disabledBluetooth, .disabledExposures:
-                return #colorLiteral(red: 0.8860370517, green: 0.2113904059, blue: 0.3562591076, alpha: 1)
+                return Asset.appDisabled.color
             }
         }
 
-        var image: UIImage? {
+        var image: UIImage {
             switch self {
             case .enabled:
-                return UIImage(named: "ScanActive")
+                return Asset.scanActive.image
             case .paused:
-                return UIImage(named: "BluetoothPaused")
+                return Asset.bluetoothPaused.image
             case .disabledBluetooth:
-                return UIImage(named: "BluetoothOff")
+                return Asset.bluetoothOff.image
             case .disabledExposures:
-                return UIImage(named: "ExposuresOff")
+                return Asset.exposuresOff.image
             }
         }
 
@@ -115,7 +113,7 @@ final class ActiveAppVM {
     let lastUpdateText = "active_data_update"
 
     var menuRiskyEncounters: String {
-        return RemoteValues.exposureUITitle
+        RemoteValues.exposureUITitle
     }
     let menuSendReports = "data_list_send_title"
     let menuDebug = "debug"
@@ -127,7 +125,7 @@ final class ActiveAppVM {
     let backgroundModeCancel = "active_background_mode_cancel"
 
     var exposureTitle: String {
-        return RemoteValues.exposureBannerTitle
+        RemoteValues.exposureBannerTitle
     }
     let exposureBannerClose = "close"
     let exposureMoreInfo = "active_exposure_more_info"
@@ -159,7 +157,8 @@ final class ActiveAppVM {
     }()
 
     var state: State {
-        return try! observableState.value()
+        let state = try? observableState.value()
+        return state ?? .disabledExposures
     }
     private(set) var observableState: BehaviorSubject<State>
     private(set) var exposureToShow: Observable<Exposure?>
@@ -173,15 +172,16 @@ final class ActiveAppVM {
         observableState = BehaviorSubject<State>(value: .paused)
 
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays
-        let realm = try! Realm()
-        let exposures = realm
-            .objects(ExposureRealm.self)
-            .sorted(byKeyPath: "date")
+        let realm = try? Realm()
+        guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
+            exposureToShow = .empty()
+            return
+        }
 
-        exposureToShow = Observable.collection(from: exposures)
-            .map {
-                $0.filter { $0.date > Calendar.current.date(byAdding: .day, value: -showForDays, to: Date())! }.last?.toExposure()
-            }
+        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
+        exposureToShow = Observable.collection(from: exposures).map {
+            $0.last(where: { $0.date > showForDate })?.toExposure()
+        }
 
         exposureService.readyToUse
             .subscribe { [weak self] _ in

@@ -16,7 +16,7 @@ final class ContactsVC: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
     // MARK: -
 
@@ -51,9 +51,9 @@ extension ContactsVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell
-        cell.config(with: viewModel.contacts[indexPath.row])
-        cell.openLinkClosure = { [weak self] in self?.openURL(URL: $0) }
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as? ContactCell
+        cell?.config(with: viewModel.contacts[indexPath.row])
+        cell?.openLinkClosure = { [weak self] in self?.openURL(URL: $0) }
+        return cell ?? UITableViewCell()
     }
 }

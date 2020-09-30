@@ -34,8 +34,8 @@ final class ExposurePermissionVC: UIViewController {
     }
 
     // MARK: - Action
-    
-    @IBAction func continueAction(_ sender: Any) {
+
+    @IBAction private func continueAction(_ sender: Any) {
         requestExposurePermission()
     }
 
@@ -44,13 +44,13 @@ final class ExposurePermissionVC: UIViewController {
 private extension ExposurePermissionVC {
 
     func setupStrings() {
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
-        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
-        
-        headlineLabel.localizedText(viewModel.headline)
-        bodyLabel.localizedText(viewModel.body)
-        continueButton.localizedTitle(viewModel.continueButton)
+        navigationItem.localizedTitle(.exposure_notification_title)
+        navigationItem.backBarButtonItem?.localizedTitle(.back)
+        navigationItem.rightBarButtonItem?.localizedTitle(.help)
+
+        headlineLabel.localizedText(.exposure_notification_headline)
+        bodyLabel.localizedText(.exposure_notification_body)
+        continueButton.localizedTitle(.exposure_notification_continue)
     }
 
     // MARK: - Request permission
@@ -86,7 +86,6 @@ private extension ExposurePermissionVC {
             }
         }
     }
-    
 
     func requestNotificationPermission() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -102,7 +101,8 @@ private extension ExposurePermissionVC {
                         })
                     }
                 }
-        })
+            }
+        )
         UIApplication.shared.registerForRemoteNotifications()
     }
 
@@ -112,24 +112,24 @@ private extension ExposurePermissionVC {
     }
 
     func showExposureStorageError() {
-        showAlert(title: viewModel.errorStorageTitle, message: viewModel.errorStorageBody)
+        showAlert(title: .exposure_activation_storage_title, message: .exposure_activation_storage_body)
     }
 
     func showUnknownError(_ error: Error, code: ENError.Code = .unknown) {
         showAlert(
-            title: viewModel.errorUnknownTitle,
-            message: String(format: Localizable(viewModel.errorUnknownBody), arguments: ["\(code.rawValue)"]),
+            title: Localization.exposure_activation_unknown_title.localized,
+            message: String(format: Localization.exposure_activation_unknown_body.rawValue, arguments: ["\(code.rawValue)"]),
             okHandler: { self.requestNotificationPermission() }
         )
     }
 
     func showPermissionDeniedAlert(cancelAction: @escaping () -> Void) {
         showAlert(
-            title: viewModel.errorRestrictedTitle,
-            message: viewModel.errorRestrictedBody,
-            okTitle: viewModel.errorSettingsTitle,
+            title: .exposure_activation_restricted_title,
+            message: .exposure_activation_restricted_body,
+            okTitle: .exposure_activation_restricted_settings_action,
             okHandler: { [weak self] in self?.openSettings() },
-            action: (title: viewModel.errorCancelTitle, handler: cancelAction)
+            action: (title: .exposure_activation_restricted_cancel_action, handler: cancelAction)
         )
     }
 

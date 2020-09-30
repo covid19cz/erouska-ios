@@ -11,6 +11,7 @@ import ExposureNotification
 
 struct ServerConfiguration: Codable {
 
+    // swiftlint:disable force_unwrapping
     static var development: ServerConfiguration {
         ServerConfiguration(
             minSupportedVersion: "13.5",
@@ -38,6 +39,7 @@ struct ServerConfiguration: Codable {
             verificationDeviceKey: RemoteValues.verificationServerApiKey
         )
     }
+    // swiftlint:enable force_unwrapping
 
     let minSupportedVersion: String
 
@@ -56,7 +58,9 @@ struct ServerConfiguration: Codable {
     let verificationAdminKey: String
     let verificationDeviceKey: String
 
-    init(minSupportedVersion: String, showExposureForDays: Int, healthAuthority: String, uploadURL: URL, downloadIndexName: String, downloadsURL: URL, verificationURL: URL, verificationAdminKey: String, verificationDeviceKey: String) {
+    init(minSupportedVersion: String, showExposureForDays: Int, healthAuthority: String, uploadURL: URL,
+         downloadIndexName: String, downloadsURL: URL,
+         verificationURL: URL, verificationAdminKey: String, verificationDeviceKey: String) {
         self.minSupportedVersion = minSupportedVersion
         self.showExposureForDays = showExposureForDays
         self.healthAuthority = healthAuthority

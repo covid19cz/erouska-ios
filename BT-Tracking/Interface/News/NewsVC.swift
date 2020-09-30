@@ -12,27 +12,27 @@ final class NewsVC: UIViewController {
 
     private var viewModel = NewsVM()
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pagesStackView: UIStackView!
-    @IBOutlet weak var pageSizeReferenceView: UIView!
-    @IBOutlet weak var actionButton: RoundedButtonFilled!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var pagesStackView: UIStackView!
+    @IBOutlet private weak var pageSizeReferenceView: UIView!
+    @IBOutlet private weak var actionButton: RoundedButtonFilled!
+    @IBOutlet private weak var pageControl: UIPageControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.localizedTitle(viewModel.title)
-        actionButton.localizedTitle(viewModel.closeButton)
+        navigationItem.localizedTitle(.news_title)
+        actionButton.localizedTitle(.news_button_close)
 
         let nib = UINib(nibName: "NewsPageView", bundle: nil)
         pagesStackView.arrangedSubviews.forEach {
             $0.removeFromSuperview()
         }
         viewModel.newsPages.forEach { pageModel in
-            let page = nib.instantiate(withOwner: nil, options: nil).first as! NewsPageView
+            guard let page = nib.instantiate(withOwner: nil, options: nil).first as? NewsPageView else { return }
             page.viewModel = pageModel
             page.translatesAutoresizingMaskIntoConstraints = true
-            page.bodyTextView.delegate = self
+            page.bodyTextDelegate = self
             pagesStackView.addArrangedSubview(page)
         }
         pageControl.numberOfPages = viewModel.newsPages.count
@@ -50,7 +50,7 @@ final class NewsVC: UIViewController {
         }
     }
 
-    @IBAction func actionButtonPressed(_ sender: Any) {
+    @IBAction private func actionButtonPressed(_ sender: Any) {
         if pageControl.currentPage == viewModel.newsPages.count - 1 {
             dismiss(animated: true, completion: nil)
         } else {
@@ -59,12 +59,12 @@ final class NewsVC: UIViewController {
         }
     }
 
-    @IBAction func pageControlValueChanged(_ sender: Any) {
+    @IBAction private func pageControlValueChanged(_ sender: Any) {
         scrollToPage(at: pageControl.currentPage)
     }
 
     private func updateView(for page: Int) {
-        actionButton.localizedTitle(page == viewModel.newsPages.count - 1 ? viewModel.closeButton : viewModel.continueButton)
+        actionButton.localizedTitle(page == viewModel.newsPages.count - 1 ? .news_button_close : .news_button_continue)
     }
 
     private func scrollToPage(at index: Int) {

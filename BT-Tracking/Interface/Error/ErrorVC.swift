@@ -30,16 +30,16 @@ final class ErrorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = Localizable("error_title")
+        navigationItem.localizedTitle(.error_title)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizable("help"), style: .plain, target: self, action: #selector(showHelp))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.help.localized, style: .plain, target: self, action: #selector(showHelp))
 
         headlineLabel.text = viewModel?.headline
         textLabel.text = viewModel?.text
         actionButton.setTitle(viewModel?.actionTitle ?? "", for: .normal)
     }
 
-    @IBAction func action() {
+    @IBAction private func action() {
         switch viewModel?.action {
         case .close:
             close()

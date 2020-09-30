@@ -31,26 +31,26 @@ final class PrivacyVC: UIViewController {
 
         buttonsView.connect(with: scrollView)
 
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
-        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
+        navigationItem.localizedTitle(.privacy_title)
+        navigationItem.backBarButtonItem?.localizedTitle(.back)
+        navigationItem.rightBarButtonItem?.localizedTitle(.help)
 
-        headlineLabel.localizedText(viewModel.headline)
-        continueButton.localizedTitle(viewModel.continueButton)
+        headlineLabel.localizedText(.privacy_headline)
+        continueButton.localizedTitle(.privacy_continue)
 
         bodyTextView.textContainerInset = .zero
         bodyTextView.textContainer.lineFragmentPadding = 0
 
         bodyTextView.hyperLink(
-            originalText: Localizable(viewModel.body),
-            hyperLink: Localizable(viewModel.bodyLinkTitle),
+            originalText: Localization.privacy_body.localized,
+            hyperLink: Localization.privacy_body_link.localized,
             urlString: viewModel.bodyLink
         )
     }
 
     // MARK: - Action
 
-    @IBAction func continueAction(_ sender: Any) {
+    @IBAction private func continueAction(_ sender: Any) {
         activateApp()
     }
 
@@ -97,11 +97,12 @@ private extension PrivacyVC {
 
     func presentError(_ error: Error?) {
         let viewModel: ErrorVM
-        if let error = error, (error as NSError).domain == NSURLErrorDomain, [NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost, NSURLErrorTimedOut].contains((error as NSError).code) {
+        if let error = error, (error as NSError).domain == NSURLErrorDomain,
+           [NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost, NSURLErrorTimedOut].contains((error as NSError).code) {
             viewModel = ErrorVM(
-                headline: Localizable("error_activation_internet_headline"),
-                text: Localizable("error_activation_internet_text"),
-                actionTitle: Localizable("error_activation_internet_title_action"),
+                headline: .error_activation_internet_headline,
+                text: .error_activation_internet_text,
+                actionTitle: .error_activation_internet_title_action,
                 action: { self.activateApp() }
             )
         } else {

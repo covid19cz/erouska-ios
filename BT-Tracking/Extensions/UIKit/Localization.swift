@@ -18,12 +18,20 @@ extension UINavigationItem {
         title = Localizable(text, comment: comment)
     }
 
+    func localizedTitle(_ text: Localization) {
+        localizedTitle(text.rawValue)
+    }
+
 }
 
 extension UITabBarItem {
 
     func localizedTitle(_ text: String, comment: String? = nil) {
         title = Localizable(text, comment: comment)
+    }
+
+    func localizedTitle(_ text: Localization) {
+        localizedTitle(text.rawValue)
     }
 
 }
@@ -34,12 +42,20 @@ extension UIBarButtonItem {
         title = Localizable(text, comment: comment)
     }
 
+    func localizedTitle(_ text: Localization) {
+        localizedTitle(text.rawValue)
+    }
+
 }
 
 extension UIButton {
 
     func localizedTitle(_ text: String, comment: String? = nil) {
         setTitle(Localizable(text, comment: comment), for: .normal)
+    }
+
+    func localizedTitle(_ text: Localization) {
+        localizedTitle(text.rawValue)
     }
 
 }
@@ -50,6 +66,22 @@ extension UILabel {
         self.text = String(format: Localizable(text, comment: comment), arguments: values)
     }
 
+    func localizedText(_ text: Localization, values: CVarArg...) {
+        localizedText(text.rawValue, values: values)
+    }
+
+}
+
+extension UITextView {
+
+    func localizedText(_ text: String, comment: String? = nil) {
+        self.text = Localizable(text, comment: comment)
+    }
+
+    func localizedText(_ text: Localization, comment: String? = nil) {
+        localizedText(text.rawValue)
+    }
+
 }
 
 extension UITextField {
@@ -58,8 +90,24 @@ extension UITextField {
         self.placeholder = Localizable(text, comment: comment)
     }
 
+    func localizedPlaceholder(_ text: Localization, comment: String? = nil) {
+        localizedPlaceholder(text.rawValue)
+    }
+
     func localizedText(_ text: String, comment: String? = nil) {
         self.text = Localizable(text, comment: comment)
+    }
+
+    func localizedText(_ text: Localization, comment: String? = nil) {
+        localizedText(text.rawValue)
+    }
+
+}
+
+extension Localization {
+
+    var localized: String {
+        Localizable(rawValue)
     }
 
 }

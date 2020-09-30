@@ -10,29 +10,8 @@ import Foundation
 
 struct ExposurePermissionVM {
 
-    let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
-
-    let title = "exposure_notification_title"
-
-    let back = "back"
-
-    let help = "help"
-
-    let headline = "exposure_notification_headline"
-
-    let body = "exposure_notification_body"
-
-    let continueButton = "exposure_notification_continue"
-
-    let errorRestrictedTitle = "exposure_activation_restricted_title"
-    let errorRestrictedBody = "exposure_activation_restricted_body"
-    let errorSettingsTitle = "exposure_activation_restricted_settings_action"
-    let errorCancelTitle = "exposure_activation_restricted_cancel_action"
-    
-    let errorStorageTitle = "exposure_activation_storage_title"
-    let errorStorageBody = "exposure_activation_storage_body"
-
-    let errorUnknownTitle = "exposure_activation_unknown_title"
-    let errorUnknownBody = "exposure_activation_unknown_body"
+    var exposureService: ExposureServicing {
+        AppDelegate.dependency.exposureService
+    }
 
 }

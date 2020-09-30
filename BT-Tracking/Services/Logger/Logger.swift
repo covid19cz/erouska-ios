@@ -24,11 +24,10 @@ protocol LogDelegate: AnyObject {
 }
 
 struct Log {
-    weak static var delegate: LogDelegate?
+    static weak var delegate: LogDelegate?
 
     static func log(_ text: String) {
         delegate?.didLog(text)
         print(text)
     }
 }
-

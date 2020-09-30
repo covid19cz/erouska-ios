@@ -31,13 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Globals
 
     static var shared: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
+        // swiftlint:disable:next force_cast
+        UIApplication.shared.delegate as! AppDelegate
     }
 
     static let dependency = AppDependency()
 
     var openResultsCallback: (() -> Void)?
-    
+
     // MARK: - UIApplicationDelegate
 
     var window: UIWindow?
@@ -45,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func updateInterface() {
         setupInterface()
     }
-
+    // swiftlint:disable:next discouraged_optional_collection
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         log("\n\n\n-START--------------------------------\n")
 
@@ -56,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-    
+
     func applicationDidBecomeActive(_ application: UIApplication) {
         log("\n\n\n-FOREGROUND---------------------------\n")
 
@@ -75,16 +76,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-END----------------------------------\n")
     }
 
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         if Auth.auth().canHandle(url) {
             return true
         } else {
             return false
         }
-    }
-
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        return true
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -96,20 +93,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Self.dependency.deviceToken = deviceToken
 
         // update token on server
-        guard let token = KeychainService.token else { return } // TODO: Should be eHRID?
+        guard let token = KeychainService.token else { return }
         let data: [String: Any] = [
             "idToken": token,
             "pushRegistrationToken": deviceToken.hexEncodedString()
         ]
 
-        Self.dependency.functions.httpsCallable("changePushToken").call(data) { result, error in
+        Self.dependency.functions.httpsCallable("changePushToken").call(data) { _, error in
             if let error = error {
                 log("AppDelegate: Failed to change push token \(error.localizedDescription)")
             }
         }
     }
 
-    func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         completionHandler(.noData)
     }
 
@@ -123,11 +121,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound])
     }
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         switch response.actionIdentifier {
         case UserNotificationAction.openExposureDetectionResults.rawValue,
              UserNotificationAction.openTestResults.rawValue:
@@ -156,7 +156,7 @@ private extension AppDelegate {
 
         let configuration = Realm.Configuration(
             schemaVersion: 4,
-            migrationBlock: { migration, oldSchemaVersion in
+            migrationBlock: { _, _ in
 
             }
         )
@@ -186,7 +186,7 @@ private extension AppDelegate {
         viewController.modalPresentationStyle = .fullScreen
         window?.rootViewController?.present(viewController, animated: true)
     }
-    
+
     func setupInterface() {
         let window = UIWindow()
         window.backgroundColor = .black
@@ -209,7 +209,7 @@ private extension AppDelegate {
             rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
 
             // refresh token
-            Auth.auth().currentUser?.getIDToken(completion: { token, error in
+            Auth.auth().currentUser?.getIDToken(completion: { token, _ in
                 if let token = token {
                     KeychainService.token = token
                 }
@@ -241,7 +241,7 @@ private extension AppDelegate {
 
     func clearKeychainIfNeeded() {
         KeychainService.BUID = nil
-        KeychainService.TUIDs = nil
+        KeychainService.TUIDs = []
     }
 
     func isDeviceSupported() -> Bool {

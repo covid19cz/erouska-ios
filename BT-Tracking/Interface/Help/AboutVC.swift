@@ -14,7 +14,7 @@ final class AboutVC: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet private weak var textView: UITextView!
 
     // MARK: - Lifecycle
 

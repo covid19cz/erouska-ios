@@ -11,21 +11,9 @@ import FirebaseFunctions
 
 struct PrivacyVM {
 
-    let title = "privacy_title"
-
-    let back = "back"
-
-    let help = "help"
-
-    let headline = "privacy_headline"
-
-    let body = "privacy_body"
-
-    let bodyLinkTitle = "privacy_body_link"
-
-    let bodyLink = RemoteValues.conditionsOfUseUrl
-
-    let continueButton = "privacy_continue"
+    var bodyLink: String {
+        RemoteValues.conditionsOfUseUrl
+    }
 
     let functions: Functions = AppDelegate.dependency.functions
 }

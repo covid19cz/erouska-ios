@@ -10,7 +10,7 @@ import UIKit
 import SwiftyMarkdown
 
 struct Markdown {
-    
+
     static func attributedString(markdown: String) -> NSAttributedString {
         var editedMD = markdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
         editedMD = editedMD.replacingOccurrences(of: "(.pdf)", with: "")
@@ -29,7 +29,7 @@ struct Markdown {
         md.h2.fontStyle = .bold
 
         let attributedText = NSMutableAttributedString(attributedString: md.attributedString())
-        attributedText.addAttribute(.foregroundColor, value: UIColor.label, range: NSMakeRange(0, attributedText.length))
+        attributedText.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: attributedText.length))
         return attributedText
     }
 }

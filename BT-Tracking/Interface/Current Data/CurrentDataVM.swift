@@ -15,10 +15,10 @@ import Reachability
 final class CurrentDataVM {
 
     let tabTitle = "data_list_title"
-    let tabIcon = UIImage(named: "MyData")
+    let tabIcon = Asset.myData.image
 
     var measuresURL: URL? {
-        return URL(string: RemoteValues.currentMeasuresUrl)
+        URL(string: RemoteValues.currentMeasuresUrl)
     }
 
     var sections: [Section] = [] {
@@ -53,14 +53,14 @@ final class CurrentDataVM {
         needToUpdateView = BehaviorSubject<Void>(value: ())
         observableErrors = BehaviorSubject<Error?>(value: nil)
 
-        let realm = try! Realm()
-        currentData = realm.objects(CurrentDataRealm.self).last
+        let realm = try? Realm()
+        currentData = realm?.objects(CurrentDataRealm.self).last
         sections = sections(from: currentData)
 
         if currentData == nil {
             let currentData = CurrentDataRealm()
-            try? realm.write {
-                realm.add(currentData)
+            try? realm?.write {
+                realm?.add(currentData)
             }
             self.currentData = currentData
         }
@@ -119,33 +119,36 @@ final class CurrentDataVM {
         guard let data = currentData else { return [] }
         return [
             Section(header: nil, selectableItems: true, items: [
-                Item(iconName: "CurrentData/Measures", title: Localizable("current_data_measures")),
+                Item(
+                    iconAsset: Asset.CurrentData.measures,
+                    title: Localizable("current_data_measures")
+                ),
             ]),
             Section(header: Localizable("current_data_item_header"), selectableItems: false, items: [
                 Item(
-                    iconName: "CurrentData/Tests",
+                    iconAsset: Asset.CurrentData.tests,
                     title: titleValue(data.testsTotal, withKey: "current_data_item_tests"),
                     subtitle: titleValue(data.testsIncrease, withKey: "current_data_item_yesterday", showSign: true)
                 ),
                 Item(
-                    iconName: "CurrentData/Covid",
+                    iconAsset: Asset.CurrentData.covid,
                     title: titleValue(data.confirmedCasesTotal, withKey: "current_data_item_confirmed"),
                     subtitle: titleValue(data.confirmedCasesIncrease, withKey: "current_data_item_yesterday", showSign: true)
                 ),
                 Item(
-                    iconName: "CurrentData/Active",
+                    iconAsset: Asset.CurrentData.active,
                     title: titleValue(data.activeCasesTotal, withKey: "current_data_item_active")
                 ),
                 Item(
-                    iconName: "CurrentData/Healthy",
+                    iconAsset: Asset.CurrentData.healthy,
                     title: titleValue(data.curedTotal, withKey: "current_data_item_healthy")
                 ),
                 Item(
-                    iconName: "CurrentData/Death",
+                    iconAsset: Asset.CurrentData.death,
                     title: titleValue(data.deceasedTotal, withKey: "current_data_item_deaths")
                 ),
                 Item(
-                    iconName: "CurrentData/Hospital",
+                    iconAsset: Asset.CurrentData.hospital,
                     title: titleValue(data.currentlyHospitalizedTotal, withKey: "current_data_item_hospitalized")
                 ),
             ])
@@ -167,12 +170,12 @@ extension CurrentDataVM {
      }
 
      struct Item {
-         let iconName: String
+         let iconAsset: ImageAsset
          let title: String
          let subtitle: String?
 
-        init(iconName: String, title: String, subtitle: String? = nil) {
-            self.iconName = iconName
+        init(iconAsset: ImageAsset, title: String, subtitle: String? = nil) {
+            self.iconAsset = iconAsset
             self.title = title
             self.subtitle = subtitle
         }

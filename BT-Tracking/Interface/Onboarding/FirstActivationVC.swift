@@ -34,7 +34,7 @@ final class FirstActivationVC: UIViewController {
     }
 
     // MARK: - Actions
-    
+
     @IBAction private func continueAction() {
         if viewModel.exposureNotificationAuthorized {
             UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
@@ -57,12 +57,12 @@ final class FirstActivationVC: UIViewController {
 
 private extension FirstActivationVC {
     func setupStrings() {
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
+        navigationItem.localizedTitle(.app_name)
+        navigationItem.backBarButtonItem?.localizedTitle(.back)
 
-        headlineLabel.localizedText(viewModel.headline)
-        bodyLabel.localizedText(viewModel.body)
-        continueButton.localizedTitle(viewModel.continueButton)
-        howItWorksButton.localizedTitle(viewModel.howItWorksButton)
+        headlineLabel.localizedText(.welcome_title)
+        bodyLabel.localizedText(.welcome_body)
+        continueButton.localizedTitle(.welcome_activation)
+        howItWorksButton.localizedTitle(.welcome_help)
     }
 }

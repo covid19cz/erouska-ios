@@ -24,7 +24,7 @@ extension AppDelegate {
         #if DEBUG
         let fetchDuration: TimeInterval = 0
         #else
-        let fetchDuration: TimeInterval = background ? 1800 : 3600
+        let fetchDuration: TimeInterval = background ? 1_800 : 3_600
         #endif
         return Single<Void>.create { single in
             RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { _, error in
@@ -56,7 +56,7 @@ extension AppDelegate {
 
 enum RemoteConfigValueKey: String, CaseIterable {
     case shareAppDynamicLink
-    
+
     case helpMarkdown
 
     case minSupportedVersion
@@ -93,7 +93,7 @@ enum RemoteConfigValueKey: String, CaseIterable {
     case appleExposureConfiguration
 
     var keyValue: String {
-        return "v2_\(rawValue)"
+        "v2_\(rawValue)"
     }
 
     var defaultValue: Any {
@@ -181,12 +181,12 @@ enum RemoteConfigValueKey: String, CaseIterable {
 struct RemoteValues {
 
     static var shareAppDynamicLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
+        AppDelegate.shared.remoteConfigString(forKey: .shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// Help markdown
     static var helpMarkdown: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .helpMarkdown)
+        AppDelegate.shared.remoteConfigString(forKey: .helpMarkdown)
     }
 
     /// Min supported app version. Used for force update.
@@ -196,35 +196,35 @@ struct RemoteValues {
     }
 
     static var unsupportedDeviceLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .unsupportedDeviceLink)
+        AppDelegate.shared.remoteConfigString(forKey: .unsupportedDeviceLink)
     }
 
     static var shouldCheckOSVersion: Bool {
-        return AppDelegate.shared.remoteConfigInt(forKey: .shouldCheckOSVersion) == 1
+        AppDelegate.shared.remoteConfigInt(forKey: .shouldCheckOSVersion) == 1
     }
 
     static var exposureBannerTitle: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .exposureBannerTitle)
+        AppDelegate.shared.remoteConfigString(forKey: .exposureBannerTitle)
     }
 
     static var riskyEncountersTitle: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersTitle)
+        AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersTitle)
     }
 
     static var riskyEncountersWithSymptoms: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersWithSymptoms)
+        AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersWithSymptoms)
     }
 
     static var riskyEncountersWithoutSymptoms: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersWithoutSymptoms)
+        AppDelegate.shared.remoteConfigString(forKey: .riskyEncountersWithoutSymptoms)
     }
 
     static var symptomsContent: RiskyEncountersListContent? {
-        return parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .symptomsContentJson), prevention: false)
+        parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .symptomsContentJson), prevention: false)
     }
 
     static var preventionContent: RiskyEncountersListContent? {
-        return parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .preventionContentJson), prevention: true)
+        parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .preventionContentJson), prevention: true)
     }
 
     private static func parseRiskyEncountersListContent(from rawJson: String, prevention: Bool) -> RiskyEncountersListContent? {
@@ -257,46 +257,47 @@ struct RemoteValues {
     }
 
     static var currentMeasuresUrl: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .currentMeasuresUrl)
+        AppDelegate.shared.remoteConfigString(forKey: .currentMeasuresUrl)
     }
 
     static var conditionsOfUseUrl: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .conditionsOfUseUrl)
+        AppDelegate.shared.remoteConfigString(forKey: .conditionsOfUseUrl)
     }
 
     static var noEncounterHeader: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .noEncounterHeader)
+        AppDelegate.shared.remoteConfigString(forKey: .noEncounterHeader)
     }
 
     static var noEncounterBody: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .noEncounterBody)
+        AppDelegate.shared.remoteConfigString(forKey: .noEncounterBody)
     }
 
     static var exposureUITitle: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .exposureUITitle)
+        AppDelegate.shared.remoteConfigString(forKey: .exposureUITitle)
     }
 
     static var symptomsUITitle: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .symptomsUITitle)
+        AppDelegate.shared.remoteConfigString(forKey: .symptomsUITitle)
     }
 
     static var spreadPreventionUITitle: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .spreadPreventionUITitle)
+        AppDelegate.shared.remoteConfigString(forKey: .spreadPreventionUITitle)
     }
 
     static var recentExposuresUITitle: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .recentExposuresUITitle)
+        AppDelegate.shared.remoteConfigString(forKey: .recentExposuresUITitle)
     }
 
     static var chatBotLink: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .chatBotLink)
+        AppDelegate.shared.remoteConfigString(forKey: .chatBotLink)
     }
 
     static var verificationServerApiKey: String {
-        return AppDelegate.shared.remoteConfigString(forKey: .verificationServerApiKey)
+        AppDelegate.shared.remoteConfigString(forKey: .verificationServerApiKey)
     }
 
     static var serverConfiguration: ServerConfiguration {
+        // swiftlint:disable force_cast
         guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleServerConfiguration).data(using: .utf8) else {
             return RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
         }
@@ -305,6 +306,7 @@ struct RemoteValues {
         } catch {
             return RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
         }
+        // swiftlint:enable force_cast
     }
 
     static var exposureConfiguration: ExposureConfiguration {

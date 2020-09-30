@@ -37,7 +37,7 @@ final class VerificationService: VerificationServicing {
         adminKey = configuration.verificationAdminKey
         deviceKey = configuration.verificationDeviceKey
     }
-    
+
     func updateConfiguration(_ configuration: ServerConfiguration) {
         serverURL = configuration.verificationURL
         adminKey = configuration.verificationAdminKey
@@ -47,8 +47,9 @@ final class VerificationService: VerificationServicing {
     func requestCode(with request: VerificationCodeRequest, callback: @escaping CodeCallback) {
         var headers = HTTPHeaders()
         headers.add(HTTPHeader(name: headerApiKey, value: adminKey))
-
-        AF.request(URL(string: "api/code", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
+        // swiftlint:disable:next force_unwrapping
+        AF.request(URL(string: "api/code", relativeTo: serverURL)!, method: .post, parameters: request,
+                   encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: VerificationCode.self) { response in
                 #if DEBUG
@@ -61,7 +62,7 @@ final class VerificationService: VerificationServicing {
                 case .failure(let error):
                     callback(.failure(error))
                 }
-        }
+            }
     }
 
     func verify(with code: String, callback: @escaping VerifyCallback) {
@@ -69,8 +70,9 @@ final class VerificationService: VerificationServicing {
         headers.add(HTTPHeader(name: headerApiKey, value: deviceKey))
 
         let request = VerificationTokenRequest(code: code)
-
-        AF.request(URL(string: "api/verify", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
+        // swiftlint:disable:next force_unwrapping
+        AF.request(URL(string: "api/verify", relativeTo: serverURL)!, method: .post, parameters: request,
+                   encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: VerificationToken.self) { response in
                 #if DEBUG
@@ -89,7 +91,7 @@ final class VerificationService: VerificationServicing {
                 case .failure(let error):
                     callback(.failure(error))
                 }
-        }
+            }
     }
 
     func requestCertificate(token: String, hmacKey: String, callback: @escaping CertificateCallback) {
@@ -97,8 +99,9 @@ final class VerificationService: VerificationServicing {
         headers.add(HTTPHeader(name: headerApiKey, value: deviceKey))
 
         let request = VerificationCertificateRequest(token: token, hmacKey: hmacKey)
-
-        AF.request(URL(string: "api/certificate", relativeTo: serverURL)!, method: .post, parameters: request, encoder: JSONParameterEncoder.default, headers: headers)
+        // swiftlint:disable:next force_unwrapping
+        AF.request(URL(string: "api/certificate", relativeTo: serverURL)!, method: .post, parameters: request,
+                   encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: VerificationCertificate.self) { response in
                 #if DEBUG
@@ -117,7 +120,7 @@ final class VerificationService: VerificationServicing {
                 case .failure(let error):
                     callback(.failure(error))
                 }
-        }
+            }
     }
 
 }

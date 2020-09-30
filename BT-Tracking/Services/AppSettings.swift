@@ -36,7 +36,7 @@ struct AppSettings {
     /// Last application state (paused, running, ...)
     static var state: ActiveAppVM.State? {
         get {
-            return ActiveAppVM.State(rawValue: string(forKey: .appState))
+            ActiveAppVM.State(rawValue: string(forKey: .appState))
         }
         set {
             set(withKey: .appState, value: newValue?.rawValue)
@@ -46,7 +46,7 @@ struct AppSettings {
     /// Check if it's first time launch
     static var appFirstTimeLaunched: Bool {
         get {
-            return bool(forKey: .appFirstTimeLaunched)
+            bool(forKey: .appFirstTimeLaunched)
         }
         set {
             set(withKey: .appFirstTimeLaunched, value: newValue)
@@ -56,7 +56,7 @@ struct AppSettings {
     /// If background mode off alert was shown
     static var backgroundModeAlertShown: Bool {
         get {
-            return bool(forKey: .backgroundModeAlertShown)
+            bool(forKey: .backgroundModeAlertShown)
         }
         set {
             set(withKey: .backgroundModeAlertShown, value: newValue)
@@ -66,7 +66,7 @@ struct AppSettings {
     /// Last processed file name
     static var lastProcessedFileName: String? {
         get {
-            return string(forKey: .lastProcessedFileName)
+            string(forKey: .lastProcessedFileName)
         }
         set {
             set(withKey: .lastProcessedFileName, value: newValue)
@@ -100,7 +100,7 @@ struct AppSettings {
     /// Last shown exposure warning id
     static var lastExposureWarningId: String? {
         get {
-            return string(forKey: .lastExposureWarningId)
+            string(forKey: .lastExposureWarningId)
         }
         set {
             set(withKey: .lastExposureWarningId, value: newValue)
@@ -110,7 +110,7 @@ struct AppSettings {
     /// If user closed last show exposure warning
     static var lastExposureWarningClosed: Bool {
         get {
-            return bool(forKey: .lastExposureWarningClosed)
+            bool(forKey: .lastExposureWarningClosed)
         }
         set {
             set(withKey: .lastExposureWarningClosed, value: newValue)
@@ -120,7 +120,7 @@ struct AppSettings {
     /// Check if it's migration to new version
     static var v2_0NewsLaunched: Bool {
         get {
-            return bool(forKey: .v2_0NewsLaunched)
+            bool(forKey: .v2_0NewsLaunched)
         }
         set {
             set(withKey: .v2_0NewsLaunched, value: newValue)
@@ -143,7 +143,7 @@ struct AppSettings {
     /// Using this value for handling app reinstallation.
     static var activated: Bool {
         get {
-            return bool(forKey: .activated)
+            bool(forKey: .activated)
         }
         set {
             set(withKey: .activated, value: newValue)
