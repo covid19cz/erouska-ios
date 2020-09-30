@@ -27,7 +27,6 @@
 		805192A224AF8E2700765392 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A124AF8E2700765392 /* RxSwift */; };
 		805192A424AF8E2700765392 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A324AF8E2700765392 /* RxDataSources */; };
 		805192A624AF8E2700765392 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A524AF8E2700765392 /* RxKeyboard */; };
-		805192A824AF8E2700765392 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A724AF8E2700765392 /* RxRealm */; };
 		805192AA24AF8E2700765392 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A924AF8E2700765392 /* DeviceKit */; };
 		805192AC24AF8E2700765392 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AB24AF8E2700765392 /* Reachability */; };
 		805192AE24AF8E2700765392 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AD24AF8E2700765392 /* SwiftyMarkdown */; };
@@ -106,7 +105,7 @@
 		809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8B24AF8BFB00D34CC9 /* RxCocoa */; };
 		809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8E24AF8C2900D34CC9 /* RxDataSources */; };
 		809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9124AF8C3700D34CC9 /* RxKeyboard */; };
-		809F9D9524AF8C8700D34CC9 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9424AF8C8700D34CC9 /* RxRealm */; };
+		80A660CD2524A40000E97EA3 /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 80A660CC2524A40000E97EA3 /* RxRealm */; };
 		80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCA24AF8CBD0088D256 /* DeviceKit */; };
 		80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCD24AF8D0B0088D256 /* Reachability */; };
 		80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BD024AF8D550088D256 /* SwiftyMarkdown */; };
@@ -395,13 +394,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				809F9D9524AF8C8700D34CC9 /* RxRealm in Frameworks */,
 				809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */,
 				800E611424DAE98B00C63567 /* Zip in Frameworks */,
 				809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */,
 				80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */,
 				80D2345124E2FDD200F684AA /* Crypto in Frameworks */,
 				809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */,
+				80A660CD2524A40000E97EA3 /* RxRealm in Frameworks */,
 				8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */,
 				80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */,
 				809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */,
@@ -417,7 +416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */,
-				805192A824AF8E2700765392 /* RxRealm in Frameworks */,
 				805192A224AF8E2700765392 /* RxSwift in Frameworks */,
 				805192A624AF8E2700765392 /* RxKeyboard in Frameworks */,
 				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
@@ -880,7 +878,6 @@
 				809F9D8B24AF8BFB00D34CC9 /* RxCocoa */,
 				809F9D8E24AF8C2900D34CC9 /* RxDataSources */,
 				809F9D9124AF8C3700D34CC9 /* RxKeyboard */,
-				809F9D9424AF8C8700D34CC9 /* RxRealm */,
 				80AB9BCA24AF8CBD0088D256 /* DeviceKit */,
 				80AB9BCD24AF8D0B0088D256 /* Reachability */,
 				80AB9BD024AF8D550088D256 /* SwiftyMarkdown */,
@@ -888,6 +885,7 @@
 				804BE48C24D9A30A00D40C07 /* Alamofire */,
 				800E611324DAE98B00C63567 /* Zip */,
 				80D2345024E2FDD200F684AA /* Crypto */,
+				80A660CC2524A40000E97EA3 /* RxRealm */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
@@ -916,7 +914,6 @@
 				805192A124AF8E2700765392 /* RxSwift */,
 				805192A324AF8E2700765392 /* RxDataSources */,
 				805192A524AF8E2700765392 /* RxKeyboard */,
-				805192A724AF8E2700765392 /* RxRealm */,
 				805192A924AF8E2700765392 /* DeviceKit */,
 				805192AB24AF8E2700765392 /* Reachability */,
 				805192AD24AF8E2700765392 /* SwiftyMarkdown */,
@@ -964,7 +961,6 @@
 				809F9D8824AF8BFB00D34CC9 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				809F9D8D24AF8C2900D34CC9 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				809F9D9024AF8C3700D34CC9 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
-				809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */,
 				80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */,
 				80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */,
@@ -972,6 +968,7 @@
 				804BE48B24D9A30A00D40C07 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */,
 				80D2344F24E2FDD200F684AA /* XCRemoteSwiftPackageReference "swift-crypto" */,
+				80A660CB2524A40000E97EA3 /* XCRemoteSwiftPackageReference "RxRealm" */,
 			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
@@ -1725,12 +1722,12 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */ = {
+		80A660CB2524A40000E97EA3 /* XCRemoteSwiftPackageReference "RxRealm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxRealm";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.1;
+				minimumVersion = 3.1.0;
 			};
 		};
 		80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
@@ -1738,7 +1735,7 @@
 			repositoryURL = "https://github.com/devicekit/DeviceKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.2.0;
+				minimumVersion = 4.1.0;
 			};
 		};
 		80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */ = {
@@ -1806,11 +1803,6 @@
 			package = 809F9D9024AF8C3700D34CC9 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
 			productName = RxKeyboard;
 		};
-		805192A724AF8E2700765392 /* RxRealm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */;
-			productName = RxRealm;
-		};
 		805192A924AF8E2700765392 /* DeviceKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 80AB9BC924AF8CBD0088D256 /* XCRemoteSwiftPackageReference "DeviceKit" */;
@@ -1851,9 +1843,9 @@
 			package = 809F9D9024AF8C3700D34CC9 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
 			productName = RxKeyboard;
 		};
-		809F9D9424AF8C8700D34CC9 /* RxRealm */ = {
+		80A660CC2524A40000E97EA3 /* RxRealm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 809F9D9324AF8C8700D34CC9 /* XCRemoteSwiftPackageReference "RxRealm" */;
+			package = 80A660CB2524A40000E97EA3 /* XCRemoteSwiftPackageReference "RxRealm" */;
 			productName = RxRealm;
 		};
 		80AB9BCA24AF8CBD0088D256 /* DeviceKit */ = {
