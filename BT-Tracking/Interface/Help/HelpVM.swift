@@ -10,15 +10,6 @@ import UIKit
 
 struct HelpVM {
 
-    let title = "help_title"
-
-    let tabTitle = "help_tab_title"
-    let tabIcon = Asset.help.image
-
-    let about = "about"
-
-    let chatbot = "help_chatbot"
-
     var chatbotLink: String {
         RemoteValues.chatBotLink
     }

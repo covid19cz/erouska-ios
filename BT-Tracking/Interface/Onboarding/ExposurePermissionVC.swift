@@ -44,13 +44,13 @@ final class ExposurePermissionVC: UIViewController {
 private extension ExposurePermissionVC {
 
     func setupStrings() {
-        navigationItem.localizedTitle(.exposure_notification_title)
-        navigationItem.backBarButtonItem?.localizedTitle(.back)
-        navigationItem.rightBarButtonItem?.localizedTitle(.help)
+        title = L10n.exposureNotificationTitle
+        navigationItem.backBarButtonItem?.title = L10n.back
+        navigationItem.rightBarButtonItem?.title = L10n.help
 
-        headlineLabel.localizedText(.exposure_notification_headline)
-        bodyLabel.localizedText(.exposure_notification_body)
-        continueButton.localizedTitle(.exposure_notification_continue)
+        headlineLabel.text = L10n.exposureNotificationHeadline
+        bodyLabel.text = L10n.exposureNotificationBody
+        continueButton.localizedTitle(L10n.exposureNotificationContinue)
     }
 
     // MARK: - Request permission
@@ -112,24 +112,24 @@ private extension ExposurePermissionVC {
     }
 
     func showExposureStorageError() {
-        showAlert(title: .exposure_activation_storage_title, message: .exposure_activation_storage_body)
+        showAlert(title: L10n.exposureActivationStorageTitle, message: L10n.exposureActivationStorageBody)
     }
 
     func showUnknownError(_ error: Error, code: ENError.Code = .unknown) {
         showAlert(
-            title: Localization.exposure_activation_unknown_title.localized,
-            message: String(format: Localization.exposure_activation_unknown_body.rawValue, arguments: ["\(code.rawValue)"]),
+            title: L10n.exposureActivationUnknownTitle,
+            message: L10n.exposureActivationUnknownBody("\(code.rawValue)"),
             okHandler: { self.requestNotificationPermission() }
         )
     }
 
     func showPermissionDeniedAlert(cancelAction: @escaping () -> Void) {
         showAlert(
-            title: .exposure_activation_restricted_title,
-            message: .exposure_activation_restricted_body,
-            okTitle: .exposure_activation_restricted_settings_action,
+            title: L10n.exposureActivationRestrictedTitle,
+            message: L10n.exposureActivationRestrictedBody,
+            okTitle: L10n.exposureActivationRestrictedSettingsAction,
             okHandler: { [weak self] in self?.openSettings() },
-            action: (title: .exposure_activation_restricted_cancel_action, handler: cancelAction)
+            action: (title: L10n.exposureActivationRestrictedCancelAction, handler: cancelAction)
         )
     }
 

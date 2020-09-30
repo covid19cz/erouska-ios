@@ -31,19 +31,19 @@ final class PrivacyVC: UIViewController {
 
         buttonsView.connect(with: scrollView)
 
-        navigationItem.localizedTitle(.privacy_title)
-        navigationItem.backBarButtonItem?.localizedTitle(.back)
-        navigationItem.rightBarButtonItem?.localizedTitle(.help)
+        title = L10n.privacyTitle
+        navigationItem.backBarButtonItem?.title = L10n.back
+        navigationItem.rightBarButtonItem?.title = L10n.back
 
-        headlineLabel.localizedText(.privacy_headline)
-        continueButton.localizedTitle(.privacy_continue)
+        headlineLabel.text = L10n.privacyHeadline
+        continueButton.localizedTitle(L10n.privacyContinue)
 
         bodyTextView.textContainerInset = .zero
         bodyTextView.textContainer.lineFragmentPadding = 0
 
         bodyTextView.hyperLink(
-            originalText: Localization.privacy_body.localized,
-            hyperLink: Localization.privacy_body_link.localized,
+            originalText: L10n.privacyBody,
+            hyperLink: L10n.privacyBodyLink,
             urlString: viewModel.bodyLink
         )
     }
@@ -100,9 +100,9 @@ private extension PrivacyVC {
         if let error = error, (error as NSError).domain == NSURLErrorDomain,
            [NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost, NSURLErrorTimedOut].contains((error as NSError).code) {
             viewModel = ErrorVM(
-                headline: .error_activation_internet_headline,
-                text: .error_activation_internet_text,
-                actionTitle: .error_activation_internet_title_action,
+                headline: L10n.errorActivationInternetHeadline,
+                text: L10n.errorActivationInternetText,
+                actionTitle: L10n.errorActivationInternetTitleAction,
                 action: { self.activateApp() }
             )
         } else {

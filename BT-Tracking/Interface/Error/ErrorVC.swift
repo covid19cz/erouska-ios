@@ -30,9 +30,9 @@ final class ErrorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.localizedTitle(.error_title)
+        title = L10n.errorTitle
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.help.localized, style: .plain, target: self, action: #selector(showHelp))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.help, style: .plain, target: self, action: #selector(showHelp))
 
         headlineLabel.text = viewModel?.headline
         textLabel.text = viewModel?.text

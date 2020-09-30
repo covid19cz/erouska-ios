@@ -13,29 +13,29 @@ struct NewsVM {
     let newsPages: [NewsPageVM] = [
         NewsPageVM(
             imageAsset: Asset.newsToTheWorld,
-            headline: .news_to_the_world_title,
-            body: .news_to_the_world_body
+            headline: L10n.newsToTheWorldTitle,
+            body: L10n.newsToTheWorldBody
         ),
         NewsPageVM(
             imageAsset: Asset.newsExposureNotification,
-            headline: .news_exposure_notification_title,
-            body: .news_exposure_notification_body
+            headline: L10n.newsExposureNotificationTitle,
+            body: L10n.newsExposureNotificationBody
         ),
         NewsPageVM(
             imageAsset: Asset.newsNoPhoneNumber,
-            headline: .news_no_phone_number_title,
-            body: .news_no_phone_number_body
+            headline: L10n.newsNoPhoneNumberTitle,
+            body: L10n.newsNoPhoneNumberBody
         ),
         NewsPageVM(
             imageAsset: Asset.newsAlwaysActive,
-            headline: .news_always_active_title,
-            body: .news_always_active_body
+            headline: L10n.newsAlwaysActiveTitle,
+            body: L10n.newsAlwaysActiveBody
         ),
         NewsPageVM(
             imageAsset: Asset.newsPrivacy,
-            headline: .news_privacy_title,
-            body: .news_privacy_body,
-            bodyLinkTitle: .news_privacy_body_link,
+            headline: L10n.newsPrivacyTitle,
+            body: L10n.newsPrivacyBody,
+            bodyLinkTitle: L10n.newsPrivacyBodyLink,
             bodyLink: RemoteValues.conditionsOfUseUrl
         )
     ]

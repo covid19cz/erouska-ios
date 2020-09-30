@@ -23,28 +23,20 @@ struct ErrorVM {
         self.init(headline: headline, text: text, actionTitle: actionTitle, action: .closeAndCustom(action))
     }
 
-    init(headline: Localization, text: Localization, actionTitle: Localization, action: @escaping () -> Void) {
-        self.init(headline: headline.localized, text: text.localized, actionTitle: actionTitle.localized, action: .closeAndCustom(action))
-    }
-
     init(headline: String, text: String, actionTitle: String, action: Action) {
         self.headline = headline
         self.text = text
         self.actionTitle = actionTitle
         self.action = action
     }
-
-    init(headline: Localization, text: Localization, actionTitle: Localization, action: Action) {
-        self.init(headline: headline.localized, text: text.localized, actionTitle: actionTitle.localized, action: action)
-    }
 }
 
 extension ErrorVM {
 
     static let unknown = ErrorVM(
-        headline: .error_unknown_headline,
-        text: .error_unknown_text,
-        actionTitle: .error_unknown_title_action,
+        headline: L10n.errorUnknownHeadline,
+        text: L10n.errorUnknownText,
+        actionTitle: L10n.errorUnknownTitleAction,
         action: .close
     )
 }

@@ -23,14 +23,14 @@ final class ContactsVC: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
-        navigationController?.tabBarItem.image = viewModel.tabIcon
+        navigationController?.tabBarItem.title = L10n.contactsTitle
+        navigationController?.tabBarItem.image = Asset.contacts.image
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.localizedTitle(viewModel.title)
+        title = L10n.contactsTitle
 
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 210

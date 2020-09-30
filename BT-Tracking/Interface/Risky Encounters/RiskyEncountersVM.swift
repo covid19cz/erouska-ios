@@ -46,9 +46,7 @@ struct RiskyEncountersVM {
 
     let title = RemoteValues.exposureUITitle
 
-    let withSymptomsHeaderKey = "risky_encounters_positive_with_symptoms_header"
     let withSymptoms = RemoteValues.riskyEncountersWithSymptoms
-    let withoutSymptomsHeaderKey = "risky_encounters_positive_without_symptoms_header"
     let withoutSymptoms = RemoteValues.riskyEncountersWithoutSymptoms
 
     let negativeTitle = RemoteValues.noEncounterHeader

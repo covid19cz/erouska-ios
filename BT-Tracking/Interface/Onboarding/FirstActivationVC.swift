@@ -57,12 +57,12 @@ final class FirstActivationVC: UIViewController {
 
 private extension FirstActivationVC {
     func setupStrings() {
-        navigationItem.localizedTitle(.app_name)
-        navigationItem.backBarButtonItem?.localizedTitle(.back)
+        title = L10n.appName
+        navigationItem.backBarButtonItem?.title = L10n.back
 
-        headlineLabel.localizedText(.welcome_title)
-        bodyLabel.localizedText(.welcome_body)
-        continueButton.localizedTitle(.welcome_activation)
-        howItWorksButton.localizedTitle(.welcome_help)
+        headlineLabel.text = L10n.welcomeTitle
+        bodyLabel.text = L10n.welcomeBody
+        continueButton.localizedTitle(L10n.welcomeActivation)
+        howItWorksButton.localizedTitle(L10n.welcomeHelp)
     }
 }

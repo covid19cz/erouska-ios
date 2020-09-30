@@ -21,14 +21,14 @@ final class AboutVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.localizedTitle(viewModel.titleKey)
+        title = L10n.aboutTitle
 
         textView.textContainerInset = .zero
         textView.textContainer.lineFragmentPadding = 0
 
         textView.hyperLink(
-            originalText: Localizable(viewModel.infoKey),
-            hyperLink: Localizable(viewModel.infoLink),
+            originalText: L10n.aboutInfo,
+            hyperLink: L10n.aboutInfoLink,
             urlString: viewModel.conditionsOfUseLink
         )
     }

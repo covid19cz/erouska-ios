@@ -9,12 +9,6 @@
 import UIKit
 
 struct ForceOSUpdateVM {
-
-    let headline = "force_os_update_title"
-
-    let body = "force_os_update_body"
-
-    let updateButton = "force_update_button"
     // swiftlint:disable:next force_unwrapping
     let settingsURL = URL(string: UIApplication.openSettingsURLString)!
 }

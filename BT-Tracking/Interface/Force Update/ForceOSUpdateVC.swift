@@ -39,8 +39,8 @@ final class ForceOSUpdateVC: UIViewController {
     // MARK: -
 
     private func setupStrings() {
-        headlineLabel.localizedText(viewModel.headline)
-        bodyLabel.localizedText(viewModel.body)
-        updateButton.localizedTitle(viewModel.updateButton)
+        headlineLabel.text = L10n.forceOsUpdateTitle
+        bodyLabel.text = L10n.forceOsUpdateBody
+        updateButton.localizedTitle(L10n.forceUpdateButton)
     }
 }

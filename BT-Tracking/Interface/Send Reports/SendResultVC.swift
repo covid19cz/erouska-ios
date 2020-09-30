@@ -22,13 +22,13 @@ final class SendResultVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.localizedTitle("data_send_title")
+        title = L10n.dataSendTitle
         navigationItem.hidesBackButton = true
 
-        titleLabel.localizedText("data_send_title_label")
-        headlineLabel.localizedText("data_send_headline")
-        bodyLabel.localizedText("data_send_body")
-        closeButton.localizedTitle("data_send_close_button")
+        titleLabel.text = L10n.dataSendTitleLabel
+        headlineLabel.text = L10n.dataSendHeadline
+        bodyLabel.text = L10n.dataSendBody
+        closeButton.localizedTitle(L10n.dataSendCloseButton)
     }
 
     // MARK: - Action

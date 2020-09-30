@@ -28,16 +28,16 @@ final class CurrentDataVC: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
-        navigationController?.tabBarItem.image = viewModel.tabIcon
+        navigationController?.tabBarItem.title = L10n.dataListTitle
+        navigationController?.tabBarItem.image = Asset.myData.image
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        headlineLabel.localizedText("error_unknown_headline")
-        textLabel.localizedText("error_unknown_text")
-        actionButton.localizedTitle("error_unknown_title_refresh")
+        headlineLabel.text = L10n.errorUnknownHeadline
+        textLabel.text = L10n.errorUnknownText
+        actionButton.localizedTitle(L10n.errorUnknownTitleRefresh)
 
         scrollView.alpha = 0
         buttonsView.alpha = 0

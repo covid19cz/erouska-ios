@@ -10,11 +10,6 @@ import UIKit
 
 struct ContactsVM {
 
-    let tabTitle = "contacts_title"
-    let tabIcon = Asset.contacts.image
-
-    let title = "contacts_title"
-
     var contacts: [Contact] {
         RemoteValues.contactsContent
     }

@@ -40,8 +40,8 @@ final class UnsupportedDeviceVC: UIViewController {
     // MARK: -
 
     private func setupStrings() {
-        headlineLabel.localizedText(viewModel.headline)
-        bodyLabel.localizedText(viewModel.body)
+        headlineLabel.text = viewModel.headline
+        bodyLabel.text = viewModel.body
         moreInfoButton.localizedTitle(viewModel.moreInfoButton)
     }
 }

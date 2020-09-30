@@ -78,9 +78,9 @@ final class RiskyEncountersVC: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
         positiveView.setup(
-            withSymptomsHeader: Localizable(viewModel.withSymptomsHeaderKey),
+            withSymptomsHeader: L10n.riskyEncountersPositiveWithSymptomsHeader,
             withSymptoms: viewModel.withSymptoms,
-            withoutSymptomsHeader: Localizable(viewModel.withoutSymptomsHeaderKey),
+            withoutSymptomsHeader: L10n.riskyEncountersPositiveWithoutSymptomsHeader,
             withoutSymptoms: viewModel.withoutSymptoms
         )
 
@@ -101,7 +101,7 @@ final class RiskyEncountersVC: UIViewController {
 
                 if let date = dateToShow {
                     let formatted = String(format: RemoteValues.riskyEncountersTitle, self.dateFormatter.string(from: date))
-                    self.positiveView.title = formatted + Localizable("risky_encounters_positive_title")
+                    self.positiveView.title = formatted + L10n.riskyEncountersPositiveTitle
                 }
             }
         ).disposed(by: disposeBag)

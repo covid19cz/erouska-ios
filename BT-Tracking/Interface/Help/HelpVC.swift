@@ -25,15 +25,15 @@ final class HelpVC: MarkdownController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
-        navigationController?.tabBarItem.image = viewModel.tabIcon
+        navigationController?.tabBarItem.title = L10n.helpTabTitle
+        navigationController?.tabBarItem.image = Asset.help.image
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.about)
+        title = L10n.helpTitle
+        navigationItem.rightBarButtonItem?.title = L10n.about
 
         stackView.addArrangedSubview(contentView)
     }
@@ -49,7 +49,7 @@ extension HelpVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell") ?? UITableViewCell()
         cell.imageView?.image = Asset.chat.image.withRenderingMode(.alwaysOriginal)
-        cell.textLabel?.text = Localizable(viewModel.chatbot)
+        cell.textLabel?.text = L10n.helpChatbot
         return cell
     }
 }

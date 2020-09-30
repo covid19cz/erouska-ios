@@ -110,8 +110,6 @@
 		80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCA24AF8CBD0088D256 /* DeviceKit */; };
 		80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCD24AF8D0B0088D256 /* Reachability */; };
 		80AB9BD124AF8D550088D256 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BD024AF8D550088D256 /* SwiftyMarkdown */; };
-		80B67CD4251B42B500C0A994 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B67CD3251B42B500C0A994 /* Localizable.swift */; };
-		80B67CD5251B42B500C0A994 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B67CD3251B42B500C0A994 /* Localizable.swift */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
 		80B94557242B96560052CD9F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
 		80BB47642422865B00F552FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
@@ -129,6 +127,8 @@
 		80C71D3725248A0200999275 /* StoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C71D3425248A0200999275 /* StoryboardSegue.swift */; };
 		80C71D3825248A0200999275 /* StoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C71D3425248A0200999275 /* StoryboardSegue.swift */; };
 		80C71D3D25248A2900999275 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
+		80C71D4125248BE400999275 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C71D4025248BE400999275 /* Strings.swift */; };
+		80C71D4225248BE400999275 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C71D4025248BE400999275 /* Strings.swift */; };
 		80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
@@ -295,7 +295,6 @@
 		8084DEED24AF8055001FBB16 /* CountryCodesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodesService.swift; sourceTree = "<group>"; };
 		8084DEEF24AF8425001FBB16 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		8084DEF624AF86C1001FBB16 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
-		80B67CD3251B42B500C0A994 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		80B94554242B7B460052CD9F /* ActiveAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVM.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -312,6 +311,7 @@
 		80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
 		80C71D3325248A0200999275 /* StoryboardScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScene.swift; sourceTree = "<group>"; };
 		80C71D3425248A0200999275 /* StoryboardSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegue.swift; sourceTree = "<group>"; };
+		80C71D4025248BE400999275 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		80CA44B5244ADA44008E22F8 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		80CA44CB244ADD8A008E22F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80CA44DB244B3769008E22F8 /* HelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVM.swift; sourceTree = "<group>"; };
@@ -562,7 +562,6 @@
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
 				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
-				80B67CD3251B42B500C0A994 /* Localizable.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -654,6 +653,7 @@
 		80BE3FC82445CCF900D0C810 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				80CA44B5244ADA44008E22F8 /* Localization.swift */,
 				80BB47632422865B00F552FC /* Button.swift */,
 				80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */,
 				FF2F0DBB2449AFA60062A7F9 /* Color.swift */,
@@ -663,7 +663,6 @@
 				FFC4432324460A35002D2A6D /* MarkdownController.swift */,
 				80B94556242B96560052CD9F /* NavigationController.swift */,
 				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
-				80CA44B5244ADA44008E22F8 /* Localization.swift */,
 				D6340C6A24C5A27700E550A1 /* Device.swift */,
 				D6231CBD24F39BC90023BDC8 /* IntrinsicTableView.swift */,
 				D64BE02224F79AE000B751B6 /* TextView.swift */,
@@ -727,6 +726,7 @@
 			isa = PBXGroup;
 			children = (
 				807897822524804B0079BEA1 /* Assets.swift */,
+				80C71D4025248BE400999275 /* Strings.swift */,
 				80C71D3325248A0200999275 /* StoryboardScene.swift */,
 				80C71D3425248A0200999275 /* StoryboardSegue.swift */,
 				80FBE65225247974005D6C05 /* ExposureDiagnosisKeyFile.pb.swift */,
@@ -1257,6 +1257,7 @@
 				D6CD28E224CF24DC005847AA /* FirstActivationVC.swift in Sources */,
 				80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */,
 				80BF9C262424D55800150108 /* SendResultVC.swift in Sources */,
+				80C71D4125248BE400999275 /* Strings.swift in Sources */,
 				D6231CB524EBC0760023BDC8 /* ErrorVC.swift in Sources */,
 				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
@@ -1285,7 +1286,6 @@
 				802AFE4425135BC0004954AF /* Notifications.swift in Sources */,
 				D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */,
-				80B67CD4251B42B500C0A994 /* Localizable.swift in Sources */,
 				D6CD28E624CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
 				D6231CC224F52CBC0023BDC8 /* CurrentDataVC.swift in Sources */,
 				D6231CAB24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */,
@@ -1297,7 +1297,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6340C6324C1F46D00E550A1 /* Version.swift in Sources */,
-				80B67CD5251B42B500C0A994 /* Localizable.swift in Sources */,
 				D6231CBF24F39BC90023BDC8 /* IntrinsicTableView.swift in Sources */,
 				80D2345A24E320D700F684AA /* SendReportsVM.swift in Sources */,
 				D6231CAC24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */,
@@ -1337,6 +1336,7 @@
 				D6231CCC24F6610C0023BDC8 /* CurrentData.swift in Sources */,
 				802AFE4525135BC0004954AF /* Notifications.swift in Sources */,
 				80026D9924FE492600BBDB36 /* VerificationEntities.swift in Sources */,
+				80C71D4225248BE400999275 /* Strings.swift in Sources */,
 				D6231CB624EBC0760023BDC8 /* ErrorVC.swift in Sources */,
 				D6231CAE24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,

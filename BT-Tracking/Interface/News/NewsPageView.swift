@@ -16,11 +16,11 @@ final class NewsPageView: UIView {
         didSet {
             guard let viewModel = viewModel else { return }
             imageView.image = viewModel.imageAsset.image
-            headlineLabel.localizedText(viewModel.headline)
+            headlineLabel.text = viewModel.headline
             if let bodyLink = viewModel.bodyLink, let bodyLinkTitle = viewModel.bodyLinkTitle {
-                bodyTextView.hyperLink(originalText: viewModel.body.localized, hyperLink: bodyLinkTitle.localized, urlString: bodyLink)
+                bodyTextView.hyperLink(originalText: viewModel.body, hyperLink: bodyLinkTitle, urlString: bodyLink)
             } else {
-                bodyTextView.localizedText(viewModel.body)
+                bodyTextView.text = viewModel.body
             }
         }
     }

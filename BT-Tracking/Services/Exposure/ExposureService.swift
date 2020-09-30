@@ -201,7 +201,7 @@ final class ExposureService: ExposureServicing {
                     }
                     log("ExposureService getExposureInfo")
 
-                    self.manager.getExposureInfo(summary: summary, userExplanation: Localizable("exposure_detected_title")) { exposures, error in
+                    self.manager.getExposureInfo(summary: summary, userExplanation: L10n.exposureDetectedTitle) { exposures, error in
                         if let error = error {
                             finish(error: error)
                         } else if let exposures = exposures {

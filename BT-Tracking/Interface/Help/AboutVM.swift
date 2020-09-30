@@ -9,12 +9,5 @@
 import Foundation
 
 struct AboutVM {
-
-    let titleKey = "about_title"
-
-    let infoKey = "about_info"
-
-    let infoLink = "about_info_link"
-
     let conditionsOfUseLink = RemoteValues.conditionsOfUseUrl
 }

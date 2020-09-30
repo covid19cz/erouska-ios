@@ -13,51 +13,27 @@ extension UIViewController {
 
     typealias Callback = () -> Void
     typealias AlertAction = (title: String, handler: Callback?)
-    typealias AlertAction2 = (title: Localization, handler: Callback?)
 
     /// show default error alert, localization keys are expected
-    func show(error: Error, title: String = "error", okTitle: String = "ok", okHandler: Callback? = nil) {
+    func show(error: Error, title: String = L10n.error, okTitle: String = L10n.ok, okHandler: Callback? = nil) {
         showAlert(title: title, message: "\(error)", okTitle: okTitle, okHandler: okHandler)
     }
 
     /// show alert, localization keys are expected
-    func showAlert(title: String = "error", message: String? = nil, okTitle: String = "ok", okHandler: Callback? = nil, action: AlertAction? = nil) {
+    func showAlert(title: String = L10n.error, message: String? = nil, okTitle: String = L10n.ok, okHandler: Callback? = nil, action: AlertAction? = nil) {
         let alertController = UIAlertController(
-            title: Localizable(title),
-            message: message == nil ? nil : Localizable(message ?? ""),
+            title: title,
+            message: message == nil ? nil : message,
             preferredStyle: .alert
         )
         alertController.addAction(UIAlertAction(
-            title: Localizable(okTitle),
+            title: okTitle,
             style: .cancel,
             handler: { _ in okHandler?() }
         ))
         action.flatMap({ action in
             alertController.addAction(UIAlertAction(
-                title: Localizable(action.title),
-                style: .default,
-                handler: { _ in action.handler?() }
-            ))
-        })
-        present(alertController, animated: true)
-    }
-
-    /// show alert, localization keys are expected
-    func showAlert(title: Localization = .error, message: Localization? = nil, okTitle: Localization = .ok, okHandler: Callback? = nil,
-                   action: AlertAction2? = nil) {
-        let alertController = UIAlertController(
-            title: title.localized,
-            message: message == nil ? nil : (message?.localized ?? ""),
-            preferredStyle: .alert
-        )
-        alertController.addAction(UIAlertAction(
-            title: okTitle.localized,
-            style: .cancel,
-            handler: { _ in okHandler?() }
-        ))
-        action.flatMap({ action in
-            alertController.addAction(UIAlertAction(
-                title: action.title.localized,
+                title: action.title,
                 style: .default,
                 handler: { _ in action.handler?() }
             ))

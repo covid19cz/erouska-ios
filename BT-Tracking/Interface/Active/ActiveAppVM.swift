@@ -57,20 +57,20 @@ final class ActiveAppVM {
         var headline: String {
             switch self {
             case .enabled:
-                return "active_head_enabled"
+                return L10n.activeHeadEnabled
             case .paused:
-                return "active_head_paused"
+                return L10n.activeHeadPaused
             case .disabledBluetooth:
-                return "active_head_disabled_bluetooth"
+                return L10n.activeHeadDisabledBluetooth
             case .disabledExposures:
-                return "active_head_disabled_exposures"
+                return L10n.activeHeadDisabledExposures
             }
         }
 
         var title: String? {
             switch self {
             case .enabled:
-                return "active_title_highlighted_enabled"
+                return L10n.activeTitleHighlightedEnabled
             default:
                 return nil
             }
@@ -79,75 +79,37 @@ final class ActiveAppVM {
         var text: String {
             switch self {
             case .enabled:
-                return "active_footer"
+                return L10n.activeFooter
             case .paused:
-                return "active_title_paused"
+                return L10n.activeTitlePaused
             case .disabledBluetooth:
-                return "active_title_disabled_bluetooth"
+                return L10n.activeTitleDisabledBluetooth
             case .disabledExposures:
-                return "active_title_disabled_exposures"
+                return L10n.activeTitleDisabledExposures
             }
         }
 
         var actionTitle: String {
             switch self {
             case .enabled:
-                return "active_button_enabled"
+                return L10n.activeButtonEnabled
             case .paused:
-                return "active_button_paused"
+                return L10n.activeButtonPaused
             case .disabledBluetooth:
-                return "active_button_disabled_bluetooth"
+                return L10n.activeButtonDisabledBluetooth
             case .disabledExposures:
-                return "active_button_disabled_exposures"
+                return L10n.activeButtonDisabledExposures
             }
         }
     }
 
-    let title = "app_name"
-    let back = "back"
-    let tabTitle = "app_name"
-
-    let shareApp = "share_app"
-    let shareAppMessage = "share_app_message"
-
-    let lastUpdateText = "active_data_update"
-
     var menuRiskyEncounters: String {
         RemoteValues.exposureUITitle
     }
-    let menuSendReports = "data_list_send_title"
-    let menuDebug = "debug"
-    let menuCancel = "close"
-
-    let backgroundModeTitle = "active_background_mode_title"
-    let backgroundModeMessage = "active_background_mode_message"
-    let backgroundModeAction = "active_background_mode_settings"
-    let backgroundModeCancel = "active_background_mode_cancel"
 
     var exposureTitle: String {
         RemoteValues.exposureBannerTitle
     }
-    let exposureBannerClose = "close"
-    let exposureMoreInfo = "active_exposure_more_info"
-
-    let errorActivationRestrictedTitle = "exposure_activation_restricted_title"
-    let errorActivationRestrictedBody = "exposure_activation_restricted_body"
-    let errorActivationSettingsTitle = "exposure_activation_restricted_settings_action"
-    let errorActivationCancelTitle = "exposure_activation_restricted_cancel_action"
-
-    let errorActivationUnknownTitle = "exposure_activation_unknown_title"
-    let errorActivationUnknownBody = "exposure_activation_unknown_body"
-
-    let errorActivationStorageTitle = "exposure_activation_storage_title"
-    let errorActivationStorageBody = "exposure_activation_storage_body"
-
-    let errorDeactivationUnknownTitle = "exposure_deactivation_unknown_title"
-    let errorDeactivationUnknownBody = "exposure_deactivation_unknown_body"
-
-    let errorSendDataTitle = "data_list_send_error_disabled_title"
-    let errorSendDataMessage = "data_list_send_error_disabled_message"
-    let errorSendDataActionClose = "close"
-    let errorSendDataActionTurnOn = "turn_on"
 
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()

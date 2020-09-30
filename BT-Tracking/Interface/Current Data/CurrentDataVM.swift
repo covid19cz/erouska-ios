@@ -14,9 +14,6 @@ import Reachability
 
 final class CurrentDataVM {
 
-    let tabTitle = "data_list_title"
-    let tabIcon = Asset.myData.image
-
     var measuresURL: URL? {
         URL(string: RemoteValues.currentMeasuresUrl)
     }
@@ -111,7 +108,7 @@ final class CurrentDataVM {
 
     private func updateFooter() {
         if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
-            footer = String(format: Localizable("current_data_footer"), dateFormatter.string(from: lastFetchedDate))
+            footer = L10n.currentDataFooter(dateFormatter.string(from: lastFetchedDate))
         }
     }
 
@@ -121,43 +118,43 @@ final class CurrentDataVM {
             Section(header: nil, selectableItems: true, items: [
                 Item(
                     iconAsset: Asset.CurrentData.measures,
-                    title: Localizable("current_data_measures")
+                    title: L10n.currentDataMeasures
                 ),
             ]),
-            Section(header: Localizable("current_data_item_header"), selectableItems: false, items: [
+            Section(header: L10n.currentDataItemHeader, selectableItems: false, items: [
                 Item(
                     iconAsset: Asset.CurrentData.tests,
-                    title: titleValue(data.testsTotal, withKey: "current_data_item_tests"),
-                    subtitle: titleValue(data.testsIncrease, withKey: "current_data_item_yesterday", showSign: true)
+                    title: L10n.currentDataItemTests(formattedValue(data.testsTotal)),
+                    subtitle: L10n.currentDataItemYesterday(formattedValue(data.testsIncrease, showSign: true))
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.covid,
-                    title: titleValue(data.confirmedCasesTotal, withKey: "current_data_item_confirmed"),
-                    subtitle: titleValue(data.confirmedCasesIncrease, withKey: "current_data_item_yesterday", showSign: true)
+                    title: L10n.currentDataItemConfirmed(formattedValue(data.confirmedCasesTotal)),
+                    subtitle: L10n.currentDataItemYesterday(formattedValue(data.confirmedCasesIncrease, showSign: true))
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.active,
-                    title: titleValue(data.activeCasesTotal, withKey: "current_data_item_active")
+                    title: L10n.currentDataItemActive(formattedValue(data.activeCasesTotal))
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.healthy,
-                    title: titleValue(data.curedTotal, withKey: "current_data_item_healthy")
+                    title: L10n.currentDataItemHealthy(formattedValue(data.curedTotal))
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.death,
-                    title: titleValue(data.deceasedTotal, withKey: "current_data_item_deaths")
+                    title: L10n.currentDataItemDeaths(formattedValue(data.deceasedTotal))
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.hospital,
-                    title: titleValue(data.currentlyHospitalizedTotal, withKey: "current_data_item_hospitalized")
-                ),
+                    title: L10n.currentDataItemHospitalized(formattedValue(data.currentlyHospitalizedTotal))
+                )
             ])
         ]
     }
 
-    private func titleValue(_ value: Int, withKey key: String, showSign: Bool = false) -> String {
+    private func formattedValue(_ value: Int, showSign: Bool = false) -> String {
         guard let formattedValue = numberFormatter.string(for: value) else { return "" }
-        return String(format: Localizable(key), showSign && value > 0 ? "+" + formattedValue : formattedValue)
+        return showSign && value > 0 ? "+" + formattedValue : formattedValue
     }
 }
 
