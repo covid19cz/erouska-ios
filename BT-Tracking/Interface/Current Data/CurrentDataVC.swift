@@ -28,6 +28,7 @@ final class CurrentDataVC: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        title = L10n.dataListTitle
         navigationController?.tabBarItem.title = L10n.dataListTitle
         navigationController?.tabBarItem.image = Asset.myData.image
     }

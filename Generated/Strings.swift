@@ -34,7 +34,7 @@ internal enum L10n {
   internal static let activeButtonEnabled = L10n.tr("Localizable", "active_button_enabled")
   /// Spustit eRoušku
   internal static let activeButtonPaused = L10n.tr("Localizable", "active_button_paused")
-  /// Poslední aktualizace dat – %@. eRouška nezaznamenala nikoho nakaženého ve vašem okolí.
+  /// Poslední aktualizace dat – %@.
   internal static func activeDataUpdate(_ p1: Any) -> String {
     return L10n.tr("Localizable", "active_data_update", String(describing: p1))
   }
@@ -304,6 +304,8 @@ internal enum L10n {
   internal static let unsupportedDeviceIpadTitle = L10n.tr("Localizable", "unsupported_device_ipad_title")
   /// Vaše zařízení nepodporuje iOS 13.5 nebo novější
   internal static let unsupportedDeviceTitle = L10n.tr("Localizable", "unsupported_device_title")
+  /// verze
+  internal static let version = L10n.tr("Localizable", "version")
   /// Pokračovat k aktivaci
   internal static let welcomeActivation = L10n.tr("Localizable", "welcome_activation")
   /// Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí onemocnění COVID-19, eRouška vyhodnotí, zda se jedná o rizikový kontakt a upozorní vás.\n\nKdyž se potvrdí nákaza u vás, eRouška upozorní všechny ostatní uživatele aplikace, se kterými jste se potkali.

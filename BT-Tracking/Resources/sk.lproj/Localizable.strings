@@ -9,6 +9,7 @@
 "about" = "O aplikácii";
 "close" = "Zatvoriť";
 "turn_on" = "Zapnúť";
+"version" = "verze";
 "welcome_help" = "Ako to funguje";
 "welcome_activation" = "Pokračovať v aktivácii";
 "welcome_title" = "Vďaka eRouške ochránite seba aj ostatných vo svojom okolí";
@@ -38,7 +39,7 @@ Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "active_button_disabled_bluetooth" = "Zapnúť Bluetooth";
 "active_button_disabled_exposures" = "Zapnúť";
 "active_footer" = "Upozorníme vás v prípade možného podozrenia na nákazu COVID-19 a zobrazíme vám všetky potrebné informácie.";
-"active_data_update" = "Posledná aktualizácia dát - %@. eRouška nezaznamenala nikoho nakazeného vo vašom okolí.";
+"active_data_update" = "Posledná aktualizácia dát - %@.";
 "active_background_mode_title" = "Aktualizácia na pozadí";
 "active_background_mode_message" = "eRouška sa potrebuje sama spustiť i na pozadí, napríklad po reštartovaní telefónu, aby ste na to nemuseli myslieť vy. \n\nPovoľte možnosť 'Aktualizácia na pozadí' v nastavení aplikácie.";
 "active_background_mode_settings" = "Upraviť nastavenia";

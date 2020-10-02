@@ -16,7 +16,7 @@ struct ServerConfiguration: Codable {
         ServerConfiguration(
             minSupportedVersion: "13.5",
             showExposureForDays: 14,
-            healthAuthority: "cz.covid19cz.erouska.dev",
+            healthAuthority: "cz.covid19cz.erouska",
             uploadURL: URL(string: "https://exposure-i5jzq6zlxq-ew.a.run.app/v1/publish")!,
             downloadIndexName: "/index.txt",
             downloadsURL: URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!,

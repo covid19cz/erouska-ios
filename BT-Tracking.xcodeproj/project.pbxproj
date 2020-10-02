@@ -128,6 +128,7 @@
 		80C71D3D25248A2900999275 /* UnsupportedDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6340C6424C5976000E550A1 /* UnsupportedDeviceVC.swift */; };
 		80C71D4125248BE400999275 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C71D4025248BE400999275 /* Strings.swift */; };
 		80C71D4225248BE400999275 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C71D4025248BE400999275 /* Strings.swift */; };
+		80C913D22524D9EF0013C1DD /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 80C913D12524D9EF0013C1DD /* RxRealm */; };
 		80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44B5244ADA44008E22F8 /* Localization.swift */; };
 		80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DB244B3769008E22F8 /* HelpVM.swift */; };
@@ -421,6 +422,7 @@
 				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
 				80F3131924E3FE9100A93CCD /* Crypto in Frameworks */,
 				805192A424AF8E2700765392 /* RxDataSources in Frameworks */,
+				80C913D22524D9EF0013C1DD /* RxRealm in Frameworks */,
 				80F3131524E3FE8500A93CCD /* Zip in Frameworks */,
 				80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */,
 				805192AC24AF8E2700765392 /* Reachability in Frameworks */,
@@ -921,6 +923,7 @@
 				80F3131424E3FE8500A93CCD /* Zip */,
 				80F3131624E3FE9100A93CCD /* Alamofire */,
 				80F3131824E3FE9100A93CCD /* Crypto */,
+				80C913D12524D9EF0013C1DD /* RxRealm */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska.app */;
@@ -1542,7 +1545,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1569,7 +1572,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1595,7 +1598,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1623,7 +1626,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1862,6 +1865,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80AB9BCF24AF8D540088D256 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
 			productName = SwiftyMarkdown;
+		};
+		80C913D12524D9EF0013C1DD /* RxRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80A660CB2524A40000E97EA3 /* XCRemoteSwiftPackageReference "RxRealm" */;
+			productName = RxRealm;
 		};
 		80D2345024E2FDD200F684AA /* Crypto */ = {
 			isa = XCSwiftPackageProductDependency;

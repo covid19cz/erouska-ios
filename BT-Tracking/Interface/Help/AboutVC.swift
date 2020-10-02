@@ -15,6 +15,7 @@ final class AboutVC: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var versionLabel: UILabel!
 
     // MARK: - Lifecycle
 
@@ -31,5 +32,7 @@ final class AboutVC: UIViewController {
             hyperLink: L10n.aboutInfoLink,
             urlString: viewModel.conditionsOfUseLink
         )
+
+        versionLabel.text = L10n.version + " " + App.appVersion.rawValue + " (\(App.bundleBuild))"
     }
 }
