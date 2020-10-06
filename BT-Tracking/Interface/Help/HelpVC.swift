@@ -39,30 +39,3 @@ final class HelpVC: MarkdownController {
     }
 
 }
-
-extension HelpVC: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell") ?? UITableViewCell()
-        cell.imageView?.image = Asset.chat.image.withRenderingMode(.alwaysOriginal)
-        cell.textLabel?.text = L10n.helpChatbot
-        return cell
-    }
-}
-
-extension HelpVC: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        guard let url = URL(string: viewModel.chatbotLink) else { return }
-        openURL(URL: url)
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-}
