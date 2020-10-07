@@ -1,6 +1,6 @@
 //
 //  NSLayoutHelper.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Jakub Skořepa on 21/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class LayoutConstraintHelper : NSLayoutConstraint {
+@IBDesignable class LayoutConstraintHelper: NSLayoutConstraint {
     @IBInspectable var iP6AndSmaller: CGFloat = 0.0 {
         didSet { deviceConstant(0..<600, value: iP6AndSmaller) }
     }

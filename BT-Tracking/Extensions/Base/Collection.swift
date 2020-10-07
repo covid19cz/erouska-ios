@@ -1,6 +1,6 @@
 //
 //  Collection.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 23/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -20,13 +20,13 @@ extension Collection where Element: BinaryInteger {
 
 extension Array where Element == Int {
     func median() -> Double? {
-        guard count > 0  else { return nil }
+        guard !isEmpty  else { return nil }
 
         let sortedArray = self.sorted()
         if count % 2 != 0 {
-            return Double(sortedArray[count/2])
+            return Double(sortedArray[count / 2])
         } else {
-            return Double(sortedArray[count/2] + sortedArray[count/2 - 1]) / 2.0
+            return Double(sortedArray[count / 2] + sortedArray[count / 2 - 1]) / 2.0
         }
     }
 }

@@ -2,8 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>cz.covid19cz.erouska.exposure-notification</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>cs</string>
+	<key>CFBundleDisplayName</key>
+	<string>eRouška</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -11,7 +17,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>eRouška</string>
+	<string>eRouska</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -23,7 +29,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.941144972907-ds016o6p1icpju7s67p8dhr55jltub0j</string>
+				<string>com.googleusercontent.apps.1077972356575-cfp7g2rtvihvjsu1lcc05mek64nq59ia</string>
 			</array>
 		</dict>
 		<dict>
@@ -39,7 +45,17 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ENAPIVersion</key>
+	<integer>1</integer>
+	<key>ENDeveloperRegion</key>
+	<string>CZ</string>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+	<true/>
 	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS</key>
+	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
@@ -51,9 +67,8 @@
 	<string>Potřebujeme přistup k Bluetooth pro vyhledání a výměnu informací s ostatními zařízeními ve vašem okolí.</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>bluetooth-central</string>
-		<string>bluetooth-peripheral</string>
 		<string>fetch</string>
+		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
@@ -61,6 +76,8 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+		<string>bluetooth-le</string>
+		<string>telephony</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

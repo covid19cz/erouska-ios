@@ -6,6 +6,23 @@
   Copyright © 2020 Covid19CZ. All rights reserved.
 */
 
-"activeTitleEnabledDefault" = "Na rušných místech rozpoznává ostatní eRoušky pouze v případě, že ji necháte na obrazovce a nezamknete telefon.";
+"encounterWarningDefault" = "Setkali jste se s osobou, u které byla potvrzeno onemocnění COVID-19. Sledujte svůj zdravotní stav.";
 
-"activeTitleEnabledDefaultEn" = "Na rušných místech rozpoznává ostatní eRoušky pouze v případě, že ji necháte na obrazovce a nezamknete telefon.";
+"riskyEncountersTitleDefault" = "Dne %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.";
+"riskyEncountersWithSymptomsDefault" = "Pokud se u vás v průběhu 14 dnů od kontaktu s nakaženým objevily příznaky respiračního onemocnění, kontaktujte telefonicky svého praktického lékaře a řiďte se jeho pokyny. Mimo jeho pracovní dobu kontaktujte telefonicky nejbližší lékařskou pohotovost. V případě závažných zdravotních obtíží volejte 155.";
+"riskyEncountersWithoutSymptomsDefault" = "Jestliže se u vás neprojevují hlavní příznaky onemocnění COVID-19, nemusíte zůstávat doma. Dodržujte zásady zodpovědného chování a sledujte svůj zdravotní stav.";
+
+"noEncounterHeaderDefault" = "V posledních 14 dnech nebyla ve vaší blízkosti žádná osoba s potvrzeným onemocněním COVID-19";
+"noEncounterBodyDefault" = "Na rizikové setkání vás upozorníme pomocí oznámení.";
+
+"exposureUITitleDefault" = "Rizikové setkání";
+"symptomsUITitleDefault" = "Hlavní příznaky";
+"spreadPreventionUITitleDefault" = "Zásady zodpovědného chování";
+"recentExposuresUITitleDefault" = "Předchozí riziková setkání";
+
+"symptomsContentJsonDefault" = "{\"title\":\"Příznaky se mohou objevit 2–14 dní po rizikovém setkání.\",\"items\":[{\"iconUrl\":\"https://erouska.cz/img/symptoms/ic_temperature.png\",\"label\":\"Zvýšená teplota\"},{\"iconUrl\":\"https://erouska.cz/img/symptoms/ic_cough.png\",\"label\":\"Kašel\"},{\"iconUrl\":\"https://erouska.cz/img/symptoms/ic_stuffiness.png\",\"label\":\"Dušnost\"},{\"iconUrl\":\"https://erouska.cz/img/symptoms/ic_throatache.png\",\"label\":\"Bolest v krku\"},{\"iconUrl\":\"https://erouska.cz/img/symptoms/ic_headache.png\",\"label\":\"Bolest hlavy, svalů a kloubů\"}]}";
+
+
+"preventionContentJsonDefault" = "{\"title\": \"Koronavirus se přenáší hlavně kapénkami, která se šíří vzduchem. Přenášet se může také kontaminovanými předměty.\",\"items\":[{\"iconUrl\":\"https://erouska.cz/img/prevention/ic_clean_hands.png\",\"label\":\"Často a důkladně si myjte ruce mýdlem a používejte dezinfekci.\"},{\"iconUrl\":\"https://erouska.cz/img/prevention/ic_disinfenction.png\",\"label\":\"Pravidelně dezinfikujte také osobní předměty (např. mobilní telefon).\"},{\"iconUrl\":\"https://erouska.cz/img/prevention/ic_tissue.png\",\"label\":\"Kašlejte a kýchejte do jednorázového kapesníku či rukávu.\"},{\"iconUrl\":\"https://erouska.cz/img/prevention/ic_social_distance.png\",\"label\":\"Vyhýbejte se velkým skupinám osob a udržujte bezpečný odstup (cca 2 metry).\"},{\"iconUrl\":\"https://erouska.cz/img/prevention/ic_mask.png\",\"label\":\"Do obchodů a hromadných dopravních prostředků vždy noste roušku přes ústa a nos.\"},{\"iconUrl\":\"https://erouska.cz/img/prevention/ic_stay_home.png\",\"label\":\"Pokud cítíte příznaky respiračního onemocnění, zůstaňte doma a kontaktujte lékaře.\"}]}";
+
+"contactsContentJsonDefault" = "[{\"title\":\"Máte podezření na koronavirus?\",\"text\":\"Zůstaňte doma a kontaktujte svého praktického lékaře nebo příslušnou hygienickou stanici.\",\"linkTitle\":\"Důležité kontakty\",\"link\":\"https://koronavirus.mzcr.cz/dulezite-kontakty-odkazy/\"},{\"title\":\"Potřebujete poradit?\",\"text\":\"Veškeré otázky a nejasnosti týkající se koronaviru najdete na webu MZČR.\",\"linkTitle\":\"Často kladené otázky\",\"link\":\"https://koronavirus.mzcr.cz/otazky-a-odpovedi/\"},{\"title\":\"O aplikaci eRouška\",\"text\":\"Potřebujete poradit s aplikací nebo vás zajímá, jak funguje? Napište Anežce, podpoře eRoušky.\",\"linkTitle\":\"Anežka - podpora eRoušky\",\"link\":\"https://erouska.cz/#chat-open\"}]";

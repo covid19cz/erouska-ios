@@ -1,6 +1,6 @@
 //
 //  Meta.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 17/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -15,6 +15,6 @@ struct App {
     }
 
     static var bundleBuild: String {
-        return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
     }
 }

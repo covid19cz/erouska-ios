@@ -1,6 +1,6 @@
 //
 //  ForceOSUpdateVC.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Naim Ashhab on 17/07/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -39,8 +39,8 @@ final class ForceOSUpdateVC: UIViewController {
     // MARK: -
 
     private func setupStrings() {
-        headlineLabel.localizedText(viewModel.headline)
-        bodyLabel.localizedText(viewModel.body)
-        updateButton.localizedTitle(viewModel.updateButton)
+        headlineLabel.text = L10n.forceOsUpdateTitle
+        bodyLabel.text = L10n.forceOsUpdateBody
+        updateButton.setTitle(L10n.forceUpdateButton)
     }
 }

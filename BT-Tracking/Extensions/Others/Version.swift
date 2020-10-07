@@ -1,6 +1,6 @@
 //
 //  Version.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Naim Ashhab on 17/07/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -26,27 +26,27 @@ extension String.StringInterpolation {
 extension Version {
 
     static var currentOSVersion: Version {
-        return Version(UIDevice.current.systemVersion)
+        Version(UIDevice.current.systemVersion)
     }
 }
 
 extension Version: Comparable {
 
-    static public func < (lhs: Version, rhs: Version) -> Bool {
+    static func < (lhs: Version, rhs: Version) -> Bool {
         let values = (parseValues(lhs), parseValues(rhs))
         return values.0.count > values.1.count ?
             compare(moreValues: values.0, lessValues: values.1) == .orderedAscending :
             compare(moreValues: values.1, lessValues: values.0) == .orderedDescending
     }
 
-    static public func == (lhs: Version, rhs: Version) -> Bool {
+    static func == (lhs: Version, rhs: Version) -> Bool {
         let values = (parseValues(lhs), parseValues(rhs))
         return values.0.count > values.1.count ?
             compare(moreValues: values.0, lessValues: values.1) == .orderedSame :
             compare(moreValues: values.1, lessValues: values.0) == .orderedSame
     }
 
-    static private func compare(moreValues: [Int], lessValues: [Int]) -> ComparisonResult {
+    private static func compare(moreValues: [Int], lessValues: [Int]) -> ComparisonResult {
         for pair in zip(moreValues, lessValues + Array(repeating: 0, count: moreValues.count - lessValues.count)) {
             if pair.0 == pair.1 { continue }
             return pair.0 < pair.1 ? .orderedAscending : .orderedDescending
@@ -54,7 +54,7 @@ extension Version: Comparable {
         return .orderedSame
     }
 
-    static private func parseValues(_ appVersion: Version) -> [Int] {
+    private static func parseValues(_ appVersion: Version) -> [Int] {
         return appVersion.rawValue.components(separatedBy: ".").compactMap(Int.init)
     }
 }

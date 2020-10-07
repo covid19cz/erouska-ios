@@ -1,6 +1,6 @@
 //
 //  MarkdownController.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Michal Šrůtek on 14/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -15,6 +15,7 @@ class MarkdownController: UIViewController {
     var markdownContent: String {
         ""
     }
+    var contentView = UIView()
 
     // MARK: - Private Properties
 
@@ -52,16 +53,16 @@ class MarkdownController: UIViewController {
 
         textView.textContainerInset = UIEdgeInsets(
             top: 16,
-            left: view.layoutMargins.left,
+            left: 11,
             bottom: 16,
-            right: view.layoutMargins.right
+            right: 11
         )
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
-        guard #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
+        guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
         setupContent()
     }
 
@@ -69,14 +70,16 @@ class MarkdownController: UIViewController {
 
     private func layoutViews() {
         textView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textView)
+        contentView.addSubview(textView)
 
         NSLayoutConstraint.activate([
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            textView.topAnchor.constraint(equalTo: view.topAnchor),
-            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            textView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
+
+        contentView.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
     }
 
 }

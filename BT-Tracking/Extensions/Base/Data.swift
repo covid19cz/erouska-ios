@@ -1,6 +1,6 @@
 //
 //  Data.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 22/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable force_unwrapping
 // https://stackoverflow.com/questions/39075043/how-to-convert-data-to-hex-string-in-swift
 extension Data {
 
@@ -20,7 +21,15 @@ extension Data {
         let format = options.contains(.upperCase) ? "%02hhX" : "%02hhx"
         return map { String(format: format, $0) }.joined()
     }
-    
+
+    static func random(count: Int) -> Data {
+        var result = Data(count: count)
+        _ = result.withUnsafeMutableBytes {
+            SecRandomCopyBytes(kSecRandomDefault, count, $0.baseAddress!)
+        }
+        return result
+    }
+
 }
 
 extension String {
@@ -28,7 +37,7 @@ extension String {
         // Convert 0 ... 9, a ... f, A ...F to their decimal value,
         // return nil for all other input characters
         func decodeNibble(u: UInt16) -> UInt8? {
-            switch(u) {
+            switch u {
             case 0x30 ... 0x39:
                 return UInt8(u - 0x30)
             case 0x41 ... 0x46:
@@ -60,3 +69,4 @@ extension String {
         return data as Data
     }
 }
+// swiftlint:enable force_unwrapping

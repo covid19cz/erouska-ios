@@ -1,16 +1,16 @@
 //
 //  Markdown.swift
-//  eRouska Dev
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 15/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SwiftyMarkdown
 
 struct Markdown {
-    
+
     static func attributedString(markdown: String) -> NSAttributedString {
         var editedMD = markdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
         editedMD = editedMD.replacingOccurrences(of: "(.pdf)", with: "")
@@ -29,14 +29,7 @@ struct Markdown {
         md.h2.fontStyle = .bold
 
         let attributedText = NSMutableAttributedString(attributedString: md.attributedString())
-        var textColor: UIColor {
-            if #available(iOS 13.0, *) {
-                return .label
-            } else {
-                return .black
-            }
-        }
-        attributedText.addAttribute(.foregroundColor, value: textColor, range: NSMakeRange(0, attributedText.length))
+        attributedText.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: attributedText.length))
         return attributedText
     }
 }

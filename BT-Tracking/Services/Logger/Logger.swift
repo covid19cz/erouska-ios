@@ -1,6 +1,6 @@
 //
 //  Logger.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 17/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -24,11 +24,10 @@ protocol LogDelegate: AnyObject {
 }
 
 struct Log {
-    weak static var delegate: LogDelegate?
+    static weak var delegate: LogDelegate?
 
     static func log(_ text: String) {
         delegate?.didLog(text)
         print(text)
     }
 }
-

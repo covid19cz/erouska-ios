@@ -1,6 +1,6 @@
 //
 //  InputValidation.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 14/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -27,7 +27,7 @@ enum InputValidation {
         case .number:
             return 9...20
         case .code:
-            return 6...6
+            return 8...8
         }
     }
 

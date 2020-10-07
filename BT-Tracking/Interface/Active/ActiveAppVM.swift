@@ -1,154 +1,174 @@
 //
 //  ActiveAppViewModel.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 25/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
 //
 
 import UIKit
+import RxSwift
+import RealmSwift
+import RxRealm
 
 final class ActiveAppVM {
 
     enum State: String {
         case enabled
         case paused
-        case disabled
+        case disabledBluetooth = "disabled"
+        case disabledExposures
 
-        var tabBarIcon: UIImage? {
-            if #available(iOS 13.0, *) {
-                let name: String
-                switch self {
-                case .enabled:
-                    name = "wifi"
-                case .paused:
-                    name = "wifi.slash"
-                case .disabled:
-                    name = "wifi.exclamationmark"
-                }
-                return UIImage(systemName: name)
-            } else {
-                return UIImage(named: "wifi")?.resize(toWidth: 30)
+        var tabBarIcon: (UIImage, UIImage) {
+            switch self {
+            case .enabled:
+                return (Asset.homeActive.image, Asset.homeActiveSelected.image)
+            case .paused:
+                return (Asset.homePaused.image, Asset.homePausedSelected.image)
+            case .disabledBluetooth, .disabledExposures:
+                return (Asset.homeDisabled.image, Asset.homePausedSelected.image)
             }
         }
 
         var color: UIColor {
             switch self {
             case .enabled:
-                return #colorLiteral(red: 0.6116178036, green: 0.7910612226, blue: 0.3123690188, alpha: 1)
+                return Asset.appEnabled.color
             case .paused:
-                return #colorLiteral(red: 0.8926691413, green: 0.5397555232, blue: 0.1979260743, alpha: 1)
-            case .disabled:
-                return #colorLiteral(red: 0.8860370517, green: 0.2113904059, blue: 0.3562591076, alpha: 1)
+                return Asset.appPaused.color
+            case .disabledBluetooth, .disabledExposures:
+                return Asset.appDisabled.color
             }
         }
 
-        var image: UIImage? {
+        var image: UIImage {
             switch self {
             case .enabled:
-                return UIImage(named: "ScanActive")
+                return Asset.scanActive.image
             case .paused:
-                return UIImage(named: "BluetoothPaused")
-            case .disabled:
-                return UIImage(named: "BluetoothOff")
+                return Asset.bluetoothPaused.image
+            case .disabledBluetooth:
+                return Asset.bluetoothOff.image
+            case .disabledExposures:
+                return Asset.exposuresOff.image
             }
         }
 
         var headline: String {
             switch self {
             case .enabled:
-                return "active_head_enabled"
+                return L10n.activeHeadEnabled
             case .paused:
-                return "active_head_paused"
-            case .disabled:
-                return "active_head_disabled"
+                return L10n.activeHeadPaused
+            case .disabledBluetooth:
+                return L10n.activeHeadDisabledBluetooth
+            case .disabledExposures:
+                return L10n.activeHeadDisabledExposures
             }
         }
 
-        var title: String {
+        var title: String? {
             switch self {
             case .enabled:
-                return RemoteValues.activeTitleEnabled
-            case .paused:
-                return Localizable("active_title_paused")
-            case .disabled:
-                return Localizable("active_title_disabled")
-            }
-        }
-
-        var footer: String? {
-            switch self {
-            case .enabled:
-                return "active_footer"
+                return L10n.activeTitleHighlightedEnabled
             default:
                 return nil
+            }
+        }
+
+        var text: String {
+            switch self {
+            case .enabled:
+                return L10n.activeFooter
+            case .paused:
+                return L10n.activeTitlePaused
+            case .disabledBluetooth:
+                return L10n.activeTitleDisabledBluetooth
+            case .disabledExposures:
+                return L10n.activeTitleDisabledExposures
             }
         }
 
         var actionTitle: String {
             switch self {
             case .enabled:
-                return "active_button_enabled"
+                return L10n.activeButtonEnabled
             case .paused:
-                return "active_button_paused"
-            case .disabled:
-                return "active_button_disabled"
-            }
-        }
-
-        var actionStyle: Button.Style {
-            switch self {
-            case .enabled:
-                return .clear
-            default:
-                return .filled
+                return L10n.activeButtonPaused
+            case .disabledBluetooth:
+                return L10n.activeButtonDisabledBluetooth
+            case .disabledExposures:
+                return L10n.activeButtonDisabledExposures
             }
         }
     }
 
-    let title = "app_name"
-    let back = "back"
-    let tabTitle = "app_name"
+    var menuRiskyEncounters: String {
+        RemoteValues.exposureUITitle
+    }
 
-    let shareApp = "share_app"
-    let shareAppMessage = "share_app_message"
+    var exposureTitle: String {
+        RemoteValues.exposureBannerTitle
+    }
 
-    let tips = "active_tips_title"
-    let firstTip = "active_tip_1"
-    let secondTip = "active_tip_2"
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 
-    let menuAbout = "about"
-    let menuDebug = "debug"
-    let menuCancelRegistration = "cancel_registration_button"
-    let menuCancel = "close"
+    var state: State {
+        let state = try? observableState.value()
+        return state ?? .disabledExposures
+    }
+    private(set) var observableState: BehaviorSubject<State>
+    private(set) var exposureToShow: Observable<Exposure?>
+    private let disposeBag = DisposeBag()
 
-    let backgroundModeTitle = "active_background_mode_title"
-    let backgroundModeMessage = "active_background_mode_title"
-    let backgroundModeAction = "active_background_mode_settings"
-    let backgroundModeCancel = "active_background_mode_cancel"
+    let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
+    let reporter: ReportServicing = AppDelegate.dependency.reporter
+    let backgroundService = AppDelegate.dependency.background
 
-    private(set) var state: State
+    init() {
+        observableState = BehaviorSubject<State>(value: .paused)
+
+        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
+        let realm = try? Realm()
+        guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
+            exposureToShow = .empty()
+            return
+        }
+
+        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
+        exposureToShow = Observable.collection(from: exposures).map {
+            $0.last(where: { $0.date > showForDate })?.toExposure()
+        }
+
+        exposureService.readyToUse
+            .subscribe { [weak self] _ in
+                self?.updateStateIfNeeded()
+            }.disposed(by: disposeBag)
+    }
 
     func cardShadowColor(traitCollection: UITraitCollection) -> CGColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
-        } else {
-            return UIColor.black.withAlphaComponent(0.2).cgColor
-        }
+        return UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
     }
 
-    let advertiser: BTAdvertising = AppDelegate.shared.advertiser
-    let scanner: BTScannering = AppDelegate.shared.scanner
-    var lastBluetoothState: Bool // true enabled
-
-    init(bluetoothActive: Bool) {
-        self.lastBluetoothState = bluetoothActive
-
-        if !bluetoothActive {
-            state = .disabled
-        } else {
-            state = (AppSettings.state == .disabled ? .enabled : AppSettings.state) ?? .enabled
+    func updateStateIfNeeded() {
+        switch exposureService.status {
+        case .active:
+            observableState.onNext(.enabled)
+        case .paused, .disabled, .unauthorized:
+            observableState.onNext(.paused)
+        case .bluetoothOff:
+            observableState.onNext(.disabledBluetooth)
+        case .restricted:
+            observableState.onNext(.disabledExposures)
+        case .unknown:
+            observableState.onNext(.paused)
+        @unknown default:
+            return
         }
     }
-
 }

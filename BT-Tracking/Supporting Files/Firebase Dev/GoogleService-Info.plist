@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1077972356575-olvss64s9bnk2fp2lhg1cc4c1cvf8f49.apps.googleusercontent.com</string>
+	<string>382369682317-oa2dc4siamp24t9tk4u9gfvbs6g4of3h.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1077972356575-olvss64s9bnk2fp2lhg1cc4c1cvf8f49</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>1077972356575-tv76pkt5ru2rmp8but5pgu236ci7ibib.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.382369682317-oa2dc4siamp24t9tk4u9gfvbs6g4of3h</string>
 	<key>API_KEY</key>
-	<string>AIzaSyChJ_jWSssjOv_Yta28ksx_B2Vzf6CdfAQ</string>
+	<string>AIzaSyBPhCDXRIbJfUbvMlrD4sTRLF41PySO0os</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1077972356575</string>
+	<string>382369682317</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.covid19cz.BT-Tracking5</string>
+	<string>cz.covid19cz.erouska.dev</string>
 	<key>PROJECT_ID</key>
-	<string>covid19cz</string>
+	<string>erouska-key-server-dev</string>
 	<key>STORAGE_BUCKET</key>
-	<string>covid19cz.appspot.com</string>
+	<string>erouska-key-server-dev.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1077972356575:ios:7583eb26c3e6cd8c61886a</string>
+	<string>1:382369682317:ios:2160e9087de31cd70f23c4</string>
 	<key>DATABASE_URL</key>
-	<string>https://covid19cz.firebaseio.com</string>
+	<string>https://erouska-key-server-dev.firebaseio.com</string>
 </dict>
 </plist>

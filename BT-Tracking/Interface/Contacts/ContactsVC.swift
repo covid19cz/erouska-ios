@@ -1,6 +1,6 @@
 //
 //  ContactsVC.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 24/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -16,74 +16,44 @@ final class ContactsVC: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var importantHeadlineLabel: UILabel!
-    @IBOutlet weak var importantBodyLabel: UILabel!
-    @IBOutlet weak var importantButton: UIButton!
-
-    @IBOutlet weak var helpHeadlineLabel: UILabel!
-    @IBOutlet weak var helpBodyLabel: UILabel!
-    @IBOutlet weak var helpFaqButton: UIButton!
-
-    @IBOutlet weak var aboutHeadlineLabel: UILabel!
-    @IBOutlet weak var aboutBodyLabel: UILabel!
-    @IBOutlet weak var aboutButton: UIButton!
+    @IBOutlet private weak var tableView: UITableView!
 
     // MARK: -
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        setupTabBar()
+        navigationController?.tabBarItem.title = L10n.contactsTitle
+        navigationController?.tabBarItem.image = Asset.contacts.image
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupStrings()
+        title = L10n.contactsTitle
+
+        tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 210
+        tableView.rowHeight = UITableView.automaticDimension
     }
 
-    // MARK: - Actions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-    @IBAction private func importantContactsAction() {
-        if let url = URL(string: RemoteValues.importantLink) {
-            openURL(URL: url)
-        }
+        tableView.reloadData()
     }
-
-    @IBAction private func faqAction() {
-        if let url = URL(string: RemoteValues.faqLink) {
-            openURL(URL: url)
-        }
-    }
-
-    @IBAction private func webAction() {
-        guard let url = URL(string: RemoteValues.homepageLink) else { return }
-        openURL(URL: url)
-    }
-
 }
 
-private extension ContactsVC {
+extension ContactsVC: UITableViewDataSource {
 
-    func setupStrings() {
-        navigationItem.localizedTitle(viewModel.title)
-
-        importantHeadlineLabel.localizedText(viewModel.importantHeadline)
-        importantBodyLabel.localizedText(viewModel.importantBody)
-        importantButton.localizedTitle(viewModel.importantButton)
-
-        helpHeadlineLabel.localizedText(viewModel.helpHeadline)
-        helpBodyLabel.localizedText(viewModel.helpBody)
-        helpFaqButton.localizedTitle(viewModel.helpFaqButton)
-
-        aboutHeadlineLabel.localizedText(viewModel.aboutHeadline)
-        aboutBodyLabel.localizedText(viewModel.aboutBody)
-        aboutButton.localizedTitle(viewModel.aboutButton)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.contacts.count
     }
 
-    func setupTabBar() {
-        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
-        navigationController?.tabBarItem.image = viewModel.tabIcon
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as? ContactCell
+        cell?.config(with: viewModel.contacts[indexPath.row])
+        cell?.openLinkClosure = { [weak self] in self?.openURL(URL: $0) }
+        return cell ?? UITableViewCell()
     }
-
 }

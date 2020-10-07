@@ -1,6 +1,6 @@
 //
 //  Button.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 18/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -14,6 +14,7 @@ class Button: UIButton {
         case filled
         case clear
         case disabled
+        case exposureBanner
 
         var backgroundColor: UIColor {
             switch self {
@@ -23,6 +24,8 @@ class Button: UIButton {
                 return .clear
             case .disabled:
                 return .clear
+            case .exposureBanner:
+                return .white
             }
         }
 
@@ -34,6 +37,8 @@ class Button: UIButton {
                 return .systemBlue
             case .disabled:
                 return .systemGray
+            case .exposureBanner:
+                return UIColor(rgb: 0xDE1A1A)
             }
         }
 
@@ -43,7 +48,7 @@ class Button: UIButton {
             button.layer.cornerRadius = 16
             button.layer.masksToBounds = true
 
-            button.layer.borderWidth = self == .filled ? 0 : 1
+            button.layer.borderWidth = [.filled, .exposureBanner].contains(self) ? 0 : 1
             button.layer.borderColor = borderColor?.cgColor
 
             button.titleLabel?.textAlignment = .center
@@ -76,14 +81,10 @@ class Button: UIButton {
 
     private var borderColor: UIColor? {
         switch style {
-        case .filled:
+        case .filled, .exposureBanner:
             return nil
         case .clear, .disabled:
-            if #available(iOS 13.0, *) {
-                return UIColor(named: "ButtonBorder")?.resolvedColor(with: traitCollection).withAlphaComponent(0.12) ?? UIColor.clear
-            } else {
-                return UIColor(named: "ButtonBorder")?.withAlphaComponent(0.12) ?? UIColor.clear
-            }
+            return UIColor(named: "ButtonBorder")?.resolvedColor(with: traitCollection).withAlphaComponent(0.12) ?? UIColor.clear
         }
     }
 
@@ -106,15 +107,11 @@ final class RoundedButtonFilled: Button {
 }
 
 final class MainScanningButton: Button {
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        if #available(iOS 13.0, *) {
-            backgroundColor = UIColor.systemGray6
-        } else {
-            backgroundColor = UIColor(red: 237/255.0, green: 238/255.0, blue: 240/255.0, alpha: 1)
-        }
+
+        backgroundColor = UIColor.systemGray6
         setTitleColor(.systemBlue, for: .normal)
     }
 }
@@ -123,6 +120,14 @@ final class RoundedButtonClear: Button {
 
     override func awakeFromNib() {
         style = .clear
+        super.awakeFromNib()
+    }
+}
+
+final class ExposureBannerButton: Button {
+
+    override func awakeFromNib() {
+        style = .exposureBanner
         super.awakeFromNib()
     }
 }

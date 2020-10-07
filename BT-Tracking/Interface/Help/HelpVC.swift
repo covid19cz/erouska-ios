@@ -1,6 +1,6 @@
 //
 //  HelpVC.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 26/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -9,6 +9,8 @@
 import UIKit
 
 final class HelpVC: MarkdownController {
+
+    @IBOutlet private weak var stackView: UIStackView!
 
     // MARK: -
 
@@ -23,23 +25,17 @@ final class HelpVC: MarkdownController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        setupTabBar()
+        navigationController?.tabBarItem.title = L10n.helpTabTitle
+        navigationController?.tabBarItem.image = Asset.help.image
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.about)
-    }
+        title = L10n.helpTitle
+        navigationItem.rightBarButtonItem?.title = L10n.about
 
-}
-
-private extension HelpVC {
-
-    func setupTabBar() {
-        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
-        navigationController?.tabBarItem.image = viewModel.tabIcon
+        stackView.addArrangedSubview(contentView)
     }
 
 }

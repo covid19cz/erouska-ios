@@ -1,6 +1,6 @@
 //
 //  LogSegmentController.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 16/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -23,12 +23,8 @@ final class LogSegmentController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 13, *) {
-            navigationController?.tabBarItem.image = UIImage(systemName: "doc.plaintext")
-        } else {
-            navigationController?.tabBarItem.image = UIImage(named: "doc.plaintext")?.resize(toWidth: 20)
-        }
-        
+        navigationController?.tabBarItem.image = Asset.myData.image
+
         navigationItem.largeTitleDisplayMode = .never
     }
 
@@ -54,7 +50,7 @@ final class LogSegmentController: UIViewController {
         }
     }
 
-    @IBAction func shareLogsAction(_ sender: Any) {
+    @IBAction private func shareLogsAction(_ sender: Any) {
         let shareController = UIActivityViewController(activityItems: [FileLogger.shared.fileURL], applicationActivities: nil)
         present(shareController, animated: true)
     }

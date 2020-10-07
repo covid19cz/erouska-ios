@@ -1,6 +1,6 @@
 //
 //  ButtonsBackgroundView.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 14/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -61,7 +61,7 @@ class ButtonsBackgroundView: UIView {
     private func setup() {
         backgroundColor = .clear
         clipsToBounds = false
-        
+
         let gradientView = GradientView()
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         gradientView.isUserInteractionEnabled = false
@@ -111,7 +111,8 @@ class ButtonsBackgroundView: UIView {
 
     func updateOffset(in scrollView: UIScrollView, offset: CGPoint) {
         let bottomContentOffsetDiff = scrollView.contentInset.bottom - defaultContentInset.bottom
-        let hideGradient = offset.y - scrollView.adjustedContentInset.top + scrollView.bounds.height + Self.BottomMargin - bottomContentOffsetDiff >= scrollView.contentSize.height
+        let hideGradient = offset.y - scrollView.adjustedContentInset.top + scrollView.bounds.height +
+            Self.BottomMargin - bottomContentOffsetDiff >= scrollView.contentSize.height
         isGradientHidden = hideGradient
     }
 

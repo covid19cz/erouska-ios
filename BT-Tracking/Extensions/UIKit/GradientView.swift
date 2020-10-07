@@ -1,6 +1,6 @@
 //
 //  GradientView.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 14/04/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -33,11 +33,7 @@ class GradientView: UIView {
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 0, y: 1)
         layer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        if #available(iOS 13.0, *) {
-            backgroundColor = .systemBackground
-        } else {
-            backgroundColor = .white
-        }
+        backgroundColor = .systemBackground
     }
 
     override func layoutSubviews() {

@@ -1,6 +1,6 @@
 //
 //  FileLogController.swift
-//  BT-Tracking
+//  eRouska
 //
 //  Created by Lukáš Foldýna on 16/03/2020.
 //  Copyright © 2020 Covid19CZ. All rights reserved.
@@ -39,7 +39,7 @@ final class FileLogController: UIViewController {
     private func setup() {
         textView.text = ""
 
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
             self?.textView.text = FileLogger.shared.getLog()
         }
     }
@@ -49,5 +49,5 @@ final class FileLogController: UIViewController {
     func purgeLog() {
         textView.text = ""
     }
-    
+
 }
