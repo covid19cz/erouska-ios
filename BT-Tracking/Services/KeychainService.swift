@@ -29,7 +29,7 @@ struct KeychainService {
     // MARK: - Deprecated
     static var BUID: String? {
         get {
-            return stringValue(for: .BUID)
+            stringValue(for: .BUID)
         }
         set {
             if let value = newValue {
@@ -40,13 +40,13 @@ struct KeychainService {
         }
     }
 
-    static var TUIDs: [String]? {
+    static var TUIDs: [String] {
         get {
-            return arrayValue(for: .TUIDs)
+            arrayValue(for: .TUIDs) ?? []
         }
         set {
-            if let values = newValue {
-                saveArrayValue(with: .TUIDs, value: values)
+            if !newValue.isEmpty {
+                saveArrayValue(with: .TUIDs, value: newValue)
             } else {
                 removeValue(with: .TUIDs)
             }

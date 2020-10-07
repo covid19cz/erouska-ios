@@ -10,9 +10,9 @@ import UIKit
 
 struct UnsupportedDeviceVM {
 
-    let headline = UIDevice.current.modelName.hasPrefix("iPad") ? "unsupported_device_ipad_title" : "unsupported_device_title"
+    let headline = UIDevice.current.modelName.hasPrefix("iPad") ? L10n.unsupportedDeviceIpadTitle : L10n.unsupportedDeviceTitle
 
-    let body = UIDevice.current.modelName.hasPrefix("iPad") ? "unsupported_device_ipad_body" : "unsupported_device_body"
+    let body = UIDevice.current.modelName.hasPrefix("iPad") ? L10n.unsupportedDeviceIpadBody : L10n.unsupportedDeviceBody
 
-    let moreInfoButton = "unsupported_device_button"
+    let moreInfoButton = L10n.unsupportedDeviceButton
 }

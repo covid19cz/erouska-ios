@@ -34,22 +34,22 @@ final class FirstActivationVC: UIViewController {
     }
 
     // MARK: - Actions
-    
+
     @IBAction private func continueAction() {
         if viewModel.exposureNotificationAuthorized {
             UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
                 DispatchQueue.main.async { [weak self] in
                     if settings.authorizationStatus == .notDetermined {
                         // Request authorization
-                        self?.performSegue(withIdentifier: "exposureNotification", sender: nil)
+                        self?.perform(segue: StoryboardSegue.Onboarding.exposureNotification)
                     } else {
                         // Already authorized or denied
-                        self?.performSegue(withIdentifier: "privacy", sender: nil)
+                        self?.perform(segue: StoryboardSegue.Onboarding.privacy)
                     }
                 }
             }
         } else {
-            performSegue(withIdentifier: "exposureNotification", sender: nil)
+            perform(segue: StoryboardSegue.Onboarding.exposureNotification)
         }
     }
 
@@ -57,12 +57,12 @@ final class FirstActivationVC: UIViewController {
 
 private extension FirstActivationVC {
     func setupStrings() {
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
+        title = L10n.appName
+        navigationItem.backBarButtonItem?.title = L10n.back
 
-        headlineLabel.localizedText(viewModel.headline)
-        bodyLabel.localizedText(viewModel.body)
-        continueButton.localizedTitle(viewModel.continueButton)
-        howItWorksButton.localizedTitle(viewModel.howItWorksButton)
+        headlineLabel.text = L10n.welcomeTitle
+        bodyLabel.text = L10n.welcomeBody
+        continueButton.setTitle(L10n.welcomeActivation)
+        howItWorksButton.setTitle(L10n.welcomeHelp)
     }
 }

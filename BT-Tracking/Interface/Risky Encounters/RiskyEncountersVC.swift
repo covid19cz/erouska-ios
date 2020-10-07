@@ -10,31 +10,64 @@ import UIKit
 import RxSwift
 
 final class RiskyEncountersPositiveView: UIStackView {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var withSymptomsHeaderLabel: UILabel!
-    @IBOutlet weak var withSymptomsLabel: UILabel!
-    @IBOutlet weak var withoutSymptomsHeaderLabel: UILabel!
-    @IBOutlet weak var withoutSymptomsLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var withSymptomsHeaderLabel: UILabel!
+    @IBOutlet private weak var withSymptomsLabel: UILabel!
+    @IBOutlet private weak var withoutSymptomsHeaderLabel: UILabel!
+    @IBOutlet private weak var withoutSymptomsLabel: UILabel!
+
+    var title: String? {
+        set {
+            titleLabel.text = newValue
+        }
+        get {
+            titleLabel.text
+        }
+    }
+
+    func setup(withSymptomsHeader: String, withSymptoms: String, withoutSymptomsHeader: String, withoutSymptoms: String) {
+        withSymptomsHeaderLabel.text = withSymptomsHeader
+        withSymptomsLabel.text = withSymptoms
+        withoutSymptomsHeaderLabel.text = withoutSymptomsHeader
+        withoutSymptomsLabel.text = withoutSymptoms
+    }
 }
 
 final class RiskyEncountersNegativeView: UIStackView {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
-    @IBOutlet weak var previousRiskyEncountersButton: RoundedButtonClear!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var previousRiskyEncountersButton: RoundedButtonClear!
+
+    var isPreviousRiskyEncountersHidden: Bool {
+        set {
+            previousRiskyEncountersButton.isHidden = newValue
+        }
+        get {
+            previousRiskyEncountersButton.isHidden
+        }
+    }
+
+    func setup(title: String, body: String, previousRiskyEncounters: String) {
+        titleLabel.text = title
+        bodyLabel.text = body
+        previousRiskyEncountersButton.setTitle(previousRiskyEncounters)
+    }
+
 }
 
 final class RiskyEncountersVC: UIViewController {
-    @IBOutlet weak var positiveView: RiskyEncountersPositiveView!
-    @IBOutlet weak var negativeView: RiskyEncountersNegativeView!
-    @IBOutlet weak var menuItemsStack: UIStackView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var positiveView: RiskyEncountersPositiveView!
+    @IBOutlet private weak var negativeView: RiskyEncountersNegativeView!
+    @IBOutlet private weak var menuItemsStack: UIStackView!
+    @IBOutlet private weak var tableView: UITableView!
 
     private let viewModel = RiskyEncountersVM()
     private let disposeBag = DisposeBag()
 
     private lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd. MM. yyyy"
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .medium
         return dateFormatter
     }()
 
@@ -44,27 +77,31 @@ final class RiskyEncountersVC: UIViewController {
         title = viewModel.title
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
-        positiveView.withSymptomsHeaderLabel.text = Localizable(viewModel.withSymptomsHeaderKey)
-        positiveView.withSymptomsLabel.text = viewModel.withSymptoms
-        positiveView.withoutSymptomsHeaderLabel.text = Localizable(viewModel.withoutSymptomsHeaderKey)
-        positiveView.withoutSymptomsLabel.text = viewModel.withoutSymptoms
+        positiveView.setup(
+            withSymptomsHeader: L10n.riskyEncountersPositiveWithSymptomsHeader,
+            withSymptoms: viewModel.withSymptoms,
+            withoutSymptomsHeader: L10n.riskyEncountersPositiveWithoutSymptomsHeader,
+            withoutSymptoms: viewModel.withoutSymptoms
+        )
 
-        negativeView.titleLabel.text = viewModel.negativeTitle
-        negativeView.bodyLabel.text = viewModel.negativeBody
-        negativeView.previousRiskyEncountersButton.localizedTitle(viewModel.previousRiskyEncountersButton)
+        negativeView.setup(
+            title: viewModel.negativeTitle,
+            body: viewModel.negativeBody,
+            previousRiskyEncounters: viewModel.previousRiskyEncountersButton
+        )
 
-        viewModel.riskyEncouterDateToShow.subscribe(
+        viewModel.riskyEncounterDateToShow.subscribe(
             onNext: { [weak self] dateToShow in
                 guard let self = self else { return }
                 let isPositive = dateToShow != nil
                 self.positiveView.isHidden = !isPositive
                 self.negativeView.isHidden = isPositive
                 self.menuItemsStack.isHidden = !isPositive
+                self.positiveView.title = nil
 
                 if let date = dateToShow {
-                    self.positiveView.titleLabel.text = String(format: RemoteValues.riskyEncountersTitle, self.dateFormatter.string(from: date)) + Localizable("risky_encounters_positive_title")
-                } else {
-                    self.positiveView.titleLabel.text = ""
+                    let formatted = String(format: RemoteValues.riskyEncountersTitle, self.dateFormatter.string(from: date))
+                    self.positiveView.title = formatted + L10n.riskyEncountersPositiveTitle
                 }
             }
         ).disposed(by: disposeBag)
@@ -72,7 +109,7 @@ final class RiskyEncountersVC: UIViewController {
         viewModel.shouldShowPreviousRiskyEncounters.subscribe(
             onNext: { [weak self] shouldShowPreviousRiskyEncounters in
                 guard let self = self else { return }
-                self.negativeView.previousRiskyEncountersButton.isHidden = !shouldShowPreviousRiskyEncounters
+                self.negativeView.isPreviousRiskyEncountersHidden = !shouldShowPreviousRiskyEncounters
             }
         ).disposed(by: disposeBag)
     }
@@ -80,10 +117,13 @@ final class RiskyEncountersVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let viewController = segue.destination as? RiskyEncountersListVC else { return }
 
-        if segue.identifier == "mainSymptoms" {
+        switch StoryboardSegue.RiskyEncounters(segue) {
+        case .mainSymptoms:
             viewController.viewModel = MainSymptomsVM()
-        } else if segue.identifier == "preventTransmission" {
+        case .preventTransmission:
             viewController.viewModel = PreventTransmissionVM()
+        default:
+            break
         }
     }
 
@@ -91,8 +131,8 @@ final class RiskyEncountersVC: UIViewController {
         dismiss(animated: true)
     }
 
-    @IBAction func showPreviousRiskyEncounters(_ sender: Any) {
-        performSegue(withIdentifier: "previousRiskyEncounters", sender: nil)
+    @IBAction private func showPreviousRiskyEncounters(_ sender: Any) {
+        perform(segue: StoryboardSegue.RiskyEncounters.previousRiskyEncounters)
     }
 }
 
@@ -103,7 +143,7 @@ extension RiskyEncountersVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell") ?? UITableViewCell()
         let item = viewModel.menuItems[indexPath.row]
         cell.imageView?.image = item.icon.withRenderingMode(.alwaysOriginal)
         cell.textLabel?.text = item.localizedTitle
@@ -117,11 +157,11 @@ extension RiskyEncountersVC: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         switch viewModel.menuItems[indexPath.row] {
         case .mainSymptoms:
-            performSegue(withIdentifier: "mainSymptoms", sender: nil)
+            perform(segue: StoryboardSegue.RiskyEncounters.mainSymptoms)
         case .preventTransmission:
-            performSegue(withIdentifier: "preventTransmission", sender: nil)
+            perform(segue: StoryboardSegue.RiskyEncounters.preventTransmission)
         case .previousRiskyEncounters:
-            performSegue(withIdentifier: "previousRiskyEncounters", sender: nil)
+            perform(segue: StoryboardSegue.RiskyEncounters.previousRiskyEncounters)
         }
     }
 

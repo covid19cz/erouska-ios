@@ -17,8 +17,13 @@ struct PreviousRiskyEncountersVM {
     let title = RemoteValues.recentExposuresUITitle
 
     init() {
-        let realm = try! Realm()
-        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+        let realm = try? Realm()
+
+        guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
+            previousExposures = .empty()
+            return
+        }
+
         previousExposures = Observable.collection(from: exposures)
             .map { collection in
                 collection.toArray().map { $0.toExposure() }

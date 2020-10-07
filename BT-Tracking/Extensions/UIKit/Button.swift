@@ -107,10 +107,10 @@ final class RoundedButtonFilled: Button {
 }
 
 final class MainScanningButton: Button {
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         backgroundColor = UIColor.systemGray6
         setTitleColor(.systemBlue, for: .normal)
     }

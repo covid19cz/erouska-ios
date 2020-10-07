@@ -11,26 +11,29 @@ import SafariServices
 
 extension UIViewController {
 
+    typealias Callback = () -> Void
+    typealias AlertAction = (title: String, handler: Callback?)
+
     /// show default error alert, localization keys are expected
-    func show(error: Error, title: String = "error", okTitle: String = "ok", okHandler: (() -> Void)? = nil) {
+    func show(error: Error, title: String = L10n.error, okTitle: String = L10n.ok, okHandler: Callback? = nil) {
         showAlert(title: title, message: "\(error)", okTitle: okTitle, okHandler: okHandler)
     }
 
     /// show alert, localization keys are expected
-    func showAlert(title: String = "error", message: String? = nil, okTitle: String = "ok", okHandler: (() -> Void)? = nil, action: (title: String, handler: (() -> Void)?)? = nil) {
+    func showAlert(title: String = L10n.error, message: String? = nil, okTitle: String = L10n.ok, okHandler: Callback? = nil, action: AlertAction? = nil) {
         let alertController = UIAlertController(
-            title: Localizable(title),
-            message: message == nil ? nil : Localizable(message ?? ""),
+            title: title,
+            message: message == nil ? nil : message,
             preferredStyle: .alert
         )
         alertController.addAction(UIAlertAction(
-            title: Localizable(okTitle),
+            title: okTitle,
             style: .cancel,
             handler: { _ in okHandler?() }
         ))
         action.flatMap({ action in
             alertController.addAction(UIAlertAction(
-                title: Localizable(action.title),
+                title: action.title,
                 style: .default,
                 handler: { _ in action.handler?() }
             ))
@@ -39,7 +42,11 @@ extension UIViewController {
     }
 
     func openURL(URL: URL) {
-        present(SFSafariViewController(url: URL), animated: true)
+        if ["http", "https"].contains(URL.scheme) {
+            present(SFSafariViewController(url: URL), animated: true)
+        } else {
+            UIApplication.shared.open(URL, options: [:], completionHandler: nil)
+        }
     }
 
     private static let progressTag = 42
@@ -56,7 +63,7 @@ extension UIViewController {
             return
         }
 
-        guard window.viewWithTag(Self.progressTag) == nil else { return}
+        guard window.viewWithTag(Self.progressTag) == nil else { return }
 
         let overlay = UIView()
         overlay.backgroundColor = UIColor.black.withAlphaComponent(0.5)

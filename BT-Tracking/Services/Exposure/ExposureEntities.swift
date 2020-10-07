@@ -84,7 +84,7 @@ struct Exposure: Codable, Equatable {
 
 final class ExposureRealm: Object {
     @objc dynamic var id: String = ""
-    @objc dynamic var date: Date = Date()
+    @objc dynamic var date = Date()
 
     // Need to save all properties?
     @objc dynamic var duration: Double = 0
@@ -123,7 +123,7 @@ final class ExposureRealm: Object {
 }
 
 struct ExposureDiagnosisKey: Codable, Equatable {
-    
+
     /// Key must be the base64 (RFC 4648) encoded 16 byte exposure key from the device.
     let keyData: Data
 

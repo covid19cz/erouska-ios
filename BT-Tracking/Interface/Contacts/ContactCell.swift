@@ -9,9 +9,9 @@
 import UIKit
 
 final class ContactCell: UITableViewCell {
-    @IBOutlet weak var headlineLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var button: UIButton!
 
     private var contact: Contact? {
         didSet {
@@ -26,7 +26,7 @@ final class ContactCell: UITableViewCell {
         self.contact = contact
     }
 
-    @IBAction func openLink() {
+    @IBAction private func openLink() {
         guard let link = contact?.link else { return }
         openLinkClosure?(link)
     }

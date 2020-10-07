@@ -9,11 +9,11 @@
 import UIKit
 
 final class LogController: UIViewController {
-    
+
     // MARK: - Outlets
-    
-    @IBOutlet weak var textView: UITextView!
-    
+
+    @IBOutlet private weak var textView: UITextView!
+
     // MARK: - Properties
 
     private var logText: String = "" {
@@ -28,9 +28,9 @@ final class LogController: UIViewController {
         super.viewDidLoad()
         setup()
     }
-    
+
     // MARK: - Setup
-    
+
     private func setup() {
         Log.delegate = self
 

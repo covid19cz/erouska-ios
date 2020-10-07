@@ -31,26 +31,26 @@ final class PrivacyVC: UIViewController {
 
         buttonsView.connect(with: scrollView)
 
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
-        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
+        title = L10n.privacyTitle
+        navigationItem.backBarButtonItem?.title = L10n.back
+        navigationItem.rightBarButtonItem?.title = L10n.back
 
-        headlineLabel.localizedText(viewModel.headline)
-        continueButton.localizedTitle(viewModel.continueButton)
+        headlineLabel.text = L10n.privacyHeadline
+        continueButton.setTitle(L10n.privacyContinue)
 
         bodyTextView.textContainerInset = .zero
         bodyTextView.textContainer.lineFragmentPadding = 0
 
         bodyTextView.hyperLink(
-            originalText: Localizable(viewModel.body),
-            hyperLink: Localizable(viewModel.bodyLinkTitle),
+            originalText: L10n.privacyBody,
+            hyperLink: L10n.privacyBodyLink,
             urlString: viewModel.bodyLink
         )
     }
 
     // MARK: - Action
 
-    @IBAction func continueAction(_ sender: Any) {
+    @IBAction private func continueAction(_ sender: Any) {
         activateApp()
     }
 
@@ -79,8 +79,7 @@ private extension PrivacyVC {
                             if let token = token {
                                 KeychainService.token = token
                                 AppSettings.activated = true
-                                let storyboard = UIStoryboard(name: "Active", bundle: nil)
-                                AppDelegate.shared.window?.rootViewController = storyboard.instantiateInitialViewController()
+                                AppDelegate.shared.window?.rootViewController = StoryboardScene.Active.initialScene.instantiate()
                             } else {
                                 self?.presentError(error)
                             }
@@ -97,11 +96,12 @@ private extension PrivacyVC {
 
     func presentError(_ error: Error?) {
         let viewModel: ErrorVM
-        if let error = error, (error as NSError).domain == NSURLErrorDomain, [NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost, NSURLErrorTimedOut].contains((error as NSError).code) {
+        if let error = error, (error as NSError).domain == NSURLErrorDomain,
+           [NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost, NSURLErrorTimedOut].contains((error as NSError).code) {
             viewModel = ErrorVM(
-                headline: Localizable("error_activation_internet_headline"),
-                text: Localizable("error_activation_internet_text"),
-                actionTitle: Localizable("error_activation_internet_title_action"),
+                headline: L10n.errorActivationInternetHeadline,
+                text: L10n.errorActivationInternetText,
+                actionTitle: L10n.errorActivationInternetTitleAction,
                 action: { self.activateApp() }
             )
         } else {

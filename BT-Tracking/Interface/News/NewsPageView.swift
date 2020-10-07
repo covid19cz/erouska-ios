@@ -15,22 +15,31 @@ final class NewsPageView: UIView {
     var viewModel: NewsPageVM? {
         didSet {
             guard let viewModel = viewModel else { return }
-            imageView.image = UIImage(named: viewModel.imageName)
-            headlineLabel.localizedText(viewModel.headline)
+            imageView.image = viewModel.imageAsset.image
+            headlineLabel.text = viewModel.headline
             if let bodyLink = viewModel.bodyLink, let bodyLinkTitle = viewModel.bodyLinkTitle {
-                bodyTextView.hyperLink(originalText: Localizable(viewModel.body), hyperLink: Localizable(bodyLinkTitle), urlString: bodyLink)
+                bodyTextView.hyperLink(originalText: viewModel.body, hyperLink: bodyLinkTitle, urlString: bodyLink)
             } else {
-                bodyTextView.text = Localizable(viewModel.body)
+                bodyTextView.text = viewModel.body
             }
         }
     }
 
     // MARK: - Outlets
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var headlineLabel: UILabel!
-    @IBOutlet weak var bodyTextView: UITextView! {
+    weak var bodyTextDelegate: UITextViewDelegate? {
+        set {
+            bodyTextView.delegate = newValue
+        }
+        get {
+            bodyTextView.delegate
+        }
+    }
+
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var bodyTextView: UITextView! {
         didSet {
             bodyTextView.textContainerInset = .zero
             bodyTextView.textContainer.lineFragmentPadding = 0

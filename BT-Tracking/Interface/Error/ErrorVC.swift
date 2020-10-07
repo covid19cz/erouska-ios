@@ -18,11 +18,8 @@ final class ErrorVC: UIViewController {
     var viewModel: ErrorVM?
 
     static func instantiateViewController(with viewModel: ErrorVM) -> UIViewController? {
-        guard
-            let navVC = UIStoryboard(name: "Error", bundle: nil).instantiateInitialViewController() as? UINavigationController,
-            let errorVC = navVC.topViewController as? ErrorVC
-        else { return nil }
-
+        let navVC = StoryboardScene.Error.initialScene.instantiate()
+        guard let errorVC = navVC.topViewController as? ErrorVC else { return nil }
         errorVC.viewModel = viewModel
         return navVC
     }
@@ -30,16 +27,16 @@ final class ErrorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = Localizable("error_title")
+        title = L10n.errorTitle
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localizable("help"), style: .plain, target: self, action: #selector(showHelp))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.help, style: .plain, target: self, action: #selector(showHelp))
 
         headlineLabel.text = viewModel?.headline
         textLabel.text = viewModel?.text
         actionButton.setTitle(viewModel?.actionTitle ?? "", for: .normal)
     }
 
-    @IBAction func action() {
+    @IBAction private func action() {
         switch viewModel?.action {
         case .close:
             close()
@@ -55,7 +52,7 @@ final class ErrorVC: UIViewController {
     }
 
     @objc func showHelp() {
-        performSegue(withIdentifier: "Help", sender: nil)
+        perform(segue: StoryboardSegue.Error.help)
     }
 
     func closeWith(completion: @escaping () -> Void) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ExposureNotification
 import UserNotifications
 
 final class ExposurePermissionVC: UIViewController {
@@ -33,9 +34,9 @@ final class ExposurePermissionVC: UIViewController {
     }
 
     // MARK: - Action
-    
-    @IBAction func continueAction(_ sender: Any) {
-        requestExposurePresmission()
+
+    @IBAction private func continueAction(_ sender: Any) {
+        requestExposurePermission()
     }
 
 }
@@ -43,18 +44,18 @@ final class ExposurePermissionVC: UIViewController {
 private extension ExposurePermissionVC {
 
     func setupStrings() {
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
-        navigationItem.rightBarButtonItem?.localizedTitle(viewModel.help)
-        
-        headlineLabel.localizedText(viewModel.headline)
-        bodyLabel.localizedText(viewModel.body)
-        continueButton.localizedTitle(viewModel.continueButton)
+        title = L10n.exposureNotificationTitle
+        navigationItem.backBarButtonItem?.title = L10n.back
+        navigationItem.rightBarButtonItem?.title = L10n.help
+
+        headlineLabel.text = L10n.exposureNotificationHeadline
+        bodyLabel.text = L10n.exposureNotificationBody
+        continueButton.setTitle(L10n.exposureNotificationContinue)
     }
 
     // MARK: - Request permission
 
-    func requestExposurePresmission() {
+    func requestExposurePermission() {
         viewModel.exposureService.activate { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -63,17 +64,19 @@ private extension ExposurePermissionVC {
                 case .activationError(let code):
                     switch code {
                     case .notAuthorized:
-                        self.showPermissionDeniedAlert(canceAction: { [weak self] in
+                        self.showPermissionDeniedAlert(cancelAction: { [weak self] in
                             self?.navigationController?.popViewController(animated: true)
                         })
                     case .unsupported:
-                        self.performSegue(withIdentifier: "unsupported", sender: nil)
+                        self.perform(segue: StoryboardSegue.Onboarding.unsupported)
+                    case .insufficientStorage, .insufficientMemory:
+                        self.showExposureStorageError()
                     case .restricted, .notEnabled:
-                        self.showPermissionDeniedAlert(canceAction: { [weak self] in
+                        self.showPermissionDeniedAlert(cancelAction: { [weak self] in
                             self?.requestNotificationPermission()
                         })
                     default:
-                        self.showUnknownError(error)
+                        self.showUnknownError(error, code: code)
                     }
                 default:
                     self.showUnknownError(error)
@@ -83,7 +86,6 @@ private extension ExposurePermissionVC {
             }
         }
     }
-    
 
     func requestNotificationPermission() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -92,14 +94,15 @@ private extension ExposurePermissionVC {
             completionHandler: { [weak self] granted, _ in
                 DispatchQueue.main.async { [weak self] in
                     if granted {
-                        self?.performSegue(withIdentifier: "privacy", sender: nil)
+                        self?.perform(segue: StoryboardSegue.Onboarding.privacy)
                     } else {
-                        self?.showPermissionDeniedAlert(canceAction: { [weak self] in
-                            self?.performSegue(withIdentifier: "privacy", sender: nil)
+                        self?.showPermissionDeniedAlert(cancelAction: { [weak self] in
+                            self?.perform(segue: StoryboardSegue.Onboarding.privacy)
                         })
                     }
                 }
-        })
+            }
+        )
         UIApplication.shared.registerForRemoteNotifications()
     }
 
@@ -108,25 +111,25 @@ private extension ExposurePermissionVC {
         UIApplication.shared.open(settingsUrl)
     }
 
-    func showUnknownError(_ error: Error) {
-        #if DEBUG
-        show(error: error, okHandler: { self.requestNotificationPermission() })
-        #else
-        showAlert(
-            title: viewModel.errorUnknownTitle,
-            message: viewModel.errorUnknownBody,
-            okHandler: { self.requestNotificationPermission() }
-        )
-        #endif
+    func showExposureStorageError() {
+        showAlert(title: L10n.exposureActivationStorageTitle, message: L10n.exposureActivationStorageBody)
     }
 
-    func showPermissionDeniedAlert(canceAction: @escaping () -> Void) {
+    func showUnknownError(_ error: Error, code: ENError.Code = .unknown) {
         showAlert(
-            title: viewModel.errorRestiredTitle,
-            message: viewModel.errorRestiredBody,
-            okTitle: viewModel.errorSettingsTitle,
+            title: L10n.exposureActivationUnknownTitle,
+            message: L10n.exposureActivationUnknownBody("\(code.rawValue)"),
+            okHandler: { self.requestNotificationPermission() }
+        )
+    }
+
+    func showPermissionDeniedAlert(cancelAction: @escaping () -> Void) {
+        showAlert(
+            title: L10n.exposureActivationRestrictedTitle,
+            message: L10n.exposureActivationRestrictedBody,
+            okTitle: L10n.exposureActivationRestrictedSettingsAction,
             okHandler: { [weak self] in self?.openSettings() },
-            action: (title: viewModel.errorCancelTitle, handler: canceAction)
+            action: (title: L10n.exposureActivationRestrictedCancelAction, handler: cancelAction)
         )
     }
 

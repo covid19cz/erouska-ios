@@ -34,9 +34,9 @@ struct ErrorVM {
 extension ErrorVM {
 
     static let unknown = ErrorVM(
-        headline: Localizable("error_unknown_headline"),
-        text: Localizable("error_unknown_text"),
-        actionTitle: Localizable("error_unknown_title_action"),
+        headline: L10n.errorUnknownHeadline,
+        text: L10n.errorUnknownText,
+        actionTitle: L10n.errorUnknownTitleAction,
         action: .close
     )
 }

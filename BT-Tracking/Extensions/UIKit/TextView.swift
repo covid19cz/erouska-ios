@@ -16,12 +16,12 @@ extension UITextView {
         attributedOriginalText.addAttribute(
             .font,
             value: UIFont.preferredFont(forTextStyle: .body),
-            range: NSMakeRange(0, attributedOriginalText.length)
+            range: NSRange(location: 0, length: attributedOriginalText.length)
         )
         attributedOriginalText.addAttribute(
             .foregroundColor,
             value: textColor ?? .label,
-            range: NSMakeRange(0, attributedOriginalText.length)
+            range: NSRange(location: 0, length: attributedOriginalText.length)
         )
         attributedOriginalText.addAttribute(
             .link,

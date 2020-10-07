@@ -10,23 +10,12 @@ import UIKit
 
 struct HelpVM {
 
-    let title = "help_title"
-
-    let tabTitle = "help_tab_title"
-    let tabIcon = UIImage(named: "Help")
-
-    let about = "about"
-
-    let chatbot = "help_chatbot"
-
     var chatbotLink: String {
-        return RemoteValues.chatBotLink
+        RemoteValues.chatBotLink
     }
 
     var markdownContent: String {
-        return RemoteValues.helpMarkdown
+        RemoteValues.helpMarkdown
     }
-
-    let configuration = AppDelegate.dependency.configuration
 
 }

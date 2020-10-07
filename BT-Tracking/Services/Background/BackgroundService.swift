@@ -87,8 +87,8 @@ final class BackgroundService {
 
         if exposureService.authorizationStatus == .authorized, !exposureService.isBluetoothOn {
             let content = UNMutableNotificationContent()
-            content.title = NSLocalizedString("bluetooth_off_title", comment: "")
-            content.body = NSLocalizedString("bluetooth_off_body", comment: "")
+            content.title = L10n.bluetoothOffTitle
+            content.body = L10n.bluetoothOffBody
             content.sound = .default
 
             let request = UNNotificationRequest(
@@ -120,8 +120,8 @@ final class BackgroundService {
         let notificationCenter = UNUserNotificationCenter.current()
 
         let content = UNMutableNotificationContent()
-        content.title = NSLocalizedString("deadman_notificaiton_title", comment: "")
-        content.body = NSLocalizedString("deadman_notificaiton_body", comment: "")
+        content.title = L10n.deadmanNotificaitonTitle
+        content.body = L10n.deadmanNotificaitonBody
         content.sound = .default
 
         let trigger = UNTimeIntervalNotificationTrigger(
@@ -222,9 +222,9 @@ private extension BackgroundService {
             return
         }
 
-        let realm = try! Realm()
-        try! realm.write() {
-            exposures.forEach { realm.add(ExposureRealm($0)) }
+        let realm = try? Realm()
+        try? realm?.write {
+            exposures.forEach { realm?.add(ExposureRealm($0)) }
         }
 
         let data = ["idToken": KeychainService.token]
@@ -243,8 +243,8 @@ private extension BackgroundService {
                 + "attenuation value: \(exposure.attenuationValue)\n"
                 + "signal attenuations: \(signals.joined(separator: ", "))\n"
         }
-        if result == "" {
-            result = "None";
+        if result.isEmpty {
+            result = "None"
         }
 
         log("EXP: \(exposures)")

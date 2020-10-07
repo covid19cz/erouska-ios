@@ -10,8 +10,8 @@ import UIKit
 import AlamofireImage
 
 final class RiskyEncountersListCell: UITableViewCell {
-    @IBOutlet weak var customImageView: UIImageView!
-    @IBOutlet weak var customTextLabel: UILabel!
+    @IBOutlet private weak var customImageView: UIImageView!
+    @IBOutlet private weak var customTextLabel: UILabel!
 
     func config(with symptom: AsyncImageTitleViewModel) {
         customImageView.af.setImage(withURL: symptom.imageUrl, placeholderImage: nil) // TODO: add placeholder image

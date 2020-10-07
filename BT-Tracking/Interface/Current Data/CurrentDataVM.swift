@@ -10,14 +10,12 @@ import UIKit
 import FirebaseFunctions
 import RealmSwift
 import RxSwift
+import Reachability
 
 final class CurrentDataVM {
 
-    let tabTitle = "data_list_title"
-    let tabIcon = UIImage(named: "MyData")
-
     var measuresURL: URL? {
-        return URL(string: RemoteValues.currentMeasuresUrl)
+        URL(string: RemoteValues.currentMeasuresUrl)
     }
 
     var sections: [Section] = [] {
@@ -31,7 +29,7 @@ final class CurrentDataVM {
         }
     }
     let needToUpdateView: BehaviorSubject<Void>
-    let obervableErrors: BehaviorSubject<Error?>
+    let observableErrors: BehaviorSubject<Error?>
 
     private var currentData: CurrentDataRealm?
 
@@ -43,22 +41,23 @@ final class CurrentDataVM {
     }()
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd. MM. yyyy"
+        formatter.timeStyle = .none
+        formatter.dateStyle = .medium
         return formatter
     }()
 
     init() {
         needToUpdateView = BehaviorSubject<Void>(value: ())
-        obervableErrors = BehaviorSubject<Error?>(value: nil)
+        observableErrors = BehaviorSubject<Error?>(value: nil)
 
-        let realm = try! Realm()
-        currentData = realm.objects(CurrentDataRealm.self).last
+        let realm = try? Realm()
+        currentData = realm?.objects(CurrentDataRealm.self).last
         sections = sections(from: currentData)
 
         if currentData == nil {
             let currentData = CurrentDataRealm()
-            try? realm.write {
-                realm.add(currentData)
+            try? realm?.write {
+                realm?.add(currentData)
             }
             self.currentData = currentData
         }
@@ -67,6 +66,11 @@ final class CurrentDataVM {
     }
 
     func fetchCurrentDataIfNeeded() {
+        // Don't fetch when internet connection is not available
+        guard let connection = try? Reachability().connection, connection != .unavailable else {
+            return
+        }
+
         /*if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
             var components = DateComponents()
             components.hour = 3
@@ -94,21 +98,17 @@ final class CurrentDataVM {
 
                     self.sections = self.sections(from: self.currentData)
                     self.updateFooter()
+                    self.observableErrors.onNext(nil)
                 }
             } else if let error = error {
-                if AppSettings.currentDataLastFetchDate == nil {
-                    self.sections = self.sections(from: self.currentData)
-                    self.updateFooter()
-
-                    self.obervableErrors.onNext(error)
-                }
+                self.observableErrors.onNext(error)
             }
         }
     }
 
     private func updateFooter() {
         if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
-            footer = String(format: Localizable("current_data_footer"), dateFormatter.string(from: lastFetchedDate))
+            footer = L10n.currentDataFooter(dateFormatter.string(from: lastFetchedDate))
         }
     }
 
@@ -116,42 +116,45 @@ final class CurrentDataVM {
         guard let data = currentData else { return [] }
         return [
             Section(header: nil, selectableItems: true, items: [
-                Item(iconName: "CurrentData/Measures", title: Localizable("current_data_measures")),
+                Item(
+                    iconAsset: Asset.CurrentData.measures,
+                    title: L10n.currentDataMeasures
+                ),
             ]),
-            Section(header: Localizable("current_data_item_header"), selectableItems: false, items: [
+            Section(header: L10n.currentDataItemHeader, selectableItems: false, items: [
                 Item(
-                    iconName: "CurrentData/Tests",
-                    title: titleValue(data.testsTotal, withKey: "current_data_item_tests"),
-                    subtitle: titleValue(data.testsIncrease, withKey: "current_data_item_yesterday", showSign: true)
+                    iconAsset: Asset.CurrentData.tests,
+                    title: L10n.currentDataItemTests(formattedValue(data.testsTotal)),
+                    subtitle: L10n.currentDataItemYesterday(formattedValue(data.testsIncrease, showSign: true))
                 ),
                 Item(
-                    iconName: "CurrentData/Covid",
-                    title: titleValue(data.confirmedCasesTotal, withKey: "current_data_item_confirmed"),
-                    subtitle: titleValue(data.confirmedCasesIncrease, withKey: "current_data_item_yesterday", showSign: true)
+                    iconAsset: Asset.CurrentData.covid,
+                    title: L10n.currentDataItemConfirmed(formattedValue(data.confirmedCasesTotal)),
+                    subtitle: L10n.currentDataItemYesterday(formattedValue(data.confirmedCasesIncrease, showSign: true))
                 ),
                 Item(
-                    iconName: "CurrentData/Active",
-                    title: titleValue(data.activeCasesTotal, withKey: "current_data_item_active")
+                    iconAsset: Asset.CurrentData.active,
+                    title: L10n.currentDataItemActive(formattedValue(data.activeCasesTotal))
                 ),
                 Item(
-                    iconName: "CurrentData/Healthy",
-                    title: titleValue(data.curedTotal, withKey: "current_data_item_healthy")
+                    iconAsset: Asset.CurrentData.healthy,
+                    title: L10n.currentDataItemHealthy(formattedValue(data.curedTotal))
                 ),
                 Item(
-                    iconName: "CurrentData/Death",
-                    title: titleValue(data.deceasedTotal, withKey: "current_data_item_deaths")
+                    iconAsset: Asset.CurrentData.death,
+                    title: L10n.currentDataItemDeaths(formattedValue(data.deceasedTotal))
                 ),
                 Item(
-                    iconName: "CurrentData/Hospital",
-                    title: titleValue(data.currentlyHospitalizedTotal, withKey: "current_data_item_hospitalized")
-                ),
+                    iconAsset: Asset.CurrentData.hospital,
+                    title: L10n.currentDataItemHospitalized(formattedValue(data.currentlyHospitalizedTotal))
+                )
             ])
         ]
     }
 
-    private func titleValue(_ value: Int, withKey key: String, showSign: Bool = false) -> String {
+    private func formattedValue(_ value: Int, showSign: Bool = false) -> String {
         guard let formattedValue = numberFormatter.string(for: value) else { return "" }
-        return String(format: Localizable(key), showSign && value > 0 ? "+" + formattedValue : formattedValue)
+        return showSign && value > 0 ? "+" + formattedValue : formattedValue
     }
 }
 
@@ -164,12 +167,12 @@ extension CurrentDataVM {
      }
 
      struct Item {
-         let iconName: String
+         let iconAsset: ImageAsset
          let title: String
          let subtitle: String?
 
-        init(iconName: String, title: String, subtitle: String? = nil) {
-            self.iconName = iconName
+        init(iconAsset: ImageAsset, title: String, subtitle: String? = nil) {
+            self.iconAsset = iconAsset
             self.title = title
             self.subtitle = subtitle
         }

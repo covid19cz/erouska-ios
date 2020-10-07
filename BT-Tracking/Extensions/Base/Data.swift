@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable force_unwrapping
 // https://stackoverflow.com/questions/39075043/how-to-convert-data-to-hex-string-in-swift
 extension Data {
 
@@ -28,7 +29,7 @@ extension Data {
         }
         return result
     }
-    
+
 }
 
 extension String {
@@ -36,7 +37,7 @@ extension String {
         // Convert 0 ... 9, a ... f, A ...F to their decimal value,
         // return nil for all other input characters
         func decodeNibble(u: UInt16) -> UInt8? {
-            switch(u) {
+            switch u {
             case 0x30 ... 0x39:
                 return UInt8(u - 0x30)
             case 0x41 ... 0x46:
@@ -68,3 +69,4 @@ extension String {
         return data as Data
     }
 }
+// swiftlint:enable force_unwrapping

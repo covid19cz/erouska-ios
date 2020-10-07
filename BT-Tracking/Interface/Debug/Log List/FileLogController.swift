@@ -39,7 +39,7 @@ final class FileLogController: UIViewController {
     private func setup() {
         textView.text = ""
 
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
             self?.textView.text = FileLogger.shared.getLog()
         }
     }
@@ -49,5 +49,5 @@ final class FileLogController: UIViewController {
     func purgeLog() {
         textView.text = ""
     }
-    
+
 }

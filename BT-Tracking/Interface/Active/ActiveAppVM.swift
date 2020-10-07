@@ -19,60 +19,58 @@ final class ActiveAppVM {
         case disabledBluetooth = "disabled"
         case disabledExposures
 
-        var tabBarIcon: (UIImage?, UIImage?) {
-            let name: String
+        var tabBarIcon: (UIImage, UIImage) {
             switch self {
             case .enabled:
-                name = "HomeActive"
+                return (Asset.homeActive.image, Asset.homeActiveSelected.image)
             case .paused:
-                name = "HomePaused"
+                return (Asset.homePaused.image, Asset.homePausedSelected.image)
             case .disabledBluetooth, .disabledExposures:
-                name = "HomeDisabled"
+                return (Asset.homeDisabled.image, Asset.homePausedSelected.image)
             }
-            return (UIImage(named: name), UIImage(named: "\(name)Selected"))
         }
 
         var color: UIColor {
             switch self {
             case .enabled:
-                return #colorLiteral(red: 0.6116178036, green: 0.7910612226, blue: 0.3123690188, alpha: 1)
+                return Asset.appEnabled.color
             case .paused:
-                return #colorLiteral(red: 0.8926691413, green: 0.5397555232, blue: 0.1979260743, alpha: 1)
+                return Asset.appPaused.color
             case .disabledBluetooth, .disabledExposures:
-                return #colorLiteral(red: 0.8860370517, green: 0.2113904059, blue: 0.3562591076, alpha: 1)
+                return Asset.appDisabled.color
             }
         }
 
-        var image: UIImage? {
+        var image: UIImage {
             switch self {
             case .enabled:
-                return UIImage(named: "ScanActive")
+                return Asset.scanActive.image
             case .paused:
-                return UIImage(named: "BluetoothPaused")
+                return Asset.bluetoothPaused.image
             case .disabledBluetooth:
-                return UIImage(named: "BluetoothOff")
+                return Asset.bluetoothOff.image
             case .disabledExposures:
-                return UIImage(named: "ExposuresOff")
+                return Asset.exposuresOff.image
             }
         }
 
         var headline: String {
             switch self {
             case .enabled:
-                return "active_head_enabled"
+                return L10n.activeHeadEnabled
             case .paused:
-                return "active_head_paused"
+                return L10n.activeHeadPaused
             case .disabledBluetooth:
-                return "active_head_disabled_bluetooth"
+                return L10n.activeHeadDisabledBluetooth
             case .disabledExposures:
-                return "active_head_disabled_exposures"
+                return L10n.activeHeadDisabledExposures
             }
         }
 
         var title: String? {
             switch self {
             case .enabled:
-                return "active_title_highlighted_enabled"
+                return L10n.activeTitleHighlightedEnabled
             default:
                 return nil
             }
@@ -81,82 +79,48 @@ final class ActiveAppVM {
         var text: String {
             switch self {
             case .enabled:
-                return "active_footer"
+                return L10n.activeFooter
             case .paused:
-                return "active_title_paused"
+                return L10n.activeTitlePaused
             case .disabledBluetooth:
-                return "active_title_disabled_bluetooth"
+                return L10n.activeTitleDisabledBluetooth
             case .disabledExposures:
-                return "active_title_disabled_exposures"
+                return L10n.activeTitleDisabledExposures
             }
         }
 
         var actionTitle: String {
             switch self {
             case .enabled:
-                return "active_button_enabled"
+                return L10n.activeButtonEnabled
             case .paused:
-                return "active_button_paused"
+                return L10n.activeButtonPaused
             case .disabledBluetooth:
-                return "active_button_disabled_bluetooth"
+                return L10n.activeButtonDisabledBluetooth
             case .disabledExposures:
-                return "active_button_disabled_exposures"
+                return L10n.activeButtonDisabledExposures
             }
         }
     }
 
-    let title = "app_name"
-    let back = "back"
-    let tabTitle = "app_name"
-
-    let shareApp = "share_app"
-    let shareAppMessage = "share_app_message"
-
-    let lastUpdateText = "active_data_update"
-
     var menuRiskyEncounters: String {
-        return RemoteValues.exposureUITitle
+        RemoteValues.exposureUITitle
     }
-    let menuSendReports = "data_list_send_button"
-    let menuDebug = "debug"
-    let menuCancel = "close"
-
-    let backgroundModeTitle = "active_background_mode_title"
-    let backgroundModeMessage = "active_background_mode_message"
-    let backgroundModeAction = "active_background_mode_settings"
-    let backgroundModeCancel = "active_background_mode_cancel"
 
     var exposureTitle: String {
-        return RemoteValues.exposureBannerTitle
+        RemoteValues.exposureBannerTitle
     }
-    let exposureBannerClose = "close"
-    let exposureMoreInfo = "active_exposure_more_info"
 
-    let errorActivationRestiredTitle = "exposure_activation_restricted_title"
-    let errorActivationRestiredBody = "exposure_activation_restricted_body"
-    let errorActivationSettingsTitle = "exposure_activation_restricted_settings_action"
-    let errorActivationCancelTitle = "exposure_activation_restricted_cancel_action"
-
-    let errorActivationUnknownTitle = "exposure_activation_unknown_title"
-    let errorActivationUnknownBody = "exposure_activation_unknown_body"
-
-    let errorDeactivationUnknownTitle = "exposure_deactivation_unknown_title"
-    let errorDeactivationUnknownBody = "exposure_deactivation_unknown_body"
-
-    let errorSendDataTitle = "data_list_send_error_disabled_title"
-    let errorSendDataMessage = "data_list_send_error_disabled_message"
-    let errorSendDataActionClose = "close"
-    let errorSendDataActionTurnOn = "turn_on"
-
-    var dateFormatter: DateFormatter {
-        let formatrer = DateFormatter()
-        formatrer.timeStyle = .short
-        formatrer.dateStyle = .short
-        return formatrer
-    }
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 
     var state: State {
-        return try! observableState.value()
+        let state = try? observableState.value()
+        return state ?? .disabledExposures
     }
     private(set) var observableState: BehaviorSubject<State>
     private(set) var exposureToShow: Observable<Exposure?>
@@ -169,16 +133,17 @@ final class ActiveAppVM {
     init() {
         observableState = BehaviorSubject<State>(value: .paused)
 
-        let showForDays = AppDelegate.dependency.configuration.showExposureForDays
-        let realm = try! Realm()
-        let exposures = realm
-            .objects(ExposureRealm.self)
-            .sorted(byKeyPath: "date")
+        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
+        let realm = try? Realm()
+        guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
+            exposureToShow = .empty()
+            return
+        }
 
-        exposureToShow = Observable.collection(from: exposures)
-            .map {
-                $0.filter { $0.date > Calendar.current.date(byAdding: .day, value: -showForDays, to: Date())! }.last?.toExposure()
-            }
+        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
+        exposureToShow = Observable.collection(from: exposures).map {
+            $0.last(where: { $0.date > showForDate })?.toExposure()
+        }
 
         exposureService.readyToUse
             .subscribe { [weak self] _ in

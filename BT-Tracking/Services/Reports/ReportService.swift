@@ -13,7 +13,9 @@ import Alamofire
 import Zip
 import CryptoKit
 
-protocol ReportServicing: class {
+protocol ReportServicing: AnyObject {
+
+    func updateConfiguration(_ configuration: ServerConfiguration)
 
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String
 
@@ -31,11 +33,11 @@ protocol ReportServicing: class {
 
 final class ReportService: ReportServicing {
 
-    private let healthAuthority: String
+    private var healthAuthority: String
 
-    private let uploadURL: URL
+    private var uploadURL: URL
 
-    private let downloadBaseURL: URL
+    private var downloadBaseURL: URL
     private var downloadDestinationURL: URL {
         let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let documentsURL = directoryURLs.first else {
@@ -43,9 +45,16 @@ final class ReportService: ReportServicing {
         }
         return documentsURL
     }
-    private let downloadIndex: String
+    private var downloadIndex: String
 
-    init(configuration: Configuration) {
+    init(configuration: ServerConfiguration) {
+        healthAuthority = configuration.healthAuthority
+        uploadURL = configuration.uploadURL
+        downloadBaseURL = configuration.downloadsURL
+        downloadIndex = configuration.downloadIndexName
+    }
+
+    func updateConfiguration(_ configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
         downloadBaseURL = configuration.downloadsURL
@@ -54,7 +63,7 @@ final class ReportService: ReportServicing {
 
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String {
         // Sort by the key.
-        let sortedKeys = keys.sorted { (lhs, rhs) -> Bool in
+        let sortedKeys = keys.sorted { lhs, rhs -> Bool in
             lhs.keyData.base64EncodedString() < rhs.keyData.base64EncodedString()
         }
 
@@ -74,10 +83,10 @@ final class ReportService: ReportServicing {
         let hmacKey = SymmetricKey(data: secret)
         let authenticationCode = HMAC<SHA256>.authenticationCode(for: clearData, using: hmacKey)
         return authenticationCode.withUnsafeBytes { bytes in
-            return Data(bytes)
+            Data(bytes)
         }.base64EncodedString()
     }
-    
+
     private(set) var isUploading: Bool = false
 
     func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, traveler: Bool, callback: @escaping UploadKeysCallback) {
@@ -132,7 +141,7 @@ final class ReportService: ReportServicing {
                 case .failure(let error):
                     reportFailure(error)
                 }
-        }
+            }
     }
 
     private(set) var isDownloading: Bool = false
@@ -160,7 +169,7 @@ final class ReportService: ReportServicing {
 
         let destinationURL = self.downloadDestinationURL
         let destination: DownloadRequest.Destination = { temporaryURL, response in
-            let url = destinationURL.appendingPathComponent(response.suggestedFilename!)
+            let url = destinationURL.appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
             return (url, [.removePreviousFile, .createIntermediateDirectories])
         }
         var downloads: [DownloadRequest] = []
@@ -212,8 +221,20 @@ final class ReportService: ReportServicing {
                                     }
                                     do {
                                         let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
-                                        let fileURLs = try FileManager.default.contentsOfDirectory(at: unzipDirectory, includingPropertiesForKeys: [], options: [.skipsHiddenFiles])
-                                        localURLResults.append(.success(fileURLs))
+                                        let fileURLs = try FileManager.default.contentsOfDirectory(
+                                            at: unzipDirectory,
+                                            includingPropertiesForKeys: [], options: [.skipsHiddenFiles]
+                                        )
+                                        let uniqueName = UUID().uuidString
+                                        let changedNames: [URL] = try fileURLs.map {
+                                            var newURL = $0
+                                            newURL.deleteLastPathComponent()
+                                            newURL.appendPathComponent(uniqueName)
+                                            newURL.appendPathExtension($0.pathExtension)
+                                            try FileManager.default.moveItem(at: $0, to: newURL)
+                                            return newURL
+                                        }
+                                        localURLResults.append(.success(changedNames))
                                     } catch {
                                         localURLResults.append(.failure(error))
                                     }
@@ -259,7 +280,7 @@ final class ReportService: ReportServicing {
 
                     reportSuccess(localURLs, lastProcessFileName: lastRemoteURL?.lastPathComponent)
                 }
-        }
+            }
 
         return progress
     }

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7JY-JN-dnV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7JY-JN-dnV">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,52 +36,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="W4f-17-c1o">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E0y-lK-mEg" customClass="IntrinsicTableView" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BasicCell" textLabel="wxY-b3-pMT" imageView="dvA-gm-jVl" rowHeight="57" style="IBUITableViewCellStyleDefault" id="wFa-eb-PvS">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="57"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wFa-eb-PvS" id="7uR-1D-EP3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="349" height="57"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Napište Anežce – podpoře eRoušky" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wxY-b3-pMT">
-                                                            <rect key="frame" x="54" y="0.0" width="287" height="57"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Chat" id="dvA-gm-jVl">
-                                                            <rect key="frame" x="15" y="16.333333333333332" width="24" height="24"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                </tableViewCellContentView>
-                                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <sections/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="7JY-JN-dnV" id="qW9-Pe-QLK"/>
-                                            <outlet property="delegate" destination="7JY-JN-dnV" id="afv-rQ-Zbk"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="lJW-ar-lRj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="W4f-17-c1o" firstAttribute="leading" secondItem="lJW-ar-lRj" secondAttribute="leading" id="LCF-ZU-5Tq"/>
                             <constraint firstItem="W4f-17-c1o" firstAttribute="top" secondItem="lJW-ar-lRj" secondAttribute="top" id="Nv3-n7-pjS"/>
                             <constraint firstItem="W4f-17-c1o" firstAttribute="trailing" secondItem="lJW-ar-lRj" secondAttribute="trailing" id="m4t-Ph-SRe"/>
                             <constraint firstItem="lJW-ar-lRj" firstAttribute="bottom" secondItem="W4f-17-c1o" secondAttribute="bottom" id="vHy-Cd-ctX"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="lJW-ar-lRj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Jak to funguje" id="XMX-lW-XTz">
                         <barButtonItem key="rightBarButtonItem" title="O aplikaci" id="jdD-iU-eUi">
@@ -112,9 +79,9 @@
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3eb-ph-g5q">
                                                 <rect key="frame" x="16" y="16" width="343" height="214"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <string key="text">Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT). Předchozí verzi aplikace eRouška vytvořil ým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.</string>
-                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -132,19 +99,29 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="j0W-dp-6ds"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="JxE-ML-aps"/>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verze: 2.1.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O30-yF-YoH">
+                                <rect key="frame" x="16" y="703.33333333333337" width="343" height="15.666666666666629"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="z07-dL-5nc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="p1S-K0-nhj" secondAttribute="trailing" id="0DW-sr-XGY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O30-yF-YoH" secondAttribute="trailing" id="8Fy-gr-NEN"/>
+                            <constraint firstItem="O30-yF-YoH" firstAttribute="leading" secondItem="YDT-xs-3tk" secondAttribute="leadingMargin" id="CGf-R3-QLl"/>
                             <constraint firstItem="p1S-K0-nhj" firstAttribute="leading" secondItem="YDT-xs-3tk" secondAttribute="leading" id="Gua-mm-9gX"/>
                             <constraint firstItem="p1S-K0-nhj" firstAttribute="top" secondItem="YDT-xs-3tk" secondAttribute="top" id="nEW-mb-AQs"/>
+                            <constraint firstItem="z07-dL-5nc" firstAttribute="bottom" secondItem="O30-yF-YoH" secondAttribute="bottom" constant="10" id="vGO-Ou-zH0"/>
                             <constraint firstItem="z07-dL-5nc" firstAttribute="bottom" secondItem="p1S-K0-nhj" secondAttribute="bottom" id="zdE-vU-mdo"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="z07-dL-5nc"/>
                     </view>
                     <navigationItem key="navigationItem" title="O aplikaci" largeTitleDisplayMode="always" id="nL1-dJ-Qvz"/>
                     <connections>
                         <outlet property="textView" destination="3eb-ph-g5q" id="kUf-y8-il0"/>
+                        <outlet property="versionLabel" destination="O30-yF-YoH" id="pr7-Px-dhH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCa-xT-FG0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -153,6 +130,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Chat" width="24" height="24"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

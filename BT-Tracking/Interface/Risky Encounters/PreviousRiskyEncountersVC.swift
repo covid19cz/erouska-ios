@@ -11,13 +11,13 @@ import RxSwift
 import RxRealm
 
 final class PreviousRiskyEncountersVC: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
     private let viewModel = PreviousRiskyEncountersVM()
     private lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .long
+        dateFormatter.dateStyle = .medium
         return dateFormatter
     }()
     private let disposeBag = DisposeBag()
@@ -27,8 +27,8 @@ final class PreviousRiskyEncountersVC: UIViewController {
 
         title = viewModel.title
 
-        viewModel.previousExposures.bind(to: tableView.rx.items) { [dateFormatter] tv, ip, element in
-            let cell = tv.dequeueReusableCell(withIdentifier: "PreviousRiskyEncountersCell")!
+        viewModel.previousExposures.bind(to: tableView.rx.items) { [dateFormatter] tv, _, element in
+            let cell = tv.dequeueReusableCell(withIdentifier: "PreviousRiskyEncountersCell") ?? UITableViewCell()
             cell.textLabel?.text = dateFormatter.string(from: element.date)
             cell.selectionStyle = .none
             return cell

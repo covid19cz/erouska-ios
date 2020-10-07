@@ -10,13 +10,13 @@ import Foundation
 import ExposureNotification
 import RxSwift
 
-protocol ExposureServicing: class {
+protocol ExposureServicing: AnyObject {
 
     var readyToUse: Completable { get }
 
     // Activation
     typealias Callback = (Error?) -> Void
-    
+
     var isActive: Bool { get }
     var isEnabled: Bool { get }
 
@@ -57,19 +57,19 @@ final class ExposureService: ExposureServicing {
     private var manager: ENManager
 
     var isActive: Bool {
-        return [ENStatus.active, .paused].contains(manager.exposureNotificationStatus)
+        [ENStatus.active, .paused].contains(manager.exposureNotificationStatus)
     }
 
     var isEnabled: Bool {
-        return manager.exposureNotificationEnabled
+        manager.exposureNotificationEnabled
     }
 
     var status: ENStatus {
-        return manager.exposureNotificationStatus
+        manager.exposureNotificationStatus
     }
 
     var authorizationStatus: ENAuthorizationStatus {
-        return ENManager.authorizationStatus
+        ENManager.authorizationStatus
     }
 
     init() {
@@ -141,7 +141,7 @@ final class ExposureService: ExposureServicing {
                 return
             }
             callback?(nil)
-         }
+        }
     }
 
     func getDiagnosisKeys(callback: @escaping KeysCallback) {
@@ -204,10 +204,13 @@ final class ExposureService: ExposureServicing {
 
                 let computedThreshold: Double = (Double(truncating: summary.attenuationDurations[0]) * configuration.factorLow +
                     Double(truncating: summary.attenuationDurations[1]) * configuration.factorHigh) / 60 // (minute)
-                log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) computed threshold: \(computedThreshold) (low:\(configuration.factorLow) high: \(configuration.factorHigh)) required \(configuration.triggerThreshold)")
+
+                let threshold = "computed threshold: \(computedThreshold)"
+                let factors = "(low:\(configuration.factorLow) high: \(configuration.factorHigh)) required \(configuration.triggerThreshold)"
+                log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) " + threshold + " " + factors)
 
                 if computedThreshold >= Double(configuration.triggerThreshold) {
-                    log("ExposureService Summary meets requiremnts")
+                    log("ExposureService Summary meets requirements")
 
                     guard summary.matchedKeyCount != 0 else {
                         finish()
@@ -215,7 +218,7 @@ final class ExposureService: ExposureServicing {
                     }
                     log("ExposureService getExposureInfo")
 
-                    self.manager.getExposureInfo(summary: summary, userExplanation: Localizable("exposure_detected_title")) { exposures, error in
+                    self.manager.getExposureInfo(summary: summary, userExplanation: L10n.exposureDetectedTitle) { exposures, error in
                         if let error = error {
                             finish(error: error)
                         } else if let exposures = exposures {
@@ -248,7 +251,7 @@ final class ExposureService: ExposureServicing {
     // MARK: - Bluetooth
 
     var isBluetoothOn: Bool {
-        return manager.exposureNotificationStatus != .bluetoothOff
+        manager.exposureNotificationStatus != .bluetoothOff
     }
 
 }

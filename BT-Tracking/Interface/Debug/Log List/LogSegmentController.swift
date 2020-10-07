@@ -23,7 +23,7 @@ final class LogSegmentController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.tabBarItem.image = UIImage(named: "MyData")
+        navigationController?.tabBarItem.image = Asset.myData.image
 
         navigationItem.largeTitleDisplayMode = .never
     }
@@ -50,7 +50,7 @@ final class LogSegmentController: UIViewController {
         }
     }
 
-    @IBAction func shareLogsAction(_ sender: Any) {
+    @IBAction private func shareLogsAction(_ sender: Any) {
         let shareController = UIActivityViewController(activityItems: [FileLogger.shared.fileURL], applicationActivities: nil)
         present(shareController, animated: true)
     }

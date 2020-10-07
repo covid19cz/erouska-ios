@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ExposureNotification
 import FirebaseAuth
 import RxSwift
 import RealmSwift
@@ -72,7 +73,7 @@ final class ActiveAppVC: UIViewController {
             self?.riskyEncountersAction()
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -124,11 +125,10 @@ final class ActiveAppVC: UIViewController {
     @IBAction private func shareAppAction() {
         guard let url = URL(string: RemoteValues.shareAppDynamicLink) else { return }
 
-        let message = String(format: Localizable(viewModel.shareAppMessage), url.absoluteString)
-        let shareContent: [Any] = [message]
+        let shareContent: [Any] = [L10n.shareAppMessage(url.absoluteString)]
         let activityViewController = UIActivityViewController(activityItems: shareContent, applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItems?.last ?? navigationItem.rightBarButtonItem
-        
+
         present(activityViewController, animated: true)
     }
 
@@ -154,28 +154,28 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: viewModel.menuRiskyEncounters, style: .default, handler: { [weak self] _ in
             self?.riskyEncountersAction()
         }))
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuSendReports), style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: L10n.dataListSendTitle, style: .default, handler: { [weak self] _ in
             self?.sendReportsAction()
         }))
         #if !PROD || DEBUG
         controller.addAction(UIAlertAction(title: "", style: .default, handler: nil))
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug), style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: L10n.debug, style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " novinky", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: L10n.debug + " novinky", style: .default, handler: { [weak self] _ in
             self?.debugShowNews()
         }))
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " aktivace", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: L10n.debug + " aktivace", style: .default, handler: { [weak self] _ in
             self?.debugCancelRegistrationAction()
         }))
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " rizikového setkání", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: L10n.debug + " rizikového setkání", style: .default, handler: { [weak self] _ in
             self?.debugInsertFakeExposure()
         }))
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuDebug) + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: L10n.debug + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
             self?.debugProcessReports()
         }))
         #endif
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.menuCancel), style: .cancel))
+        controller.addAction(UIAlertAction(title: L10n.close, style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
     }
@@ -192,22 +192,22 @@ final class ActiveAppVC: UIViewController {
     private func sendReportsAction() {
         if viewModel.state == .disabledExposures {
             showAlert(
-                title: Localizable(viewModel.errorSendDataTitle),
-                message: Localizable(viewModel.errorSendDataMessage),
-                okTitle: Localizable(viewModel.errorSendDataActionClose),
-                action: (Localizable(viewModel.errorSendDataActionTurnOn), { [weak self] in self?.openSettings() })
+                title: L10n.dataListSendErrorDisabledTitle,
+                message: L10n.dataListSendErrorDisabledMessage,
+                okTitle: L10n.close,
+                action: (L10n.turnOn, { [weak self] in self?.openSettings() })
             )
         } else {
-            performSegue(withIdentifier: "sendReport", sender: nil)
+            perform(segue: StoryboardSegue.Active.sendReport)
         }
     }
 
     private func riskyEncountersAction() {
-        performSegue(withIdentifier: "riskyEncounters", sender: nil)
+        perform(segue: StoryboardSegue.Active.riskyEncounters)
     }
 
     // MARK: -
-    
+
     @objc private func applicationDidBecomeActive() {
         updateViewModel()
     }
@@ -231,17 +231,29 @@ private extension ActiveAppVC {
                         case .notAuthorized, .notEnabled:
                             break
                         case .unsupported:
-                            break // it shouldn't be possible
+                            self.viewModel.exposureService.deactivate { [weak self] _ in
+                                self?.viewModel.exposureService.activate { [weak self] error in
+                                    guard let error = error else { return }
+                                    switch error {
+                                    case .activationError(let code):
+                                        self?.showExposureUnknownError(error, code: code, activation: true)
+                                    default:
+                                        self?.showExposureUnknownError(error, activation: true)
+                                    }
+                                }
+                            }
                         case .restricted:
                             self.showAlert(
-                                title: self.viewModel.errorActivationRestiredTitle,
-                                message: self.viewModel.errorActivationRestiredBody,
-                                okTitle: self.viewModel.errorActivationSettingsTitle,
+                                title: L10n.exposureActivationRestrictedTitle,
+                                message: L10n.exposureActivationRestrictedBody,
+                                okTitle: L10n.exposureActivationRestrictedSettingsAction,
                                 okHandler: { [weak self] in self?.openSettings() },
-                                action: (title: self.viewModel.errorActivationCancelTitle, handler: nil)
+                                action: (title: L10n.exposureActivationRestrictedCancelAction, handler: nil)
                             )
+                        case .insufficientStorage, .insufficientMemory:
+                            self.showExposureStorageError()
                         default:
-                            self.showExposureUnknownError(error, activation: true)
+                            self.showExposureUnknownError(error, code: code, activation: true)
                         }
                     default:
                         self.showExposureUnknownError(error, activation: true)
@@ -262,65 +274,74 @@ private extension ActiveAppVC {
     }
 
     func updateInterface() {
-        navigationItem.localizedTitle(viewModel.title)
-        navigationItem.backBarButtonItem?.localizedTitle(viewModel.back)
-        navigationItem.rightBarButtonItems?.last?.localizedTitle(viewModel.shareApp)
+        title = L10n.appName
+        navigationItem.backBarButtonItem?.title = L10n.back
+        navigationItem.rightBarButtonItems?.last?.title = L10n.shareApp
 
-        navigationController?.tabBarItem.localizedTitle(viewModel.tabTitle)
+        navigationController?.tabBarItem.title = L10n.appName
         navigationController?.tabBarItem.image = viewModel.state.tabBarIcon.0
         navigationController?.tabBarItem.selectedImage = viewModel.state.tabBarIcon.1
 
         imageView.image = viewModel.state.image
-        headlineLabel.localizedText(viewModel.state.headline)
+        headlineLabel.text = viewModel.state.headline
         headlineLabel.textColor = viewModel.state.color
-        titleLabel.localizedText(viewModel.state.title ?? "")
-        textLabel.localizedText(viewModel.state.text)
+        titleLabel.text = viewModel.state.title
+        textLabel.text = viewModel.state.text
 
         if viewModel.state == .enabled, let update = AppSettings.lastProcessedDate {
-            lastUpdateLabel.text = String(format: Localizable(viewModel.lastUpdateText), viewModel.dateFormatter.string(from: update))
+            lastUpdateLabel.text = L10n.activeDataUpdate(viewModel.dateFormatter.string(from: update))
             lastUpdateLabel.isHidden = false
         } else {
             lastUpdateLabel.isHidden = true
         }
 
-        actionButton.localizedTitle(viewModel.state.actionTitle)
+        actionButton.setTitle(viewModel.state.actionTitle)
         actionButton.style = viewModel.state == .enabled ? .clear : .filled
 
         exposureTitleLabel.text = viewModel.exposureTitle
-        exposureCloseButton.localizedTitle(viewModel.exposureBannerClose)
-        exposureMoreInfoButton.localizedTitle(viewModel.exposureMoreInfo)
+        exposureCloseButton.setTitle(L10n.close)
+        exposureMoreInfoButton.setTitle(L10n.activeExposureMoreInfo)
     }
 
     func checkBackgroundModeIfNeeded() {
         guard !AppSettings.backgroundModeAlertShown, UIApplication.shared.backgroundRefreshStatus == .denied else { return }
         AppSettings.backgroundModeAlertShown = true
         let controller = UIAlertController(
-            title: Localizable(viewModel.backgroundModeTitle),
-            message: Localizable(viewModel.backgroundModeMessage),
+            title: L10n.activeBackgroundModeTitle,
+            message: L10n.activeBackgroundModeMessage,
             preferredStyle: .alert
         )
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.backgroundModeAction), style: .default, handler: { [weak self] _ in
+        controller.addAction(UIAlertAction(title: L10n.activeBackgroundModeSettings, style: .default, handler: { [weak self] _ in
             self?.openSettings()
         }))
-        controller.addAction(UIAlertAction(title: Localizable(viewModel.backgroundModeCancel), style: .default))
+        controller.addAction(UIAlertAction(title: L10n.activeBackgroundModeCancel, style: .default))
         controller.preferredAction = controller.actions.first
         present(controller, animated: true)
     }
 
-    func showExposureUnknownError(_ error: Error, activation: Bool) {
-        #if DEBUG
-        show(error: error)
-        #else
+    func showExposureStorageError() {
+        showAlert(
+            title: L10n.exposureActivationStorageTitle,
+            message: L10n.exposureActivationStorageBody
+        )
+    }
+
+    func showExposureUnknownError(_ error: Error, code: ENError.Code = .unknown, activation: Bool) {
         if activation {
-            showAlert(title: viewModel.errorActivationUnknownTitle, message: viewModel.errorActivationUnknownBody)
+            showAlert(
+                title: L10n.exposureActivationUnknownTitle,
+                message: L10n.exposureActivationUnknownBody("\(code.rawValue)")
+            )
         } else {
-            showAlert(title: viewModel.errorDeactivationUnknownTitle, message: viewModel.errorDeactivationUnknownBody)
+            showAlert(
+                title: L10n.exposureDeactivationUnknownTitle,
+                message: L10n.exposureDeactivationUnknownBody("\(code.rawValue)")
+            )
         }
-        #endif
     }
 
     // MARK: - Open external
-    
+
     func openSettings() {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
         UIApplication.shared.open(settingsUrl)
@@ -342,8 +363,7 @@ private extension ActiveAppVC {
 
     #if !PROD || DEBUG
     func debugAction() {
-        let storyboard = UIStoryboard(name: "Debug", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "TabBar")
+        let controller = StoryboardScene.Debug.tabBar.instantiate()
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
@@ -371,9 +391,9 @@ private extension ActiveAppVC {
                             return
                         }
 
-                        let realm = try! Realm()
-                        try! realm.write() {
-                            exposures.forEach { realm.add(ExposureRealm($0)) }
+                        let realm = try? Realm()
+                        try? realm?.write {
+                            exposures.forEach { realm?.add(ExposureRealm($0)) }
                         }
 
                         var result = ""
@@ -385,8 +405,8 @@ private extension ActiveAppVC {
                                 + "signal attenuations: \(signals.joined(separator: ", "))\n"
                         }
 
-                        if result == "" {
-                            result = "None";
+                        if result.isEmpty {
+                            result = "None"
                         }
 
                         log("EXP: \(exposures)")
@@ -413,12 +433,20 @@ private extension ActiveAppVC {
 
     func debugInsertFakeExposure() {
         let exposures = [
-            Exposure(id: UUID(), date: Date(), duration: 213, totalRiskScore: 2, transmissionRiskLevel: 4, attenuationValue: 4, attenuationDurations: [21, 1, 4, 5])
+            Exposure(
+                id: UUID(),
+                date: Date(),
+                duration: 213,
+                totalRiskScore: 2,
+                transmissionRiskLevel: 4,
+                attenuationValue: 4,
+                attenuationDurations: [21, 1, 4, 5]
+            )
         ]
 
-        let realm = try! Realm()
-        try! realm.write() {
-            exposures.forEach { realm.add(ExposureRealm($0)) }
+        let realm = try? Realm()
+        try? realm?.write {
+            exposures.forEach { realm?.add(ExposureRealm($0)) }
         }
 
         let data = ["idToken": KeychainService.token]
@@ -427,7 +455,7 @@ private extension ActiveAppVC {
 
     func debugShowNews() {
         AppSettings.v2_0NewsLaunched = true
-        guard let controller = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+        let controller = StoryboardScene.News.initialScene.instantiate()
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }

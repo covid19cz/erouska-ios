@@ -31,21 +31,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Globals
 
     static var shared: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
+        // swiftlint:disable:next force_cast
+        UIApplication.shared.delegate as! AppDelegate
     }
 
-    static var dependency = AppDependency()
+    static let dependency = AppDependency()
 
     var openResultsCallback: (() -> Void)?
-    
+
     // MARK: - UIApplicationDelegate
 
-    var window: UIWindow? = nil
+    var window: UIWindow?
 
     func updateInterface() {
         setupInterface()
     }
-
+    // swiftlint:disable:next discouraged_optional_collection
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         log("\n\n\n-START--------------------------------\n")
 
@@ -56,21 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-    
+
     func applicationDidBecomeActive(_ application: UIApplication) {
         log("\n\n\n-FOREGROUND---------------------------\n")
 
         inBackgroundStage = false
 
-        fetchRemoteValues(background: false)
-            .subscribe(onSuccess: { [weak self] _ in
-                self?.checkFetchedMinSupportedVersion()
-            })
-            .disposed(by: bag)
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-
+        updateRemoteValues()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -83,16 +76,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("\n\n\n-END----------------------------------\n")
     }
 
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         if Auth.auth().canHandle(url) {
             return true
         } else {
             return false
         }
-    }
-
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        return true
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -104,32 +93,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Self.dependency.deviceToken = deviceToken
 
         // update token on server
-        guard let token = KeychainService.token else { return } // TODO: Should be eHRID?
+        guard let token = KeychainService.token else { return }
         let data: [String: Any] = [
             "idToken": token,
             "pushRegistrationToken": deviceToken.hexEncodedString()
         ]
 
-        Self.dependency.functions.httpsCallable("changePushToken").call(data) { result, error in
+        Self.dependency.functions.httpsCallable("changePushToken").call(data) { _, error in
             if let error = error {
                 log("AppDelegate: Failed to change push token \(error.localizedDescription)")
             }
         }
     }
 
-    func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         completionHandler(.noData)
+    }
+
+    // MARK: - Others
+
+    @objc private func didChangeLocale() {
+        updateRemoteValues()
     }
 
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound])
     }
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         switch response.actionIdentifier {
         case UserNotificationAction.openExposureDetectionResults.rawValue,
              UserNotificationAction.openTestResults.rawValue:
@@ -154,39 +152,40 @@ private extension AppDelegate {
 
         FirebaseApp.configure()
         setupDefaultValues()
-        _ = fetchRemoteValues(background: false)
+        updateRemoteValues()
 
         let configuration = Realm.Configuration(
             schemaVersion: 4,
-            migrationBlock: { migration, oldSchemaVersion in
+            migrationBlock: { _, _ in
 
             }
         )
 
         Realm.Configuration.defaultConfiguration = configuration
+
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocale), name: NSLocale.currentLocaleDidChangeNotification, object: nil)
     }
 
     func checkFetchedMinSupportedVersion() {
         guard !presentingAnyForceUpdateScreen else { return }
 
-        var viewControllerIdentifier: String?
+        var viewController: UIViewController
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
-            viewControllerIdentifier = "UnsupportedDeviceVC"
-        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(Self.dependency.configuration.minSupportedVersion) {
-            viewControllerIdentifier = "ForceOSUpdateVC"
+            viewController = StoryboardScene.ForceUpdate.unsupportedDeviceVC.instantiate()
+        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(RemoteValues.serverConfiguration.minSupportedVersion) {
+            viewController = StoryboardScene.ForceUpdate.forceOSUpdateVC.instantiate()
         } else if RemoteValues.minSupportedVersion > App.appVersion {
-            viewControllerIdentifier = "ForceUpdateVC"
+            viewController = StoryboardScene.ForceUpdate.forceUpdateVC.instantiate()
+        } else {
+            return
         }
-
-        guard let identifier = viewControllerIdentifier else { return }
 
         Self.dependency.exposureService.deactivate(callback: nil)
 
-        let viewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: identifier)
         viewController.modalPresentationStyle = .fullScreen
         window?.rootViewController?.present(viewController, animated: true)
     }
-    
+
     func setupInterface() {
         let window = UIWindow()
         window.backgroundColor = .black
@@ -197,19 +196,19 @@ private extension AppDelegate {
         var shouldPresentNews = false
 
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
-            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "UnsupportedDeviceVC")
+            rootViewController = StoryboardScene.ForceUpdate.unsupportedDeviceVC.instantiate()
             presentingAnyForceUpdateScreen = true
-        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(Self.dependency.configuration.minSupportedVersion) {
-            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceOSUpdateVC")
+        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(RemoteValues.serverConfiguration.minSupportedVersion) {
+            rootViewController = StoryboardScene.ForceUpdate.forceOSUpdateVC.instantiate()
             presentingAnyForceUpdateScreen = true
         } else if RemoteValues.minSupportedVersion > App.appVersion {
-            rootViewController = UIStoryboard(name: "ForceUpdate", bundle: nil).instantiateViewController(withIdentifier: "ForceUpdateVC")
+            rootViewController = StoryboardScene.ForceUpdate.forceUpdateVC.instantiate()
             presentingAnyForceUpdateScreen = true
         } else if AppSettings.activated, Auth.auth().currentUser != nil {
-            rootViewController = UIStoryboard(name: "Active", bundle: nil).instantiateInitialViewController()
+            rootViewController = StoryboardScene.Active.initialScene.instantiate()
 
             // refresh token
-            Auth.auth().currentUser?.getIDToken(completion: { token, error in
+            Auth.auth().currentUser?.getIDToken(completion: { token, _ in
                 if let token = token {
                     KeychainService.token = token
                 }
@@ -218,10 +217,10 @@ private extension AppDelegate {
             // User with phone number is old user
             if Auth.auth().currentUser?.phoneNumber != nil {
                 try? Auth.auth().signOut()
-                rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "OnboardingActivatedUser")
+                rootViewController = StoryboardScene.Onboarding.onboardingActivatedUser.instantiate()
                 shouldPresentNews = true
             } else {
-                rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
+                rootViewController = StoryboardScene.Onboarding.initialScene.instantiate()
             }
         }
 
@@ -229,7 +228,7 @@ private extension AppDelegate {
 
         if shouldPresentNews, !AppSettings.v2_0NewsLaunched {
             AppSettings.v2_0NewsLaunched = true
-            guard let controller = UIStoryboard(name: "News", bundle: nil).instantiateInitialViewController() else { return }
+            let controller = StoryboardScene.News.initialScene.instantiate()
             controller.modalPresentationStyle = .fullScreen
             rootViewController?.present(controller, animated: true)
         }
@@ -241,7 +240,7 @@ private extension AppDelegate {
 
     func clearKeychainIfNeeded() {
         KeychainService.BUID = nil
-        KeychainService.TUIDs = nil
+        KeychainService.TUIDs = []
     }
 
     func isDeviceSupported() -> Bool {
@@ -256,5 +255,17 @@ private extension AppDelegate {
         }
         return false
         #endif
+    }
+
+    func updateRemoteValues() {
+        fetchRemoteValues(background: false)
+            .subscribe(onSuccess: { [weak self] _ in
+                self?.checkFetchedMinSupportedVersion()
+
+                let configuration = RemoteValues.serverConfiguration
+                Self.dependency.reporter.updateConfiguration(configuration)
+                Self.dependency.verification.updateConfiguration(configuration)
+            })
+            .disposed(by: bag)
     }
 }
