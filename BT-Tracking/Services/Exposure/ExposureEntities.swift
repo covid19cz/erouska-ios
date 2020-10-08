@@ -39,7 +39,13 @@ enum ExposureError: Error {
     }
 }
 
-struct ExposureConfiguration: Decodable {
+protocol ExposureConfiguration: Decodable {
+
+    var configuration: ENExposureConfiguration { get }
+
+}
+
+struct ExposureConfigurationV1: ExposureConfiguration, Decodable {
 
     let factorHigh: Double
     let factorStandard: Double
@@ -65,6 +71,75 @@ struct ExposureConfiguration: Decodable {
         configuration.durationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
         configuration.transmissionRiskLevelValues = [1, 2, 3, 4, 5, 6, 7, 8] as [NSNumber]
         configuration.metadata = ["attenuationDurationThresholds": [lowerThreshold, higherThreshold]]
+        return configuration
+    }
+
+}
+
+struct ExposureConfigurationV2: ExposureConfiguration, Decodable {
+
+    let infectiousnessForDaysSinceOnsetOfSymptoms: [Int: UInt32]
+    let immediateDurationWeight: Double
+    let nearDurationWeight: Double
+    let mediumDurationWeight: Double
+    let otherDurationWeight: Double
+    let attenuationDurationThresholds: [Int]
+
+    let reportTypeConfirmedClinicalDiagnosisWeight: Double
+    let reportTypeConfirmedTestWeight: Double
+    let reportTypeRecursiveWeight: Double
+    let reportTypeSelfReportedWeight: Double
+    let reportTypeNoneMap: UInt32
+
+    init() {
+        if #available(iOS 13.7, *) {
+            var infectiousness: [Int: UInt32] = [:]
+            for i in -14...(-3) {
+                infectiousness[i] = ENInfectiousness.none.rawValue
+            }
+            for i in -2...14 {
+                infectiousness[i] = ENInfectiousness.standard.rawValue
+            }
+            infectiousnessForDaysSinceOnsetOfSymptoms = infectiousness
+        } else {
+            infectiousnessForDaysSinceOnsetOfSymptoms = [:]
+        }
+
+        immediateDurationWeight = 1.5
+        nearDurationWeight = 1
+        mediumDurationWeight = 0.17
+        otherDurationWeight = 0
+        attenuationDurationThresholds = [55, 63, 75]
+
+        reportTypeConfirmedClinicalDiagnosisWeight = 1
+        reportTypeConfirmedTestWeight = 1
+        reportTypeRecursiveWeight = 1
+        reportTypeSelfReportedWeight = 1
+        if #available(iOS 13.7, *) {
+            reportTypeNoneMap = ENDiagnosisReportType.confirmedTest.rawValue
+        } else {
+            reportTypeNoneMap = 0
+        }
+    }
+
+    var configuration: ENExposureConfiguration {
+        let configuration = ENExposureConfiguration()
+        if #available(iOS 13.7, *) {
+            configuration.infectiousnessForDaysSinceOnsetOfSymptoms = infectiousnessForDaysSinceOnsetOfSymptoms as [NSNumber: NSNumber]
+
+            configuration.immediateDurationWeight = immediateDurationWeight
+            configuration.nearDurationWeight = nearDurationWeight
+            configuration.mediumDurationWeight = mediumDurationWeight
+            configuration.otherDurationWeight = otherDurationWeight
+            configuration.attenuationDurationThresholds = attenuationDurationThresholds as [NSNumber]
+
+            configuration.reportTypeConfirmedClinicalDiagnosisWeight = reportTypeConfirmedClinicalDiagnosisWeight
+            configuration.reportTypeConfirmedTestWeight = reportTypeConfirmedTestWeight
+            configuration.reportTypeRecursiveWeight = reportTypeRecursiveWeight
+            configuration.reportTypeSelfReportedWeight = reportTypeSelfReportedWeight
+            configuration.reportTypeNoneMap = ENDiagnosisReportType(rawValue: reportTypeNoneMap) ?? .confirmedTest
+            return configuration
+        }
         return configuration
     }
 

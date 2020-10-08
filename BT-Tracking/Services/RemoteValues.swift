@@ -312,13 +312,25 @@ struct RemoteValues {
     }
 
     static var exposureConfiguration: ExposureConfiguration {
+        func defaults() -> ExposureConfiguration {
+            if #available(iOS 13.7, *) {
+                return ExposureConfigurationV2()
+            } else {
+                return ExposureConfigurationV1()
+            }
+        }
+
         guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfiguration).data(using: .utf8) else {
-            return ExposureConfiguration()
+            return defaults()
         }
         do {
-            return try JSONDecoder().decode(ExposureConfiguration.self, from: json)
+            if #available(iOS 13.7, *) {
+                return try JSONDecoder().decode(ExposureConfigurationV2.self, from: json)
+            } else {
+                return try JSONDecoder().decode(ExposureConfigurationV1.self, from: json)
+            }
         } catch {
-            return ExposureConfiguration()
+            return defaults()
         }
     }
 

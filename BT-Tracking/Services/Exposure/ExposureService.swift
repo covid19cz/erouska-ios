@@ -185,14 +185,7 @@ final class ExposureService: ExposureServicing {
         detectingExposures = true
 
         func finish(error: Error? = nil, exposures: [Exposure] = []) {
-            if let error = error {
-                callback(.failure(error))
-            } else {
-                callback(.success(exposures))
-            }
-
-            URLs.forEach { try? FileManager.default.removeItem(at: $0) }
-            detectingExposures = false
+            finishDetectingExposures(URLs: URLs, error: error, exposures: exposures, callback: callback)
         }
 
         log("ExposureService detectExposures")
@@ -202,50 +195,114 @@ final class ExposureService: ExposureServicing {
             } else if let summary = summary {
                 log("ExposureService summary \(summary)")
 
-                let computedThreshold: Double = (Double(truncating: summary.attenuationDurations[0]) * configuration.factorLow +
-                    Double(truncating: summary.attenuationDurations[1]) * configuration.factorHigh) / 60 // (minute)
-
-                let threshold = "computed threshold: \(computedThreshold)"
-                let factors = "(low:\(configuration.factorLow) high: \(configuration.factorHigh)) required \(configuration.triggerThreshold)"
-                log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) " + threshold + " " + factors)
-
-                if computedThreshold >= Double(configuration.triggerThreshold) {
-                    log("ExposureService Summary meets requirements")
-
-                    guard summary.matchedKeyCount != 0 else {
-                        finish()
-                        return
-                    }
-                    log("ExposureService getExposureInfo")
-
-                    self.manager.getExposureInfo(summary: summary, userExplanation: L10n.exposureDetectedTitle) { exposures, error in
-                        if let error = error {
-                            finish(error: error)
-                        } else if let exposures = exposures {
-                            finish(exposures: exposures.map {
-                                Exposure(
-                                    id: UUID(),
-                                    date: $0.date,
-                                    duration: $0.duration,
-                                    totalRiskScore: $0.totalRiskScore,
-                                    transmissionRiskLevel: $0.transmissionRiskLevel,
-                                    attenuationValue: $0.attenuationValue,
-                                    attenuationDurations: $0.attenuationDurations.map { $0.intValue }
-                                )
-                            })
-                            log("ExposureService Exposures \(exposures)")
-                        } else {
-                            finish(error: ExposureError.noData)
-                        }
-                    }
-                } else {
-                    log("ExposureService Summary does not meet requirements")
+                switch configuration {
+                case let configuration as ExposureConfigurationV1:
+                    self.processDetectedExposuresV1(configuration: configuration, summary: summary, URLs: URLs, callback: callback)
+                case let configuration as ExposureConfigurationV2:
+                    self.processDetectedExposuresV2(configuration: configuration, summary: summary, URLs: URLs, callback: callback)
+                default:
+                    log("ExposureService Unknown exposure configuration version")
                     finish()
                 }
             } else {
                 finish(error: ExposureError.noData)
             }
         }
+    }
+
+    private func processDetectedExposuresV1(configuration: ExposureConfigurationV1, summary: ENExposureDetectionSummary, URLs: [URL], callback: @escaping DetectCallback) {
+        func finish(error: Error? = nil, exposures: [Exposure] = []) {
+            finishDetectingExposures(URLs: URLs, error: error, exposures: exposures, callback: callback)
+        }
+
+        let computedThreshold: Double = (Double(truncating: summary.attenuationDurations[0]) * configuration.factorLow +
+                                            Double(truncating: summary.attenuationDurations[1]) * configuration.factorHigh) / 60 // (minute)
+
+        let threshold = "computed threshold: \(computedThreshold)"
+        let factors = "(low:\(configuration.factorLow) high: \(configuration.factorHigh)) required \(configuration.triggerThreshold)"
+        log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) " + threshold + " " + factors)
+
+        if computedThreshold >= Double(configuration.triggerThreshold) {
+            log("ExposureService Summary meets requirements")
+
+            guard summary.matchedKeyCount != 0 else {
+                finish()
+                return
+            }
+            log("ExposureService getExposureInfo")
+
+            self.manager.getExposureInfo(summary: summary, userExplanation: L10n.exposureDetectedTitle) { exposures, error in
+                if let error = error {
+                    finish(error: error)
+                } else if let exposures = exposures {
+                    finish(exposures: exposures.map {
+                        Exposure(
+                            id: UUID(),
+                            date: $0.date,
+                            duration: $0.duration,
+                            totalRiskScore: $0.totalRiskScore,
+                            transmissionRiskLevel: $0.transmissionRiskLevel,
+                            attenuationValue: $0.attenuationValue,
+                            attenuationDurations: $0.attenuationDurations.map { $0.intValue }
+                        )
+                    })
+                    log("ExposureService Exposures \(exposures)")
+                } else {
+                    finish(error: ExposureError.noData)
+                }
+            }
+        } else {
+            log("ExposureService Summary does not meet requirements")
+            finish()
+        }
+    }
+
+    private func processDetectedExposuresV2(configuration: ExposureConfigurationV2, summary: ENExposureDetectionSummary, URLs: [URL], callback: @escaping DetectCallback) {
+        func finish(error: Error? = nil, exposures: [Exposure] = []) {
+            finishDetectingExposures(URLs: URLs, error: error, exposures: exposures, callback: callback)
+        }
+
+        let threshold = "computed threshold: \(summary.maximumRiskScore)"
+        let factors = "(low:\(configuration.attenuationDurationThresholds.first ?? 0) high: \(configuration.attenuationDurationThresholds.last ?? 0))"
+        log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) " + threshold + " " + factors)
+
+        guard summary.matchedKeyCount != 0 else {
+            finish()
+            return
+        }
+        log("ExposureService getExposureInfo")
+
+        self.manager.getExposureInfo(summary: summary, userExplanation: L10n.exposureDetectedTitle) { exposures, error in
+            if let error = error {
+                finish(error: error)
+            } else if let exposures = exposures {
+                finish(exposures: exposures.map {
+                    Exposure(
+                        id: UUID(),
+                        date: $0.date,
+                        duration: $0.duration,
+                        totalRiskScore: $0.totalRiskScore,
+                        transmissionRiskLevel: $0.transmissionRiskLevel,
+                        attenuationValue: $0.attenuationValue,
+                        attenuationDurations: $0.attenuationDurations.map { $0.intValue }
+                    )
+                })
+                log("ExposureService Exposures \(exposures)")
+            } else {
+                finish(error: ExposureError.noData)
+            }
+        }
+    }
+
+    func finishDetectingExposures(URLs: [URL], error: Error? = nil, exposures: [Exposure] = [], callback: @escaping DetectCallback) {
+        if let error = error {
+            callback(.failure(error))
+        } else {
+            callback(.success(exposures))
+        }
+
+        URLs.forEach { try? FileManager.default.removeItem(at: $0) }
+        detectingExposures = false
     }
 
     // MARK: - Bluetooth
