@@ -105,16 +105,16 @@ struct ExposureConfigurationV2: ExposureConfiguration, Decodable {
             infectiousnessForDaysSinceOnsetOfSymptoms = [:]
         }
 
-        immediateDurationWeight = 1.5
-        nearDurationWeight = 1
-        mediumDurationWeight = 0.17
+        immediateDurationWeight = 150
+        nearDurationWeight = 100
+        mediumDurationWeight = 17
         otherDurationWeight = 0
         attenuationDurationThresholds = [55, 63, 75]
 
-        reportTypeConfirmedClinicalDiagnosisWeight = 1
-        reportTypeConfirmedTestWeight = 1
-        reportTypeRecursiveWeight = 1
-        reportTypeSelfReportedWeight = 1
+        reportTypeConfirmedClinicalDiagnosisWeight = 100
+        reportTypeConfirmedTestWeight = 100
+        reportTypeRecursiveWeight = 100
+        reportTypeSelfReportedWeight = 100
         if #available(iOS 13.7, *) {
             reportTypeNoneMap = ENDiagnosisReportType.confirmedTest.rawValue
         } else {

@@ -283,7 +283,7 @@
 		807053572427C5AA00DC1034 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		8075EDBF242A613F001D9DCD /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		8075EDC2242A6E93001D9DCD /* ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
-		8078977B25247C550079BEA1 /* BT-Tracking-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking-Debug.entitlements"; sourceTree = "<group>"; };
+		8078977B25247C550079BEA1 /* eRouska-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "eRouska-Debug.entitlements"; sourceTree = "<group>"; };
 		807897822524804B0079BEA1 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		80799BEA2423B89A002B04C5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		8083D8F4244640A0007FA4E9 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,7 +318,7 @@
 		80D2345224E31DFF00F684AA /* SendReportsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportsVC.swift; sourceTree = "<group>"; };
 		80D2345824E320D700F684AA /* SendReportsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportsVM.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
+		80D51CC62420FBFD00834D03 /* eRouska.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = eRouska.entitlements; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
 		80ECB96524290DA900E57601 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -458,7 +458,7 @@
 		8054C0A4241D492F008907B8 = {
 			isa = PBXGroup;
 			children = (
-				8054C0AF241D492F008907B8 /* BT-Tracking */,
+				8054C0AF241D492F008907B8 /* eRouska */,
 				8054C0AE241D492F008907B8 /* Products */,
 				5357F8D365121189A6E32250 /* Frameworks */,
 				B5AD7A05802E57D3E07348EF /* Pods */,
@@ -474,7 +474,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8054C0AF241D492F008907B8 /* BT-Tracking */ = {
+		8054C0AF241D492F008907B8 /* eRouska */ = {
 			isa = PBXGroup;
 			children = (
 				8054C0C9241FE66A008907B8 /* Interface */,
@@ -486,7 +486,7 @@
 				8054C0B0241D492F008907B8 /* AppDelegate.swift */,
 				8084DEEF24AF8425001FBB16 /* AppDependency.swift */,
 			);
-			path = "BT-Tracking";
+			path = eRouska;
 			sourceTree = "<group>";
 		};
 		8054C0C9241FE66A008907B8 /* Interface */ = {
@@ -513,8 +513,8 @@
 				8064DF6A244EF3B7005E8AA3 /* Firebase Dev */,
 				8064DF6C244EF3B7005E8AA3 /* Firebase Prod */,
 				80D5F7E62424B1540010EF51 /* README.md */,
-				80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */,
-				8078977B25247C550079BEA1 /* BT-Tracking-Debug.entitlements */,
+				80D51CC62420FBFD00834D03 /* eRouska.entitlements */,
+				8078977B25247C550079BEA1 /* eRouska-Debug.entitlements */,
 				8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */,
 				8054C0BE241D4932008907B8 /* Info.plist */,
 				8083D8F6244640CD007FA4E9 /* Info-Prod.plist */,
@@ -929,7 +929,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8054C0A8241D492F008907B8 /* Build configuration list for PBXProject "BT-Tracking" */;
+			buildConfigurationList = 8054C0A8241D492F008907B8 /* Build configuration list for PBXProject "eRouska" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1486,12 +1486,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "eRouska/Supporting Files/eRouska-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
-				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "eRouska/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1513,12 +1513,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "eRouska/Supporting Files/eRouska.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
-				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "eRouska/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1539,12 +1539,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "eRouska/Supporting Files/eRouska-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
-				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
+				INFOPLIST_FILE = "eRouska/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1567,12 +1567,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "eRouska/Supporting Files/eRouska.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
-				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
+				INFOPLIST_FILE = "eRouska/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1591,7 +1591,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8054C0A8241D492F008907B8 /* Build configuration list for PBXProject "BT-Tracking" */ = {
+		8054C0A8241D492F008907B8 /* Build configuration list for PBXProject "eRouska" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8054C0BF241D4932008907B8 /* Debug */,
