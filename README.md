@@ -30,11 +30,6 @@ You can build using your own account when you delete `com.apple.developer.exposu
 
 Most dependencies are installed using Swift package manager and will download using Xcode. Only Firebase dependencies do not yet support SPM and must be installed using CocoaPods (`pod install`).
 
-### Test account
-
-- Phone: +420 604 123 456
-- Code: 123456
-
 ## Contributing
 We are happy to accept pull requests! See [Git Workflow](#user-content-git-workflow).
 
