@@ -24,7 +24,7 @@ We are open-source from day one and we will be happy to work with people in othe
 
 Exposure notifications work only with approved Ministry account.
 
-You can build using your own account when you delete `com.apple.developer.exposure-notification` entitlement from `BT-Tracking.entitlements` file and change code signing to your account.
+You can build using your own account when you delete `com.apple.developer.exposure-notification` entitlement from `BT-Tracking-Debug.entitlements` file and change code signing to your account.
 
 ### Dependencies
 
