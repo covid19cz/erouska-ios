@@ -278,19 +278,26 @@ final class ExposureService: ExposureServicing {
         }
         log("ExposureService getExposureInfo")
 
+        let daySummary = summary.daySummaries.filter { $0.daySummary.maximumScore > 900 }
+        guard !daySummary.isEmpty else {
+            log("ExposureService no day with score at least 900")
+            finish()
+            return
+        }
+
         self.manager.getExposureWindows(summary: summary) { windows, error in
             if let error = error {
                 finish(error: error)
             } else if let windows = windows {
-                finish(exposures: windows.map {
+                finish(exposures: windows.map { window in
                     Exposure(
                         id: UUID(),
-                        date: $0.date,
-                        duration: $0.duration,
-                        totalRiskScore: $0.totalRiskScore,
-                        transmissionRiskLevel: $0.transmissionRiskLevel,
-                        attenuationValue: $0.attenuationValue,
-                        attenuationDurations: $0.attenuationDurations.map { $0.intValue }
+                        date: window.date,
+                        duration: 0,
+                        totalRiskScore: 0,
+                        transmissionRiskLevel: 0,
+                        attenuationValue: 0,
+                        attenuationDurations: [0]
                     )
                 })
                 log("ExposureService Exposures windows \(windows)")
