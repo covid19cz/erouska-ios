@@ -199,7 +199,12 @@ final class ExposureService: ExposureServicing {
                 case let configuration as ExposureConfigurationV1:
                     self.processDetectedExposuresV1(configuration: configuration, summary: summary, URLs: URLs, callback: callback)
                 case let configuration as ExposureConfigurationV2:
-                    self.processDetectedExposuresV2(configuration: configuration, summary: summary, URLs: URLs, callback: callback)
+                    if #available(iOS 13.7, *) {
+                        self.processDetectedExposuresV2(configuration: configuration, summary: summary, URLs: URLs, callback: callback)
+                    } else {
+                        log("ExposureService Lower iOS version for V2 than is required!")
+                        finish()
+                    }
                 default:
                     log("ExposureService Unknown exposure configuration version")
                     finish()
@@ -219,7 +224,7 @@ final class ExposureService: ExposureServicing {
                                             Double(truncating: summary.attenuationDurations[1]) * configuration.factorHigh) / 60 // (minute)
 
         let threshold = "computed threshold: \(computedThreshold)"
-        let factors = "(low:\(configuration.factorLow) high: \(configuration.factorHigh)) required \(configuration.triggerThreshold)"
+        let factors = "(low: \(configuration.factorLow) high: \(configuration.factorHigh)) required \(configuration.triggerThreshold)"
         log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) " + threshold + " " + factors)
 
         if computedThreshold >= Double(configuration.triggerThreshold) {
@@ -257,6 +262,7 @@ final class ExposureService: ExposureServicing {
         }
     }
 
+    @available(iOS 13.7, *)
     private func processDetectedExposuresV2(configuration: ExposureConfigurationV2, summary: ENExposureDetectionSummary, URLs: [URL], callback: @escaping DetectCallback) {
         func finish(error: Error? = nil, exposures: [Exposure] = []) {
             finishDetectingExposures(URLs: URLs, error: error, exposures: exposures, callback: callback)
@@ -266,17 +272,17 @@ final class ExposureService: ExposureServicing {
         let factors = "(low:\(configuration.attenuationDurationThresholds.first ?? 0) high: \(configuration.attenuationDurationThresholds.last ?? 0))"
         log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) " + threshold + " " + factors)
 
-        guard summary.matchedKeyCount != 0 else {
+        guard !summary.daySummaries.isEmpty else {
             finish()
             return
         }
         log("ExposureService getExposureInfo")
 
-        self.manager.getExposureInfo(summary: summary, userExplanation: L10n.exposureDetectedTitle) { exposures, error in
+        self.manager.getExposureWindows(summary: summary) { windows, error in
             if let error = error {
                 finish(error: error)
-            } else if let exposures = exposures {
-                finish(exposures: exposures.map {
+            } else if let windows = windows {
+                finish(exposures: windows.map {
                     Exposure(
                         id: UUID(),
                         date: $0.date,
@@ -287,7 +293,7 @@ final class ExposureService: ExposureServicing {
                         attenuationDurations: $0.attenuationDurations.map { $0.intValue }
                     )
                 })
-                log("ExposureService Exposures \(exposures)")
+                log("ExposureService Exposures windows \(windows)")
             } else {
                 finish(error: ExposureError.noData)
             }

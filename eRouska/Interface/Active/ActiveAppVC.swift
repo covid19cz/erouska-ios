@@ -450,7 +450,9 @@ private extension ActiveAppVC {
         }
 
         let data = ["idToken": KeychainService.token]
+        #if !PROD
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+        #endif
     }
 
     func debugShowNews() {
