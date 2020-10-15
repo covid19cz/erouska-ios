@@ -11,11 +11,9 @@ import CoreTelephony
 
 protocol CountryCodesServicing: AnyObject {
 
-    typealias Callback = () -> Void
-
     var countryCodes: [String] { get }
 
-    var updateCallback: Callback? { get set }
+    var updateCallback: CallbackVoid? { get set }
 
 }
 
@@ -29,7 +27,7 @@ final class CountryCodeService: CountryCodesServicing {
         }
     }
 
-    var updateCallback: Callback?
+    var updateCallback: CallbackVoid?
 
     init() {
         networkInfo = CTTelephonyNetworkInfo()

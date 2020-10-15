@@ -123,7 +123,7 @@ private extension ExposurePermissionVC {
         )
     }
 
-    func showPermissionDeniedAlert(cancelAction: @escaping () -> Void) {
+    func showPermissionDeniedAlert(cancelAction: @escaping CallbackVoid) {
         showAlert(
             title: L10n.exposureActivationRestrictedTitle,
             message: L10n.exposureActivationRestrictedBody,

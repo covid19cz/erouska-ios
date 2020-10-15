@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     static let dependency = AppDependency()
 
-    var openResultsCallback: (() -> Void)?
+    var openResultsCallback: CallbackVoid?
 
     // MARK: - UIApplicationDelegate
 

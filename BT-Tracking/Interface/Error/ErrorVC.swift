@@ -55,7 +55,7 @@ final class ErrorVC: UIViewController {
         perform(segue: StoryboardSegue.Error.help)
     }
 
-    func closeWith(completion: @escaping () -> Void) {
+    func closeWith(completion: @escaping CallbackVoid) {
         dismiss(animated: true, completion: completion)
     }
 }
