@@ -61,7 +61,7 @@
 "data_list_send_error_disabled_title" = "You cannot sent the data now";
 "data_list_send_error_disabled_message" = "Enable Exposure notifications in your phone's settings and then send the data.";
 "data_send_title" = "Sent";
-"data_send_title_label" = "You have successfiully sent the data";
+"data_send_title_label" = "You have successfully sent the data";
 "data_send_headline" = "Thank you for fighting against the spread of COVID-19.";
 "data_send_body" = "Please cooperate with public health officers on tracing everyone that you encountered.\n\nFollow the instructions of public health officers and medical workers.";
 "data_send_close_button" = "Close";

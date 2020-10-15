@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 final class SendResultVC: UIViewController {
 
@@ -34,7 +35,9 @@ final class SendResultVC: UIViewController {
     // MARK: - Action
 
     @IBAction private func closeAction() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            SKStoreReviewController.requestReview()
+        })
     }
 
 }
