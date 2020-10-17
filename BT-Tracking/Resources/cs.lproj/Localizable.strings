@@ -47,7 +47,7 @@
 "share_app_message" = "Ahoj, používám aplikaci eRouška. Nainstaluj si ji taky a společně pomozme zastavit šíření onemocnění COVID-19. Aplikace dokáže anonymně a včas upozornit na rizikové setkání s nakaženým uživatelem a doporučit další postup. Najdeš ji na %@/";
 "data_list_title" = "Aktuálně";
 "data_list_send_title" = "Odeslat data";
-"data_list_send_headline" = "V případě potvrzené nákazy onemocněním COVID-19 vás bude kontaktovat pracovník hygienické stanice. Odešle vám SMS zprávu obsahující ověřovací kód pro povolení odeslání dat.";
+"data_list_send_headline" = "V případě potvrzené nákazy onemocněním COVID-19 obdržíte SMS zprávu obsahující ověřovací kód pro upozornění ostatních uživatelů eRoušky.";
 "data_list_send_placeholder" = "Ověřovací kód (povinné)";
 "data_list_send_action_title" = "Ověřit a odeslat data";
 "data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";

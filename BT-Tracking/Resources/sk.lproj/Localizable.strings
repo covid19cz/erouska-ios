@@ -50,7 +50,7 @@ Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "share_app_message" = "Ahoj, používam aplikáciu eRouška. Nainštaluj si ju tiež a spoločne pomôžme zastaviť šírenie ochorenia COVID-19. Aplikácia zbiera anonymné údaje o telefónoch v blízkosti, aby pracovníci hygieny mohli jednoduchšie dohľadať potenciálne nakazených. Čím viac nás bude, tým lepšie to bude fungovať. Aplikáciu nájdeš na %@/";
 "data_list_title" = "Aktuálne";
 "data_list_send_title" = "Odoslať údaje";
-"data_list_send_headline" = "V prípade potvrdenej nákazy ochorením COVID-19 vás bude kontaktovať pracovník hygienickej stanice. Odošle vám SMS správu obsahujúcu overovací kód na povolenie odoslania dát.";
+"data_list_send_headline" = "V prípade potvrdenej nákazy COVID-19 obdržíte SMS správu obsahujúcu overovací kód, aby ste mohli upozorniť ostatných užívateľov eRoušky.";
 "data_list_send_placeholder" = "Overovací kód (povinné)";
 "data_list_send_action_title" = "Overiť a odoslať dáta";
 "data_list_send_error_failed_title" = "Nepodarilo sa nám odoslať údaje";

@@ -49,7 +49,7 @@
 "share_app_message" = "Hi, I'm using the eRouška application. Install it too so we can help stop the spread of COVID-19. The application collects anonymous data about nearby phones so that the public health officers can trace the infection more easily. The more we are, the better it works. Download the app at %@/";
 "data_list_title" = "News";
 "data_list_send_title" = "Send data";
-"data_list_send_headline" = "If you test positive for COVID-19 you will be contacted by a public health officer. You will receive an SMS message with the verification code for sending data.";
+"data_list_send_headline" = "If you test positive for COVID-19 you will receive an SMS message with the verification code for sending data.";
 "data_list_send_placeholder" = "Verification code (required)";
 "data_list_send_action_title" = "Verify and send data";
 "data_list_send_error_failed_title" = "We were not able to send data";
