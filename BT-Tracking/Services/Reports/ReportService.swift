@@ -221,20 +221,7 @@ final class ReportService: ReportServicing {
                                         break
                                     }
                                     do {
-                                        let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
-                                        let fileURLs = try FileManager.default.contentsOfDirectory(
-                                            at: unzipDirectory,
-                                            includingPropertiesForKeys: [], options: [.skipsHiddenFiles]
-                                        )
-                                        let uniqueName = UUID().uuidString
-                                        let changedNames: [URL] = try fileURLs.map {
-                                            var newURL = $0
-                                            newURL.deleteLastPathComponent()
-                                            newURL.appendPathComponent(uniqueName)
-                                            newURL.appendPathExtension($0.pathExtension)
-                                            try FileManager.default.moveItem(at: $0, to: newURL)
-                                            return newURL
-                                        }
+                                        let changedNames = try self.unzipDownload(downloadedURL)
                                         localURLResults.append(.success(changedNames))
                                     } catch {
                                         localURLResults.append(.failure(error))
@@ -284,6 +271,23 @@ final class ReportService: ReportServicing {
             }
 
         return progress
+    }
+
+    private func unzipDownload(_ downloadedURL: URL) throws -> [URL] {
+        let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
+        let fileURLs = try FileManager.default.contentsOfDirectory(
+            at: unzipDirectory,
+            includingPropertiesForKeys: [], options: [.skipsHiddenFiles]
+        )
+        let uniqueName = UUID().uuidString
+        return try fileURLs.map {
+            var newURL = $0
+            newURL.deleteLastPathComponent()
+            newURL.appendPathComponent(uniqueName)
+            newURL.appendPathExtension($0.pathExtension)
+            try FileManager.default.moveItem(at: $0, to: newURL)
+            return newURL
+        }
     }
 
 }

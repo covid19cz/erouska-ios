@@ -40,4 +40,15 @@ final class CurrentDataRealm: Object {
         self.deceasedTotal = deceasedTotal
         self.currentlyHospitalizedTotal = currentlyHospitalizedTotal
     }
+
+    func update(with data: [String: Any]) {
+        if let value = data["testsTotal"] as? Int { testsTotal = value }
+        if let value = data["testsIncrease"] as? Int { testsIncrease = value }
+        if let value = data["confirmedCasesTotal"] as? Int { confirmedCasesTotal = value }
+        if let value = data["confirmedCasesIncrease"] as? Int { confirmedCasesIncrease = value }
+        if let value = data["activeCasesTotal"] as? Int { activeCasesTotal = value }
+        if let value = data["curedTotal"] as? Int { curedTotal = value }
+        if let value = data["deceasedTotal"] as? Int { deceasedTotal = value }
+        if let value = data["currentlyHospitalizedTotal"] as? Int { currentlyHospitalizedTotal = value }
+    }
 }

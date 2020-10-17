@@ -176,9 +176,6 @@ private extension SendReportsVC {
     }
 
     func sendReport(with type: ReportType, token: String) {
-        let verificationService = AppDelegate.dependency.verification
-        let reportService = AppDelegate.dependency.reporter
-        let exposureService = AppDelegate.dependency.exposureService
         let callback: ExposureServicing.KeysCallback = { [weak self] result in
             guard let self = self else { return }
 
@@ -190,25 +187,7 @@ private extension SendReportsVC {
                     self.showNoKeysError()
                     return
                 }
-
-                do {
-                    let secret = Data.random(count: 32)
-                    let hmacKey = try reportService.calculateHmacKey(keys: keys, secret: secret)
-                    verificationService.requestCertificate(token: token, hmacKey: hmacKey) { result in
-                        switch result {
-                        case .success(let certificate):
-                            self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret)
-                        case .failure(let error):
-                            log("DataListVC: Failed to get verification payload \(error)")
-                            self.reportHideProgress()
-                            self.showSendDataError()
-                        }
-                    }
-                } catch {
-                    log("DataListVC: Failed to get hmac for keys \(error)")
-                    self.reportHideProgress()
-                    self.showSendDataError()
-                }
+                self.requestCertificate(keys: keys, token: token)
             case .failure(let error):
                 log("DataListVC: Failed to get exposure keys \(error)")
                 self.reportHideProgress()
@@ -225,9 +204,30 @@ private extension SendReportsVC {
 
         switch type {
         case .test:
-            exposureService.getTestDiagnosisKeys(callback: callback)
+            AppDelegate.dependency.exposureService.getTestDiagnosisKeys(callback: callback)
         case .normal:
-            exposureService.getDiagnosisKeys(callback: callback)
+            AppDelegate.dependency.exposureService.getDiagnosisKeys(callback: callback)
+        }
+    }
+
+    func requestCertificate(keys: [ExposureDiagnosisKey], token: String) {
+        do {
+            let secret = Data.random(count: 32)
+            let hmacKey = try AppDelegate.dependency.reporter.calculateHmacKey(keys: keys, secret: secret)
+            AppDelegate.dependency.verification.requestCertificate(token: token, hmacKey: hmacKey) { result in
+                switch result {
+                case .success(let certificate):
+                    self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret)
+                case .failure(let error):
+                    log("DataListVC: Failed to get verification payload \(error)")
+                    self.reportHideProgress()
+                    self.showSendDataError()
+                }
+            }
+        } catch {
+            log("DataListVC: Failed to get hmac for keys \(error)")
+            self.reportHideProgress()
+            self.showSendDataError()
         }
     }
 
