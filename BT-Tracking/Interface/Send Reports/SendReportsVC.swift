@@ -158,7 +158,7 @@ private extension SendReportsVC {
             case .failure(let error):
                 log("DataListVC: Failed to verify code \(error)")
                 self?.reportHideProgress()
-                self?.showVerifyError()
+                self?.showVerifyError(error)
             }
         }
     }
@@ -197,16 +197,17 @@ private extension SendReportsVC {
                     self.resultAction()
                     self.showNoKeysError()
                 default:
-                    self.showSendDataError()
+                    self.showSendDataFrameworkError(code: error.localizedDescription)
                 }
             }
         }
 
+        let exposureService = AppDelegate.dependency.exposureService
         switch type {
         case .test:
-            AppDelegate.dependency.exposureService.getTestDiagnosisKeys(callback: callback)
+            exposureService.getTestDiagnosisKeys(callback: callback)
         case .normal:
-            AppDelegate.dependency.exposureService.getDiagnosisKeys(callback: callback)
+            exposureService.getDiagnosisKeys(callback: callback)
         }
     }
 
@@ -246,19 +247,60 @@ private extension SendReportsVC {
         }
     }
 
-    func showVerifyError() {
-        showAlert(
-            title: L10n.dataListSendErrorWrongCodeTitle,
-            message: L10n.dataListSendErrorWrongCodeMessage,
-            okHandler: { [weak self] in
-                self?.codeTextField.text = nil
-                self?.codeTextField.becomeFirstResponder()
+    func showVerifyError(_ error: VerificationError) {
+        switch error {
+        case let .tokenError(status, code):
+            switch code {
+            case .codeInvalid:
+                showAlert(
+                    title: L10n.dataListSendErrorWrongCodeTitle,
+                    okHandler: { [weak self] in
+                        self?.codeTextField.text = nil
+                        self?.codeTextField.becomeFirstResponder()
+                    }
+                )
+            case .codeExpired, .codeNotFound:
+                showAlert(
+                    title: L10n.dataListSendErrorExpiredCodeTitle,
+                    message: L10n.dataListSendErrorExpiredCodeMessage,
+                    okHandler: { [weak self] in
+                        self?.codeTextField.text = nil
+                        self?.codeTextField.becomeFirstResponder()
+                    }
+                )
+            default:
+                showAlert(
+                    title: L10n.dataListSendErrorTitle,
+                    message: L10n.dataListSendErrorMessage("\(status.rawValue)-" + code.rawValue)
+                )
             }
-        )
+        case let .certificateError(status, code):
+            showAlert(
+                title: L10n.dataListSendErrorTitle,
+                message: L10n.dataListSendErrorMessage("\(status.rawValue)-" + code.rawValue)
+            )
+        case let .generalError(status, code):
+            showAlert(
+                title: L10n.dataListSendErrorTitle,
+                message: L10n.dataListSendErrorMessage("\(status.rawValue)-" + code)
+            )
+        case .noData:
+            showAlert(
+                title: L10n.dataListSendErrorTitle,
+                message: L10n.dataListSendErrorMessage("noData")
+            )
+        }
     }
 
     func showNoKeysError() {
         showAlert(title: L10n.dataListSendErrorNoKeys)
+    }
+
+    func showSendDataFrameworkError(code: String) {
+        showAlert(
+            title: L10n.dataListSendErrorFrameworkTitle,
+            message: L10n.dataListSendErrorFrameworkMessage(code)
+        )
     }
 
     func showSendDataError() {

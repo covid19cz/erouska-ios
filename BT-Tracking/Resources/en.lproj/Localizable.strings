@@ -52,14 +52,31 @@
 "data_list_send_headline" = "If you test positive for COVID-19 you will receive an SMS message with the verification code for sending data.";
 "data_list_send_placeholder" = "Verification code (required)";
 "data_list_send_action_title" = "Verify and send data";
-"data_list_send_error_failed_title" = "We were not able to send data";
-"data_list_send_error_failed_message" = "Check you internet connection and try again.";
+
 "data_list_send_error_file_title" = "Failed to create the encounter log";
+
 "data_list_send_error_no_keys" = "No keys to send. Please try again later.";
-"data_list_send_error_wrong_code_title" = "Invalid verification code";
-"data_list_send_error_wrong_code_message" = "Request a new SMS message with a verification code from the public health officer.";
+
+"data_list_send_error_wrong_code_title" = "Ověřovací kód není správně zadaný, zkuste to znovu.";
+
+"data_list_send_error_expired_code_title" = "Vypršela platnost ověřovacího kódu.";
+"data_list_send_error_expired_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
+
+"data_list_send_error_framework_title" = "Nepodařilo se nám získat data.";
+"data_list_send_error_framework_message" = "Zkontrolujte zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+
+"data_list_send_error_save_title" = "Nepodařilo se nám odeslat data na server.";
+"data_list_send_error_save_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+
+"data_list_send_error_title" = "Nepodařilo se nám odeslat data.";
+"data_list_send_error_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+
 "data_list_send_error_disabled_title" = "You cannot sent the data now";
 "data_list_send_error_disabled_message" = "Enable Exposure notifications in your phone's settings and then send the data.";
+
+"data_list_send_error_failed_title" = "We were not able to send data";
+"data_list_send_error_failed_message" = "Check you internet connection and try again.";
+
 "data_send_title" = "Sent";
 "data_send_title_label" = "You have successfully sent the data";
 "data_send_headline" = "Thank you for fighting against the spread of COVID-19.";

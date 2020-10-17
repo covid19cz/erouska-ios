@@ -134,19 +134,39 @@ internal enum L10n {
   internal static let dataListSendErrorDisabledMessage = L10n.tr("Localizable", "data_list_send_error_disabled_message")
   /// Data nyní nemůžete odeslat
   internal static let dataListSendErrorDisabledTitle = L10n.tr("Localizable", "data_list_send_error_disabled_title")
+  /// Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.
+  internal static let dataListSendErrorExpiredCodeMessage = L10n.tr("Localizable", "data_list_send_error_expired_code_message")
+  /// Vypršela platnost ověřovacího kódu.
+  internal static let dataListSendErrorExpiredCodeTitle = L10n.tr("Localizable", "data_list_send_error_expired_code_title")
   /// Zkontrolujte připojení k internetu a zkuste to znovu.
   internal static let dataListSendErrorFailedMessage = L10n.tr("Localizable", "data_list_send_error_failed_message")
   /// Nepodařilo se nám odeslat data
   internal static let dataListSendErrorFailedTitle = L10n.tr("Localizable", "data_list_send_error_failed_title")
   /// Nepodařilo se vytvořit soubor se setkáními
   internal static let dataListSendErrorFileTitle = L10n.tr("Localizable", "data_list_send_error_file_title")
+  /// Zkontrolujte zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.
+  internal static func dataListSendErrorFrameworkMessage(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "data_list_send_error_framework_message", String(describing: p1))
+  }
+  /// Nepodařilo se nám získat data.
+  internal static let dataListSendErrorFrameworkTitle = L10n.tr("Localizable", "data_list_send_error_framework_title")
+  /// Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.
+  internal static func dataListSendErrorMessage(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "data_list_send_error_message", String(describing: p1))
+  }
   /// Nemáte žádné klíče k odeslání, zkuste to později.
   internal static let dataListSendErrorNoKeys = L10n.tr("Localizable", "data_list_send_error_no_keys")
-  /// Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.
-  internal static let dataListSendErrorWrongCodeMessage = L10n.tr("Localizable", "data_list_send_error_wrong_code_message")
-  /// Neplatný ověřovací kód
+  /// Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.
+  internal static func dataListSendErrorSaveMessage(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "data_list_send_error_save_message", String(describing: p1))
+  }
+  /// Nepodařilo se nám odeslat data na server.
+  internal static let dataListSendErrorSaveTitle = L10n.tr("Localizable", "data_list_send_error_save_title")
+  /// Nepodařilo se nám odeslat data.
+  internal static let dataListSendErrorTitle = L10n.tr("Localizable", "data_list_send_error_title")
+  /// Ověřovací kód není správně zadaný, zkuste to znovu.
   internal static let dataListSendErrorWrongCodeTitle = L10n.tr("Localizable", "data_list_send_error_wrong_code_title")
-  /// V případě potvrzené nákazy onemocněním COVID-19 vás bude kontaktovat pracovník hygienické stanice. Odešle vám SMS zprávu obsahující ověřovací kód pro povolení odeslání dat.
+  /// V případě potvrzené nákazy onemocněním COVID-19 obdržíte SMS zprávu obsahující ověřovací kód pro upozornění ostatních uživatelů eRoušky.
   internal static let dataListSendHeadline = L10n.tr("Localizable", "data_list_send_headline")
   /// Ověřovací kód (povinné)
   internal static let dataListSendPlaceholder = L10n.tr("Localizable", "data_list_send_placeholder")

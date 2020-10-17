@@ -13,10 +13,10 @@ protocol VerificationServicing: AnyObject {
 
     func updateConfiguration(_ configuration: ServerConfiguration)
 
-    typealias VerifyCallback = (Result<String, Error>) -> Void
+    typealias VerifyCallback = (Result<String, VerificationError>) -> Void
     func verify(with code: String, callback: @escaping VerifyCallback)
 
-    typealias CertificateCallback = (Result<String, Error>) -> Void
+    typealias CertificateCallback = (Result<String, VerificationError>) -> Void
     func requestCertificate(token: String, hmacKey: String, callback: @escaping CertificateCallback)
 
 }
@@ -62,7 +62,7 @@ final class VerificationService: VerificationServicing {
                         callback(.failure(VerificationError.noData))
                     }
                 case .failure(let error):
-                    callback(.failure(error))
+                    callback(.failure(VerificationError.generalError(VerificationGeneralErrorCode(response: response.response), error.localizedDescription)))
                 }
             }
     }
@@ -92,7 +92,7 @@ final class VerificationService: VerificationServicing {
                         callback(.failure(VerificationError.noData))
                     }
                 case .failure(let error):
-                    callback(.failure(error))
+                    callback(.failure(VerificationError.generalError(VerificationGeneralErrorCode(response: response.response), error.localizedDescription)))
                 }
             }
     }
