@@ -10,23 +10,33 @@ import Foundation
 import RealmSwift
 import RxSwift
 import RxRealm
+import RxDataSources
 
 struct PreviousRiskyEncountersVM {
-    let previousExposures: Observable<[Exposure]>
+    typealias Section = SectionModel<String, Exposure>
+
+    let sections: Observable<[Section]>
 
     let title = RemoteValues.recentExposuresUITitle
 
+    var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .medium
+        return dateFormatter
+    }()
+
     init() {
-        let realm = try? Realm()
+        let realm = AppDelegate.dependency.realm
+        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
 
-        guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
-            previousExposures = .empty()
-            return
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .medium
+        dateFormatter.dateStyle = .medium
 
-        previousExposures = Observable.collection(from: exposures)
-            .map { collection in
-                collection.toArray().map { $0.toExposure() }
-            }
+        let grouped = Dictionary(grouping: exposures, by: { $0.detectedDate })
+        sections = Observable.just(grouped.map { key, values -> Section in
+            .init(model: "Rizikove setkani zjistene: " + dateFormatter.string(from: key), items: values.compactMap { $0.toExposure() })
+        })
     }
 }

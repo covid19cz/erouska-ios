@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import FirebaseFunctions
+import RealmSwift
 
 final class AppDependency {
 
@@ -26,4 +27,21 @@ final class AppDependency {
 
     private(set) lazy var background = BackgroundService(exposureService: exposureService, reporter: reporter)
 
+    var realm: Realm {
+        let configuration = Realm.Configuration(
+            schemaVersion: 2,
+
+            migrationBlock: { _, oldSchemaVersion in
+                if oldSchemaVersion < 3 {
+
+                }
+            }
+        )
+
+        Realm.Configuration.defaultConfiguration = configuration
+
+        // swiftlint:disable force_try
+        return try! Realm()
+        // swiftlint:enable force_try
+    }
 }

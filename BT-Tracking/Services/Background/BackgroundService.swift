@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 import BackgroundTasks
 import FirebaseFunctions
 import FirebaseAnalytics
@@ -188,8 +187,7 @@ private extension BackgroundService {
                     URLs: keys.URLs
                 ) { result in
                     switch result {
-                    case .success(var exposures):
-                        exposures.sort { $0.date < $1.date }
+                    case .success(let exposures):
                         AppSettings.lastProcessedDate = Date()
 
                         self.handleExposures(exposures, lastProcessedFileName: keys.lastProcessedFileName)
@@ -222,10 +220,7 @@ private extension BackgroundService {
             return
         }
 
-        let realm = try? Realm()
-        try? realm?.write {
-            exposures.forEach { realm?.add(ExposureRealm($0)) }
-        }
+        try? ExposureList.add(exposures, detectionDate: Date())
 
         let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }

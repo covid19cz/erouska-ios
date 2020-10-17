@@ -33,6 +33,10 @@
 		8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */; };
 		8053CCFC2538A2A000C1820E /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053CCFB2538A2A000C1820E /* Callback.swift */; };
 		8053CCFD2538A2A000C1820E /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053CCFB2538A2A000C1820E /* Callback.swift */; };
+		8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053CD002538A3C100C1820E /* ExposureRealm.swift */; };
+		8053CD022538A3C100C1820E /* ExposureRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053CD002538A3C100C1820E /* ExposureRealm.swift */; };
+		8053CD082538A61C00C1820E /* ExposureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053CD072538A61C00C1820E /* ExposureList.swift */; };
+		8053CD092538A61C00C1820E /* ExposureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053CD072538A61C00C1820E /* ExposureList.swift */; };
 		8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
@@ -266,6 +270,8 @@
 		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
 		8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureService.swift; sourceTree = "<group>"; };
 		8053CCFB2538A2A000C1820E /* Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
+		8053CD002538A3C100C1820E /* ExposureRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRealm.swift; sourceTree = "<group>"; };
+		8053CD072538A61C00C1820E /* ExposureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureList.swift; sourceTree = "<group>"; };
 		8054C0AD241D492F008907B8 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Debug.storyboard; sourceTree = "<group>"; };
@@ -480,6 +486,8 @@
 			isa = PBXGroup;
 			children = (
 				80FC71BF247718C700F86389 /* ExposureEntities.swift */,
+				8053CD002538A3C100C1820E /* ExposureRealm.swift */,
+				8053CD072538A61C00C1820E /* ExposureList.swift */,
 				8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */,
 			);
 			path = Exposure;
@@ -779,6 +787,8 @@
 			children = (
 				D6231C9C24E400B10023BDC8 /* RiskyEncountersListVC.swift */,
 				D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */,
+				D6231CA424E400C70023BDC8 /* MainSymptomsVM.swift */,
+				D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */,
 				D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */,
 			);
 			path = "Risky Encounters List";
@@ -813,8 +823,6 @@
 				D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */,
 				D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */,
 				D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */,
-				D6231CA424E400C70023BDC8 /* MainSymptomsVM.swift */,
-				D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */,
 				D6231C9924E400B10023BDC8 /* Risky Encounters List */,
 			);
 			path = "Risky Encounters";
@@ -1225,6 +1233,7 @@
 				D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8053CCFC2538A2A000C1820E /* Callback.swift in Sources */,
+				8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */,
 				80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
 				80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */,
@@ -1256,6 +1265,7 @@
 				80BE3FCF2446028E00D0C810 /* InputValidation.swift in Sources */,
 				80C71D3D25248A2900999275 /* UnsupportedDeviceVC.swift in Sources */,
 				8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
+				8053CD082538A61C00C1820E /* ExposureList.swift in Sources */,
 				80D2345924E320D700F684AA /* SendReportsVM.swift in Sources */,
 				80C71D3725248A0200999275 /* StoryboardSegue.swift in Sources */,
 				D65E57DC24D05D73000F2402 /* NewsVC.swift in Sources */,
@@ -1315,6 +1325,7 @@
 				80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */,
 				8053CCFD2538A2A000C1820E /* Callback.swift in Sources */,
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
+				8053CD022538A3C100C1820E /* ExposureRealm.swift in Sources */,
 				D6CD28E724CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
@@ -1336,6 +1347,7 @@
 				8083D8BD244640A0007FA4E9 /* RemoteValues.swift in Sources */,
 				8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */,
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
+				8053CD092538A61C00C1820E /* ExposureList.swift in Sources */,
 				D6231CA024E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */,
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,

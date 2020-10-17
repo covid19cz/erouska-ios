@@ -9,31 +9,57 @@
 import UIKit
 import RxSwift
 import RxRealm
+import RxDataSources
 
 final class PreviousRiskyEncountersVC: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
 
     private let viewModel = PreviousRiskyEncountersVM()
-    private lazy var dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .medium
-        return dateFormatter
-    }()
     private let disposeBag = DisposeBag()
+    private var dataSource: RxTableViewSectionedReloadDataSource<PreviousRiskyEncountersVM.Section>!
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        dataSource = nil
+
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+
+        setupDataSource()
+    }
+
+    required init?(coder: NSCoder) {
+        dataSource = nil
+
+        super.init(coder: coder)
+
+        setupDataSource()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = viewModel.title
 
-        viewModel.previousExposures.bind(to: tableView.rx.items) { [dateFormatter] tv, _, element in
-            let cell = tv.dequeueReusableCell(withIdentifier: "PreviousRiskyEncountersCell") ?? UITableViewCell()
-            cell.textLabel?.text = dateFormatter.string(from: element.date)
-            cell.selectionStyle = .none
-            return cell
-        }.disposed(by: disposeBag)
+        viewModel.sections
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
 
         tableView.tableFooterView = UIView()
     }
+
+    private func setupDataSource() {
+        dataSource = RxTableViewSectionedReloadDataSource<PreviousRiskyEncountersVM.Section>(configureCell: { [weak self] _, _, _, item in
+            self?.configureCell(item) ?? UITableViewCell()
+        })
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            dataSource.sectionModels[index].model
+        }
+    }
+
+    private func configureCell(_ item: Exposure) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousRiskyEncountersCell") ?? UITableViewCell()
+        cell.textLabel?.text = self.viewModel.dateFormatter.string(from: item.date)
+        cell.selectionStyle = .none
+        return cell
+    }
+
 }
