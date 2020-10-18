@@ -57,19 +57,19 @@
 
 "data_list_send_error_no_keys" = "No keys to send. Please try again later.";
 
-"data_list_send_error_wrong_code_title" = "Ověřovací kód není správně zadaný, zkuste to znovu.";
+"data_list_send_error_wrong_code_title" = "Please try entering the verification code again.";
 
-"data_list_send_error_expired_code_title" = "Vypršela platnost ověřovacího kódu.";
-"data_list_send_error_expired_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
+"data_list_send_error_expired_code_title" = "Verification code expired.";
+"data_list_send_error_expired_code_message" = "Ask the public health office to send you a new verification code.";
 
-"data_list_send_error_framework_title" = "Nepodařilo se nám získat data.";
-"data_list_send_error_framework_message" = "Zkontrolujte zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+"data_list_send_error_framework_title" = "Failed to get data.";
+"data_list_send_error_framework_message" = "Check that Exposure Notifications are enabled.\nOtherwise contact support at info@erouska.cz and mention this error code: %@.";
 
-"data_list_send_error_save_title" = "Nepodařilo se nám odeslat data na server.";
-"data_list_send_error_save_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+"data_list_send_error_save_title" = "Failed to send data to the server.";
+"data_list_send_error_save_message" = "Please contact support at info@erouska.cz and mention this error code: %@.";
 
-"data_list_send_error_title" = "Nepodařilo se nám odeslat data.";
-"data_list_send_error_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+"data_list_send_error_title" = "Failed to send data.";
+"data_list_send_error_message" = "Please contact support at info@erouska.cz and mention this error code: %@.";
 
 "data_list_send_error_disabled_title" = "You cannot sent the data now";
 "data_list_send_error_disabled_message" = "Enable Exposure notifications in your phone's settings and then send the data.";
