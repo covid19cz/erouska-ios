@@ -32,7 +32,7 @@ final class AppDependency {
             schemaVersion: 2,
 
             migrationBlock: { _, oldSchemaVersion in
-                if oldSchemaVersion < 3 {
+                if oldSchemaVersion < 2 {
 
                 }
             }

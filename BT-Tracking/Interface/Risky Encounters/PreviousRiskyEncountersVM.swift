@@ -36,7 +36,7 @@ struct PreviousRiskyEncountersVM {
 
         let grouped = Dictionary(grouping: exposures, by: { $0.detectedDate })
         sections = Observable.just(grouped.map { key, values -> Section in
-            .init(model: "Rizikove setkani zjistene: " + dateFormatter.string(from: key), items: values.compactMap { $0.toExposure() })
+            .init(model: "Rizikove setkani zjistena " + dateFormatter.string(from: key), items: values.compactMap { $0.toExposure() })
         })
     }
 }

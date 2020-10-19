@@ -43,7 +43,29 @@ final class PreviousRiskyEncountersVC: UIViewController {
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
 
+        tableView.rx
+            .modelSelected(Exposure.self)
+            .subscribe(onNext: { [weak self] value in
+                if let indexPath = self?.tableView.indexPathForSelectedRow {
+                    self?.tableView.deselectRow(at: indexPath, animated: true)
+                }
+                self?.perform(segue: StoryboardSegue.RiskyEncounters.showDetail, sender: value)
+            })
+            .disposed(by: disposeBag)
+
         tableView.tableFooterView = UIView()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        switch StoryboardSegue.RiskyEncounters(segue) {
+        case .showDetail:
+            let controller = segue.destination as? RiskyEncountersDetailVC
+            controller?.exposure = sender as? Exposure
+        default:
+            break
+        }
     }
 
     private func setupDataSource() {
@@ -58,7 +80,12 @@ final class PreviousRiskyEncountersVC: UIViewController {
     private func configureCell(_ item: Exposure) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousRiskyEncountersCell") ?? UITableViewCell()
         cell.textLabel?.text = self.viewModel.dateFormatter.string(from: item.date)
+        #if DEBUG || !PROD
+        cell.selectionStyle = .default
+        cell.accessoryType = .disclosureIndicator
+        #else
         cell.selectionStyle = .none
+        #endif
         return cell
     }
 

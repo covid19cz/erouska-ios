@@ -64,6 +64,8 @@
 		807897832524804B0079BEA1 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807897822524804B0079BEA1 /* Assets.swift */; };
 		807897842524804B0079BEA1 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807897822524804B0079BEA1 /* Assets.swift */; };
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
+		807D48E8253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */; };
+		807D48E9253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */; };
 		8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A95242CA27800EB0B6C /* HelpVC.swift */; };
 		8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */; };
 		8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
@@ -298,6 +300,7 @@
 		8078977B25247C550079BEA1 /* BT-Tracking-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking-Debug.entitlements"; sourceTree = "<group>"; };
 		807897822524804B0079BEA1 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		80799BEA2423B89A002B04C5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersDetailVC.swift; sourceTree = "<group>"; };
 		8083D8F4244640A0007FA4E9 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8083D8F6244640CD007FA4E9 /* Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Prod.plist"; sourceTree = "<group>"; };
 		8083D9132446F779007FA4E9 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
@@ -823,6 +826,7 @@
 				D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */,
 				D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */,
 				D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */,
+				807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */,
 				D6231C9924E400B10023BDC8 /* Risky Encounters List */,
 			);
 			path = "Risky Encounters";
@@ -1249,6 +1253,7 @@
 				D6231C9D24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */,
 				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
 				D6231CA524E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
+				807D48E8253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */,
 				80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */,
 				D6CD28EA24CF24DD005847AA /* PrivacyVC.swift in Sources */,
 				8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */,
@@ -1339,6 +1344,7 @@
 				80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */,
 				8083D8B9244640A0007FA4E9 /* GradientView.swift in Sources */,
 				80C71D3825248A0200999275 /* StoryboardSegue.swift in Sources */,
+				807D48E9253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */,
 				8083D8BA244640A0007FA4E9 /* String.swift in Sources */,
 				D65E57D424D04976000F2402 /* NewsVM.swift in Sources */,
 				D6340C6924C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */,
