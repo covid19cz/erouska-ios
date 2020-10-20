@@ -79,6 +79,11 @@ struct Exposure: Codable, Equatable {
     let attenuationValue: ENAttenuation
     var attenuationDurations: [Int]
 
+    func computedThreshold(with configuration: ExposureConfiguration) -> Double {
+        return (Double(truncating: attenuationDurations[0] as NSNumber) * configuration.factorLow +
+            Double(truncating: attenuationDurations[1] as NSNumber) * configuration.factorHigh) / 60 // (minute)
+    }
+
 }
 
 struct ExposureDiagnosisKey: Codable, Equatable {

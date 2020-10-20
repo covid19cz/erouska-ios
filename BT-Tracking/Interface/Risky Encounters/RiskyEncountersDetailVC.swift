@@ -27,6 +27,8 @@ final class RiskyEncountersDetailVC: UITableViewController {
         return formatter
     }
 
+    private let configuration = RemoteValues.exposureConfiguration
+
     var exposure: Exposure?
 
     // MARK: -
@@ -70,10 +72,7 @@ final class RiskyEncountersDetailVC: UITableViewController {
             cell.detailTextLabel?.text = exposure.attenuationDurations.map { "\($0)" }.joined(separator: ", ")
         case .computedThreshold:
             cell.textLabel?.text = "Computed Threshold"
-            let configuration = RemoteValues.exposureConfiguration
-            let computedThreshold: Double = (Double(truncating: exposure.attenuationDurations[0] as NSNumber) * configuration.factorLow +
-                                                Double(truncating: exposure.attenuationDurations[1] as NSNumber) * configuration.factorHigh) / 60 // (minute)
-            cell.detailTextLabel?.text = "\(computedThreshold)"
+            cell.detailTextLabel?.text = "\(exposure.computedThreshold(with: configuration))"
         default:
             break
         }
