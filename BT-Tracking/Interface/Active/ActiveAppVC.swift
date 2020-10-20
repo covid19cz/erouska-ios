@@ -431,15 +431,7 @@ private extension ActiveAppVC {
 
     func debugInsertFakeExposure() {
         let exposures = [
-            Exposure(
-                id: UUID(),
-                date: Date(),
-                duration: 213,
-                totalRiskScore: 2,
-                transmissionRiskLevel: 4,
-                attenuationValue: 4,
-                attenuationDurations: [21, 1, 4, 5]
-            )
+            Exposure.debugExposure()
         ]
 
         try? ExposureList.add(exposures, detectionDate: Date())

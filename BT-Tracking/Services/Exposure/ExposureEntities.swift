@@ -84,6 +84,18 @@ struct Exposure: Codable, Equatable {
             Double(truncating: attenuationDurations[1] as NSNumber) * configuration.factorHigh) / 60 // (minute)
     }
 
+    static func debugExposure(date: Date = Date()) -> Exposure {
+        return Self(
+            id: UUID(),
+            date: date,
+            duration: 213,
+            totalRiskScore: 2,
+            transmissionRiskLevel: 4,
+            attenuationValue: 4,
+            attenuationDurations: [21, 1, 4, 5]
+        )
+    }
+
 }
 
 struct ExposureDiagnosisKey: Codable, Equatable {
