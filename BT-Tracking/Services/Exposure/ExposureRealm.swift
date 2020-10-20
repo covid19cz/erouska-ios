@@ -17,6 +17,8 @@ final class ExposureRealm: Object {
 
     @objc dynamic var dataV1: ExposureDataV1?
 
+    var attenuationDurations: List<Int> = .init() // legacy remove in future
+
     override class func primaryKey() -> String {
         return "id"
     }

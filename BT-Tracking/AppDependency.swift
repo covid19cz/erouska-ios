@@ -43,7 +43,6 @@ final class AppDependency {
                         data.totalRiskScore = oldObject?["totalRiskScore"] as? Int ?? 0
                         data.transmissionRiskLevel = oldObject?["transmissionRiskLevel"] as? Int ?? 0
                         data.attenuationValue = oldObject?["attenuationValue"] as? Int ?? 0
-                        data.attenuationDurations = oldObject?["attenuationDurations"] as? List<Int> ?? List()
 
                         oldV1Data[oldObject?["id"] as? String ?? ""] = data
                     }
@@ -62,6 +61,8 @@ final class AppDependency {
             try? realm.write {
                 for (key, value) in oldV1Data {
                     let exposure = exposures.first(where: { $0.id == key })
+                    value.attenuationDurations = exposure?.attenuationDurations ?? value.attenuationDurations
+                    exposure?.attenuationDurations = .init()
                     exposure?.dataV1 = value
                 }
             }
