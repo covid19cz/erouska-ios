@@ -34,9 +34,11 @@ struct PreviousRiskyEncountersVM {
         dateFormatter.timeStyle = .medium
         dateFormatter.dateStyle = .medium
 
-        let grouped = Dictionary(grouping: exposures, by: { $0.detectedDate })
+        let oldTestsDate = Date(timeIntervalSince1970: 0)
+        let grouped = Dictionary(grouping: exposures, by: { $0.detectedDate }).sorted(by: { $0.key > $1.key })
         sections = Observable.just(grouped.map { key, values -> Section in
-            .init(model: L10n.dataListPreviousHeader + " " + dateFormatter.string(from: key), items: values.compactMap { $0.toExposure() })
+            let title = key == oldTestsDate ? L10n.dataListPreviousHeader : L10n.dataListPreviousHeader + " " + dateFormatter.string(from: key)
+            return .init(model: title, items: values.compactMap { $0.toExposure() })
         })
     }
 }
