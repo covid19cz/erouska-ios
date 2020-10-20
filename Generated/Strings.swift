@@ -130,8 +130,6 @@ internal enum L10n {
   internal static let currentDataMeasures = L10n.tr("Localizable", "current_data_measures")
   /// Riziková setkání zjištěná
   internal static let dataListPreviousHeader = L10n.tr("Localizable", "data_list_previous_header")
-  /// Riziková setkání zjištěná před
-  internal static let dataListPreviousHeaderBefore = L10n.tr("Localizable", "data_list_previous_header_before")
   /// Ověřit a odeslat data
   internal static let dataListSendActionTitle = L10n.tr("Localizable", "data_list_send_action_title")
   /// V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.
