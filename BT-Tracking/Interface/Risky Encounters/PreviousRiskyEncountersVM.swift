@@ -19,12 +19,7 @@ struct PreviousRiskyEncountersVM {
 
     let title = RemoteValues.recentExposuresUITitle
 
-    var dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .medium
-        return dateFormatter
-    }()
+    let dateFormatter: DateFormatter
 
     init() {
         let realm = AppDelegate.dependency.realm
@@ -34,10 +29,24 @@ struct PreviousRiskyEncountersVM {
         dateFormatter.timeStyle = .medium
         dateFormatter.dateStyle = .medium
 
+        let beforeDateFormatter = DateFormatter()
+        beforeDateFormatter.timeStyle = .none
+        beforeDateFormatter.dateStyle = .medium
+        self.dateFormatter = beforeDateFormatter
+
         let oldTestsDate = Date(timeIntervalSince1970: 0)
         let grouped = Dictionary(grouping: exposures, by: { $0.detectedDate }).sorted(by: { $0.key > $1.key })
         sections = Observable.just(grouped.map { key, values -> Section in
-            let title = key == oldTestsDate ? L10n.dataListPreviousHeader : L10n.dataListPreviousHeader + " " + dateFormatter.string(from: key)
+            let title: String
+            if key == oldTestsDate {
+                if let date = AppSettings.lastLegacyDataFetchDate {
+                    title = L10n.dataListPreviousHeader + " " + beforeDateFormatter.string(from: date)
+                } else {
+                    title = L10n.dataListPreviousHeader
+                }
+            } else {
+                title = L10n.dataListPreviousHeader + " " + dateFormatter.string(from: key)
+            }
             return .init(model: title, items: values.compactMap { $0.toExposure() })
         })
     }

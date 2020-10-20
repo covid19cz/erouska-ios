@@ -438,6 +438,8 @@ private extension ActiveAppVC {
 
         let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+
+        AppSettings.currentDataLastFetchDate = Date()
     }
 
     func debugShowNews() {
