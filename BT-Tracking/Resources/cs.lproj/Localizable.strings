@@ -75,6 +75,8 @@
 "data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";
 "data_list_send_error_failed_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
 
+"data_list_previous_header" = "Riziková setkání zjištěná";
+
 "data_send_title" = "Odesláno";
 "data_send_title_label" = "Data jste úspěsně odeslali";
 "data_send_headline" = "Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19.";

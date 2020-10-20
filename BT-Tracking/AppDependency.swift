@@ -28,12 +28,25 @@ final class AppDependency {
     private(set) lazy var background = BackgroundService(exposureService: exposureService, reporter: reporter)
 
     var realm: Realm {
+        var oldV1Data: [String: ExposureDataV1] = [:]
+
         let configuration = Realm.Configuration(
             schemaVersion: 2,
 
-            migrationBlock: { _, oldSchemaVersion in
+            migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 2 {
+                    migration.enumerateObjects(ofType: ExposureRealm.className()) { oldObject, newObject in
+                        newObject?["detectedDate"] = Date(timeIntervalSince1970: 0)
 
+                        let data = ExposureDataV1()
+                        data.duration = oldObject?["duration"] as? Double ?? 0
+                        data.totalRiskScore = oldObject?["totalRiskScore"] as? Int ?? 0
+                        data.transmissionRiskLevel = oldObject?["transmissionRiskLevel"] as? Int ?? 0
+                        data.attenuationValue = oldObject?["attenuationValue"] as? Int ?? 0
+                        data.attenuationDurations = oldObject?["attenuationDurations"] as? List<Int> ?? List()
+
+                        oldV1Data[oldObject?["id"] as? String ?? ""] = data
+                    }
                 }
             }
         )
@@ -41,7 +54,19 @@ final class AppDependency {
         Realm.Configuration.defaultConfiguration = configuration
 
         // swiftlint:disable force_try
-        return try! Realm()
+        let realm = try! Realm()
         // swiftlint:enable force_try
+
+        if !oldV1Data.values.isEmpty {
+            let exposures = realm.objects(ExposureRealm.self)
+            try? realm.write {
+                for (key, value) in oldV1Data {
+                    let exposure = exposures.first(where: { $0.id == key })
+                    exposure?.dataV1 = value
+                }
+            }
+        }
+
+        return realm
     }
 }
