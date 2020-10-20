@@ -31,10 +31,10 @@ final class AppDependency {
         var oldV1Data: [String: ExposureDataV1] = [:]
 
         let configuration = Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 9,
 
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 2 {
+                if oldSchemaVersion < 9 {
                     migration.enumerateObjects(ofType: ExposureRealm.className()) { oldObject, newObject in
                         newObject?["detectedDate"] = Date(timeIntervalSince1970: 0)
 
