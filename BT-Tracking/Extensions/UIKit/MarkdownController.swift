@@ -12,9 +12,7 @@ class MarkdownController: UIViewController {
 
     // MARK: - Public Properties
 
-    var markdownContent: String {
-        ""
-    }
+    var markdownContent: String = ""
     var contentView = UIView()
 
     // MARK: - Private Properties
