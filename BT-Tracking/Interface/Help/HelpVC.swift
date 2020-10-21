@@ -115,7 +115,7 @@ final class HelpVC: MarkdownController {
             guard let article = sender as? ArticleModel else { return }
             let controller = segue.destination as? HelpArticleVC
             controller?.title = article.title
-            controller?.markdownContent = article.lines.map { $0.line }.joined(separator: "\n")
+            controller?.markdownLines = article.lines
         default:
             break
         }
