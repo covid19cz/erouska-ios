@@ -43,6 +43,7 @@ internal enum Asset {
   internal static let exposuresOff = ImageAsset(name: "ExposuresOff")
   internal static let forceOSUpdate = ImageAsset(name: "ForceOSUpdate")
   internal static let forceUpdate = ImageAsset(name: "ForceUpdate")
+  internal static let helpBackground = ColorAsset(name: "HelpBackground")
   internal static let iconsColor = ColorAsset(name: "IconsColor")
   internal static let launchScreenBackground = ColorAsset(name: "LaunchScreenBackground")
   internal static let launchScreenHands = ImageAsset(name: "LaunchScreenHands")

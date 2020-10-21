@@ -84,9 +84,11 @@ final class HelpVC: MarkdownController {
 
         title = L10n.helpTitle
         navigationItem.searchController = searchController
-        navigationItem.searchController?.showsSearchResultsController = true
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.rightBarButtonItem?.title = L10n.about
+
+        view.backgroundColor = Asset.helpBackground.color
+        tableView.backgroundColor = view.backgroundColor
 
         setupDataSource()
 
