@@ -122,11 +122,12 @@ private extension HelpSearchVC {
     }
 
     func highlightedString(string: String, startsFrom: Int = 0) -> NSAttributedString {
-        var range = (string as NSString).range(of: searchText, options: .caseInsensitive)
+        let options: NSString.CompareOptions = [NSString.CompareOptions.caseInsensitive, .diacriticInsensitive]
+        var range = (string as NSString).range(of: searchText, options: options)
         let attributedString: NSMutableAttributedString
-        if startsFrom != 0, range.location > startsFrom {
+        if startsFrom != 0, range.location != NSNotFound, range.location > startsFrom {
             let newString = "..." + (string as NSString).substring(from: range.location - startsFrom)
-            range = (newString as NSString).range(of: searchText, options: .caseInsensitive)
+            range = (newString as NSString).range(of: searchText, options: options)
             attributedString = NSMutableAttributedString(string: newString, attributes: [.foregroundColor: UIColor.darkText])
         } else {
             attributedString = NSMutableAttributedString(string: string, attributes: [.foregroundColor: UIColor.darkText])
