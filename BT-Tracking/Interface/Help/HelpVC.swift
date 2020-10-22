@@ -83,6 +83,12 @@ final class HelpVC: UIViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewModel.update()
+    }
+
 }
 
 private extension HelpVC {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HelpSearchItem: NSObject {
+private class HelpSearchItem: NSObject {
     let article: HelpArticle
     @objc dynamic let type: String
     @objc dynamic let line: String
@@ -20,7 +20,7 @@ class HelpSearchItem: NSObject {
     }
 }
 
-class HelpSearchVC: UITableViewController {
+final class HelpSearchVC: UITableViewController {
 
     var articles: [HelpVM.Section] = [] {
         didSet {

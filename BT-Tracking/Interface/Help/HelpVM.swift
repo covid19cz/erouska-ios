@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyMarkdown
 import RxSwift
+import RxCocoa
 import RxDataSources
 
 struct HelpArticle: Equatable {
@@ -21,7 +22,7 @@ struct HelpArticle: Equatable {
     }
 }
 
-struct HelpVM {
+final class HelpVM {
 
     var chatbotLink: String {
         RemoteValues.chatBotLink
@@ -34,9 +35,13 @@ struct HelpVM {
     )
 
     typealias Section = SectionModel<String, HelpArticle>
-    var sections: Observable<[Section]>
+    let sections = BehaviorRelay<[Section]>(value: [])
 
     init() {
+        update()
+    }
+
+    func update() {
         var convertedMarkdown = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
         convertedMarkdown = convertedMarkdown.replacingOccurrences(of: "(.pdf)", with: "")
 
@@ -65,7 +70,7 @@ struct HelpVM {
             }
         }
 
-        self.sections = Observable.just(sections)
+        self.sections.accept(sections)
     }
 
 }
