@@ -113,6 +113,8 @@
 		809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8B24AF8BFB00D34CC9 /* RxCocoa */; };
 		809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8E24AF8C2900D34CC9 /* RxDataSources */; };
 		809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9124AF8C3700D34CC9 /* RxKeyboard */; };
+		80A0AADC2541AAC700D35282 /* HelpSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */; };
+		80A0AADD2541AAC700D35282 /* HelpSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */; };
 		80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCA24AF8CBD0088D256 /* DeviceKit */; };
 		80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCD24AF8D0B0088D256 /* Reachability */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
@@ -307,6 +309,7 @@
 		8084DEED24AF8055001FBB16 /* CountryCodesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodesService.swift; sourceTree = "<group>"; };
 		8084DEEF24AF8425001FBB16 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		8084DEF624AF86C1001FBB16 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
+		80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSearchVC.swift; sourceTree = "<group>"; };
 		80B94554242B7B460052CD9F /* ActiveAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVM.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -765,6 +768,7 @@
 				80631A95242CA27800EB0B6C /* HelpVC.swift */,
 				80CA44DB244B3769008E22F8 /* HelpVM.swift */,
 				80D0B5E325401D37000C3FE5 /* HelpArticleVC.swift */,
+				80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */,
 				8064DF84244F3FFD005E8AA3 /* AboutVC.swift */,
 				8064DF88244F4026005E8AA3 /* AboutVM.swift */,
 			);
@@ -1238,6 +1242,7 @@
 				8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */,
 				80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
+				80A0AADC2541AAC700D35282 /* HelpSearchVC.swift in Sources */,
 				80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
 				804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */,
@@ -1352,6 +1357,7 @@
 				8083D8BD244640A0007FA4E9 /* RemoteValues.swift in Sources */,
 				8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */,
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
+				80A0AADD2541AAC700D35282 /* HelpSearchVC.swift in Sources */,
 				8053CD092538A61C00C1820E /* ExposureList.swift in Sources */,
 				D6231CA024E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */,
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
