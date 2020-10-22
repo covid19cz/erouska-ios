@@ -219,7 +219,7 @@ private extension ActiveAppVC {
         viewModel.updateStateIfNeeded()
     }
 
-    func updateScanner(activate: Bool, completion: @escaping () -> Void) {
+    func updateScanner(activate: Bool, completion: @escaping CallbackVoid) {
         if activate {
             viewModel.exposureService.activate { [weak self] error in
                 guard let self = self else { return }
@@ -227,34 +227,7 @@ private extension ActiveAppVC {
                 if let error = error {
                     switch error {
                     case .activationError(let code):
-                        switch code {
-                        case .notAuthorized, .notEnabled:
-                            break
-                        case .unsupported:
-                            self.viewModel.exposureService.deactivate { [weak self] _ in
-                                self?.viewModel.exposureService.activate { [weak self] error in
-                                    guard let error = error else { return }
-                                    switch error {
-                                    case .activationError(let code):
-                                        self?.showExposureUnknownError(error, code: code, activation: true)
-                                    default:
-                                        self?.showExposureUnknownError(error, activation: true)
-                                    }
-                                }
-                            }
-                        case .restricted:
-                            self.showAlert(
-                                title: L10n.exposureActivationRestrictedTitle,
-                                message: L10n.exposureActivationRestrictedBody,
-                                okTitle: L10n.exposureActivationRestrictedSettingsAction,
-                                okHandler: { [weak self] in self?.openSettings() },
-                                action: (title: L10n.exposureActivationRestrictedCancelAction, handler: nil)
-                            )
-                        case .insufficientStorage, .insufficientMemory:
-                            self.showExposureStorageError()
-                        default:
-                            self.showExposureUnknownError(error, code: code, activation: true)
-                        }
+                        self.displayScannerError(error, code: code)
                     default:
                         self.showExposureUnknownError(error, activation: true)
                     }
@@ -270,6 +243,37 @@ private extension ActiveAppVC {
                 }
                 completion()
             }
+        }
+    }
+
+    func displayScannerError(_ error: ExposureError, code: ENError.Code) {
+        switch code {
+        case .notAuthorized, .notEnabled:
+            break
+        case .unsupported:
+            viewModel.exposureService.deactivate { [weak self] _ in
+                self?.viewModel.exposureService.activate { [weak self] error in
+                    guard let error = error else { return }
+                    switch error {
+                    case .activationError(let code):
+                        self?.showExposureUnknownError(error, code: code, activation: true)
+                    default:
+                        self?.showExposureUnknownError(error, activation: true)
+                    }
+                }
+            }
+        case .restricted:
+            showAlert(
+                title: L10n.exposureActivationRestrictedTitle,
+                message: L10n.exposureActivationRestrictedBody,
+                okTitle: L10n.exposureActivationRestrictedSettingsAction,
+                okHandler: { [weak self] in self?.openSettings() },
+                action: (title: L10n.exposureActivationRestrictedCancelAction, handler: nil)
+            )
+        case .insufficientStorage, .insufficientMemory:
+            showExposureStorageError()
+        default:
+            showExposureUnknownError(error, code: code, activation: true)
         }
     }
 

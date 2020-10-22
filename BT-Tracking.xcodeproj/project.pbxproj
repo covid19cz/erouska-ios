@@ -31,6 +31,8 @@
 		805192AC24AF8E2700765392 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AB24AF8E2700765392 /* Reachability */; };
 		805192AE24AF8E2700765392 /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 805192AD24AF8E2700765392 /* SwiftyMarkdown */; };
 		8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */; };
+		8053CCFC2538A2A000C1820E /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053CCFB2538A2A000C1820E /* Callback.swift */; };
+		8053CCFD2538A2A000C1820E /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053CCFB2538A2A000C1820E /* Callback.swift */; };
 		8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0B0241D492F008907B8 /* AppDelegate.swift */; };
 		8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
@@ -263,6 +265,7 @@
 		802AFE4325135BC0004954AF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
 		8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureService.swift; sourceTree = "<group>"; };
+		8053CCFB2538A2A000C1820E /* Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
 		8054C0AD241D492F008907B8 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8054C0B0241D492F008907B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8054C0B7241D492F008907B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Debug.storyboard; sourceTree = "<group>"; };
@@ -679,6 +682,7 @@
 				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 				802AFE4325135BC0004954AF /* Notifications.swift */,
 				D6340C6124C1F46D00E550A1 /* Version.swift */,
+				8053CCFB2538A2A000C1820E /* Callback.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -861,8 +865,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska Dev" */;
 			buildPhases = (
-				80FBE64D252477B0005D6C05 /* Run Swift Gen & Lint */,
 				E0A1723CD1B050C9925359D5 /* [CP] Check Pods Manifest.lock */,
+				80FBE64D252477B0005D6C05 /* Run Swift Gen & Lint */,
 				8054C0A9241D492F008907B8 /* Sources */,
 				8054C0AA241D492F008907B8 /* Frameworks */,
 				8054C0AB241D492F008907B8 /* Resources */,
@@ -897,8 +901,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8083D8F1244640A0007FA4E9 /* Build configuration list for PBXNativeTarget "eRouska Prod" */;
 			buildPhases = (
-				80FBE64E252477D4005D6C05 /* Run Swift Gen & Lint */,
 				8083D8A6244640A0007FA4E9 /* [CP] Check Pods Manifest.lock */,
+				80FBE64E252477D4005D6C05 /* Run Swift Gen & Lint */,
 				8083D8A7244640A0007FA4E9 /* Sources */,
 				8083D8E1244640A0007FA4E9 /* Frameworks */,
 				8083D8E3244640A0007FA4E9 /* Resources */,
@@ -1220,6 +1224,7 @@
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
+				8053CCFC2538A2A000C1820E /* Callback.swift in Sources */,
 				80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
 				80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */,
@@ -1308,6 +1313,7 @@
 				80D2345424E31DFF00F684AA /* SendReportsVC.swift in Sources */,
 				8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */,
 				80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */,
+				8053CCFD2538A2A000C1820E /* Callback.swift in Sources */,
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
 				D6CD28E724CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
@@ -1545,7 +1551,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1553,7 +1559,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
@@ -1572,7 +1578,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1580,7 +1586,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
@@ -1598,7 +1604,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1606,7 +1612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
@@ -1626,7 +1632,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1634,7 +1640,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";

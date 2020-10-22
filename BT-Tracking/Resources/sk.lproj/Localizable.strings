@@ -50,17 +50,34 @@ Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "share_app_message" = "Ahoj, používam aplikáciu eRouška. Nainštaluj si ju tiež a spoločne pomôžme zastaviť šírenie ochorenia COVID-19. Aplikácia zbiera anonymné údaje o telefónoch v blízkosti, aby pracovníci hygieny mohli jednoduchšie dohľadať potenciálne nakazených. Čím viac nás bude, tým lepšie to bude fungovať. Aplikáciu nájdeš na %@/";
 "data_list_title" = "Aktuálne";
 "data_list_send_title" = "Odoslať údaje";
-"data_list_send_headline" = "V prípade potvrdenej nákazy ochorením COVID-19 vás bude kontaktovať pracovník hygienickej stanice. Odošle vám SMS správu obsahujúcu overovací kód na povolenie odoslania dát.";
+"data_list_send_headline" = "V prípade potvrdenej nákazy COVID-19 obdržíte SMS správu obsahujúcu overovací kód, aby ste mohli upozorniť ostatných užívateľov eRoušky.";
 "data_list_send_placeholder" = "Overovací kód (povinné)";
 "data_list_send_action_title" = "Overiť a odoslať dáta";
+
+"data_list_send_error_file_title" = "Nepodarilo sa vytvoriť súbor so stretnutiami";
+
+"data_list_send_error_no_keys" = "Nemáte žiadne kľúče k odoslaniu, skúste to neskôr.";
+
+"data_list_send_error_wrong_code_title" = "Ověřovací kód není správně zadaný, zkuste to znovu.";
+
+"data_list_send_error_expired_code_title" = "Vypršela platnost ověřovacího kódu.";
+"data_list_send_error_expired_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
+
+"data_list_send_error_framework_title" = "Nepodařilo se nám získat data.";
+"data_list_send_error_framework_message" = "Zkontrolujte zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+
+"data_list_send_error_save_title" = "Nepodařilo se nám odeslat data na server.";
+"data_list_send_error_save_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+
+"data_list_send_error_title" = "Nepodařilo se nám odeslat data.";
+"data_list_send_error_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+
+"data_list_send_error_disabled_title" = "Data nyní nemůžete odeslat";
+"data_list_send_error_disabled_message" = "V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.";
+
 "data_list_send_error_failed_title" = "Nepodarilo sa nám odoslať údaje";
 "data_list_send_error_failed_message" = "Skontrolujte pripojenie k inernetu a skúste to znova.";
-"data_list_send_error_file_title" = "Nepodarilo sa vytvoriť súbor so stretnutiami";
-"data_list_send_error_no_keys" = "Nemáte žiadne kľúče k odoslaniu, skúste to neskôr.";
-"data_list_send_error_wrong_code_title" = "Neplatný overovací kód";
-"data_list_send_error_wrong_code_message" = "Požiadajte pracovníka hygienickej stanice o zaslanie novej SMS správy s overovacím kódom.";
-"data_list_send_error_disabled_title" = "Údaje momentálne nemôžete odoslať";
-"data_list_send_error_disabled_message" = "V sekcii Nastavenia svojho zariadenia zapnite Oznáámenia o kontakte s COVID-19 a odosielanie dát bude možné.";
+
 "data_send_title" = "Odoslané";
 "data_send_title_label" = "Údaje ste úspešne odoslali";
 "data_send_headline" = "Ďakujeme, že pomáhate bojovať proti šíreniu ochorenia COVID-19.";

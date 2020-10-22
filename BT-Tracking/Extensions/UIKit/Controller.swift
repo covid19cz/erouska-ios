@@ -11,16 +11,15 @@ import SafariServices
 
 extension UIViewController {
 
-    typealias Callback = () -> Void
-    typealias AlertAction = (title: String, handler: Callback?)
+    typealias AlertAction = (title: String, handler: CallbackVoid?)
 
     /// show default error alert, localization keys are expected
-    func show(error: Error, title: String = L10n.error, okTitle: String = L10n.ok, okHandler: Callback? = nil) {
+    func show(error: Error, title: String = L10n.error, okTitle: String = L10n.ok, okHandler: CallbackVoid? = nil) {
         showAlert(title: title, message: "\(error)", okTitle: okTitle, okHandler: okHandler)
     }
 
     /// show alert, localization keys are expected
-    func showAlert(title: String = L10n.error, message: String? = nil, okTitle: String = L10n.ok, okHandler: Callback? = nil, action: AlertAction? = nil) {
+    func showAlert(title: String = L10n.error, message: String? = nil, okTitle: String = L10n.ok, okHandler: CallbackVoid? = nil, action: AlertAction? = nil) {
         let alertController = UIAlertController(
             title: title,
             message: message == nil ? nil : message,

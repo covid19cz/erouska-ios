@@ -158,7 +158,7 @@ private extension SendReportsVC {
             case .failure(let error):
                 log("DataListVC: Failed to verify code \(error)")
                 self?.reportHideProgress()
-                self?.showVerifyError()
+                self?.showVerifyError(error)
             }
         }
     }
@@ -176,9 +176,6 @@ private extension SendReportsVC {
     }
 
     func sendReport(with type: ReportType, token: String) {
-        let verificationService = AppDelegate.dependency.verification
-        let reportService = AppDelegate.dependency.reporter
-        let exposureService = AppDelegate.dependency.exposureService
         let callback: ExposureServicing.KeysCallback = { [weak self] result in
             guard let self = self else { return }
 
@@ -190,25 +187,7 @@ private extension SendReportsVC {
                     self.showNoKeysError()
                     return
                 }
-
-                do {
-                    let secret = Data.random(count: 32)
-                    let hmacKey = try reportService.calculateHmacKey(keys: keys, secret: secret)
-                    verificationService.requestCertificate(token: token, hmacKey: hmacKey) { result in
-                        switch result {
-                        case .success(let certificate):
-                            self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret)
-                        case .failure(let error):
-                            log("DataListVC: Failed to get verification payload \(error)")
-                            self.reportHideProgress()
-                            self.showSendDataError()
-                        }
-                    }
-                } catch {
-                    log("DataListVC: Failed to get hmac for keys \(error)")
-                    self.reportHideProgress()
-                    self.showSendDataError()
-                }
+                self.requestCertificate(keys: keys, token: token)
             case .failure(let error):
                 log("DataListVC: Failed to get exposure keys \(error)")
                 self.reportHideProgress()
@@ -218,16 +197,38 @@ private extension SendReportsVC {
                     self.resultAction()
                     self.showNoKeysError()
                 default:
-                    self.showSendDataError()
+                    self.showSendDataFrameworkError(code: error.localizedDescription)
                 }
             }
         }
 
+        let exposureService = AppDelegate.dependency.exposureService
         switch type {
         case .test:
             exposureService.getTestDiagnosisKeys(callback: callback)
         case .normal:
             exposureService.getDiagnosisKeys(callback: callback)
+        }
+    }
+
+    func requestCertificate(keys: [ExposureDiagnosisKey], token: String) {
+        do {
+            let secret = Data.random(count: 32)
+            let hmacKey = try AppDelegate.dependency.reporter.calculateHmacKey(keys: keys, secret: secret)
+            AppDelegate.dependency.verification.requestCertificate(token: token, hmacKey: hmacKey) { result in
+                switch result {
+                case .success(let certificate):
+                    self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret)
+                case .failure(let error):
+                    log("DataListVC: Failed to get verification payload \(error)")
+                    self.reportHideProgress()
+                    self.showSendDataError()
+                }
+            }
+        } catch {
+            log("DataListVC: Failed to get hmac for keys \(error)")
+            self.reportHideProgress()
+            self.showSendDataError()
         }
     }
 
@@ -246,19 +247,60 @@ private extension SendReportsVC {
         }
     }
 
-    func showVerifyError() {
-        showAlert(
-            title: L10n.dataListSendErrorWrongCodeTitle,
-            message: L10n.dataListSendErrorWrongCodeMessage,
-            okHandler: { [weak self] in
-                self?.codeTextField.text = nil
-                self?.codeTextField.becomeFirstResponder()
+    func showVerifyError(_ error: VerificationError) {
+        switch error {
+        case let .tokenError(status, code):
+            switch code {
+            case .codeInvalid:
+                showAlert(
+                    title: L10n.dataListSendErrorWrongCodeTitle,
+                    okHandler: { [weak self] in
+                        self?.codeTextField.text = nil
+                        self?.codeTextField.becomeFirstResponder()
+                    }
+                )
+            case .codeExpired, .codeNotFound:
+                showAlert(
+                    title: L10n.dataListSendErrorExpiredCodeTitle,
+                    message: L10n.dataListSendErrorExpiredCodeMessage,
+                    okHandler: { [weak self] in
+                        self?.codeTextField.text = nil
+                        self?.codeTextField.becomeFirstResponder()
+                    }
+                )
+            default:
+                showAlert(
+                    title: L10n.dataListSendErrorTitle,
+                    message: L10n.dataListSendErrorMessage("\(status.rawValue)-" + code.rawValue)
+                )
             }
-        )
+        case let .certificateError(status, code):
+            showAlert(
+                title: L10n.dataListSendErrorTitle,
+                message: L10n.dataListSendErrorMessage("\(status.rawValue)-" + code.rawValue)
+            )
+        case let .generalError(status, code):
+            showAlert(
+                title: L10n.dataListSendErrorTitle,
+                message: L10n.dataListSendErrorMessage("\(status.rawValue)-" + code)
+            )
+        case .noData:
+            showAlert(
+                title: L10n.dataListSendErrorTitle,
+                message: L10n.dataListSendErrorMessage("noData")
+            )
+        }
     }
 
     func showNoKeysError() {
         showAlert(title: L10n.dataListSendErrorNoKeys)
+    }
+
+    func showSendDataFrameworkError(code: String) {
+        showAlert(
+            title: L10n.dataListSendErrorFrameworkTitle,
+            message: L10n.dataListSendErrorFrameworkMessage(code)
+        )
     }
 
     func showSendDataError() {
