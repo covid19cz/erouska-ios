@@ -30,12 +30,15 @@ internal enum Asset {
   internal static let appPaused = ColorAsset(name: "AppPaused")
   internal static let conditionsOfUse = ImageAsset(name: "ConditionsOfUse")
   internal enum CurrentData {
+    internal static let activations = ImageAsset(name: "CurrentData/Activations")
     internal static let active = ImageAsset(name: "CurrentData/Active")
     internal static let covid = ImageAsset(name: "CurrentData/Covid")
     internal static let death = ImageAsset(name: "CurrentData/Death")
     internal static let healthy = ImageAsset(name: "CurrentData/Healthy")
     internal static let hospital = ImageAsset(name: "CurrentData/Hospital")
     internal static let measures = ImageAsset(name: "CurrentData/Measures")
+    internal static let notifications = ImageAsset(name: "CurrentData/Notifications")
+    internal static let sentData = ImageAsset(name: "CurrentData/SentData")
     internal static let tests = ImageAsset(name: "CurrentData/Tests")
   }
   internal static let error = ImageAsset(name: "Error")
