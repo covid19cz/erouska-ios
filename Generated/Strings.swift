@@ -92,6 +92,24 @@ internal enum L10n {
   internal static let contactsImportantHeadline = L10n.tr("Localizable", "contacts_important_headline")
   /// Kontakty
   internal static let contactsTitle = L10n.tr("Localizable", "contacts_title")
+  /// %@ aktivovaných aplikací
+  internal static func currentDataAppActivations(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_app_activations", String(describing: p1))
+  }
+  /// %@ za %@
+  internal static func currentDataAppFrom(_ p1: Any, _ p2: Any) -> String {
+    return L10n.tr("Localizable", "current_data_app_from", String(describing: p1), String(describing: p2))
+  }
+  /// eRouška v číslech
+  internal static let currentDataAppHeader = L10n.tr("Localizable", "current_data_app_header")
+  /// %@ pozitivně testovaných anonymně varovalo ostatní
+  internal static func currentDataAppKeyPublishers(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_app_key_publishers", String(describing: p1))
+  }
+  /// %@ upozornění na riziková setkání
+  internal static func currentDataAppNotifications(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_app_notifications", String(describing: p1))
+  }
   /// Poslední aktualizace %@
   internal static func currentDataFooter(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_footer", String(describing: p1))
@@ -128,6 +146,8 @@ internal enum L10n {
   }
   /// Aktuální opatření
   internal static let currentDataMeasures = L10n.tr("Localizable", "current_data_measures")
+  /// Informace o aktuálních opatřeních
+  internal static let currentDataMeasuresHeader = L10n.tr("Localizable", "current_data_measures_header")
   /// Riziková setkání zjištěná
   internal static let dataListPreviousHeader = L10n.tr("Localizable", "data_list_previous_header")
   /// Ověřit a odeslat data

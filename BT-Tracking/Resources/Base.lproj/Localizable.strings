@@ -150,6 +150,7 @@
 "exposure_detected_title" = "Setkali jste se s osobou, u které bylo potvrzeno onemocenění COVID-19";
 "current_data_footer" = "Poslední aktualizace %@";
 "current_data_measures" = "Aktuální opatření";
+"current_data_measures_header" = "Informace o aktuálních opatřeních";
 "current_data_item_header" = "Aktuální situace v číslech";
 "current_data_item_tests" = "%@ provedených testů";
 "current_data_item_confirmed" = "%@ celkem potvrzených případů";
@@ -158,3 +159,8 @@
 "current_data_item_deaths" = "%@ úmrtí";
 "current_data_item_hospitalized" = "%@ aktuálně hospitalizovaných";
 "current_data_item_yesterday" = "Za včerejší den %@";
+"current_data_app_header" = "eRouška v číslech";
+"current_data_app_activations" = "%@ aktivovaných aplikací";
+"current_data_app_key_publishers" = "%@ pozitivně testovaných anonymně varovalo ostatní";
+"current_data_app_notifications" = "%@ upozornění na riziková setkání";
+"current_data_app_from" = "%@ za %@";

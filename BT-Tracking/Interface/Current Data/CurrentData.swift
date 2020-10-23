@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 final class CurrentDataRealm: Object {
+
     @objc dynamic var testsTotal: Int = 0
     @objc dynamic var testsIncrease: Int = 0
     @objc dynamic var confirmedCasesTotal: Int = 0
@@ -19,6 +20,14 @@ final class CurrentDataRealm: Object {
     @objc dynamic var deceasedTotal: Int = 0
     @objc dynamic var currentlyHospitalizedTotal: Int = 0
 
+    @objc dynamic var appDate: Date?
+    @objc dynamic var activationsYesterday: Int = 0
+    @objc dynamic var activationsTotal: Int = 0
+    @objc dynamic var keyPublishersYesterday: Int = 0
+    @objc dynamic var keyPublishersTotal: Int = 0
+    @objc dynamic var notificationsYesterday: Int = 0
+    @objc dynamic var notificationsTotal: Int = 0
+
     convenience init(
         testsTotal: Int,
         testsIncrease: Int,
@@ -27,7 +36,14 @@ final class CurrentDataRealm: Object {
         activeCasesTotal: Int,
         curedTotal: Int,
         deceasedTotal: Int,
-        currentlyHospitalizedTotal: Int
+        currentlyHospitalizedTotal: Int,
+        appDate: Date?,
+        activationsYesterday: Int,
+        activationsTotal: Int,
+        keyPublishersYesterday: Int,
+        keyPublishersTotal: Int,
+        notificationsYesterday: Int,
+        notificationsTotal: Int
     ) {
         self.init()
 
@@ -39,6 +55,14 @@ final class CurrentDataRealm: Object {
         self.curedTotal = curedTotal
         self.deceasedTotal = deceasedTotal
         self.currentlyHospitalizedTotal = currentlyHospitalizedTotal
+
+        self.appDate = appDate
+        self.activationsYesterday = activationsYesterday
+        self.activationsTotal = activationsTotal
+        self.keyPublishersYesterday = keyPublishersYesterday
+        self.keyPublishersTotal = keyPublishersTotal
+        self.notificationsYesterday = notificationsYesterday
+        self.notificationsTotal = notificationsTotal
     }
 
     func update(with data: [String: Any]) {
@@ -51,4 +75,38 @@ final class CurrentDataRealm: Object {
         if let value = data["deceasedTotal"] as? Int { deceasedTotal = value }
         if let value = data["currentlyHospitalizedTotal"] as? Int { currentlyHospitalizedTotal = value }
     }
+
+    func update(with data: AppCurrentData) {
+        self.appDate = data.date
+        self.activationsYesterday = data.activationsYesterday
+        self.activationsTotal = data.activationsTotal
+        self.keyPublishersYesterday = data.keyPublishersYesterday
+        self.keyPublishersTotal = data.keyPublishersTotal
+        self.notificationsYesterday = data.notificationsYesterday
+        self.notificationsTotal = data.notificationsTotal
+    }
+
+}
+
+struct AppCurrentData: Decodable {
+
+    let modified: Int
+    let date: Date?
+    let activationsYesterday: Int
+    let activationsTotal: Int
+    let keyPublishersYesterday: Int
+    let keyPublishersTotal: Int
+    let notificationsYesterday: Int
+    let notificationsTotal: Int
+
+    private enum CodingKeys: String, CodingKey {
+        case modified, date
+        case activationsYesterday = "activations_yesterday"
+        case activationsTotal = "activations_total"
+        case keyPublishersYesterday = "key_publishers_yesterday"
+        case keyPublishersTotal = "key_publishers_total"
+        case notificationsYesterday = "notifications_yesterday"
+        case notificationsTotal = "notifications_total"
+    }
+
 }

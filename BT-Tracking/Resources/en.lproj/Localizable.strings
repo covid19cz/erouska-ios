@@ -143,6 +143,7 @@
 "exposure_detected_title" = "You have encountered someone who tested positive for COVID-19";
 "current_data_footer" = "Last update %@";
 "current_data_measures" = "Current measures";
+"current_data_measures_header" = "Informace o aktuálních opatřeních";
 "current_data_item_header" = "Current situation in numbers";
 "current_data_item_tests" = "%@ performed tests";
 "current_data_item_confirmed" = "%@ confirmed positive cases";
@@ -151,3 +152,8 @@
 "current_data_item_deaths" = "%@ deceased";
 "current_data_item_hospitalized" = "%@ currently hospitalized";
 "current_data_item_yesterday" = "%@ yesterday";
+"current_data_app_header" = "eRouška v číslech";
+"current_data_app_activations" = "%@ aktivovaných aplikací";
+"current_data_app_key_publishers" = "%@ pozitivně testovaných anonymně varovalo ostatní";
+"current_data_app_notifications" = "%@ upozornění na riziková setkání";
+"current_data_app_from" = "%@ za %@";
