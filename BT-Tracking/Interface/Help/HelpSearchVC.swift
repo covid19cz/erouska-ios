@@ -128,9 +128,9 @@ private extension HelpSearchVC {
         if startsFrom != 0, range.location != NSNotFound, range.location > startsFrom {
             let newString = "..." + (string as NSString).substring(from: range.location - startsFrom)
             range = (newString as NSString).range(of: searchText, options: options)
-            attributedString = NSMutableAttributedString(string: newString, attributes: [.foregroundColor: UIColor.darkText])
+            attributedString = NSMutableAttributedString(string: newString, attributes: [.foregroundColor: UIColor.label])
         } else {
-            attributedString = NSMutableAttributedString(string: string, attributes: [.foregroundColor: UIColor.darkText])
+            attributedString = NSMutableAttributedString(string: string, attributes: [.foregroundColor: UIColor.label])
         }
 
         if range.location != NSNotFound {

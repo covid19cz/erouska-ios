@@ -33,6 +33,7 @@ final class HelpVC: UIViewController {
 
         title = L10n.helpTitle
         navigationItem.rightBarButtonItem?.title = L10n.about
+        navigationController?.tabBarItem.title = L10n.helpTabTitle
 
         view.backgroundColor = Asset.helpBackground.color
         tableView.backgroundColor = view.backgroundColor
