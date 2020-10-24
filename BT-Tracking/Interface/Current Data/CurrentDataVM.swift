@@ -218,7 +218,7 @@ private extension CurrentDataVM {
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.sentData,
-                    title: L10n.currentDataAppActivations(formattedValue(data.keyPublishersTotal)),
+                    title: L10n.currentDataAppKeyPublishers(formattedValue(data.keyPublishersTotal)),
                     subtitle: L10n.currentDataAppFrom(
                         formattedValue(data.keyPublishersYesterday, showSign: true),
                         dateFormatter.string(from: data.appDate ?? Date())
@@ -226,7 +226,7 @@ private extension CurrentDataVM {
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.notifications,
-                    title: L10n.currentDataAppActivations(formattedValue(data.notificationsTotal)),
+                    title: L10n.currentDataAppNotifications(formattedValue(data.notificationsTotal)),
                     subtitle: L10n.currentDataAppFrom(
                         formattedValue(data.notificationsYesterday, showSign: true),
                         dateFormatter.string(from: data.appDate ?? Date())

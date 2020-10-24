@@ -86,7 +86,6 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="6Hz-ka-y0d" firstAttribute="top" secondItem="NPr-nW-OEO" secondAttribute="bottom" constant="2" id="6N6-iE-99r"/>
                                                         <constraint firstItem="6Hz-ka-y0d" firstAttribute="leading" secondItem="viP-kw-UX8" secondAttribute="leading" id="8QW-qw-EN0"/>
