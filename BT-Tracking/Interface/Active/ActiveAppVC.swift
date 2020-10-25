@@ -304,7 +304,7 @@ private extension ActiveAppVC {
         textLabel.text = viewModel.state.text
 
         if viewModel.state == .enabled, let update = AppSettings.lastProcessedDate {
-            lastUpdateLabel.text = L10n.activeDataUpdate(viewModel.dateFormatter.string(from: update))
+            lastUpdateLabel.text = L10n.activeDataUpdate(DateFormatter.baseDateTimeFormatter.string(from: update))
             lastUpdateLabel.isHidden = false
         } else {
             lastUpdateLabel.isHidden = true
@@ -409,7 +409,7 @@ private extension ActiveAppVC {
                         var result = ""
                         for exposure in exposures {
                             let signals = exposure.attenuationDurations.map { "\($0)" }
-                            result += "EXP: \(self.viewModel.dateFormatter.string(from: exposure.date))" +
+                            result += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
                                 ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
                                 + "attenuation value: \(exposure.attenuationValue)\n"
                                 + "signal attenuations: \(signals.joined(separator: ", "))\n"

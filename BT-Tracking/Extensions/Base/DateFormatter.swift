@@ -19,7 +19,7 @@ extension DateFormatter {
 
     static var baseDateTimeFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .medium
+        dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .medium
         return dateFormatter
     }()

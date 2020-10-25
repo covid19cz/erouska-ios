@@ -16,13 +16,6 @@ final class RiskyEncountersNegativeVC: UIViewController {
     private let viewModel = RiskyEncountersNegativeVM()
     private let disposeBag = DisposeBag()
 
-    private lazy var dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .medium
-        return dateFormatter
-    }()
-
     // MARK: -
 
     override func viewDidLoad() {

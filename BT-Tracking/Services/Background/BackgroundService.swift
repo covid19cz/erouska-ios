@@ -226,14 +226,11 @@ private extension BackgroundService {
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
 
         #if !PROD || DEBUG
-        let dateFormat = DateFormatter()
-        dateFormat.timeStyle = .short
-        dateFormat.dateStyle = .short
 
         var result = ""
         for exposure in exposures {
             let signals = exposure.attenuationDurations.map { "\($0)" }
-            result += "EXP: \(dateFormat.string(from: exposure.date))" +
+            result += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
                 ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
                 + "attenuation value: \(exposure.attenuationValue)\n"
                 + "signal attenuations: \(signals.joined(separator: ", "))\n"

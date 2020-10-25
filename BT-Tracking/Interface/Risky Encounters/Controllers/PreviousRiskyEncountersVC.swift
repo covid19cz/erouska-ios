@@ -79,7 +79,7 @@ final class PreviousRiskyEncountersVC: UIViewController {
 
     private func configureCell(_ item: Exposure) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousRiskyEncountersCell") ?? UITableViewCell()
-        cell.textLabel?.text = self.viewModel.dateFormatter.string(from: item.date)
+        cell.textLabel?.text = DateFormatter.baseDateFormatter.string(from: item.date)
         #if DEBUG || !PROD
         cell.selectionStyle = .default
         cell.accessoryType = .disclosureIndicator
