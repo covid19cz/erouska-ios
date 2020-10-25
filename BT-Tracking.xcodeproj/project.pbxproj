@@ -163,6 +163,8 @@
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
 		BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
+		D610103325448E47007B01CF /* ActiveAppSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610103225448E47007B01CF /* ActiveAppSectionView.swift */; };
+		D610103425448E47007B01CF /* ActiveAppSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610103225448E47007B01CF /* ActiveAppSectionView.swift */; };
 		D61DFE5524C1A936002E1B2E /* ForceUpdate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */; };
 		D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */; };
 		D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */; };
@@ -341,6 +343,7 @@
 		BDBB00D724261D5C00871FE4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		C4E1A1B424311D3800108325 /* RemoteValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteValues.swift; sourceTree = "<group>"; };
+		D610103225448E47007B01CF /* ActiveAppSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppSectionView.swift; sourceTree = "<group>"; };
 		D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForceUpdate.storyboard; sourceTree = "<group>"; };
 		D61DFE5624C1AFC6002E1B2E /* ForceUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVC.swift; sourceTree = "<group>"; };
 		D61DFE5B24C1B03F002E1B2E /* ForceUpdateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateVM.swift; sourceTree = "<group>"; };
@@ -744,6 +747,7 @@
 				BD0191462424331900707341 /* Active.storyboard */,
 				BD979AEA242565AF004001ED /* ActiveAppVC.swift */,
 				80B94554242B7B460052CD9F /* ActiveAppVM.swift */,
+				D610103225448E47007B01CF /* ActiveAppSectionView.swift */,
 			);
 			path = Active;
 			sourceTree = "<group>";
@@ -1233,6 +1237,7 @@
 				D6231CA724E400C70023BDC8 /* MainSymptomsVM.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				80FBE65325247974005D6C05 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
+				D610103325448E47007B01CF /* ActiveAppSectionView.swift in Sources */,
 				D6231CBE24F39BC90023BDC8 /* IntrinsicTableView.swift in Sources */,
 				8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */,
 				D65E57D924D056D6000F2402 /* NewsPageView.swift in Sources */,
@@ -1383,6 +1388,7 @@
 				8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */,
 				D65E57E324D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
+				D610103425448E47007B01CF /* ActiveAppSectionView.swift in Sources */,
 				D65E57DA24D056D6000F2402 /* NewsPageView.swift in Sources */,
 				80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */,
 				D6231CA624E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,

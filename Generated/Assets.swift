@@ -38,6 +38,7 @@ internal enum Asset {
     internal static let measures = ImageAsset(name: "CurrentData/Measures")
     internal static let tests = ImageAsset(name: "CurrentData/Tests")
   }
+  internal static let disclosureIndicator = ImageAsset(name: "DisclosureIndicator")
   internal static let error = ImageAsset(name: "Error")
   internal static let exposureNotificationPermission = ImageAsset(name: "ExposureNotificationPermission")
   internal static let exposuresOff = ImageAsset(name: "ExposuresOff")
@@ -56,7 +57,10 @@ internal enum Asset {
   internal static let newsToTheWorld = ImageAsset(name: "News_ToTheWorld")
   internal static let preventTransmission = ImageAsset(name: "PreventTransmission")
   internal static let previousRiskyEncounters = ImageAsset(name: "PreviousRiskyEncounters")
+  internal static let riskyEncountersNegative = ImageAsset(name: "RiskyEncountersNegative")
+  internal static let riskyEncountersPositive = ImageAsset(name: "RiskyEncountersPositive")
   internal static let scanActive = ImageAsset(name: "ScanActive")
+  internal static let sendData = ImageAsset(name: "SendData")
   internal static let contacts = ImageAsset(name: "Contacts")
   internal static let help = ImageAsset(name: "Help")
   internal static let homeActive = ImageAsset(name: "HomeActive")
