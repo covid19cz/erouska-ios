@@ -65,19 +65,10 @@ final class ActiveAppVM {
             }
         }
 
-        var title: String? {
-            switch self {
-            case .enabled:
-                return L10n.activeTitleHighlightedEnabled
-            default:
-                return nil
-            }
-        }
-
         var text: String {
             switch self {
             case .enabled:
-                return L10n.activeFooter
+                return L10n.activeTitleEnabled
             case .paused:
                 return L10n.activeTitlePaused
             case .disabledBluetooth:

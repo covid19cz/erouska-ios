@@ -1,5 +1,3 @@
-// MARK: - Strings
-
 "app_name" = "eRouška";
 "help" = "Nápoveda";
 "back" = "Späť";
@@ -9,7 +7,6 @@
 "about" = "O aplikácii";
 "close" = "Zatvoriť";
 "turn_on" = "Zapnúť";
-"version" = "verze";
 "welcome_help" = "Ako to funguje";
 "welcome_activation" = "Pokračovať v aktivácii";
 "welcome_title" = "Vďaka eRouške ochránite seba aj ostatných vo svojom okolí";
@@ -34,14 +31,14 @@
 "active_title_disabled_exposures" = "eRouška momentálne nemôže komunikovať s inými eRouškami vo vašom okolí.\n\nZapnite Oznámenia o kontakte s COVID-19 pomocou tlačidla \"Zapnúť\".";
 "active_title_disabled_bluetooth" = "Bez zapnutého Bluetooth nemôže eRouška vytvárať zoznam eRoušiek vo vašom okolí.\n\n
 Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
-"active_button_enabled" = "Pozastaviť eRoušku";
-"active_button_paused" = "Spustiť eRoušku";
+"active_button_enabled" = "Pozastaviť";
+"active_button_paused" = "Spustiť";
 "active_button_disabled_bluetooth" = "Zapnúť Bluetooth";
 "active_button_disabled_exposures" = "Zapnúť";
 "active_footer" = "Upozorníme vás v prípade možného podozrenia na nákazu COVID-19 a zobrazíme vám všetky potrebné informácie.";
 "active_data_update" = "Posledná aktualizácia dát - %@.";
 "active_background_mode_title" = "Aktualizácia na pozadí";
-"active_background_mode_message" = "eRouška sa potrebuje sama spustiť i na pozadí, napríklad po reštartovaní telefónu, aby ste na to nemuseli myslieť vy. \n\nPovoľte možnosť 'Aktualizácia na pozadí' v nastavení aplikácie.";
+"active_background_mode_message" = "eRouška sa potrebuje sama spustiť i na pozadí, napríklad po reštartovaní telefónu, aby ste na to nemuseli myslieť vy.\n\nPovoľte možnosť \"Aktualizácia na pozadí\" v nastavení aplikácie.";
 "active_background_mode_settings" = "Upraviť nastavenia";
 "active_background_mode_cancel" = "Zatvoriť";
 "active_exposure_more_info" = "Viac informácií";
@@ -50,34 +47,18 @@ Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "share_app_message" = "Ahoj, používam aplikáciu eRouška. Nainštaluj si ju tiež a spoločne pomôžme zastaviť šírenie ochorenia COVID-19. Aplikácia zbiera anonymné údaje o telefónoch v blízkosti, aby pracovníci hygieny mohli jednoduchšie dohľadať potenciálne nakazených. Čím viac nás bude, tým lepšie to bude fungovať. Aplikáciu nájdeš na %@/";
 "data_list_title" = "Aktuálne";
 "data_list_send_title" = "Odoslať údaje";
-"data_list_send_headline" = "V prípade potvrdenej nákazy COVID-19 obdržíte SMS správu obsahujúcu overovací kód, aby ste mohli upozorniť ostatných užívateľov eRoušky.";
+"data_list_send_headline" = "V prípade potvrdenej nákazy ochorením COVID-19 vám odošleme SMS správu obsahujúcu overovací kód na povolenie odoslania dát.";
 "data_list_send_placeholder" = "Overovací kód (povinné)";
 "data_list_send_action_title" = "Overiť a odoslať dáta";
-
-"data_list_send_error_file_title" = "Nepodarilo sa vytvoriť súbor so stretnutiami";
-
-"data_list_send_error_no_keys" = "Nemáte žiadne kľúče k odoslaniu, skúste to neskôr.";
-
-"data_list_send_error_wrong_code_title" = "Ověřovací kód není správně zadaný, zkuste to znovu.";
-
-"data_list_send_error_expired_code_title" = "Vypršela platnost ověřovacího kódu.";
-"data_list_send_error_expired_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
-
-"data_list_send_error_framework_title" = "Nepodařilo se nám získat data.";
-"data_list_send_error_framework_message" = "Zkontrolujte zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
-
-"data_list_send_error_save_title" = "Nepodařilo se nám odeslat data na server.";
-"data_list_send_error_save_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
-
-"data_list_send_error_title" = "Nepodařilo se nám odeslat data.";
-"data_list_send_error_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
-
-"data_list_send_error_disabled_title" = "Data nyní nemůžete odeslat";
-"data_list_send_error_disabled_message" = "V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.";
-
 "data_list_send_error_failed_title" = "Nepodarilo sa nám odoslať údaje";
 "data_list_send_error_failed_message" = "Skontrolujte pripojenie k inernetu a skúste to znova.";
-
+"data_list_send_error_file_title" = "Nepodarilo sa vytvoriť súbor so stretnutiami";
+"data_list_send_error_no_keys" = "Nemáte žiadne kľúče k odoslaniu, skúste to neskôr.";
+"data_list_send_error_wrong_code_title" = "Neplatný overovací kód";
+"data_list_send_error_disabled_title" = "Údaje momentálne nemôžete odoslať";
+"data_list_send_error_disabled_message" = "V sekcii Nastavenia svojho zariadenia zapnite Oznáámenia o kontakte s COVID-19 a odosielanie dát bude možné.";
+"data_list_send_error_failed_title" = "Nepodarilo sa nám odoslať údaje";
+"data_list_send_error_failed_message" = "Skontrolujte pripojenie k inernetu a skúste to znova.";
 "data_send_title" = "Odoslané";
 "data_send_title_label" = "Údaje ste úspešne odoslali";
 "data_send_headline" = "Ďakujeme, že pomáhate bojovať proti šíreniu ochorenia COVID-19.";
@@ -110,7 +91,7 @@ Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "unsupported_device_ipad_title" = "Tablety s operačným systémom iPadOS nie sú podporované";
 "unsupported_device_ipad_body" = "Nová verzia aplikácie eRouška funguje iba na telefónoch s operačným systémom iOS a Android.";
 "bluetooth_off_title" = "Zapnite Bluetooth";
-"bluetooth_off_body" = "Bez zapnutého Bluetooth nemôže eRouška vytvárať zoznam eRoušiek vo vašom okolí.\n\nZapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
+"bluetooth_off_body" = "Bez zapnutého Bluetooth nemôže eRouška vytvárať zoznam eRoušiek vo vašom okolí.\n\nZapnite ho pomocou tlačidla "Zapnúť Bluetooth".";
 "news_title" = "Novinky";
 "news_button_continue" = "Pokračovať";
 "news_button_close" = "Zatvoriť";
@@ -125,7 +106,6 @@ Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "news_privacy_title" = "Myslíme na vaše súkromie";
 "news_privacy_body" = "S týmito úpravami sa zmenili aj podmienky spracovania. Zásadnou zmenou je, že naďalej nebudeme evidovať telefónne čísla žiadneho užívateľa eRoušky a nebudeme ho vyžadovať pri registrácii.";
 "news_privacy_body_link" = "podmienky spracovania";
-"risky_encounters_positive_title" = "\n\nV prípade, že vás bude kontaktovať pracovník hygienickej stanice, postupujte podľa jeho pokynov.";
 "risky_encounters_positive_with_symptoms_header" = "Mám príznaky";
 "risky_encounters_positive_without_symptoms_header" = "Nemám príznaky";
 "deadman_notificaiton_title" = "Otvorte aplikáciu eRouška";

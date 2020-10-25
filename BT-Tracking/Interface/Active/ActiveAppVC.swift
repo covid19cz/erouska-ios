@@ -76,13 +76,13 @@ final class ActiveAppVC: UIViewController {
 
                 self.riskyEncountersSection.iconImageView.image = isPositive ? Asset.riskyEncountersPositive.image : Asset.riskyEncountersNegative.image
                 if let date = dateToShow {
-                    self.riskyEncountersSection.titleLabel.text = "Za posledních 14 dní \(numberOfRiskyEncounters) riziková setkání"
-                    self.riskyEncountersSection.bodyLabel.text = "Naposledy \(self.viewModel.dateFormatter.string(from: date)) jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19."
+                    self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
+                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(self.viewModel.dateFormatter.string(from: date))
                 } else {
-                    self.riskyEncountersSection.titleLabel.text = "Za posledních 14 dní žádné rizikové setkání"
+                    self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
                     self.riskyEncountersSection.bodyLabel.text = [
-                        AppSettings.lastProcessedDate.map { "Poslední aktualizace \(self.viewModel.dateFormatter.string(from: $0))" },
-                        "Aktualizace probíhá jednou za 24 hodin."
+                        AppSettings.lastProcessedDate.map { L10n.activeRiskyEncounterLastUpdateNegative(self.viewModel.dateFormatter.string(from: $0)) },
+                        L10n.activeRiskyEncounterUpdateInternalNegative
                     ].compactMap { $0 }.joined(separator: "\n")
                 }
             }
@@ -104,8 +104,8 @@ final class ActiveAppVC: UIViewController {
         riskyEncountersSection.action = riskyEncountersAction
 
         sendReportsSection.iconImageView.image = Asset.sendData.image
-        sendReportsSection.titleLabel.text = "Máte pozitvní výsledek COVID-19 testu?"
-        sendReportsSection.actionButton.setTitle("Anonymně upozornit ostatní")
+        sendReportsSection.titleLabel.text = L10n.activeSendReportsHead
+        sendReportsSection.actionButton.setTitle(L10n.activeSendReportsButton)
         sendReportsSection.action = sendReportsAction
         [stateSection, riskyEncountersSection, sendReportsSection].forEach(mainStackView.addArrangedSubview)
 
@@ -194,7 +194,7 @@ final class ActiveAppVC: UIViewController {
         }
     }
 
-    @IBAction private func moreAction(sender: Any?) {
+    @objc private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: L10n.debug, style: .default, handler: { [weak self] _ in
             self?.debugAction()
