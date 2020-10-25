@@ -42,6 +42,7 @@ struct RiskyEncountersVM {
     let menuItems = [MenuItem.mainSymptoms, .preventTransmission, .previousRiskyEncounters]
 
     let riskyEncounterDateToShow: Observable<Date?>
+    let riskyEcountersInTimeInterval: Observable<Int>
     let shouldShowPreviousRiskyEncounters: Observable<Bool>
 
     let title = RemoteValues.exposureUITitle
@@ -59,17 +60,16 @@ struct RiskyEncountersVM {
         let realm = try? Realm()
         guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
             riskyEncounterDateToShow = .empty()
+            riskyEcountersInTimeInterval = .of(0)
             shouldShowPreviousRiskyEncounters = .of(false)
             return
         }
 
         let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
-        riskyEncounterDateToShow = Observable.collection(from: exposures).map {
-            $0.last(where: { $0.date > showForDate })?.date
-        }
-
-        shouldShowPreviousRiskyEncounters = Observable.collection(from: exposures).map {
-            !$0.isEmpty
-        }
+        let riskyEcounters = Observable.collection(from: exposures)
+        let filteredRiskyEcounters = riskyEcounters.map { $0.filter { $0.date > showForDate } }
+        riskyEncounterDateToShow = filteredRiskyEcounters.map { $0.last?.date }
+        riskyEcountersInTimeInterval = filteredRiskyEcounters.map { $0.count }
+        shouldShowPreviousRiskyEncounters = riskyEcounters.map { !$0.isEmpty }
     }
 }
