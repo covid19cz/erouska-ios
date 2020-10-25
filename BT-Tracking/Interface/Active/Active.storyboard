@@ -281,18 +281,11 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="45a-ir-C72"/>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Další možnosti" image="ellipsis.circle.fill" catalog="system" id="aAa-9L-bkG">
-                                <connections>
-                                    <action selector="moreActionWithSender:" destination="SLc-31-c7B" id="zr6-Iy-Ztd"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Sdílet aplikaci" id="Pfj-dc-ty6">
-                                <connections>
-                                    <action selector="shareAppAction" destination="SLc-31-c7B" id="7Q8-CQ-HVr"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Sdílet aplikaci" id="Pfj-dc-ty6">
+                            <connections>
+                                <action selector="shareAppAction" destination="SLc-31-c7B" id="7Q8-CQ-HVr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="exposureBannerView" destination="Rlx-RT-boE" id="Zld-Ms-EbM"/>
@@ -326,7 +319,6 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
         </scene>
     </scenes>
     <resources>
-        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -108,6 +108,15 @@ final class ActiveAppVC: UIViewController {
         sendReportsSection.actionButton.setTitle("Anonymně upozornit ostatní")
         sendReportsSection.action = sendReportsAction
         [stateSection, riskyEncountersSection, sendReportsSection].forEach(mainStackView.addArrangedSubview)
+
+        #if !PROD
+        navigationItem.rightBarButtonItems?.insert(UIBarButtonItem(
+            image: UIImage(systemName: "ellipsis.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(moreAction)
+        ), at: 0)
+        #endif
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -187,14 +196,6 @@ final class ActiveAppVC: UIViewController {
 
     @IBAction private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: viewModel.menuRiskyEncounters, style: .default, handler: { [weak self] _ in
-            self?.riskyEncountersAction()
-        }))
-        controller.addAction(UIAlertAction(title: L10n.dataListSendTitle, style: .default, handler: { [weak self] _ in
-            self?.sendReportsAction()
-        }))
-        #if !PROD || DEBUG
-        controller.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         controller.addAction(UIAlertAction(title: L10n.debug, style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
@@ -210,7 +211,6 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: L10n.debug + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
             self?.debugProcessReports()
         }))
-        #endif
         controller.addAction(UIAlertAction(title: L10n.close, style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
