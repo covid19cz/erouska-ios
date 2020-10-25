@@ -32,10 +32,8 @@ final class ActiveAppVM {
 
         var color: UIColor {
             switch self {
-            case .enabled:
-                return Asset.appEnabled.color
-            case .paused:
-                return Asset.appPaused.color
+            case .enabled, .paused:
+                return .label
             case .disabledBluetooth, .disabledExposures:
                 return Asset.appDisabled.color
             }

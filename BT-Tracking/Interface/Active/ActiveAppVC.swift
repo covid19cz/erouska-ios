@@ -15,8 +15,17 @@ import RealmSwift
 final class ActiveAppVC: UIViewController {
 
     private var viewModel = ActiveAppVM()
+    private var riskyEncountersViewModel = RiskyEncountersVM()
     private let disposeBag = DisposeBag()
     private var firstAppear = true
+
+    private var shadowColor: CGColor {
+        UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+    }
+
+    private let stateSection = ActiveAppSectionView()
+    private let riskyEncountersSection = ActiveAppSectionView()
+    private let sendReportsSection = ActiveAppSectionView()
 
     // MARK: - Outlets
 
@@ -26,12 +35,6 @@ final class ActiveAppVC: UIViewController {
     @IBOutlet private weak var exposureMoreInfoButton: Button!
 
     @IBOutlet private weak var mainStackView: UIStackView!
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var headlineLabel: UILabel!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var textLabel: UILabel!
-    @IBOutlet private weak var lastUpdateLabel: UILabel!
-    @IBOutlet private weak var actionButton: Button!
 
     // MARK: -
 
@@ -63,8 +66,30 @@ final class ActiveAppVC: UIViewController {
             }
         ).disposed(by: disposeBag)
 
+        Observable.combineLatest(
+            riskyEncountersViewModel.riskyEncounterDateToShow,
+            riskyEncountersViewModel.riskyEcountersInTimeInterval
+        ).subscribe(
+            onNext: { [weak self] (dateToShow, numberOfRiskyEncounters) in
+                guard let self = self else { return }
+                let isPositive = dateToShow != nil
+
+                self.riskyEncountersSection.iconImageView.image = isPositive ? Asset.riskyEncountersPositive.image : Asset.riskyEncountersNegative.image
+                if let date = dateToShow {
+                    self.riskyEncountersSection.titleLabel.text = "Za posledních 14 dní \(numberOfRiskyEncounters) riziková setkání"
+                    self.riskyEncountersSection.bodyLabel.text = "Naposledy \(self.viewModel.dateFormatter.string(from: date)) jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19."
+                } else {
+                    self.riskyEncountersSection.titleLabel.text = "Za posledních 14 dní žádné rizikové setkání"
+                    self.riskyEncountersSection.bodyLabel.text = [
+                        AppSettings.lastProcessedDate.map { "Poslední aktualizace \(self.viewModel.dateFormatter.string(from: $0))" },
+                        "Aktualizace probíhá jednou za 24 hodin."
+                    ].compactMap { $0 }.joined(separator: "\n")
+                }
+            }
+        ).disposed(by: disposeBag)
+
         exposureBannerView.layer.cornerRadius = 9.0
-        exposureBannerView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
+        exposureBannerView.layer.shadowColor = shadowColor
         exposureBannerView.layer.shadowOffset = CGSize(width: 0, height: 1)
         exposureBannerView.layer.shadowRadius = 2
         exposureBannerView.layer.shadowOpacity = 1
@@ -72,6 +97,17 @@ final class ActiveAppVC: UIViewController {
         AppDelegate.shared.openResultsCallback = { [weak self] in
             self?.riskyEncountersAction()
         }
+
+        stateSection.action = changeScanningAction
+
+        riskyEncountersSection.isSelectable = true
+        riskyEncountersSection.action = riskyEncountersAction
+
+        sendReportsSection.iconImageView.image = Asset.sendData.image
+        sendReportsSection.titleLabel.text = "Máte pozitvní výsledek COVID-19 testu?"
+        sendReportsSection.actionButton.setTitle("Anonymně upozornit ostatní")
+        sendReportsSection.action = sendReportsAction
+        [stateSection, riskyEncountersSection, sendReportsSection].forEach(mainStackView.addArrangedSubview)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -103,7 +139,7 @@ final class ActiveAppVC: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
 
         guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
-        exposureBannerView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
+        exposureBannerView.layer.shadowColor = shadowColor
     }
 
     // MARK: - Actions
@@ -132,7 +168,7 @@ final class ActiveAppVC: UIViewController {
         present(activityViewController, animated: true)
     }
 
-    @IBAction private func changeScanningAction() {
+    private func changeScanningAction() {
         switch viewModel.state {
         case .enabled:
             pauseScanning()
@@ -286,21 +322,11 @@ private extension ActiveAppVC {
         navigationController?.tabBarItem.image = viewModel.state.tabBarIcon.0
         navigationController?.tabBarItem.selectedImage = viewModel.state.tabBarIcon.1
 
-        imageView.image = viewModel.state.image
-        headlineLabel.text = viewModel.state.headline
-        headlineLabel.textColor = viewModel.state.color
-        titleLabel.text = viewModel.state.title
-        textLabel.text = viewModel.state.text
-
-        if viewModel.state == .enabled, let update = AppSettings.lastProcessedDate {
-            lastUpdateLabel.text = L10n.activeDataUpdate(viewModel.dateFormatter.string(from: update))
-            lastUpdateLabel.isHidden = false
-        } else {
-            lastUpdateLabel.isHidden = true
-        }
-
-        actionButton.setTitle(viewModel.state.actionTitle)
-        actionButton.style = viewModel.state == .enabled ? .clear : .filled
+        stateSection.iconImageView.image = viewModel.state.image
+        stateSection.titleLabel.text = viewModel.state.headline
+        stateSection.titleLabel.textColor = viewModel.state.color
+        stateSection.bodyLabel.text = viewModel.state.text
+        stateSection.actionButton.setTitle(viewModel.state.actionTitle)
 
         exposureTitleLabel.text = viewModel.exposureTitle
         exposureCloseButton.setTitle(L10n.close)
