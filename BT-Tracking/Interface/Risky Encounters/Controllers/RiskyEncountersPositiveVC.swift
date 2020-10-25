@@ -29,7 +29,7 @@ final class RiskyEncountersPositiveVC: UITableViewController {
 
         switch StoryboardSegue.RiskyEncounters(segue) {
         case .help:
-            break
+            viewController.viewModel = RiskyEncounterHelpVM()
         case .mainSymptoms:
             viewController.viewModel = MainSymptomsVM()
         case .preventTransmission:

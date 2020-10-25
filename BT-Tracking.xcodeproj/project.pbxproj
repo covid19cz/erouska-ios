@@ -21,6 +21,10 @@
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		802AFE4425135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
 		802AFE4525135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
+		804B203F254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */; };
+		804B2040254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */; };
+		804B204425458390007701F0 /* NewRiskEncounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B204325458390007701F0 /* NewRiskEncounterVC.swift */; };
+		804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B204325458390007701F0 /* NewRiskEncounterVC.swift */; };
 		804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BE48924D9A11A00D40C07 /* ReportEntities.swift */; };
 		804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 804BE48C24D9A30A00D40C07 /* Alamofire */; };
 		805192A024AF8E2700765392 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8051929F24AF8E2700765392 /* RxCocoa */; };
@@ -186,7 +190,6 @@
 		D6231C9D24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */; };
 		D6231C9E24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */; };
 		D6231C9F24E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */; };
-		D6231CA024E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */; };
 		D6231CA124E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9C24E400B10023BDC8 /* RiskyEncountersListVC.swift */; };
 		D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9C24E400B10023BDC8 /* RiskyEncountersListVC.swift */; };
 		D6231CA524E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */; };
@@ -273,6 +276,8 @@
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		802AFE4325135BC0004954AF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncounterHelpVM.swift; sourceTree = "<group>"; };
+		804B204325458390007701F0 /* NewRiskEncounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRiskEncounterVC.swift; sourceTree = "<group>"; };
 		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
 		8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureService.swift; sourceTree = "<group>"; };
 		8053CCFB2538A2A000C1820E /* Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
@@ -730,6 +735,7 @@
 			isa = PBXGroup;
 			children = (
 				80D228232545727C00F06253 /* RiskyEncountersNegativeView.swift */,
+				D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -737,6 +743,7 @@
 		80D2282A2545729E00F06253 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				804B204325458390007701F0 /* NewRiskEncounterVC.swift */,
 				80D2282D2545737900F06253 /* RiskyEncountersNegativeVC.swift */,
 				80D228332545739100F06253 /* RiskyEncountersNegativeVM.swift */,
 				D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */,
@@ -824,7 +831,7 @@
 				D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */,
 				D6231CA424E400C70023BDC8 /* MainSymptomsVM.swift */,
 				D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */,
-				D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */,
+				804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */,
 			);
 			path = "Risky Encounters List";
 			sourceTree = "<group>";
@@ -1289,6 +1296,7 @@
 				D6CD28EA24CF24DD005847AA /* PrivacyVC.swift in Sources */,
 				8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */,
 				80CCE5C424DD812900DC36EE /* VerificationService.swift in Sources */,
+				804B204425458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
 				D65E57E224D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
 				D6CD28EC24CF24DD005847AA /* ExposurePermissionVC.swift in Sources */,
@@ -1318,6 +1326,7 @@
 				FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */,
 				80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */,
 				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
+				804B203F254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */,
 				D6231CCB24F6610C0023BDC8 /* CurrentData.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
 				80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */,
@@ -1362,6 +1371,7 @@
 				80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */,
 				8053CCFD2538A2A000C1820E /* Callback.swift in Sources */,
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
+				804B2040254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */,
 				8053CD022538A3C100C1820E /* ExposureRealm.swift in Sources */,
 				D6CD28E724CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
@@ -1386,7 +1396,6 @@
 				8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */,
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
 				8053CD092538A61C00C1820E /* ExposureList.swift in Sources */,
-				D6231CA024E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */,
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D6231CCC24F6610C0023BDC8 /* CurrentData.swift in Sources */,
@@ -1398,6 +1407,7 @@
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
 				8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */,
+				804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
 				80591185246DB86B002CD687 /* ExposureService.swift in Sources */,
 				8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */,

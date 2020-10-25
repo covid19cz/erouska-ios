@@ -25,7 +25,7 @@ struct AsyncImageTitleViewModel {
 }
 
 struct RiskyEncountersListRemoteContent: Decodable {
-    let title: String
+    let title: String?
     let items: [Item]
 
     struct Item: Decodable {
