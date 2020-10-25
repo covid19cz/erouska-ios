@@ -47,7 +47,7 @@ final class NewRiskEncounterVC: UIViewController {
 private extension NewRiskEncounterVC {
 
     func setupStrings() {
-        title = L10n.exposureNotificationTitle
+        title = RemoteValues.exposureUITitle
         navigationItem.backBarButtonItem?.title = L10n.back
         navigationItem.rightBarButtonItem?.title = L10n.help
 
