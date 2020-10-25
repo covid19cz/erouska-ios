@@ -25,6 +25,7 @@ internal enum StoryboardSegue {
     case unsupported
   }
   internal enum RiskyEncounters: String, SegueType {
+    case help
     case mainSymptoms
     case preventTransmission
     case previousRiskyEncounters

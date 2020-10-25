@@ -78,7 +78,13 @@
                             <outlet property="delegate" destination="xTh-u3-CIf" id="7oN-A4-W19"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Positive" id="0Zm-Mj-l4v"/>
+                    <navigationItem key="navigationItem" title="Positive" id="0Zm-Mj-l4v">
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="uD7-gQ-M97">
+                            <connections>
+                                <segue destination="zR7-Mo-d0y" kind="show" identifier="help" id="9OO-eU-XFG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="EpM-Vc-Yck" kind="show" identifier="previousRiskyEncounters" id="riD-73-ZQU"/>
                         <segue destination="zR7-Mo-d0y" kind="show" identifier="mainSymptoms" id="t0i-U7-I5e"/>
@@ -420,7 +426,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3DH-BY-YPY"/>
+        <segue reference="9OO-eU-XFG"/>
         <segue reference="riD-73-ZQU"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -21,12 +21,15 @@ final class RiskyEncountersPositiveVC: UITableViewController {
 
         title = viewModel.title
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        navigationItem.rightBarButtonItem?.title = L10n.help
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let viewController = segue.destination as? RiskyEncountersListVC else { return }
 
         switch StoryboardSegue.RiskyEncounters(segue) {
+        case .help:
+            break
         case .mainSymptoms:
             viewController.viewModel = MainSymptomsVM()
         case .preventTransmission:
@@ -58,20 +61,19 @@ final class RiskyEncountersPositiveVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = viewModel.sections[indexPath.section]
-
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "textCell") ?? UITableViewCell()
-            cell.textLabel?.text = item.localizedText
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCell") ?? UITableViewCell()
-            cell.imageView?.image = item.icon.withRenderingMode(.alwaysOriginal)
-            cell.textLabel?.text = item.localizedTitle
-            return cell
-        default:
+        guard let row = RiskyEncountersPositiveVM.Rows(rawValue: indexPath.row) else {
             return UITableViewCell()
         }
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: row.identifier) ?? UITableViewCell()
+        switch row {
+        case .text:
+            cell.textLabel?.text = item.localizedText
+        case .button:
+            cell.imageView?.image = item.icon.withRenderingMode(.alwaysOriginal)
+            cell.textLabel?.text = item.localizedTitle
+        }
+        return cell
     }
 
     // MARK: - UITableViewDelegate
@@ -82,7 +84,7 @@ final class RiskyEncountersPositiveVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard indexPath.row == 1 else { return }
+        guard let row = RiskyEncountersPositiveVM.Rows(rawValue: indexPath.row), row == .button else { return }
 
         switch viewModel.sections[indexPath.section] {
         case .encounter:
@@ -93,4 +95,12 @@ final class RiskyEncountersPositiveVC: UITableViewController {
             perform(segue: StoryboardSegue.RiskyEncounters.preventTransmission)
         }
     }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let row = RiskyEncountersPositiveVM.Rows(rawValue: indexPath.row), row == .button else {
+            return UITableView.automaticDimension
+        }
+        return 60
+    }
+
 }

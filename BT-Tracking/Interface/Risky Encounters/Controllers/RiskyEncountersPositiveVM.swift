@@ -7,14 +7,11 @@
 //
 
 import Foundation
-import RealmSwift
-import RxRealm
-import RxSwift
 import UIKit
 
 struct RiskyEncountersPositiveVM {
     enum Sections {
-        case encounter, withSymptoms, withoutSymptoms
+        case encounter(Date), withSymptoms, withoutSymptoms
 
         var icon: UIImage {
             switch self {
@@ -40,8 +37,9 @@ struct RiskyEncountersPositiveVM {
 
         var localizedText: String {
             switch self {
-            case .encounter:
-                return L10n.riskyEncountersPositiveWithSymptomsHeader
+            case .encounter(let date):
+                let formatted = String(format: RemoteValues.riskyEncountersTitle, DateFormatter.baseDateFormatter.string(from: date))
+                return formatted + L10n.riskyEncountersPositiveTitle
             case .withSymptoms:
                 return RemoteValues.riskyEncountersWithSymptoms
             case .withoutSymptoms:
@@ -61,25 +59,31 @@ struct RiskyEncountersPositiveVM {
         }
     }
 
-    let sections = [Sections.encounter, .withSymptoms, .withoutSymptoms]
+    enum Rows: Int {
+        case text = 0
+        case button = 1
 
-    let riskyEncounterDateToShow: Observable<Date?>
-    let shouldShowPreviousRiskyEncounters: Observable<Bool>
+        var identifier: String {
+            switch self {
+            case .button:
+                return "buttonCell"
+            case .text:
+                return "textCell"
+            }
+        }
+    }
+
+    let sections: [Sections]
 
     let title = RemoteValues.exposureUITitle
 
     init() {
-        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
         let realm = AppDelegate.dependency.realm
         let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
 
+        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
         let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
-        riskyEncounterDateToShow = Observable.collection(from: exposures).map {
-            $0.last(where: { $0.date > showForDate })?.date
-        }
 
-        shouldShowPreviousRiskyEncounters = Observable.collection(from: exposures).map {
-            !$0.isEmpty
-        }
+        sections = [Sections.encounter(exposures.last(where: { $0.date > showForDate })?.date ?? Date()), .withSymptoms, .withoutSymptoms]
     }
 }
