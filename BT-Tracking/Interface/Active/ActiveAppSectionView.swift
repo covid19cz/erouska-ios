@@ -22,11 +22,7 @@ final class ActiveAppSectionView: UIView {
         didSet {
             disclosureIndicator.isHidden = !isSelectable
             actionButton.isHidden = isSelectable
-            if isSelectable {
-                addGestureRecognizer(tapGestureRecognizer)
-            } else {
-                removeGestureRecognizer(tapGestureRecognizer)
-            }
+            tapGestureRecognizer.isEnabled = isSelectable
         }
     }
     var action: () -> Void = {}
@@ -90,6 +86,8 @@ final class ActiveAppSectionView: UIView {
             disclosureIndicator.heightAnchor.constraint(equalTo: disclosureIndicator.widthAnchor),
             disclosureIndicator.widthAnchor.constraint(equalToConstant: 24)
         ])
+
+        addGestureRecognizer(tapGestureRecognizer)
     }
 
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
