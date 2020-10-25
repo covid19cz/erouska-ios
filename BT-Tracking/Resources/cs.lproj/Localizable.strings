@@ -128,7 +128,7 @@
 "risky_encounters_positive_without_symptoms_header" = "Nemám příznaky";
 "new_risky_encounters_title" = "Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19";
 "new_risky_encounters_body" = "Upozornění se vám zobrazilo nejdříve 24 hodin poté, co se nakažený dozvěděl pozitivní výsledek testu na COVID-19 a zadal ověřovací kód do eRoušky.\n\nRizikový kontakt vyhodnotíme v případě, že jste s nakaženým byli v kontaktu na vzdálenost kratší než 2 metry po dobu alespoň 15 minut.\n\nKvůli zachování anonymity nakaženého neznáme čas ani místo setkání.";
-"new_risky_exposures_button" = "jak postupovat dál";
+"new_risky_exposures_button" = "Jak postupovat dál";
 "deadman_notificaiton_title" = "Otevřete aplikaci eRouška";
 "deadman_notificaiton_body" = "Zkontrolujete tak, zda jste se setkali s osobou u níž bylo potvrzeno onemocnění COVID-19.";
 "exposure_activation_restricted_title" = "Bez možnosti zasílat oznámení bude funkčnost eRoušky omezená";
