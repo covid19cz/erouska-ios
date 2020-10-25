@@ -82,7 +82,7 @@ final class ActiveAppVC: UIViewController {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
                     self.riskyEncountersSection.bodyLabel.text = [
                         AppSettings.lastProcessedDate.map { L10n.activeRiskyEncounterLastUpdateNegative(self.viewModel.dateFormatter.string(from: $0)) },
-                        L10n.activeRiskyEncounterUpdateInternalNegative
+                        L10n.activeRiskyEncounterUpdateIntervalNegative
                     ].compactMap { $0 }.joined(separator: "\n")
                 }
             }
