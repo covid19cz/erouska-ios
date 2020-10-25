@@ -51,7 +51,7 @@ final class ActiveAppSectionView: UIView {
         mainStack.translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemBackground
         layer.cornerRadius = 9.0
-        layer.shadowColor = UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor // TODO:
+        layer.shadowColor = UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowRadius = 2
         layer.shadowOpacity = 1

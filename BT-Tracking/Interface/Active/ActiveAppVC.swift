@@ -148,7 +148,9 @@ final class ActiveAppVC: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
 
         guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
-        exposureBannerView.layer.shadowColor = shadowColor
+        [exposureBannerView, stateSection, riskyEncountersSection, sendReportsSection].forEach {
+            $0.layer.shadowColor = shadowColor
+        }
     }
 
     // MARK: - Actions
