@@ -101,7 +101,7 @@ private extension HelpSearchVC {
     func filterContentForSearchText(searchBar: UISearchBar?) {
         searchText = searchBar?.text ?? ""
 
-        guard !searchText.isEmpty, searchText.count > 2 else {
+        guard !searchText.isEmpty, searchText.count > 1 else {
             results = []
             return
         }
