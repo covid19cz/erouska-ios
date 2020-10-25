@@ -51,9 +51,10 @@ private extension NewRiskEncounterVC {
         navigationItem.backBarButtonItem?.title = L10n.back
         navigationItem.rightBarButtonItem?.title = L10n.help
 
-        headlineLabel.text = L10n.exposureNotificationHeadline
-        bodyLabel.text = L10n.exposureNotificationBody
-        continueButton.setTitle(L10n.exposureNotificationContinue)
+        let date = DateFormatter.baseDateFormatter.string(from: ExposureList.last?.date ?? Date())
+        headlineLabel.text = L10n.newRiskyEncountersTitle(date)
+        bodyLabel.text = L10n.newRiskyEncountersBody
+        continueButton.setTitle(L10n.newRiskyExposuresButton)
     }
 
 }

@@ -56,6 +56,7 @@ final class ActiveAppVC: UIViewController {
                 if let exposure = exposure, AppSettings.lastExposureWarningId != exposure.id.uuidString {
                     AppSettings.lastExposureWarningClosed = false
                     AppSettings.lastExposureWarningId = exposure.id.uuidString
+                    AppSettings.lastExposureWarningInfoDisplayed = false
                 }
                 self?.exposureBannerView.isHidden = exposure == nil || AppSettings.lastExposureWarningClosed == true
                 self?.view.setNeedsLayout()
@@ -202,13 +203,17 @@ final class ActiveAppVC: UIViewController {
     }
 
     private func riskyEncountersAction() {
-        guard ExposureList.last != nil else {
-            let controller = StoryboardScene.RiskyEncounters.riskyEncountersNegativeNav.instantiate()
-            present(controller, animated: true, completion: nil)
-            return
-        }
+        let exposure = ExposureList.last
+        let controller: UIViewController
 
-        let controller = StoryboardScene.RiskyEncounters.riskyEncountersPositiveNav.instantiate()
+        if exposure == nil {
+            controller = StoryboardScene.RiskyEncounters.riskyEncountersNegativeNav.instantiate()
+        } else if !AppSettings.lastExposureWarningInfoDisplayed {
+            controller = StoryboardScene.RiskyEncounters.newRiskEncounterNav.instantiate()
+            AppSettings.lastExposureWarningInfoDisplayed = true
+        } else {
+            controller = StoryboardScene.RiskyEncounters.riskyEncountersPositiveNav.instantiate()
+        }
         present(controller, animated: true, completion: nil)
     }
 

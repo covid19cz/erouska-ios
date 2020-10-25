@@ -262,6 +262,14 @@ internal enum L10n {
   internal static let helpTabTitle = L10n.tr("Localizable", "help_tab_title")
   /// Jak to funguje
   internal static let helpTitle = L10n.tr("Localizable", "help_title")
+  /// Upozornění se vám zobrazilo nejdříve 24 hodin poté, co se nakažený dozvěděl pozitivní výsledek testu na COVID-19 a zadal ověřovací kód do eRoušky.\n\nRizikový kontakt vyhodnotíme v případě, že jste s nakaženým byli v kontaktu na vzdálenost kratší než 2 metry po dobu alespoň 15 minut.\n\nKvůli zachování anonymity nakaženého neznáme čas ani místo setkání.
+  internal static let newRiskyEncountersBody = L10n.tr("Localizable", "new_risky_encounters_body")
+  /// Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19
+  internal static func newRiskyEncountersTitle(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "new_risky_encounters_title", String(describing: p1))
+  }
+  /// jak postupovat dál
+  internal static let newRiskyExposuresButton = L10n.tr("Localizable", "new_risky_exposures_button")
   /// Telefon nemusíte nosit v kapse se zapnutou obrazovkou a pokládat obrazovkou na stůl. Normálně ho používejte a zamykejte, eRouška bude vždy aktivní.
   internal static let newsAlwaysActiveBody = L10n.tr("Localizable", "news_always_active_body")
   /// eRouška funguje vždy a všude
