@@ -38,8 +38,7 @@ struct RiskyEncountersPositiveVM {
         var localizedText: String {
             switch self {
             case .encounter(let date):
-                let formatted = String(format: RemoteValues.riskyEncountersTitle, DateFormatter.baseDateFormatter.string(from: date))
-                return formatted + L10n.riskyEncountersPositiveTitle
+                return String(format: RemoteValues.riskyEncountersTitle, DateFormatter.baseDateFormatter.string(from: date))
             case .withSymptoms:
                 return RemoteValues.riskyEncountersWithSymptoms
             case .withoutSymptoms:

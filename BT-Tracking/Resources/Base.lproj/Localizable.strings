@@ -124,7 +124,6 @@
 "news_privacy_title" = "Myslíme na vaše soukromí";
 "news_privacy_body" = "S těmito úpravami se změnily i podmínky zpracování. Zásadní změnou je, že nadále nebudeme evidovat telefonní čísla žádného uživatele eRoušky a nebudeme ho vyžadovat při registraci.";
 "news_privacy_body_link" = "podmínky zpracování";
-"risky_encounters_positive_title" = "\n\nV případě, že vás bude kontaktovat pracovník hygienické stanice, postupujte podle jeho pokynů.";
 "risky_encounters_positive_with_symptoms_header" = "Mám příznaky";
 "risky_encounters_positive_without_symptoms_header" = "Nemám příznaky";
 "deadman_notificaiton_title" = "Otevřete aplikaci eRouška";

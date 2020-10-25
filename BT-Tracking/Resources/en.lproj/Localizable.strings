@@ -117,7 +117,6 @@
 "news_privacy_title" = "We value your privacy.";
 "news_privacy_body" = "With these changes, terms of use were changed, too. The main change is that we no longer register phone numbers of eRouška users and they will not be required for registration.";
 "news_privacy_body_link" = "Terms and conditions";
-"risky_encounters_positive_title" = "\n\nIf a public health officer contacts you, follow their instructions.";
 "risky_encounters_positive_with_symptoms_header" = "I have symptoms";
 "risky_encounters_positive_without_symptoms_header" = "I do not have symptoms";
 "deadman_notificaiton_title" = "Open eRouška";

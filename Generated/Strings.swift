@@ -302,8 +302,6 @@ internal enum L10n {
   internal static let privacyHeadline = L10n.tr("Localizable", "privacy_headline")
   /// Soukromí
   internal static let privacyTitle = L10n.tr("Localizable", "privacy_title")
-  /// \n\nV případě, že vás bude kontaktovat pracovník hygienické stanice, postupujte podle jeho pokynů.
-  internal static let riskyEncountersPositiveTitle = L10n.tr("Localizable", "risky_encounters_positive_title")
   /// Mám příznaky
   internal static let riskyEncountersPositiveWithSymptomsHeader = L10n.tr("Localizable", "risky_encounters_positive_with_symptoms_header")
   /// Nemám příznaky
