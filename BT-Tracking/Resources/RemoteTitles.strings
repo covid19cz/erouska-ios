@@ -8,7 +8,7 @@
 
 "encounterWarningDefault" = "Setkali jste se s osobou, u které byla potvrzeno onemocnění COVID-19. Sledujte svůj zdravotní stav.";
 
-"riskyEncountersTitleDefault" = "Naposledy %1$s jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.";
+"riskyEncountersTitleDefault" = "Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.";
 "riskyEncountersWithSymptomsDefault" = "Pokud se u vás v průběhu 14 dnů od kontaktu s nakaženým objevily příznaky respiračního onemocnění, kontaktujte telefonicky svého praktického lékaře a řiďte se jeho pokyny. Mimo jeho pracovní dobu kontaktujte telefonicky nejbližší lékařskou pohotovost. V případě závažných zdravotních obtíží volejte 155.";
 "riskyEncountersWithoutSymptomsDefault" = "Jestliže se u vás neprojevují hlavní příznaky onemocnění COVID-19, nemusíte zůstávat doma. Dodržujte zásady zodpovědného chování a sledujte svůj zdravotní stav.";
 

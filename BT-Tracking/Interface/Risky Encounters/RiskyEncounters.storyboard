@@ -415,7 +415,13 @@
                             <constraint firstItem="RMs-wn-6qX" firstAttribute="bottom" secondItem="DAK-s9-ucS" secondAttribute="bottom" id="wUl-Nw-D49"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Negative" largeTitleDisplayMode="always" id="6yf-9j-s6G"/>
+                    <navigationItem key="navigationItem" title="Negative" largeTitleDisplayMode="always" id="6yf-9j-s6G">
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="AyQ-cP-BiD">
+                            <connections>
+                                <segue destination="zR7-Mo-d0y" kind="show" identifier="help" id="PyK-7q-jJ5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="negativeView" destination="ow7-bz-Af4" id="5JS-22-B0a"/>
                     </connections>
@@ -558,8 +564,8 @@ Kvůli zachování anonymity nakaženého neznáme čas ani místo setkání.</m
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uhk-qw-Lvq"/>
-        <segue reference="riD-73-ZQU"/>
+        <segue reference="PyK-7q-jJ5"/>
+        <segue reference="eup-6Z-D2X"/>
         <segue reference="tkb-Az-yCu"/>
     </inferredMetricsTieBreakers>
     <resources>

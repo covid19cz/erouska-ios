@@ -30,6 +30,7 @@ final class RiskyEncountersNegativeVC: UIViewController {
 
         title = viewModel.title
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        navigationItem.rightBarButtonItem?.title = L10n.help
 
         negativeView.setup(
             title: viewModel.negativeTitle,
@@ -49,10 +50,8 @@ final class RiskyEncountersNegativeVC: UIViewController {
         guard let viewController = segue.destination as? RiskyEncountersListVC else { return }
 
         switch StoryboardSegue.RiskyEncounters(segue) {
-        case .mainSymptoms:
-            viewController.viewModel = MainSymptomsVM()
-        case .preventTransmission:
-            viewController.viewModel = PreventTransmissionVM()
+        case .help:
+            viewController.viewModel = RiskyEncounterHelpVM()
         default:
             break
         }

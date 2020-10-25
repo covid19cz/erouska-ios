@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -376,20 +376,11 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="textLabel" destination="ANQ-eO-rpO" id="Gle-hH-WWb"/>
                         <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
-                        <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" id="HRF-xK-4t2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1213.0434782608697" y="891.96428571428567"/>
-        </scene>
-        <!--RiskyEncounters-->
-        <scene sceneID="jrU-h5-lVn">
-            <objects>
-                <viewControllerPlaceholder storyboardName="RiskyEncounters" id="qqD-nV-Znl" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ycg-Wv-T2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1954" y="794"/>
         </scene>
         <!--SendReports-->
         <scene sceneID="ICw-CE-1Wd">
@@ -397,7 +388,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 <viewControllerPlaceholder storyboardName="SendReports" id="48F-yW-Dk4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-Tx-30g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1949" y="989"/>
+            <point key="canvasLocation" x="1934" y="893"/>
         </scene>
     </scenes>
     <resources>

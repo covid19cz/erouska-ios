@@ -202,7 +202,14 @@ final class ActiveAppVC: UIViewController {
     }
 
     private func riskyEncountersAction() {
-        perform(segue: StoryboardSegue.Active.riskyEncounters)
+        guard ExposureList.last != nil else {
+            let controller = StoryboardScene.RiskyEncounters.riskyEncountersNegativeNav.instantiate()
+            present(controller, animated: true, completion: nil)
+            return
+        }
+
+        let controller = StoryboardScene.RiskyEncounters.riskyEncountersPositiveNav.instantiate()
+        present(controller, animated: true, completion: nil)
     }
 
     // MARK: -

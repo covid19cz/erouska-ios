@@ -77,12 +77,7 @@ struct RiskyEncountersPositiveVM {
     let title = RemoteValues.exposureUITitle
 
     init() {
-        let realm = AppDelegate.dependency.realm
-        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
-
-        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
-        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
-
-        sections = [Sections.encounter(exposures.last(where: { $0.date > showForDate })?.date ?? Date()), .withSymptoms, .withoutSymptoms]
+        let lastExposure = ExposureList.last
+        sections = [Sections.encounter(lastExposure?.date ?? Date()), .withSymptoms, .withoutSymptoms]
     }
 }

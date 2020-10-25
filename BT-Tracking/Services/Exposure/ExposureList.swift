@@ -13,6 +13,16 @@ import RxRealm
 
 final class ExposureList {
 
+    static var last: Exposure? {
+        let realm = AppDelegate.dependency.realm
+        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+
+        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
+        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
+
+        return exposures.last(where: { $0.date > showForDate })?.toExposure()
+    }
+
     static func lastObservable() throws -> Observable<Exposure?> {
         let realm = AppDelegate.dependency.realm
         let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
