@@ -1,5 +1,5 @@
 //
-//  RiskyEncountersVM.swift
+//  RiskyEncountersPositiveVM.swift
 //  BT-Tracking
 //
 //  Created by Naim Ashhab on 07/08/2020.
@@ -12,47 +12,61 @@ import RxRealm
 import RxSwift
 import UIKit
 
-struct RiskyEncountersVM {
-    enum MenuItem {
-        case mainSymptoms, preventTransmission, previousRiskyEncounters
+struct RiskyEncountersPositiveVM {
+    enum Sections {
+        case encounter, withSymptoms, withoutSymptoms
 
         var icon: UIImage {
             switch self {
-            case .mainSymptoms:
-                return Asset.mainSymptoms.image
-            case .preventTransmission:
-                return Asset.preventTransmission.image
-            case .previousRiskyEncounters:
+            case .encounter:
                 return Asset.previousRiskyEncounters.image
+            case .withSymptoms:
+                return Asset.mainSymptoms.image
+            case .withoutSymptoms:
+                return Asset.preventTransmission.image
+            }
+        }
+
+        var localizedSection: String? {
+            switch self {
+            case .encounter:
+                return nil
+            case .withSymptoms:
+                return L10n.riskyEncountersPositiveWithSymptomsHeader
+            case .withoutSymptoms:
+                return L10n.riskyEncountersPositiveWithoutSymptomsHeader
+            }
+        }
+
+        var localizedText: String {
+            switch self {
+            case .encounter:
+                return L10n.riskyEncountersPositiveWithSymptomsHeader
+            case .withSymptoms:
+                return RemoteValues.riskyEncountersWithSymptoms
+            case .withoutSymptoms:
+                return RemoteValues.riskyEncountersWithoutSymptoms
             }
         }
 
         var localizedTitle: String {
             switch self {
-            case .mainSymptoms:
-                return RemoteValues.symptomsUITitle
-            case .preventTransmission:
-                return RemoteValues.spreadPreventionUITitle
-            case .previousRiskyEncounters:
+            case .encounter:
                 return RemoteValues.recentExposuresUITitle
+            case .withSymptoms:
+                return RemoteValues.symptomsUITitle
+            case .withoutSymptoms:
+                return RemoteValues.spreadPreventionUITitle
             }
         }
     }
 
-    let menuItems = [MenuItem.mainSymptoms, .preventTransmission, .previousRiskyEncounters]
+    let sections = [Sections.encounter, .withSymptoms, .withoutSymptoms]
 
     let riskyEncounterDateToShow: Observable<Date?>
     let shouldShowPreviousRiskyEncounters: Observable<Bool>
 
     let title = RemoteValues.exposureUITitle
-
-    let withSymptoms = RemoteValues.riskyEncountersWithSymptoms
-    let withoutSymptoms = RemoteValues.riskyEncountersWithoutSymptoms
-
-    let negativeTitle = RemoteValues.noEncounterHeader
-    let negativeBody = RemoteValues.noEncounterBody
-
-    let previousRiskyEncountersButton = RemoteValues.recentExposuresUITitle
 
     init() {
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays

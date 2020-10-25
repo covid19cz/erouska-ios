@@ -144,6 +144,10 @@
 		80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
 		80CCE5C424DD812900DC36EE /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C324DD812800DC36EE /* VerificationService.swift */; };
 		80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C524DD913200DC36EE /* VerificationEntities.swift */; };
+		80D228242545727C00F06253 /* RiskyEncountersNegativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D228232545727C00F06253 /* RiskyEncountersNegativeView.swift */; };
+		80D2282E2545737900F06253 /* RiskyEncountersNegativeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2282D2545737900F06253 /* RiskyEncountersNegativeVC.swift */; };
+		80D228342545739100F06253 /* RiskyEncountersNegativeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D228332545739100F06253 /* RiskyEncountersNegativeVM.swift */; };
+		80D2283E254577B100F06253 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2283D254577B100F06253 /* DateFormatter.swift */; };
 		80D2345124E2FDD200F684AA /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 80D2345024E2FDD200F684AA /* Crypto */; };
 		80D2345324E31DFF00F684AA /* SendReportsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2345224E31DFF00F684AA /* SendReportsVC.swift */; };
 		80D2345424E31DFF00F684AA /* SendReportsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2345224E31DFF00F684AA /* SendReportsVC.swift */; };
@@ -221,10 +225,10 @@
 		D63A264424DB023100C34CCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D63A264324DB023100C34CCF /* GoogleService-Info.plist */; };
 		D63E443524DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */; };
 		D63E443624DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */; };
-		D63E443824DD8640007B6728 /* RiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */; };
-		D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */; };
-		D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */; };
-		D63E443C24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */; };
+		D63E443824DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */; };
+		D63E443924DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */; };
+		D63E443B24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */; };
+		D63E443C24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */; };
 		D64BE02324F79AE000B751B6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BE02224F79AE000B751B6 /* TextView.swift */; };
 		D64BE02424F79AE000B751B6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BE02224F79AE000B751B6 /* TextView.swift */; };
 		D65E57D324D04976000F2402 /* NewsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E57D224D04976000F2402 /* NewsVM.swift */; };
@@ -330,6 +334,10 @@
 		80CA44DF244B404F008E22F8 /* ContactsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVM.swift; sourceTree = "<group>"; };
 		80CCE5C324DD812800DC36EE /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		80CCE5C524DD913200DC36EE /* VerificationEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEntities.swift; sourceTree = "<group>"; };
+		80D228232545727C00F06253 /* RiskyEncountersNegativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersNegativeView.swift; sourceTree = "<group>"; };
+		80D2282D2545737900F06253 /* RiskyEncountersNegativeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersNegativeVC.swift; sourceTree = "<group>"; };
+		80D228332545739100F06253 /* RiskyEncountersNegativeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersNegativeVM.swift; sourceTree = "<group>"; };
+		80D2283D254577B100F06253 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		80D2345224E31DFF00F684AA /* SendReportsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportsVC.swift; sourceTree = "<group>"; };
 		80D2345824E320D700F684AA /* SendReportsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportsVM.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -377,8 +385,8 @@
 		D6340C6A24C5A27700E550A1 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		D63A264324DB023100C34CCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RiskyEncounters.storyboard; sourceTree = "<group>"; };
-		D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersVM.swift; sourceTree = "<group>"; };
-		D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersVC.swift; sourceTree = "<group>"; };
+		D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersPositiveVM.swift; sourceTree = "<group>"; };
+		D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersPositiveVC.swift; sourceTree = "<group>"; };
 		D64BE02224F79AE000B751B6 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		D65E57D224D04976000F2402 /* NewsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVM.swift; sourceTree = "<group>"; };
 		D65E57D524D056C8000F2402 /* NewsPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsPageView.xib; sourceTree = "<group>"; };
@@ -660,6 +668,7 @@
 				80631A97242CAB5000EB0B6C /* Image.swift */,
 				BDBB00D724261D5C00871FE4 /* Layout.swift */,
 				80610BD8243B13AE00E031C8 /* String.swift */,
+				80D2283D254577B100F06253 /* DateFormatter.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -715,6 +724,29 @@
 				80CCE5C324DD812800DC36EE /* VerificationService.swift */,
 			);
 			path = Verification;
+			sourceTree = "<group>";
+		};
+		80D228222545726C00F06253 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				80D228232545727C00F06253 /* RiskyEncountersNegativeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		80D2282A2545729E00F06253 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				80D2282D2545737900F06253 /* RiskyEncountersNegativeVC.swift */,
+				80D228332545739100F06253 /* RiskyEncountersNegativeVM.swift */,
+				D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */,
+				D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */,
+				D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */,
+				D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */,
+				807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */,
+				D6231C9924E400B10023BDC8 /* Risky Encounters List */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		80D2344E24E2F69000F684AA /* Background */ = {
@@ -822,12 +854,8 @@
 			isa = PBXGroup;
 			children = (
 				D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */,
-				D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */,
-				D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */,
-				D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */,
-				D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */,
-				807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */,
-				D6231C9924E400B10023BDC8 /* Risky Encounters List */,
+				80D228222545726C00F06253 /* Views */,
+				80D2282A2545729E00F06253 /* Controllers */,
 			);
 			path = "Risky Encounters";
 			sourceTree = "<group>";
@@ -1232,9 +1260,12 @@
 				D6231CBB24ED3AE50023BDC8 /* ContactCell.swift in Sources */,
 				D6231CA124E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				D6231CC824F52FB70023BDC8 /* CurrentDataVM.swift in Sources */,
+				80D228342545739100F06253 /* RiskyEncountersNegativeVM.swift in Sources */,
 				D6231CAD24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
+				80D228242545727C00F06253 /* RiskyEncountersNegativeView.swift in Sources */,
+				80D2283E254577B100F06253 /* DateFormatter.swift in Sources */,
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
-				D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
+				D63E443B24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8053CCFC2538A2A000C1820E /* Callback.swift in Sources */,
 				8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */,
@@ -1272,6 +1303,7 @@
 				8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8053CD082538A61C00C1820E /* ExposureList.swift in Sources */,
 				80D2345924E320D700F684AA /* SendReportsVM.swift in Sources */,
+				80D2282E2545737900F06253 /* RiskyEncountersNegativeVC.swift in Sources */,
 				80C71D3725248A0200999275 /* StoryboardSegue.swift in Sources */,
 				D65E57DC24D05D73000F2402 /* NewsVC.swift in Sources */,
 				D6CD28E224CF24DC005847AA /* FirstActivationVC.swift in Sources */,
@@ -1298,7 +1330,7 @@
 				80610BD024363D7B00E031C8 /* Auth.swift in Sources */,
 				D6CD28E824CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
-				D63E443824DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
+				D63E443824DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				80C5CECC24EAB0140011B53B /* ServerConfiguration.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
@@ -1405,9 +1437,9 @@
 				80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */,
 				D6231CA624E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
-				D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
+				D63E443924DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */,
 				D6CD28E324CF24DC005847AA /* FirstActivationVC.swift in Sources */,
-				D63E443C24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
+				D63E443C24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
