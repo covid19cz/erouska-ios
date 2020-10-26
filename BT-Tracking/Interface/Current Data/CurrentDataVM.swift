@@ -50,14 +50,14 @@ final class CurrentDataVM {
         needToUpdateView = BehaviorSubject<Void>(value: ())
         observableErrors = BehaviorSubject<Error?>(value: nil)
 
-        let realm = try? Realm()
-        currentData = realm?.objects(CurrentDataRealm.self).last
+        let realm = AppDelegate.dependency.realm
+        currentData = realm.objects(CurrentDataRealm.self).last
         sections = sections(from: currentData)
 
         if currentData == nil {
             let currentData = CurrentDataRealm()
-            try? realm?.write {
-                realm?.add(currentData)
+            try? realm.write {
+                realm.add(currentData)
             }
             self.currentData = currentData
         }
@@ -81,8 +81,8 @@ final class CurrentDataVM {
         AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
             guard let self = self else { return }
             if let result = result?.data as? [String: Any] {
-                let realm = try? Realm()
-                try? realm?.write {
+                let realm = AppDelegate.dependency.realm
+                try? realm.write {
                     self.currentData?.update(with: result)
                 }
 

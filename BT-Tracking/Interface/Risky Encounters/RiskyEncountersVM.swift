@@ -56,12 +56,8 @@ struct RiskyEncountersVM {
 
     init() {
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays
-        let realm = try? Realm()
-        guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
-            riskyEncounterDateToShow = .empty()
-            shouldShowPreviousRiskyEncounters = .of(false)
-            return
-        }
+        let realm = AppDelegate.dependency.realm
+        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
 
         let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
         riskyEncounterDateToShow = Observable.collection(from: exposures).map {

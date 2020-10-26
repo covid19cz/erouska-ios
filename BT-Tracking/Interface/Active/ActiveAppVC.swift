@@ -10,7 +10,6 @@ import UIKit
 import ExposureNotification
 import FirebaseAuth
 import RxSwift
-import RealmSwift
 
 final class ActiveAppVC: UIViewController {
 
@@ -386,19 +385,14 @@ private extension ActiveAppVC {
                     self.hideProgress()
 
                     switch result {
-                    case .success(var exposures):
-                        exposures.sort { $0.date < $1.date }
-
+                    case .success(let exposures):
                         guard !exposures.isEmpty else {
                             log("EXP: no exposures, skip!")
                             self.showAlert(title: "Exposures", message: "No exposures detected, device is clear.")
                             return
                         }
 
-                        let realm = try? Realm()
-                        try? realm?.write {
-                            exposures.forEach { realm?.add(ExposureRealm($0)) }
-                        }
+                        try? ExposureList.add(exposures, detectionDate: Date())
 
                         var result = ""
                         for exposure in exposures {
@@ -437,24 +431,15 @@ private extension ActiveAppVC {
 
     func debugInsertFakeExposure() {
         let exposures = [
-            Exposure(
-                id: UUID(),
-                date: Date(),
-                duration: 213,
-                totalRiskScore: 2,
-                transmissionRiskLevel: 4,
-                attenuationValue: 4,
-                attenuationDurations: [21, 1, 4, 5]
-            )
+            Exposure.debugExposure()
         ]
 
-        let realm = try? Realm()
-        try? realm?.write {
-            exposures.forEach { realm?.add(ExposureRealm($0)) }
-        }
+        try? ExposureList.add(exposures, detectionDate: Date())
 
         let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+
+        AppSettings.currentDataLastFetchDate = Date()
     }
 
     func debugShowNews() {

@@ -78,6 +78,8 @@ Zapnite ho pomocou tlačidla \"Zapnúť Bluetooth\".";
 "data_list_send_error_failed_title" = "Nepodarilo sa nám odoslať údaje";
 "data_list_send_error_failed_message" = "Skontrolujte pripojenie k inernetu a skúste to znova.";
 
+"data_list_previous_header" = "Riziková setkání zjištěná";
+
 "data_send_title" = "Odoslané";
 "data_send_title_label" = "Údaje ste úspešne odoslali";
 "data_send_headline" = "Ďakujeme, že pomáhate bojovať proti šíreniu ochorenia COVID-19.";

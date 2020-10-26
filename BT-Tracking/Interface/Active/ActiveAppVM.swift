@@ -8,8 +8,6 @@
 
 import UIKit
 import RxSwift
-import RealmSwift
-import RxRealm
 
 final class ActiveAppVM {
 
@@ -133,18 +131,11 @@ final class ActiveAppVM {
     init() {
         observableState = BehaviorSubject<State>(value: .paused)
 
-        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
-        let realm = try? Realm()
-        guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
+        if let observable = try? ExposureList.lastObservable() {
+            exposureToShow = observable
+        } else {
             exposureToShow = .empty()
-            return
         }
-
-        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
-        exposureToShow = Observable.collection(from: exposures).map {
-            $0.last(where: { $0.date > showForDate })?.toExposure()
-        }
-
         exposureService.readyToUse
             .subscribe { [weak self] _ in
                 self?.updateStateIfNeeded()

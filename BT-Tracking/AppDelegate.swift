@@ -154,14 +154,9 @@ private extension AppDelegate {
         setupDefaultValues()
         updateRemoteValues()
 
-        let configuration = Realm.Configuration(
-            schemaVersion: 4,
-            migrationBlock: { _, _ in
-
-            }
-        )
-
-        Realm.Configuration.defaultConfiguration = configuration
+        if AppSettings.lastLegacyDataFetchDate == nil {
+            AppSettings.lastLegacyDataFetchDate = AppSettings.currentDataLastFetchDate ?? Date()
+        }
 
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocale), name: NSLocale.currentLocaleDidChangeNotification, object: nil)
     }

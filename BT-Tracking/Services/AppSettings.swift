@@ -25,6 +25,7 @@ struct AppSettings {
 
         case v2_0NewsLaunched
 
+        case lastLegacyDataFetchDate
         case currentDataLastFetchDate
 
         case activated = "activated2"
@@ -124,6 +125,18 @@ struct AppSettings {
         }
         set {
             set(withKey: .v2_0NewsLaunched, value: newValue)
+        }
+    }
+
+    /// Migrated from pre sectioned list date
+    static var lastLegacyDataFetchDate: Date? {
+        get {
+            let rawValue = double(forKey: .lastLegacyDataFetchDate)
+            guard rawValue != 0 else { return nil }
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+        }
+        set {
+            set(withKey: .lastLegacyDataFetchDate, value: newValue?.timeIntervalSince1970)
         }
     }
 

@@ -69,6 +69,7 @@
 "data_list_send_error_disabled_message" = "Enable Exposure Notifications in your phone's settings and then send the data.";
 "data_list_send_error_failed_title" = "Failed to send data";
 "data_list_send_error_failed_message" = "Check you internet connection and try again.";
+"data_list_previous_header" = "Risk encounters identified";
 "data_send_title" = "Sent";
 "data_send_title_label" = "Data were successfully sent";
 "data_send_headline" = "Thank you for fighting against the spread of COVID-19.";
