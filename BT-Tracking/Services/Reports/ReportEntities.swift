@@ -7,14 +7,39 @@
 //
 
 import Foundation
+import Alamofire
 
-enum ReportError: String, Error {
+enum ReportError: Error {
     case noData
     case noFile
     case cancelled
     case unknown
     case alreadyRunning
     case stringEncodingFailure
+    case responseError(AFError)
+    case generalError(Error)
+}
+
+struct ReportDownload {
+
+    static var all = "ALL"
+
+    typealias Success = [String: ReportKeys]
+    typealias Failure = [String: ReportError]
+
+    let success: Success
+    let failures: Failure
+
+    init(success: ReportDownload.Success, failures: ReportDownload.Failure) {
+        self.success = success
+        self.failures = failures
+    }
+
+    init(failure: ReportError) {
+        self.success = [:]
+        self.failures = [Self.all: failure]
+    }
+
 }
 
 struct Report: Encodable {

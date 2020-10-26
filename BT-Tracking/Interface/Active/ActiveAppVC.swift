@@ -375,7 +375,8 @@ private extension ActiveAppVC {
     func debugProcessReports() {
         showProgress()
 
-        _ = viewModel.reporter.downloadKeys(lastProcessedFileName: nil) { [weak self] result in
+        let keyURLs = AppSettings.traveler ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
+        _ = viewModel.reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: [:]) { [weak self] result in
             switch result {
             case .success(let keys):
                 self?.viewModel.exposureService.detectExposures(

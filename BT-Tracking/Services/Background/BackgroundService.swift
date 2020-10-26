@@ -171,7 +171,8 @@ private extension BackgroundService {
         }
 
         // Perform the exposure detection
-        return reporter.downloadKeys(lastProcessedFileName: AppSettings.lastProcessedFileName) { result in
+        let keyURLs = AppSettings.traveler ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
+        return reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: AppSettings.lastProcessedFileNames) { result in
             Log.log("BGTask: did download keys \(result)")
 
             switch result {
