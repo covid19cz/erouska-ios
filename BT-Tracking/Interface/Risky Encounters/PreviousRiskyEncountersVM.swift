@@ -22,9 +22,6 @@ struct PreviousRiskyEncountersVM {
     let dateFormatter: DateFormatter
 
     init() {
-        let realm = AppDelegate.dependency.realm
-        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
-
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .medium
         dateFormatter.dateStyle = .medium
@@ -35,7 +32,7 @@ struct PreviousRiskyEncountersVM {
         self.dateFormatter = beforeDateFormatter
 
         let oldTestsDate = Date(timeIntervalSince1970: 0)
-        let grouped = Dictionary(grouping: exposures, by: { $0.detectedDate }).sorted(by: { $0.key > $1.key })
+        let grouped = Dictionary(grouping: ExposureList.exposures, by: { $0.detectedDate }).sorted(by: { $0.key > $1.key })
         sections = Observable.just(grouped.map { key, values -> Section in
             let title: String
             if key == oldTestsDate {

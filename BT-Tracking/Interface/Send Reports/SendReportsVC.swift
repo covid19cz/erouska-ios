@@ -11,6 +11,7 @@ import Reachability
 import RxSwift
 import RxRelay
 import DeviceKit
+import FirebaseCrashlytics
 
 final class SendReportsVC: UIViewController {
 
@@ -159,6 +160,7 @@ private extension SendReportsVC {
                 log("DataListVC: Failed to verify code \(error)")
                 self?.reportHideProgress()
                 self?.showVerifyError(error)
+                Crashlytics.crashlytics().record(error: error)
             }
         }
     }
@@ -199,6 +201,7 @@ private extension SendReportsVC {
                 default:
                     self.showSendDataFrameworkError(code: error.localizedDescription)
                 }
+                Crashlytics.crashlytics().record(error: error)
             }
         }
 
@@ -223,6 +226,7 @@ private extension SendReportsVC {
                     log("DataListVC: Failed to get verification payload \(error)")
                     self.reportHideProgress()
                     self.showSendDataError()
+                    Crashlytics.crashlytics().record(error: error)
                 }
             }
         } catch {

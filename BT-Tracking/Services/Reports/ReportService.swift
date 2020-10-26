@@ -10,6 +10,7 @@ import Foundation
 import ExposureNotification
 import FirebaseStorage
 import FirebaseAuth
+import FirebaseCrashlytics
 import Alamofire
 import Zip
 import CryptoKit
@@ -102,6 +103,7 @@ final class ReportService: ReportServicing {
             DispatchQueue.main.async {
                 self.isUploading = false
                 callback(.failure(error))
+                Crashlytics.crashlytics().record(error: error)
             }
             return
         }
@@ -159,6 +161,7 @@ final class ReportService: ReportServicing {
             log("ReportService Download error: \(error)")
             isDownloading = false
             callback(.failure(error))
+            Crashlytics.crashlytics().record(error: error)
         }
 
         func reportSuccess(_ reports: [URL], lastProcessFileName: String?) {
