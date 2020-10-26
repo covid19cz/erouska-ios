@@ -12,6 +12,7 @@ import RealmSwift
 import BackgroundTasks
 import FirebaseFunctions
 import FirebaseAnalytics
+import FirebaseCrashlytics
 
 final class BackgroundService {
 
@@ -166,6 +167,7 @@ private extension BackgroundService {
             task?.setTaskCompleted(success: false)
             isRunning = false
             Log.log("BGTask: failed to detect exposures \(error)")
+            Crashlytics.crashlytics().record(error: error)
         }
 
         // Perform the exposure detection
@@ -180,6 +182,7 @@ private extension BackgroundService {
                     self.isRunning = false
 
                     task?.setTaskCompleted(success: true)
+                    Analytics.logEvent("key_export_download_finished", parameters: nil)
                     return
                 }
 
@@ -196,7 +199,6 @@ private extension BackgroundService {
                         self.isRunning = false
 
                         task?.setTaskCompleted(success: true)
-
                         Analytics.logEvent("key_export_download_finished", parameters: nil)
                     case .failure(let error):
                         reportFailure(error)
