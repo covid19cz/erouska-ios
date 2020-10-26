@@ -9,13 +9,19 @@
 import UIKit
 
 private class HelpSearchItem: NSObject {
+
+    @objc enum Kind: Int {
+        case title
+        case line
+    }
+
     let article: HelpArticle
-    @objc dynamic let type: String
+    @objc dynamic let kind: Kind
     @objc dynamic let line: String
 
-    init(article: HelpArticle, type: String, line: String) {
+    init(article: HelpArticle, kind: Kind, line: String) {
         self.article = article
-        self.type = type
+        self.kind = kind
         self.line = line
     }
 }
@@ -27,8 +33,8 @@ final class HelpSearchVC: UITableViewController {
             searchItems.removeAll()
             for section in articles {
                 for article in section.items {
-                    searchItems.append(.init(article: article, type: "title", line: article.title))
-                    searchItems.append(contentsOf: article.lines.map { .init(article: article, type: "line", line: $0.line) })
+                    searchItems.append(.init(article: article, kind: .title, line: article.title))
+                    searchItems.append(contentsOf: article.lines.map { .init(article: article, kind: .line, line: $0.line) })
                 }
             }
         }
@@ -60,7 +66,7 @@ final class HelpSearchVC: UITableViewController {
         }
     }
 
-    // MARK: - UITalbeViewDataSource
+    // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
@@ -70,7 +76,7 @@ final class HelpSearchVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchResult") ?? UITableViewCell()
         let result = results[indexPath.row]
         cell.textLabel?.attributedText = highlightedString(string: result.article.title)
-        if result.type != "title" {
+        if result.kind != .title {
             cell.detailTextLabel?.attributedText = highlightedString(string: result.line, startsFrom: 30)
         } else {
             cell.detailTextLabel?.attributedText = nil
@@ -91,16 +97,14 @@ final class HelpSearchVC: UITableViewController {
 extension HelpSearchVC: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchBar: searchController.searchBar)
+        filterContent(with: searchController.searchBar.text ?? "")
     }
 
 }
 
 private extension HelpSearchVC {
 
-    func filterContentForSearchText(searchBar: UISearchBar?) {
-        searchText = searchBar?.text ?? ""
-
+    func filterContent(with searchText: String) {
         guard !searchText.isEmpty, searchText.count > 1 else {
             results = []
             return
