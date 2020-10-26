@@ -27,12 +27,11 @@ final class AppDependency {
 
     private(set) lazy var background = BackgroundService(exposureService: exposureService, reporter: reporter)
 
-    var realm: Realm {
+    let realm: Realm = {
         var oldV1Data: [String: ExposureDataV1] = [:]
 
         let configuration = Realm.Configuration(
             schemaVersion: 5,
-
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 5 {
                     migration.enumerateObjects(ofType: ExposureRealm.className()) { oldObject, newObject in
@@ -52,9 +51,8 @@ final class AppDependency {
 
         Realm.Configuration.defaultConfiguration = configuration
 
-        // swiftlint:disable force_try
+        // swiftlint:disable:next force_try
         let realm = try! Realm()
-        // swiftlint:enable force_try
 
         if !oldV1Data.values.isEmpty {
             let exposures = realm.objects(ExposureRealm.self)
@@ -69,5 +67,5 @@ final class AppDependency {
         }
 
         return realm
-    }
+    }()
 }

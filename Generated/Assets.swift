@@ -43,7 +43,6 @@ internal enum Asset {
   internal static let exposuresOff = ImageAsset(name: "ExposuresOff")
   internal static let forceOSUpdate = ImageAsset(name: "ForceOSUpdate")
   internal static let forceUpdate = ImageAsset(name: "ForceUpdate")
-  internal static let gdpr = ImageAsset(name: "GDPR")
   internal static let helpBackground = ColorAsset(name: "HelpBackground")
   internal static let iconsColor = ColorAsset(name: "IconsColor")
   internal static let launchScreenBackground = ColorAsset(name: "LaunchScreenBackground")
@@ -68,6 +67,7 @@ internal enum Asset {
   internal static let homePaused = ImageAsset(name: "HomePaused")
   internal static let homePausedSelected = ImageAsset(name: "HomePausedSelected")
   internal static let myData = ImageAsset(name: "MyData")
+  internal static let gdpr = ImageAsset(name: "gdpr")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
@@ -153,7 +153,11 @@ internal extension ImageAsset.Image {
 // swiftlint:disable convenience_type
 private final class BundleToken {
   static let bundle: Bundle = {
-    Bundle(for: BundleToken.self)
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
   }()
 }
 // swiftlint:enable convenience_type
