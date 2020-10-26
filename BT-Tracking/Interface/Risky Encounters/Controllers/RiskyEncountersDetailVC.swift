@@ -29,7 +29,7 @@ final class RiskyEncountersDetailVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Detail"
+        title = "Debug detail"
     }
 
     // MARK: - UITableViewDetaSource

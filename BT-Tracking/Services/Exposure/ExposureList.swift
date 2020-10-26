@@ -13,10 +13,13 @@ import RxRealm
 
 final class ExposureList {
 
-    static var last: Exposure? {
+    static var exposures: Results<ExposureRealm> {
         let realm = AppDelegate.dependency.realm
-        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+        return realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+    }
 
+    static var last: Exposure? {
+        let exposures = self.exposures
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays
         let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
 
@@ -24,9 +27,7 @@ final class ExposureList {
     }
 
     static func lastObservable() throws -> Observable<Exposure?> {
-        let realm = AppDelegate.dependency.realm
-        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
-
+        let exposures = self.exposures
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays
         let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
 
@@ -38,12 +39,9 @@ final class ExposureList {
     static func add(_ exposures: [Exposure], detectionDate: Date) throws {
         guard !exposures.isEmpty else { return }
 
-        var sorted = exposures
-        sorted.sort { $0.date < $1.date }
-
         let realm = AppDelegate.dependency.realm
         try realm.write {
-            sorted.forEach { realm.add(ExposureRealm($0, detectedDate: detectionDate)) }
+            exposures.sorted { $0.date < $1.date }.forEach { realm.add(ExposureRealm($0, detectedDate: detectionDate)) }
         }
     }
 

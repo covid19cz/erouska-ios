@@ -14,7 +14,7 @@ final class RiskyEncountersListCell: UITableViewCell {
     @IBOutlet private weak var customTextLabel: UILabel!
 
     func config(with symptom: AsyncImageTitleViewModel) {
-        customImageView.af.setImage(withURL: symptom.imageUrl, placeholderImage: nil) // TODO: add placeholder image
+        customImageView.af.setImage(withURL: symptom.imageUrl, placeholderImage: Asset.placeholder.image)
         customTextLabel.text = symptom.title
     }
 }

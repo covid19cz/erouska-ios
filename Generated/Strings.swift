@@ -268,7 +268,7 @@ internal enum L10n {
   internal static func newRiskyEncountersTitle(_ p1: Any) -> String {
     return L10n.tr("Localizable", "new_risky_encounters_title", String(describing: p1))
   }
-  /// jak postupovat dál
+  /// Jak postupovat dál
   internal static let newRiskyExposuresButton = L10n.tr("Localizable", "new_risky_exposures_button")
   /// Telefon nemusíte nosit v kapse se zapnutou obrazovkou a pokládat obrazovkou na stůl. Normálně ho používejte a zamykejte, eRouška bude vždy aktivní.
   internal static let newsAlwaysActiveBody = L10n.tr("Localizable", "news_always_active_body")
@@ -359,6 +359,12 @@ extension L10n {
 
 // swiftlint:disable convenience_type
 private final class BundleToken {
-  static let bundle = Bundle(for: BundleToken.self)
+  static let bundle: Bundle = {
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
+  }()
 }
 // swiftlint:enable convenience_type
