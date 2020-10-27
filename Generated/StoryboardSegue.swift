@@ -19,6 +19,9 @@ internal enum StoryboardSegue {
   internal enum Error: String, SegueType {
     case help = "Help"
   }
+  internal enum Help: String, SegueType {
+    case article
+  }
   internal enum Onboarding: String, SegueType {
     case exposureNotification
     case privacy
