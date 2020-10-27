@@ -109,13 +109,6 @@ final class ActiveAppVM {
         RemoteValues.exposureBannerTitle
     }
 
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.dateStyle = .medium
-        return formatter
-    }()
-
     var state: State {
         let state = try? observableState.value()
         return state ?? .disabledExposures

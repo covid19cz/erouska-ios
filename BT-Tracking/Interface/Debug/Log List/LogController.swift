@@ -52,14 +52,7 @@ extension LogController: LogDelegate {
 }
 
 private extension LogController {
-    static var formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .medium
-        return formatter
-    }()
-
     private func logToView(_ text: String) {
-        logText += "\n" + Self.formatter.string(from: Date()) + " " + text
+        logText += "\n" + DateFormatter.baseDateFormatter.string(from: Date()) + " " + text
     }
 }

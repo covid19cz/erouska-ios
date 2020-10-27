@@ -16,12 +16,21 @@
 		80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C324DD812800DC36EE /* VerificationService.swift */; };
 		80026D9924FE492600BBDB36 /* VerificationEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C524DD913200DC36EE /* VerificationEntities.swift */; };
 		80026D9A24FE492B00BBDB36 /* ReportEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BE48924D9A11A00D40C07 /* ReportEntities.swift */; };
+		800A5A5C254857360054A68D /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2283D254577B100F06253 /* DateFormatter.swift */; };
+		800A5A5F2548573E0054A68D /* RiskyEncountersNegativeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2282D2545737900F06253 /* RiskyEncountersNegativeVC.swift */; };
+		800A5A62254857400054A68D /* RiskyEncountersNegativeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D228332545739100F06253 /* RiskyEncountersNegativeVM.swift */; };
+		800A5A652548575A0054A68D /* RiskyEncountersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */; };
+		800A5A69254857820054A68D /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 800A5A68254857820054A68D /* SwiftyMarkdown */; };
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
 		800E611424DAE98B00C63567 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 800E611324DAE98B00C63567 /* Zip */; };
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		801C8FE9253FFD56002F303F /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 801C8FE8253FFD56002F303F /* RxRealm */; };
 		802AFE4425135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
 		802AFE4525135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
+		804B203F254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */; };
+		804B2040254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */; };
+		804B204425458390007701F0 /* NewRiskEncounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B204325458390007701F0 /* NewRiskEncounterVC.swift */; };
+		804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B204325458390007701F0 /* NewRiskEncounterVC.swift */; };
 		804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BE48924D9A11A00D40C07 /* ReportEntities.swift */; };
 		804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 804BE48C24D9A30A00D40C07 /* Alamofire */; };
 		805192A024AF8E2700765392 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8051929F24AF8E2700765392 /* RxCocoa */; };
@@ -145,6 +154,10 @@
 		80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C524DD913200DC36EE /* VerificationEntities.swift */; };
 		80D0B5E425401D37000C3FE5 /* HelpArticleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0B5E325401D37000C3FE5 /* HelpArticleVC.swift */; };
 		80D0B5E525401D37000C3FE5 /* HelpArticleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0B5E325401D37000C3FE5 /* HelpArticleVC.swift */; };
+		80D228242545727C00F06253 /* RiskyEncountersNegativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D228232545727C00F06253 /* RiskyEncountersNegativeView.swift */; };
+		80D2282E2545737900F06253 /* RiskyEncountersNegativeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2282D2545737900F06253 /* RiskyEncountersNegativeVC.swift */; };
+		80D228342545739100F06253 /* RiskyEncountersNegativeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D228332545739100F06253 /* RiskyEncountersNegativeVM.swift */; };
+		80D2283E254577B100F06253 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2283D254577B100F06253 /* DateFormatter.swift */; };
 		80D2345124E2FDD200F684AA /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 80D2345024E2FDD200F684AA /* Crypto */; };
 		80D2345324E31DFF00F684AA /* SendReportsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2345224E31DFF00F684AA /* SendReportsVC.swift */; };
 		80D2345424E31DFF00F684AA /* SendReportsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2345224E31DFF00F684AA /* SendReportsVC.swift */; };
@@ -184,7 +197,6 @@
 		D6231C9D24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */; };
 		D6231C9E24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */; };
 		D6231C9F24E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */; };
-		D6231CA024E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */; };
 		D6231CA124E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9C24E400B10023BDC8 /* RiskyEncountersListVC.swift */; };
 		D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231C9C24E400B10023BDC8 /* RiskyEncountersListVC.swift */; };
 		D6231CA524E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */; };
@@ -223,10 +235,10 @@
 		D63A264424DB023100C34CCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D63A264324DB023100C34CCF /* GoogleService-Info.plist */; };
 		D63E443524DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */; };
 		D63E443624DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */; };
-		D63E443824DD8640007B6728 /* RiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */; };
-		D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */; };
-		D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */; };
-		D63E443C24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */; };
+		D63E443824DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */; };
+		D63E443924DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */; };
+		D63E443B24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */; };
+		D63E443C24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */; };
 		D64BE02324F79AE000B751B6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BE02224F79AE000B751B6 /* TextView.swift */; };
 		D64BE02424F79AE000B751B6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BE02224F79AE000B751B6 /* TextView.swift */; };
 		D65E57D324D04976000F2402 /* NewsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E57D224D04976000F2402 /* NewsVM.swift */; };
@@ -271,6 +283,8 @@
 		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		802AFE4325135BC0004954AF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncounterHelpVM.swift; sourceTree = "<group>"; };
+		804B204325458390007701F0 /* NewRiskEncounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRiskEncounterVC.swift; sourceTree = "<group>"; };
 		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
 		8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureService.swift; sourceTree = "<group>"; };
 		8053CCFB2538A2A000C1820E /* Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
@@ -334,6 +348,10 @@
 		80CCE5C324DD812800DC36EE /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		80CCE5C524DD913200DC36EE /* VerificationEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEntities.swift; sourceTree = "<group>"; };
 		80D0B5E325401D37000C3FE5 /* HelpArticleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpArticleVC.swift; sourceTree = "<group>"; };
+		80D228232545727C00F06253 /* RiskyEncountersNegativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersNegativeView.swift; sourceTree = "<group>"; };
+		80D2282D2545737900F06253 /* RiskyEncountersNegativeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersNegativeVC.swift; sourceTree = "<group>"; };
+		80D228332545739100F06253 /* RiskyEncountersNegativeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersNegativeVM.swift; sourceTree = "<group>"; };
+		80D2283D254577B100F06253 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		80D2345224E31DFF00F684AA /* SendReportsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportsVC.swift; sourceTree = "<group>"; };
 		80D2345824E320D700F684AA /* SendReportsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReportsVM.swift; sourceTree = "<group>"; };
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -381,8 +399,8 @@
 		D6340C6A24C5A27700E550A1 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		D63A264324DB023100C34CCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RiskyEncounters.storyboard; sourceTree = "<group>"; };
-		D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersVM.swift; sourceTree = "<group>"; };
-		D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersVC.swift; sourceTree = "<group>"; };
+		D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersPositiveVM.swift; sourceTree = "<group>"; };
+		D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersPositiveVC.swift; sourceTree = "<group>"; };
 		D64BE02224F79AE000B751B6 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		D65E57D224D04976000F2402 /* NewsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVM.swift; sourceTree = "<group>"; };
 		D65E57D524D056C8000F2402 /* NewsPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsPageView.xib; sourceTree = "<group>"; };
@@ -437,6 +455,7 @@
 				805192A624AF8E2700765392 /* RxKeyboard in Frameworks */,
 				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
 				80F3131924E3FE9100A93CCD /* Crypto in Frameworks */,
+				800A5A69254857820054A68D /* SwiftyMarkdown in Frameworks */,
 				805192A424AF8E2700765392 /* RxDataSources in Frameworks */,
 				80F3131524E3FE8500A93CCD /* Zip in Frameworks */,
 				80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */,
@@ -662,6 +681,7 @@
 				80631A97242CAB5000EB0B6C /* Image.swift */,
 				BDBB00D724261D5C00871FE4 /* Layout.swift */,
 				80610BD8243B13AE00E031C8 /* String.swift */,
+				80D2283D254577B100F06253 /* DateFormatter.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -717,6 +737,31 @@
 				80CCE5C324DD812800DC36EE /* VerificationService.swift */,
 			);
 			path = Verification;
+			sourceTree = "<group>";
+		};
+		80D228222545726C00F06253 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				80D228232545727C00F06253 /* RiskyEncountersNegativeView.swift */,
+				D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		80D2282A2545729E00F06253 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				804B204325458390007701F0 /* NewRiskEncounterVC.swift */,
+				80D2282D2545737900F06253 /* RiskyEncountersNegativeVC.swift */,
+				80D228332545739100F06253 /* RiskyEncountersNegativeVM.swift */,
+				D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */,
+				D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */,
+				D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */,
+				D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */,
+				807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */,
+				D6231C9924E400B10023BDC8 /* Risky Encounters List */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		80D2344E24E2F69000F684AA /* Background */ = {
@@ -796,7 +841,7 @@
 				D6231C9A24E400B10023BDC8 /* RiskyEncountersListVM.swift */,
 				D6231CA424E400C70023BDC8 /* MainSymptomsVM.swift */,
 				D6231CA324E400C70023BDC8 /* PreventTransmissionVM.swift */,
-				D6231C9B24E400B10023BDC8 /* RiskyEncountersListCell.swift */,
+				804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */,
 			);
 			path = "Risky Encounters List";
 			sourceTree = "<group>";
@@ -826,12 +871,8 @@
 			isa = PBXGroup;
 			children = (
 				D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */,
-				D63E443A24DD8645007B6728 /* RiskyEncountersVC.swift */,
-				D63E443724DD8640007B6728 /* RiskyEncountersVM.swift */,
-				D6231CAA24E403340023BDC8 /* PreviousRiskyEncountersVC.swift */,
-				D6231CA924E403340023BDC8 /* PreviousRiskyEncountersVM.swift */,
-				807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */,
-				D6231C9924E400B10023BDC8 /* Risky Encounters List */,
+				80D228222545726C00F06253 /* Views */,
+				80D2282A2545729E00F06253 /* Controllers */,
 			);
 			path = "Risky Encounters";
 			sourceTree = "<group>";
@@ -942,6 +983,7 @@
 				80F3131424E3FE8500A93CCD /* Zip */,
 				80F3131624E3FE9100A93CCD /* Alamofire */,
 				80F3131824E3FE9100A93CCD /* Crypto */,
+				800A5A68254857820054A68D /* SwiftyMarkdown */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska.app */;
@@ -1234,9 +1276,12 @@
 				D6231CBB24ED3AE50023BDC8 /* ContactCell.swift in Sources */,
 				D6231CA124E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				D6231CC824F52FB70023BDC8 /* CurrentDataVM.swift in Sources */,
+				80D228342545739100F06253 /* RiskyEncountersNegativeVM.swift in Sources */,
 				D6231CAD24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
+				80D228242545727C00F06253 /* RiskyEncountersNegativeView.swift in Sources */,
+				80D2283E254577B100F06253 /* DateFormatter.swift in Sources */,
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
-				D63E443B24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
+				D63E443B24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8053CCFC2538A2A000C1820E /* Callback.swift in Sources */,
 				8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */,
@@ -1261,6 +1306,7 @@
 				D6CD28EA24CF24DD005847AA /* PrivacyVC.swift in Sources */,
 				8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */,
 				80CCE5C424DD812900DC36EE /* VerificationService.swift in Sources */,
+				804B204425458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
 				D65E57E224D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				80B94557242B96560052CD9F /* NavigationController.swift in Sources */,
 				D6CD28EC24CF24DD005847AA /* ExposurePermissionVC.swift in Sources */,
@@ -1275,6 +1321,7 @@
 				8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8053CD082538A61C00C1820E /* ExposureList.swift in Sources */,
 				80D2345924E320D700F684AA /* SendReportsVM.swift in Sources */,
+				80D2282E2545737900F06253 /* RiskyEncountersNegativeVC.swift in Sources */,
 				80C71D3725248A0200999275 /* StoryboardSegue.swift in Sources */,
 				D65E57DC24D05D73000F2402 /* NewsVC.swift in Sources */,
 				D6CD28E224CF24DC005847AA /* FirstActivationVC.swift in Sources */,
@@ -1289,6 +1336,7 @@
 				FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */,
 				80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */,
 				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
+				804B203F254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */,
 				D6231CCB24F6610C0023BDC8 /* CurrentData.swift in Sources */,
 				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
 				80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */,
@@ -1301,7 +1349,7 @@
 				80610BD024363D7B00E031C8 /* Auth.swift in Sources */,
 				D6CD28E824CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
-				D63E443824DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
+				D63E443824DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				80D0B5E425401D37000C3FE5 /* HelpArticleVC.swift in Sources */,
 				80C5CECC24EAB0140011B53B /* ServerConfiguration.swift in Sources */,
@@ -1320,6 +1368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				800A5A5C254857360054A68D /* DateFormatter.swift in Sources */,
 				D6340C6324C1F46D00E550A1 /* Version.swift in Sources */,
 				D6231CBF24F39BC90023BDC8 /* IntrinsicTableView.swift in Sources */,
 				80D2345A24E320D700F684AA /* SendReportsVM.swift in Sources */,
@@ -1334,9 +1383,11 @@
 				80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */,
 				8053CCFD2538A2A000C1820E /* Callback.swift in Sources */,
 				FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */,
+				804B2040254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */,
 				8053CD022538A3C100C1820E /* ExposureRealm.swift in Sources */,
 				D6CD28E724CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
 				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
+				800A5A5F2548573E0054A68D /* RiskyEncountersNegativeVC.swift in Sources */,
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
 				D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */,
@@ -1359,7 +1410,6 @@
 				8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */,
 				80A0AADD2541AAC700D35282 /* HelpSearchVC.swift in Sources */,
 				8053CD092538A61C00C1820E /* ExposureList.swift in Sources */,
-				D6231CA024E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */,
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D6231CCC24F6610C0023BDC8 /* CurrentData.swift in Sources */,
@@ -1371,12 +1421,14 @@
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
 				8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */,
+				804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
 				80591185246DB86B002CD687 /* ExposureService.swift in Sources */,
 				8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */,
 				8083D8CE244640A0007FA4E9 /* SendResultVC.swift in Sources */,
 				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
+				800A5A62254857400054A68D /* RiskyEncountersNegativeVM.swift in Sources */,
 				D64BE02424F79AE000B751B6 /* TextView.swift in Sources */,
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
 				80026D9624FE492000BBDB36 /* BackgroundEntities.swift in Sources */,
@@ -1405,15 +1457,16 @@
 				80C71D3625248A0200999275 /* StoryboardScene.swift in Sources */,
 				D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
 				8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */,
+				800A5A652548575A0054A68D /* RiskyEncountersListCell.swift in Sources */,
 				D65E57E324D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
 				D65E57DA24D056D6000F2402 /* NewsPageView.swift in Sources */,
 				80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */,
 				D6231CA624E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
-				D63E443924DD8640007B6728 /* RiskyEncountersVM.swift in Sources */,
+				D63E443924DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */,
 				D6CD28E324CF24DC005847AA /* FirstActivationVC.swift in Sources */,
-				D63E443C24DD8645007B6728 /* RiskyEncountersVC.swift in Sources */,
+				D63E443C24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1577,7 +1630,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1585,7 +1638,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
@@ -1604,7 +1657,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1612,7 +1665,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
@@ -1630,7 +1683,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1638,7 +1691,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
@@ -1658,7 +1711,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1666,7 +1719,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
@@ -1808,6 +1861,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		800A5A68254857820054A68D /* SwiftyMarkdown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80F9DD3125402CF500724E9A /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
+			productName = SwiftyMarkdown;
+		};
 		800E611324DAE98B00C63567 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */;

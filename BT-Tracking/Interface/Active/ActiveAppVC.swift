@@ -56,6 +56,7 @@ final class ActiveAppVC: UIViewController {
                 if let exposure = exposure, AppSettings.lastExposureWarningId != exposure.id.uuidString {
                     AppSettings.lastExposureWarningClosed = false
                     AppSettings.lastExposureWarningId = exposure.id.uuidString
+                    AppSettings.lastExposureWarningInfoDisplayed = false
                 }
                 self?.exposureBannerView.isHidden = exposure == nil || AppSettings.lastExposureWarningClosed == true
                 self?.view.setNeedsLayout()
@@ -202,7 +203,18 @@ final class ActiveAppVC: UIViewController {
     }
 
     private func riskyEncountersAction() {
-        perform(segue: StoryboardSegue.Active.riskyEncounters)
+        let exposure = ExposureList.last
+        let controller: UIViewController
+
+        if exposure == nil {
+            controller = StoryboardScene.RiskyEncounters.riskyEncountersNegativeNav.instantiate()
+        } else if !AppSettings.lastExposureWarningInfoDisplayed {
+            controller = StoryboardScene.RiskyEncounters.newRiskEncounterNav.instantiate()
+            AppSettings.lastExposureWarningInfoDisplayed = true
+        } else {
+            controller = StoryboardScene.RiskyEncounters.riskyEncountersPositiveNav.instantiate()
+        }
+        present(controller, animated: true, completion: nil)
     }
 
     // MARK: -
@@ -292,7 +304,7 @@ private extension ActiveAppVC {
         textLabel.text = viewModel.state.text
 
         if viewModel.state == .enabled, let update = AppSettings.lastProcessedDate {
-            lastUpdateLabel.text = L10n.activeDataUpdate(viewModel.dateFormatter.string(from: update))
+            lastUpdateLabel.text = L10n.activeDataUpdate(DateFormatter.baseDateTimeFormatter.string(from: update))
             lastUpdateLabel.isHidden = false
         } else {
             lastUpdateLabel.isHidden = true
@@ -397,7 +409,7 @@ private extension ActiveAppVC {
                         var result = ""
                         for exposure in exposures {
                             let signals = exposure.attenuationDurations.map { "\($0)" }
-                            result += "EXP: \(self.viewModel.dateFormatter.string(from: exposure.date))" +
+                            result += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
                                 ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
                                 + "attenuation value: \(exposure.attenuationValue)\n"
                                 + "signal attenuations: \(signals.joined(separator: ", "))\n"

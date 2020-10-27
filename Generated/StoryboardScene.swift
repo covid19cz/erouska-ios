@@ -79,6 +79,12 @@ internal enum StoryboardScene {
     internal static let storyboardName = "RiskyEncounters"
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self)
+
+    internal static let newRiskEncounterNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "NewRiskEncounterNav")
+
+    internal static let riskyEncountersNegativeNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersNegativeNav")
+
+    internal static let riskyEncountersPositiveNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersPositiveNav")
   }
   internal enum SendReports: StoryboardType {
     internal static let storyboardName = "SendReports"

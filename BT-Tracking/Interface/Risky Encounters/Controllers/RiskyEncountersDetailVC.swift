@@ -20,13 +20,6 @@ final class RiskyEncountersDetailVC: UITableViewController {
         case computedThreshold
     }
 
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .medium
-        return formatter
-    }
-
     private let configuration = RemoteValues.exposureConfiguration
 
     var exposure: Exposure?
@@ -54,7 +47,7 @@ final class RiskyEncountersDetailVC: UITableViewController {
         switch Row(rawValue: indexPath.row) {
         case .date:
             cell.textLabel?.text = "Date"
-            cell.detailTextLabel?.text = dateFormatter.string(from: exposure.date)
+            cell.detailTextLabel?.text = DateFormatter.baseDateFormatter.string(from: exposure.date)
         case .duration:
             cell.textLabel?.text = "Duration"
             cell.detailTextLabel?.text = "\(exposure.duration)"
