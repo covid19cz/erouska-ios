@@ -52,7 +52,11 @@ internal enum StoryboardScene {
 
     internal static let help = SceneType<HelpVC>(storyboard: Help.self, identifier: "Help")
 
+    internal static let helpArticle = SceneType<HelpArticleVC>(storyboard: Help.self, identifier: "HelpArticle")
+
     internal static let helpNavigation = SceneType<UIKit.UINavigationController>(storyboard: Help.self, identifier: "HelpNavigation")
+
+    internal static let helpSearchVC = SceneType<HelpSearchVC>(storyboard: Help.self, identifier: "HelpSearchVC")
   }
   internal enum LaunchScreen: StoryboardType {
     internal static let storyboardName = "LaunchScreen"
