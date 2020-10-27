@@ -39,12 +39,6 @@ final class CurrentDataVM {
         formatter.numberStyle = .decimal
         return formatter
     }()
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .medium
-        return formatter
-    }()
 
     init() {
         needToUpdateView = BehaviorSubject<Void>(value: ())
@@ -101,7 +95,7 @@ final class CurrentDataVM {
 
     private func updateFooter() {
         if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
-            footer = L10n.currentDataFooter(dateFormatter.string(from: lastFetchedDate))
+            footer = L10n.currentDataFooter(DateFormatter.baseDateFormatter.string(from: lastFetchedDate))
         }
     }
 

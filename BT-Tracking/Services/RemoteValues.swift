@@ -72,6 +72,7 @@ enum RemoteConfigValueKey: String, CaseIterable {
     case symptomsContentJson
     case preventionContentJson
     case contactsContentJson
+    case exposureHelpContentJson
 
     case currentMeasuresUrl
     case conditionsOfUseUrl
@@ -127,6 +128,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
             return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "preventionContentJsonDefault")
         case .contactsContentJson:
             return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "contactsContentJsonDefault")
+        case .exposureHelpContentJson:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "exposureHelpContentJsonDefault")
 
         case .currentMeasuresUrl:
             return "https://koronavirus.mzcr.cz/aktualni-opatreni/"
@@ -225,6 +228,10 @@ struct RemoteValues {
 
     static var preventionContent: RiskyEncountersListContent? {
         parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .preventionContentJson), prevention: true)
+    }
+
+    static var exposureHelpContent: RiskyEncountersListContent? {
+        parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .exposureHelpContentJson), prevention: false)
     }
 
     private static func parseRiskyEncountersListContent(from rawJson: String, prevention: Bool) -> RiskyEncountersListContent? {

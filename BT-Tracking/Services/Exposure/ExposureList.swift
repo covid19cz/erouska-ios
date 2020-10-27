@@ -18,6 +18,14 @@ final class ExposureList {
         return realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
     }
 
+    static var last: Exposure? {
+        let exposures = self.exposures
+        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
+        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
+
+        return exposures.last(where: { $0.date > showForDate })?.toExposure()
+    }
+
     static func lastObservable() throws -> Observable<Exposure?> {
         let exposures = self.exposures
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays

@@ -59,6 +59,7 @@ final class ActiveAppVC: UIViewController {
                 if let exposure = exposure, AppSettings.lastExposureWarningId != exposure.id.uuidString {
                     AppSettings.lastExposureWarningClosed = false
                     AppSettings.lastExposureWarningId = exposure.id.uuidString
+                    AppSettings.lastExposureWarningInfoDisplayed = false
                 }
                 self?.exposureBannerView.isHidden = exposure == nil || AppSettings.lastExposureWarningClosed == true
                 self?.view.setNeedsLayout()
@@ -76,11 +77,11 @@ final class ActiveAppVC: UIViewController {
                 self.riskyEncountersSection.iconImageView.image = isPositive ? Asset.riskyEncountersPositive.image : Asset.riskyEncountersNegative.image
                 if let date = dateToShow {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
-                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(self.viewModel.dateFormatter.string(from: date))
+                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateTimeFormatter.string(from: date))
                 } else {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
                     self.riskyEncountersSection.bodyLabel.text = [
-                        AppSettings.lastProcessedDate.map { L10n.activeRiskyEncounterLastUpdateNegative(self.viewModel.dateFormatter.string(from: $0)) },
+                        AppSettings.lastProcessedDate.map { L10n.activeRiskyEncounterLastUpdateNegative(DateFormatter.baseDateTimeFormatter.string(from: $0)) },
                         L10n.activeRiskyEncounterUpdateIntervalNegative
                     ].compactMap { $0 }.joined(separator: "\n")
                 }
@@ -240,7 +241,18 @@ final class ActiveAppVC: UIViewController {
     }
 
     private func riskyEncountersAction() {
-        perform(segue: StoryboardSegue.Active.riskyEncounters)
+        let exposure = ExposureList.last
+        let controller: UIViewController
+
+        if exposure == nil {
+            controller = StoryboardScene.RiskyEncounters.riskyEncountersNegativeNav.instantiate()
+        } else if !AppSettings.lastExposureWarningInfoDisplayed {
+            controller = StoryboardScene.RiskyEncounters.newRiskEncounterNav.instantiate()
+            AppSettings.lastExposureWarningInfoDisplayed = true
+        } else {
+            controller = StoryboardScene.RiskyEncounters.riskyEncountersPositiveNav.instantiate()
+        }
+        present(controller, animated: true, completion: nil)
     }
 
     // MARK: -
@@ -425,7 +437,7 @@ private extension ActiveAppVC {
                         var result = ""
                         for exposure in exposures {
                             let signals = exposure.attenuationDurations.map { "\($0)" }
-                            result += "EXP: \(self.viewModel.dateFormatter.string(from: exposure.date))" +
+                            result += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
                                 ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
                                 + "attenuation value: \(exposure.attenuationValue)\n"
                                 + "signal attenuations: \(signals.joined(separator: ", "))\n"
