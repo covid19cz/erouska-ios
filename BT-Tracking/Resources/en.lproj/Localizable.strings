@@ -1,5 +1,3 @@
-// MARK: - Strings
-
 "app_name" = "eRouška";
 "help" = "Help";
 "back" = "Back";
@@ -33,8 +31,8 @@
 "active_title_paused" = "Application is now paused and is not collecting any data about other eRouška applications nearby.\n\nResume data collection and keep yourself and others safe. Don't forget to do that especially when leaving your home.";
 "active_title_disabled_exposures" = "eRouška cannot communicate with other eRouška applications nearby.\n\nEnable COVID-19 exposure notifications by pressing \"Enable\".";
 "active_title_disabled_bluetooth" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \"Enable Bluetooth\".";
-"active_button_enabled" = "Pause eRouška";
-"active_button_paused" = "Resume eRouška";
+"active_button_enabled" = "Pause";
+"active_button_paused" = "Resume";
 "active_button_disabled_bluetooth" = "Enable Bluetooth";
 "active_button_disabled_exposures" = "Enable";
 "active_footer" = "We will warn you in case you encountered someone with COVID-19 and show you all important information.";

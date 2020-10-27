@@ -38,13 +38,13 @@ internal enum Asset {
     internal static let measures = ImageAsset(name: "CurrentData/Measures")
     internal static let tests = ImageAsset(name: "CurrentData/Tests")
   }
+  internal static let disclosureIndicator = ImageAsset(name: "DisclosureIndicator")
   internal static let error = ImageAsset(name: "Error")
   internal static let exposure = ImageAsset(name: "Exposure")
   internal static let exposureNotificationPermission = ImageAsset(name: "ExposureNotificationPermission")
   internal static let exposuresOff = ImageAsset(name: "ExposuresOff")
   internal static let forceOSUpdate = ImageAsset(name: "ForceOSUpdate")
   internal static let forceUpdate = ImageAsset(name: "ForceUpdate")
-  internal static let gdpr = ImageAsset(name: "GDPR")
   internal static let helpBackground = ColorAsset(name: "HelpBackground")
   internal static let iconsColor = ColorAsset(name: "IconsColor")
   internal static let launchScreenBackground = ColorAsset(name: "LaunchScreenBackground")
@@ -57,10 +57,14 @@ internal enum Asset {
   internal static let newsNoPhoneNumber = ImageAsset(name: "News_NoPhoneNumber")
   internal static let newsPrivacy = ImageAsset(name: "News_Privacy")
   internal static let newsToTheWorld = ImageAsset(name: "News_ToTheWorld")
+  internal static let ok = ImageAsset(name: "Ok")
   internal static let placeholder = ImageAsset(name: "Placeholder")
   internal static let preventTransmission = ImageAsset(name: "PreventTransmission")
   internal static let previousRiskyEncounters = ImageAsset(name: "PreviousRiskyEncounters")
+  internal static let riskyEncountersNegative = ImageAsset(name: "RiskyEncountersNegative")
+  internal static let riskyEncountersPositive = ImageAsset(name: "RiskyEncountersPositive")
   internal static let scanActive = ImageAsset(name: "ScanActive")
+  internal static let sendData = ImageAsset(name: "SendData")
   internal static let contacts = ImageAsset(name: "Contacts")
   internal static let help = ImageAsset(name: "Help")
   internal static let homeActive = ImageAsset(name: "HomeActive")
@@ -70,6 +74,7 @@ internal enum Asset {
   internal static let homePaused = ImageAsset(name: "HomePaused")
   internal static let homePausedSelected = ImageAsset(name: "HomePausedSelected")
   internal static let myData = ImageAsset(name: "MyData")
+  internal static let gdpr = ImageAsset(name: "gdpr")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
