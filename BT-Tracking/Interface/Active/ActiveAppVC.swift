@@ -14,7 +14,6 @@ import RxSwift
 final class ActiveAppVC: UIViewController {
 
     private var viewModel = ActiveAppVM()
-    private var riskyEncountersViewModel = RiskyEncountersVM()
     private let disposeBag = DisposeBag()
     private var firstAppear = true
 
@@ -67,8 +66,8 @@ final class ActiveAppVC: UIViewController {
         ).disposed(by: disposeBag)
 
         Observable.combineLatest(
-            riskyEncountersViewModel.riskyEncounterDateToShow,
-            riskyEncountersViewModel.riskyEcountersInTimeInterval
+            viewModel.riskyEncounterDateToShow,
+            viewModel.riskyEcountersInTimeInterval
         ).subscribe(
             onNext: { [weak self] (dateToShow, numberOfRiskyEncounters) in
                 guard let self = self else { return }
