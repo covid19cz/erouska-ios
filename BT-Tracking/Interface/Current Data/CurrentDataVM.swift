@@ -81,12 +81,6 @@ final class CurrentDataVM {
             return
         }
 
-        /*if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
-         var components = DateComponents()
-         components.hour = 3
-         if Calendar.current.date(byAdding: components, to: lastFetchedDate)! > Date() { return }
-         }*/
-
         let dispatchGroup = DispatchGroup()
         fetchCurrentData(in: dispatchGroup)
         fetchAppCurrentData(in: dispatchGroup)
@@ -94,11 +88,11 @@ final class CurrentDataVM {
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
 
-            AppSettings.currentDataLastFetchDate = Date()
-
             self.sections = self.sections(from: self.currentData)
             self.updateFooter()
             self.observableErrors.onNext(nil)
+
+            AppSettings.currentDataLastFetchDate = Date()
         }
     }
 
@@ -164,7 +158,6 @@ private extension CurrentDataVM {
                     }
                 case .failure(let error):
                     Log.log("Failed to get DownloadMetrics \(error)")
-                    //self.observableErrors.onNext(error)
                 }
                 dispatchGroup.leave()
             }
