@@ -4,6 +4,7 @@
 // swiftlint:disable sorted_imports
 import Foundation
 import UIKit
+import eRouska
 
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length implicit_return
@@ -25,9 +26,9 @@ internal enum StoryboardScene {
   internal enum Debug: StoryboardType {
     internal static let storyboardName = "Debug"
 
-    internal static let initialScene = InitialSceneType<TabBarController>(storyboard: Debug.self)
+    internal static let initialScene = InitialSceneType<eRouska.TabBarController>(storyboard: Debug.self)
 
-    internal static let tabBar = SceneType<TabBarController>(storyboard: Debug.self, identifier: "TabBar")
+    internal static let tabBar = SceneType<eRouska.TabBarController>(storyboard: Debug.self, identifier: "TabBar")
   }
   internal enum Error: StoryboardType {
     internal static let storyboardName = "Error"
