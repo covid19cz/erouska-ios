@@ -27,12 +27,19 @@
 "active_head_disabled_bluetooth" = "Zapněte Bluetooth";
 "active_head_disabled_exposures" = "Zapněte Oznámení o kontaktu s COVID-19";
 "active_title_highlighted_enabled" = "Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.";
-"active_title_enabled" = "Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.";
-"active_title_paused" = "Aplikace je aktuálně pozastavená a nesbírá žádná data o ostatních eRouškách ve vašem okolí.\n\nSpusťte znovu sběr dat a chraňte sebe i své okolí. Nezapomínejte na to zejména v situaci, kdy opouštíte svůj domov.";
-"active_title_disabled_exposures" = "eRouška nyní nemůže komunikovat s jinými eRouškami ve vašem okolí.\n\nZapněte Oznámení o kontaktu s COVID-19 pomocí tlačítka \"Zapnout\".";
-"active_title_disabled_bluetooth" = "Bez zapnutého Bluetooth nemůže eRouška vytvářet seznam eRoušek ve vašem okolí.\n\nZapněte jej pomocí tlačítka \"Zapnout Bluetooth\".";
-"active_button_enabled" = "Pozastavit eRoušku";
-"active_button_paused" = "Spustit eRoušku";
+"active_title_enabled" = "Aplikace aktuálně pracuje na pozadí a monitoruje okolí. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.";
+"active_title_paused" = "Aplikace je aktuálně pozastavená a nesbírá žádná data o ostatních eRouškách ve vašem okolí.\nSpusťte znovu eRoušku a chraňte sebe i své okolí. Nezapomínejte na to zejména ve chvíli, kdy opouštíte svůj domov.";
+"active_title_disabled_exposures" = "eRouška nyní nemůže komunikovat s jinými eRouškami ve vašem okolí.\nZapněte Oznámení o kontaktu s COVID-19 pomocí tlačítka \"Zapnout\".";
+"active_title_disabled_bluetooth" = "Zapnuté Bluetooth je důležité pro sbírání kontaktů s ostatními eRouškami ve vašem okolí.";
+"active_risky_encounter_head_negative" = "Za posledních 14 dní žádné rizikové setkání";
+"active_risky_encounter_last_update_negative" = "Poslední aktualizace %@";
+"active_risky_encounter_update_interval_negative" = "Aktualizace probíhá jednou za 24 hodin.";
+"active_risky_encounter_head_positive" = "Za posledních 14 dní %@ riziková setkání";
+"active_risky_encounter_title_positive" = "Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.";
+"active_send_reports_head" = "Máte pozitvní výsledek COVID-19 testu?";
+"active_send_reports_button" = "Anonymně upozornit ostatní";
+"active_button_enabled" = "Pozastavit";
+"active_button_paused" = "Spustit";
 "active_button_disabled_bluetooth" = "Zapnout Bluetooth";
 "active_button_disabled_exposures" = "Zapnout";
 "active_footer" = "Upozorníme vás v případě možného podezření na setkání s COVID-19 a zobrazíme vám všechny potřebné informace.";
@@ -50,33 +57,24 @@
 "data_list_send_headline" = "V případě potvrzené nákazy onemocněním COVID-19 obdržíte SMS zprávu obsahující ověřovací kód pro upozornění ostatních uživatelů eRoušky.";
 "data_list_send_placeholder" = "Ověřovací kód (povinné)";
 "data_list_send_action_title" = "Ověřit a odeslat data";
-
-"data_list_send_error_file_title" = "Nepodařilo se vytvořit soubor se setkáními";
-
-"data_list_send_error_no_keys" = "Nemáte žádné klíče k odeslání, zkuste to později.";
-
-"data_list_send_error_wrong_code_title" = "Ověřovací kód není správně zadaný, zkuste to znovu.";
-
-"data_list_send_error_expired_code_title" = "Vypršela platnost ověřovacího kódu.";
-"data_list_send_error_expired_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
-
-"data_list_send_error_framework_title" = "Nepodařilo se nám získat data.";
-"data_list_send_error_framework_message" = "Zkontrolujte zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
-
-"data_list_send_error_save_title" = "Nepodařilo se nám odeslat data na server.";
-"data_list_send_error_save_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
-
-"data_list_send_error_title" = "Nepodařilo se nám odeslat data.";
-"data_list_send_error_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
-
-"data_list_send_error_disabled_title" = "Data nyní nemůžete odeslat";
-"data_list_send_error_disabled_message" = "V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.";
-
 "data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";
 "data_list_send_error_failed_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
-
+"data_list_send_error_file_title" = "Nepodařilo se vytvořit soubor se setkáními";
+"data_list_send_error_no_keys" = "Nemáte žádné klíče k odeslání, zkuste to později.";
+"data_list_send_error_wrong_code_title" = "Ověřovací kód není správně zadaný, zkuste to znovu.";
+"data_list_send_error_expired_code_title" = "Vypršela platnost ověřovacího kódu.";
+"data_list_send_error_expired_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
+"data_list_send_error_framework_title" = "Nepodařilo se nám získat data.";
+"data_list_send_error_framework_message" = "Zkontrolujte zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+"data_list_send_error_save_title" = "Nepodařilo se nám odeslat data na server.";
+"data_list_send_error_save_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+"data_list_send_error_title" = "Nepodařilo se nám odeslat data.";
+"data_list_send_error_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
+"data_list_send_error_disabled_title" = "Data nyní nemůžete odeslat";
+"data_list_send_error_disabled_message" = "V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.";
+"data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";
+"data_list_send_error_failed_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
 "data_list_previous_header" = "Riziková setkání zjištěná";
-
 "data_send_title" = "Odesláno";
 "data_send_title_label" = "Data jste úspěsně odeslali";
 "data_send_headline" = "Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19.";
@@ -124,9 +122,11 @@
 "news_privacy_title" = "Myslíme na vaše soukromí";
 "news_privacy_body" = "S těmito úpravami se změnily i podmínky zpracování. Zásadní změnou je, že nadále nebudeme evidovat telefonní čísla žádného uživatele eRoušky a nebudeme ho vyžadovat při registraci.";
 "news_privacy_body_link" = "podmínky zpracování";
-"risky_encounters_positive_title" = "\n\nV případě, že vás bude kontaktovat pracovník hygienické stanice, postupujte podle jeho pokynů.";
 "risky_encounters_positive_with_symptoms_header" = "Mám příznaky";
 "risky_encounters_positive_without_symptoms_header" = "Nemám příznaky";
+"new_risky_encounters_title" = "Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19";
+"new_risky_encounters_body" = "Upozornění se vám zobrazilo nejdříve 24 hodin poté, co se nakažený dozvěděl pozitivní výsledek testu na COVID-19 a zadal ověřovací kód do eRoušky.\n\nRizikový kontakt vyhodnotíme v případě, že jste s nakaženým byli v kontaktu na vzdálenost kratší než 2 metry po dobu alespoň 15 minut.\n\nKvůli zachování anonymity nakaženého neznáme čas ani místo setkání.";
+"new_risky_exposures_button" = "Jak postupovat dál";
 "deadman_notificaiton_title" = "Otevřete aplikaci eRouška";
 "deadman_notificaiton_body" = "Zkontrolujete tak, zda jste se setkali s osobou u níž bylo potvrzeno onemocnění COVID-19.";
 "exposure_activation_restricted_title" = "Bez možnosti zasílat oznámení bude funkčnost eRoušky omezená";

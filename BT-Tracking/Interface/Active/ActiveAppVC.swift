@@ -17,6 +17,14 @@ final class ActiveAppVC: UIViewController {
     private let disposeBag = DisposeBag()
     private var firstAppear = true
 
+    private var shadowColor: CGColor {
+        UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+    }
+
+    private let stateSection = ActiveAppSectionView()
+    private let riskyEncountersSection = ActiveAppSectionView()
+    private let sendReportsSection = ActiveAppSectionView()
+
     // MARK: - Outlets
 
     @IBOutlet private weak var exposureBannerView: UIView!
@@ -25,12 +33,6 @@ final class ActiveAppVC: UIViewController {
     @IBOutlet private weak var exposureMoreInfoButton: Button!
 
     @IBOutlet private weak var mainStackView: UIStackView!
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var headlineLabel: UILabel!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var textLabel: UILabel!
-    @IBOutlet private weak var lastUpdateLabel: UILabel!
-    @IBOutlet private weak var actionButton: Button!
 
     // MARK: -
 
@@ -56,14 +58,37 @@ final class ActiveAppVC: UIViewController {
                 if let exposure = exposure, AppSettings.lastExposureWarningId != exposure.id.uuidString {
                     AppSettings.lastExposureWarningClosed = false
                     AppSettings.lastExposureWarningId = exposure.id.uuidString
+                    AppSettings.lastExposureWarningInfoDisplayed = false
                 }
                 self?.exposureBannerView.isHidden = exposure == nil || AppSettings.lastExposureWarningClosed == true
                 self?.view.setNeedsLayout()
             }
         ).disposed(by: disposeBag)
 
+        Observable.combineLatest(
+            viewModel.riskyEncounterDateToShow,
+            viewModel.riskyEcountersInTimeInterval
+        ).subscribe(
+            onNext: { [weak self] (dateToShow, numberOfRiskyEncounters) in
+                guard let self = self else { return }
+                let isPositive = dateToShow != nil
+
+                self.riskyEncountersSection.iconImageView.image = isPositive ? Asset.riskyEncountersPositive.image : Asset.riskyEncountersNegative.image
+                if let date = dateToShow {
+                    self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
+                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateTimeFormatter.string(from: date))
+                } else {
+                    self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
+                    self.riskyEncountersSection.bodyLabel.text = [
+                        AppSettings.lastProcessedDate.map { L10n.activeRiskyEncounterLastUpdateNegative(DateFormatter.baseDateTimeFormatter.string(from: $0)) },
+                        L10n.activeRiskyEncounterUpdateIntervalNegative
+                    ].compactMap { $0 }.joined(separator: "\n")
+                }
+            }
+        ).disposed(by: disposeBag)
+
         exposureBannerView.layer.cornerRadius = 9.0
-        exposureBannerView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
+        exposureBannerView.layer.shadowColor = shadowColor
         exposureBannerView.layer.shadowOffset = CGSize(width: 0, height: 1)
         exposureBannerView.layer.shadowRadius = 2
         exposureBannerView.layer.shadowOpacity = 1
@@ -71,6 +96,26 @@ final class ActiveAppVC: UIViewController {
         AppDelegate.shared.openResultsCallback = { [weak self] in
             self?.riskyEncountersAction()
         }
+
+        stateSection.action = changeScanningAction
+
+        riskyEncountersSection.isSelectable = true
+        riskyEncountersSection.action = riskyEncountersAction
+
+        sendReportsSection.iconImageView.image = Asset.sendData.image
+        sendReportsSection.titleLabel.text = L10n.activeSendReportsHead
+        sendReportsSection.actionButton.setTitle(L10n.activeSendReportsButton)
+        sendReportsSection.action = sendReportsAction
+        [stateSection, riskyEncountersSection, sendReportsSection].forEach(mainStackView.addArrangedSubview)
+
+        #if !PROD
+        navigationItem.rightBarButtonItems?.insert(UIBarButtonItem(
+            image: UIImage(systemName: "ellipsis.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(moreAction)
+        ), at: 0)
+        #endif
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -102,7 +147,9 @@ final class ActiveAppVC: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
 
         guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
-        exposureBannerView.layer.shadowColor = viewModel.cardShadowColor(traitCollection: traitCollection)
+        [exposureBannerView, stateSection, riskyEncountersSection, sendReportsSection].forEach {
+            $0.layer.shadowColor = shadowColor
+        }
     }
 
     // MARK: - Actions
@@ -131,7 +178,7 @@ final class ActiveAppVC: UIViewController {
         present(activityViewController, animated: true)
     }
 
-    @IBAction private func changeScanningAction() {
+    private func changeScanningAction() {
         switch viewModel.state {
         case .enabled:
             pauseScanning()
@@ -148,16 +195,8 @@ final class ActiveAppVC: UIViewController {
         }
     }
 
-    @IBAction private func moreAction(sender: Any?) {
+    @objc private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: viewModel.menuRiskyEncounters, style: .default, handler: { [weak self] _ in
-            self?.riskyEncountersAction()
-        }))
-        controller.addAction(UIAlertAction(title: L10n.dataListSendTitle, style: .default, handler: { [weak self] _ in
-            self?.sendReportsAction()
-        }))
-        #if !PROD || DEBUG
-        controller.addAction(UIAlertAction(title: "", style: .default, handler: nil))
         controller.addAction(UIAlertAction(title: L10n.debug, style: .default, handler: { [weak self] _ in
             self?.debugAction()
         }))
@@ -173,7 +212,6 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: L10n.debug + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
             self?.debugProcessReports()
         }))
-        #endif
         controller.addAction(UIAlertAction(title: L10n.close, style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
@@ -202,7 +240,18 @@ final class ActiveAppVC: UIViewController {
     }
 
     private func riskyEncountersAction() {
-        perform(segue: StoryboardSegue.Active.riskyEncounters)
+        let exposure = ExposureList.last
+        let controller: UIViewController
+
+        if exposure == nil {
+            controller = StoryboardScene.RiskyEncounters.riskyEncountersNegativeNav.instantiate()
+        } else if !AppSettings.lastExposureWarningInfoDisplayed {
+            controller = StoryboardScene.RiskyEncounters.newRiskEncounterNav.instantiate()
+            AppSettings.lastExposureWarningInfoDisplayed = true
+        } else {
+            controller = StoryboardScene.RiskyEncounters.riskyEncountersPositiveNav.instantiate()
+        }
+        present(controller, animated: true, completion: nil)
     }
 
     // MARK: -
@@ -285,21 +334,11 @@ private extension ActiveAppVC {
         navigationController?.tabBarItem.image = viewModel.state.tabBarIcon.0
         navigationController?.tabBarItem.selectedImage = viewModel.state.tabBarIcon.1
 
-        imageView.image = viewModel.state.image
-        headlineLabel.text = viewModel.state.headline
-        headlineLabel.textColor = viewModel.state.color
-        titleLabel.text = viewModel.state.title
-        textLabel.text = viewModel.state.text
-
-        if viewModel.state == .enabled, let update = AppSettings.lastProcessedDate {
-            lastUpdateLabel.text = L10n.activeDataUpdate(viewModel.dateFormatter.string(from: update))
-            lastUpdateLabel.isHidden = false
-        } else {
-            lastUpdateLabel.isHidden = true
-        }
-
-        actionButton.setTitle(viewModel.state.actionTitle)
-        actionButton.style = viewModel.state == .enabled ? .clear : .filled
+        stateSection.iconImageView.image = viewModel.state.image
+        stateSection.titleLabel.text = viewModel.state.headline
+        stateSection.titleLabel.textColor = viewModel.state.color
+        stateSection.bodyLabel.text = viewModel.state.text
+        stateSection.actionButton.setTitle(viewModel.state.actionTitle)
 
         exposureTitleLabel.text = viewModel.exposureTitle
         exposureCloseButton.setTitle(L10n.close)
@@ -397,7 +436,7 @@ private extension ActiveAppVC {
                         var result = ""
                         for exposure in exposures {
                             let signals = exposure.attenuationDurations.map { "\($0)" }
-                            result += "EXP: \(self.viewModel.dateFormatter.string(from: exposure.date))" +
+                            result += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
                                 ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
                                 + "attenuation value: \(exposure.attenuationValue)\n"
                                 + "signal attenuations: \(signals.joined(separator: ", "))\n"

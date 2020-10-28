@@ -30,7 +30,7 @@ final class FileLogger {
     }
 
     func writeLog(_ text: String) {
-        let newText = "\n" + formatter.string(from: Date()) + " " + text
+        let newText = "\n" + DateFormatter.baseDateTimeFormatter.string(from: Date()) + " " + text
         guard let data = newText.data(using: .utf8) else {
             print("Unexpected error writing to log")
             return
@@ -60,10 +60,3 @@ final class FileLogger {
         }
     }
 }
-
-private var formatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .none
-    formatter.timeStyle = .medium
-    return formatter
-}()

@@ -1,5 +1,3 @@
-// MARK: - Strings
-
 "app_name" = "eRouška";
 "help" = "Help";
 "back" = "Back";
@@ -33,8 +31,8 @@
 "active_title_paused" = "Application is now paused and is not collecting any data about other eRouška applications nearby.\n\nResume data collection and keep yourself and others safe. Don't forget to do that especially when leaving your home.";
 "active_title_disabled_exposures" = "eRouška cannot communicate with other eRouška applications nearby.\n\nEnable COVID-19 exposure notifications by pressing \"Enable\".";
 "active_title_disabled_bluetooth" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \"Enable Bluetooth\".";
-"active_button_enabled" = "Pause eRouška";
-"active_button_paused" = "Resume eRouška";
+"active_button_enabled" = "Pause";
+"active_button_paused" = "Resume";
 "active_button_disabled_bluetooth" = "Enable Bluetooth";
 "active_button_disabled_exposures" = "Enable";
 "active_footer" = "We will warn you in case you encountered someone with COVID-19 and show you all important information.";
@@ -117,9 +115,11 @@
 "news_privacy_title" = "We value your privacy.";
 "news_privacy_body" = "With these changes, terms of use were changed, too. The main change is that we no longer register phone numbers of eRouška users and they will not be required for registration.";
 "news_privacy_body_link" = "Terms and conditions";
-"risky_encounters_positive_title" = "\n\nIf a public health officer contacts you, follow their instructions.";
 "risky_encounters_positive_with_symptoms_header" = "I have symptoms";
 "risky_encounters_positive_without_symptoms_header" = "I do not have symptoms";
+"new_risky_encounters_title" = "Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19";
+"new_risky_encounters_body" = "Upozornění se vám zobrazilo nejdříve 24 hodin poté, co se nakažený dozvěděl pozitivní výsledek testu na COVID-19 a zadal ověřovací kód do eRoušky.\n\nRizikový kontakt vyhodnotíme v případě, že jste s nakaženým byli v kontaktu na vzdálenost kratší než 2 metry po dobu alespoň 15 minut.\n\nKvůli zachování anonymity nakaženého neznáme čas ani místo setkání.";
+"new_risky_exposures_button" = "jak postupovat dál";
 "deadman_notificaiton_title" = "Open eRouška";
 "deadman_notificaiton_body" = "You can check whether you encountered someone who tested positive for COVID-19.";
 "exposure_activation_restricted_title" = "Without Exposure Notifications, eRouška will be very limited";

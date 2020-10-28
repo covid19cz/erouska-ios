@@ -22,6 +22,7 @@ struct AppSettings {
 
         case lastExposureWarningId
         case lastExposureWarningClosed
+        case lastExposureWarningInfoDisplayed
 
         case v2_0NewsLaunched
 
@@ -115,6 +116,16 @@ struct AppSettings {
         }
         set {
             set(withKey: .lastExposureWarningClosed, value: newValue)
+        }
+    }
+
+    /// If user saw detail information about exposure
+    static var lastExposureWarningInfoDisplayed: Bool {
+        get {
+            bool(forKey: .lastExposureWarningInfoDisplayed)
+        }
+        set {
+            set(withKey: .lastExposureWarningInfoDisplayed, value: newValue)
         }
     }
 

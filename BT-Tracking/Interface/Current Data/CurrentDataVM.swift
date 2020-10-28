@@ -49,13 +49,6 @@ final class CurrentDataVM {
         return formatter
     }()
 
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .medium
-        return formatter
-    }()
-
     init() {
         needToUpdateView = BehaviorSubject<Void>(value: ())
         observableErrors = BehaviorSubject<Error?>(value: nil)
