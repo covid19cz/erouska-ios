@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "zobrazena_upozorneni@2x.png",
+      "filename" : "covid@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "zobrazena_upozorneni@3x.png",
+      "filename" : "covid@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
