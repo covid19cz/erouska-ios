@@ -35,9 +35,9 @@ final class SendResultVC: UIViewController {
     // MARK: - Action
 
     @IBAction private func closeAction() {
-        dismiss(animated: true, completion: {
-            SKStoreReviewController.requestReview()
-        })
+        dismiss(animated: true, completion: nil)
+
+        SKStoreReviewController.requestReview()
     }
 
 }
