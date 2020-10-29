@@ -195,6 +195,7 @@ final class ActiveAppVC: UIViewController {
         }
     }
 
+    #if !PROD
     @objc private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: L10n.debug, style: .default, handler: { [weak self] _ in
@@ -216,6 +217,7 @@ final class ActiveAppVC: UIViewController {
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
     }
+    #endif
 
     @IBAction private func closeExposureBanner(_ sender: Any) {
         AppSettings.lastExposureWarningClosed = true

@@ -23,7 +23,7 @@ struct ServerConfiguration: Codable {
             verificationURL: URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!,
             verificationAdminKey: "",
             verificationDeviceKey: RemoteValues.verificationServerApiKey,
-            appCurentDataURL: URL(string: "https://europe-west1-daring-leaf-272223.cloudfunctions.net")!
+            appCurentDataURL: URL(string: "https://europe-west1-erouska-key-server-dev.cloudfunctions.net")!
         )
     }
 

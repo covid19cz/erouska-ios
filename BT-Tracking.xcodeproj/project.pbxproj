@@ -77,6 +77,8 @@
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
 		807D48E8253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */; };
 		807D48E9253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */; };
+		8082DC31254AD7A8006B872D /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 8082DC30254AD7A8006B872D /* RxRealm */; };
+		8082DC34254AD8A9006B872D /* RiskyEncountersNegativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D228232545727C00F06253 /* RiskyEncountersNegativeView.swift */; };
 		8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A95242CA27800EB0B6C /* HelpVC.swift */; };
 		8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */; };
 		8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
@@ -461,6 +463,7 @@
 				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
 				80F3131924E3FE9100A93CCD /* Crypto in Frameworks */,
 				800A5A69254857820054A68D /* SwiftyMarkdown in Frameworks */,
+				8082DC31254AD7A8006B872D /* RxRealm in Frameworks */,
 				805192A424AF8E2700765392 /* RxDataSources in Frameworks */,
 				80F3131524E3FE8500A93CCD /* Zip in Frameworks */,
 				80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */,
@@ -991,6 +994,7 @@
 				80F3131624E3FE9100A93CCD /* Alamofire */,
 				80F3131824E3FE9100A93CCD /* Crypto */,
 				800A5A68254857820054A68D /* SwiftyMarkdown */,
+				8082DC30254AD7A8006B872D /* RxRealm */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska.app */;
@@ -1386,6 +1390,7 @@
 				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
 				8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */,
 				8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */,
+				8082DC34254AD8A9006B872D /* RiskyEncountersNegativeView.swift in Sources */,
 				80D2345424E31DFF00F684AA /* SendReportsVC.swift in Sources */,
 				8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */,
 				80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */,
@@ -1640,7 +1645,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1667,7 +1672,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1693,7 +1698,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1721,7 +1726,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1920,6 +1925,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */;
 			productName = Reachability;
+		};
+		8082DC30254AD7A8006B872D /* RxRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 801C8FE7253FFD56002F303F /* XCRemoteSwiftPackageReference "RxRealm" */;
+			productName = RxRealm;
 		};
 		8091E08124CB3CDF00E0E877 /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;

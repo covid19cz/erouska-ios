@@ -109,6 +109,12 @@ extension CurrentDataVM {
 
 private extension CurrentDataVM {
 
+    struct AppCurrentJsonData: Decodable {
+
+        let data: AppCurrentData
+
+    }
+
     func fetchCurrentData(in dispatchGroup: DispatchGroup) {
         dispatchGroup.enter()
         let data = ["idToken": KeychainService.token]
@@ -133,7 +139,7 @@ private extension CurrentDataVM {
         let url = URL(string: "DownloadMetrics", relativeTo: RemoteValues.serverConfiguration.appCurentDataURL)!
         AF.request(url)
             .validate(statusCode: 200..<300)
-            .responseDecodable(of: AppCurrentData.self, decoder: jsonDecoder) { response in
+            .responseDecodable(of: AppCurrentJsonData.self, decoder: jsonDecoder) { response in
                 #if DEBUG
                 debugPrint(response)
                 #endif
@@ -142,7 +148,7 @@ private extension CurrentDataVM {
                 case .success(let appData):
                     let realm = AppDelegate.dependency.realm
                     try? realm.write {
-                        self.currentData?.update(with: appData)
+                        self.currentData?.update(with: appData.data)
                     }
                 case .failure(let error):
                     Log.log("Failed to get DownloadMetrics \(error)")

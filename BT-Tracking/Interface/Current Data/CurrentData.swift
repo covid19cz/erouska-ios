@@ -105,7 +105,8 @@ struct AppCurrentData: Decodable {
     let notificationsTotal: Int
 
     private enum CodingKeys: String, CodingKey {
-        case modified, date
+        case modified
+        case date
         case activationsYesterday = "activations_yesterday"
         case activationsTotal = "activations_total"
         case keyPublishersYesterday = "key_publishers_yesterday"
