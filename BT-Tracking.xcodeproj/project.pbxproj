@@ -258,6 +258,10 @@
 		D65E57E024D05D83000F2402 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E57DE24D05D83000F2402 /* News.storyboard */; };
 		D65E57E224D060DF000F2402 /* NewsPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E57E124D060DF000F2402 /* NewsPageVM.swift */; };
 		D65E57E324D060DF000F2402 /* NewsPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E57E124D060DF000F2402 /* NewsPageVM.swift */; };
+		D68D4EDC254B04AC007A0D3F /* EFGSPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D4EDB254B04AC007A0D3F /* EFGSPermissionVM.swift */; };
+		D68D4EDD254B04AC007A0D3F /* EFGSPermissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D4EDB254B04AC007A0D3F /* EFGSPermissionVM.swift */; };
+		D68D4EE3254B04BE007A0D3F /* EFGSPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D4EE2254B04BE007A0D3F /* EFGSPermissionVC.swift */; };
+		D68D4EE4254B04BE007A0D3F /* EFGSPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D4EE2254B04BE007A0D3F /* EFGSPermissionVC.swift */; };
 		D6CD28E224CF24DC005847AA /* FirstActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */; };
 		D6CD28E324CF24DC005847AA /* FirstActivationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */; };
 		D6CD28E424CF24DC005847AA /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */; };
@@ -415,6 +419,8 @@
 		D65E57DB24D05D73000F2402 /* NewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
 		D65E57DE24D05D83000F2402 /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		D65E57E124D060DF000F2402 /* NewsPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageVM.swift; sourceTree = "<group>"; };
+		D68D4EDB254B04AC007A0D3F /* EFGSPermissionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFGSPermissionVM.swift; sourceTree = "<group>"; };
+		D68D4EE2254B04BE007A0D3F /* EFGSPermissionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFGSPermissionVC.swift; sourceTree = "<group>"; };
 		D6CD28DB24CF24DC005847AA /* FirstActivationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstActivationVC.swift; sourceTree = "<group>"; };
 		D6CD28DC24CF24DC005847AA /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		D6CD28DD24CF24DC005847AA /* ExposurePermissionVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposurePermissionVM.swift; sourceTree = "<group>"; };
@@ -908,6 +914,8 @@
 				D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */,
 				D6CD28E024CF24DC005847AA /* ExposurePermissionVC.swift */,
 				D6CD28DD24CF24DC005847AA /* ExposurePermissionVM.swift */,
+				D68D4EE2254B04BE007A0D3F /* EFGSPermissionVC.swift */,
+				D68D4EDB254B04AC007A0D3F /* EFGSPermissionVM.swift */,
 				D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */,
 				D6CD28DE24CF24DC005847AA /* PrivacyVM.swift */,
 			);
@@ -1304,6 +1312,7 @@
 				804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */,
 				D6231CA724E400C70023BDC8 /* MainSymptomsVM.swift in Sources */,
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
+				D68D4EE3254B04BE007A0D3F /* EFGSPermissionVC.swift in Sources */,
 				80FBE65325247974005D6C05 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				D610103325448E47007B01CF /* ActiveAppSectionView.swift in Sources */,
 				D6231CBE24F39BC90023BDC8 /* IntrinsicTableView.swift in Sources */,
@@ -1339,6 +1348,7 @@
 				D6CD28E224CF24DC005847AA /* FirstActivationVC.swift in Sources */,
 				80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */,
 				80BF9C262424D55800150108 /* SendResultVC.swift in Sources */,
+				D68D4EDC254B04AC007A0D3F /* EFGSPermissionVM.swift in Sources */,
 				80C71D4125248BE400999275 /* Strings.swift in Sources */,
 				D6231CB524EBC0760023BDC8 /* ErrorVC.swift in Sources */,
 				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
@@ -1446,6 +1456,7 @@
 				800A5A62254857400054A68D /* RiskyEncountersNegativeVM.swift in Sources */,
 				D64BE02424F79AE000B751B6 /* TextView.swift in Sources */,
 				8083D8D0244640A0007FA4E9 /* Button.swift in Sources */,
+				D68D4EDD254B04AC007A0D3F /* EFGSPermissionVM.swift in Sources */,
 				80026D9624FE492000BBDB36 /* BackgroundEntities.swift in Sources */,
 				80D0B5E525401D37000C3FE5 /* HelpArticleVC.swift in Sources */,
 				8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */,
@@ -1475,6 +1486,7 @@
 				800A5A652548575A0054A68D /* RiskyEncountersListCell.swift in Sources */,
 				D65E57E324D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
+				D68D4EE4254B04BE007A0D3F /* EFGSPermissionVC.swift in Sources */,
 				D610103425448E47007B01CF /* ActiveAppSectionView.swift in Sources */,
 				D65E57DA24D056D6000F2402 /* NewsPageView.swift in Sources */,
 				80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */,
