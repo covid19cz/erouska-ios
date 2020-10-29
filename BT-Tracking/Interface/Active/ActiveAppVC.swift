@@ -69,7 +69,7 @@ final class ActiveAppVC: UIViewController {
             viewModel.riskyEncounterDateToShow,
             viewModel.riskyEcountersInTimeInterval
         ).subscribe(
-            onNext: { [weak self] (dateToShow, numberOfRiskyEncounters) in
+            onNext: { [weak self] dateToShow, numberOfRiskyEncounters in
                 guard let self = self else { return }
                 let isPositive = dateToShow != nil
 
@@ -478,7 +478,7 @@ private extension ActiveAppVC {
         let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
 
-        AppSettings.currentDataLastFetchDate = Date()
+        AppSettings.lastProcessedDate = Date()
     }
 
     func debugShowNews() {

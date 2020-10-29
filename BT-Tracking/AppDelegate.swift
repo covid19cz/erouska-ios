@@ -155,7 +155,7 @@ private extension AppDelegate {
         updateRemoteValues()
 
         if AppSettings.lastLegacyDataFetchDate == nil {
-            AppSettings.lastLegacyDataFetchDate = AppSettings.currentDataLastFetchDate ?? Date()
+            AppSettings.lastLegacyDataFetchDate = AppSettings.lastProcessedDate ?? Date()
         }
 
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocale), name: NSLocale.currentLocaleDidChangeNotification, object: nil)

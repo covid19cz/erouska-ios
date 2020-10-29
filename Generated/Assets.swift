@@ -30,13 +30,16 @@ internal enum Asset {
   internal static let appPaused = ColorAsset(name: "AppPaused")
   internal static let conditionsOfUse = ImageAsset(name: "ConditionsOfUse")
   internal enum CurrentData {
-    internal static let active = ImageAsset(name: "CurrentData/Active")
-    internal static let covid = ImageAsset(name: "CurrentData/Covid")
-    internal static let death = ImageAsset(name: "CurrentData/Death")
-    internal static let healthy = ImageAsset(name: "CurrentData/Healthy")
-    internal static let hospital = ImageAsset(name: "CurrentData/Hospital")
+    internal static let activations = ImageAsset(name: "CurrentData/Activations")
     internal static let measures = ImageAsset(name: "CurrentData/Measures")
-    internal static let tests = ImageAsset(name: "CurrentData/Tests")
+    internal static let notifications = ImageAsset(name: "CurrentData/Notifications")
+    internal static let sentData = ImageAsset(name: "CurrentData/SentData")
+    internal static let active = ImageAsset(name: "CurrentData/active")
+    internal static let covid = ImageAsset(name: "CurrentData/covid")
+    internal static let death = ImageAsset(name: "CurrentData/death")
+    internal static let healthy = ImageAsset(name: "CurrentData/healthy")
+    internal static let hospital = ImageAsset(name: "CurrentData/hospital")
+    internal static let tests = ImageAsset(name: "CurrentData/tests")
   }
   internal static let disclosureIndicator = ImageAsset(name: "DisclosureIndicator")
   internal static let error = ImageAsset(name: "Error")
@@ -45,6 +48,7 @@ internal enum Asset {
   internal static let exposuresOff = ImageAsset(name: "ExposuresOff")
   internal static let forceOSUpdate = ImageAsset(name: "ForceOSUpdate")
   internal static let forceUpdate = ImageAsset(name: "ForceUpdate")
+  internal static let gdpr = ImageAsset(name: "GDPR")
   internal static let helpBackground = ColorAsset(name: "HelpBackground")
   internal static let iconsColor = ColorAsset(name: "IconsColor")
   internal static let launchScreenBackground = ColorAsset(name: "LaunchScreenBackground")
@@ -74,7 +78,6 @@ internal enum Asset {
   internal static let homePaused = ImageAsset(name: "HomePaused")
   internal static let homePausedSelected = ImageAsset(name: "HomePausedSelected")
   internal static let myData = ImageAsset(name: "MyData")
-  internal static let gdpr = ImageAsset(name: "gdpr")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

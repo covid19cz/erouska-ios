@@ -70,6 +70,8 @@
 		807053582427C5AA00DC1034 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053572427C5AA00DC1034 /* InfoCell.swift */; };
 		8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDBF242A613F001D9DCD /* AppSettings.swift */; };
 		8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDC2242A6E93001D9DCD /* ContactsVC.swift */; };
+		8075FE4E2543323B00E72779 /* CurrentDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075FE4D2543323B00E72779 /* CurrentDataCell.swift */; };
+		8075FE4F2543323B00E72779 /* CurrentDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075FE4D2543323B00E72779 /* CurrentDataCell.swift */; };
 		807897832524804B0079BEA1 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807897822524804B0079BEA1 /* Assets.swift */; };
 		807897842524804B0079BEA1 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807897822524804B0079BEA1 /* Assets.swift */; };
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
@@ -152,6 +154,7 @@
 		80CA44E0244B404F008E22F8 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
 		80CCE5C424DD812900DC36EE /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C324DD812800DC36EE /* VerificationService.swift */; };
 		80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CCE5C524DD913200DC36EE /* VerificationEntities.swift */; };
+		80CD54D02549C83F001D80B0 /* RiskyEncountersPositiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */; };
 		80D0B5E425401D37000C3FE5 /* HelpArticleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0B5E325401D37000C3FE5 /* HelpArticleVC.swift */; };
 		80D0B5E525401D37000C3FE5 /* HelpArticleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D0B5E325401D37000C3FE5 /* HelpArticleVC.swift */; };
 		80D228242545727C00F06253 /* RiskyEncountersNegativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D228232545727C00F06253 /* RiskyEncountersNegativeView.swift */; };
@@ -239,8 +242,6 @@
 		D63E443624DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63E443424DD85D8007B6728 /* RiskyEncounters.storyboard */; };
 		D63E443824DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */; };
 		D63E443924DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443724DD8640007B6728 /* RiskyEncountersPositiveVM.swift */; };
-		D63E443B24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */; };
-		D63E443C24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */; };
 		D64BE02324F79AE000B751B6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BE02224F79AE000B751B6 /* TextView.swift */; };
 		D64BE02424F79AE000B751B6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BE02224F79AE000B751B6 /* TextView.swift */; };
 		D65E57D324D04976000F2402 /* NewsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65E57D224D04976000F2402 /* NewsVM.swift */; };
@@ -315,6 +316,7 @@
 		807053572427C5AA00DC1034 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		8075EDBF242A613F001D9DCD /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		8075EDC2242A6E93001D9DCD /* ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
+		8075FE4D2543323B00E72779 /* CurrentDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataCell.swift; sourceTree = "<group>"; };
 		8078977B25247C550079BEA1 /* BT-Tracking-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking-Debug.entitlements"; sourceTree = "<group>"; };
 		807897822524804B0079BEA1 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		80799BEA2423B89A002B04C5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -867,6 +869,7 @@
 				D6231CC124F52CBB0023BDC8 /* CurrentDataVC.swift */,
 				D6231CC724F52FB70023BDC8 /* CurrentDataVM.swift */,
 				D6231CCA24F6610B0023BDC8 /* CurrentData.swift */,
+				8075FE4D2543323B00E72779 /* CurrentDataCell.swift */,
 			);
 			path = "Current Data";
 			sourceTree = "<group>";
@@ -1285,7 +1288,7 @@
 				80D228242545727C00F06253 /* RiskyEncountersNegativeView.swift in Sources */,
 				80D2283E254577B100F06253 /* DateFormatter.swift in Sources */,
 				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
-				D63E443B24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */,
+				8075FE4E2543323B00E72779 /* CurrentDataCell.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8053CCFC2538A2A000C1820E /* Callback.swift in Sources */,
 				8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */,
@@ -1397,8 +1400,10 @@
 				D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */,
 				D6231CB924EBC3630023BDC8 /* ErrorVM.swift in Sources */,
+				80CD54D02549C83F001D80B0 /* RiskyEncountersPositiveVC.swift in Sources */,
 				8083D8B7244640A0007FA4E9 /* Data.swift in Sources */,
 				80FBE65425247974005D6C05 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
+				8075FE4F2543323B00E72779 /* CurrentDataCell.swift in Sources */,
 				8083D8B8244640A0007FA4E9 /* KeychainService.swift in Sources */,
 				80026D9A24FE492B00BBDB36 /* ReportEntities.swift in Sources */,
 				80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */,
@@ -1472,7 +1477,6 @@
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				D63E443924DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */,
 				D6CD28E324CF24DC005847AA /* FirstActivationVC.swift in Sources */,
-				D63E443C24DD8645007B6728 /* RiskyEncountersPositiveVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,7 +22,8 @@ struct ServerConfiguration: Codable {
             downloadsURL: URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!,
             verificationURL: URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!,
             verificationAdminKey: "",
-            verificationDeviceKey: RemoteValues.verificationServerApiKey
+            verificationDeviceKey: RemoteValues.verificationServerApiKey,
+            appCurentDataURL: URL(string: "https://europe-west1-daring-leaf-272223.cloudfunctions.net")!
         )
     }
 
@@ -36,7 +37,8 @@ struct ServerConfiguration: Codable {
             downloadsURL: URL(string: "https://storage.googleapis.com/exposure-notification-export-qhqcx/")!,
             verificationURL: URL(string: "https://apiserver-jyvw4xgota-ew.a.run.app")!,
             verificationAdminKey: "",
-            verificationDeviceKey: RemoteValues.verificationServerApiKey
+            verificationDeviceKey: RemoteValues.verificationServerApiKey,
+            appCurentDataURL: URL(string: "https://europe-west1-daring-leaf-272223.cloudfunctions.net")!
         )
     }
     // swiftlint:enable force_unwrapping
@@ -58,9 +60,12 @@ struct ServerConfiguration: Codable {
     let verificationAdminKey: String
     let verificationDeviceKey: String
 
+    let appCurentDataURL: URL
+
     init(minSupportedVersion: String, showExposureForDays: Int, healthAuthority: String, uploadURL: URL,
          downloadIndexName: String, downloadsURL: URL,
-         verificationURL: URL, verificationAdminKey: String, verificationDeviceKey: String) {
+         verificationURL: URL, verificationAdminKey: String, verificationDeviceKey: String,
+         appCurentDataURL: URL) {
         self.minSupportedVersion = minSupportedVersion
         self.showExposureForDays = showExposureForDays
         self.healthAuthority = healthAuthority
@@ -70,6 +75,7 @@ struct ServerConfiguration: Codable {
         self.verificationURL = verificationURL
         self.verificationAdminKey = verificationAdminKey
         self.verificationDeviceKey = verificationDeviceKey
+        self.appCurentDataURL = appCurentDataURL
     }
 
 }

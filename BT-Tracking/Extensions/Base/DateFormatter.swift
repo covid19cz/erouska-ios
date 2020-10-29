@@ -24,4 +24,10 @@ extension DateFormatter {
         return dateFormatter
     }()
 
+    static var serverDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        return dateFormatter
+    }()
+
 }
