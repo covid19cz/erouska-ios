@@ -36,9 +36,7 @@ final class CurrentDataVM {
 
     private let jsonDecoder: JSONDecoder = {
         let decoder = JSONDecoder()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.serverDateFormatter)
         return decoder
     }()
 
@@ -64,8 +62,6 @@ final class CurrentDataVM {
             }
             self.currentData = currentData
         }
-
-        updateFooter()
     }
 
     func fetchCurrentDataIfNeeded() {
@@ -82,7 +78,6 @@ final class CurrentDataVM {
             guard let self = self else { return }
 
             self.sections = self.sections(from: self.currentData)
-            self.updateFooter()
             self.observableErrors.onNext(nil)
 
             AppSettings.currentDataLastFetchDate = Date()
@@ -119,10 +114,10 @@ private extension CurrentDataVM {
         let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
             guard let self = self else { return }
-            if let result = result?.data as? [String: Any] {
+            if let data = result?.data as? [String: Any] {
                 let realm = AppDelegate.dependency.realm
                 try? realm.write {
-                    self.currentData?.update(with: result)
+                    self.currentData?.update(with: CovidCurrentData(with: data))
                 }
             } else if let error = error {
                 self.observableErrors.onNext(error)
@@ -158,6 +153,9 @@ private extension CurrentDataVM {
 
     func sections(from currentData: CurrentDataRealm?) -> [Section] {
         guard let data = currentData else { return [] }
+
+        let appDateSubtitle = DateFormatter.baseDateFormatter.string(from: data.appDate ?? Date())
+
         return [
             Section(header: L10n.currentDataMeasuresHeader, selectableItems: true, items: [
                 Item(
@@ -169,12 +167,18 @@ private extension CurrentDataVM {
                 Item(
                     iconAsset: Asset.CurrentData.tests,
                     title: L10n.currentDataItemTests(formattedValue(data.testsTotal)),
-                    subtitle: L10n.currentDataItemYesterday(formattedValue(data.testsIncrease, showSign: true))
+                    subtitle: L10n.currentDataAppFrom(
+                        formattedValue(data.testsIncrease, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.testsIncreaseDate ?? Date())
+                    )
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.covid,
                     title: L10n.currentDataItemConfirmed(formattedValue(data.confirmedCasesTotal)),
-                    subtitle: L10n.currentDataItemYesterday(formattedValue(data.confirmedCasesIncrease, showSign: true))
+                    subtitle: L10n.currentDataAppFrom(
+                        formattedValue(data.confirmedCasesIncrease, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.confirmedCasesIncreaseDate ?? Date())
+                    )
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.active,
@@ -197,35 +201,20 @@ private extension CurrentDataVM {
                 Item(
                     iconAsset: Asset.CurrentData.activations,
                     title: L10n.currentDataAppActivations(formattedValue(data.activationsTotal)),
-                    subtitle: L10n.currentDataAppFrom(
-                        formattedValue(data.activationsYesterday, showSign: true),
-                        dateFormatter.string(from: data.appDate ?? Date())
-                    )
+                    subtitle: L10n.currentDataAppFrom(formattedValue(data.activationsYesterday, showSign: true), appDateSubtitle)
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.sentData,
                     title: L10n.currentDataAppKeyPublishers(formattedValue(data.keyPublishersTotal)),
-                    subtitle: L10n.currentDataAppFrom(
-                        formattedValue(data.keyPublishersYesterday, showSign: true),
-                        dateFormatter.string(from: data.appDate ?? Date())
-                    )
+                    subtitle: L10n.currentDataAppFrom(formattedValue(data.keyPublishersYesterday, showSign: true), appDateSubtitle)
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.notifications,
                     title: L10n.currentDataAppNotifications(formattedValue(data.notificationsTotal)),
-                    subtitle: L10n.currentDataAppFrom(
-                        formattedValue(data.notificationsYesterday, showSign: true),
-                        dateFormatter.string(from: data.appDate ?? Date())
-                    )
+                    subtitle: L10n.currentDataAppFrom(formattedValue(data.notificationsYesterday, showSign: true), appDateSubtitle)
                 )
             ])
         ]
-    }
-
-    func updateFooter() {
-        if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
-            footer = L10n.currentDataFooter(dateFormatter.string(from: lastFetchedDate))
-        }
     }
 
     func formattedValue(_ value: Int, showSign: Bool = false) -> String {

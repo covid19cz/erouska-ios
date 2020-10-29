@@ -69,7 +69,7 @@ final class ActiveAppVC: UIViewController {
             viewModel.riskyEncounterDateToShow,
             viewModel.riskyEcountersInTimeInterval
         ).subscribe(
-            onNext: { [weak self] (dateToShow, numberOfRiskyEncounters) in
+            onNext: { [weak self] dateToShow, numberOfRiskyEncounters in
                 guard let self = self else { return }
                 let isPositive = dateToShow != nil
 

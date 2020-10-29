@@ -13,7 +13,6 @@ import Reachability
 final class CurrentDataVC: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var footerLabel: UILabel!
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buttonsView: UIView!
@@ -47,7 +46,6 @@ final class CurrentDataVC: UIViewController {
             self?.hideProgress(fromView: true)
             self?.showError(show: false)
             self?.tableView.reloadData()
-            self?.footerLabel.text = self?.viewModel.footer
         }).disposed(by: disposeBag)
 
         viewModel.observableErrors.subscribe(onNext: { [weak self] error in
@@ -59,14 +57,11 @@ final class CurrentDataVC: UIViewController {
             if let connection = try? Reachability().connection, connection == .unavailable {
                 self?.showError(show: false)
                 self?.tableView.reloadData()
-                self?.footerLabel.text = self?.viewModel.footer
                 return
             }
 
             self?.showError(show: true)
         }).disposed(by: disposeBag)
-
-        footerLabel.text = viewModel.footer
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -79,14 +74,6 @@ final class CurrentDataVC: UIViewController {
         super.viewDidAppear(animated)
 
         viewModel.sections.isEmpty ? showProgress(fromView: true) : hideProgress(fromView: true)
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        if let footer = tableView.tableFooterView {
-            footer.frame.size.height = footer.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0)).height
-        }
     }
 
     // MARK: - Actions
