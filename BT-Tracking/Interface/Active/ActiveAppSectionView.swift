@@ -13,7 +13,7 @@ final class ActiveAppSectionView: UIView {
     let titleLabel = UILabel()
     let disclosureIndicator = UIImageView()
     let bodyLabel = UILabel()
-    let actionButton = UIButton(type: .system)
+    let actionButton = Button(type: .system)
 
     private lazy var titleStack = UIStackView(arrangedSubviews: [iconImageView, titleLabel, disclosureIndicator])
     private lazy var mainStack = UIStackView(arrangedSubviews: [titleStack, bodyLabel, actionButton])
@@ -46,7 +46,7 @@ final class ActiveAppSectionView: UIView {
     private func setup() {
         mainStack.translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemBackground
-        layer.cornerRadius = 9.0
+        layer.cornerRadius = 12.0
         layer.shadowColor = UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowRadius = 2
@@ -67,12 +67,17 @@ final class ActiveAppSectionView: UIView {
         titleStack.spacing = 16
         titleStack.alignment = .center
 
+        actionButton.style = .filled
+        actionButton.layer.cornerRadius = 6
         actionButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
 
         mainStack.axis = .vertical
         mainStack.spacing = 8
         mainStack.isLayoutMarginsRelativeArrangement = true
         mainStack.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+
+        mainStack.setCustomSpacing(10, after: titleStack)
+        mainStack.setCustomSpacing(16, after: bodyLabel)
 
         NSLayoutConstraint.activate([
             mainStack.topAnchor.constraint(equalTo: topAnchor),
@@ -82,6 +87,8 @@ final class ActiveAppSectionView: UIView {
 
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: 40),
+
+            actionButton.heightAnchor.constraint(equalToConstant: 40),
 
             disclosureIndicator.heightAnchor.constraint(equalTo: disclosureIndicator.widthAnchor),
             disclosureIndicator.widthAnchor.constraint(equalToConstant: 24)
