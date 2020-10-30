@@ -23,6 +23,7 @@ final class CurrentDataVC: UIViewController {
 
     private let viewModel = CurrentDataVM()
     private let disposeBag = DisposeBag()
+    private var observer: NSObjectProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,12 +69,28 @@ final class CurrentDataVC: UIViewController {
         super.viewWillAppear(animated)
 
         viewModel.fetchCurrentDataIfNeeded()
+
+        observer = NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification,
+            object: nil,
+            queue: nil) { [weak self] _ in
+            DispatchQueue.main.async { [weak self] in
+                self?.viewModel.fetchCurrentDataIfNeeded()
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         viewModel.sections.isEmpty ? showProgress(fromView: true) : hideProgress(fromView: true)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        guard let observer = observer else { return }
+        NotificationCenter.default.removeObserver(observer)
     }
 
     // MARK: - Actions
