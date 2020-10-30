@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import RxSwift
 
 final class EFGSPermissionVC: UIViewController {
 
     // MARK: -
 
     private let viewModel = EFGSPermissionVM()
-    private let disposeBag = DisposeBag()
 
     // MARK: - Outlets
 
@@ -33,17 +31,12 @@ final class EFGSPermissionVC: UIViewController {
 
         buttonsView.connect(with: scrollView)
         setupStrings()
-
-        enableSwitch.rx
-            .controlEvent(.valueChanged)
-            .withLatestFrom(enableSwitch.rx.value)
-            .subscribe { [viewModel] in viewModel.efgsPermissionGranted = $0 }
-            .disposed(by: disposeBag)
     }
 
     // MARK: - Action
 
     @IBAction private func continueAction(_ sender: Any) {
+        viewModel.setIsPermissionGranted(enableSwitch.isOn)
         perform(segue: StoryboardSegue.Onboarding.privacy)
     }
 }
@@ -51,17 +44,12 @@ final class EFGSPermissionVC: UIViewController {
 private extension EFGSPermissionVC {
 
     func setupStrings() {
-        title = "Spolupráce se zahraničím"
+        title = L10n.efgsPermissionTitle
         navigationItem.backBarButtonItem?.title = L10n.back
 
-        headlineLabel.text = "Pomozte v boji s COVID-19 i při cestách do zahraničí"
-        bodyLabel.text = """
-        COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
-        Povolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.
-        Nastavení můžete kdykoliv změnit v aplikaci.
-        Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.
-        """
-        enableLabel.text = "TODO"
-        continueButton.setTitle("Pokračovat")
+        headlineLabel.text = L10n.efgsPermissionHeadline
+        bodyLabel.text = L10n.efgsPermissionBody + "\n\n" + viewModel.efgsCountries
+        enableLabel.text = L10n.efgsPermissionSwitch
+        continueButton.setTitle(L10n.newsButtonContinue)
     }
 }

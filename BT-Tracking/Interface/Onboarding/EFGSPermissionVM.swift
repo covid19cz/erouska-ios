@@ -9,5 +9,9 @@
 import Foundation
 
 final class EFGSPermissionVM {
-    var efgsPermissionGranted = true
+    let efgsCountries = RemoteValues.efgsCountries
+
+    func setIsPermissionGranted(_ isGranted: Bool) {
+        // TODO: Update EFGS model
+    }
 }

@@ -93,6 +93,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
     case appleServerConfiguration
     case appleExposureConfiguration
 
+    case efgsCountries
+
     var keyValue: String {
         "v2_\(rawValue)"
     }
@@ -164,6 +166,9 @@ enum RemoteConfigValueKey: String, CaseIterable {
             #endif
         case .appleExposureConfiguration:
             return "{\"factorHigh\":0.17,\"factorStandard\":1,\"factorLow\":1.5,\"lowerThreshold\":55,\"higherThreshold\":63,\"triggerThreshold\":15}"
+
+        case .efgsCountries:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsCountriesDefault")
         }
     }
 
@@ -325,6 +330,10 @@ struct RemoteValues {
         } catch {
             return ExposureConfiguration()
         }
+    }
+
+    static var efgsCountries: String {
+        AppDelegate.shared.remoteConfigString(forKey: .efgsCountries)
     }
 
 }

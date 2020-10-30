@@ -42,6 +42,7 @@ internal enum Asset {
     internal static let tests = ImageAsset(name: "CurrentData/tests")
   }
   internal static let disclosureIndicator = ImageAsset(name: "DisclosureIndicator")
+  internal static let efgsPermission = ImageAsset(name: "EfgsPermission")
   internal static let error = ImageAsset(name: "Error")
   internal static let exposure = ImageAsset(name: "Exposure")
   internal static let exposureNotificationPermission = ImageAsset(name: "ExposureNotificationPermission")
