@@ -173,16 +173,16 @@ private extension BackgroundService {
         let keyURLs = AppSettings.traveler ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
         return reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: AppSettings.lastProcessedFileNames) { report in
             Log.log("BGTask: did download keys \(report)")
+            let dispatchGroup = DispatchGroup()
+            var atLeastOneSuccess: Bool = false
 
             for (code, success) in report.success {
+                dispatchGroup.enter()
+
                 guard !success.URLs.isEmpty else {
-                    AppSettings.lastProcessedDate = Date()
-
-                    self.isRunning = false
-
-                    task?.setTaskCompleted(success: true)
-                    Analytics.logEvent("key_export_download_finished", parameters: nil)
-                    return
+                    atLeastOneSuccess = true
+                    dispatchGroup.leave()
+                    continue
                 }
 
                 self.exposureService.detectExposures(
@@ -191,21 +191,29 @@ private extension BackgroundService {
                 ) { result in
                     switch result {
                     case .success(let exposures):
-                        AppSettings.lastProcessedDate = Date()
-
                         self.handleExposures(exposures, country: code, lastProcessedFileName: success.lastProcessedFileName)
-                        self.isRunning = false
-
-                        task?.setTaskCompleted(success: true)
-                        Analytics.logEvent("key_export_download_finished", parameters: nil)
+                        atLeastOneSuccess = true
                     case .failure(let error):
                         reportFailure(.generalError(error))
                     }
+                    dispatchGroup.leave()
                 }
             }
 
             for (_, failure) in report.failures {
+                dispatchGroup.enter()
                 reportFailure(failure)
+                dispatchGroup.leave()
+            }
+
+            dispatchGroup.notify(queue: .main) {
+                self.isRunning = false
+                task?.setTaskCompleted(success: true)
+
+                if atLeastOneSuccess {
+                    AppSettings.lastProcessedDate = Date()
+                    Analytics.logEvent("key_export_download_finished", parameters: nil)
+                }
             }
         }
     }

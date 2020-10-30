@@ -311,13 +311,11 @@ struct RemoteValues {
     }
 
     static var keyExportNonTravellerUrls: [ReportIndex] {
-        // swiftlint:disable force_try
-        (try! decodeValue([ReportIndex].self, at: .keyExportNonTravellerUrls)) ?? []
+        (try? decodeValue([ReportIndex].self, at: .keyExportNonTravellerUrls)) ?? []
     }
 
     static var keyExportEuTravellerUrls: [ReportIndex] {
-        // swiftlint:disable force_try
-        (try! decodeValue([ReportIndex].self, at: .keyExportEuTravellerUrls)) ?? []
+        (try? decodeValue([ReportIndex].self, at: .keyExportEuTravellerUrls)) ?? []
     }
 
     private static func decodeValue<T>(_ type: T.Type, at key: RemoteConfigValueKey) throws -> T? where T: Decodable {

@@ -196,10 +196,6 @@ final class ReportService: ReportServicing {
         dispatchGroup.enter()
 
         let destinationURL = self.downloadDestinationURL.appendingPathComponent(code)
-        let destination: DownloadRequest.Destination = { temporaryURL, response in
-            let url = destinationURL.appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
-            return (url, [.removePreviousFile, .createIntermediateDirectories])
-        }
         var downloads: [DownloadRequest] = []
 
         AF.request(downloadURL, method: .get)
@@ -220,11 +216,17 @@ final class ReportService: ReportServicing {
                     let remoteURLs = self.parseIndexFile(result, downloadURL: downloadURL, country: code)
                     lastRemoteURL = remoteURLs.last
 
+                    // remove old files
+                    try? FileManager.default.removeItem(at: destinationURL)
+
                     for remoteURL in remoteURLs {
                         downloadDispatchGroup.enter()
 
-                        // remove old file
-                        try? FileManager.default.removeItem(at: destinationURL.appendingPathComponent(remoteURL.lastPathComponent).deletingPathExtension())
+                        let keyFileName = remoteURL.deletingPathExtension().lastPathComponent
+                        let destination: DownloadRequest.Destination = { temporaryURL, response in
+                            let url = destinationURL.appendingPathComponent(keyFileName).appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
+                            return (url, [.removePreviousFile, .createIntermediateDirectories])
+                        }
 
                         let download = self.downloadKeyFile(destination: destination, remote: remoteURL, callback: { result in
                             localURLResults.append(result)
@@ -277,7 +279,15 @@ final class ReportService: ReportServicing {
     private func parseIndexFile(_ index: String, downloadURL: URL, country code: String) -> [URL] {
         var baseURL = downloadURL
         baseURL.deleteLastPathComponent()
-        let parsedURLs = index.split(separator: "\n").compactMap { baseURL.appendingPathComponent(String($0), isDirectory: false) }
+        let parsedURLs: [URL]
+        if baseURL.absoluteString.hasSuffix("//") {
+            var url = baseURL.absoluteString
+            url.removeLast()
+            parsedURLs = index.split(separator: "\n").compactMap { URL(string: url + String($0)) ?? baseURL }
+        } else {
+            baseURL.deleteLastPathComponent()
+            parsedURLs = index.split(separator: "\n").compactMap { baseURL.appendingPathComponent(String($0)) }
+        }
         var remoteURLs: [URL] = []
         for url in parsedURLs {
             remoteURLs.append(url)
@@ -318,19 +328,34 @@ final class ReportService: ReportServicing {
     }
 
     private func unzipDownload(_ downloadedURL: URL) throws -> [URL] {
-        let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
+        let baseURL = downloadedURL.deletingLastPathComponent()
+        let unzipDirectory = try Zip.quickUnzipFile(downloadedURL, toURL: baseURL)
         let fileURLs = try FileManager.default.contentsOfDirectory(
             at: unzipDirectory,
             includingPropertiesForKeys: [], options: [.skipsHiddenFiles]
         )
         let uniqueName = UUID().uuidString
         return try fileURLs.map {
-            var newURL = $0
-            newURL.deleteLastPathComponent()
-            newURL.appendPathComponent(uniqueName)
-            newURL.appendPathExtension($0.pathExtension)
+            let newURL = baseURL.appendingPathComponent(uniqueName + "." + $0.pathExtension)
             try FileManager.default.moveItem(at: $0, to: newURL)
             return newURL
+        }
+    }
+
+}
+
+extension Zip {
+
+    class func quickUnzipFile(_ path: URL, toURL: URL) throws -> URL {
+        let fileExtension = path.pathExtension
+        let fileName = path.lastPathComponent
+        let directoryName = fileName.replacingOccurrences(of: ".\(fileExtension)", with: "")
+        do {
+            let destinationUrl = toURL.appendingPathComponent(directoryName, isDirectory: true)
+            try self.unzipFile(path, destination: destinationUrl, overwrite: true, password: nil, progress: nil)
+            return destinationUrl
+        } catch {
+            throw ZipError.unzipFail
         }
     }
 
