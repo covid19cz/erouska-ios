@@ -169,57 +169,59 @@ private extension BackgroundService {
             Crashlytics.crashlytics().record(error: error)
         }
 
+        func reportSuccess() {
+            isRunning = false
+            task?.setTaskCompleted(success: true)
+
+            AppSettings.lastProcessedDate = Date()
+            Analytics.logEvent("key_export_download_finished", parameters: nil)
+        }
+
         // Perform the exposure detection
         let keyURLs = AppSettings.traveler ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
         return reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: AppSettings.lastProcessedFileNames) { report in
             Log.log("BGTask: did download keys \(report)")
-            let dispatchGroup = DispatchGroup()
+
             var atLeastOneSuccess: Bool = false
-
-            for (code, success) in report.success {
-                dispatchGroup.enter()
-
+            var URLs: [URL] = []
+            for (_, success) in report.success {
                 guard !success.URLs.isEmpty else {
                     atLeastOneSuccess = true
-                    dispatchGroup.leave()
                     continue
                 }
-
-                self.exposureService.detectExposures(
-                    configuration: RemoteValues.exposureConfiguration,
-                    URLs: success.URLs
-                ) { result in
-                    switch result {
-                    case .success(let exposures):
-                        self.handleExposures(exposures, country: code, lastProcessedFileName: success.lastProcessedFileName)
-                        atLeastOneSuccess = true
-                    case .failure(let error):
-                        reportFailure(.generalError(error))
-                    }
-                    dispatchGroup.leave()
-                }
+                URLs.append(contentsOf: success.URLs)
             }
 
             for (_, failure) in report.failures {
-                dispatchGroup.enter()
                 reportFailure(failure)
-                dispatchGroup.leave()
             }
 
-            dispatchGroup.notify(queue: .main) {
-                self.isRunning = false
-                task?.setTaskCompleted(success: true)
-
-                if atLeastOneSuccess {
-                    AppSettings.lastProcessedDate = Date()
-                    Analytics.logEvent("key_export_download_finished", parameters: nil)
+            if !URLs.isEmpty || atLeastOneSuccess {
+                if !URLs.isEmpty {
+                    self.exposureService.detectExposures(
+                        configuration: RemoteValues.exposureConfiguration,
+                        URLs: URLs
+                    ) { result in
+                        switch result {
+                        case .success(let exposures):
+                            self.handleExposures(exposures, countries: report.success)
+                            reportSuccess()
+                        case .failure(let error):
+                            reportFailure(.generalError(error))
+                        }
+                    }
+                } else {
+                    self.handleExposures([], countries: report.success)
+                    reportSuccess()
                 }
             }
         }
     }
 
-    func handleExposures(_ exposures: [Exposure], country code: String, lastProcessedFileName: String?) {
-        AppSettings.lastProcessedFileNames[code] = lastProcessedFileName
+    func handleExposures(_ exposures: [Exposure], countries: ReportDownload.Success) {
+        for (code, success) in countries {
+            AppSettings.lastProcessedFileNames[code] = success.lastProcessedFileName
+        }
 
         guard !exposures.isEmpty else {
             log("EXP: no exposures, skip!")
