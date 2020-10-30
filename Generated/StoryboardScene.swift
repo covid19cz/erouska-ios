@@ -52,7 +52,11 @@ internal enum StoryboardScene {
 
     internal static let help = SceneType<HelpVC>(storyboard: Help.self, identifier: "Help")
 
+    internal static let helpArticle = SceneType<HelpArticleVC>(storyboard: Help.self, identifier: "HelpArticle")
+
     internal static let helpNavigation = SceneType<UIKit.UINavigationController>(storyboard: Help.self, identifier: "HelpNavigation")
+
+    internal static let helpSearchVC = SceneType<HelpSearchVC>(storyboard: Help.self, identifier: "HelpSearchVC")
   }
   internal enum LaunchScreen: StoryboardType {
     internal static let storyboardName = "LaunchScreen"
@@ -75,6 +79,12 @@ internal enum StoryboardScene {
     internal static let storyboardName = "RiskyEncounters"
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self)
+
+    internal static let newRiskEncounterNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "NewRiskEncounterNav")
+
+    internal static let riskyEncountersNegativeNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersNegativeNav")
+
+    internal static let riskyEncountersPositiveNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersPositiveNav")
   }
   internal enum SendReports: StoryboardType {
     internal static let storyboardName = "SendReports"

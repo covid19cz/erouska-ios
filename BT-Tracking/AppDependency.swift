@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import FirebaseFunctions
+import RealmSwift
 
 final class AppDependency {
 
@@ -26,4 +27,45 @@ final class AppDependency {
 
     private(set) lazy var background = BackgroundService(exposureService: exposureService, reporter: reporter)
 
+    let realm: Realm = {
+        var oldV1Data: [String: ExposureDataV1] = [:]
+
+        let configuration = Realm.Configuration(
+            schemaVersion: 7,
+            migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion < 5 {
+                    migration.enumerateObjects(ofType: ExposureRealm.className()) { oldObject, newObject in
+                        newObject?["detectedDate"] = Date(timeIntervalSince1970: 0)
+
+                        let data = ExposureDataV1()
+                        data.duration = oldObject?["duration"] as? Double ?? 0
+                        data.totalRiskScore = oldObject?["totalRiskScore"] as? Int ?? 0
+                        data.transmissionRiskLevel = oldObject?["transmissionRiskLevel"] as? Int ?? 0
+                        data.attenuationValue = oldObject?["attenuationValue"] as? Int ?? 0
+
+                        oldV1Data[oldObject?["id"] as? String ?? ""] = data
+                    }
+                }
+            }
+        )
+
+        Realm.Configuration.defaultConfiguration = configuration
+
+        // swiftlint:disable:next force_try
+        let realm = try! Realm()
+
+        if !oldV1Data.values.isEmpty {
+            let exposures = realm.objects(ExposureRealm.self)
+            try? realm.write {
+                for (key, value) in oldV1Data {
+                    let exposure = exposures.first(where: { $0.id == key })
+                    value.attenuationDurations = exposure?.attenuationDurations ?? value.attenuationDurations
+                    exposure?.attenuationDurations = .init()
+                    exposure?.dataV1 = value
+                }
+            }
+        }
+
+        return realm
+    }()
 }

@@ -11,6 +11,7 @@ import FirebaseFunctions
 import RealmSwift
 import RxSwift
 import Reachability
+import Alamofire
 
 final class CurrentDataVM {
 
@@ -33,16 +34,16 @@ final class CurrentDataVM {
 
     private var currentData: CurrentDataRealm?
 
+    private let jsonDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.serverDateFormatter)
+        return decoder
+    }()
+
     private let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.groupingSeparator = " "
         formatter.numberStyle = .decimal
-        return formatter
-    }()
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .medium
         return formatter
     }()
 
@@ -50,19 +51,17 @@ final class CurrentDataVM {
         needToUpdateView = BehaviorSubject<Void>(value: ())
         observableErrors = BehaviorSubject<Error?>(value: nil)
 
-        let realm = try? Realm()
-        currentData = realm?.objects(CurrentDataRealm.self).last
+        let realm = AppDelegate.dependency.realm
+        currentData = realm.objects(CurrentDataRealm.self).last
         sections = sections(from: currentData)
 
         if currentData == nil {
             let currentData = CurrentDataRealm()
-            try? realm?.write {
-                realm?.add(currentData)
+            try? realm.write {
+                realm.add(currentData)
             }
             self.currentData = currentData
         }
-
-        updateFooter()
     }
 
     func fetchCurrentDataIfNeeded() {
@@ -71,84 +70,20 @@ final class CurrentDataVM {
             return
         }
 
-        /*if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
-            var components = DateComponents()
-            components.hour = 3
-            if Calendar.current.date(byAdding: components, to: lastFetchedDate)! > Date() { return }
-        }*/
+        let dispatchGroup = DispatchGroup()
+        fetchCurrentData(in: dispatchGroup)
+        fetchAppCurrentData(in: dispatchGroup)
 
-        let data = ["idToken": KeychainService.token]
-        AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
+        dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            if let result = result?.data as? [String: Any] {
-                let realm = try? Realm()
-                try? realm?.write {
-                    self.currentData?.update(with: result)
-                }
 
-                DispatchQueue.main.async {
-                    AppSettings.currentDataLastFetchDate = Date()
+            self.sections = self.sections(from: self.currentData)
+            self.observableErrors.onNext(nil)
 
-                    self.sections = self.sections(from: self.currentData)
-                    self.updateFooter()
-                    self.observableErrors.onNext(nil)
-                }
-            } else if let error = error {
-                self.observableErrors.onNext(error)
-            }
+            AppSettings.currentDataLastFetchDate = Date()
         }
     }
 
-    private func updateFooter() {
-        if let lastFetchedDate = AppSettings.currentDataLastFetchDate {
-            footer = L10n.currentDataFooter(dateFormatter.string(from: lastFetchedDate))
-        }
-    }
-
-    private func sections(from currentData: CurrentDataRealm?) -> [Section] {
-        guard let data = currentData else { return [] }
-        return [
-            Section(header: nil, selectableItems: true, items: [
-                Item(
-                    iconAsset: Asset.CurrentData.measures,
-                    title: L10n.currentDataMeasures
-                ),
-            ]),
-            Section(header: L10n.currentDataItemHeader, selectableItems: false, items: [
-                Item(
-                    iconAsset: Asset.CurrentData.tests,
-                    title: L10n.currentDataItemTests(formattedValue(data.testsTotal)),
-                    subtitle: L10n.currentDataItemYesterday(formattedValue(data.testsIncrease, showSign: true))
-                ),
-                Item(
-                    iconAsset: Asset.CurrentData.covid,
-                    title: L10n.currentDataItemConfirmed(formattedValue(data.confirmedCasesTotal)),
-                    subtitle: L10n.currentDataItemYesterday(formattedValue(data.confirmedCasesIncrease, showSign: true))
-                ),
-                Item(
-                    iconAsset: Asset.CurrentData.active,
-                    title: L10n.currentDataItemActive(formattedValue(data.activeCasesTotal))
-                ),
-                Item(
-                    iconAsset: Asset.CurrentData.healthy,
-                    title: L10n.currentDataItemHealthy(formattedValue(data.curedTotal))
-                ),
-                Item(
-                    iconAsset: Asset.CurrentData.death,
-                    title: L10n.currentDataItemDeaths(formattedValue(data.deceasedTotal))
-                ),
-                Item(
-                    iconAsset: Asset.CurrentData.hospital,
-                    title: L10n.currentDataItemHospitalized(formattedValue(data.currentlyHospitalizedTotal))
-                )
-            ])
-        ]
-    }
-
-    private func formattedValue(_ value: Int, showSign: Bool = false) -> String {
-        guard let formattedValue = numberFormatter.string(for: value) else { return "" }
-        return showSign && value > 0 ? "+" + formattedValue : formattedValue
-    }
 }
 
 extension CurrentDataVM {
@@ -170,4 +105,127 @@ extension CurrentDataVM {
             self.subtitle = subtitle
         }
      }
+}
+
+private extension CurrentDataVM {
+
+    struct AppCurrentJsonData: Decodable {
+
+        let data: AppCurrentData
+
+    }
+
+    func fetchCurrentData(in dispatchGroup: DispatchGroup) {
+        dispatchGroup.enter()
+        let data = ["idToken": KeychainService.token]
+        AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
+            guard let self = self else { return }
+            if let data = result?.data as? [String: Any] {
+                let realm = AppDelegate.dependency.realm
+                try? realm.write {
+                    self.currentData?.update(with: CovidCurrentData(with: data))
+                }
+            } else if let error = error {
+                self.observableErrors.onNext(error)
+            }
+            dispatchGroup.leave()
+        }
+    }
+
+    func fetchAppCurrentData(in dispatchGroup: DispatchGroup) {
+        dispatchGroup.enter()
+
+        // swiftlint:disable:next force_unwrapping
+        let url = URL(string: "DownloadMetrics", relativeTo: RemoteValues.serverConfiguration.appCurentDataURL)!
+        AF.request(url)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: AppCurrentJsonData.self, decoder: jsonDecoder) { response in
+                #if DEBUG
+                debugPrint(response)
+                #endif
+
+                switch response.result {
+                case .success(let appData):
+                    let realm = AppDelegate.dependency.realm
+                    try? realm.write {
+                        self.currentData?.update(with: appData.data)
+                    }
+                case .failure(let error):
+                    Log.log("Failed to get DownloadMetrics \(error)")
+                }
+                dispatchGroup.leave()
+            }
+    }
+
+    func sections(from currentData: CurrentDataRealm?) -> [Section] {
+        guard let data = currentData else { return [] }
+
+        let appDateSubtitle = DateFormatter.baseDateFormatter.string(from: data.appDate ?? Date())
+
+        return [
+            Section(header: L10n.currentDataMeasuresHeader, selectableItems: true, items: [
+                Item(
+                    iconAsset: Asset.CurrentData.measures,
+                    title: L10n.currentDataMeasures
+                ),
+            ]),
+            Section(header: L10n.currentDataItemHeader, selectableItems: false, items: [
+                Item(
+                    iconAsset: Asset.CurrentData.tests,
+                    title: L10n.currentDataItemTests(formattedValue(data.testsTotal)),
+                    subtitle: L10n.currentDataAppFrom(
+                        formattedValue(data.testsIncrease, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.testsIncreaseDate ?? Date())
+                    )
+                ),
+                Item(
+                    iconAsset: Asset.CurrentData.covid,
+                    title: L10n.currentDataItemConfirmed(formattedValue(data.confirmedCasesTotal)),
+                    subtitle: L10n.currentDataAppFrom(
+                        formattedValue(data.confirmedCasesIncrease, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.confirmedCasesIncreaseDate ?? Date())
+                    )
+                ),
+                Item(
+                    iconAsset: Asset.CurrentData.active,
+                    title: L10n.currentDataItemActive(formattedValue(data.activeCasesTotal))
+                ),
+                Item(
+                    iconAsset: Asset.CurrentData.healthy,
+                    title: L10n.currentDataItemHealthy(formattedValue(data.curedTotal))
+                ),
+                Item(
+                    iconAsset: Asset.CurrentData.death,
+                    title: L10n.currentDataItemDeaths(formattedValue(data.deceasedTotal))
+                ),
+                Item(
+                    iconAsset: Asset.CurrentData.hospital,
+                    title: L10n.currentDataItemHospitalized(formattedValue(data.currentlyHospitalizedTotal))
+                )
+            ]),
+            Section(header: L10n.currentDataAppHeader, selectableItems: false, items: [
+                Item(
+                    iconAsset: Asset.CurrentData.activations,
+                    title: L10n.currentDataAppActivations(formattedValue(data.activationsTotal)),
+                    subtitle: L10n.currentDataAppFrom(formattedValue(data.activationsYesterday, showSign: true), appDateSubtitle)
+                ),
+                Item(
+                    iconAsset: Asset.CurrentData.sentData,
+                    title: L10n.currentDataAppKeyPublishers(formattedValue(data.keyPublishersTotal)),
+                    subtitle: L10n.currentDataAppFrom(formattedValue(data.keyPublishersYesterday, showSign: true), appDateSubtitle)
+                ),
+                Item(
+                    iconAsset: Asset.CurrentData.notifications,
+                    title: L10n.currentDataAppNotifications(formattedValue(data.notificationsTotal)),
+                    subtitle: L10n.currentDataAppFrom(formattedValue(data.notificationsYesterday, showSign: true), appDateSubtitle)
+                )
+            ])
+        ]
+    }
+
+    func formattedValue(_ value: Int, showSign: Bool = false) -> String {
+        guard let formattedValue = numberFormatter.string(for: value) else { return "" }
+        return showSign && value > 0 ? "+" + formattedValue : formattedValue
+    }
+
 }

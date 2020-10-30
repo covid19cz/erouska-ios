@@ -26,12 +26,11 @@ protocol ReportServicing: AnyObject {
     var isUploading: Bool { get }
     func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback)
 
-    typealias KeyExportURLs = [String: URL]
     typealias ProcessedFileNames = [String: String]
     typealias DownloadKeysCallback = (ReportDownload) -> Void
 
     var isDownloading: Bool { get }
-    func downloadKeys(exportURLs: KeyExportURLs, lastProcessedFileNames: ProcessedFileNames, callback: @escaping DownloadKeysCallback) -> Progress
+    func downloadKeys(exportURLs: [ReportIndex], lastProcessedFileNames: ProcessedFileNames, callback: @escaping DownloadKeysCallback) -> Progress
 
 }
 
@@ -41,6 +40,7 @@ final class ReportService: ReportServicing {
 
     private var uploadURL: URL
 
+    private var downloadIndexName: String
     private var downloadDestinationURL: URL {
         let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let documentsURL = directoryURLs.first else {
@@ -56,11 +56,13 @@ final class ReportService: ReportServicing {
     init(configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
+        downloadIndexName = configuration.downloadIndexName
     }
 
     func updateConfiguration(_ configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
+        downloadIndexName = configuration.downloadIndexName
     }
 
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String {
@@ -159,7 +161,7 @@ final class ReportService: ReportServicing {
         downloadSuccess[code] = ReportKeys(URLs: reports, lastProcessedFileName: lastProcessFileName)
     }
 
-    func downloadKeys(exportURLs: KeyExportURLs, lastProcessedFileNames: ProcessedFileNames, callback: @escaping DownloadKeysCallback) -> Progress {
+    func downloadKeys(exportURLs: [ReportIndex], lastProcessedFileNames: ProcessedFileNames, callback: @escaping DownloadKeysCallback) -> Progress {
         let progress = Progress()
 
         guard !isDownloading else {
@@ -172,8 +174,9 @@ final class ReportService: ReportServicing {
         self.lastProcessedFileNames = lastProcessedFileNames
 
         let dispatchGroup = DispatchGroup()
-        exportURLs.forEach { code, url in
-            self.downloadIndex(country: code, downloadURL: url, dispatchGroup: dispatchGroup, progress: progress, callback: callback)
+        exportURLs.forEach { index in
+            guard let url = URL(string: index.url) else { return }
+            self.downloadIndex(country: index.country, downloadURL: url, dispatchGroup: dispatchGroup, progress: progress, callback: callback)
         }
 
         dispatchGroup.notify(queue: .main) { [weak self] in
@@ -237,11 +240,10 @@ final class ReportService: ReportServicing {
                 case let .failure(error):
                     switch error {
                     case .responseSerializationFailed(reason: .inputDataNilOrZeroLength):
-                        self.downloadSuccess[code] = ReportKeys(URLs: [], lastProcessedFileName: nil)
+                        localURLResults.append(.success([]))
                     default:
-                        self.downloadFailure[code] = .responseError(error)
+                        localURLResults.append(.failure(.responseError(error)))
                     }
-                    dispatchGroup.leave()
                 }
 
                 downloadDispatchGroup.notify(queue: .main) {
@@ -251,17 +253,21 @@ final class ReportService: ReportServicing {
                         return
                     }
 
+                    var haveError: Bool = false
                     var localURLs: [URL] = []
                     for result in localURLResults {
                         switch result {
                         case let .success(URLs):
                             localURLs.append(contentsOf: URLs)
-                        case .failure:
-                            self.downloadFailure[code] = .cancelled
-                            dispatchGroup.leave()
+                        case let .failure(error):
+                            haveError = true
+                            self.downloadFailure[code] = error
                         }
                     }
-                    self.downloadSuccess[code] = ReportKeys(URLs: localURLs, lastProcessedFileName: lastRemoteURL?.lastPathComponent)
+
+                    if !haveError {
+                        self.downloadSuccess[code] = ReportKeys(URLs: localURLs, lastProcessedFileName: lastRemoteURL?.lastPathComponent)
+                    }
                     dispatchGroup.leave()
                 }
             }
@@ -269,7 +275,9 @@ final class ReportService: ReportServicing {
     }
 
     private func parseIndexFile(_ index: String, downloadURL: URL, country code: String) -> [URL] {
-        let parsedURLs = index.split(separator: "\n").compactMap { downloadURL.appendingPathComponent(String($0)) }
+        var baseURL = downloadURL
+        baseURL.deleteLastPathComponent()
+        let parsedURLs = index.split(separator: "\n").compactMap { baseURL.appendingPathComponent(String($0), isDirectory: false) }
         var remoteURLs: [URL] = []
         for url in parsedURLs {
             remoteURLs.append(url)

@@ -15,6 +15,7 @@ class Button: UIButton {
         case clear
         case disabled
         case exposureBanner
+        case dashboard
 
         var backgroundColor: UIColor {
             switch self {
@@ -26,6 +27,8 @@ class Button: UIButton {
                 return .clear
             case .exposureBanner:
                 return .white
+            case .dashboard:
+                return UIColor(red: 0.928, green: 0.934, blue: 0.942, alpha: 1)
             }
         }
 
@@ -39,6 +42,8 @@ class Button: UIButton {
                 return .systemGray
             case .exposureBanner:
                 return UIColor(rgb: 0xDE1A1A)
+            case .dashboard:
+                return .systemBlue
             }
         }
 
@@ -48,7 +53,7 @@ class Button: UIButton {
             button.layer.cornerRadius = 16
             button.layer.masksToBounds = true
 
-            button.layer.borderWidth = [.filled, .exposureBanner].contains(self) ? 0 : 1
+            button.layer.borderWidth = [.filled, .exposureBanner, .dashboard].contains(self) ? 0 : 1
             button.layer.borderColor = borderColor?.cgColor
 
             button.titleLabel?.textAlignment = .center
@@ -81,7 +86,7 @@ class Button: UIButton {
 
     private var borderColor: UIColor? {
         switch style {
-        case .filled, .exposureBanner:
+        case .filled, .exposureBanner, .dashboard:
             return nil
         case .clear, .disabled:
             return UIColor(named: "ButtonBorder")?.resolvedColor(with: traitCollection).withAlphaComponent(0.12) ?? UIColor.clear
@@ -128,6 +133,21 @@ final class ExposureBannerButton: Button {
 
     override func awakeFromNib() {
         style = .exposureBanner
+        super.awakeFromNib()
+    }
+}
+
+final class DashboardButton: Button {
+
+    convenience init() {
+        self.init(type: .system)
+        awakeFromNib()
+    }
+
+    override func awakeFromNib() {
+        style = .dashboard
+        titleLabel?.font = .systemFont(ofSize: 15)
+        contentEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         super.awakeFromNib()
     }
 }

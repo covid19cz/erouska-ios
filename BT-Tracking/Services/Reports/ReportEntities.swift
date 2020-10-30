@@ -20,6 +20,11 @@ enum ReportError: Error {
     case generalError(Error)
 }
 
+struct ReportIndex: Decodable {
+    let country: String
+    let url: String
+}
+
 struct ReportDownload {
 
     static var all = "ALL"

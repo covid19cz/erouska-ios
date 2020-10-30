@@ -30,9 +30,9 @@ internal enum L10n {
   internal static let activeButtonDisabledBluetooth = L10n.tr("Localizable", "active_button_disabled_bluetooth")
   /// Zapnout
   internal static let activeButtonDisabledExposures = L10n.tr("Localizable", "active_button_disabled_exposures")
-  /// Pozastavit eRoušku
+  /// Pozastavit
   internal static let activeButtonEnabled = L10n.tr("Localizable", "active_button_enabled")
-  /// Spustit eRoušku
+  /// Spustit
   internal static let activeButtonPaused = L10n.tr("Localizable", "active_button_paused")
   /// Poslední aktualizace dat – %@.
   internal static func activeDataUpdate(_ p1: Any) -> String {
@@ -50,15 +50,35 @@ internal enum L10n {
   internal static let activeHeadEnabled = L10n.tr("Localizable", "active_head_enabled")
   /// eRouška je pozastavená
   internal static let activeHeadPaused = L10n.tr("Localizable", "active_head_paused")
-  /// Bez zapnutého Bluetooth nemůže eRouška vytvářet seznam eRoušek ve vašem okolí.\n\nZapněte jej pomocí tlačítka "Zapnout Bluetooth".
+  /// Za posledních 14 dní žádné rizikové setkání
+  internal static let activeRiskyEncounterHeadNegative = L10n.tr("Localizable", "active_risky_encounter_head_negative")
+  /// Za posledních 14 dní %@ riziková setkání
+  internal static func activeRiskyEncounterHeadPositive(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "active_risky_encounter_head_positive", String(describing: p1))
+  }
+  /// Poslední aktualizace %@
+  internal static func activeRiskyEncounterLastUpdateNegative(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "active_risky_encounter_last_update_negative", String(describing: p1))
+  }
+  /// Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.
+  internal static func activeRiskyEncounterTitlePositive(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "active_risky_encounter_title_positive", String(describing: p1))
+  }
+  /// Aktualizace probíhá jednou za 24 hodin.
+  internal static let activeRiskyEncounterUpdateIntervalNegative = L10n.tr("Localizable", "active_risky_encounter_update_interval_negative")
+  /// Anonymně upozornit ostatní
+  internal static let activeSendReportsButton = L10n.tr("Localizable", "active_send_reports_button")
+  /// Máte pozitvní výsledek COVID-19 testu?
+  internal static let activeSendReportsHead = L10n.tr("Localizable", "active_send_reports_head")
+  /// Zapnuté Bluetooth je důležité pro sbírání kontaktů s ostatními eRouškami ve vašem okolí.
   internal static let activeTitleDisabledBluetooth = L10n.tr("Localizable", "active_title_disabled_bluetooth")
-  /// eRouška nyní nemůže komunikovat s jinými eRouškami ve vašem okolí.\n\nZapněte Oznámení o kontaktu s COVID-19 pomocí tlačítka "Zapnout".
+  /// eRouška nyní nemůže komunikovat s jinými eRouškami ve vašem okolí.\nZapněte Oznámení o kontaktu s COVID-19 pomocí tlačítka "Zapnout".
   internal static let activeTitleDisabledExposures = L10n.tr("Localizable", "active_title_disabled_exposures")
-  /// Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.
+  /// Aplikace aktuálně pracuje na pozadí a monitoruje okolí. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.
   internal static let activeTitleEnabled = L10n.tr("Localizable", "active_title_enabled")
   /// Aplikace pracuje na pozadí a monitoruje okolí, prosím neukončujte ji. Nechte zapnuté Bluetooth a s telefonem pracujte jako obvykle.
   internal static let activeTitleHighlightedEnabled = L10n.tr("Localizable", "active_title_highlighted_enabled")
-  /// Aplikace je aktuálně pozastavená a nesbírá žádná data o ostatních eRouškách ve vašem okolí.\n\nSpusťte znovu sběr dat a chraňte sebe i své okolí. Nezapomínejte na to zejména v situaci, kdy opouštíte svůj domov.
+  /// Aplikace je aktuálně pozastavená a nesbírá žádná data o ostatních eRouškách ve vašem okolí.\nSpusťte znovu eRoušku a chraňte sebe i své okolí. Nezapomínejte na to zejména ve chvíli, kdy opouštíte svůj domov.
   internal static let activeTitlePaused = L10n.tr("Localizable", "active_title_paused")
   /// eRouška
   internal static let appName = L10n.tr("Localizable", "app_name")
@@ -92,6 +112,24 @@ internal enum L10n {
   internal static let contactsImportantHeadline = L10n.tr("Localizable", "contacts_important_headline")
   /// Kontakty
   internal static let contactsTitle = L10n.tr("Localizable", "contacts_title")
+  /// %@ aktivovaných aplikací
+  internal static func currentDataAppActivations(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_app_activations", String(describing: p1))
+  }
+  /// %@ za %@
+  internal static func currentDataAppFrom(_ p1: Any, _ p2: Any) -> String {
+    return L10n.tr("Localizable", "current_data_app_from", String(describing: p1), String(describing: p2))
+  }
+  /// eRouška v číslech
+  internal static let currentDataAppHeader = L10n.tr("Localizable", "current_data_app_header")
+  /// %@ pozitivně testovaných anonymně varovalo ostatní
+  internal static func currentDataAppKeyPublishers(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_app_key_publishers", String(describing: p1))
+  }
+  /// %@ upozornění na riziková setkání
+  internal static func currentDataAppNotifications(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_app_notifications", String(describing: p1))
+  }
   /// Poslední aktualizace %@
   internal static func currentDataFooter(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_footer", String(describing: p1))
@@ -128,13 +166,17 @@ internal enum L10n {
   }
   /// Aktuální opatření
   internal static let currentDataMeasures = L10n.tr("Localizable", "current_data_measures")
+  /// Informace o aktuálních opatřeních
+  internal static let currentDataMeasuresHeader = L10n.tr("Localizable", "current_data_measures_header")
+  /// Riziková setkání zjištěná
+  internal static let dataListPreviousHeader = L10n.tr("Localizable", "data_list_previous_header")
   /// Ověřit a odeslat data
   internal static let dataListSendActionTitle = L10n.tr("Localizable", "data_list_send_action_title")
   /// V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.
   internal static let dataListSendErrorDisabledMessage = L10n.tr("Localizable", "data_list_send_error_disabled_message")
   /// Data nyní nemůžete odeslat
   internal static let dataListSendErrorDisabledTitle = L10n.tr("Localizable", "data_list_send_error_disabled_title")
-  /// Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.
+  /// Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.
   internal static let dataListSendErrorExpiredCodeMessage = L10n.tr("Localizable", "data_list_send_error_expired_code_message")
   /// Vypršela platnost ověřovacího kódu.
   internal static let dataListSendErrorExpiredCodeTitle = L10n.tr("Localizable", "data_list_send_error_expired_code_title")
@@ -260,6 +302,14 @@ internal enum L10n {
   internal static let helpTabTitle = L10n.tr("Localizable", "help_tab_title")
   /// Jak to funguje
   internal static let helpTitle = L10n.tr("Localizable", "help_title")
+  /// Upozornění se vám zobrazilo nejdříve 24 hodin poté, co se nakažený dozvěděl pozitivní výsledek testu na COVID-19 a zadal ověřovací kód do eRoušky.\n\nRizikový kontakt vyhodnotíme v případě, že jste s nakaženým byli v kontaktu na vzdálenost kratší než 2 metry po dobu alespoň 15 minut.\n\nKvůli zachování anonymity nakaženého neznáme čas ani místo setkání.
+  internal static let newRiskyEncountersBody = L10n.tr("Localizable", "new_risky_encounters_body")
+  /// Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19
+  internal static func newRiskyEncountersTitle(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "new_risky_encounters_title", String(describing: p1))
+  }
+  /// Jak postupovat dál
+  internal static let newRiskyExposuresButton = L10n.tr("Localizable", "new_risky_exposures_button")
   /// Telefon nemusíte nosit v kapse se zapnutou obrazovkou a pokládat obrazovkou na stůl. Normálně ho používejte a zamykejte, eRouška bude vždy aktivní.
   internal static let newsAlwaysActiveBody = L10n.tr("Localizable", "news_always_active_body")
   /// eRouška funguje vždy a všude
@@ -300,8 +350,6 @@ internal enum L10n {
   internal static let privacyHeadline = L10n.tr("Localizable", "privacy_headline")
   /// Soukromí
   internal static let privacyTitle = L10n.tr("Localizable", "privacy_title")
-  /// \n\nV případě, že vás bude kontaktovat pracovník hygienické stanice, postupujte podle jeho pokynů.
-  internal static let riskyEncountersPositiveTitle = L10n.tr("Localizable", "risky_encounters_positive_title")
   /// Mám příznaky
   internal static let riskyEncountersPositiveWithSymptomsHeader = L10n.tr("Localizable", "risky_encounters_positive_with_symptoms_header")
   /// Nemám příznaky

@@ -72,6 +72,7 @@ enum RemoteConfigValueKey: String, CaseIterable {
     case symptomsContentJson
     case preventionContentJson
     case contactsContentJson
+    case exposureHelpContentJson
 
     case currentMeasuresUrl
     case conditionsOfUseUrl
@@ -130,6 +131,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
             return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "preventionContentJsonDefault")
         case .contactsContentJson:
             return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "contactsContentJsonDefault")
+        case .exposureHelpContentJson:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "exposureHelpContentJsonDefault")
 
         case .currentMeasuresUrl:
             return "https://koronavirus.mzcr.cz/aktualni-opatreni/"
@@ -233,6 +236,10 @@ struct RemoteValues {
         parseRiskyEncountersListContent(from: .preventionContentJson, prevention: true)
     }
 
+    static var exposureHelpContent: RiskyEncountersListContent? {
+        parseRiskyEncountersListContent(from: .exposureHelpContentJson, prevention: false)
+    }
+
     private static func parseRiskyEncountersListContent(from key: RemoteConfigValueKey, prevention: Bool) -> RiskyEncountersListContent? {
         guard let remoteContent = try? decodeValue(RiskyEncountersListRemoteContent.self, at: key) else { return nil }
         return RiskyEncountersListContent(
@@ -303,12 +310,14 @@ struct RemoteValues {
         (try? decodeValue(ExposureConfiguration.self, at: .appleExposureConfiguration)) ?? ExposureConfiguration()
     }
 
-    static var keyExportNonTravellerUrls: ReportServicing.KeyExportURLs {
-        (try? decodeValue(ReportServicing.KeyExportURLs.self, at: .keyExportNonTravellerUrls)) ?? [:]
+    static var keyExportNonTravellerUrls: [ReportIndex] {
+        // swiftlint:disable force_try
+        (try! decodeValue([ReportIndex].self, at: .keyExportNonTravellerUrls)) ?? []
     }
 
-    static var keyExportEuTravellerUrls: ReportServicing.KeyExportURLs {
-        (try? decodeValue(ReportServicing.KeyExportURLs.self, at: .keyExportEuTravellerUrls)) ?? [:]
+    static var keyExportEuTravellerUrls: [ReportIndex] {
+        // swiftlint:disable force_try
+        (try! decodeValue([ReportIndex].self, at: .keyExportEuTravellerUrls)) ?? []
     }
 
     private static func decodeValue<T>(_ type: T.Type, at key: RemoteConfigValueKey) throws -> T? where T: Decodable {
