@@ -20,4 +20,10 @@ final class CurrentDataCell: UITableViewCell {
         subtitleLabel?.text = subtitle
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        separatorInset = .init(top: 0, left: iconView.frame.maxX + 16, bottom: 0, right: 0)
+    }
+
 }
