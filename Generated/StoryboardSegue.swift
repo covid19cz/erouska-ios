@@ -22,6 +22,7 @@ internal enum StoryboardSegue {
     case article
   }
   internal enum Onboarding: String, SegueType {
+    case efgsPermission
     case exposureNotification
     case privacy
     case unsupported

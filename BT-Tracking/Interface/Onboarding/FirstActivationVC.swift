@@ -44,7 +44,7 @@ final class FirstActivationVC: UIViewController {
                         self?.perform(segue: StoryboardSegue.Onboarding.exposureNotification)
                     } else {
                         // Already authorized or denied
-                        self?.perform(segue: StoryboardSegue.Onboarding.privacy)
+                        self?.perform(segue: StoryboardSegue.Onboarding.efgsPermission)
                     }
                 }
             }

@@ -17,6 +17,10 @@
 "exposure_notification_headline" = "eRouška potřebuje pro správné fungování zapnuté oznámení o kontaktu s COVID-19";
 "exposure_notification_body" = "Tato oznámení vás upozorní, pokud jste byli v blízkosti uživatele eRoušky s pozitivním testem na onemocnění COVID-19.\n\nPodstatou správného fungování je sdílení a shromažďování náhodných identifikačních čísel, která se automaticky mění. Uživatele eRoušky není možno podle těchto identifikátorů rozpoznat.";
 "exposure_notification_continue" = "Zapnout";
+"efgs_permission_title" = "Spolupráce se zahraničím";
+"efgs_permission_headline" = "Pomozte v boji s COVID-19 i při cestách do zahraničí";
+"efgs_permission_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.";
+"efgs_permission_switch" = "Povolit spolupráci se zahraničím";
 "privacy_title" = "Soukromí";
 "privacy_headline" = "Myslíme na vaše soukromí, odesílání dat máte vždy pod kontrolou";
 "privacy_body" = "eRouška neobsahuje žádné vaše osobní údaje a sbírá pouze anonymní data o ostatních eRouškách, se kterými se setkáte.\n\nDetailní informace o zpracování osobních údajů a další podmínky používání aplikace najdete v podmínkách používání.";

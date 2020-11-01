@@ -42,13 +42,13 @@ internal enum Asset {
     internal static let tests = ImageAsset(name: "CurrentData/tests")
   }
   internal static let disclosureIndicator = ImageAsset(name: "DisclosureIndicator")
+  internal static let efgsPermission = ImageAsset(name: "EfgsPermission")
   internal static let error = ImageAsset(name: "Error")
   internal static let exposure = ImageAsset(name: "Exposure")
   internal static let exposureNotificationPermission = ImageAsset(name: "ExposureNotificationPermission")
   internal static let exposuresOff = ImageAsset(name: "ExposuresOff")
   internal static let forceOSUpdate = ImageAsset(name: "ForceOSUpdate")
   internal static let forceUpdate = ImageAsset(name: "ForceUpdate")
-  internal static let gdpr = ImageAsset(name: "GDPR")
   internal static let helpBackground = ColorAsset(name: "HelpBackground")
   internal static let iconsColor = ColorAsset(name: "IconsColor")
   internal static let launchScreenBackground = ColorAsset(name: "LaunchScreenBackground")
@@ -78,6 +78,7 @@ internal enum Asset {
   internal static let homePaused = ImageAsset(name: "HomePaused")
   internal static let homePausedSelected = ImageAsset(name: "HomePausedSelected")
   internal static let myData = ImageAsset(name: "MyData")
+  internal static let gdpr = ImageAsset(name: "gdpr")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
