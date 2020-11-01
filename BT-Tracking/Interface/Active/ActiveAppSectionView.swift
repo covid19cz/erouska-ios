@@ -24,6 +24,11 @@ final class ActiveAppSectionView: UIView {
             disclosureIndicator.isHidden = !isSelectable
             buttonView.isHidden = isSelectable        }
     }
+    var isPositive = false {
+        didSet {
+            titleLabel.textColor = isPositive ? Asset.alertRed.color : .label
+        }
+    }
     var action: CallbackVoid?
 
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(buttonAction))
@@ -45,7 +50,6 @@ final class ActiveAppSectionView: UIView {
     }
 
     private func setup() {
-        mainStack.translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .secondarySystemGroupedBackground
         layer.cornerRadius = 12.0
         layer.shadowColor = UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
@@ -53,6 +57,7 @@ final class ActiveAppSectionView: UIView {
         layer.shadowRadius = 2
         layer.shadowOpacity = 1
 
+        mainStack.translatesAutoresizingMaskIntoConstraints = false
         addSubview(mainStack)
         isSelectable = false
 
