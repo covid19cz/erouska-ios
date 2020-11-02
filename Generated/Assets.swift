@@ -26,7 +26,6 @@ internal enum Asset {
   internal static let buttonBorder = ColorAsset(name: "ButtonBorder")
   internal static let chat = ImageAsset(name: "Chat")
   internal static let alertRed = ColorAsset(name: "AlertRed")
-  internal static let appDisabled = ColorAsset(name: "AppDisabled")
   internal static let appEnabled = ColorAsset(name: "AppEnabled")
   internal static let appPaused = ColorAsset(name: "AppPaused")
   internal static let dasboardButton = ColorAsset(name: "DasboardButton")
