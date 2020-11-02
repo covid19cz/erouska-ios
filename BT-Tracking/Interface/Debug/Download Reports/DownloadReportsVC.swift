@@ -107,7 +107,9 @@ final class DownloadReportsVC: UITableViewController {
         var sections: [Section] = []
 
         var URLs: [URL] = []
-        for (_, success) in report.success {
+        for (code, success) in report.success {
+            sections.append(.init(model: code, items: ["Downloaded files: \(success.URLs.count / 2)"]))
+
             guard !success.URLs.isEmpty else {
                 continue
             }
