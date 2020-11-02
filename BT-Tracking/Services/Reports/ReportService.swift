@@ -30,6 +30,8 @@ protocol ReportServicing: AnyObject {
     typealias DownloadKeysCallback = (ReportDownload) -> Void
 
     var isDownloading: Bool { get }
+
+    @discardableResult
     func downloadKeys(exportURLs: [ReportIndex], lastProcessedFileNames: ProcessedFileNames, callback: @escaping DownloadKeysCallback) -> Progress
 
 }

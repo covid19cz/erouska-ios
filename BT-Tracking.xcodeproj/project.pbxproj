@@ -171,6 +171,10 @@
 		80D2345A24E320D700F684AA /* SendReportsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2345824E320D700F684AA /* SendReportsVM.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
 		80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 80DF5FB824CB579E00332D25 /* AlamofireImage */; };
+		80E7C2672550662A003DE8DC /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E7C26625506629003DE8DC /* Contacts.storyboard */; };
+		80E7C2682550662A003DE8DC /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80E7C26625506629003DE8DC /* Contacts.storyboard */; };
+		80E7C26F255066FF003DE8DC /* DownloadReportsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7C26E255066FF003DE8DC /* DownloadReportsVC.swift */; };
+		80E7C270255066FF003DE8DC /* DownloadReportsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7C26E255066FF003DE8DC /* DownloadReportsVC.swift */; };
 		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
 		80ECB96624290DA900E57601 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
 		80ECB96C24292FB000E57601 /* SendReports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* SendReports.storyboard */; };
@@ -368,6 +372,8 @@
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		80E7C26625506629003DE8DC /* Contacts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Contacts.storyboard; path = "BT-Tracking/Interface/Contacts/Contacts.storyboard"; sourceTree = SOURCE_ROOT; };
+		80E7C26E255066FF003DE8DC /* DownloadReportsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadReportsVC.swift; sourceTree = "<group>"; };
 		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
 		80ECB96524290DA900E57601 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		80ECB96B24292FB000E57601 /* SendReports.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SendReports.storyboard; sourceTree = "<group>"; };
@@ -504,9 +510,10 @@
 		46F21CA3242243F400C01DFA /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				807053542427C4E800DC1034 /* Cells */,
-				80A47E7E24309F1B001E5A79 /* Log List */,
 				8054C0B6241D492F008907B8 /* Debug.storyboard */,
+				807053542427C4E800DC1034 /* Cells */,
+				80E7C26B255066D6003DE8DC /* Download Reports */,
+				80A47E7E24309F1B001E5A79 /* Log List */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -738,6 +745,7 @@
 		80CA44D9244AFC0A008E22F8 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				80E7C26625506629003DE8DC /* Contacts.storyboard */,
 				8075EDC2242A6E93001D9DCD /* ContactsVC.swift */,
 				80CA44DF244B404F008E22F8 /* ContactsVM.swift */,
 				D6231CBA24ED3AE50023BDC8 /* ContactCell.swift */,
@@ -786,6 +794,14 @@
 				80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */,
 			);
 			path = Background;
+			sourceTree = "<group>";
+		};
+		80E7C26B255066D6003DE8DC /* Download Reports */ = {
+			isa = PBXGroup;
+			children = (
+				80E7C26E255066FF003DE8DC /* DownloadReportsVC.swift */,
+			);
+			path = "Download Reports";
 			sourceTree = "<group>";
 		};
 		80ECB96A24292F9600E57601 /* Send Reports */ = {
@@ -1077,6 +1093,7 @@
 				D63E443524DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
 				D65E57DF24D05D83000F2402 /* News.storyboard in Resources */,
+				80E7C2672550662A003DE8DC /* Contacts.storyboard in Resources */,
 				4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */,
 				80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */,
 				D65E57D624D056C8000F2402 /* NewsPageView.xib in Resources */,
@@ -1107,6 +1124,7 @@
 				D65E57E024D05D83000F2402 /* News.storyboard in Resources */,
 				8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */,
 				D6231CB324EBC0510023BDC8 /* Error.storyboard in Resources */,
+				80E7C2682550662A003DE8DC /* Contacts.storyboard in Resources */,
 				8083D8EC244640A0007FA4E9 /* SendReports.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1304,6 +1322,7 @@
 				8075FE4E2543323B00E72779 /* CurrentDataCell.swift in Sources */,
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8053CCFC2538A2A000C1820E /* Callback.swift in Sources */,
+				80E7C26F255066FF003DE8DC /* DownloadReportsVC.swift in Sources */,
 				8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */,
 				80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
@@ -1400,6 +1419,7 @@
 				80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */,
 				8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */,
+				80E7C270255066FF003DE8DC /* DownloadReportsVC.swift in Sources */,
 				8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */,
 				8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */,
 				8082DC34254AD8A9006B872D /* RiskyEncountersNegativeView.swift in Sources */,

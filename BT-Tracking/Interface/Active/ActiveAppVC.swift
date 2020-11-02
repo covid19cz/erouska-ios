@@ -416,66 +416,10 @@ private extension ActiveAppVC {
     }
 
     func debugProcessReports() {
-        showProgress()
-
-        let configuration = RemoteValues.exposureConfiguration
-        let keyURLs = AppSettings.traveler ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
-        _ = viewModel.reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: [:]) { [weak self] report in
-            guard let self = self else { return }
-
-            let dispatchGroup = DispatchGroup()
-            var resultText: String = ""
-
-            for (code, success) in report.success {
-                dispatchGroup.enter()
-                self.viewModel.exposureService.detectExposures(configuration: configuration, URLs: success.URLs) { [weak self] result in
-                    guard let self = self else { return }
-                    resultText += "For country \(code)\n"
-
-                    switch result {
-                    case .success(let exposures):
-                        guard !exposures.isEmpty else {
-                            log("EXP: no exposures, skip!")
-                            resultText += "No exposures detected for \(code), device is clear."
-                            dispatchGroup.leave()
-                            return
-                        }
-
-                        try? ExposureList.add(exposures, detectionDate: Date())
-
-                        for exposure in exposures {
-                            let signals = exposure.attenuationDurations.map { "\($0)" }
-                            resultText += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
-                                ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
-                                + "attenuation value: \(exposure.attenuationValue)\n"
-                                + "signal attenuations: \(signals.joined(separator: ", "))\n"
-                        }
-
-                        if resultText.isEmpty {
-                            resultText += "None"
-                        }
-                        log("EXP: \(exposures)")
-                    case .failure(let error):
-                        resultText += "Error: \(error)"
-                        self.show(error: error)
-                    }
-                    dispatchGroup.leave()
-                }
-            }
-
-            for (code, failure) in report.failures {
-                log("EXP: failed to download keys for country \(code), error: \(failure)")
-                self.show(error: failure)
-            }
-
-            dispatchGroup.notify(queue: .main) { [weak self] in
-                log("EXP: \(resultText)")
-                self?.showAlert(title: "Exposures", message: resultText)
-                self?.hideProgress()
-            }
-            if report.success.isEmpty {
-                self.hideProgress()
-            }
+        if AppDelegate.dependency.reporter.isDownloading || AppDelegate.dependency.exposureService.detectingExposures {
+            showAlert(title: "Stahovani reportu", message: "Bezi na pozadi, pockejte chvilku nez dobehne.")
+        } else {
+            perform(segue: StoryboardSegue.Active.debugReports)
         }
     }
 

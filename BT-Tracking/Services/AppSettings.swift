@@ -15,9 +15,10 @@ struct AppSettings {
         case appState
         case appFirstTimeLaunched
 
+        case efgsEnabled
+
         case backgroundModeAlertShown
 
-        case traveler
         case lastProcessedFileNames
         case lastProcessedDate
         case lastUploadDate
@@ -67,13 +68,13 @@ struct AppSettings {
         }
     }
 
-    /// If user is traveler
-    static var traveler: Bool {
+    /// If efgs is enabled
+    static var efgsEnabled: Bool {
         get {
-            bool(forKey: .traveler)
+            bool(forKey: .efgsEnabled)
         }
         set {
-            set(withKey: .traveler, value: newValue)
+            set(withKey: .efgsEnabled, value: newValue)
         }
     }
 
