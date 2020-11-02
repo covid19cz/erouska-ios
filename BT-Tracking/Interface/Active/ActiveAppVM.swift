@@ -33,7 +33,7 @@ final class ActiveAppVM {
             case .enabled, .paused:
                 return .label
             case .disabledBluetooth, .disabledExposures:
-                return Asset.appDisabled.color
+                return Asset.alertRed.color
             }
         }
 
