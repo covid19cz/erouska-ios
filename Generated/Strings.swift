@@ -186,7 +186,7 @@ internal enum L10n {
   internal static let dataListSendErrorFailedTitle = L10n.tr("Localizable", "data_list_send_error_failed_title")
   /// Nepodařilo se vytvořit soubor se setkáními
   internal static let dataListSendErrorFileTitle = L10n.tr("Localizable", "data_list_send_error_file_title")
-  /// Zkontrolujte zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.
+  /// Zkontrolujte, zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.
   internal static func dataListSendErrorFrameworkMessage(_ p1: Any) -> String {
     return L10n.tr("Localizable", "data_list_send_error_framework_message", String(describing: p1))
   }
@@ -226,12 +226,20 @@ internal enum L10n {
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Data jste úspěsně odeslali
   internal static let dataSendTitleLabel = L10n.tr("Localizable", "data_send_title_label")
-  /// Zkontrolujete tak, zda jste se setkali s osobou u níž bylo potvrzeno onemocnění COVID-19.
+  /// Zkontrolujete tak, zda jste se setkali s osobou, u níž bylo potvrzeno onemocnění COVID-19.
   internal static let deadmanNotificaitonBody = L10n.tr("Localizable", "deadman_notificaiton_body")
   /// Otevřete aplikaci eRouška
   internal static let deadmanNotificaitonTitle = L10n.tr("Localizable", "deadman_notificaiton_title")
   /// Test
   internal static let debug = L10n.tr("Localizable", "debug")
+  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.
+  internal static let efgsPermissionBody = L10n.tr("Localizable", "efgs_permission_body")
+  /// Pomozte v boji s COVID-19 i při cestách do zahraničí
+  internal static let efgsPermissionHeadline = L10n.tr("Localizable", "efgs_permission_headline")
+  /// Povolit spolupráci se zahraničím
+  internal static let efgsPermissionSwitch = L10n.tr("Localizable", "efgs_permission_switch")
+  /// Spolupráce se zahraničím
+  internal static let efgsPermissionTitle = L10n.tr("Localizable", "efgs_permission_title")
   /// Chyba
   internal static let error = L10n.tr("Localizable", "error")
   /// Aktivaci aplikace nelze dokončit

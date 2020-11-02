@@ -17,6 +17,10 @@
 "exposure_notification_headline" = "To work properly, eRouška requires Exposure Notifications to be enabled";
 "exposure_notification_body" = "These notifications will indicate that you have encountered a user with eRouška who was tested positive for COVID-19.\n\nThe app can only work correctly if it collects and shares random identifiers which change automatically. We cannot identify an eRouška user based on these identifiers.";
 "exposure_notification_continue" = "Turn on";
+"efgs_permission_title" = "TODO: Spolupráce se zahraničím";
+"efgs_permission_headline" = "TODO: Pomozte v boji s COVID-19 i při cestách do zahraničí";
+"efgs_permission_body" = "TODO: COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.";
+"efgs_permission_switch" = "TODO: Povolit spolupráci se zahraničím";
 "privacy_title" = "Privacy";
 "privacy_headline" = "We value your privacy. You are always in control of your data.";
 "privacy_body" = "eRouška does not keep any personal information about you and collects only anonymous data about other eRouška applications that you have encountered.\n\nYou can find more information about personal data processing and other conditions of use in Terms and conditions.";

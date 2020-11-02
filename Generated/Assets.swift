@@ -25,9 +25,11 @@ internal enum Asset {
   internal static let bluetoothPaused = ImageAsset(name: "BluetoothPaused")
   internal static let buttonBorder = ColorAsset(name: "ButtonBorder")
   internal static let chat = ImageAsset(name: "Chat")
-  internal static let appDisabled = ColorAsset(name: "AppDisabled")
+  internal static let alertRed = ColorAsset(name: "AlertRed")
   internal static let appEnabled = ColorAsset(name: "AppEnabled")
   internal static let appPaused = ColorAsset(name: "AppPaused")
+  internal static let dasboardButton = ColorAsset(name: "DasboardButton")
+  internal static let helpBackground = ColorAsset(name: "HelpBackground")
   internal static let conditionsOfUse = ImageAsset(name: "ConditionsOfUse")
   internal enum CurrentData {
     internal static let activations = ImageAsset(name: "CurrentData/Activations")
@@ -42,6 +44,7 @@ internal enum Asset {
     internal static let tests = ImageAsset(name: "CurrentData/Tests")
   }
   internal static let disclosureIndicator = ImageAsset(name: "DisclosureIndicator")
+  internal static let efgsPermission = ImageAsset(name: "EfgsPermission")
   internal static let error = ImageAsset(name: "Error")
   internal static let exposure = ImageAsset(name: "Exposure")
   internal static let exposureNotificationPermission = ImageAsset(name: "ExposureNotificationPermission")
@@ -49,7 +52,6 @@ internal enum Asset {
   internal static let forceOSUpdate = ImageAsset(name: "ForceOSUpdate")
   internal static let forceUpdate = ImageAsset(name: "ForceUpdate")
   internal static let gdpr = ImageAsset(name: "GDPR")
-  internal static let helpBackground = ColorAsset(name: "HelpBackground")
   internal static let iconsColor = ColorAsset(name: "IconsColor")
   internal static let launchScreenBackground = ColorAsset(name: "LaunchScreenBackground")
   internal static let launchScreenHands = ImageAsset(name: "LaunchScreenHands")

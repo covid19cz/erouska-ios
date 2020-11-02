@@ -28,7 +28,7 @@ class Button: UIButton {
             case .exposureBanner:
                 return .white
             case .dashboard:
-                return UIColor(red: 0.928, green: 0.934, blue: 0.942, alpha: 1)
+                return Asset.dasboardButton.color
             }
         }
 
@@ -41,7 +41,7 @@ class Button: UIButton {
             case .disabled:
                 return .systemGray
             case .exposureBanner:
-                return UIColor(rgb: 0xDE1A1A)
+                return Asset.alertRed.color
             case .dashboard:
                 return .systemBlue
             }

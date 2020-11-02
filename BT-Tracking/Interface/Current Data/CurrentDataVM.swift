@@ -160,7 +160,8 @@ private extension CurrentDataVM {
     func sections(from currentData: CurrentDataRealm?) -> [Section] {
         guard let data = currentData else { return [] }
 
-        let appDateSubtitle = DateFormatter.baseDateFormatter.string(from: data.appDate ?? Date())
+        let appData = (data.appDate ?? Date()).addingTimeInterval(-24 * 60 * 60)
+        let appDateSubtitle = DateFormatter.baseDateFormatter.string(from: appData)
 
         return [
             Section(header: L10n.currentDataMeasuresHeader, selectableItems: true, items: [

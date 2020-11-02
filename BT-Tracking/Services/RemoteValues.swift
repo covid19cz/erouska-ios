@@ -87,12 +87,10 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
     case chatBotLink
 
-    /// Deprecated
-    case verificationServerApiKey
-
     case appleServerConfiguration
     case appleExposureConfiguration
 
+    case efgsCountries
     case keyExportNonTravellerUrls
     case keyExportEuTravellerUrls
 
@@ -156,9 +154,6 @@ enum RemoteConfigValueKey: String, CaseIterable {
         case .chatBotLink:
             return "https://erouska.cz/#chat-open"
 
-        case .verificationServerApiKey:
-            return ""
-
         case .appleServerConfiguration:
             #if PROD
             return ServerConfiguration.production
@@ -167,6 +162,9 @@ enum RemoteConfigValueKey: String, CaseIterable {
             #endif
         case .appleExposureConfiguration:
             return "{\"factorHigh\":0.17,\"factorStandard\":1,\"factorLow\":1.5,\"lowerThreshold\":55,\"higherThreshold\":63,\"triggerThreshold\":15}"
+
+        case .efgsCountries:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsCountriesDefault")
 
         case .keyExportNonTravellerUrls, .keyExportEuTravellerUrls:
             return "{}"
@@ -295,10 +293,6 @@ struct RemoteValues {
         AppDelegate.shared.remoteConfigString(forKey: .chatBotLink)
     }
 
-    static var verificationServerApiKey: String {
-        AppDelegate.shared.remoteConfigString(forKey: .verificationServerApiKey)
-    }
-
     static var serverConfiguration: ServerConfiguration {
         // swiftlint:disable force_cast
         (try? decodeValue(ServerConfiguration.self, at: .appleServerConfiguration))
@@ -323,6 +317,10 @@ struct RemoteValues {
             return key.defaultValue as? T
         }
         return try JSONDecoder().decode(T.self, from: jsonData)
+    }
+
+    static var efgsCountries: String {
+        AppDelegate.shared.remoteConfigString(forKey: .efgsCountries)
     }
 
 }

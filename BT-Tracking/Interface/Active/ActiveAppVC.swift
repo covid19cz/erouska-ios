@@ -74,13 +74,16 @@ final class ActiveAppVC: UIViewController {
                 let isPositive = dateToShow != nil
 
                 self.riskyEncountersSection.iconImageView.image = isPositive ? Asset.riskyEncountersPositive.image : Asset.riskyEncountersNegative.image
+                self.riskyEncountersSection.isPositive = isPositive
                 if let date = dateToShow {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
                     self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateTimeFormatter.string(from: date))
                 } else {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
                     self.riskyEncountersSection.bodyLabel.text = [
-                        AppSettings.lastProcessedDate.map { L10n.activeRiskyEncounterLastUpdateNegative(DateFormatter.baseDateTimeFormatter.string(from: $0)) },
+                        AppSettings.lastProcessedDate.map {
+                            L10n.activeRiskyEncounterLastUpdateNegative(DateFormatter.baseDateTimeFormatter.string(from: $0))
+                        },
                         L10n.activeRiskyEncounterUpdateIntervalNegative
                     ].compactMap { $0 }.joined(separator: "\n")
                 }

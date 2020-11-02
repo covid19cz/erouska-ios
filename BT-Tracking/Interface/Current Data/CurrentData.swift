@@ -39,7 +39,7 @@ final class CurrentDataRealm: Object {
         self.confirmedCasesIncrease = data.confirmedCasesIncrease
         self.confirmedCasesIncreaseDate = data.confirmedCasesIncreaseDate
 
-        self.activationsTotal = data.activeCasesTotal
+        self.activeCasesTotal = data.activeCasesTotal
         self.curedTotal = data.curedTotal
         self.deceasedTotal = data.deceasedTotal
         self.currentlyHospitalizedTotal = data.currentlyHospitalizedTotal
@@ -70,25 +70,31 @@ struct CovidCurrentData: Decodable {
     let deceasedTotal: Int
     let currentlyHospitalizedTotal: Int
 
+    private enum CodingKeys: String, CodingKey {
+        case testsTotal, testsIncrease, testsIncreaseDate
+        case confirmedCasesTotal, confirmedCasesIncrease, confirmedCasesIncreaseDate
+        case activeCasesTotal, curedTotal, deceasedTotal, currentlyHospitalizedTotal
+    }
+
     init(with data: [String: Any]) {
-        testsTotal = data["testsTotal"] as? Int ?? 0
-        testsIncrease = data["testsIncrease"] as? Int ?? 0
-        if let value = data["testsIncreaseDate"] as? String {
+        testsTotal = data[CodingKeys.testsTotal.rawValue] as? Int ?? 0
+        testsIncrease = data[CodingKeys.testsIncrease.rawValue] as? Int ?? 0
+        if let value = data[CodingKeys.testsIncreaseDate.rawValue] as? String {
             testsIncreaseDate = DateFormatter.serverDateFormatter.date(from: value)
         } else {
             testsIncreaseDate = nil
         }
-        confirmedCasesTotal = data["confirmedCasesTotal"] as? Int ?? 0
-        confirmedCasesIncrease = data["confirmedCasesIncrease"] as? Int ?? 0
-        if let value = data["confirmedCasesIncreaseDate"] as? String {
+        confirmedCasesTotal = data[CodingKeys.confirmedCasesTotal.rawValue] as? Int ?? 0
+        confirmedCasesIncrease = data[CodingKeys.confirmedCasesIncrease.rawValue] as? Int ?? 0
+        if let value = data[CodingKeys.confirmedCasesIncreaseDate.rawValue] as? String {
             confirmedCasesIncreaseDate = DateFormatter.serverDateFormatter.date(from: value)
         } else {
             confirmedCasesIncreaseDate = nil
         }
-        activeCasesTotal = data["activeCasesTotal"] as? Int ?? 0
-        curedTotal = data["curedTotal"] as? Int ?? 0
-        deceasedTotal = data["deceasedTotal"] as? Int ?? 0
-        currentlyHospitalizedTotal = data["currentlyHospitalizedTotal"] as? Int ?? 0
+        activeCasesTotal = data[CodingKeys.activeCasesTotal.rawValue] as? Int ?? 0
+        curedTotal = data[CodingKeys.curedTotal.rawValue] as? Int ?? 0
+        deceasedTotal = data[CodingKeys.deceasedTotal.rawValue] as? Int ?? 0
+        currentlyHospitalizedTotal = data[CodingKeys.currentlyHospitalizedTotal.rawValue] as? Int ?? 0
     }
 
 }
