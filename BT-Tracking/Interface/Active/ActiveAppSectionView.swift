@@ -22,13 +22,16 @@ final class ActiveAppSectionView: UIView {
     var isSelectable = false {
         didSet {
             disclosureIndicator.isHidden = !isSelectable
-            buttonView.isHidden = isSelectable
-            tapGestureRecognizer.isEnabled = isSelectable
+            buttonView.isHidden = isSelectable        }
+    }
+    var isPositive = false {
+        didSet {
+            titleLabel.textColor = isPositive ? Asset.alertRed.color : .label
         }
     }
     var action: CallbackVoid?
 
-    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(buttonAction))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +39,9 @@ final class ActiveAppSectionView: UIView {
         setup()
     }
 
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -45,7 +50,6 @@ final class ActiveAppSectionView: UIView {
     }
 
     private func setup() {
-        mainStack.translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .secondarySystemGroupedBackground
         layer.cornerRadius = 12.0
         layer.shadowColor = UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
@@ -53,6 +57,7 @@ final class ActiveAppSectionView: UIView {
         layer.shadowRadius = 2
         layer.shadowOpacity = 1
 
+        mainStack.translatesAutoresizingMaskIntoConstraints = false
         addSubview(mainStack)
         isSelectable = false
 
@@ -71,7 +76,7 @@ final class ActiveAppSectionView: UIView {
         buttonView.addSubview(actionButton)
 
         actionButton.translatesAutoresizingMaskIntoConstraints = false
-        actionButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        actionButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
 
         mainStack.axis = .vertical
         mainStack.spacing = 8
@@ -102,13 +107,7 @@ final class ActiveAppSectionView: UIView {
         addGestureRecognizer(tapGestureRecognizer)
     }
 
-    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
-        if sender.state == .recognized {
-            action?()
-        }
-    }
-
-    @objc private func buttonPressed() {
+    @objc private func buttonAction() {
         action?()
     }
 }

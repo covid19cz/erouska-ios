@@ -23,6 +23,7 @@
 		800A5A69254857820054A68D /* SwiftyMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 800A5A68254857820054A68D /* SwiftyMarkdown */; };
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
 		800E611424DAE98B00C63567 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 800E611324DAE98B00C63567 /* Zip */; };
+		8015FD0F254D672300AD9AE4 /* RiskyEncountersPositiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */; };
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		801C8FE9253FFD56002F303F /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 801C8FE8253FFD56002F303F /* RxRealm */; };
 		802AFE4425135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
@@ -1341,6 +1342,7 @@
 				80C71D3D25248A2900999275 /* UnsupportedDeviceVC.swift in Sources */,
 				8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */,
 				8053CD082538A61C00C1820E /* ExposureList.swift in Sources */,
+				8015FD0F254D672300AD9AE4 /* RiskyEncountersPositiveVC.swift in Sources */,
 				80D2345924E320D700F684AA /* SendReportsVM.swift in Sources */,
 				80D2282E2545737900F06253 /* RiskyEncountersNegativeVC.swift in Sources */,
 				80C71D3725248A0200999275 /* StoryboardSegue.swift in Sources */,

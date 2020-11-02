@@ -186,7 +186,7 @@ internal enum L10n {
   internal static let dataListSendErrorFailedTitle = L10n.tr("Localizable", "data_list_send_error_failed_title")
   /// Nepodařilo se vytvořit soubor se setkáními
   internal static let dataListSendErrorFileTitle = L10n.tr("Localizable", "data_list_send_error_file_title")
-  /// Zkontrolujte zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.
+  /// Zkontrolujte, zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.
   internal static func dataListSendErrorFrameworkMessage(_ p1: Any) -> String {
     return L10n.tr("Localizable", "data_list_send_error_framework_message", String(describing: p1))
   }
@@ -226,7 +226,7 @@ internal enum L10n {
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Data jste úspěsně odeslali
   internal static let dataSendTitleLabel = L10n.tr("Localizable", "data_send_title_label")
-  /// Zkontrolujete tak, zda jste se setkali s osobou u níž bylo potvrzeno onemocnění COVID-19.
+  /// Zkontrolujete tak, zda jste se setkali s osobou, u níž bylo potvrzeno onemocnění COVID-19.
   internal static let deadmanNotificaitonBody = L10n.tr("Localizable", "deadman_notificaiton_body")
   /// Otevřete aplikaci eRouška
   internal static let deadmanNotificaitonTitle = L10n.tr("Localizable", "deadman_notificaiton_title")
