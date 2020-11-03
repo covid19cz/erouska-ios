@@ -196,8 +196,6 @@ internal enum L10n {
   internal static func dataListSendErrorMessage(_ p1: Any) -> String {
     return L10n.tr("Localizable", "data_list_send_error_message", String(describing: p1))
   }
-  /// Nemáte žádné klíče k odeslání, zkuste to později.
-  internal static let dataListSendErrorNoKeys = L10n.tr("Localizable", "data_list_send_error_no_keys")
   /// Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.
   internal static func dataListSendErrorSaveMessage(_ p1: Any) -> String {
     return L10n.tr("Localizable", "data_list_send_error_save_message", String(describing: p1))
@@ -222,6 +220,10 @@ internal enum L10n {
   internal static let dataSendCloseButton = L10n.tr("Localizable", "data_send_close_button")
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19.
   internal static let dataSendHeadline = L10n.tr("Localizable", "data_send_headline")
+  /// eRoušku zatím používáte jen chvíli a nemá zaznamenané žádné jiné eRoušky, proto nikoho ve vašem okolí neupozorní na rizikové setkání.\n\nSpolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nŘiďte se prosím pokyny hygieniků a lékařů.
+  internal static let dataSendNokeysBody = L10n.tr("Localizable", "data_send_nokeys_body")
+  /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19
+  internal static let dataSendNokeysHeadline = L10n.tr("Localizable", "data_send_nokeys_headline")
   /// Odesláno
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Data jste úspěsně odeslali
@@ -386,8 +388,6 @@ internal enum L10n {
   internal static let welcomeActivation = L10n.tr("Localizable", "welcome_activation")
   /// Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí onemocnění COVID-19, eRouška vyhodnotí, zda se jedná o rizikový kontakt a upozorní vás.\n\nKdyž se potvrdí nákaza u vás, eRouška upozorní všechny ostatní uživatele aplikace, se kterými jste se potkali.
   internal static let welcomeBody = L10n.tr("Localizable", "welcome_body")
-  /// Více o nezávislých auditech
-  internal static let welcomeBodyMore = L10n.tr("Localizable", "welcome_body_more")
   /// Jak to funguje
   internal static let welcomeHelp = L10n.tr("Localizable", "welcome_help")
   /// Díky eRoušce ochráníte sebe i ostatní ve svém okolí
