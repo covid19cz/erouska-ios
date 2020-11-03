@@ -61,7 +61,6 @@
 "data_list_send_error_failed_title" = "Nepodarilo sa nám odoslať dáta";
 "data_list_send_error_failed_message" = "Skontrolujte pripojenie k internetu a skúste to znova.";
 "data_list_send_error_file_title" = "Nepodarilo sa vytvoriť súbor so stretnutiami";
-"data_list_send_error_no_keys" = "Nemáte žiadne kľúče k odoslaniu, skúste to neskôr.";
 "data_list_send_error_wrong_code_title" = "Overovací  kód nie je správne zadaný, skúste to znova.";
 "data_list_send_error_expired_code_title" = "Vypršala platnosť overovacieho kódu";
 "data_list_send_error_expired_code_message" = "Požiadajte pracovníka hygienickej stanice o zaslanie novej SMS správy s overovacím kódom.";
@@ -78,6 +77,8 @@
 "data_send_title_label" = "Údaje ste úspešne odoslali";
 "data_send_headline" = "Ďakujeme, že pomáhate bojovať proti šíreniu ochorenia COVID-19.";
 "data_send_body" = "Spolupracujte, prosím, s pracovníkmi hygienickej stanice pri dohľadaní všetkých osôb, s ktorými ste boli v kontakte.\n\nRiaďte sa pokynmi hygienikov a lekárov.";
+"data_send_nokeys_headline" = "Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19";
+"data_send_nokeys_body" = "eRoušku zatím používáte jen chvíli a nemá zaznamenané žádné jiné eRoušky, proto nikoho ve vašem okolí neupozorní na rizikové setkání.\n\nSpolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nŘiďte se prosím pokyny hygieniků a lékařů.";
 "data_send_close_button" = "Zatvoriť";
 "contacts_title" = "Kontakty";
 "contacts_important_headline" = "Máte podozrenie na koronavírus?";

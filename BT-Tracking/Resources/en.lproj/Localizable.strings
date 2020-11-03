@@ -61,7 +61,6 @@
 "data_list_send_error_failed_title" = "Failed to send data";
 "data_list_send_error_failed_message" = "Check you internet connection and try again.";
 "data_list_send_error_file_title" = "Failed to create the encounter log";
-"data_list_send_error_no_keys" = "No keys to send. Please try again later.";
 "data_list_send_error_wrong_code_title" = "Please try entering the verification code again.";
 "data_list_send_error_expired_code_title" = "Verification code expired.";
 "data_list_send_error_expired_code_message" = "Ask the public health office to send you a new verification code.";
@@ -78,6 +77,8 @@
 "data_send_title_label" = "Data were successfully sent";
 "data_send_headline" = "Thank you for fighting against the spread of COVID-19.";
 "data_send_body" = "Please cooperate with public health officers on tracing everyone that you encountered.\n\nFollow the instructions of public health officers and medical workers.";
+"data_send_nokeys_headline" = "Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19";
+"data_send_nokeys_body" = "eRoušku zatím používáte jen chvíli a nemá zaznamenané žádné jiné eRoušky, proto nikoho ve vašem okolí neupozorní na rizikové setkání.\n\nSpolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nŘiďte se prosím pokyny hygieniků a lékařů.";
 "data_send_close_button" = "Close";
 "contacts_title" = "Contacts";
 "contacts_important_headline" = "Thinking you are positive for COVID-19?";
@@ -105,7 +106,7 @@
 "unsupported_device_ipad_title" = "Tablets with iPadOS are not supported";
 "unsupported_device_ipad_body" = "The new eRouška version only works on phones with iOS or Android operating system.";
 "bluetooth_off_title" = "Enable Bluetooth";
-"bluetooth_off_body" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \\"Enable Bluetooth\\".";
+"bluetooth_off_body" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \"Enable Bluetooth\".";
 "news_title" = "News";
 "news_button_continue" = "Continue";
 "news_button_close" = "Close";
