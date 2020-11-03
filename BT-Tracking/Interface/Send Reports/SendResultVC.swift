@@ -18,6 +18,13 @@ final class SendResultVC: UIViewController {
     @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var closeButton: Button!
 
+    enum Kind {
+        case standard
+        case noKeys
+    }
+
+    var kind: Kind = .standard
+
     // MARK: -
 
     override func viewDidLoad() {
@@ -27,8 +34,14 @@ final class SendResultVC: UIViewController {
         navigationItem.hidesBackButton = true
 
         titleLabel.text = L10n.dataSendTitleLabel
-        headlineLabel.text = L10n.dataSendHeadline
-        bodyLabel.text = L10n.dataSendBody
+        switch kind {
+        case .standard:
+            headlineLabel.text = L10n.dataSendHeadline
+            bodyLabel.text = L10n.dataSendBody
+        case .noKeys:
+            headlineLabel.text = L10n.dataSendNokeysHeadline
+            bodyLabel.text = L10n.dataSendNokeysBody
+        }
         closeButton.setTitle(L10n.dataSendCloseButton)
     }
 
