@@ -55,6 +55,18 @@ final class SendReportsVC: UIViewController {
         setupStrings()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        switch StoryboardSegue.SendReports(segue) {
+        case .result:
+            let controller = segue.destination as? SendResultVC
+            controller?.kind = sender as? SendResultVC.Kind ?? .standard
+        default:
+            break
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -85,7 +97,11 @@ final class SendReportsVC: UIViewController {
     }
 
     @IBAction private func resultAction() {
-        perform(segue: StoryboardSegue.SendReports.result)
+        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVC.Kind.standard)
+    }
+
+    @IBAction private func resultNoKeysAction() {
+        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVC.Kind.noKeys)
     }
 
     @IBAction private func closeAction() {
@@ -185,8 +201,7 @@ private extension SendReportsVC {
             case .success(let keys):
                 guard !keys.isEmpty else {
                     self.reportHideProgress()
-                    self.resultAction()
-                    self.showNoKeysError()
+                    self.resultNoKeysAction()
                     return
                 }
                 self.requestCertificate(keys: keys, token: token)
@@ -196,8 +211,7 @@ private extension SendReportsVC {
 
                 switch error {
                 case .noData:
-                    self.resultAction()
-                    self.showNoKeysError()
+                    self.resultNoKeysAction()
                 default:
                     self.showSendDataFrameworkError(code: error.localizedDescription)
                 }
@@ -294,10 +308,6 @@ private extension SendReportsVC {
                 message: L10n.dataListSendErrorMessage("noData")
             )
         }
-    }
-
-    func showNoKeysError() {
-        showAlert(title: L10n.dataListSendErrorNoKeys)
     }
 
     func showSendDataFrameworkError(code: String) {
