@@ -69,6 +69,7 @@ final class HelpVM {
                 helpArticle.lines.append(attribute)
             }
         }
+        sections.append(section)
 
         self.sections.accept(sections)
     }
