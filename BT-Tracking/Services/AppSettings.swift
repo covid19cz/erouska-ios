@@ -19,6 +19,7 @@ struct AppSettings {
         case lastProcessedFileName
         case lastProcessedDate
         case lastUploadDate
+        case lastExposureNotificationDate
 
         case lastExposureWarningId
         case lastExposureWarningClosed
@@ -96,6 +97,18 @@ struct AppSettings {
         }
         set {
             set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
+        }
+    }
+
+    /// When app last showed notification about exposure
+    static var lastExposureNotificationDate: Date? {
+        get {
+            let rawValue = double(forKey: .lastExposureNotificationDate)
+            guard rawValue != 0 else { return nil }
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+        }
+        set {
+            set(withKey: .lastExposureNotificationDate, value: newValue?.timeIntervalSince1970)
         }
     }
 

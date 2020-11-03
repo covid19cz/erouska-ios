@@ -222,6 +222,8 @@ private extension BackgroundService {
             return
         }
 
+        AppSettings.lastExposureNotificationDate = Date()
+
         try? ExposureList.add(exposures, detectionDate: Date())
 
         let data = ["idToken": KeychainService.token]

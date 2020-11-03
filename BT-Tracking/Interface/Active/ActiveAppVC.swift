@@ -436,6 +436,8 @@ private extension ActiveAppVC {
                             return
                         }
 
+                        AppSettings.lastExposureNotificationDate = Date()
+
                         try? ExposureList.add(exposures, detectionDate: Date())
 
                         var result = ""
@@ -477,6 +479,8 @@ private extension ActiveAppVC {
         let exposures = [
             Exposure.debugExposure()
         ]
+
+        AppSettings.lastExposureNotificationDate = Date()
 
         try? ExposureList.add(exposures, detectionDate: Date())
 

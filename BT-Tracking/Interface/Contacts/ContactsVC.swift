@@ -13,6 +13,7 @@ final class ContactsVC: UIViewController {
     // MARK: -
 
     private let viewModel = ContactsVM()
+    private var diagnosis: Diagnosis?
 
     // MARK: - Outlets
 
@@ -42,6 +43,17 @@ final class ContactsVC: UIViewController {
 
         tableView.reloadData()
     }
+
+    // MARK: - Actions
+
+    private func openLink(_ link: URL) {
+        if link.absoluteString.hasSuffix("info@erouska.cz"), Diagnosis.canSendMail {
+            diagnosis = Diagnosis(showFromController: self)
+        } else {
+            openURL(URL: link)
+        }
+    }
+
 }
 
 extension ContactsVC: UITableViewDataSource {
@@ -53,7 +65,9 @@ extension ContactsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as? ContactCell
         cell?.config(with: viewModel.contacts[indexPath.row])
-        cell?.openLinkClosure = { [weak self] in self?.openURL(URL: $0) }
+        cell?.openLinkClosure = { [weak self] in
+            self?.openLink($0)
+        }
         return cell ?? UITableViewCell()
     }
 }

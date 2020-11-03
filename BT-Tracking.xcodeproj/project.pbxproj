@@ -171,6 +171,10 @@
 		80D2345A24E320D700F684AA /* SendReportsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2345824E320D700F684AA /* SendReportsVM.swift */; };
 		80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
 		80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 80DF5FB824CB579E00332D25 /* AlamofireImage */; };
+		80E7C2BD2551686F003DE8DC /* SendResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7C2BC2551686F003DE8DC /* SendResultVM.swift */; };
+		80E7C2BE2551686F003DE8DC /* SendResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7C2BC2551686F003DE8DC /* SendResultVM.swift */; };
+		80E7C2C32551701D003DE8DC /* Diagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7C2C22551701D003DE8DC /* Diagnosis.swift */; };
+		80E7C2C42551701D003DE8DC /* Diagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7C2C22551701D003DE8DC /* Diagnosis.swift */; };
 		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
 		80ECB96624290DA900E57601 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
 		80ECB96C24292FB000E57601 /* SendReports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* SendReports.storyboard */; };
@@ -364,6 +368,8 @@
 		80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		80D51CC62420FBFD00834D03 /* BT-Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking.entitlements"; sourceTree = "<group>"; };
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		80E7C2BC2551686F003DE8DC /* SendResultVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultVM.swift; sourceTree = "<group>"; };
+		80E7C2C22551701D003DE8DC /* Diagnosis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnosis.swift; sourceTree = "<group>"; };
 		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
 		80ECB96524290DA900E57601 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		80ECB96B24292FB000E57601 /* SendReports.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SendReports.storyboard; sourceTree = "<group>"; };
@@ -601,6 +607,7 @@
 				80CCE5C224DD811700DC36EE /* Verification */,
 				80D2344E24E2F69000F684AA /* Background */,
 				8084DEEB24AF8030001FBB16 /* CountryCodes */,
+				80E7C2C12551700C003DE8DC /* Diagnosis */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
@@ -782,6 +789,14 @@
 			path = Background;
 			sourceTree = "<group>";
 		};
+		80E7C2C12551700C003DE8DC /* Diagnosis */ = {
+			isa = PBXGroup;
+			children = (
+				80E7C2C22551701D003DE8DC /* Diagnosis.swift */,
+			);
+			path = Diagnosis;
+			sourceTree = "<group>";
+		};
 		80ECB96A24292F9600E57601 /* Send Reports */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +804,7 @@
 				80D2345224E31DFF00F684AA /* SendReportsVC.swift */,
 				80D2345824E320D700F684AA /* SendReportsVM.swift */,
 				80BF9C252424D55800150108 /* SendResultVC.swift */,
+				80E7C2BC2551686F003DE8DC /* SendResultVM.swift */,
 			);
 			path = "Send Reports";
 			sourceTree = "<group>";
@@ -1274,6 +1290,7 @@
 				80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */,
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
 				8083D9142446F779007FA4E9 /* Markdown.swift in Sources */,
+				80E7C2C32551701D003DE8DC /* Diagnosis.swift in Sources */,
 				80631A98242CAB5000EB0B6C /* Image.swift in Sources */,
 				807897832524804B0079BEA1 /* Assets.swift in Sources */,
 				D6231CB824EBC3630023BDC8 /* ErrorVM.swift in Sources */,
@@ -1297,6 +1314,7 @@
 				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8053CCFC2538A2A000C1820E /* Callback.swift in Sources */,
 				8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */,
+				80E7C2BD2551686F003DE8DC /* SendResultVM.swift in Sources */,
 				80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
 				80A0AADC2541AAC700D35282 /* HelpSearchVC.swift in Sources */,
@@ -1411,6 +1429,7 @@
 				8083D8B7244640A0007FA4E9 /* Data.swift in Sources */,
 				80FBE65425247974005D6C05 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				8075FE4F2543323B00E72779 /* CurrentDataCell.swift in Sources */,
+				80E7C2BE2551686F003DE8DC /* SendResultVM.swift in Sources */,
 				8083D8B8244640A0007FA4E9 /* KeychainService.swift in Sources */,
 				80026D9A24FE492B00BBDB36 /* ReportEntities.swift in Sources */,
 				80CA44B7244ADA75008E22F8 /* Localization.swift in Sources */,
@@ -1480,6 +1499,7 @@
 				D610103425448E47007B01CF /* ActiveAppSectionView.swift in Sources */,
 				D65E57DA24D056D6000F2402 /* NewsPageView.swift in Sources */,
 				80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */,
+				80E7C2C42551701D003DE8DC /* Diagnosis.swift in Sources */,
 				D6231CA624E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
 				D63E443924DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */,
