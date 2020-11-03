@@ -96,7 +96,7 @@ class Diagnosis: NSObject {
         }
 
         let diagnosisText = """
-        Verze aplikace: \(App.appVersion) (\(App.bundleBuild)
+        Verze aplikace: \(App.appVersion) (\(App.bundleBuild))
         Verze systému: iOS \(device.systemVersion ?? UIDevice.current.systemVersion)
         Zařízení: \(Device.identifier)
         Lokalizace: \(Locale.current.identifier)
