@@ -13,7 +13,6 @@
 "version" = "verzia";
 "welcome_help" = "Ako to funguje";
 "welcome_body" = "Aplikácia bude nepretržite monitorovať vaše okolie a&nbsp;zaznamenávať všetky ostatné telefóny s aplikáciou eRouška, ku ktorým sa priblížite.\n\nPokiaľ sa u majiteľa ktoréhokoľvek z nich potvrdí ochorenie COVID-19, eRouška vyhodnotí, či ide o rizikový kontakt a upozorní vás.\n\nKeď sa potvrdí nákaza u&nbsp;vás, eRouška upozorní všetkých ostatných užívateľov aplikácie, s s&nbsp;ktorými ste sa stretli.";
-"welcome_body_more" = "Viac o nezávislých auditoch";
 "exposure_notification_title" = "Oznámenia";
 "exposure_notification_headline" = "eRouška potrebuje pre správne fungovanie zapnuté oznámenia o kontakte s COVID-19";
 "exposure_notification_body" = "Tieto oznámenia vás upozornia, ak ste boli v blízkosti užívateľa eRoušky s pozitívnym testom na nákazu COVID-19.\n\nPodstatou správneho fungovania je zdieľanie a zhromažďovanie náhodných čísel, ktoré sa automaticky menia. Užívateľou eRoušky nie je možné podľa týchto čísel identifikovať.";

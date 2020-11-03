@@ -13,7 +13,6 @@
 "version" = "version";
 "welcome_help" = "How does it work?";
 "welcome_body" = "The application will monitor your surroundings continuously and record identifiers of phones with eRouška you encounter.\n\nIf any of the users test positive for COVID-19, the app will notify you that there was a risky encounter.\n\nIf you test positive, the app will notify all application users that you encountered.";
-"welcome_body_more" = "More about independent audits";
 "exposure_notification_title" = "Notifications";
 "exposure_notification_headline" = "To work properly, eRouška requires COVID-19 Exposure Notifications to be enabled";
 "exposure_notification_body" = "These notifications will indicate that you have encountered a user with eRouška who was tested positive for COVID-19.\n\nThe app can only work correctly if it collects and shares random identifiers which change automatically. We cannot identify an eRouška user based on these identifiers.";
