@@ -70,6 +70,7 @@
 "data_send_title" = "Odesláno";
 "data_send_error" = "Chyba";
 "data_send_title_label" = "Data jste úspěsně odeslali";
+"data_send_title_nokeys" = "Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19";
 "data_send_title_error" = "Nepodařilo se nám odeslat data";
 "data_send_headline" = "Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19.";
 "data_send_body" = "Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nŘiďte se pokyny hygieniků a lékařů.";

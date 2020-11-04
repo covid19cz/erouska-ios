@@ -222,6 +222,8 @@ internal enum L10n {
   internal static let dataSendTitleError = L10n.tr("Localizable", "data_send_title_error")
   /// Data jste úspěsně odeslali
   internal static let dataSendTitleLabel = L10n.tr("Localizable", "data_send_title_label")
+  /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19
+  internal static let dataSendTitleNokeys = L10n.tr("Localizable", "data_send_title_nokeys")
   /// Zkontrolujete tak, zda jste se setkali s osobou, u níž bylo potvrzeno onemocnění COVID-19.
   internal static let deadmanNotificaitonBody = L10n.tr("Localizable", "deadman_notificaiton_body")
   /// Otevřete aplikaci eRouška

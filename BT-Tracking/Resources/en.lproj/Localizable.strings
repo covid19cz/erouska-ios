@@ -69,6 +69,7 @@
 "data_send_title" = "Sent";
 "data_send_error" = "Error";
 "data_send_title_label" = "Data were successfully sent";
+"data_send_title_nokeys" = "Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19";
 "data_send_title_error" = "Nepodařilo se nám odeslat data";
 "data_send_headline" = "Thank you for fighting against the spread of COVID-19.";
 "data_send_body" = "Please cooperate with public health officers on tracing everyone that you encountered.\n\nFollow the instructions of public health officers and medical workers.";

@@ -24,8 +24,10 @@ enum SendResultVM {
 
     var titleLabel: String {
         switch self {
-        case .standard, .noKeys:
+        case .standard:
             return L10n.dataSendTitleLabel
+        case .noKeys:
+            return L10n.dataSendTitleNokeys
         case .error:
             return L10n.dataSendTitleError
         }
@@ -67,7 +69,7 @@ enum SendResultVM {
         case .noKeys:
             return L10n.dataSendNokeysBody
         case .error:
-            return L10n.dataSendBody
+            return L10n.dataSendErrorBody
         }
     }
 
