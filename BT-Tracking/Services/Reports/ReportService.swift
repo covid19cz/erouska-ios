@@ -26,10 +26,13 @@ protocol ReportServicing: AnyObject {
     var isUploading: Bool { get }
     func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback)
 
-    typealias DownloadKeysCallback = (Result<ReportKeys, Error>) -> Void
+    typealias ProcessedFileNames = [String: String]
+    typealias DownloadKeysCallback = (ReportDownload) -> Void
 
     var isDownloading: Bool { get }
-    func downloadKeys(lastProcessedFileName: String?, callback: @escaping DownloadKeysCallback) -> Progress
+
+    @discardableResult
+    func downloadKeys(exportURLs: [ReportIndex], lastProcessedFileNames: ProcessedFileNames, callback: @escaping DownloadKeysCallback) -> Progress
 
 }
 
@@ -39,7 +42,7 @@ final class ReportService: ReportServicing {
 
     private var uploadURL: URL
 
-    private var downloadBaseURL: URL
+    private var downloadIndexName: String
     private var downloadDestinationURL: URL {
         let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         guard let documentsURL = directoryURLs.first else {
@@ -47,20 +50,21 @@ final class ReportService: ReportServicing {
         }
         return documentsURL
     }
-    private var downloadIndex: String
+
+    private var downloadSuccess: ReportDownload.Success = [:]
+    private var downloadFailure: ReportDownload.Failure = [:]
+    private var lastProcessedFileNames: ProcessedFileNames = [:]
 
     init(configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
-        downloadBaseURL = configuration.downloadsURL
-        downloadIndex = configuration.downloadIndexName
+        downloadIndexName = configuration.downloadIndexName
     }
 
     func updateConfiguration(_ configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
-        downloadBaseURL = configuration.downloadsURL
-        downloadIndex = configuration.downloadIndexName
+        downloadIndexName = configuration.downloadIndexName
     }
 
     func calculateHmacKey(keys: [ExposureDiagnosisKey], secret: Data) throws -> String {
@@ -148,36 +152,55 @@ final class ReportService: ReportServicing {
 
     private(set) var isDownloading: Bool = false
 
-    func downloadKeys(lastProcessedFileName: String?, callback: @escaping DownloadKeysCallback) -> Progress {
+    private func reportDownloadFailure(country code: String, error: ReportError) {
+        log("ReportService Download for country \(code), error: \(error)")
+        downloadFailure[code] = error
+        Crashlytics.crashlytics().record(error: error)
+    }
+
+    private func reportSuccess(country code: String, reports: [URL], lastProcessFileName: String?) {
+        log("ReportService Download done for country \(code)")
+        downloadSuccess[code] = ReportKeys(URLs: reports, lastProcessedFileName: lastProcessFileName)
+    }
+
+    func downloadKeys(exportURLs: [ReportIndex], lastProcessedFileNames: ProcessedFileNames, callback: @escaping DownloadKeysCallback) -> Progress {
         let progress = Progress()
 
         guard !isDownloading else {
-            callback(.failure(ReportError.alreadyRunning))
+            callback(ReportDownload(failure: .alreadyRunning))
             return progress
         }
-        isDownloading = true
+        self.isDownloading = true
+        self.downloadSuccess = [:]
+        self.downloadFailure = [:]
+        self.lastProcessedFileNames = lastProcessedFileNames
 
-        func reportFailure(_ error: Error) {
-            log("ReportService Download error: \(error)")
-            isDownloading = false
-            callback(.failure(error))
-            Crashlytics.crashlytics().record(error: error)
+        let dispatchGroup = DispatchGroup()
+        exportURLs.forEach { index in
+            guard let url = URL(string: index.url) else { return }
+            self.downloadIndex(country: index.country, downloadURL: url, dispatchGroup: dispatchGroup, progress: progress, callback: callback)
         }
 
-        func reportSuccess(_ reports: [URL], lastProcessFileName: String?) {
-            log("ReportService Download done")
-            isDownloading = false
-            callback(.success(ReportKeys(URLs: reports, lastProcessedFileName: lastProcessFileName)))
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+
+            callback(ReportDownload(success: self.downloadSuccess, failures: self.downloadFailure))
+            self.isDownloading = false
+
+            log("ReportService Download all done")
         }
 
-        let destinationURL = self.downloadDestinationURL
-        let destination: DownloadRequest.Destination = { temporaryURL, response in
-            let url = destinationURL.appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
-            return (url, [.removePreviousFile, .createIntermediateDirectories])
-        }
+        return progress
+    }
+
+    private func downloadIndex(country code: String, downloadURL: URL, dispatchGroup: DispatchGroup,
+                               progress: Progress, callback: @escaping DownloadKeysCallback) {
+        dispatchGroup.enter()
+
+        let destinationURL = self.downloadDestinationURL.appendingPathComponent(code)
         var downloads: [DownloadRequest] = []
 
-        AF.request(downloadBaseURL.appendingPathComponent(downloadIndex), method: .get)
+        AF.request(downloadURL, method: .get)
             .validate(statusCode: 200..<300)
             .responseString { [weak self] response in
                 #if DEBUG
@@ -186,109 +209,155 @@ final class ReportService: ReportServicing {
                 #endif
                 guard let self = self else { return }
 
-                let dispatchGroup = DispatchGroup()
-                var localURLResults: [Result<[URL], Error>] = []
+                let downloadDispatchGroup = DispatchGroup()
+                var localURLResults: [Result<[URL], ReportError>] = []
                 var lastRemoteURL: URL?
 
                 switch response.result {
                 case let .success(result):
-                    let parsedURLs = result.split(separator: "\n").compactMap { self.downloadBaseURL.appendingPathComponent(String($0)) }
-                    var remoteURLs: [URL] = []
-                    for url in parsedURLs {
-                        remoteURLs.append(url)
-                        if url.lastPathComponent == AppSettings.lastProcessedFileName {
-                            remoteURLs.removeAll()
-                        }
-                    }
-
+                    let remoteURLs = self.parseIndexFile(result, downloadURL: downloadURL, country: code)
                     lastRemoteURL = remoteURLs.last
 
+                    // remove old files
+                    try? FileManager.default.removeItem(at: destinationURL)
+
                     for remoteURL in remoteURLs {
-                        dispatchGroup.enter()
+                        downloadDispatchGroup.enter()
 
-                        try? FileManager.default.removeItem(at: destinationURL.appendingPathComponent(remoteURL.lastPathComponent).deletingPathExtension())
+                        let keyFileName = remoteURL.deletingPathExtension().lastPathComponent
+                        let destination: DownloadRequest.Destination = { temporaryURL, response in
+                            let url = destinationURL.appendingPathComponent(keyFileName).appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
+                            return (url, [.removePreviousFile, .createIntermediateDirectories])
+                        }
 
-                        let download = AF.download(remoteURL, to: destination)
-                            .validate(statusCode: 200..<300)
-                            .response { response in
-                                #if DEBUG
-                                print("Response file")
-                                debugPrint(response)
-                                #endif
+                        let download = self.downloadKeyFile(destination: destination, remote: remoteURL, callback: { result in
+                            localURLResults.append(result)
 
-                                switch response.result {
-                                case .success(let downloadedURL):
-                                    guard let downloadedURL = downloadedURL else {
-                                        localURLResults.append(.failure(ReportError.noFile))
-                                        break
-                                    }
-                                    do {
-                                        let changedNames = try self.unzipDownload(downloadedURL)
-                                        localURLResults.append(.success(changedNames))
-                                    } catch {
-                                        localURLResults.append(.failure(error))
-                                    }
-                                case .failure(let error):
-                                    localURLResults.append(.failure(error))
-                                }
-
-                                if progress.isCancelled {
-                                    downloads.forEach { $0.cancel() }
-                                }
-                                dispatchGroup.leave()
+                            if progress.isCancelled {
+                                downloads.forEach { $0.cancel() }
                             }
+                            downloadDispatchGroup.leave()
+                        })
                         progress.addChild(download.downloadProgress, withPendingUnitCount: 1)
                         downloads.append(download)
                     }
                 case let .failure(error):
-                    DispatchQueue.main.async {
-                        switch error {
-                        case .responseSerializationFailed(reason: .inputDataNilOrZeroLength):
-                            reportSuccess([], lastProcessFileName: nil)
-                        default:
-                            reportFailure(error)
-                        }
+                    switch error {
+                    case .responseSerializationFailed(reason: .inputDataNilOrZeroLength):
+                        localURLResults.append(.success([]))
+                    default:
+                        localURLResults.append(.failure(.responseError(error)))
                     }
                 }
 
-                dispatchGroup.notify(queue: .main) {
+                downloadDispatchGroup.notify(queue: .main) {
                     if progress.isCancelled {
-                        reportFailure(ReportError.cancelled)
+                        self.downloadFailure[code] = .cancelled
+                        dispatchGroup.leave()
                         return
                     }
 
+                    var haveError: Bool = false
                     var localURLs: [URL] = []
                     for result in localURLResults {
                         switch result {
                         case let .success(URLs):
                             localURLs.append(contentsOf: URLs)
                         case let .failure(error):
-                            reportFailure(error)
-                            return
+                            haveError = true
+                            self.downloadFailure[code] = error
                         }
                     }
 
-                    reportSuccess(localURLs, lastProcessFileName: lastRemoteURL?.lastPathComponent)
+                    if !haveError {
+                        self.downloadSuccess[code] = ReportKeys(URLs: localURLs, lastProcessedFileName: lastRemoteURL?.lastPathComponent)
+                    }
+                    dispatchGroup.leave()
                 }
             }
 
-        return progress
+    }
+
+    private func parseIndexFile(_ index: String, downloadURL: URL, country code: String) -> [URL] {
+        var baseURL = downloadURL
+        baseURL.deleteLastPathComponent()
+        let parsedURLs: [URL]
+        if baseURL.absoluteString.hasSuffix("//") {
+            var url = baseURL.absoluteString
+            url.removeLast()
+            parsedURLs = index.split(separator: "\n").compactMap { URL(string: url + String($0)) ?? baseURL }
+        } else {
+            baseURL.deleteLastPathComponent()
+            parsedURLs = index.split(separator: "\n").compactMap { baseURL.appendingPathComponent(String($0)) }
+        }
+        var remoteURLs: [URL] = []
+        for url in parsedURLs {
+            remoteURLs.append(url)
+            if url.lastPathComponent == self.lastProcessedFileNames[code] {
+                remoteURLs.removeAll()
+            }
+        }
+        return remoteURLs
+    }
+
+    private typealias DownloadFileCallback = (Result<[URL], ReportError>) -> Void
+
+    private func downloadKeyFile(destination: @escaping DownloadRequest.Destination, remote: URL, callback: @escaping DownloadFileCallback) -> DownloadRequest {
+        return AF.download(remote, to: destination)
+            .validate(statusCode: 200..<300)
+            .response { response in
+                #if DEBUG
+                print("Response file")
+                debugPrint(response)
+                #endif
+
+                switch response.result {
+                case .success(let downloadedURL):
+                    guard let downloadedURL = downloadedURL else {
+                        callback(.failure(.noFile))
+                        break
+                    }
+                    do {
+                        let changedNames = try self.unzipDownload(downloadedURL)
+                        callback(.success(changedNames))
+                    } catch {
+                        callback(.failure(.generalError(error)))
+                    }
+                case .failure(let error):
+                    callback(.failure(.responseError(error)))
+                }
+            }
     }
 
     private func unzipDownload(_ downloadedURL: URL) throws -> [URL] {
-        let unzipDirectory = try Zip.quickUnzipFile(downloadedURL)
+        let baseURL = downloadedURL.deletingLastPathComponent()
+        let unzipDirectory = try Zip.quickUnzipFile(downloadedURL, toURL: baseURL)
         let fileURLs = try FileManager.default.contentsOfDirectory(
             at: unzipDirectory,
             includingPropertiesForKeys: [], options: [.skipsHiddenFiles]
         )
         let uniqueName = UUID().uuidString
         return try fileURLs.map {
-            var newURL = $0
-            newURL.deleteLastPathComponent()
-            newURL.appendPathComponent(uniqueName)
-            newURL.appendPathExtension($0.pathExtension)
+            let newURL = baseURL.appendingPathComponent(uniqueName + "." + $0.pathExtension)
             try FileManager.default.moveItem(at: $0, to: newURL)
             return newURL
+        }
+    }
+
+}
+
+extension Zip {
+
+    class func quickUnzipFile(_ path: URL, toURL: URL) throws -> URL {
+        let fileExtension = path.pathExtension
+        let fileName = path.lastPathComponent
+        let directoryName = fileName.replacingOccurrences(of: ".\(fileExtension)", with: "")
+        do {
+            let destinationUrl = toURL.appendingPathComponent(directoryName, isDirectory: true)
+            try self.unzipFile(path, destination: destinationUrl, overwrite: true, password: nil, progress: nil)
+            return destinationUrl
+        } catch {
+            throw ZipError.unzipFail
         }
     }
 

@@ -416,52 +416,10 @@ private extension ActiveAppVC {
     }
 
     func debugProcessReports() {
-        showProgress()
-
-        _ = viewModel.reporter.downloadKeys(lastProcessedFileName: nil) { [weak self] result in
-            switch result {
-            case .success(let keys):
-                self?.viewModel.exposureService.detectExposures(
-                    configuration: RemoteValues.exposureConfiguration,
-                    URLs: keys.URLs
-                ) { [weak self] result in
-                    guard let self = self else { return }
-                    self.hideProgress()
-
-                    switch result {
-                    case .success(let exposures):
-                        guard !exposures.isEmpty else {
-                            log("EXP: no exposures, skip!")
-                            self.showAlert(title: "Exposures", message: "No exposures detected, device is clear.")
-                            return
-                        }
-
-                        try? ExposureList.add(exposures, detectionDate: Date())
-
-                        var result = ""
-                        for exposure in exposures {
-                            let signals = exposure.attenuationDurations.map { "\($0)" }
-                            result += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
-                                ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
-                                + "attenuation value: \(exposure.attenuationValue)\n"
-                                + "signal attenuations: \(signals.joined(separator: ", "))\n"
-                        }
-
-                        if result.isEmpty {
-                            result = "None"
-                        }
-
-                        log("EXP: \(exposures)")
-                        log("EXP: \(result)")
-                        self.showAlert(title: "Exposures", message: result)
-                    case .failure(let error):
-                        self.show(error: error)
-                    }
-                }
-            case .failure(let error):
-                self?.hideProgress()
-                self?.show(error: error)
-            }
+        if AppDelegate.dependency.reporter.isDownloading || AppDelegate.dependency.exposureService.detectingExposures {
+            showAlert(title: "Stahovani reportu", message: "Bezi na pozadi, pockejte chvilku nez dobehne.")
+        } else {
+            perform(segue: StoryboardSegue.Active.debugReports)
         }
     }
 

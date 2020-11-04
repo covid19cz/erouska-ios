@@ -22,7 +22,7 @@
                     <connections>
                         <segue destination="8pR-j1-IZY" kind="relationship" relationship="viewControllers" id="Ba7-2w-sYV"/>
                         <segue destination="Ecq-qf-QeQ" kind="relationship" relationship="viewControllers" id="jGg-vn-Hoi"/>
-                        <segue destination="v9g-l9-1nr" kind="relationship" relationship="viewControllers" id="BMz-eG-eV7"/>
+                        <segue destination="dfK-9d-ffs" kind="relationship" relationship="viewControllers" id="BMz-eG-eV7"/>
                         <segue destination="S3U-Wy-NaO" kind="relationship" relationship="viewControllers" id="A6t-X9-5nb"/>
                     </connections>
                 </tabBarController>
@@ -45,7 +45,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgF-We-scY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="893"/>
+            <point key="canvasLocation" x="306" y="936"/>
         </scene>
         <!--CurrentData-->
         <scene sceneID="DC3-Ek-JEO">
@@ -55,7 +55,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ph2-fL-JIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="72" y="1300"/>
+            <point key="canvasLocation" x="80" y="1300"/>
         </scene>
         <!--HelpNavigation-->
         <scene sceneID="P4F-IN-7fN">
@@ -65,108 +65,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDq-r7-6Eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="1433"/>
+            <point key="canvasLocation" x="93" y="1475"/>
         </scene>
-        <!--Kontakty-->
-        <scene sceneID="n01-Tj-cda">
+        <!--DebugDownloadReportsNav-->
+        <scene sceneID="9Y2-YU-hiC">
             <objects>
-                <navigationController id="v9g-l9-1nr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kontakty" id="UZH-Dl-Ge4"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iGG-Be-Xf5">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="d1M-LT-4V3" kind="relationship" relationship="rootViewController" id="LxZ-Or-eOW"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mcg-y6-Jkz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Debug" referencedIdentifier="DebugDownloadReportsNav" id="130-NA-7N7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Xso-UL-aOq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KyV-A4-B0h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="1864"/>
-        </scene>
-        <!--ContactsVC-->
-        <scene sceneID="EQV-Fr-ji0">
-            <objects>
-                <viewController id="d1M-LT-4V3" customClass="ContactsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="k3E-fX-T2T">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="snT-dK-zmg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" rowHeight="210" id="5bm-Aw-0OQ" customClass="ContactCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="210"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5bm-Aw-0OQ" id="2xQ-vr-Teu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-fU-DpV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Máte podezření na koronavirus?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7N-dW-0In">
-                                                            <rect key="frame" x="16" y="16" width="382" height="20.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zůstaňte doma a kontaktuje svého praktického lékaře nebo příslušnou hygienickou stanici." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVJ-mQ-3P0">
-                                                            <rect key="frame" x="16" y="52.5" width="382" height="42.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-QQ-KxS">
-                                                            <rect key="frame" x="16" y="111" width="382" height="67"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                            <state key="normal" title="Důležité kontakty"/>
-                                                            <connections>
-                                                                <action selector="openLink" destination="5bm-Aw-0OQ" eventType="touchUpInside" id="Ua9-Kc-Tfo"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                    <edgeInsets key="layoutMargins" top="16" left="16" bottom="32" right="16"/>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Noe-fU-DpV" secondAttribute="bottom" id="2Qj-wH-EDV"/>
-                                                <constraint firstItem="Noe-fU-DpV" firstAttribute="leading" secondItem="2xQ-vr-Teu" secondAttribute="leading" id="3Ma-mC-phB"/>
-                                                <constraint firstItem="Noe-fU-DpV" firstAttribute="top" secondItem="2xQ-vr-Teu" secondAttribute="top" id="uCK-KS-ub5"/>
-                                                <constraint firstAttribute="trailing" secondItem="Noe-fU-DpV" secondAttribute="trailing" id="we9-Xh-Yk6"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="bodyLabel" destination="MVJ-mQ-3P0" id="bWt-Ua-oHP"/>
-                                            <outlet property="button" destination="ft6-QQ-KxS" id="K0W-VD-Jyg"/>
-                                            <outlet property="headlineLabel" destination="g7N-dW-0In" id="sim-Dt-YP2"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="d1M-LT-4V3" id="jzs-OF-e4P"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="W1I-Z4-IfU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="snT-dK-zmg" firstAttribute="leading" secondItem="W1I-Z4-IfU" secondAttribute="leading" id="HU4-T7-g4d"/>
-                            <constraint firstItem="W1I-Z4-IfU" firstAttribute="trailing" secondItem="snT-dK-zmg" secondAttribute="trailing" id="MUT-On-hA8"/>
-                            <constraint firstItem="snT-dK-zmg" firstAttribute="top" secondItem="W1I-Z4-IfU" secondAttribute="top" id="cDn-5s-Rce"/>
-                            <constraint firstItem="W1I-Z4-IfU" firstAttribute="bottom" secondItem="snT-dK-zmg" secondAttribute="bottom" id="p7U-LJ-j0w"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="nja-ff-DBc"/>
-                    <connections>
-                        <outlet property="tableView" destination="snT-dK-zmg" id="4DG-bl-SGG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hwz-YG-gnu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1213" y="1864"/>
+            <point key="canvasLocation" x="1990" y="1053"/>
         </scene>
         <!--Aplikace je aktivní-->
         <scene sceneID="fsH-bj-obm">
@@ -295,11 +204,12 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="exposureTitleLabel" destination="I5Y-jp-bR1" id="8yL-iy-Q2D"/>
                         <outlet property="mainStackView" destination="qcL-c9-sLJ" id="JkJ-Wz-Fuu"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
+                        <segue destination="130-NA-7N7" kind="presentation" identifier="debugReports" id="qsX-ap-9zK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1213.0434782608697" y="891.96428571428567"/>
+            <point key="canvasLocation" x="1206" y="936"/>
         </scene>
         <!--SendReports-->
         <scene sceneID="ICw-CE-1Wd">
@@ -307,7 +217,17 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 <viewControllerPlaceholder storyboardName="SendReports" id="48F-yW-Dk4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-Tx-30g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1934" y="893"/>
+            <point key="canvasLocation" x="1924" y="841"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="NnE-bT-ZA1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Contacts" id="dfK-9d-ffs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="gpk-qE-jhn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9yt-A1-BMF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="66" y="1389"/>
         </scene>
     </scenes>
     <resources>

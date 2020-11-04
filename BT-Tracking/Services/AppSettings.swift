@@ -14,9 +14,12 @@ struct AppSettings {
     private enum Keys: String {
         case appState
         case appFirstTimeLaunched
+
+        case efgsEnabled
+
         case backgroundModeAlertShown
 
-        case lastProcessedFileName
+        case lastProcessedFileNames
         case lastProcessedDate
         case lastUploadDate
 
@@ -65,13 +68,23 @@ struct AppSettings {
         }
     }
 
-    /// Last processed file name
-    static var lastProcessedFileName: String? {
+    /// If efgs is enabled
+    static var efgsEnabled: Bool {
         get {
-            string(forKey: .lastProcessedFileName)
+            bool(forKey: .efgsEnabled)
         }
         set {
-            set(withKey: .lastProcessedFileName, value: newValue)
+            set(withKey: .efgsEnabled, value: newValue)
+        }
+    }
+
+    /// Last processed file name [country code: file name]
+    static var lastProcessedFileNames: ReportServicing.ProcessedFileNames {
+        get {
+            dictionary(forKey: .lastProcessedFileNames).mapValues { $0 as? String ?? "" }
+        }
+        set {
+            set(withKey: .lastProcessedFileNames, value: newValue)
         }
     }
 
@@ -184,7 +197,7 @@ struct AppSettings {
 
         state = nil
 
-        lastProcessedFileName = nil
+        lastProcessedFileNames = [:]
         lastUploadDate = nil
 
         try? Auth.auth().signOut()
@@ -202,6 +215,10 @@ struct AppSettings {
 
     private static func string(forKey key: Keys) -> String {
         return UserDefaults.standard.string(forKey: key.rawValue) ?? ""
+    }
+
+    private static func dictionary(forKey key: Keys) -> [String: Any] {
+        return UserDefaults.standard.dictionary(forKey: key.rawValue) ?? [:]
     }
 
     private static func set(withKey key: Keys, value: Any?) {
