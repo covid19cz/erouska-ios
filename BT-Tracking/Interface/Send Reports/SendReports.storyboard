@@ -13,7 +13,7 @@
         <!--Aplikace je aktivní-->
         <scene sceneID="oJp-dl-J5f">
             <objects>
-                <viewController id="DYf-Vd-0PA" userLabel="Aplikace je aktivní" customClass="SendResultVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SendResultVC" id="DYf-Vd-0PA" userLabel="Aplikace je aktivní" customClass="SendResultVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="obQ-Xn-QYg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,10 +43,10 @@
                                             </constraint>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data jste úspěsně odeslali" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrs-gT-kFO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data jste úspěsně odeslali" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrs-gT-kFO">
                                         <rect key="frame" x="0.0" y="165" width="374" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="BYz-rT-ykT"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="BYz-rT-ykT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" name="AppEnabled"/>

@@ -212,9 +212,9 @@ internal enum L10n {
   }
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19.
   internal static let dataSendHeadline = L10n.tr("Localizable", "data_send_headline")
-  /// eRoušku zatím používáte jen chvíli a nemá zaznamenané žádné jiné eRoušky, proto nikoho ve vašem okolí neupozorní na rizikové setkání.\n\nSpolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nŘiďte se prosím pokyny hygieniků a lékařů.
+  /// Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nŘiďte se prosím pokyny hygieniků a lékařů.
   internal static let dataSendNokeysBody = L10n.tr("Localizable", "data_send_nokeys_body")
-  /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19
+  /// eRoušku zatím používáte jen chvíli a nemá zaznamenané žádné jiné eRoušky, proto nikoho ve vašem okolí neupozorní na rizikové setkání.
   internal static let dataSendNokeysHeadline = L10n.tr("Localizable", "data_send_nokeys_headline")
   /// Odesláno
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
