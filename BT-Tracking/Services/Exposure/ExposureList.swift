@@ -39,6 +39,8 @@ final class ExposureList {
     static func add(_ exposures: [Exposure], detectionDate: Date) throws {
         guard !exposures.isEmpty else { return }
 
+        AppSettings.lastExposureWarningDate = Date()
+
         let realm = AppDelegate.dependency.realm
         try realm.write {
             exposures.sorted { $0.date < $1.date }.forEach { realm.add(ExposureRealm($0, detectedDate: detectionDate)) }

@@ -448,9 +448,7 @@ private extension ActiveAppVC {
                             self.showAlert(title: "Exposures", message: "No exposures detected, device is clear.")
                             return
                         }
-
-                        AppSettings.lastExposureNotificationDate = Date()
-
+                        
                         try? ExposureList.add(exposures, detectionDate: Date())
 
                         var result = ""
@@ -492,8 +490,6 @@ private extension ActiveAppVC {
         let exposures = [
             Exposure.debugExposure()
         ]
-
-        AppSettings.lastExposureNotificationDate = Date()
 
         try? ExposureList.add(exposures, detectionDate: Date())
 

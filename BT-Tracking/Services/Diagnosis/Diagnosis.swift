@@ -74,26 +74,11 @@ class Diagnosis: NSObject {
         let device = Device.current
         let exposureService = AppDelegate.dependency.exposureService
         let connection = try? Reachability().connection
-        let lastKeys: String
-        if let date = AppSettings.lastProcessedDate {
-            lastKeys = DateFormatter.baseDateTimeFormatter.string(from: date)
-        } else {
-            lastKeys = "Nikdy"
-        }
 
-        let exposureNotification: String
-        if let date = AppSettings.lastExposureNotificationDate {
-            exposureNotification = DateFormatter.baseDateTimeFormatter.string(from: date)
-        } else {
-            exposureNotification = "Nikdy"
-        }
-
-        let lastExposure: String
-        if let date = ExposureList.last?.date {
-            lastExposure = DateFormatter.baseDateTimeFormatter.string(from: date)
-        } else {
-            lastExposure = "Nikdy"
-        }
+        let formatter = DateFormatter.baseDateTimeFormatter
+        let lastKeys = AppSettings.lastProcessedDate.map(formatter.string) ?? "Nikdy"
+        let exposureNotification = AppSettings.lastExposureWarningDate.map(formatter.string) ?? "Nikdy"
+        let lastExposure = (ExposureList.last?.date).map(formatter.string) ?? "Nikdy"
 
         let diagnosisText = """
         Verze aplikace: \(App.appVersion) (\(App.bundleBuild))
@@ -108,6 +93,7 @@ class Diagnosis: NSObject {
         Poslední notifikace rizikového setkání: \(exposureNotification)
         Poslední rizikové setkání z: \(lastExposure)
         """
+        
         if let error = errorMessage {
             return "Kód chyby: \(error)\n" + diagnosisText
         } else {
