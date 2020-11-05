@@ -448,7 +448,7 @@ private extension ActiveAppVC {
                             self.showAlert(title: "Exposures", message: "No exposures detected, device is clear.")
                             return
                         }
-                        
+
                         try? ExposureList.add(exposures, detectionDate: Date())
 
                         var result = ""

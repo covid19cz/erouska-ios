@@ -93,7 +93,7 @@ class Diagnosis: NSObject {
         Poslední notifikace rizikového setkání: \(exposureNotification)
         Poslední rizikové setkání z: \(lastExposure)
         """
-        
+
         if let error = errorMessage {
             return "Kód chyby: \(error)\n" + diagnosisText
         } else {
