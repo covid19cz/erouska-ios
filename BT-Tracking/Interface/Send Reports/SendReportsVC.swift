@@ -254,7 +254,9 @@ private extension SendReportsVC {
         AppDelegate.dependency.reporter.uploadKeys(
             keys: keys,
             verificationPayload: verificationPayload,
-            hmacSecret: hmacSecret) { [weak self] result in
+            hmacSecret: hmacSecret,
+            efgs: AppSettings.efgsEnabled
+        ) { [weak self] result in
             self?.reportHideProgress()
             switch result {
             case .success:

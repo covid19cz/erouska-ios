@@ -24,7 +24,7 @@ protocol ReportServicing: AnyObject {
     typealias UploadKeysCallback = (Result<Bool, Error>) -> Void
 
     var isUploading: Bool { get }
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback)
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, efgs: Bool, callback: @escaping UploadKeysCallback)
 
     typealias ProcessedFileNames = [String: String]
     typealias DownloadKeysCallback = (ReportDownload) -> Void
@@ -41,6 +41,7 @@ final class ReportService: ReportServicing {
     private var healthAuthority: String
 
     private var uploadURL: URL
+    private var firebaseURL: URL
 
     private var downloadIndexName: String
     private var downloadDestinationURL: URL {
@@ -58,12 +59,14 @@ final class ReportService: ReportServicing {
     init(configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
+        firebaseURL = configuration.firebaseURL
         downloadIndexName = configuration.downloadIndexName
     }
 
     func updateConfiguration(_ configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
+        firebaseURL = configuration.firebaseURL
         downloadIndexName = configuration.downloadIndexName
     }
 
@@ -95,7 +98,7 @@ final class ReportService: ReportServicing {
 
     private(set) var isUploading: Bool = false
 
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, callback: @escaping UploadKeysCallback) {
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, efgs: Bool, callback: @escaping UploadKeysCallback) {
         guard !isUploading else {
             callback(.failure(ReportError.alreadyRunning))
             return
@@ -131,10 +134,13 @@ final class ReportService: ReportServicing {
             symptomOnsetInterval: nil,
             traveler: false,
             revisionToken: nil,
-            padding: randomBase64
+            padding: randomBase64,
+            visitedCountries: [],
+            reportType: .confirmedTest,
+            consentToFederation: efgs
         )
 
-        AF.request(uploadURL, method: .post, parameters: report, encoder: JSONParameterEncoder.default)
+        AF.request(firebaseURL.appendingPathComponent("PublishKeys"), method: .post, parameters: report, encoder: JSONParameterEncoder.default)
             .responseDecodable(of: ReportResult.self) { response in
                 #if DEBUG
                 print("Response upload")

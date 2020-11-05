@@ -23,7 +23,7 @@ struct ServerConfiguration: Codable {
             verificationURL: URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!,
             verificationAdminKey: "",
             verificationDeviceKey: "",
-            appCurentDataURL: URL(string: "https://europe-west1-erouska-key-server-dev.cloudfunctions.net")!
+            firebaseURL: URL(string: "https://europe-west1-erouska-key-server-dev.cloudfunctions.net")!
         )
     }
 
@@ -38,7 +38,7 @@ struct ServerConfiguration: Codable {
             verificationURL: URL(string: "https://apiserver-jyvw4xgota-ew.a.run.app")!,
             verificationAdminKey: "",
             verificationDeviceKey: "",
-            appCurentDataURL: URL(string: "https://europe-west1-daring-leaf-272223.cloudfunctions.net")!
+            firebaseURL: URL(string: "https://europe-west1-daring-leaf-272223.cloudfunctions.net")!
         )
     }
     // swiftlint:enable force_unwrapping
@@ -60,12 +60,12 @@ struct ServerConfiguration: Codable {
     let verificationAdminKey: String
     let verificationDeviceKey: String
 
-    let appCurentDataURL: URL
+    let firebaseURL: URL
 
     init(minSupportedVersion: String, showExposureForDays: Int, healthAuthority: String, uploadURL: URL,
          downloadIndexName: String, downloadsURL: URL,
          verificationURL: URL, verificationAdminKey: String, verificationDeviceKey: String,
-         appCurentDataURL: URL) {
+         firebaseURL: URL) {
         self.minSupportedVersion = minSupportedVersion
         self.showExposureForDays = showExposureForDays
         self.healthAuthority = healthAuthority
@@ -75,7 +75,7 @@ struct ServerConfiguration: Codable {
         self.verificationURL = verificationURL
         self.verificationAdminKey = verificationAdminKey
         self.verificationDeviceKey = verificationDeviceKey
-        self.appCurentDataURL = appCurentDataURL
+        self.firebaseURL = firebaseURL
     }
 
 }

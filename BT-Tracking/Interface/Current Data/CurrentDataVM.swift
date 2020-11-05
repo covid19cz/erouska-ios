@@ -135,9 +135,7 @@ private extension CurrentDataVM {
     func fetchAppCurrentData(in dispatchGroup: DispatchGroup) {
         dispatchGroup.enter()
 
-        // swiftlint:disable:next force_unwrapping
-        let url = URL(string: "DownloadMetrics", relativeTo: RemoteValues.serverConfiguration.appCurentDataURL)!
-        AF.request(url)
+        AF.request(RemoteValues.serverConfiguration.firebaseURL.appendingPathComponent("DownloadMetrics"))
             .validate(statusCode: 200..<300)
             .responseDecodable(of: AppCurrentJsonData.self, decoder: jsonDecoder) { response in
                 #if DEBUG
