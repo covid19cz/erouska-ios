@@ -1864,7 +1864,7 @@
 			repositoryURL = "https://github.com/augard/SwiftyMarkdown";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.2.5;
 			};
 		};
 		80FC71BA2477180400F86389 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
