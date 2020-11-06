@@ -92,6 +92,8 @@ internal enum StoryboardScene {
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: SendReports.self)
 
     internal static let sendReportNav = SceneType<UIKit.UINavigationController>(storyboard: SendReports.self, identifier: "SendReportNav")
+
+    internal static let sendResultVC = SceneType<SendResultVC>(storyboard: SendReports.self, identifier: "SendResultVC")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

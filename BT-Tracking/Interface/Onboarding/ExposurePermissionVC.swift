@@ -16,6 +16,8 @@ final class ExposurePermissionVC: UIViewController {
 
     private let viewModel = ExposurePermissionVM()
 
+    private var diagnosis: Diagnosis?
+
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -112,14 +114,21 @@ private extension ExposurePermissionVC {
     }
 
     func showExposureStorageError() {
-        showAlert(title: L10n.exposureActivationStorageTitle, message: L10n.exposureActivationStorageBody)
+        showAlert(
+            title: L10n.exposureActivationStorageTitle,
+            message: L10n.exposureActivationStorageBody
+        )
     }
 
     func showUnknownError(_ error: Error, code: ENError.Code = .unknown) {
         showAlert(
             title: L10n.exposureActivationUnknownTitle,
             message: L10n.exposureActivationUnknownBody("\(code.rawValue)"),
-            okHandler: { self.requestNotificationPermission() }
+            okHandler: { self.requestNotificationPermission() },
+            action: (title: L10n.dataSendErrorButton, handler: { [weak self] in
+                guard let self = self else { return }
+                self.diagnosis = Diagnosis(showFromController: self, errorMessage: "EN-\(code.rawValue)")
+            })
         )
     }
 

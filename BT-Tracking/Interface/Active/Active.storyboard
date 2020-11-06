@@ -55,7 +55,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ph2-fL-JIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="72" y="1300"/>
+            <point key="canvasLocation" x="88" y="1304"/>
         </scene>
         <!--HelpNavigation-->
         <scene sceneID="P4F-IN-7fN">
@@ -65,7 +65,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDq-r7-6Eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="1433"/>
+            <point key="canvasLocation" x="102" y="1465"/>
         </scene>
         <!--Kontakty-->
         <scene sceneID="n01-Tj-cda">
@@ -307,7 +307,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 <viewControllerPlaceholder storyboardName="SendReports" id="48F-yW-Dk4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-Tx-30g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1934" y="893"/>
+            <point key="canvasLocation" x="1946" y="810"/>
         </scene>
     </scenes>
     <resources>
