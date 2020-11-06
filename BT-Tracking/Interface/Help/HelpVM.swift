@@ -57,7 +57,9 @@ final class HelpVM {
             switch style {
             case .h1:
                 if !section.items.isEmpty {
+                    section.items.append(helpArticle)
                     sections.append(section)
+                    helpArticle = .init(title: "", lines: [])
                 }
                 section = .init(model: attribute.line, items: [])
             case .h2:
