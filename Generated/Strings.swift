@@ -210,7 +210,7 @@ internal enum L10n {
   internal static let dataListSendHeadline = L10n.tr("Localizable", "data_list_send_headline")
   /// Ověřovací kód (povinné)
   internal static let dataListSendPlaceholder = L10n.tr("Localizable", "data_list_send_placeholder")
-  /// Odeslat data
+  /// Upozornit ostatní
   internal static let dataListSendTitle = L10n.tr("Localizable", "data_list_send_title")
   /// Aktuálně
   internal static let dataListTitle = L10n.tr("Localizable", "data_list_title")
