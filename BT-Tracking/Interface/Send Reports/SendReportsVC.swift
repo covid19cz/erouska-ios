@@ -61,7 +61,7 @@ final class SendReportsVC: UIViewController {
         switch StoryboardSegue.SendReports(segue) {
         case .result:
             let controller = segue.destination as? SendResultVC
-            controller?.kind = sender as? SendResultVC.Kind ?? .standard
+            controller?.viewModel = sender as? SendResultVM ?? .standard
         default:
             break
         }
@@ -89,23 +89,30 @@ final class SendReportsVC: UIViewController {
 
     @IBAction private func sendReportsAction() {
         guard let connection = try? Reachability().connection, connection != .unavailable else {
-            showSendDataError()
+            showAlert(
+                title: L10n.dataListSendErrorFailedTitle,
+                message: L10n.dataListSendErrorFailedMessage
+            )
             return
         }
         view.endEditing(true)
         verifyCode(code.value)
     }
 
-    @IBAction private func resultAction() {
-        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVC.Kind.standard)
-    }
-
-    @IBAction private func resultNoKeysAction() {
-        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVC.Kind.noKeys)
-    }
-
     @IBAction private func closeAction() {
         dismiss(animated: true)
+    }
+
+    private func resultAction() {
+        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.standard)
+    }
+
+    private func resultNoKeysAction() {
+        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.noKeys)
+    }
+
+    private func resultErrorAction(message: String) {
+        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.error(message))
     }
 
 }
@@ -213,7 +220,7 @@ private extension SendReportsVC {
                 case .noData:
                     self.resultNoKeysAction()
                 default:
-                    self.showSendDataFrameworkError(code: error.localizedDescription)
+                    self.resultErrorAction(message: error.localizedDescription)
                 }
                 Crashlytics.crashlytics().record(error: error)
             }
@@ -239,14 +246,15 @@ private extension SendReportsVC {
                 case .failure(let error):
                     log("DataListVC: Failed to get verification payload \(error)")
                     self.reportHideProgress()
-                    self.showSendDataError()
+                    self.resultErrorAction(message: error.localizedDescription)
                     Crashlytics.crashlytics().record(error: error)
                 }
             }
         } catch {
             log("DataListVC: Failed to get hmac for keys \(error)")
-            self.reportHideProgress()
-            self.showSendDataError()
+            reportHideProgress()
+            resultErrorAction(message: error.localizedDescription)
+            Crashlytics.crashlytics().record(error: error)
         }
     }
 
@@ -261,8 +269,9 @@ private extension SendReportsVC {
             switch result {
             case .success:
                 self?.resultAction()
-            case .failure:
-                self?.showSendDataError()
+            case .failure(let error):
+                self?.resultErrorAction(message: error.localizedDescription)
+                Crashlytics.crashlytics().record(error: error)
             }
         }
     }
@@ -289,41 +298,15 @@ private extension SendReportsVC {
                     }
                 )
             default:
-                showAlert(
-                    title: L10n.dataListSendErrorTitle,
-                    message: L10n.dataListSendErrorMessage("\(status.rawValue)-" + code.rawValue)
-                )
+                resultErrorAction(message: "\(status.rawValue)-" + code.rawValue)
             }
         case let .certificateError(status, code):
-            showAlert(
-                title: L10n.dataListSendErrorTitle,
-                message: L10n.dataListSendErrorMessage("\(status.rawValue)-" + code.rawValue)
-            )
+            resultErrorAction(message: "\(status.rawValue)-" + code.rawValue)
         case let .generalError(status, code):
-            showAlert(
-                title: L10n.dataListSendErrorTitle,
-                message: L10n.dataListSendErrorMessage("\(status.rawValue)-" + code)
-            )
+            resultErrorAction(message: "\(status.rawValue)-" + code)
         case .noData:
-            showAlert(
-                title: L10n.dataListSendErrorTitle,
-                message: L10n.dataListSendErrorMessage("noData")
-            )
+            resultErrorAction(message: "noData")
         }
-    }
-
-    func showSendDataFrameworkError(code: String) {
-        showAlert(
-            title: L10n.dataListSendErrorFrameworkTitle,
-            message: L10n.dataListSendErrorFrameworkMessage(code)
-        )
-    }
-
-    func showSendDataError() {
-        showAlert(
-            title: L10n.dataListSendErrorFailedTitle,
-            message: L10n.dataListSendErrorFailedMessage
-        )
     }
 
 }

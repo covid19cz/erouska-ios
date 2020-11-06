@@ -216,6 +216,19 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: L10n.debug + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
             self?.debugProcessReports()
         }))
+        controller.addAction(UIAlertAction(title: L10n.debug + " zobrazit vysledek odeslani", style: .default, handler: { [weak self] _ in
+            let controller = UIAlertController(title: "Vysledek", message: nil, preferredStyle: .actionSheet)
+            controller.addAction(UIAlertAction(title: "Odeslano", style: .default, handler: { [weak self] _ in
+                self?.debugSendResult(kind: .standard)
+            }))
+            controller.addAction(UIAlertAction(title: "Nema klice", style: .default, handler: { [weak self] _ in
+                self?.debugSendResult(kind: .noKeys)
+            }))
+            controller.addAction(UIAlertAction(title: "Chyba", style: .default, handler: { [weak self] _ in
+                self?.debugSendResult(kind: .error("Nakej kod 123"))
+            }))
+            self?.present(controller, animated: true, completion: nil)
+        }))
         controller.addAction(UIAlertAction(title: L10n.close, style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
@@ -449,6 +462,15 @@ private extension ActiveAppVC {
         let controller = StoryboardScene.News.initialScene.instantiate()
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
+    }
+
+    func debugSendResult(kind: SendResultVM) {
+        let controller = StoryboardScene.SendReports.sendResultVC.instantiate()
+        controller.viewModel = kind
+
+        let navController = UINavigationController(rootViewController: controller)
+        navController.navigationBar.prefersLargeTitles = true
+        present(navController, animated: true, completion: nil)
     }
 
     #endif

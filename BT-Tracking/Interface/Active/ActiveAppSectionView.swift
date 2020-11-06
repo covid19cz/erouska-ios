@@ -93,7 +93,7 @@ final class ActiveAppSectionView: UIView {
             mainStack.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: 40),
+            iconImageView.widthAnchor.constraint(equalToConstant: 42),
 
             actionButton.heightAnchor.constraint(equalToConstant: 32),
             actionButton.topAnchor.constraint(equalTo: buttonView.topAnchor),

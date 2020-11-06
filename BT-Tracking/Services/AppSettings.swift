@@ -24,6 +24,7 @@ struct AppSettings {
         case lastUploadDate
 
         case lastExposureWarningId
+        case lastExposureWarningDate
         case lastExposureWarningClosed
         case lastExposureWarningInfoDisplayed
 
@@ -119,6 +120,18 @@ struct AppSettings {
         }
         set {
             set(withKey: .lastExposureWarningId, value: newValue)
+        }
+    }
+
+    /// When app last showed notification about exposure
+    static var lastExposureWarningDate: Date? {
+        get {
+            let rawValue = double(forKey: .lastExposureWarningDate)
+            guard rawValue != 0 else { return nil }
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+        }
+        set {
+            set(withKey: .lastExposureWarningDate, value: newValue?.timeIntervalSince1970)
         }
     }
 
