@@ -28,7 +28,7 @@ struct Report: Encodable {
     /// The Verification Certificate from a verification server.
     let verificationPayload: String?
 
-    /// The device generated secret that is used to recalcualte the HMAC value, that is present in the verification payload.
+    /// The device generated secret that is used to recalculate the HMAC value, that is present in the verification payload.
     let hmacKey: String?
 
     /// An interval number that aligns with the symptom onset date.
