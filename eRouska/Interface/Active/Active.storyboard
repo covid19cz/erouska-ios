@@ -3,7 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +22,7 @@
                     <connections>
                         <segue destination="8pR-j1-IZY" kind="relationship" relationship="viewControllers" id="Ba7-2w-sYV"/>
                         <segue destination="Ecq-qf-QeQ" kind="relationship" relationship="viewControllers" id="jGg-vn-Hoi"/>
-                        <segue destination="v9g-l9-1nr" kind="relationship" relationship="viewControllers" id="BMz-eG-eV7"/>
+                        <segue destination="dfK-9d-ffs" kind="relationship" relationship="viewControllers" id="BMz-eG-eV7"/>
                         <segue destination="S3U-Wy-NaO" kind="relationship" relationship="viewControllers" id="A6t-X9-5nb"/>
                     </connections>
                 </tabBarController>
@@ -44,7 +45,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgF-We-scY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="893"/>
+            <point key="canvasLocation" x="306" y="936"/>
         </scene>
         <!--CurrentData-->
         <scene sceneID="DC3-Ek-JEO">
@@ -54,7 +55,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ph2-fL-JIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="72" y="1300"/>
+            <point key="canvasLocation" x="80" y="1300"/>
         </scene>
         <!--HelpNavigation-->
         <scene sceneID="P4F-IN-7fN">
@@ -64,108 +65,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDq-r7-6Eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="1433"/>
+            <point key="canvasLocation" x="93" y="1475"/>
         </scene>
-        <!--Kontakty-->
-        <scene sceneID="n01-Tj-cda">
+        <!--DebugDownloadReportsNav-->
+        <scene sceneID="9Y2-YU-hiC">
             <objects>
-                <navigationController id="v9g-l9-1nr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kontakty" id="UZH-Dl-Ge4"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iGG-Be-Xf5">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="d1M-LT-4V3" kind="relationship" relationship="rootViewController" id="LxZ-Or-eOW"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mcg-y6-Jkz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Debug" referencedIdentifier="DebugDownloadReportsNav" id="130-NA-7N7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Xso-UL-aOq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KyV-A4-B0h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="1864"/>
-        </scene>
-        <!--ContactsVC-->
-        <scene sceneID="EQV-Fr-ji0">
-            <objects>
-                <viewController id="d1M-LT-4V3" customClass="ContactsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="k3E-fX-T2T">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="snT-dK-zmg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" rowHeight="210" id="5bm-Aw-0OQ" customClass="ContactCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="210"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5bm-Aw-0OQ" id="2xQ-vr-Teu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-fU-DpV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Máte podezření na koronavirus?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7N-dW-0In">
-                                                            <rect key="frame" x="16" y="16" width="382" height="20.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zůstaňte doma a kontaktuje svého praktického lékaře nebo příslušnou hygienickou stanici." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVJ-mQ-3P0">
-                                                            <rect key="frame" x="16" y="52.5" width="382" height="42.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-QQ-KxS">
-                                                            <rect key="frame" x="16" y="111" width="382" height="67"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                            <state key="normal" title="Důležité kontakty"/>
-                                                            <connections>
-                                                                <action selector="openLink" destination="5bm-Aw-0OQ" eventType="touchUpInside" id="Ua9-Kc-Tfo"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                    <edgeInsets key="layoutMargins" top="16" left="16" bottom="32" right="16"/>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Noe-fU-DpV" secondAttribute="bottom" id="2Qj-wH-EDV"/>
-                                                <constraint firstItem="Noe-fU-DpV" firstAttribute="leading" secondItem="2xQ-vr-Teu" secondAttribute="leading" id="3Ma-mC-phB"/>
-                                                <constraint firstItem="Noe-fU-DpV" firstAttribute="top" secondItem="2xQ-vr-Teu" secondAttribute="top" id="uCK-KS-ub5"/>
-                                                <constraint firstAttribute="trailing" secondItem="Noe-fU-DpV" secondAttribute="trailing" id="we9-Xh-Yk6"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="bodyLabel" destination="MVJ-mQ-3P0" id="bWt-Ua-oHP"/>
-                                            <outlet property="button" destination="ft6-QQ-KxS" id="K0W-VD-Jyg"/>
-                                            <outlet property="headlineLabel" destination="g7N-dW-0In" id="sim-Dt-YP2"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="d1M-LT-4V3" id="jzs-OF-e4P"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="W1I-Z4-IfU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="snT-dK-zmg" firstAttribute="leading" secondItem="W1I-Z4-IfU" secondAttribute="leading" id="HU4-T7-g4d"/>
-                            <constraint firstItem="W1I-Z4-IfU" firstAttribute="trailing" secondItem="snT-dK-zmg" secondAttribute="trailing" id="MUT-On-hA8"/>
-                            <constraint firstItem="snT-dK-zmg" firstAttribute="top" secondItem="W1I-Z4-IfU" secondAttribute="top" id="cDn-5s-Rce"/>
-                            <constraint firstItem="W1I-Z4-IfU" firstAttribute="bottom" secondItem="snT-dK-zmg" secondAttribute="bottom" id="p7U-LJ-j0w"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="nja-ff-DBc"/>
-                    <connections>
-                        <outlet property="tableView" destination="snT-dK-zmg" id="4DG-bl-SGG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hwz-YG-gnu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1213" y="1864"/>
+            <point key="canvasLocation" x="1990" y="1053"/>
         </scene>
         <!--Aplikace je aktivní-->
         <scene sceneID="fsH-bj-obm">
@@ -176,13 +86,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWN-IR-79w">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="753"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRX-7H-oZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="801.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="267.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qcL-c9-sLJ">
-                                                <rect key="frame" x="20" y="20" width="374" height="761.5"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="227.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlx-RT-boE">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="227.5"/>
@@ -238,7 +148,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.87058823529411766" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="AlertRed"/>
                                                         <constraints>
                                                             <constraint firstItem="e2P-se-2W0" firstAttribute="leading" secondItem="Rlx-RT-boE" secondAttribute="leading" constant="14" id="RVL-j6-LJn"/>
                                                             <constraint firstAttribute="bottom" secondItem="e2P-se-2W0" secondAttribute="bottom" constant="14" id="aZj-lm-mSC"/>
@@ -246,46 +156,6 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                             <constraint firstAttribute="trailing" secondItem="e2P-se-2W0" secondAttribute="trailing" constant="14" id="vey-a9-gst"/>
                                                         </constraints>
                                                     </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-pw-itY">
-                                                        <rect key="frame" x="0.0" y="247.5" width="374" height="514"/>
-                                                        <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ScanActive" translatesAutoresizingMaskIntoConstraints="NO" id="Dqs-Rj-Q2J">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="130" id="uhr-Mr-DYd"/>
-                                                                </constraints>
-                                                            </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eRouška je aktivní" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jq8-JX-g6N">
-                                                                <rect key="frame" x="0.0" y="145" width="374" height="20.5"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                                <color key="textColor" red="0.54901960780000003" green="0.76078431369999999" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mby-Ad-cEI">
-                                                                <rect key="frame" x="0.0" y="180.5" width="374" height="130.5"/>
-                                                                <string key="text">Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.
-Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.</string>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                                <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANQ-eO-rpO">
-                                                                <rect key="frame" x="0.0" y="326" width="374" height="86.5"/>
-                                                                <string key="text">Když budete označeni jako nakažení, kontaktujeme vás na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, které byly ve vašem okolí v sekci Moje data.</string>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIQ-ZJ-OIi">
-                                                                <rect key="frame" x="0.0" y="427.5" width="374" height="86.5"/>
-                                                                <string key="text">Když budete označeni jako nakažení, kontaktujeme vás na čísle %@. Požádáme vás o zaslání anonymizovaného seznamu telefonů, které byly ve vašem okolí v sekci Moje data.</string>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -308,88 +178,38 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                 <viewLayoutGuide key="contentLayoutGuide" id="kTX-CN-gQf"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="ggr-sE-XeN"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvm-E0-8xO" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="703" width="414" height="110"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-eb-fmL" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="50" width="382" height="44"/>
-                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="DMf-Rt-tSx"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="Pozastavit">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="changeScanningAction" destination="SLc-31-c7B" eventType="touchUpInside" id="pOj-Pm-zg6"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="UDA-eb-fmL" firstAttribute="leading" secondItem="gvm-E0-8xO" secondAttribute="leading" constant="16" id="GWq-24-WKi"/>
-                                    <constraint firstItem="UDA-eb-fmL" firstAttribute="top" secondItem="gvm-E0-8xO" secondAttribute="top" constant="50" id="KtG-8M-7OQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="UDA-eb-fmL" secondAttribute="bottom" constant="16" id="aFK-Hs-llg"/>
-                                    <constraint firstAttribute="trailing" secondItem="UDA-eb-fmL" secondAttribute="trailing" constant="16" id="cam-rT-0Cv"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IN0-jh-QW1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UDA-eb-fmL" firstAttribute="top" secondItem="aWN-IR-79w" secondAttribute="bottom" id="5RP-O1-x3j"/>
                             <constraint firstItem="aWN-IR-79w" firstAttribute="top" secondItem="hh6-32-Hb4" secondAttribute="top" id="5oC-zr-nLn"/>
                             <constraint firstItem="IN0-jh-QW1" firstAttribute="trailing" secondItem="aWN-IR-79w" secondAttribute="trailing" id="7W4-9u-9Mw"/>
-                            <constraint firstItem="IN0-jh-QW1" firstAttribute="trailing" secondItem="gvm-E0-8xO" secondAttribute="trailing" id="8cE-Ou-LvG"/>
-                            <constraint firstItem="IN0-jh-QW1" firstAttribute="bottom" secondItem="gvm-E0-8xO" secondAttribute="bottom" id="FF1-26-aa5"/>
-                            <constraint firstItem="gvm-E0-8xO" firstAttribute="leading" secondItem="IN0-jh-QW1" secondAttribute="leading" id="Pnj-Rg-HSd"/>
                             <constraint firstItem="aWN-IR-79w" firstAttribute="leading" secondItem="IN0-jh-QW1" secondAttribute="leading" id="WSN-C2-bgf"/>
+                            <constraint firstItem="IN0-jh-QW1" firstAttribute="bottom" secondItem="aWN-IR-79w" secondAttribute="bottom" id="qiv-M4-naR"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="45a-ir-C72"/>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Další možnosti" image="ellipsis.circle.fill" catalog="system" id="aAa-9L-bkG">
-                                <connections>
-                                    <action selector="moreActionWithSender:" destination="SLc-31-c7B" id="zr6-Iy-Ztd"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Sdílet aplikaci" id="Pfj-dc-ty6">
-                                <connections>
-                                    <action selector="shareAppAction" destination="SLc-31-c7B" id="7Q8-CQ-HVr"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Sdílet aplikaci" id="Pfj-dc-ty6">
+                            <connections>
+                                <action selector="shareAppAction" destination="SLc-31-c7B" id="7Q8-CQ-HVr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="actionButton" destination="UDA-eb-fmL" id="ZBv-1y-h9d"/>
                         <outlet property="exposureBannerView" destination="Rlx-RT-boE" id="Zld-Ms-EbM"/>
                         <outlet property="exposureCloseButton" destination="OQp-na-S8Q" id="usl-3e-3Pw"/>
                         <outlet property="exposureMoreInfoButton" destination="Ocf-F5-uU9" id="Y96-fj-Vjm"/>
                         <outlet property="exposureTitleLabel" destination="I5Y-jp-bR1" id="8yL-iy-Q2D"/>
-                        <outlet property="headlineLabel" destination="jq8-JX-g6N" id="NVv-Mg-JGG"/>
-                        <outlet property="imageView" destination="Dqs-Rj-Q2J" id="LT3-Yz-mgS"/>
-                        <outlet property="lastUpdateLabel" destination="AIQ-ZJ-OIi" id="CPe-dN-haP"/>
-                        <outlet property="mainStackView" destination="IbU-pw-itY" id="mUd-gK-QSO"/>
-                        <outlet property="textLabel" destination="ANQ-eO-rpO" id="Gle-hH-WWb"/>
-                        <outlet property="titleLabel" destination="mby-Ad-cEI" id="2Ob-05-rbY"/>
+                        <outlet property="mainStackView" destination="qcL-c9-sLJ" id="JkJ-Wz-Fuu"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
-                        <segue destination="qqD-nV-Znl" kind="presentation" identifier="riskyEncounters" id="HRF-xK-4t2"/>
+                        <segue destination="130-NA-7N7" kind="presentation" identifier="debugReports" id="qsX-ap-9zK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1213.0434782608697" y="891.96428571428567"/>
-        </scene>
-        <!--RiskyEncounters-->
-        <scene sceneID="jrU-h5-lVn">
-            <objects>
-                <viewControllerPlaceholder storyboardName="RiskyEncounters" id="qqD-nV-Znl" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ycg-Wv-T2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1954" y="794"/>
+            <point key="canvasLocation" x="1206" y="936"/>
         </scene>
         <!--SendReports-->
         <scene sceneID="ICw-CE-1Wd">
@@ -397,17 +217,25 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 <viewControllerPlaceholder storyboardName="SendReports" id="48F-yW-Dk4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-Tx-30g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1949" y="989"/>
+            <point key="canvasLocation" x="1924" y="841"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="NnE-bT-ZA1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Contacts" id="dfK-9d-ffs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="gpk-qE-jhn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9yt-A1-BMF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="66" y="1389"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ScanActive" width="130" height="130"/>
-        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="AlertRed">
+            <color red="0.95294117647058818" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

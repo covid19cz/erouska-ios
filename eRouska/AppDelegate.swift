@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     static let dependency = AppDependency()
 
-    var openResultsCallback: (() -> Void)?
+    var openResultsCallback: CallbackVoid?
 
     // MARK: - UIApplicationDelegate
 
@@ -154,14 +154,9 @@ private extension AppDelegate {
         setupDefaultValues()
         updateRemoteValues()
 
-        let configuration = Realm.Configuration(
-            schemaVersion: 4,
-            migrationBlock: { _, _ in
-
-            }
-        )
-
-        Realm.Configuration.defaultConfiguration = configuration
+        if AppSettings.lastLegacyDataFetchDate == nil {
+            AppSettings.lastLegacyDataFetchDate = AppSettings.lastProcessedDate ?? Date()
+        }
 
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeLocale), name: NSLocale.currentLocaleDidChangeNotification, object: nil)
     }

@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import SwiftyMarkdown
 
 class MarkdownController: UIViewController {
 
     // MARK: - Public Properties
 
-    var markdownContent: String {
-        ""
-    }
+    var markdownContent: String = ""
+    var markdownLines: [SwiftyLine] = []
     var contentView = UIView()
 
     // MARK: - Private Properties
@@ -39,7 +39,7 @@ class MarkdownController: UIViewController {
     // MARK: - Setup
 
     private func setupContent() {
-        textView.attributedText = Markdown.attributedString(markdown: markdownContent)
+        textView.attributedText = Markdown.attributedString(markdown: markdownContent, lines: markdownLines)
     }
 
     private func initViews() {

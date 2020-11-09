@@ -33,7 +33,7 @@ final class PrivacyVC: UIViewController {
 
         title = L10n.privacyTitle
         navigationItem.backBarButtonItem?.title = L10n.back
-        navigationItem.rightBarButtonItem?.title = L10n.back
+        navigationItem.rightBarButtonItem?.title = L10n.help
 
         headlineLabel.text = L10n.privacyHeadline
         continueButton.setTitle(L10n.privacyContinue)

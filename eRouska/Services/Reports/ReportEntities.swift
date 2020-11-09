@@ -7,14 +7,44 @@
 //
 
 import Foundation
+import Alamofire
 
-enum ReportError: String, Error {
+enum ReportError: Error {
     case noData
     case noFile
     case cancelled
     case unknown
     case alreadyRunning
     case stringEncodingFailure
+    case responseError(AFError)
+    case generalError(Error)
+}
+
+struct ReportIndex: Decodable {
+    let country: String
+    let url: String
+}
+
+struct ReportDownload {
+
+    static var all = "ALL"
+
+    typealias Success = [String: ReportKeys]
+    typealias Failure = [String: ReportError]
+
+    let success: Success
+    let failures: Failure
+
+    init(success: ReportDownload.Success, failures: ReportDownload.Failure) {
+        self.success = success
+        self.failures = failures
+    }
+
+    init(failure: ReportError) {
+        self.success = [:]
+        self.failures = [Self.all: failure]
+    }
+
 }
 
 struct Report: Encodable {
@@ -51,6 +81,14 @@ struct Report: Encodable {
     /// Random base64 encoded data to obscure the request size. The server will not process this data in any way.
     let padding: String
 
+    // MARK: - EFGS parameters
+
+    let visitedCountries: [String]
+
+    let reportType: ReportType
+
+    let consentToFederation: Bool
+
     private enum CodingKeys: String, CodingKey {
         case healthAuthority = "healthAuthorityID"
         case temporaryExposureKeys
@@ -60,6 +98,7 @@ struct Report: Encodable {
         case traveler
         case revisionToken
         case padding
+        case visitedCountries
     }
 
 }
@@ -77,6 +116,15 @@ struct ReportResult: Decodable {
     /// The intent is that code can be used to show a localized error message on the device.
     let code: String?
 
+}
+
+enum ReportType: String, Codable {
+    case unknown = "Unknown"
+    case confirmedTest = "ConfirmedTest"
+    case confirmedClinicalDiagnosis = "ConfirmedClinicalDiagnosis"
+    case selfReport = "SelfReport"
+    case recursive = "Recursive"
+    case revoked = "Revoked"
 }
 
 struct ReportKeys {

@@ -16,10 +16,10 @@ struct ErrorVM {
 
     enum Action {
         case close
-        case closeAndCustom(() -> Void)
+        case closeAndCustom(CallbackVoid)
     }
 
-    init(headline: String, text: String, actionTitle: String, action: @escaping () -> Void) {
+    init(headline: String, text: String, actionTitle: String, action: @escaping CallbackVoid) {
         self.init(headline: headline, text: text, actionTitle: actionTitle, action: .closeAndCustom(action))
     }
 

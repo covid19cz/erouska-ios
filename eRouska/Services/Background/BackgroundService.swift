@@ -8,10 +8,10 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 import BackgroundTasks
 import FirebaseFunctions
 import FirebaseAnalytics
+import FirebaseCrashlytics
 
 final class BackgroundService {
 
@@ -162,55 +162,65 @@ private extension BackgroundService {
         // Notify the user if bluetooth is off
         showBluetoothOffUserNotificationIfNeeded()
 
-        func reportFailure(_ error: Error) {
+        func reportFailure(_ error: ReportError) {
             task?.setTaskCompleted(success: false)
             isRunning = false
             Log.log("BGTask: failed to detect exposures \(error)")
+            Crashlytics.crashlytics().record(error: error)
+        }
+
+        func reportSuccess() {
+            isRunning = false
+            task?.setTaskCompleted(success: true)
+
+            AppSettings.lastProcessedDate = Date()
+            Analytics.logEvent("key_export_download_finished", parameters: nil)
         }
 
         // Perform the exposure detection
-        return reporter.downloadKeys(lastProcessedFileName: AppSettings.lastProcessedFileName) { result in
-            Log.log("BGTask: did download keys \(result)")
+        let keyURLs = AppSettings.efgsEnabled ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
+        return reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: AppSettings.lastProcessedFileNames) { report in
+            Log.log("BGTask: did download keys \(report)")
 
-            switch result {
-            case .success(let keys):
-                guard !keys.URLs.isEmpty else {
-                    AppSettings.lastProcessedDate = Date()
-
-                    self.isRunning = false
-
-                    task?.setTaskCompleted(success: true)
-                    return
+            var atLeastOneSuccess: Bool = false
+            var URLs: [URL] = []
+            for (_, success) in report.success {
+                guard !success.URLs.isEmpty else {
+                    atLeastOneSuccess = true
+                    continue
                 }
+                URLs.append(contentsOf: success.URLs)
+            }
 
-                self.exposureService.detectExposures(
-                    configuration: RemoteValues.exposureConfiguration,
-                    URLs: keys.URLs
-                ) { result in
-                    switch result {
-                    case .success(var exposures):
-                        exposures.sort { $0.date < $1.date }
-                        AppSettings.lastProcessedDate = Date()
+            for (_, failure) in report.failures {
+                reportFailure(failure)
+            }
 
-                        self.handleExposures(exposures, lastProcessedFileName: keys.lastProcessedFileName)
-                        self.isRunning = false
-
-                        task?.setTaskCompleted(success: true)
-
-                        Analytics.logEvent("key_export_download_finished", parameters: nil)
-                    case .failure(let error):
-                        reportFailure(error)
+            if !URLs.isEmpty || atLeastOneSuccess {
+                if !URLs.isEmpty {
+                    self.exposureService.detectExposures(
+                        configuration: RemoteValues.exposureConfiguration,
+                        URLs: URLs
+                    ) { result in
+                        switch result {
+                        case .success(let exposures):
+                            self.handleExposures(exposures, countries: report.success)
+                            reportSuccess()
+                        case .failure(let error):
+                            reportFailure(.generalError(error))
+                        }
                     }
+                } else {
+                    self.handleExposures([], countries: report.success)
+                    reportSuccess()
                 }
-            case .failure(let error):
-                reportFailure(error)
             }
         }
     }
 
-    func handleExposures(_ exposures: [Exposure], lastProcessedFileName: String?) {
-        if let fileName = lastProcessedFileName {
-            AppSettings.lastProcessedFileName = fileName
+    func handleExposures(_ exposures: [Exposure], countries: ReportDownload.Success) {
+        for (code, success) in countries {
+            AppSettings.lastProcessedFileNames[code] = success.lastProcessedFileName
         }
 
         guard !exposures.isEmpty else {
@@ -222,23 +232,17 @@ private extension BackgroundService {
             return
         }
 
-        let realm = try? Realm()
-        try? realm?.write {
-            exposures.forEach { realm?.add(ExposureRealm($0)) }
-        }
+        try? ExposureList.add(exposures, detectionDate: Date())
 
         let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
 
         #if !PROD || DEBUG
-        let dateFormat = DateFormatter()
-        dateFormat.timeStyle = .short
-        dateFormat.dateStyle = .short
 
         var result = ""
         for exposure in exposures {
             let signals = exposure.attenuationDurations.map { "\($0)" }
-            result += "EXP: \(dateFormat.string(from: exposure.date))" +
+            result += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
                 ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
                 + "attenuation value: \(exposure.attenuationValue)\n"
                 + "signal attenuations: \(signals.joined(separator: ", "))\n"

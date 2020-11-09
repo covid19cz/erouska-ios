@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Ap-yb-531">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Ap-yb-531">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -81,7 +83,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Z8K-a5-9af" firstAttribute="leading" secondItem="ZfN-Wf-0Tr" secondAttribute="leadingMargin" id="4GO-32-UgC"/>
                                             <constraint firstAttribute="bottom" secondItem="Z8K-a5-9af" secondAttribute="bottom" id="5yx-yp-CDq"/>
@@ -107,7 +109,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bR7-87-Lte">
                                         <rect key="frame" x="20" y="50" width="374" height="103"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcM-Dc-gvk" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcM-Dc-gvk" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="JfX-fQ-dhV"/>
@@ -120,7 +122,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                                     <action selector="continueAction" destination="oaY-Hs-CGd" eventType="touchUpInside" id="XK3-4h-YbQ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlF-aM-41q" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlF-aM-41q" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="59" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="46G-Iy-tbQ"/>
@@ -146,7 +148,8 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="XAQ-Qe-65Z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wvH-eq-Oox" firstAttribute="bottom" secondItem="XAQ-Qe-65Z" secondAttribute="bottom" id="2Am-CJ-8Bm"/>
                             <constraint firstItem="XAQ-Qe-65Z" firstAttribute="bottom" secondItem="24Z-Eg-bLm" secondAttribute="bottom" id="8Xz-eD-aNF"/>
@@ -156,7 +159,6 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                             <constraint firstItem="24Z-Eg-bLm" firstAttribute="top" secondItem="zds-B6-2k4" secondAttribute="top" id="qha-Y0-Ua8"/>
                             <constraint firstItem="24Z-Eg-bLm" firstAttribute="leading" secondItem="XAQ-Qe-65Z" secondAttribute="leading" id="xXL-4b-vmx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="XAQ-Qe-65Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="eRouška" largeTitleDisplayMode="always" id="aBA-C5-7IN">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="vW0-68-KG9"/>
@@ -169,7 +171,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                         <outlet property="howItWorksButton" destination="dlF-aM-41q" id="K5N-Se-fud"/>
                         <outlet property="scrollView" destination="24Z-Eg-bLm" id="rfg-mo-Dec"/>
                         <segue destination="dvc-aR-w5e" kind="show" identifier="exposureNotification" id="pLC-gk-Fi0"/>
-                        <segue destination="z8b-H4-SCk" kind="show" identifier="privacy" id="jn2-n4-hCy"/>
+                        <segue destination="ruv-fP-2Af" kind="show" identifier="efgsPermission" id="jZM-ge-kqF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTW-oV-yhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -222,7 +224,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="6tY-jA-gcA" firstAttribute="top" secondItem="o12-FA-0yH" secondAttribute="top" constant="10" id="7LE-L2-4Uu"/>
                                             <constraint firstAttribute="bottom" secondItem="6tY-jA-gcA" secondAttribute="bottom" constant="16" id="Cjg-nY-Q3L"/>
@@ -245,7 +247,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jdR-Ng-bBz" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="752" width="414" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nm7-9a-emx" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nm7-9a-emx" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="20" y="50" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="j1s-sW-2pA"/>
@@ -268,7 +270,8 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="cA7-8b-280"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wMA-Rb-cNB" firstAttribute="top" secondItem="V0D-vL-Rwb" secondAttribute="top" id="5U5-f7-7BT"/>
                             <constraint firstItem="jdR-Ng-bBz" firstAttribute="leading" secondItem="cA7-8b-280" secondAttribute="leading" id="8TS-le-m9o"/>
@@ -278,7 +281,6 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                             <constraint firstItem="cA7-8b-280" firstAttribute="trailing" secondItem="jdR-Ng-bBz" secondAttribute="trailing" id="abM-tC-g2y"/>
                             <constraint firstItem="cA7-8b-280" firstAttribute="bottom" secondItem="wMA-Rb-cNB" secondAttribute="bottom" id="evk-7e-qyh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="cA7-8b-280"/>
                     </view>
                     <navigationItem key="navigationItem" title="Oznámení" largeTitleDisplayMode="always" id="8bU-t0-w4R">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="8qY-oA-gVA"/>
@@ -294,13 +296,142 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                         <outlet property="continueButton" destination="nm7-9a-emx" id="Kuc-77-RYP"/>
                         <outlet property="headlineLabel" destination="6pG-LU-L7P" id="Ek4-21-zfT"/>
                         <outlet property="scrollView" destination="wMA-Rb-cNB" id="Rgk-Z5-ty9"/>
-                        <segue destination="z8b-H4-SCk" kind="show" identifier="privacy" id="q0K-IR-cSV"/>
                         <segue destination="ftw-ib-ah7" kind="show" identifier="unsupported" id="gTJ-5J-TQO"/>
+                        <segue destination="ruv-fP-2Af" kind="show" identifier="efgsPermission" id="lY1-VA-PVS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qw-d5-W1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-293" y="-31"/>
+        </scene>
+        <!--Spolupráce se zahraničím-->
+        <scene sceneID="gPf-OQ-dzW">
+            <objects>
+                <viewController id="ruv-fP-2Af" customClass="EFGSPermissionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Yq-83-FVg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odU-jg-pRu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7wc-0E-F1d">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="TYk-M2-bUk">
+                                                <rect key="frame" x="20" y="10" width="374" height="489"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EfgsPermission" translatesAutoresizingMaskIntoConstraints="NO" id="zyg-dN-gVK">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pomozte v boji s COVID-19 i při cestách do zahraničí" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d96-rK-yqt">
+                                                        <rect key="frame" x="0.0" y="145" width="374" height="42.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEF-yp-odS">
+                                                        <rect key="frame" x="0.0" y="202.5" width="374" height="240.5"/>
+                                                        <string key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
+Povolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.
+Nastavení můžete kdykoliv změnit v aplikaci.
+Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rea-hi-Sbq">
+                                                        <rect key="frame" x="0.0" y="458" width="374" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Povolit spolupráci se zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71G-Mu-q4j">
+                                                                <rect key="frame" x="0.0" y="5.5" width="317" height="20.5"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nSW-3Q-lKq">
+                                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                                <color key="onTintColor" red="0.15686274509803921" green="0.45490196078431372" blue="0.92941176470588238" alpha="0.38" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                <color key="thumbTintColor" red="0.15686274509803921" green="0.45490196078431372" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="TYk-M2-bUk" firstAttribute="leading" secondItem="7wc-0E-F1d" secondAttribute="leadingMargin" id="Lf3-Qz-pUf"/>
+                                            <constraint firstAttribute="bottom" secondItem="TYk-M2-bUk" secondAttribute="bottom" constant="16" id="p45-Xx-2NF"/>
+                                            <constraint firstItem="TYk-M2-bUk" firstAttribute="top" secondItem="7wc-0E-F1d" secondAttribute="top" constant="10" id="tBi-pQ-M7H"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="TYk-M2-bUk" secondAttribute="trailing" id="zhb-jA-Cb1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="7wc-0E-F1d" firstAttribute="trailing" secondItem="YLb-5K-GoD" secondAttribute="trailing" id="2Ls-Vx-8ek"/>
+                                    <constraint firstItem="7wc-0E-F1d" firstAttribute="bottom" secondItem="YLb-5K-GoD" secondAttribute="bottom" id="PgC-18-Vd0"/>
+                                    <constraint firstItem="7wc-0E-F1d" firstAttribute="top" secondItem="YLb-5K-GoD" secondAttribute="top" id="aNd-td-8e5"/>
+                                    <constraint firstItem="7wc-0E-F1d" firstAttribute="centerX" secondItem="0lR-3x-yyC" secondAttribute="centerX" id="aUF-iy-RZ9"/>
+                                    <constraint firstItem="7wc-0E-F1d" firstAttribute="width" secondItem="0lR-3x-yyC" secondAttribute="width" id="ccZ-sI-AfP"/>
+                                    <constraint firstItem="7wc-0E-F1d" firstAttribute="leading" secondItem="YLb-5K-GoD" secondAttribute="leading" id="rwD-oD-0bo"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="YLb-5K-GoD"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="0lR-3x-yyC"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Egj-ly-GYj" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="752" width="414" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1s-R8-Sb6" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="50" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="nUb-oI-j4Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <state key="normal" title="Pokračovat">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueAction:" destination="ruv-fP-2Af" eventType="touchUpInside" id="dtI-Rr-eD6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="s1s-R8-Sb6" secondAttribute="bottom" constant="16" id="G76-WQ-xBG"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="s1s-R8-Sb6" secondAttribute="trailing" id="cal-wN-hz3"/>
+                                    <constraint firstItem="s1s-R8-Sb6" firstAttribute="leading" secondItem="Egj-ly-GYj" secondAttribute="leadingMargin" id="llJ-Ul-8Hr"/>
+                                    <constraint firstItem="s1s-R8-Sb6" firstAttribute="top" secondItem="Egj-ly-GYj" secondAttribute="top" constant="50" id="ugd-PN-TYc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qpF-p2-iup"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qpF-p2-iup" firstAttribute="bottom" secondItem="Egj-ly-GYj" secondAttribute="bottom" id="2dX-1F-rVj"/>
+                            <constraint firstItem="odU-jg-pRu" firstAttribute="leading" secondItem="6Yq-83-FVg" secondAttribute="leading" id="JZ0-Bk-rsH"/>
+                            <constraint firstItem="odU-jg-pRu" firstAttribute="top" secondItem="6Yq-83-FVg" secondAttribute="top" id="K9A-b4-UEr"/>
+                            <constraint firstItem="qpF-p2-iup" firstAttribute="bottom" secondItem="odU-jg-pRu" secondAttribute="bottom" id="P2i-2C-SeG"/>
+                            <constraint firstItem="Egj-ly-GYj" firstAttribute="leading" secondItem="qpF-p2-iup" secondAttribute="leading" id="bnM-ry-94d"/>
+                            <constraint firstItem="qpF-p2-iup" firstAttribute="trailing" secondItem="Egj-ly-GYj" secondAttribute="trailing" id="dx8-U7-jJO"/>
+                            <constraint firstItem="qpF-p2-iup" firstAttribute="trailing" secondItem="odU-jg-pRu" secondAttribute="trailing" id="qce-8L-Ehq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Spolupráce se zahraničím" id="rVO-R2-SAq"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="FEF-yp-odS" id="IWh-Aw-ZeK"/>
+                        <outlet property="buttonsView" destination="Egj-ly-GYj" id="oAf-lS-KRY"/>
+                        <outlet property="continueButton" destination="s1s-R8-Sb6" id="D0j-7O-Cxo"/>
+                        <outlet property="enableLabel" destination="71G-Mu-q4j" id="Eyy-v6-zQD"/>
+                        <outlet property="enableSwitch" destination="nSW-3Q-lKq" id="rYX-fa-56h"/>
+                        <outlet property="headlineLabel" destination="d96-rK-yqt" id="7TM-KG-7jw"/>
+                        <outlet property="scrollView" destination="odU-jg-pRu" id="JNb-Wa-1Bu"/>
+                        <segue destination="z8b-H4-SCk" kind="show" identifier="privacy" id="enI-MN-qMH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="blr-Yp-ljj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="624.63768115942037" y="-31.473214285714285"/>
         </scene>
         <!--Help-->
         <scene sceneID="jdt-Be-qTH">
@@ -350,10 +481,10 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c5p-5b-Owj">
                                                         <rect key="frame" x="0.0" y="202.5" width="374" height="170"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <string key="text">eRouška neobsahuje žádné vaše osobní údaje a sbírá pouze anonymní data o ostatních eRouškách, se kterými se setkáte.
 Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní údaje bez vašeho vědomí. Odešlete je vy sami a pouze hygienikům.</string>
-                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         <connections>
@@ -363,7 +494,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="iAi-Ff-Uqb" firstAttribute="leading" secondItem="bHp-7K-IeL" secondAttribute="leadingMargin" id="KX1-qG-IxE"/>
                                             <constraint firstAttribute="bottom" secondItem="iAi-Ff-Uqb" secondAttribute="bottom" constant="16" id="Kuv-N7-YFd"/>
@@ -386,7 +517,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QsB-Jg-AEo" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="752" width="414" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfB-pk-ntt" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfB-pk-ntt" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="20" y="50" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="NT5-kH-0v7"/>
@@ -409,7 +540,8 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="sH5-Xh-Fbo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KHD-ni-aTt" firstAttribute="top" secondItem="bmk-YI-iFE" secondAttribute="top" id="3Q4-Y2-VEW"/>
                             <constraint firstItem="KHD-ni-aTt" firstAttribute="leading" secondItem="sH5-Xh-Fbo" secondAttribute="leading" id="7md-Ff-h69"/>
@@ -419,7 +551,6 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                             <constraint firstItem="sH5-Xh-Fbo" firstAttribute="trailing" secondItem="QsB-Jg-AEo" secondAttribute="trailing" id="rbT-n6-Ddw"/>
                             <constraint firstItem="sH5-Xh-Fbo" firstAttribute="trailing" secondItem="KHD-ni-aTt" secondAttribute="trailing" id="wbw-rU-Ruv"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="sH5-Xh-Fbo"/>
                     </view>
                     <navigationItem key="navigationItem" title="Soukromí" largeTitleDisplayMode="always" id="u4V-pa-I8Q">
                         <barButtonItem key="backBarButtonItem" title="Zpět" id="TwS-wB-MJJ"/>
@@ -439,17 +570,24 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jaJ-A0-QIZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="-31"/>
+            <point key="canvasLocation" x="1496" y="-31"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="q0K-IR-cSV"/>
-        <segue reference="dJ1-VP-pvu"/>
+        <segue reference="L1U-uL-jOo"/>
+        <segue reference="lY1-VA-PVS"/>
         <segue reference="pLC-gk-Fi0"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="EfgsPermission" width="130" height="130"/>
         <image name="ExposureNotificationPermission" width="130" height="130"/>
         <image name="MinLogo" width="328" height="29.5"/>
         <image name="gdpr" width="130" height="130"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
