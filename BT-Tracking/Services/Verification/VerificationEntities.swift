@@ -39,7 +39,7 @@ struct VerificationToken: Decodable {
         case codeExpired = "code_expired"
         /// The server has no record of that code.
         case codeNotFound = "code_not_found"
-        /// The client sent an accept of an unrecgonized test type.
+        /// The client sent an accept of an unrecognized test type.
         case invalidTestType = "invalid_test_type"
         /// The realm requires either a test or symptom date, but none was provided.
         case missingDate = "missing_date"
