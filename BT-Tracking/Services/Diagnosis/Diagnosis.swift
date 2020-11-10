@@ -63,12 +63,14 @@ class Diagnosis: NSObject {
 
         if diagnosisInfo {
             UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
-                controller.addAttachmentData(
-                    self.diagnosisText(errorMessage: errorMessage, notitificationSettings: settings).data(using: .utf8) ?? Data(),
-                    mimeType: "text/plain",
-                    fileName: "diagnosticke_informace.txt"
-                )
-                self.showFromController?.present(controller, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    controller.addAttachmentData(
+                        self.diagnosisText(errorMessage: errorMessage, notitificationSettings: settings).data(using: .utf8) ?? Data(),
+                        mimeType: "text/plain",
+                        fileName: "diagnosticke_informace.txt"
+                    )
+                    self.showFromController?.present(controller, animated: true, completion: nil)
+                }
             })
         } else {
             showFromController?.present(controller, animated: true, completion: nil)
