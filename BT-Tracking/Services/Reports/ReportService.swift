@@ -171,7 +171,7 @@ final class ReportService: ReportServicing {
         }
 
         let destinationURL = self.downloadDestinationURL
-        let destination: DownloadRequest.Destination = { temporaryURL, response in
+        let destination: DownloadRequest.Destination = { _, response in
             let url = destinationURL.appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
             return (url, [.removePreviousFile, .createIntermediateDirectories])
         }
