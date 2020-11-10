@@ -116,10 +116,8 @@
 		8083D8EC244640A0007FA4E9 /* SendReports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* SendReports.storyboard */; };
 		8083D9142446F779007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
-		8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodesService.swift */; };
 		8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
 		8084DEF124AF84F3001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
-		8084DEF324AF85F3001FBB16 /* CountryCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodesService.swift */; };
 		8084DEF724AF86C1001FBB16 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* ReportService.swift */; };
 		8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* ReportService.swift */; };
 		8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8091E08124CB3CDF00E0E877 /* AlamofireImage */; };
@@ -331,7 +329,6 @@
 		8083D8F4244640A0007FA4E9 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8083D8F6244640CD007FA4E9 /* Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Prod.plist"; sourceTree = "<group>"; };
 		8083D9132446F779007FA4E9 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		8084DEED24AF8055001FBB16 /* CountryCodesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodesService.swift; sourceTree = "<group>"; };
 		8084DEEF24AF8425001FBB16 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		8084DEF624AF86C1001FBB16 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSearchVC.swift; sourceTree = "<group>"; };
@@ -664,7 +661,6 @@
 		8084DEEB24AF8030001FBB16 /* CountryCodes */ = {
 			isa = PBXGroup;
 			children = (
-				8084DEED24AF8055001FBB16 /* CountryCodesService.swift */,
 			);
 			path = CountryCodes;
 			sourceTree = "<group>";
@@ -1335,7 +1331,6 @@
 				807D48E8253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */,
 				80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */,
 				D6CD28EA24CF24DD005847AA /* PrivacyVC.swift in Sources */,
-				8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */,
 				80CCE5C424DD812900DC36EE /* VerificationService.swift in Sources */,
 				804B204425458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
 				D65E57E224D060DF000F2402 /* NewsPageVM.swift in Sources */,
@@ -1489,7 +1484,6 @@
 				D6231CC324F52CBC0023BDC8 /* CurrentDataVC.swift in Sources */,
 				D6231C9E24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */,
 				80026D9724FE492000BBDB36 /* BackgroundService.swift in Sources */,
-				8084DEF324AF85F3001FBB16 /* CountryCodesService.swift in Sources */,
 				80C71D3625248A0200999275 /* StoryboardScene.swift in Sources */,
 				D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
 				8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */,
