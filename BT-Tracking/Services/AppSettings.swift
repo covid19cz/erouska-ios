@@ -21,10 +21,13 @@ struct AppSettings {
         case lastUploadDate
 
         case lastExposureWarningId
+        case lastExposureWarningDate
         case lastExposureWarningClosed
+        case lastExposureWarningInfoDisplayed
 
         case v2_0NewsLaunched
 
+        case lastLegacyDataFetchDate
         case currentDataLastFetchDate
 
         case activated = "activated2"
@@ -107,6 +110,18 @@ struct AppSettings {
         }
     }
 
+    /// When app last showed notification about exposure
+    static var lastExposureWarningDate: Date? {
+        get {
+            let rawValue = double(forKey: .lastExposureWarningDate)
+            guard rawValue != 0 else { return nil }
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+        }
+        set {
+            set(withKey: .lastExposureWarningDate, value: newValue?.timeIntervalSince1970)
+        }
+    }
+
     /// If user closed last show exposure warning
     static var lastExposureWarningClosed: Bool {
         get {
@@ -117,6 +132,16 @@ struct AppSettings {
         }
     }
 
+    /// If user saw detail information about exposure
+    static var lastExposureWarningInfoDisplayed: Bool {
+        get {
+            bool(forKey: .lastExposureWarningInfoDisplayed)
+        }
+        set {
+            set(withKey: .lastExposureWarningInfoDisplayed, value: newValue)
+        }
+    }
+
     /// Check if it's migration to new version
     static var v2_0NewsLaunched: Bool {
         get {
@@ -124,6 +149,18 @@ struct AppSettings {
         }
         set {
             set(withKey: .v2_0NewsLaunched, value: newValue)
+        }
+    }
+
+    /// Migrated from pre sectioned list date
+    static var lastLegacyDataFetchDate: Date? {
+        get {
+            let rawValue = double(forKey: .lastLegacyDataFetchDate)
+            guard rawValue != 0 else { return nil }
+            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+        }
+        set {
+            set(withKey: .lastLegacyDataFetchDate, value: newValue?.timeIntervalSince1970)
         }
     }
 

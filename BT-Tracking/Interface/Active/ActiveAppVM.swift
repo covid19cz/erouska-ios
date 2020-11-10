@@ -8,8 +8,6 @@
 
 import UIKit
 import RxSwift
-import RealmSwift
-import RxRealm
 
 final class ActiveAppVM {
 
@@ -32,12 +30,10 @@ final class ActiveAppVM {
 
         var color: UIColor {
             switch self {
-            case .enabled:
-                return Asset.appEnabled.color
-            case .paused:
-                return Asset.appPaused.color
+            case .enabled, .paused:
+                return .label
             case .disabledBluetooth, .disabledExposures:
-                return Asset.appDisabled.color
+                return Asset.alertRed.color
             }
         }
 
@@ -67,19 +63,10 @@ final class ActiveAppVM {
             }
         }
 
-        var title: String? {
-            switch self {
-            case .enabled:
-                return L10n.activeTitleHighlightedEnabled
-            default:
-                return nil
-            }
-        }
-
         var text: String {
             switch self {
             case .enabled:
-                return L10n.activeFooter
+                return L10n.activeTitleEnabled
             case .paused:
                 return L10n.activeTitlePaused
             case .disabledBluetooth:
@@ -111,13 +98,6 @@ final class ActiveAppVM {
         RemoteValues.exposureBannerTitle
     }
 
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.dateStyle = .medium
-        return formatter
-    }()
-
     var state: State {
         let state = try? observableState.value()
         return state ?? .disabledExposures
@@ -129,22 +109,26 @@ final class ActiveAppVM {
     let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
     let reporter: ReportServicing = AppDelegate.dependency.reporter
     let backgroundService = AppDelegate.dependency.background
+    let riskyEncounterDateToShow: Observable<Date?>
+    let riskyEcountersInTimeInterval: Observable<Int>
 
     init() {
+        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
+        let realm = AppDelegate.dependency.realm
+        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
+        let riskyEcounters = Observable.collection(from: exposures)
+        let filteredRiskyEcounters = riskyEcounters.map { $0.filter { $0.date > showForDate } }
+        riskyEncounterDateToShow = filteredRiskyEcounters.map { $0.last?.date }
+        riskyEcountersInTimeInterval = filteredRiskyEcounters.map { $0.count }
+
         observableState = BehaviorSubject<State>(value: .paused)
 
-        let showForDays = RemoteValues.serverConfiguration.showExposureForDays
-        let realm = try? Realm()
-        guard let exposures = realm?.objects(ExposureRealm.self).sorted(byKeyPath: "date") else {
+        if let observable = try? ExposureList.lastObservable() {
+            exposureToShow = observable
+        } else {
             exposureToShow = .empty()
-            return
         }
-
-        let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
-        exposureToShow = Observable.collection(from: exposures).map {
-            $0.last(where: { $0.date > showForDate })?.toExposure()
-        }
-
         exposureService.readyToUse
             .subscribe { [weak self] _ in
                 self?.updateStateIfNeeded()

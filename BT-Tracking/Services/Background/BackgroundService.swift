@@ -8,10 +8,10 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 import BackgroundTasks
 import FirebaseFunctions
 import FirebaseAnalytics
+import FirebaseCrashlytics
 
 final class BackgroundService {
 
@@ -166,6 +166,7 @@ private extension BackgroundService {
             task?.setTaskCompleted(success: false)
             isRunning = false
             Log.log("BGTask: failed to detect exposures \(error)")
+            Crashlytics.crashlytics().record(error: error)
         }
 
         // Perform the exposure detection
@@ -180,6 +181,7 @@ private extension BackgroundService {
                     self.isRunning = false
 
                     task?.setTaskCompleted(success: true)
+                    Analytics.logEvent("key_export_download_finished", parameters: nil)
                     return
                 }
 
@@ -188,15 +190,13 @@ private extension BackgroundService {
                     URLs: keys.URLs
                 ) { result in
                     switch result {
-                    case .success(var exposures):
-                        exposures.sort { $0.date < $1.date }
+                    case .success(let exposures):
                         AppSettings.lastProcessedDate = Date()
 
                         self.handleExposures(exposures, lastProcessedFileName: keys.lastProcessedFileName)
                         self.isRunning = false
 
                         task?.setTaskCompleted(success: true)
-
                         Analytics.logEvent("key_export_download_finished", parameters: nil)
                     case .failure(let error):
                         reportFailure(error)
@@ -222,23 +222,17 @@ private extension BackgroundService {
             return
         }
 
-        let realm = try? Realm()
-        try? realm?.write {
-            exposures.forEach { realm?.add(ExposureRealm($0)) }
-        }
+        try? ExposureList.add(exposures, detectionDate: Date())
 
         let data = ["idToken": KeychainService.token]
         AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
 
         #if !PROD || DEBUG
-        let dateFormat = DateFormatter()
-        dateFormat.timeStyle = .short
-        dateFormat.dateStyle = .short
 
         var result = ""
         for exposure in exposures {
             let signals = exposure.attenuationDurations.map { "\($0)" }
-            result += "EXP: \(dateFormat.string(from: exposure.date))" +
+            result += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
                 ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
                 + "attenuation value: \(exposure.attenuationValue)\n"
                 + "signal attenuations: \(signals.joined(separator: ", "))\n"

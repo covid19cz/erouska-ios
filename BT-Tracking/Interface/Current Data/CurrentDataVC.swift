@@ -13,7 +13,6 @@ import Reachability
 final class CurrentDataVC: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var footerLabel: UILabel!
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buttonsView: UIView!
@@ -24,13 +23,14 @@ final class CurrentDataVC: UIViewController {
 
     private let viewModel = CurrentDataVM()
     private let disposeBag = DisposeBag()
+    private var observer: NSObjectProtocol?
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         title = L10n.dataListTitle
-        navigationController?.tabBarItem.title = L10n.dataListTitle
-        navigationController?.tabBarItem.image = Asset.myData.image
+        tabBarItem.title = L10n.dataListTitle
+        tabBarItem.image = Asset.myData.image
     }
 
     override func viewDidLoad() {
@@ -47,7 +47,6 @@ final class CurrentDataVC: UIViewController {
             self?.hideProgress(fromView: true)
             self?.showError(show: false)
             self?.tableView.reloadData()
-            self?.footerLabel.text = self?.viewModel.footer
         }).disposed(by: disposeBag)
 
         viewModel.observableErrors.subscribe(onNext: { [weak self] error in
@@ -59,20 +58,26 @@ final class CurrentDataVC: UIViewController {
             if let connection = try? Reachability().connection, connection == .unavailable {
                 self?.showError(show: false)
                 self?.tableView.reloadData()
-                self?.footerLabel.text = self?.viewModel.footer
                 return
             }
 
             self?.showError(show: true)
         }).disposed(by: disposeBag)
-
-        footerLabel.text = viewModel.footer
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         viewModel.fetchCurrentDataIfNeeded()
+
+        observer = NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification,
+            object: nil,
+            queue: nil) { [weak self] _ in
+            DispatchQueue.main.async { [weak self] in
+                self?.viewModel.fetchCurrentDataIfNeeded()
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -81,12 +86,11 @@ final class CurrentDataVC: UIViewController {
         viewModel.sections.isEmpty ? showProgress(fromView: true) : hideProgress(fromView: true)
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
 
-        if let footer = tableView.tableFooterView {
-            footer.frame.size.height = footer.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0)).height
-        }
+        guard let observer = observer else { return }
+        NotificationCenter.default.removeObserver(observer)
     }
 
     // MARK: - Actions
@@ -110,20 +114,19 @@ extension CurrentDataVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = viewModel.sections[indexPath.section]
         let item = section.items[indexPath.row]
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.subtitle == nil ? "BasicCell" : "SubtitleCell") ?? UITableViewCell()
-
-        cell.imageView?.image = item.iconAsset.image
-        cell.textLabel?.text = item.title
-        cell.detailTextLabel?.text = item.subtitle
-        cell.selectionStyle = section.selectableItems ? .default : .none
-        cell.accessoryType = section.selectableItems ? .disclosureIndicator : .none
-
-        return cell
+        let textCell = tableView.dequeueReusableCell(withIdentifier: item.subtitle == nil ? "BasicCell" : "SubtitleCell") as? CurrentDataCell
+        textCell?.update(icon: item.iconAsset.image, title: item.title, subtitle: item.subtitle)
+        textCell?.selectionStyle = section.selectableItems ? .default : .none
+        textCell?.accessoryType = section.selectableItems ? .disclosureIndicator : .none
+        return textCell ?? UITableViewCell()
     }
 }
 
 extension CurrentDataVC: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerTitle = viewModel.sections[section].header {
@@ -154,17 +157,11 @@ private extension CurrentDataVC {
 
     func showError(show: Bool, animated: Bool = true) {
         UIView.animate(withDuration: animated ? 0.25 : 0, delay: 0, options: .curveEaseInOut) {
-            if show {
-                self.tableView.alpha = 0
+            self.tableView.alpha = show ? 0 : 1
 
-                self.scrollView.alpha = 1
-                self.buttonsView.alpha = 1
-            } else {
-                self.tableView.alpha = 1
-
-                self.scrollView.alpha = 0
-                self.buttonsView.alpha = 0
-            }
+            let alpha: CGFloat = show ? 1 : 0
+            self.scrollView.alpha = alpha
+            self.buttonsView.alpha = alpha
         }
     }
 

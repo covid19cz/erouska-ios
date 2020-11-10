@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import MessageUI
 
 extension UIViewController {
 
@@ -43,6 +44,10 @@ extension UIViewController {
     func openURL(URL: URL) {
         if ["http", "https"].contains(URL.scheme) {
             present(SFSafariViewController(url: URL), animated: true)
+        } else if URL.scheme == "mailto", MFMailComposeViewController.canSendMail() {
+            let controller = MFMailComposeViewController()
+            controller.setToRecipients([URL.absoluteString.replacingOccurrences(of: "mailto:", with: "")])
+            present(controller, animated: true, completion: nil)
         } else {
             UIApplication.shared.open(URL, options: [:], completionHandler: nil)
         }

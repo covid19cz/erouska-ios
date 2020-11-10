@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 
 // swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
+// swiftlint:disable file_length implicit_return
 
 // MARK: - Storyboard Scenes
 
@@ -52,7 +52,11 @@ internal enum StoryboardScene {
 
     internal static let help = SceneType<HelpVC>(storyboard: Help.self, identifier: "Help")
 
+    internal static let helpArticle = SceneType<HelpArticleVC>(storyboard: Help.self, identifier: "HelpArticle")
+
     internal static let helpNavigation = SceneType<UIKit.UINavigationController>(storyboard: Help.self, identifier: "HelpNavigation")
+
+    internal static let helpSearchVC = SceneType<HelpSearchVC>(storyboard: Help.self, identifier: "HelpSearchVC")
   }
   internal enum LaunchScreen: StoryboardType {
     internal static let storyboardName = "LaunchScreen"
@@ -75,6 +79,12 @@ internal enum StoryboardScene {
     internal static let storyboardName = "RiskyEncounters"
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self)
+
+    internal static let newRiskEncounterNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "NewRiskEncounterNav")
+
+    internal static let riskyEncountersNegativeNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersNegativeNav")
+
+    internal static let riskyEncountersPositiveNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersPositiveNav")
   }
   internal enum SendReports: StoryboardType {
     internal static let storyboardName = "SendReports"
@@ -82,6 +92,8 @@ internal enum StoryboardScene {
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: SendReports.self)
 
     internal static let sendReportNav = SceneType<UIKit.UINavigationController>(storyboard: SendReports.self, identifier: "SendReportNav")
+
+    internal static let sendResultVC = SceneType<SendResultVC>(storyboard: SendReports.self, identifier: "SendResultVC")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
@@ -110,6 +122,11 @@ internal struct SceneType<T: UIViewController> {
     }
     return controller
   }
+
+  @available(iOS 13.0, tvOS 13.0, *)
+  internal func instantiate(creator block: @escaping (NSCoder) -> T?) -> T {
+    return storyboard.storyboard.instantiateViewController(identifier: identifier, creator: block)
+  }
 }
 
 internal struct InitialSceneType<T: UIViewController> {
@@ -121,12 +138,24 @@ internal struct InitialSceneType<T: UIViewController> {
     }
     return controller
   }
+
+  @available(iOS 13.0, tvOS 13.0, *)
+  internal func instantiate(creator block: @escaping (NSCoder) -> T?) -> T {
+    guard let controller = storyboard.storyboard.instantiateInitialViewController(creator: block) else {
+      fatalError("Storyboard \(storyboard.storyboardName) does not have an initial scene.")
+    }
+    return controller
+  }
 }
 
 // swiftlint:disable convenience_type
 private final class BundleToken {
   static let bundle: Bundle = {
-    Bundle(for: BundleToken.self)
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
   }()
 }
 // swiftlint:enable convenience_type
