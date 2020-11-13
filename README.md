@@ -32,7 +32,7 @@ We use `Bundler` and `Mint` to manage command line tools.
 
 ### Project generation
 
-`xcodgen` is used to generate its project files and etitlements. To generate a project workspace, run `./setup.sh` in the project root directory. It will generate project files and install all needed dependencies. Do not run `pod install` manually anymore. Use the `setup.sh` script or run `bundle pod install` instead.
+`xcodgen` is used to generate project files and etitlements. To generate a project workspace, run `./setup.sh` in the project root directory. It will generate project files and install all needed dependencies. Do not run `pod install` manually anymore. Use the `setup.sh` script or run `bundle pod install` instead.
 
 ### Code signing
 
