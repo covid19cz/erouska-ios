@@ -107,7 +107,6 @@ final class ActiveAppVM {
     private let disposeBag = DisposeBag()
 
     let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
-    let reporter: ReportServicing = AppDelegate.dependency.reporter
     let backgroundService = AppDelegate.dependency.background
     let riskyEncounterDateToShow: Observable<Date?>
     let riskyEncountersInTimeInterval: Observable<Int>

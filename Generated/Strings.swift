@@ -238,6 +238,14 @@ internal enum L10n {
   internal static let diagnosisSendWithoutattachment = L10n.tr("Localizable", "diagnosis_send_withoutattachment")
   /// Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?
   internal static let diagnosisTitle = L10n.tr("Localizable", "diagnosis_title")
+  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.
+  internal static let efgsPermissionBody = L10n.tr("Localizable", "efgs_permission_body")
+  /// Pomozte v boji s COVID-19 i při cestách do zahraničí
+  internal static let efgsPermissionHeadline = L10n.tr("Localizable", "efgs_permission_headline")
+  /// Povolit spolupráci se zahraničím
+  internal static let efgsPermissionSwitch = L10n.tr("Localizable", "efgs_permission_switch")
+  /// Spolupráce se zahraničím
+  internal static let efgsPermissionTitle = L10n.tr("Localizable", "efgs_permission_title")
   /// Chyba
   internal static let error = L10n.tr("Localizable", "error")
   /// Aktivaci aplikace nelze dokončit

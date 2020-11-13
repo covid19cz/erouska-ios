@@ -48,6 +48,7 @@ internal enum Asset {
   internal static let scanActive = ImageAsset(name: "ScanActive")
   internal static let sendData = ImageAsset(name: "SendData")
   internal static let travel = ImageAsset(name: "Travel")
+  internal static let efgsPermission = ImageAsset(name: "EfgsPermission")
   internal static let iconsColor = ColorAsset(name: "IconsColor")
   internal static let launchScreenBackground = ColorAsset(name: "LaunchScreenBackground")
   internal static let launchScreenHands = ImageAsset(name: "LaunchScreenHands")

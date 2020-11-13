@@ -17,6 +17,15 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<TabBarController>(storyboard: Active.self)
   }
+  internal enum Contacts: StoryboardType {
+    internal static let storyboardName = "Contacts"
+
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Contacts.self)
+
+    internal static let contacts = SceneType<ContactsVC>(storyboard: Contacts.self, identifier: "Contacts")
+
+    internal static let contactsNav = SceneType<UIKit.UINavigationController>(storyboard: Contacts.self, identifier: "ContactsNav")
+  }
   internal enum CurrentData: StoryboardType {
     internal static let storyboardName = "CurrentData"
 
@@ -26,6 +35,8 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Debug"
 
     internal static let initialScene = InitialSceneType<TabBarController>(storyboard: Debug.self)
+
+    internal static let debugDownloadReportsNav = SceneType<UIKit.UINavigationController>(storyboard: Debug.self, identifier: "DebugDownloadReportsNav")
 
     internal static let tabBar = SceneType<TabBarController>(storyboard: Debug.self, identifier: "TabBar")
   }

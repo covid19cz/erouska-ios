@@ -87,11 +87,12 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
     case chatBotLink
 
-    /// Deprecated
-    case verificationServerApiKey
-
     case appleServerConfiguration
     case appleExposureConfiguration
+
+    case efgsCountries
+    case keyExportNonTravellerUrls
+    case keyExportEuTravellerUrls
 
     var keyValue: String {
         "v2_\(rawValue)"
@@ -153,9 +154,6 @@ enum RemoteConfigValueKey: String, CaseIterable {
         case .chatBotLink:
             return "https://erouska.cz/#chat-open"
 
-        case .verificationServerApiKey:
-            return ""
-
         case .appleServerConfiguration:
             #if PROD
             return ServerConfiguration.production
@@ -164,6 +162,12 @@ enum RemoteConfigValueKey: String, CaseIterable {
             #endif
         case .appleExposureConfiguration:
             return "{\"factorHigh\":0.17,\"factorStandard\":1,\"factorLow\":1.5,\"lowerThreshold\":55,\"higherThreshold\":63,\"triggerThreshold\":15}"
+
+        case .efgsCountries:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsCountriesDefault")
+
+        case .keyExportNonTravellerUrls, .keyExportEuTravellerUrls:
+            return "{}"
         }
     }
 
@@ -223,44 +227,34 @@ struct RemoteValues {
     }
 
     static var symptomsContent: RiskyEncountersListContent? {
-        parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .symptomsContentJson), prevention: false)
+        parseRiskyEncountersListContent(from: .symptomsContentJson, prevention: false)
     }
 
     static var preventionContent: RiskyEncountersListContent? {
-        parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .preventionContentJson), prevention: true)
+        parseRiskyEncountersListContent(from: .preventionContentJson, prevention: true)
     }
 
     static var exposureHelpContent: RiskyEncountersListContent? {
-        parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .exposureHelpContentJson), prevention: false)
+        parseRiskyEncountersListContent(from: .exposureHelpContentJson, prevention: false)
     }
 
-    private static func parseRiskyEncountersListContent(from rawJson: String, prevention: Bool) -> RiskyEncountersListContent? {
-        guard let json = rawJson.data(using: .utf8) else { return nil }
-        do {
-            let remoteContent = try JSONDecoder().decode(RiskyEncountersListRemoteContent.self, from: json)
-            return RiskyEncountersListContent(
-                headline: prevention ? nil : remoteContent.title,
-                items: remoteContent.items.compactMap {
-                    guard let imageUrl = URL(string: $0.iconUrl) else { return nil }
-                    return AsyncImageTitleViewModel(imageUrl: imageUrl, title: $0.label)
-                },
-                footer: prevention ? remoteContent.title : nil
-            )
-        } catch {
-            return nil
-        }
+    private static func parseRiskyEncountersListContent(from key: RemoteConfigValueKey, prevention: Bool) -> RiskyEncountersListContent? {
+        guard let remoteContent = try? decodeValue(RiskyEncountersListRemoteContent.self, at: key) else { return nil }
+        return RiskyEncountersListContent(
+            headline: prevention ? nil : remoteContent.title,
+            items: remoteContent.items.compactMap {
+                guard let imageUrl = URL(string: $0.iconUrl) else { return nil }
+                return AsyncImageTitleViewModel(imageUrl: imageUrl, title: $0.label)
+            },
+            footer: prevention ? remoteContent.title : nil
+        )
     }
 
     static var contactsContent: [Contact] {
-        guard let json = AppDelegate.shared.remoteConfigString(forKey: .contactsContentJson).data(using: .utf8) else { return [] }
-        do {
-            return try JSONDecoder().decode([ContactContent].self, from: json).compactMap {
-                guard let link = URL(string: $0.link) else { return nil }
-                return Contact(title: $0.title, text: $0.text, linkTitle: $0.linkTitle, link: link)
-            }
-        } catch {
-            return []
-        }
+        (try? decodeValue([ContactContent].self, at: .contactsContentJson))?.compactMap {
+            guard let link = URL(string: $0.link) else { return nil }
+            return Contact(title: $0.title, text: $0.text, linkTitle: $0.linkTitle, link: link)
+        } ?? []
     }
 
     static var currentMeasuresUrl: String {
@@ -299,32 +293,34 @@ struct RemoteValues {
         AppDelegate.shared.remoteConfigString(forKey: .chatBotLink)
     }
 
-    static var verificationServerApiKey: String {
-        AppDelegate.shared.remoteConfigString(forKey: .verificationServerApiKey)
-    }
-
     static var serverConfiguration: ServerConfiguration {
         // swiftlint:disable force_cast
-        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleServerConfiguration).data(using: .utf8) else {
-            return RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
-        }
-        do {
-            return try JSONDecoder().decode(ServerConfiguration.self, from: json)
-        } catch {
-            return RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
-        }
+        (try? decodeValue(ServerConfiguration.self, at: .appleServerConfiguration))
+            ?? RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
         // swiftlint:enable force_cast
     }
 
     static var exposureConfiguration: ExposureConfiguration {
-        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfiguration).data(using: .utf8) else {
-            return ExposureConfiguration()
+        (try? decodeValue(ExposureConfiguration.self, at: .appleExposureConfiguration)) ?? ExposureConfiguration()
+    }
+
+    static var keyExportNonTravellerUrls: [ReportIndex] {
+        (try? decodeValue([ReportIndex].self, at: .keyExportNonTravellerUrls)) ?? []
+    }
+
+    static var keyExportEuTravellerUrls: [ReportIndex] {
+        (try? decodeValue([ReportIndex].self, at: .keyExportEuTravellerUrls)) ?? []
+    }
+
+    private static func decodeValue<T>(_ type: T.Type, at key: RemoteConfigValueKey) throws -> T? where T: Decodable {
+        guard let jsonData = AppDelegate.shared.remoteConfigString(forKey: key).data(using: .utf8) else {
+            return key.defaultValue as? T
         }
-        do {
-            return try JSONDecoder().decode(ExposureConfiguration.self, from: json)
-        } catch {
-            return ExposureConfiguration()
-        }
+        return try JSONDecoder().decode(T.self, from: jsonData)
+    }
+
+    static var efgsCountries: String {
+        AppDelegate.shared.remoteConfigString(forKey: .efgsCountries)
     }
 
 }

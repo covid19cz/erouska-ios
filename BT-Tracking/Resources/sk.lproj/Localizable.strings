@@ -17,6 +17,14 @@
 "exposure_notification_headline" = "eRouška potrebuje pre správne fungovanie zapnuté oznámenia o kontakte s COVID-19";
 "exposure_notification_body" = "Tieto oznámenia vás upozornia, ak ste boli v blízkosti užívateľa eRoušky s pozitívnym testom na nákazu COVID-19.\n\nPodstatou správneho fungovania je zdieľanie a zhromažďovanie náhodných čísel, ktoré sa automaticky menia. Užívateľou eRoušky nie je možné podľa týchto čísel identifikovať.";
 "exposure_notification_continue" = "Zapnúť";
+"efgs_permission_title" = "Spolupráce se zahraničím";
+"efgs_permission_headline" = "Pomozte v boji s COVID-19 i při cestách do zahraničí";
+"efgs_permission_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.";
+"efgs_permission_switch" = "Povolit spolupráci se zahraničím";
+"efgs_permission_title" = "TODO: Spolupráce se zahraničím";
+"efgs_permission_headline" = "TODO: Pomozte v boji s COVID-19 i při cestách do zahraničí";
+"efgs_permission_body" = "TODO: COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.";
+"efgs_permission_switch" = "TODO: Povolit spolupráci se zahraničím";
 "privacy_title" = "Súkromie";
 "privacy_headline" = "Myslíme na vaše súkromie, odosielanie údajov máte vždy pod kontrolou";
 "privacy_body" = "eRouška neobsahuje žiadne vaše osobné údaje a zbiera iba anonymné dáta o ostatných eRouškach, s ktorými se stretnete.\n\nViac informácií o spracovaní osobných údajov a ďalších podmienkach používania aplikácie nájdete v podmienkach používania.";
