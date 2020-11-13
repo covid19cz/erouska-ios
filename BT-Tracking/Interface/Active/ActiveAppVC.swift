@@ -24,6 +24,7 @@ final class ActiveAppVC: UIViewController {
     private let stateSection = ActiveAppSectionView()
     private let riskyEncountersSection = ActiveAppSectionView()
     private let sendReportsSection = ActiveAppSectionView()
+    private let efgsSection = ActiveAppSectionView()
 
     // MARK: - Outlets
 
@@ -109,7 +110,13 @@ final class ActiveAppVC: UIViewController {
         sendReportsSection.titleLabel.text = L10n.activeSendReportsHead
         sendReportsSection.actionButton.setTitle(L10n.activeSendReportsButton)
         sendReportsSection.action = sendReportsAction
-        [stateSection, riskyEncountersSection, sendReportsSection].forEach(mainStackView.addArrangedSubview)
+
+        efgsSection.iconImageView.image = Asset.travel.image
+        efgsSection.titleLabel.text = L10n.activeEfgsTitle
+        efgsSection.bodyLabel.text = viewModel.efgsEnabled ? L10n.activeEfgsEnabled : L10n.activeEfgsDisabled
+        efgsSection.isSelectable = true
+
+        [stateSection, riskyEncountersSection, sendReportsSection, efgsSection].forEach(mainStackView.addArrangedSubview)
 
         #if !PROD
         navigationItem.rightBarButtonItems?.insert(UIBarButtonItem(

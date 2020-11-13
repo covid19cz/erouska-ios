@@ -38,6 +38,12 @@ internal enum L10n {
   internal static func activeDataUpdate(_ p1: Any) -> String {
     return L10n.tr("Localizable", "active_data_update", String(describing: p1))
   }
+  /// Vypnuto
+  internal static let activeEfgsDisabled = L10n.tr("Localizable", "active_efgs_disabled")
+  /// Zapnuto
+  internal static let activeEfgsEnabled = L10n.tr("Localizable", "active_efgs_enabled")
+  /// Spolupráce se zahraničím
+  internal static let activeEfgsTitle = L10n.tr("Localizable", "active_efgs_title")
   /// Více informací
   internal static let activeExposureMoreInfo = L10n.tr("Localizable", "active_exposure_more_info")
   /// Upozorníme vás v případě možného podezření na setkání s COVID-19 a zobrazíme vám všechny potřebné informace.
