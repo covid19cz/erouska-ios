@@ -24,13 +24,22 @@ We are open-source from day one and we will be happy to work with people in othe
 
 Exposure notifications work only with approved Ministry account.
 
-You can build using your own account when you delete `com.apple.developer.exposure-notification` entitlement from `BT-Tracking-Debug.entitlements` file and change code signing to your account.
+You can build using your own account when you delete `com.apple.developer.exposure-notification` entitlement from `project.yml` file under `targets` -> `eRouska Dev` -> `entitlements` -> `properties` and change code signing to your account.
 
-### Dependencies
+### Command line dependencies
 
-Most dependencies are installed using Swift package manager and will download using Xcode. Only Firebase dependencies do not yet support SPM and must be installed using CocoaPods (`pod install`).
+We use `Bundler` and `Mint` to manage command line tools. 
+
+### Project generation
+
+`xcodgen` is used to generate its project files and etitlements. To generate a project workspace, run `./setup.sh` in the project root directory. It will generate project files and install all needed dependencies. Do not run `pod install` manually anymore. Use the `setup.sh` script or run `bundle pod install` instead.
+
+### Code signing
+
+To update your code signing settings, you would need to copy template `.xcconfig` files from `Configs/Templates/` directory to `Configs/` directory and fill them with proper values. `xcodegen` is looking for these files in `Configs` directory and use them in project generation. All `.xcconfig` files in `Configs` directory are ignored by git, so you don't have to worry about accidentally pushing your code signing settings or pulling somebody elses.
 
 ## Contributing
+
 We are happy to accept pull requests! See [Git Workflow](#user-content-git-workflow).
 
 If you want to become a more permanent part of the team, join [our Slack](https://covid19cz.slack.com), channel _#erouska_.
