@@ -220,7 +220,7 @@ internal enum L10n {
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Nepodařilo se nám odeslat data
   internal static let dataSendTitleError = L10n.tr("Localizable", "data_send_title_error")
-  /// Data jste úspěsně odeslali
+  /// Upozornění ostatním eRouškám jste odeslali
   internal static let dataSendTitleLabel = L10n.tr("Localizable", "data_send_title_label")
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19
   internal static let dataSendTitleNokeys = L10n.tr("Localizable", "data_send_title_nokeys")
@@ -236,8 +236,10 @@ internal enum L10n {
   internal static let diagnosisSendAttachment = L10n.tr("Localizable", "diagnosis_send_attachment")
   /// Nechci přidat přílohu
   internal static let diagnosisSendWithoutattachment = L10n.tr("Localizable", "diagnosis_send_withoutattachment")
+  /// Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.
+  internal static let diagnosisTitleBase = L10n.tr("Localizable", "diagnosis_title_base")
   /// Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?
-  internal static let diagnosisTitle = L10n.tr("Localizable", "diagnosis_title")
+  internal static let diagnosisTitleError = L10n.tr("Localizable", "diagnosis_title_error")
   /// Chyba
   internal static let error = L10n.tr("Localizable", "error")
   /// Aktivaci aplikace nelze dokončit

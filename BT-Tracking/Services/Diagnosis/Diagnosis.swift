@@ -20,16 +20,16 @@ class Diagnosis: NSObject {
 
     private weak var showFromController: UIViewController?
 
-    init(showFromController: UIViewController, errorMessage: String? = nil) {
+    init(showFromController: UIViewController, errorMessage: String? = nil, base: Bool) {
         self.showFromController = showFromController
         super.init()
 
-        presentQuestion(errorMessage: errorMessage)
+        presentQuestion(errorMessage: errorMessage, fromError: base)
     }
 
-    private func presentQuestion(errorMessage: String?) {
+    private func presentQuestion(errorMessage: String?, fromError: Bool) {
         let alert = UIAlertController(
-            title: L10n.diagnosisTitle,
+            title: fromError ? L10n.diagnosisTitleBase : L10n.diagnosisTitleError,
             message: "",
             preferredStyle: .alert
         )
