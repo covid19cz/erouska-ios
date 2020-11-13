@@ -69,7 +69,7 @@
 "data_list_previous_header" = "Riziková setkání zjištěná";
 "data_send_title" = "Odesláno";
 "data_send_error" = "Chyba";
-"data_send_title_label" = "Data jste úspěsně odeslali";
+"data_send_title_label" = "Upozornění ostatním eRouškám jste odeslali";
 "data_send_title_nokeys" = "Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19";
 "data_send_title_error" = "Nepodařilo se nám odeslat data";
 "data_send_headline" = "Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19.";
@@ -164,7 +164,8 @@
 "current_data_app_key_publishers" = "%@ pozitivně testovaných anonymně varovalo ostatní";
 "current_data_app_notifications" = "%@ upozornění na riziková setkání";
 "current_data_app_from" = "%@ za %@";
-"diagnosis_title" = "Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?";
+"diagnosis_title_base" = "Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.";
+"diagnosis_title_error" = "Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?";
 "diagnosis_send_attachment" = "Chci přidat přílohu";
 "diagnosis_send_withoutattachment" = "Nechci přidat přílohu";
 "diagnosis_cancel" = "Zrušit";

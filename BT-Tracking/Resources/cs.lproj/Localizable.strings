@@ -64,6 +64,8 @@
 "data_list_send_error_expired_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
 "data_list_send_error_disabled_title" = "Data nyní nemůžete odeslat";
 "data_list_send_error_disabled_message" = "V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.";
+"data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";
+"data_list_send_error_failed_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
 "data_list_previous_header" = "Riziková setkání zjištěná";
 "data_send_title" = "Odesláno";
 "data_send_error" = "Chyba";
@@ -162,7 +164,8 @@
 "current_data_app_key_publishers" = "%@ pozitivně testovaných anonymně varovalo ostatní";
 "current_data_app_notifications" = "%@ upozornění na riziková setkání";
 "current_data_app_from" = "%@ za %@";
-"diagnosis_title" = "Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?";
+"diagnosis_title_base" = "Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.";
+"diagnosis_title_error" = "Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?";
 "diagnosis_send_attachment" = "Chci přidat přílohu";
 "diagnosis_send_withoutattachment" = "Nechci přidat přílohu";
 "diagnosis_cancel" = "Zrušit";
