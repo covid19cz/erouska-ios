@@ -1,0 +1,146 @@
+name: eRouska
+settings:
+  IPHONEOS_DEPLOYMENT_TARGET: "13.5"
+  MARKETING_VERSION: "2.2.1"
+  CURRENT_PROJECT_VERSION: "1"
+
+targets:
+  eRouska Dev:
+    templates:
+      - App
+    sources:
+      - Generated
+      - path: BT-Tracking
+        excludes:
+          - "Supporting Files/Firebase Prod/*"
+    entitlements:
+      path: BT-Tracking/Supporting Files/Entitlements/eRouska-Dev.entitlements
+      properties:
+        aps-environment: development
+        com.apple.developer.associated-domains: [applinks:covid19cz.page.link]
+        com.apple.security.app-sandbox: true
+        com.apple.security.automation.apple-events: true
+        com.apple.security.device.bluetooth: true
+        com.apple.security.network.client: true
+        com.apple.security.network.server: true
+        com.apple.developer.exposure-notification: true
+        com.apple.developer.exposure-notification-test: true
+        com.apple.developer.exposure-notification-test-skip-file-verification: true
+    configFiles:
+      Debug: [Configs/Dev-signing.xcconfig, Pods/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.debug.xcconfig]
+      Release: [Configs/Dev-signing.xcconfig, Pods/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska.dev'
+        INFOPLIST_FILE: BT-Tracking/Supporting Files/Info.plist
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+
+  eRouska Prod:
+    templates:
+      - App
+    sources:
+      - Generated
+      - path: BT-Tracking
+        excludes:
+          - "Supporting Files/Firebase Dev/*"
+    entitlements:
+      path: BT-Tracking/Supporting Files/Entitlements/eRouska-Prod.entitlements
+      properties:
+        aps-environment: development
+        com.apple.developer.associated-domains: [applinks:covid19cz.page.link]
+        com.apple.security.app-sandbox: true
+        com.apple.security.automation.apple-events: true
+        com.apple.security.device.bluetooth: true
+        com.apple.security.network.client: true
+        com.apple.security.network.server: true
+        com.apple.developer.exposure-notification: true
+    configFiles:
+      Debug: [Configs/Prod-signing.xcconfig, Pods/Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.debug.xcconfig]
+      Release: [Configs/Prod-signing.xcconfig, Pods/Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska'
+        INFOPLIST_FILE: BT-Tracking/Supporting Files/Info-Prod.plist
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG PROD
+        Release:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: PROD
+
+targetTemplates:
+  App:
+    scheme:
+      configVariants:
+        # could stay empty to properly generate target scheme
+    type: application
+    platform: iOS
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1,2"
+        PRODUCT_MODULE_NAME: eRouska
+        PRODUCT_NAME: eRouska
+        CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: true
+        DEVELOPMENT_TEAM: PDX4N72JDU
+        CODE_SIGN_STYLE: Manual
+
+    postBuildScripts:
+      - name: "Run Firebase Cashlytics"
+        script: "${PODS_ROOT}/FirebaseCrashlytics/run"
+        inputFiles: [
+          "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+          "$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)"
+        ]
+    dependencies:
+      - package: Alamofire
+      - package: AlamofireImage
+      - package: swift-crypto
+        product: Crypto
+      - package: DeviceKit
+      - package: Reachability
+      - package: RxDataSources
+      - package: RxKeyboard
+      - package: RxRealm
+      - package: RxSwift
+      - package: SwiftProtobuf
+      - package: SwiftyMarkdown
+      - package: Zip
+
+packages:
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire
+    from: 5.2.2
+  AlamofireImage:
+    url: https://github.com/Alamofire/AlamofireImage
+    from: 4.1.0
+  swift-crypto:
+    url: https://github.com/apple/swift-crypto
+    from: 1.0.2
+  DeviceKit:
+    url: https://github.com/devicekit/DeviceKit
+    from: 4.1.0
+  Reachability:
+    url: https://github.com/ashleymills/Reachability.swift
+    from: 5.0.0
+  RxDataSources:
+    url: https://github.com/RxSwiftCommunity/RxDataSources
+    from: 4.0.1
+  RxKeyboard:
+    url: https://github.com/RxSwiftCommunity/RxKeyboard
+    from: 1.0.0
+  RxRealm:
+    url: https://github.com/RxSwiftCommunity/RxRealm
+    from: 3.1.0
+  RxSwift:
+    url: https://github.com/ReactiveX/RxSwift
+    from: 5.1.1
+  SwiftProtobuf:
+    url: https://github.com/apple/swift-protobuf
+    from: 1.9.0
+  SwiftyMarkdown:
+    url: https://github.com/augard/SwiftyMarkdown
+    from: 1.2.5
+  Zip:
+    url: https://github.com/marmelroy/Zip
+    from: 2.0.0
