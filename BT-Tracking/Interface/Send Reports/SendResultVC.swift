@@ -63,7 +63,7 @@ final class SendResultVC: UIViewController {
 
     @IBAction private func mailAction() {
         if Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self, base: true)
+            diagnosis = Diagnosis(showFromController: self, fromError: true)
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
             openURL(URL: URL)
         }

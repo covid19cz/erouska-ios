@@ -20,11 +20,11 @@ class Diagnosis: NSObject {
 
     private weak var showFromController: UIViewController?
 
-    init(showFromController: UIViewController, errorMessage: String? = nil, base: Bool) {
+    init(showFromController: UIViewController, errorMessage: String? = nil, fromError: Bool) {
         self.showFromController = showFromController
         super.init()
 
-        presentQuestion(errorMessage: errorMessage, fromError: base)
+        presentQuestion(errorMessage: errorMessage, fromError: fromError)
     }
 
     private func presentQuestion(errorMessage: String?, fromError: Bool) {
