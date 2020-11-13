@@ -101,6 +101,7 @@ final class ActiveAppVC: UIViewController {
         }
 
         stateSection.action = changeScanningAction
+        stateSection.isTappable = false
 
         riskyEncountersSection.isSelectable = true
         riskyEncountersSection.action = riskyEncountersAction
