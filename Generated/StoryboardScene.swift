@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 
 // swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length implicit_return
+// swiftlint:disable file_length
 
 // MARK: - Storyboard Scenes
 
@@ -122,11 +122,6 @@ internal struct SceneType<T: UIViewController> {
     }
     return controller
   }
-
-  @available(iOS 13.0, tvOS 13.0, *)
-  internal func instantiate(creator block: @escaping (NSCoder) -> T?) -> T {
-    return storyboard.storyboard.instantiateViewController(identifier: identifier, creator: block)
-  }
 }
 
 internal struct InitialSceneType<T: UIViewController> {
@@ -138,24 +133,12 @@ internal struct InitialSceneType<T: UIViewController> {
     }
     return controller
   }
-
-  @available(iOS 13.0, tvOS 13.0, *)
-  internal func instantiate(creator block: @escaping (NSCoder) -> T?) -> T {
-    guard let controller = storyboard.storyboard.instantiateInitialViewController(creator: block) else {
-      fatalError("Storyboard \(storyboard.storyboardName) does not have an initial scene.")
-    }
-    return controller
-  }
 }
 
 // swiftlint:disable convenience_type
 private final class BundleToken {
   static let bundle: Bundle = {
-    #if SWIFT_PACKAGE
-    return Bundle.module
-    #else
-    return Bundle(for: BundleToken.self)
-    #endif
+    Bundle(for: BundleToken.self)
   }()
 }
 // swiftlint:enable convenience_type
