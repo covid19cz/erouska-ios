@@ -35,7 +35,8 @@
 "active_risky_encounter_update_interval_negative" = "Aktualizace probíhá jednou za 24 hodin.";
 "active_risky_encounter_head_positive" = "Za posledních 14 dní %@ riziková setkání";
 "active_risky_encounter_title_positive" = "Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.";
-"active_send_reports_head" = "Máte pozitivní výsledek COVID-19 testu?";
+"active_send_reports_head" = "Byli jste na testu COVID-19?";
+"active_send_reports_body" = "Pokud je výsledek pozitivní, upozorněte ostatní.";
 "active_send_reports_button" = "Anonymně upozornit ostatní";
 "active_button_enabled" = "Pozastavit";
 "active_button_paused" = "Spustit";

@@ -66,9 +66,11 @@ internal enum L10n {
   }
   /// Aktualizace probíhá jednou za 24 hodin.
   internal static let activeRiskyEncounterUpdateIntervalNegative = L10n.tr("Localizable", "active_risky_encounter_update_interval_negative")
+  /// Pokud je výsledek pozitivní, upozorněte ostatní.
+  internal static let activeSendReportsBody = L10n.tr("Localizable", "active_send_reports_body")
   /// Anonymně upozornit ostatní
   internal static let activeSendReportsButton = L10n.tr("Localizable", "active_send_reports_button")
-  /// Máte pozitivní výsledek COVID-19 testu?
+  /// Byli jste na testu COVID-19?
   internal static let activeSendReportsHead = L10n.tr("Localizable", "active_send_reports_head")
   /// Zapnuté Bluetooth je důležité pro sbírání kontaktů s ostatními eRouškami ve vašem okolí.
   internal static let activeTitleDisabledBluetooth = L10n.tr("Localizable", "active_title_disabled_bluetooth")

@@ -37,6 +37,7 @@
 "active_risky_encounter_head_positive" = "%@ risky encounters in the past 14 days";
 "active_risky_encounter_title_positive" = "On %@, you last encountered someone who tested positive for COVID-19.";
 "active_send_reports_head" = "Have you tested positive for COVID-19?";
+"active_send_reports_body" = "If the result is positive, notify others.";
 "active_send_reports_button" = "Anonymously notify others";
 "active_button_enabled" = "Pause";
 "active_button_paused" = "Resume";

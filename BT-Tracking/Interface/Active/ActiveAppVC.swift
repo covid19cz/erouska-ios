@@ -108,6 +108,7 @@ final class ActiveAppVC: UIViewController {
 
         sendReportsSection.iconImageView.image = Asset.sendData.image
         sendReportsSection.titleLabel.text = L10n.activeSendReportsHead
+        sendReportsSection.bodyLabel.text = L10n.activeSendReportsBody
         sendReportsSection.actionButton.setTitle(L10n.activeSendReportsButton)
         sendReportsSection.action = sendReportsAction
         [stateSection, riskyEncountersSection, sendReportsSection].forEach(mainStackView.addArrangedSubview)

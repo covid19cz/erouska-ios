@@ -71,6 +71,7 @@ final class ActiveAppSectionView: UIView {
         titleLabel.numberOfLines = 0
 
         bodyLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        bodyLabel.allowsDefaultTighteningForTruncation = true
         bodyLabel.numberOfLines = 0
 
         disclosureIndicator.image = Asset.disclosureIndicator.image
