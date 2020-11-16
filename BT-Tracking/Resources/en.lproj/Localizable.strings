@@ -4,7 +4,7 @@
 "ok" = "OK";
 "error" = "Error";
 "debug" = "Test";
-"about" = "About";
+"about" = "About application";
 "close" = "Close";
 "turn_on" = "Enable";
 "version" = "version";
@@ -17,10 +17,10 @@
 "exposure_notification_headline" = "To work properly, eRouška requires COVID-19 Exposure Notifications to be enabled";
 "exposure_notification_body" = "These notifications will indicate that you have encountered a user with eRouška who was tested positive for COVID-19.\n\nThe app can only work correctly if it collects and shares random identifiers which change automatically. We cannot identify an eRouška user based on these identifiers.";
 "exposure_notification_continue" = "Enable";
-"efgs_permission_title" = "Spolupráce se zahraničím";
-"efgs_permission_headline" = "Pomozte v boji s COVID-19 i při cestách do zahraničí";
-"efgs_permission_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.";
-"efgs_permission_switch" = "Povolit spolupráci se zahraničím";
+"efgs_permission_title" = "Cross-border cooperation";
+"efgs_permission_headline" = "Help to fight against COVID-19 when abroad";
+"efgs_permission_body" = "COVID-19 does not respect borders. Thanks to cooperation of EU countries, eRouška can warn you against risk of infection.\n\nPlease enable Cross-border cooperation if you have visited an EU country in the past 14 days or you travel regularly. eRouška will notify you if you encounter someone with COVID-19.\n\nYou can change the settings anytime.";
+"efgs_permission_switch" = "Enable Cross-border cooperation";
 "privacy_title" = "Privacy";
 "privacy_headline" = "We value your privacy. You are always in control of your data.";
 "privacy_body" = "eRouška does not have any personal information about you and collects only anonymous data about other eRouška applications that you have encountered.\n\nYou can find more information about personal data processing and other conditions in Terms and conditions.";
@@ -42,6 +42,9 @@
 "active_risky_encounter_title_positive" = "On %@, you last encountered someone who tested positive for COVID-19.";
 "active_send_reports_head" = "Have you tested positive for COVID-19?";
 "active_send_reports_button" = "Anonymously notify others";
+"active_efgs_title" = "Cross-border cooperation";
+"active_efgs_enabled" = "Enabled";
+"active_efgs_disabled" = "Disabled";
 "active_button_enabled" = "Pause";
 "active_button_paused" = "Resume";
 "active_button_disabled_bluetooth" = "Enable Bluetooth";
@@ -57,7 +60,7 @@
 "share_app" = "Share application";
 "share_app_message" = "Hi, I'm using the eRouška application. Install it too so we can help stop the spread of COVID-19. The application collects anonymous data about nearby phones so that the public health officers can trace the infection more easily. The more we are, the better it works. Download the app at %@/";
 "data_list_title" = "News";
-"data_list_send_title" = "Send data";
+"data_list_send_title" = "Notify others";
 "data_list_send_headline" = "If you test positive for COVID-19 you will receive an SMS message with the verification code for sending data.";
 "data_list_send_placeholder" = "Verification code (required)";
 "data_list_send_action_title" = "Verify and send data";
@@ -78,7 +81,7 @@
 "data_list_previous_header" = "Risky encounters discovered";
 "data_send_title" = "Sent";
 "data_send_error" = "Error";
-"data_send_title_label" = "Notifications to other eRouška users were successfully sent";
+"data_send_title_label" = "Data were successfully sent";
 "data_send_title_nokeys" = "Thank you for fighting against the spread of COVID-19";
 "data_send_title_error" = "Failed to send data";
 "data_send_headline" = "Thank you for fighting against the spread of COVID-19.";
@@ -116,7 +119,7 @@
 "unsupported_device_ipad_title" = "Tablets with iPadOS are not supported";
 "unsupported_device_ipad_body" = "The new eRouška version only works on phones with iOS or Android operating system.";
 "bluetooth_off_title" = "Enable Bluetooth";
-"bluetooth_off_body" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \"Enable Bluetooth\".";
+"bluetooth_off_body" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \\"Enable Bluetooth\\".";
 "news_title" = "News";
 "news_button_continue" = "Continue";
 "news_button_close" = "Close";
