@@ -56,8 +56,10 @@ final class HelpVM {
             guard let style = attribute.lineStyle as? MarkdownLineStyle else { continue }
             switch style {
             case .h1:
-                if !section.items.isEmpty {
+                if !section.model.isEmpty {
+                    section.items.append(helpArticle)
                     sections.append(section)
+                    helpArticle = .init(title: "", lines: [])
                 }
                 section = .init(model: attribute.line, items: [])
             case .h2:
@@ -68,6 +70,10 @@ final class HelpVM {
             default:
                 helpArticle.lines.append(attribute)
             }
+        }
+
+        if !section.items.contains(helpArticle) {
+            section.items.append(helpArticle)
         }
         sections.append(section)
 

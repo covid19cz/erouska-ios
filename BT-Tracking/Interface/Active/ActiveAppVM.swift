@@ -109,17 +109,17 @@ final class ActiveAppVM {
     let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
     let backgroundService = AppDelegate.dependency.background
     let riskyEncounterDateToShow: Observable<Date?>
-    let riskyEcountersInTimeInterval: Observable<Int>
+    let riskyEncountersInTimeInterval: Observable<Int>
 
     init() {
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays
         let realm = AppDelegate.dependency.realm
         let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
         let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
-        let riskyEcounters = Observable.collection(from: exposures)
-        let filteredRiskyEcounters = riskyEcounters.map { $0.filter { $0.date > showForDate } }
-        riskyEncounterDateToShow = filteredRiskyEcounters.map { $0.last?.date }
-        riskyEcountersInTimeInterval = filteredRiskyEcounters.map { $0.count }
+        let riskyEncounters = Observable.collection(from: exposures)
+        let filteredRiskyEncounters = riskyEncounters.map { $0.filter { $0.date > showForDate } }
+        riskyEncounterDateToShow = filteredRiskyEncounters.map { $0.last?.date }
+        riskyEncountersInTimeInterval = filteredRiskyEncounters.map { $0.count }
 
         observableState = BehaviorSubject<State>(value: .paused)
 

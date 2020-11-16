@@ -189,7 +189,6 @@ final class ReportService: ReportServicing {
 
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-
             callback(ReportDownload(success: self.downloadSuccess, failures: self.downloadFailure))
             self.isDownloading = false
 

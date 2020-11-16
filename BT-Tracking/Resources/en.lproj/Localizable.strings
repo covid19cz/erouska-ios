@@ -4,7 +4,7 @@
 "ok" = "OK";
 "error" = "Error";
 "debug" = "Test";
-"about" = "About application";
+"about" = "About";
 "close" = "Close";
 "turn_on" = "Enable";
 "version" = "version";

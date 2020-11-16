@@ -67,7 +67,7 @@ final class ActiveAppVC: UIViewController {
 
         Observable.combineLatest(
             viewModel.riskyEncounterDateToShow,
-            viewModel.riskyEcountersInTimeInterval
+            viewModel.riskyEncountersInTimeInterval
         ).subscribe(
             onNext: { [weak self] dateToShow, numberOfRiskyEncounters in
                 guard let self = self else { return }

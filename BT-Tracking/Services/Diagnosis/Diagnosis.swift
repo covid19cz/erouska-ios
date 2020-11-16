@@ -10,6 +10,7 @@ import Foundation
 import DeviceKit
 import MessageUI
 import Reachability
+import UserNotifications
 
 class Diagnosis: NSObject {
 
@@ -61,16 +62,22 @@ class Diagnosis: NSObject {
         controller.mailComposeDelegate = self
 
         if diagnosisInfo {
-            controller.addAttachmentData(
-                diagnosisText(errorMessage: errorMessage).data(using: .utf8) ?? Data(),
-                mimeType: "text/plain",
-                fileName: "diagnosticke_informace.txt"
-            )
+            UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
+                DispatchQueue.main.async {
+                    controller.addAttachmentData(
+                        self.diagnosisText(errorMessage: errorMessage, notitificationSettings: settings).data(using: .utf8) ?? Data(),
+                        mimeType: "text/plain",
+                        fileName: "diagnosticke_informace.txt"
+                    )
+                    self.showFromController?.present(controller, animated: true, completion: nil)
+                }
+            })
+        } else {
+            showFromController?.present(controller, animated: true, completion: nil)
         }
-        showFromController?.present(controller, animated: true, completion: nil)
     }
 
-    private func diagnosisText(errorMessage: String?) -> String {
+    private func diagnosisText(errorMessage: String?, notitificationSettings: UNNotificationSettings) -> String {
         let device = Device.current
         let exposureService = AppDelegate.dependency.exposureService
         let connection = try? Reachability().connection
@@ -87,6 +94,8 @@ class Diagnosis: NSObject {
         Lokalizace: \(Locale.current.identifier)
         Bluetooth: \(exposureService.isBluetoothOn ? "ON" : "OFF")
         Exposure API: \(exposureService.isActive ? "ON" : "OFF")
+        Notifikace: \(notitificationSettings.authorizationStatus == .authorized) ? "ON" : "OFF")
+        Aktualizace na pozadí: \(UIApplication.shared.backgroundRefreshStatus == .available ? "ON" : "OFF")
         Internet: \(connection != .unavailable ? "ON" : "OFF")
         Low power mode: \(device.batteryState?.lowPowerMode == true ? "ON" : "OFF")
         Poslední stažení klíčů: \(lastKeys)

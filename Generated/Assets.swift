@@ -30,15 +30,15 @@ internal enum Asset {
   internal static let helpBackground = ColorAsset(name: "HelpBackground")
   internal enum CurrentData {
     internal static let activations = ImageAsset(name: "CurrentData/Activations")
-    internal static let active = ImageAsset(name: "CurrentData/Active")
-    internal static let covid = ImageAsset(name: "CurrentData/Covid")
-    internal static let death = ImageAsset(name: "CurrentData/Death")
-    internal static let healthy = ImageAsset(name: "CurrentData/Healthy")
-    internal static let hospital = ImageAsset(name: "CurrentData/Hospital")
     internal static let measures = ImageAsset(name: "CurrentData/Measures")
     internal static let notifications = ImageAsset(name: "CurrentData/Notifications")
     internal static let sentData = ImageAsset(name: "CurrentData/SentData")
-    internal static let tests = ImageAsset(name: "CurrentData/Tests")
+    internal static let active = ImageAsset(name: "CurrentData/active")
+    internal static let covid = ImageAsset(name: "CurrentData/covid")
+    internal static let death = ImageAsset(name: "CurrentData/death")
+    internal static let healthy = ImageAsset(name: "CurrentData/healthy")
+    internal static let hospital = ImageAsset(name: "CurrentData/hospital")
+    internal static let tests = ImageAsset(name: "CurrentData/tests")
   }
   internal static let bluetoothOff = ImageAsset(name: "BluetoothOff")
   internal static let bluetoothPaused = ImageAsset(name: "BluetoothPaused")
@@ -166,11 +166,7 @@ internal extension ImageAsset.Image {
 // swiftlint:disable convenience_type
 private final class BundleToken {
   static let bundle: Bundle = {
-    #if SWIFT_PACKAGE
-    return Bundle.module
-    #else
-    return Bundle(for: BundleToken.self)
-    #endif
+    Bundle(for: BundleToken.self)
   }()
 }
 // swiftlint:enable convenience_type
