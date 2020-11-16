@@ -110,6 +110,9 @@ final class ActiveAppVM {
     let backgroundService = AppDelegate.dependency.background
     let riskyEncounterDateToShow: Observable<Date?>
     let riskyEncountersInTimeInterval: Observable<Int>
+    var efgsEnabled: Bool {
+        AppSettings.efgsEnabled
+    }
 
     init() {
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays

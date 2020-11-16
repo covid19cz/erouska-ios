@@ -41,6 +41,9 @@
 "active_risky_encounter_title_positive" = "Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.";
 "active_send_reports_head" = "Máte pozitvní výsledek COVID-19 testu?";
 "active_send_reports_button" = "Anonymně upozornit ostatní";
+"active_efgs_title" = "Spolupráce se zahraničím";
+"active_efgs_enabled" = "Zapnuto";
+"active_efgs_disabled" = "Vypnuto";
 "active_button_enabled" = "Pozastavit";
 "active_button_paused" = "Spustit";
 "active_button_disabled_bluetooth" = "Zapnout Bluetooth";
