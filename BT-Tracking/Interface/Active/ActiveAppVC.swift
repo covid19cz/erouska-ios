@@ -77,7 +77,7 @@ final class ActiveAppVC: UIViewController {
                 self.riskyEncountersSection.isPositive = isPositive
                 if let date = dateToShow {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
-                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateTimeFormatter.string(from: date))
+                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateFormatter.string(from: date))
                 } else {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
                     self.riskyEncountersSection.bodyLabel.text = [
