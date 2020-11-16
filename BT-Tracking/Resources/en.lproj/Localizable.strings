@@ -119,7 +119,7 @@
 "unsupported_device_ipad_title" = "Tablets with iPadOS are not supported";
 "unsupported_device_ipad_body" = "The new eRouška version only works on phones with iOS or Android operating system.";
 "bluetooth_off_title" = "Enable Bluetooth";
-"bluetooth_off_body" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \\"Enable Bluetooth\\".";
+"bluetooth_off_body" = "With Bluetooth disabled, eRouška cannot log nearby apps' identifiers.\n\nEnable it by pressing \"Enable Bluetooth\".";
 "news_title" = "News";
 "news_button_continue" = "Continue";
 "news_button_close" = "Close";
