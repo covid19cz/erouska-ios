@@ -19,17 +19,14 @@ final class SendReportsVC: UIViewController {
 
     private let viewModel = SendReportsVM()
 
-    private var code = BehaviorRelay<String>(value: "")
+    private let code = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
         code.asObservable().map { phoneNumber -> Bool in
             InputValidation.code.validate(phoneNumber)
         }
     }
     private var keyboardHandler: KeyboardHandler!
-    private var disposeBag = DisposeBag()
-
-    private var expirationSeconds: TimeInterval = 0
-    private var expirationTimer: Timer?
+    private let disposeBag = DisposeBag()
 
     private var firstAppear: Bool = true
 

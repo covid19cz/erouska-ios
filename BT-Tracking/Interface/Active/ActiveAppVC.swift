@@ -13,7 +13,7 @@ import RxSwift
 
 final class ActiveAppVC: UIViewController {
 
-    private var viewModel = ActiveAppVM()
+    private let viewModel = ActiveAppVM()
     private let disposeBag = DisposeBag()
     private var firstAppear = true
 

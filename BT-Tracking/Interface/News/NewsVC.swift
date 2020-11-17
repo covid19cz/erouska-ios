@@ -10,7 +10,7 @@ import UIKit
 
 final class NewsVC: UIViewController {
 
-    private var viewModel = NewsVM()
+    private let viewModel = NewsVM()
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var pagesStackView: UIStackView!
