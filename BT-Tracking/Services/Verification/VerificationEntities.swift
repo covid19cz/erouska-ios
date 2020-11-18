@@ -14,14 +14,6 @@ enum VerificationTestType: String, Codable {
     case negative
 }
 
-struct VerificationCode: Decodable {
-
-    let code: String?
-    let expiresAt: Date?
-    let error: String?
-
-}
-
 struct VerificationTokenRequest: Encodable {
 
     let code: String

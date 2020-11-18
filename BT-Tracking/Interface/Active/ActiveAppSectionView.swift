@@ -21,8 +21,14 @@ final class ActiveAppSectionView: UIView {
 
     var isSelectable = false {
         didSet {
-            disclosureIndicator.isHidden = !isSelectable
-            buttonView.isHidden = isSelectable        }
+            buttonView.isHidden = isSelectable
+        }
+    }
+    var isTappable = true {
+        didSet {
+            disclosureIndicator.isHidden = !isTappable
+            tapGestureRecognizer.isEnabled = isTappable
+        }
     }
     var isPositive = false {
         didSet {
@@ -62,9 +68,10 @@ final class ActiveAppSectionView: UIView {
         isSelectable = false
 
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-        titleLabel.numberOfLines = 2
+        titleLabel.numberOfLines = 0
 
         bodyLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        bodyLabel.allowsDefaultTighteningForTruncation = true
         bodyLabel.numberOfLines = 0
 
         disclosureIndicator.image = Asset.disclosureIndicator.image

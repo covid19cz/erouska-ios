@@ -48,7 +48,7 @@ final class ContactsVC: UIViewController {
 
     private func openLink(_ link: URL) {
         if link.absoluteString.hasSuffix("info@erouska.cz"), Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self)
+            diagnosis = Diagnosis(showFromController: self, fromError: false)
         } else {
             openURL(URL: link)
         }

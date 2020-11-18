@@ -12,7 +12,6 @@ import RxSwift
 final class RiskyEncountersPositiveVC: UITableViewController {
 
     private let viewModel = RiskyEncountersPositiveVM()
-    private let disposeBag = DisposeBag()
 
     // MARK: -
 

@@ -10,9 +10,11 @@ import UIKit
 
 final class ErrorVC: UIViewController {
 
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var actionButton: Button!
 
     var viewModel: ErrorVM?
@@ -34,6 +36,9 @@ final class ErrorVC: UIViewController {
         headlineLabel.text = viewModel?.headline
         textLabel.text = viewModel?.text
         actionButton.setTitle(viewModel?.actionTitle ?? "", for: .normal)
+        buttonsView.connect(with: scrollView)
+
+        isModalInPresentation = true
     }
 
     @IBAction private func action() {
@@ -47,15 +52,15 @@ final class ErrorVC: UIViewController {
         }
     }
 
-    @objc func close() {
+    @objc private func close() {
         dismiss(animated: true)
     }
 
-    @objc func showHelp() {
+    @objc private func showHelp() {
         perform(segue: StoryboardSegue.Error.help)
     }
 
-    func closeWith(completion: @escaping CallbackVoid) {
+    private func closeWith(completion: @escaping CallbackVoid) {
         dismiss(animated: true, completion: completion)
     }
 }

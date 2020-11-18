@@ -40,7 +40,8 @@
 "active_risky_encounter_update_interval_negative" = "Data is updated once every 24 hours.";
 "active_risky_encounter_head_positive" = "%@ risky encounters in the past 14 days";
 "active_risky_encounter_title_positive" = "On %@, you last encountered someone who tested positive for COVID-19.";
-"active_send_reports_head" = "Have you tested positive for COVID-19?";
+"active_send_reports_head" = "Have you been tested for COVID-19?";
+"active_send_reports_body" = "Notify others if your test is positive.";
 "active_send_reports_button" = "Anonymously notify others";
 "active_efgs_title" = "Cross-border cooperation";
 "active_efgs_enabled" = "Enabled";
@@ -176,6 +177,8 @@
 "current_data_app_key_publishers" = "%@ people who tested positive anonymously notified others";
 "current_data_app_notifications" = "%@ notifications about risky encounters sent";
 "current_data_app_from" = "%@ on %@";
+"diagnosis_title_base" = "Do you wish to attach a file with anonymous information about your device's settings? This information will help us troubleshoot.";
+"diagnosis_title_error" = "Do you wish to attach a file with anonymous information about your device's settings and the error?";
 "diagnosis_title" = "Do you wish to attach a file with anonymous information about your device's settings and the error?";
 "diagnosis_send_attachment" = "Yes, attach the file";
 "diagnosis_send_withoutattachment" = "No, do not attach the file";

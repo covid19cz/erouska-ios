@@ -15,7 +15,7 @@ class MarkdownController: UIViewController {
 
     var markdownContent: String = ""
     var markdownLines: [SwiftyLine] = []
-    var contentView = UIView()
+    let contentView = UIView()
 
     // MARK: - Private Properties
 

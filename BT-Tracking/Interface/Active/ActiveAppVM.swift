@@ -90,10 +90,6 @@ final class ActiveAppVM {
         }
     }
 
-    var menuRiskyEncounters: String {
-        RemoteValues.exposureUITitle
-    }
-
     var exposureTitle: String {
         RemoteValues.exposureBannerTitle
     }
@@ -135,10 +131,6 @@ final class ActiveAppVM {
             .subscribe { [weak self] _ in
                 self?.updateStateIfNeeded()
             }.disposed(by: disposeBag)
-    }
-
-    func cardShadowColor(traitCollection: UITraitCollection) -> CGColor {
-        return UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
     }
 
     func updateStateIfNeeded() {

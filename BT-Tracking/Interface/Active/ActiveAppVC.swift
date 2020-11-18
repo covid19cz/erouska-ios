@@ -13,7 +13,7 @@ import RxSwift
 
 final class ActiveAppVC: UIViewController {
 
-    private var viewModel = ActiveAppVM()
+    private let viewModel = ActiveAppVM()
     private let disposeBag = DisposeBag()
     private var firstAppear = true
 
@@ -78,7 +78,7 @@ final class ActiveAppVC: UIViewController {
                 self.riskyEncountersSection.isPositive = isPositive
                 if let date = dateToShow {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
-                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateTimeFormatter.string(from: date))
+                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateFormatter.string(from: date))
                 } else {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
                     self.riskyEncountersSection.bodyLabel.text = [
@@ -102,12 +102,14 @@ final class ActiveAppVC: UIViewController {
         }
 
         stateSection.action = changeScanningAction
+        stateSection.isTappable = false
 
         riskyEncountersSection.isSelectable = true
         riskyEncountersSection.action = riskyEncountersAction
 
         sendReportsSection.iconImageView.image = Asset.sendData.image
         sendReportsSection.titleLabel.text = L10n.activeSendReportsHead
+        sendReportsSection.bodyLabel.text = L10n.activeSendReportsBody
         sendReportsSection.actionButton.setTitle(L10n.activeSendReportsButton)
         sendReportsSection.action = sendReportsAction
 
