@@ -12,7 +12,7 @@ import MessageUI
 import Reachability
 import UserNotifications
 
-class Diagnosis: NSObject {
+final class Diagnosis: NSObject {
 
     static var canSendMail: Bool {
         MFMailComposeViewController.canSendMail()

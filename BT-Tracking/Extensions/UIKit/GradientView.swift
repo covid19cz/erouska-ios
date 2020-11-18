@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-class GradientView: UIView {
+final class GradientView: UIView {
 
     private weak var gradientMaskLayer: CAGradientLayer!
 

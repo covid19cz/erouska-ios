@@ -41,10 +41,6 @@ extension AppDelegate {
         }
     }
 
-    func remoteConfigValue(forKey key: RemoteConfigValueKey) -> Any {
-        return RemoteConfig.remoteConfig()[key.keyValue]
-    }
-
     func remoteConfigInt(forKey key: RemoteConfigValueKey) -> Int {
         return RemoteConfig.remoteConfig()[key.keyValue].numberValue?.intValue ?? 0
     }

@@ -24,10 +24,6 @@ struct HelpArticle: Equatable {
 
 final class HelpVM {
 
-    var chatbotLink: String {
-        RemoteValues.chatBotLink
-    }
-
     private let lineProcessor = SwiftyLineProcessor(
         rules: SwiftyMarkdown.lineRules,
         defaultRule: MarkdownLineStyle.body,
