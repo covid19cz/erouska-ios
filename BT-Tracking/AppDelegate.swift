@@ -153,7 +153,7 @@ private extension AppDelegate {
         FirebaseApp.configure()
         setupDefaultValues()
         updateRemoteValues()
-        ExposureList.clenaup()
+        ExposureList.cleanup()
 
         if AppSettings.lastLegacyDataFetchDate == nil {
             AppSettings.lastLegacyDataFetchDate = AppSettings.lastProcessedDate ?? Date()
