@@ -165,8 +165,8 @@
 "current_data_app_key_publishers" = "%@ pozitivně testovaných anonymně varovalo ostatní";
 "current_data_app_notifications" = "%@ upozornění na riziková setkání";
 "current_data_app_from" = "%@ za %@";
-"diagnosis_title_base" = "Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.";
-"diagnosis_title_error" = "Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?";
+"diagnosis_title_base" = "Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.";
+"diagnosis_title_error" = "Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu a chybě?";
 "diagnosis_send_attachment" = "Chci přidat přílohu";
 "diagnosis_send_withoutattachment" = "Nechci přidat přílohu";
 "diagnosis_cancel" = "Zrušit";
