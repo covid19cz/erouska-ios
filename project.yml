@@ -1,4 +1,9 @@
 name: eRouska
+
+options:
+  xcodeVersion: 1200
+  postGenCommand: pod install
+
 settings:
   IPHONEOS_DEPLOYMENT_TARGET: "13.5"
   MARKETING_VERSION: "2.2.1"
@@ -27,8 +32,8 @@ targets:
         com.apple.developer.exposure-notification-test: true
         com.apple.developer.exposure-notification-test-skip-file-verification: true
     configFiles:
-      Debug: [Configs/Dev-signing.xcconfig, Pods/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.debug.xcconfig]
-      Release: [Configs/Dev-signing.xcconfig, Pods/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig]
+      Debug: [Configs/Dev-signing.xcconfig]
+      Release: [Configs/Dev-signing.xcconfig]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska.dev'
@@ -57,8 +62,8 @@ targets:
         com.apple.security.network.server: true
         com.apple.developer.exposure-notification: true
     configFiles:
-      Debug: [Configs/Prod-signing.xcconfig, Pods/Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.debug.xcconfig]
-      Release: [Configs/Prod-signing.xcconfig, Pods/Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig]
+      Debug: [Configs/Prod-signing.xcconfig]
+      Release: [Configs/Prod-signing.xcconfig]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska'
@@ -85,6 +90,11 @@ targetTemplates:
         DEVELOPMENT_TEAM: PDX4N72JDU
         CODE_SIGN_STYLE: Manual
 
+    preBuildScripts:
+      - path: Scripts/swiftlint.sh
+        name: Swift Lint & Gen
+        script: "swiftlint;swiftgen"
+
     postBuildScripts:
       - name: "Run Firebase Cashlytics"
         script: "${PODS_ROOT}/FirebaseCrashlytics/run"
@@ -92,6 +102,7 @@ targetTemplates:
           "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
           "$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)"
         ]
+
     dependencies:
       - package: Alamofire
       - package: AlamofireImage

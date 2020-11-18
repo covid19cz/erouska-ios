@@ -72,9 +72,11 @@ internal enum L10n {
   }
   /// Aktualizace probíhá jednou za 24 hodin.
   internal static let activeRiskyEncounterUpdateIntervalNegative = L10n.tr("Localizable", "active_risky_encounter_update_interval_negative")
+  /// Pokud je výsledek pozitivní, upozorněte ostatní.
+  internal static let activeSendReportsBody = L10n.tr("Localizable", "active_send_reports_body")
   /// Anonymně upozornit ostatní
   internal static let activeSendReportsButton = L10n.tr("Localizable", "active_send_reports_button")
-  /// Máte pozitvní výsledek COVID-19 testu?
+  /// Byli jste na testu COVID-19?
   internal static let activeSendReportsHead = L10n.tr("Localizable", "active_send_reports_head")
   /// Zapnuté Bluetooth je důležité pro sbírání kontaktů s ostatními eRouškami ve vašem okolí.
   internal static let activeTitleDisabledBluetooth = L10n.tr("Localizable", "active_title_disabled_bluetooth")
@@ -226,7 +228,7 @@ internal enum L10n {
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Nepodařilo se nám odeslat data
   internal static let dataSendTitleError = L10n.tr("Localizable", "data_send_title_error")
-  /// Data jste úspěsně odeslali
+  /// Upozornění ostatním eRouškám jste odeslali
   internal static let dataSendTitleLabel = L10n.tr("Localizable", "data_send_title_label")
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19
   internal static let dataSendTitleNokeys = L10n.tr("Localizable", "data_send_title_nokeys")
@@ -242,8 +244,10 @@ internal enum L10n {
   internal static let diagnosisSendAttachment = L10n.tr("Localizable", "diagnosis_send_attachment")
   /// Nechci přidat přílohu
   internal static let diagnosisSendWithoutattachment = L10n.tr("Localizable", "diagnosis_send_withoutattachment")
-  /// Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?
-  internal static let diagnosisTitle = L10n.tr("Localizable", "diagnosis_title")
+  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.
+  internal static let diagnosisTitleBase = L10n.tr("Localizable", "diagnosis_title_base")
+  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu a chybě?
+  internal static let diagnosisTitleError = L10n.tr("Localizable", "diagnosis_title_error")
   /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.
   internal static let efgsPermissionBody = L10n.tr("Localizable", "efgs_permission_body")
   /// Pomozte v boji s COVID-19 i při cestách do zahraničí
@@ -417,6 +421,12 @@ extension L10n {
 
 // swiftlint:disable convenience_type
 private final class BundleToken {
-  static let bundle = Bundle(for: BundleToken.self)
+  static let bundle: Bundle = {
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
+  }()
 }
 // swiftlint:enable convenience_type
