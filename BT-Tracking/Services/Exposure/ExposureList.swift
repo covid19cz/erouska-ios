@@ -47,7 +47,7 @@ final class ExposureList {
         }
     }
 
-    static func clenaup() {
+    static func cleanup() {
         let realm = AppDelegate.dependency.realm
         try? realm.write {
             exposures.forEach {

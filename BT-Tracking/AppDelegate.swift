@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "pushRegistrationToken": deviceToken.hexEncodedString()
         ]
 
-        Self.dependency.functions.httpsCallable("changePushToken").call(data) { _, error in
+        Self.dependency.functions.httpsCallable("ChangePushToken").call(data) { _, error in
             if let error = error {
                 log("AppDelegate: Failed to change push token \(error.localizedDescription)")
             }
@@ -153,7 +153,7 @@ private extension AppDelegate {
         FirebaseApp.configure()
         setupDefaultValues()
         updateRemoteValues()
-        ExposureList.clenaup()
+        ExposureList.cleanup()
 
         if AppSettings.lastLegacyDataFetchDate == nil {
             AppSettings.lastLegacyDataFetchDate = AppSettings.lastProcessedDate ?? Date()
