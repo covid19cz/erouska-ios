@@ -238,9 +238,9 @@ internal enum L10n {
   internal static let diagnosisSendAttachment = L10n.tr("Localizable", "diagnosis_send_attachment")
   /// Nechci přidat přílohu
   internal static let diagnosisSendWithoutattachment = L10n.tr("Localizable", "diagnosis_send_withoutattachment")
-  /// Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.
+  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.
   internal static let diagnosisTitleBase = L10n.tr("Localizable", "diagnosis_title_base")
-  /// Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?
+  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu a chybě?
   internal static let diagnosisTitleError = L10n.tr("Localizable", "diagnosis_title_error")
   /// Chyba
   internal static let error = L10n.tr("Localizable", "error")
