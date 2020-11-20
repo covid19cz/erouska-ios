@@ -18,3 +18,17 @@ end
 target "eRouska Prod" do
   firebase_pods
 end
+
+post_install do |installer|
+  # Enable debug targets in App
+  installer.pods_project.build_configurations.each do |config|
+    config.build_settings["IPHONEOS_DEPLOYMENT_TARGET"] = "12.0"
+  end
+
+  # Enable debug configuration in Frameworks
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings["IPHONEOS_DEPLOYMENT_TARGET"] = "12.0"
+    end
+  end
+end

@@ -230,7 +230,7 @@ final class ReportService: ReportServicing {
                         downloadDispatchGroup.enter()
 
                         let keyFileName = remoteURL.deletingPathExtension().lastPathComponent
-                        let destination: DownloadRequest.Destination = { temporaryURL, response in
+                        let destination: DownloadRequest.Destination = { _, response in
                             let url = destinationURL.appendingPathComponent(keyFileName).appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
                             return (url, [.removePreviousFile, .createIntermediateDirectories])
                         }

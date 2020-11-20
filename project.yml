@@ -83,10 +83,10 @@ targetTemplates:
     platform: iOS
     settings:
       base:
-        TARGETED_DEVICE_FAMILY: "1,2"
+        TARGETED_DEVICE_FAMILY: "1"
         PRODUCT_MODULE_NAME: eRouska
         PRODUCT_NAME: eRouska
-        CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: true
+        CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
         DEVELOPMENT_TEAM: PDX4N72JDU
         CODE_SIGN_STYLE: Manual
 
@@ -102,6 +102,7 @@ targetTemplates:
           "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
           "$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)"
         ]
+        runOnlyWhenInstalling: YES
 
     dependencies:
       - package: Alamofire
