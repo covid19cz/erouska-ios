@@ -15,6 +15,7 @@ internal enum StoryboardSegue {
   internal enum Active: String, SegueType {
     case debugReports
     case sendReport
+    case travel
   }
   internal enum Error: String, SegueType {
     case help = "Help"

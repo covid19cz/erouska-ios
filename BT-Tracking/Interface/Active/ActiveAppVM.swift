@@ -106,8 +106,12 @@ final class ActiveAppVM {
     let backgroundService = AppDelegate.dependency.background
     let riskyEncounterDateToShow: Observable<Date?>
     let riskyEncountersInTimeInterval: Observable<Int>
+
     var efgsEnabled: Bool {
         AppSettings.efgsEnabled
+    }
+    var efgsBodyText: String {
+        return efgsEnabled ? L10n.activeEfgsEnabled : L10n.activeEfgsDisabled
     }
 
     init() {

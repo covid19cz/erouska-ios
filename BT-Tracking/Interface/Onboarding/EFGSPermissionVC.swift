@@ -33,6 +33,18 @@ final class EFGSPermissionVC: UIViewController {
         setupStrings()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        setupLargeTitleAutoAdjustFont()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        setupLargeTitleAutoAdjustFont()
+    }
+
     // MARK: - Action
 
     @IBAction private func continueAction(_ sender: Any) {

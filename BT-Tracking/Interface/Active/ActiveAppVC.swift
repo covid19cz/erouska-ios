@@ -115,8 +115,9 @@ final class ActiveAppVC: UIViewController {
 
         efgsSection.iconImageView.image = Asset.travel.image
         efgsSection.titleLabel.text = L10n.activeEfgsTitle
-        efgsSection.bodyLabel.text = viewModel.efgsEnabled ? L10n.activeEfgsEnabled : L10n.activeEfgsDisabled
+        efgsSection.bodyLabel.text = viewModel.efgsBodyText
         efgsSection.isSelectable = true
+        efgsSection.action = efgsSettingsAction
 
         [stateSection, riskyEncountersSection, sendReportsSection, efgsSection].forEach(mainStackView.addArrangedSubview)
 
@@ -281,6 +282,10 @@ final class ActiveAppVC: UIViewController {
         present(controller, animated: true, completion: nil)
     }
 
+    private func efgsSettingsAction() {
+        perform(segue: StoryboardSegue.Active.travel)
+    }
+
     // MARK: -
 
     @objc private func applicationDidBecomeActive() {
@@ -292,6 +297,7 @@ private extension ActiveAppVC {
 
     func updateViewModel() {
         viewModel.updateStateIfNeeded()
+        efgsSection.bodyLabel.text = viewModel.efgsBodyText
     }
 
     func updateScanner(activate: Bool, completion: @escaping CallbackVoid) {
