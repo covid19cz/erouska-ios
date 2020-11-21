@@ -3,6 +3,10 @@ name: eRouska
 options:
   xcodeVersion: 1200
   postGenCommand: pod install
+  groupSortPosition: top
+  groupOrdering: 
+    - pattern: BT-Tracking
+      order: [Interface, Services, Extensions, Resources, Supporting Files]
 
 settings:
   IPHONEOS_DEPLOYMENT_TARGET: "13.5"
