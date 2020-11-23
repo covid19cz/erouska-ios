@@ -577,7 +577,6 @@
 				8084DEF524AF86B0001FBB16 /* Reports */,
 				80CCE5C224DD811700DC36EE /* Verification */,
 				80D2344E24E2F69000F684AA /* Background */,
-				8084DEEB24AF8030001FBB16 /* CountryCodes */,
 				80E7C2C12551700C003DE8DC /* Diagnosis */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */,
@@ -621,13 +620,6 @@
 				8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */,
 			);
 			path = "Firebase Prod";
-			sourceTree = "<group>";
-		};
-		8084DEEB24AF8030001FBB16 /* CountryCodes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CountryCodes;
 			sourceTree = "<group>";
 		};
 		8084DEF524AF86B0001FBB16 /* Reports */ = {

@@ -97,9 +97,6 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                         <state key="normal" title="Close Button">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
-                                        <connections>
-                                            <action selector="mailAction" destination="DYf-Vd-0PA" eventType="touchUpInside" id="HZI-z0-TTR"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
