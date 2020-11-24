@@ -77,14 +77,23 @@ final class ActiveAppVC: UIViewController {
                 self.riskyEncountersSection.isPositive = isPositive
                 if let date = dateToShow {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
-                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateFormatter.string(from: date))
+                    let parts: [String] = [
+                        L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateFormatter.string(from: date)),
+                        [
+                            AppSettings.lastProcessedDate.map {
+                                L10n.activeRiskyEncounterLastUpdate(DateFormatter.baseDateTimeFormatter.string(from: $0))
+                            },
+                            L10n.activeRiskyEncounterUpdateInterval
+                        ].compactMap { $0 }.joined(separator: "\n")
+                    ]
+                    self.riskyEncountersSection.bodyLabel.text = parts.joined(separator: "\n\n")
                 } else {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
                     self.riskyEncountersSection.bodyLabel.text = [
                         AppSettings.lastProcessedDate.map {
-                            L10n.activeRiskyEncounterLastUpdateNegative(DateFormatter.baseDateTimeFormatter.string(from: $0))
+                            L10n.activeRiskyEncounterLastUpdate(DateFormatter.baseDateTimeFormatter.string(from: $0))
                         },
-                        L10n.activeRiskyEncounterUpdateIntervalNegative
+                        L10n.activeRiskyEncounterUpdateInterval
                     ].compactMap { $0 }.joined(separator: "\n")
                 }
             }

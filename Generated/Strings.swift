@@ -57,15 +57,15 @@ internal enum L10n {
     return L10n.tr("Localizable", "active_risky_encounter_head_positive", String(describing: p1))
   }
   /// Poslední aktualizace %@
-  internal static func activeRiskyEncounterLastUpdateNegative(_ p1: Any) -> String {
-    return L10n.tr("Localizable", "active_risky_encounter_last_update_negative", String(describing: p1))
+  internal static func activeRiskyEncounterLastUpdate(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "active_risky_encounter_last_update", String(describing: p1))
   }
   /// Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.
   internal static func activeRiskyEncounterTitlePositive(_ p1: Any) -> String {
     return L10n.tr("Localizable", "active_risky_encounter_title_positive", String(describing: p1))
   }
   /// Aktualizace probíhá jednou za 24 hodin.
-  internal static let activeRiskyEncounterUpdateIntervalNegative = L10n.tr("Localizable", "active_risky_encounter_update_interval_negative")
+  internal static let activeRiskyEncounterUpdateInterval = L10n.tr("Localizable", "active_risky_encounter_update_interval")
   /// Pokud je výsledek pozitivní, upozorněte ostatní.
   internal static let activeSendReportsBody = L10n.tr("Localizable", "active_send_reports_body")
   /// Anonymně upozornit ostatní
