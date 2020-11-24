@@ -57,7 +57,6 @@ final class Diagnosis: NSObject {
 
     private func openMailController(diagnosisInfo: Bool, errorMessage: String? = nil) {
         let controller = MFMailComposeViewController()
-        controller.setSubject("Zpětná vazba z aplikace eRouška")
         controller.setToRecipients(["info@erouska.cz"])
         controller.mailComposeDelegate = self
 
