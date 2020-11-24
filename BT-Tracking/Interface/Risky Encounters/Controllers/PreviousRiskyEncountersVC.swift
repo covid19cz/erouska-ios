@@ -46,10 +46,12 @@ final class PreviousRiskyEncountersVC: UIViewController {
         tableView.rx
             .modelSelected(Exposure.self)
             .subscribe(onNext: { [weak self] value in
+                #if DEBUG || !PROD
                 if let indexPath = self?.tableView.indexPathForSelectedRow {
                     self?.tableView.deselectRow(at: indexPath, animated: true)
                 }
                 self?.perform(segue: StoryboardSegue.RiskyEncounters.showDetail, sender: value)
+                #endif
             })
             .disposed(by: disposeBag)
 
@@ -85,6 +87,7 @@ final class PreviousRiskyEncountersVC: UIViewController {
         cell.accessoryType = .disclosureIndicator
         #else
         cell.selectionStyle = .none
+        cell.accessoryType = .none
         #endif
         return cell
     }
