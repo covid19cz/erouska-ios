@@ -20,8 +20,11 @@ final class Diagnosis: NSObject {
 
     private weak var showFromController: UIViewController?
 
-    init(showFromController: UIViewController, errorMessage: String? = nil, fromError: Bool) {
+    private var screenName: String
+
+    init(showFromController: UIViewController, screenName: String, errorMessage: String? = nil, fromError: Bool) {
         self.showFromController = showFromController
+        self.screenName = screenName
         super.init()
 
         presentQuestion(errorMessage: errorMessage, fromError: fromError)
@@ -100,6 +103,7 @@ final class Diagnosis: NSObject {
         Poslední stažení klíčů: \(lastKeys)
         Poslední notifikace rizikového setkání: \(exposureNotification)
         Poslední rizikové setkání z: \(lastExposure)
+        Obrazovka: \(screenName)
         """
 
         if let error = errorMessage {
