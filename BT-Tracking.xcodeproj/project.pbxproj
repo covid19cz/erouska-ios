@@ -1606,7 +1606,7 @@
 				MARKETING_VERSION = 2.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
-				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
+				PROVISIONING_PROFILE_SPECIFIER = "eRouska DEV Development";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1633,7 +1633,7 @@
 				MARKETING_VERSION = 2.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
-				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
+				PROVISIONING_PROFILE_SPECIFIER = "eRouska DEV Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
