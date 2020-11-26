@@ -17,6 +17,10 @@ enum ReportError: String, Error {
     case stringEncodingFailure
 }
 
+enum ReportUploadError: Error {
+    case upload(String)
+}
+
 struct Report: Encodable {
 
     /// Required and must have length >= 1 and <= 21 (`maxKeysPerPublish`)

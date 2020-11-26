@@ -265,7 +265,14 @@ private extension SendReportsVC {
             case .success:
                 self?.resultAction()
             case .failure(let error):
-                self?.resultErrorAction(message: error.localizedDescription)
+                if let error = error as? ReportUploadError {
+                    switch error {
+                    case .upload(let message):
+                        self?.resultErrorAction(message: message)
+                    }
+                } else {
+                    self?.resultErrorAction(message: error.localizedDescription)
+                }
                 Crashlytics.crashlytics().record(error: error)
             }
         }
