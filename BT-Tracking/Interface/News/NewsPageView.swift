@@ -61,8 +61,10 @@ final class NewsPageView: UIView {
 
     // MARK: -
 
-    deinit {
-        viewModel?.switchCallback?(switchView.isOn)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        switchValueChange()
     }
 
     @IBAction private func switchValueChange() {

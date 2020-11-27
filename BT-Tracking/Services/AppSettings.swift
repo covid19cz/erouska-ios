@@ -167,7 +167,7 @@ struct AppSettings {
     }
 
     /// Check if it's migration to efgs version
-    static var v2_3NewsLaucnhed: Bool {
+    static var v2_3NewsLaunched: Bool {
         get {
             bool(forKey: .v2_3NewsLaunched)
         }

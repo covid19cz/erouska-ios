@@ -48,7 +48,7 @@ final class EFGSPermissionVC: UIViewController {
     // MARK: - Action
 
     @IBAction private func continueAction(_ sender: Any) {
-        AppSettings.v2_3NewsLaucnhed = true
+        AppSettings.v2_3NewsLaunched = true
         viewModel.setIsPermissionGranted(enableSwitch.isOn)
         perform(segue: StoryboardSegue.Onboarding.privacy)
     }

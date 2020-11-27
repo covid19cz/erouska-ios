@@ -226,12 +226,12 @@ private extension AppDelegate {
 
         if shouldPresentNews, !AppSettings.v2_0NewsLaunched {
             AppSettings.v2_0NewsLaunched = true
-            AppSettings.v2_3NewsLaucnhed = true
+            AppSettings.v2_3NewsLaunched = true
             let navController = StoryboardScene.News.initialScene.instantiate()
             navController.modalPresentationStyle = .fullScreen
             rootViewController?.present(navController, animated: true)
-        } else if canPresentNews, !AppSettings.v2_3NewsLaucnhed {
-            AppSettings.v2_3NewsLaucnhed = true
+        } else if canPresentNews, !AppSettings.v2_3NewsLaunched {
+            AppSettings.v2_3NewsLaunched = true
             let navController = StoryboardScene.News.initialScene.instantiate()
             navController.modalPresentationStyle = .fullScreen
             let controller = navController.topViewController as? NewsVC
