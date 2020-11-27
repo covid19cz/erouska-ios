@@ -231,7 +231,7 @@ private extension AppDelegate {
             navController.modalPresentationStyle = .fullScreen
             rootViewController?.present(navController, animated: true)
         } else if canPresentNews, !AppSettings.v2_3NewsLaucnhed {
-            //AppSettings.v2_3NewsLaucnhed = true
+            AppSettings.v2_3NewsLaucnhed = true
             let navController = StoryboardScene.News.initialScene.instantiate()
             navController.modalPresentationStyle = .fullScreen
             let controller = navController.topViewController as? NewsVC
