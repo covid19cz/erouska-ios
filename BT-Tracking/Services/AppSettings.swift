@@ -29,6 +29,7 @@ struct AppSettings {
         case lastExposureWarningInfoDisplayed
 
         case v2_0NewsLaunched
+        case v2_3NewsLaunched
 
         case lastLegacyDataFetchDate
         case currentDataLastFetchDate
@@ -162,6 +163,16 @@ struct AppSettings {
         }
         set {
             set(withKey: .v2_0NewsLaunched, value: newValue)
+        }
+    }
+
+    /// Check if it's migration to efgs version
+    static var v2_3NewsLaucnhed: Bool {
+        get {
+            bool(forKey: .v2_3NewsLaunched)
+        }
+        set {
+            set(withKey: .v2_3NewsLaunched, value: newValue)
         }
     }
 

@@ -376,6 +376,14 @@ internal enum L10n {
   internal static let newsToTheWorldBody = L10n.tr("Localizable", "news_to_the_world_body")
   /// eRouška se chystá do světa
   internal static let newsToTheWorldTitle = L10n.tr("Localizable", "news_to_the_world_title")
+  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\n%@\n\nNastavení můžete kdykoliv změnit v aplikaci.
+  internal static func newsTravelBody(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "news_travel_body", String(describing: p1))
+  }
+  /// Povolit spolupráci se zahraničím
+  internal static let newsTravelEnable = L10n.tr("Localizable", "news_travel_enable")
+  /// Pomozte v boji s COVID-19 i při cestách do zahraničí
+  internal static let newsTravelTitle = L10n.tr("Localizable", "news_travel_title")
   /// OK
   internal static let ok = L10n.tr("Localizable", "ok")
   /// eRouška neobsahuje žádné vaše osobní údaje a sbírá pouze anonymní data o ostatních eRouškách, se kterými se setkáte.\n\nDetailní informace o zpracování osobních údajů a další podmínky používání aplikace najdete v podmínkách používání.

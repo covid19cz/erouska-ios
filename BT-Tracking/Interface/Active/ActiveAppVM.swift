@@ -111,7 +111,7 @@ final class ActiveAppVM {
         AppSettings.efgsEnabled
     }
     var efgsBodyText: String {
-        return efgsEnabled ? L10n.activeEfgsEnabled : L10n.activeEfgsDisabled
+        efgsEnabled ? L10n.activeEfgsEnabled : L10n.activeEfgsDisabled
     }
 
     init() {

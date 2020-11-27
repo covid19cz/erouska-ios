@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CyS-xw-OKW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CyS-xw-OKW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFo-BI-0aY">
                                 <rect key="frame" x="0.0" y="140" width="414" height="618"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2z-dj-4NO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
@@ -53,13 +55,13 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Hw4-Yl-qCK"/>
                                                 </constraints>
-                                                <color key="pageIndicatorTintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="pageIndicatorTintColor" systemColor="opaqueSeparatorColor"/>
                                                 <color key="currentPageIndicatorTintColor" name="AccentColor"/>
                                                 <connections>
                                                     <action selector="pageControlValueChanged:" destination="s25-xW-x39" eventType="valueChanged" id="3xW-fR-qHI"/>
                                                 </connections>
                                             </pageControl>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ra-Da-io7" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ra-Da-io7" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="euv-6m-8Bx"/>
@@ -84,7 +86,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="N6y-yQ-9DI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="h2z-dj-4NO" firstAttribute="leading" secondItem="N6y-yQ-9DI" secondAttribute="leading" id="ErD-Qw-X51"/>
                             <constraint firstItem="8dj-k3-HKT" firstAttribute="top" secondItem="h2z-dj-4NO" secondAttribute="bottom" id="G73-pv-50x"/>
@@ -98,7 +101,6 @@
                             <constraint firstItem="N6y-yQ-9DI" firstAttribute="trailing" secondItem="SZf-PZ-KS2" secondAttribute="trailing" id="nn6-BC-VmU"/>
                             <constraint firstItem="N6y-yQ-9DI" firstAttribute="bottom" secondItem="SZf-PZ-KS2" secondAttribute="bottom" id="piZ-nn-KBO"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="N6y-yQ-9DI"/>
                     </view>
                     <navigationItem key="navigationItem" id="NUH-o3-nlG"/>
                     <connections>
@@ -136,5 +138,11 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

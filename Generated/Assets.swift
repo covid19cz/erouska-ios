@@ -59,6 +59,7 @@ internal enum Asset {
   internal static let newsNoPhoneNumber = ImageAsset(name: "News_NoPhoneNumber")
   internal static let newsPrivacy = ImageAsset(name: "News_Privacy")
   internal static let newsToTheWorld = ImageAsset(name: "News_ToTheWorld")
+  internal static let newsTravel = ImageAsset(name: "News_Travel")
   internal static let exposure = ImageAsset(name: "Exposure")
   internal static let exposureNotificationPermission = ImageAsset(name: "ExposureNotificationPermission")
   internal static let forceOSUpdate = ImageAsset(name: "ForceOSUpdate")
