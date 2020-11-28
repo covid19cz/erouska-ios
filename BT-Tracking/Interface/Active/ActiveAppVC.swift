@@ -114,8 +114,7 @@ final class ActiveAppVC: UIViewController {
         sendReportsSection.action = sendReportsAction
 
         efgsSection.iconImageView.image = Asset.travel.image
-        efgsSection.titleLabel.text = L10n.activeEfgsTitle
-        efgsSection.bodyLabel.text = viewModel.efgsBodyText
+        efgsSection.titleLabel.text = viewModel.efgsText
         efgsSection.isSelectable = true
         efgsSection.action = efgsSettingsAction
 
@@ -297,7 +296,7 @@ private extension ActiveAppVC {
 
     func updateViewModel() {
         viewModel.updateStateIfNeeded()
-        efgsSection.bodyLabel.text = viewModel.efgsBodyText
+        efgsSection.titleLabel.text = viewModel.efgsText
     }
 
     func updateScanner(activate: Bool, completion: @escaping CallbackVoid) {

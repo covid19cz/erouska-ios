@@ -20,7 +20,7 @@
 "efgs_permission_headline" = "Pomozte v boji s COVID-19 i při cestách do zahraničí";
 "efgs_permission_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.";
 "efgs_permission_switch" = "Povolit spolupráci se zahraničím";
-"efgs_settings_title" = "Spolupráce se zahraničím";
+"efgs_settings_title" = "Cesty do zahraničí";
 "efgs_settings_headline" = "Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.";
 "efgs_settings_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nAktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko. Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.";
 "efgs_settings_switch" = "Povolit spolupráci se zahraničím";

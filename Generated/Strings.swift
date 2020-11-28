@@ -268,7 +268,7 @@ internal enum L10n {
   internal static let efgsSettingsHeadline = L10n.tr("Localizable", "efgs_settings_headline")
   /// Povolit spolupráci se zahraničím
   internal static let efgsSettingsSwitch = L10n.tr("Localizable", "efgs_settings_switch")
-  /// Spolupráce se zahraničím
+  /// Cesty do zahraničí
   internal static let efgsSettingsTitle = L10n.tr("Localizable", "efgs_settings_title")
   /// Chyba
   internal static let error = L10n.tr("Localizable", "error")

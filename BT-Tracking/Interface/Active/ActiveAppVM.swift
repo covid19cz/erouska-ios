@@ -110,8 +110,8 @@ final class ActiveAppVM {
     var efgsEnabled: Bool {
         AppSettings.efgsEnabled
     }
-    var efgsBodyText: String {
-        efgsEnabled ? L10n.activeEfgsEnabled : L10n.activeEfgsDisabled
+    var efgsText: String {
+        L10n.efgsSettingsTitle + " (" + (efgsEnabled ? L10n.activeEfgsEnabled : L10n.activeEfgsDisabled).lowercased() + ")"
     }
 
     init() {
