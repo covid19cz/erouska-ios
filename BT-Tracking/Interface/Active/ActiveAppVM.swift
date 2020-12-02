@@ -135,14 +135,12 @@ final class ActiveAppVM {
         switch exposureService.status {
         case .active:
             observableState.onNext(.enabled)
-        case .paused, .disabled, .unauthorized:
+        case .paused:
             observableState.onNext(.paused)
         case .bluetoothOff:
             observableState.onNext(.disabledBluetooth)
-        case .restricted:
+        case .restricted, .disabled, .unauthorized, .unknown:
             observableState.onNext(.disabledExposures)
-        case .unknown:
-            observableState.onNext(.paused)
         @unknown default:
             return
         }

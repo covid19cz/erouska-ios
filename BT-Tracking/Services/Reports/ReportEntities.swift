@@ -76,6 +76,7 @@ struct ReportResult: Decodable {
 
     /// On error, the error message will contain a message from the server
     let errorMessage: String?
+    let error: String?
 
     /// Field will contain one of the constants defined in this file.
     /// The intent is that code can be used to show a localized error message on the device.
