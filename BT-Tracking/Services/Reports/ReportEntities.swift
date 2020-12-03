@@ -18,7 +18,7 @@ enum ReportError: String, Error {
 }
 
 enum ReportUploadError: Error {
-    case upload(String)
+    case upload(String, String?)
 }
 
 struct Report: Encodable {
@@ -75,7 +75,6 @@ struct ReportResult: Decodable {
     let insertedExposures: Int?
 
     /// On error, the error message will contain a message from the server
-    let errorMessage: String?
     let error: String?
 
     /// Field will contain one of the constants defined in this file.

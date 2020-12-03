@@ -108,8 +108,8 @@ final class SendReportsVC: UIViewController {
         perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.noKeys)
     }
 
-    private func resultErrorAction(message: String) {
-        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.error(message))
+    private func resultErrorAction(code: String, message: String? = nil) {
+        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.error(code, message))
     }
 
 }
@@ -217,7 +217,7 @@ private extension SendReportsVC {
                 case .noData:
                     self.resultNoKeysAction()
                 default:
-                    self.resultErrorAction(message: error.localizedDescription)
+                    self.resultErrorAction(code: error.localizedDescription)
                 }
                 Crashlytics.crashlytics().record(error: error)
             }
@@ -243,14 +243,14 @@ private extension SendReportsVC {
                 case .failure(let error):
                     log("DataListVC: Failed to get verification payload \(error)")
                     self.reportHideProgress()
-                    self.resultErrorAction(message: error.localizedDescription)
+                    self.resultErrorAction(code: error.localizedDescription)
                     Crashlytics.crashlytics().record(error: error)
                 }
             }
         } catch {
             log("DataListVC: Failed to get hmac for keys \(error)")
             reportHideProgress()
-            resultErrorAction(message: error.localizedDescription)
+            resultErrorAction(code: error.localizedDescription)
             Crashlytics.crashlytics().record(error: error)
         }
     }
@@ -267,11 +267,11 @@ private extension SendReportsVC {
             case .failure(let error):
                 if let error = error as? ReportUploadError {
                     switch error {
-                    case .upload(let message):
-                        self?.resultErrorAction(message: message)
+                    case .upload(let code, let message):
+                        self?.resultErrorAction(code: code, message: message)
                     }
                 } else {
-                    self?.resultErrorAction(message: error.localizedDescription)
+                    self?.resultErrorAction(code: error.localizedDescription)
                 }
                 Crashlytics.crashlytics().record(error: error)
             }
@@ -300,14 +300,14 @@ private extension SendReportsVC {
                     }
                 )
             default:
-                resultErrorAction(message: "\(status.rawValue)-" + code.rawValue)
+                resultErrorAction(code: "\(status.rawValue)-" + code.rawValue, message: error.localizedDescription)
             }
         case let .certificateError(status, code):
-            resultErrorAction(message: "\(status.rawValue)-" + code.rawValue)
+            resultErrorAction(code: "\(status.rawValue)-" + code.rawValue, message: error.localizedDescription)
         case let .generalError(status, code):
-            resultErrorAction(message: "\(status.rawValue)-" + code)
+            resultErrorAction(code: "\(status.rawValue)-" + code, message: error.localizedDescription)
         case .noData:
-            resultErrorAction(message: "noData")
+            resultErrorAction(code: "noData", message: error.localizedDescription)
         }
     }
 

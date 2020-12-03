@@ -139,10 +139,8 @@ final class ReportService: ReportServicing {
 
                 switch response.result {
                 case .success(let data):
-                    if let errorMessage = data.errorMessage, (errorMessage != "partial_failure" || data.code != "partial_failure") {
-                        reportFailure(ReportUploadError.upload(errorMessage))
-                    } else if let error = data.error, data.code != "partial_failure" {
-                        reportFailure(ReportUploadError.upload(error))
+                    if let message = data.error, let code = data.code, code != "partial_failure" {
+                        reportFailure(ReportUploadError.upload(code, message))
                     } else {
                         reportSuccess()
                     }

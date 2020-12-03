@@ -236,7 +236,7 @@ final class ActiveAppVC: UIViewController {
                 self?.debugSendResult(kind: .noKeys)
             }))
             controller.addAction(UIAlertAction(title: "Chyba", style: .default, handler: { [weak self] _ in
-                self?.debugSendResult(kind: .error("Nakej kod 123"))
+                self?.debugSendResult(kind: .error("Nakej kod 123", "Naka zprava k chybe"))
             }))
             self?.present(controller, animated: true, completion: nil)
         }))
