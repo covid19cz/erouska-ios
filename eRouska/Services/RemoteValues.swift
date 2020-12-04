@@ -43,10 +43,6 @@ extension AppDelegate {
         }
     }
 
-    func remoteConfigValue(forKey key: RemoteConfigValueKey) -> Any {
-        return RemoteConfig.remoteConfig()[key.keyValue]
-    }
-
     func remoteConfigInt(forKey key: RemoteConfigValueKey) -> Int {
         return RemoteConfig.remoteConfig()[key.keyValue].numberValue?.intValue ?? 0
     }
@@ -92,6 +88,7 @@ enum RemoteConfigValueKey: String, CaseIterable {
     case appleServerConfiguration
     case appleExposureConfiguration
 
+    case efgsDays
     case efgsCountries
     case keyExportNonTravellerUrls
     case keyExportEuTravellerUrls
@@ -165,6 +162,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
         case .appleExposureConfiguration:
             return "{\"factorHigh\":0.17,\"factorStandard\":1,\"factorLow\":1.5,\"lowerThreshold\":55,\"higherThreshold\":63,\"triggerThreshold\":15}"
 
+        case .efgsDays:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsDaysDefault")
         case .efgsCountries:
             return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsCountriesDefault")
 
@@ -338,6 +337,10 @@ struct RemoteValues {
             return key.defaultValue as? T
         }
         return try JSONDecoder().decode(T.self, from: jsonData)
+    }
+
+    static var efgsDays: String {
+        AppDelegate.shared.remoteConfigString(forKey: .efgsDays)
     }
 
     static var efgsCountries: String {

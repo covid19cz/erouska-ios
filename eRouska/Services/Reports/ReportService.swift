@@ -147,8 +147,12 @@ final class ReportService: ReportServicing {
                 #endif
 
                 switch response.result {
-                case .success:
-                    reportSuccess()
+                case .success(let data):
+                    if let message = data.error, let code = data.code, code != "partial_failure" {
+                        reportFailure(ReportUploadError.upload(code, message))
+                    } else {
+                        reportSuccess()
+                    }
                 case .failure(let error):
                     reportFailure(error)
                 }
@@ -188,7 +192,6 @@ final class ReportService: ReportServicing {
 
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-
             callback(ReportDownload(success: self.downloadSuccess, failures: self.downloadFailure))
             self.isDownloading = false
 
@@ -230,7 +233,7 @@ final class ReportService: ReportServicing {
                         downloadDispatchGroup.enter()
 
                         let keyFileName = remoteURL.deletingPathExtension().lastPathComponent
-                        let destination: DownloadRequest.Destination = { temporaryURL, response in
+                        let destination: DownloadRequest.Destination = { _, response in
                             let url = destinationURL.appendingPathComponent(keyFileName).appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
                             return (url, [.removePreviousFile, .createIntermediateDirectories])
                         }

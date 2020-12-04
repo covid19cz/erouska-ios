@@ -33,9 +33,22 @@ final class EFGSPermissionVC: UIViewController {
         setupStrings()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        setupLargeTitleAutoAdjustFont()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        setupLargeTitleAutoAdjustFont()
+    }
+
     // MARK: - Action
 
     @IBAction private func continueAction(_ sender: Any) {
+        AppSettings.v2_3NewsLaunched = true
         viewModel.setIsPermissionGranted(enableSwitch.isOn)
         perform(segue: StoryboardSegue.Onboarding.privacy)
     }
@@ -48,7 +61,7 @@ private extension EFGSPermissionVC {
         navigationItem.backBarButtonItem?.title = L10n.back
 
         headlineLabel.text = L10n.efgsPermissionHeadline
-        bodyLabel.text = L10n.efgsPermissionBody + "\n\n" + viewModel.efgsCountries
+        bodyLabel.text = L10n.efgsPermissionBody(RemoteValues.efgsDays) + "\n\n" + viewModel.efgsCountries
         enableLabel.text = L10n.efgsPermissionSwitch
         continueButton.setTitle(L10n.newsButtonContinue)
     }

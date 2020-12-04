@@ -13,7 +13,7 @@ final class RiskyEncountersDetailVC: UITableViewController {
     private enum Row: Int, CaseIterable {
         case date
         case duration
-        case totlaRiskScore
+        case totalRiskScore
         case transmissionRiskLevel
         case attenuationValue
         case attenuationDurations
@@ -32,7 +32,7 @@ final class RiskyEncountersDetailVC: UITableViewController {
         title = "Debug detail"
     }
 
-    // MARK: - UITableViewDetaSource
+    // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Row.allCases.count
@@ -51,7 +51,7 @@ final class RiskyEncountersDetailVC: UITableViewController {
         case .duration:
             cell.textLabel?.text = "Duration"
             cell.detailTextLabel?.text = "\(exposure.duration)"
-        case .totlaRiskScore:
+        case .totalRiskScore:
             cell.textLabel?.text = "Total Risk Score"
             cell.detailTextLabel?.text = "\(exposure.totalRiskScore)"
         case .transmissionRiskLevel:

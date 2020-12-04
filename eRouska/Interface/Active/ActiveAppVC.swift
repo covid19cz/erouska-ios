@@ -13,7 +13,7 @@ import RxSwift
 
 final class ActiveAppVC: UIViewController {
 
-    private var viewModel = ActiveAppVM()
+    private let viewModel = ActiveAppVM()
     private let disposeBag = DisposeBag()
     private var firstAppear = true
 
@@ -24,6 +24,7 @@ final class ActiveAppVC: UIViewController {
     private let stateSection = ActiveAppSectionView()
     private let riskyEncountersSection = ActiveAppSectionView()
     private let sendReportsSection = ActiveAppSectionView()
+    private let efgsSection = ActiveAppSectionView()
 
     // MARK: - Outlets
 
@@ -67,7 +68,7 @@ final class ActiveAppVC: UIViewController {
 
         Observable.combineLatest(
             viewModel.riskyEncounterDateToShow,
-            viewModel.riskyEcountersInTimeInterval
+            viewModel.riskyEncountersInTimeInterval
         ).subscribe(
             onNext: { [weak self] dateToShow, numberOfRiskyEncounters in
                 guard let self = self else { return }
@@ -77,14 +78,23 @@ final class ActiveAppVC: UIViewController {
                 self.riskyEncountersSection.isPositive = isPositive
                 if let date = dateToShow {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
-                    self.riskyEncountersSection.bodyLabel.text = L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateTimeFormatter.string(from: date))
+                    let parts: [String] = [
+                        L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateFormatter.string(from: date)),
+                        [
+                            AppSettings.lastProcessedDate.map {
+                                L10n.activeRiskyEncounterLastUpdate(DateFormatter.baseDateTimeFormatter.string(from: $0))
+                            },
+                            L10n.activeRiskyEncounterUpdateInterval
+                        ].compactMap { $0 }.joined(separator: "\n")
+                    ]
+                    self.riskyEncountersSection.bodyLabel.text = parts.joined(separator: "\n\n")
                 } else {
                     self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
                     self.riskyEncountersSection.bodyLabel.text = [
                         AppSettings.lastProcessedDate.map {
-                            L10n.activeRiskyEncounterLastUpdateNegative(DateFormatter.baseDateTimeFormatter.string(from: $0))
+                            L10n.activeRiskyEncounterLastUpdate(DateFormatter.baseDateTimeFormatter.string(from: $0))
                         },
-                        L10n.activeRiskyEncounterUpdateIntervalNegative
+                        L10n.activeRiskyEncounterUpdateInterval
                     ].compactMap { $0 }.joined(separator: "\n")
                 }
             }
@@ -101,15 +111,23 @@ final class ActiveAppVC: UIViewController {
         }
 
         stateSection.action = changeScanningAction
+        stateSection.isTappable = false
 
         riskyEncountersSection.isSelectable = true
         riskyEncountersSection.action = riskyEncountersAction
 
         sendReportsSection.iconImageView.image = Asset.sendData.image
         sendReportsSection.titleLabel.text = L10n.activeSendReportsHead
+        sendReportsSection.bodyLabel.text = L10n.activeSendReportsBody
         sendReportsSection.actionButton.setTitle(L10n.activeSendReportsButton)
         sendReportsSection.action = sendReportsAction
-        [stateSection, riskyEncountersSection, sendReportsSection].forEach(mainStackView.addArrangedSubview)
+
+        efgsSection.iconImageView.image = Asset.travel.image
+        efgsSection.titleLabel.text = viewModel.efgsText
+        efgsSection.isSelectable = true
+        efgsSection.action = efgsSettingsAction
+
+        [stateSection, riskyEncountersSection, sendReportsSection, efgsSection].forEach(mainStackView.addArrangedSubview)
 
         #if !PROD
         navigationItem.rightBarButtonItems?.insert(UIBarButtonItem(
@@ -225,7 +243,7 @@ final class ActiveAppVC: UIViewController {
                 self?.debugSendResult(kind: .noKeys)
             }))
             controller.addAction(UIAlertAction(title: "Chyba", style: .default, handler: { [weak self] _ in
-                self?.debugSendResult(kind: .error("Nakej kod 123"))
+                self?.debugSendResult(kind: .error("Nakej kod 123", "Naka zprava k chybe"))
             }))
             self?.present(controller, animated: true, completion: nil)
         }))
@@ -272,6 +290,10 @@ final class ActiveAppVC: UIViewController {
         present(controller, animated: true, completion: nil)
     }
 
+    private func efgsSettingsAction() {
+        perform(segue: StoryboardSegue.Active.travel)
+    }
+
     // MARK: -
 
     @objc private func applicationDidBecomeActive() {
@@ -283,6 +305,7 @@ private extension ActiveAppVC {
 
     func updateViewModel() {
         viewModel.updateStateIfNeeded()
+        efgsSection.titleLabel.text = viewModel.efgsText
     }
 
     func updateScanner(activate: Bool, completion: @escaping CallbackVoid) {

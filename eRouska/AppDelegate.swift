@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "pushRegistrationToken": deviceToken.hexEncodedString()
         ]
 
-        Self.dependency.functions.httpsCallable("changePushToken").call(data) { _, error in
+        Self.dependency.functions.httpsCallable("ChangePushToken").call(data) { _, error in
             if let error = error {
                 log("AppDelegate: Failed to change push token \(error.localizedDescription)")
             }
@@ -153,6 +153,7 @@ private extension AppDelegate {
         FirebaseApp.configure()
         setupDefaultValues()
         updateRemoteValues()
+        ExposureList.cleanup()
 
         if AppSettings.lastLegacyDataFetchDate == nil {
             AppSettings.lastLegacyDataFetchDate = AppSettings.lastProcessedDate ?? Date()
@@ -189,6 +190,7 @@ private extension AppDelegate {
 
         let rootViewController: UIViewController?
         var shouldPresentNews = false
+        var canPresentNews = false
 
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
             rootViewController = StoryboardScene.ForceUpdate.unsupportedDeviceVC.instantiate()
@@ -201,6 +203,7 @@ private extension AppDelegate {
             presentingAnyForceUpdateScreen = true
         } else if AppSettings.activated, Auth.auth().currentUser != nil {
             rootViewController = StoryboardScene.Active.initialScene.instantiate()
+            canPresentNews = true
 
             // refresh token
             Auth.auth().currentUser?.getIDToken(completion: { token, _ in
@@ -223,9 +226,17 @@ private extension AppDelegate {
 
         if shouldPresentNews, !AppSettings.v2_0NewsLaunched {
             AppSettings.v2_0NewsLaunched = true
-            let controller = StoryboardScene.News.initialScene.instantiate()
-            controller.modalPresentationStyle = .fullScreen
-            rootViewController?.present(controller, animated: true)
+            AppSettings.v2_3NewsLaunched = true
+            let navController = StoryboardScene.News.initialScene.instantiate()
+            navController.modalPresentationStyle = .fullScreen
+            rootViewController?.present(navController, animated: true)
+        } else if canPresentNews, !AppSettings.v2_3NewsLaunched {
+            AppSettings.v2_3NewsLaunched = true
+            let navController = StoryboardScene.News.initialScene.instantiate()
+            navController.modalPresentationStyle = .fullScreen
+            let controller = navController.topViewController as? NewsVC
+            controller?.viewModel = .init(type: .efgs)
+            rootViewController?.present(navController, animated: true)
         }
     }
 

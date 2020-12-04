@@ -47,4 +47,15 @@ final class ExposureList {
         }
     }
 
+    static func cleanup() {
+        let realm = AppDelegate.dependency.realm
+        try? realm.write {
+            exposures.forEach {
+                if $0.date.addingTimeInterval(14 * 24 * 60 * 60) < Date() {
+                    realm.delete($0)
+                }
+            }
+        }
+    }
+
 }

@@ -38,6 +38,12 @@ internal enum L10n {
   internal static func activeDataUpdate(_ p1: Any) -> String {
     return L10n.tr("Localizable", "active_data_update", String(describing: p1))
   }
+  /// Vypnuto
+  internal static let activeEfgsDisabled = L10n.tr("Localizable", "active_efgs_disabled")
+  /// Zapnuto
+  internal static let activeEfgsEnabled = L10n.tr("Localizable", "active_efgs_enabled")
+  /// Spolupráce se zahraničím
+  internal static let activeEfgsTitle = L10n.tr("Localizable", "active_efgs_title")
   /// Více informací
   internal static let activeExposureMoreInfo = L10n.tr("Localizable", "active_exposure_more_info")
   /// Upozorníme vás v případě možného podezření na setkání s COVID-19 a zobrazíme vám všechny potřebné informace.
@@ -57,18 +63,20 @@ internal enum L10n {
     return L10n.tr("Localizable", "active_risky_encounter_head_positive", String(describing: p1))
   }
   /// Poslední aktualizace %@
-  internal static func activeRiskyEncounterLastUpdateNegative(_ p1: Any) -> String {
-    return L10n.tr("Localizable", "active_risky_encounter_last_update_negative", String(describing: p1))
+  internal static func activeRiskyEncounterLastUpdate(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "active_risky_encounter_last_update", String(describing: p1))
   }
   /// Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.
   internal static func activeRiskyEncounterTitlePositive(_ p1: Any) -> String {
     return L10n.tr("Localizable", "active_risky_encounter_title_positive", String(describing: p1))
   }
   /// Aktualizace probíhá jednou za 24 hodin.
-  internal static let activeRiskyEncounterUpdateIntervalNegative = L10n.tr("Localizable", "active_risky_encounter_update_interval_negative")
+  internal static let activeRiskyEncounterUpdateInterval = L10n.tr("Localizable", "active_risky_encounter_update_interval")
+  /// Pokud je výsledek pozitivní, upozorněte ostatní.
+  internal static let activeSendReportsBody = L10n.tr("Localizable", "active_send_reports_body")
   /// Anonymně upozornit ostatní
   internal static let activeSendReportsButton = L10n.tr("Localizable", "active_send_reports_button")
-  /// Máte pozitvní výsledek COVID-19 testu?
+  /// Byli jste na testu COVID-19?
   internal static let activeSendReportsHead = L10n.tr("Localizable", "active_send_reports_head")
   /// Zapnuté Bluetooth je důležité pro sbírání kontaktů s ostatními eRouškami ve vašem okolí.
   internal static let activeTitleDisabledBluetooth = L10n.tr("Localizable", "active_title_disabled_bluetooth")
@@ -220,7 +228,7 @@ internal enum L10n {
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Nepodařilo se nám odeslat data
   internal static let dataSendTitleError = L10n.tr("Localizable", "data_send_title_error")
-  /// Data jste úspěsně odeslali
+  /// Upozornění ostatním eRouškám jste odeslali
   internal static let dataSendTitleLabel = L10n.tr("Localizable", "data_send_title_label")
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19
   internal static let dataSendTitleNokeys = L10n.tr("Localizable", "data_send_title_nokeys")
@@ -230,22 +238,44 @@ internal enum L10n {
   internal static let deadmanNotificaitonTitle = L10n.tr("Localizable", "deadman_notificaiton_title")
   /// Test
   internal static let debug = L10n.tr("Localizable", "debug")
-  /// Zrušit
+  /// Zavřít
   internal static let diagnosisCancel = L10n.tr("Localizable", "diagnosis_cancel")
   /// Chci přidat přílohu
   internal static let diagnosisSendAttachment = L10n.tr("Localizable", "diagnosis_send_attachment")
   /// Nechci přidat přílohu
   internal static let diagnosisSendWithoutattachment = L10n.tr("Localizable", "diagnosis_send_withoutattachment")
-  /// Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?
-  internal static let diagnosisTitle = L10n.tr("Localizable", "diagnosis_title")
-  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.
-  internal static let efgsPermissionBody = L10n.tr("Localizable", "efgs_permission_body")
+  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.
+  internal static let diagnosisTitleBase = L10n.tr("Localizable", "diagnosis_title_base")
+  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu a chybě?
+  internal static let diagnosisTitleError = L10n.tr("Localizable", "diagnosis_title_error")
+  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních %@ dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.
+  internal static func efgsPermissionBody(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "efgs_permission_body", String(describing: p1))
+  }
   /// Pomozte v boji s COVID-19 i při cestách do zahraničí
   internal static let efgsPermissionHeadline = L10n.tr("Localizable", "efgs_permission_headline")
   /// Povolit spolupráci se zahraničím
   internal static let efgsPermissionSwitch = L10n.tr("Localizable", "efgs_permission_switch")
   /// Spolupráce se zahraničím
   internal static let efgsPermissionTitle = L10n.tr("Localizable", "efgs_permission_title")
+  /// Vypnout
+  internal static let efgsSettingsAlertDisable = L10n.tr("Localizable", "efgs_settings_alert_disable")
+  /// Ponechat zapnuté
+  internal static let efgsSettingsAlertEnable = L10n.tr("Localizable", "efgs_settings_alert_enable")
+  /// Onemocnění COVID-19 se může projevit až 14 dní po setkání s nakaženou osobou. Spolupráci se zahraničím prosím vypněte nejdříve %@ dní po návratu.
+  internal static func efgsSettingsAlertTitle(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "efgs_settings_alert_title", String(describing: p1))
+  }
+  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nAktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko. Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.
+  internal static func efgsSettingsBody(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "efgs_settings_body", String(describing: p1))
+  }
+  /// Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.
+  internal static let efgsSettingsHeadline = L10n.tr("Localizable", "efgs_settings_headline")
+  /// Povolit spolupráci se zahraničím
+  internal static let efgsSettingsSwitch = L10n.tr("Localizable", "efgs_settings_switch")
+  /// Cesty do zahraničí
+  internal static let efgsSettingsTitle = L10n.tr("Localizable", "efgs_settings_title")
   /// Chyba
   internal static let error = L10n.tr("Localizable", "error")
   /// Aktivaci aplikace nelze dokončit
@@ -352,6 +382,14 @@ internal enum L10n {
   internal static let newsToTheWorldBody = L10n.tr("Localizable", "news_to_the_world_body")
   /// eRouška se chystá do světa
   internal static let newsToTheWorldTitle = L10n.tr("Localizable", "news_to_the_world_title")
+  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\n%@\n\nNastavení můžete kdykoliv změnit v aplikaci.
+  internal static func newsTravelBody(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "news_travel_body", String(describing: p1))
+  }
+  /// Povolit spolupráci se zahraničím
+  internal static let newsTravelEnable = L10n.tr("Localizable", "news_travel_enable")
+  /// Pomozte v boji s COVID-19 i při cestách do zahraničí
+  internal static let newsTravelTitle = L10n.tr("Localizable", "news_travel_title")
   /// OK
   internal static let ok = L10n.tr("Localizable", "ok")
   /// eRouška neobsahuje žádné vaše osobní údaje a sbírá pouze anonymní data o ostatních eRouškách, se kterými se setkáte.\n\nDetailní informace o zpracování osobních údajů a další podmínky používání aplikace najdete v podmínkách používání.

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -75,7 +75,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KyV-A4-B0h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1990" y="1053"/>
+            <point key="canvasLocation" x="1990" y="935"/>
         </scene>
         <!--Aplikace je aktivní-->
         <scene sceneID="fsH-bj-obm">
@@ -205,6 +205,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="mainStackView" destination="qcL-c9-sLJ" id="JkJ-Wz-Fuu"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
                         <segue destination="130-NA-7N7" kind="presentation" identifier="debugReports" id="qsX-ap-9zK"/>
+                        <segue destination="K8T-GX-Top" kind="show" identifier="travel" id="M7q-bm-fdy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -229,8 +230,110 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
             </objects>
             <point key="canvasLocation" x="66" y="1389"/>
         </scene>
+        <!--Spolupráce se zahraničím-->
+        <scene sceneID="8jm-r8-Dbr">
+            <objects>
+                <viewController id="K8T-GX-Top" customClass="EFGSSettingsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o0R-Ec-OJ0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mQ-eQ-Pop">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NC-VG-QMJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Xxa-Xs-L4E">
+                                                <rect key="frame" x="20" y="10" width="374" height="489"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EfgsPermission" translatesAutoresizingMaskIntoConstraints="NO" id="lQh-1v-Bjm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxd-nb-zhB">
+                                                        <rect key="frame" x="0.0" y="145" width="374" height="108.5"/>
+                                                        <string key="text">Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GAW-oz-GWA">
+                                                        <rect key="frame" x="0.0" y="268.5" width="374" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Povolit spolupráci se zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEF-GF-H2f">
+                                                                <rect key="frame" x="0.0" y="5.5" width="317" height="20.5"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ygr-CF-f2t">
+                                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                                <color key="onTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="0.38" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                <color key="thumbTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="changeSettings" destination="K8T-GX-Top" eventType="valueChanged" id="COl-w0-EzO"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMy-wx-DJB">
+                                                        <rect key="frame" x="0.0" y="314.5" width="374" height="174.5"/>
+                                                        <mutableString key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
+Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.
+Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.</mutableString>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Xxa-Xs-L4E" firstAttribute="top" secondItem="4NC-VG-QMJ" secondAttribute="top" constant="10" id="NRK-g5-SZt"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Xxa-Xs-L4E" secondAttribute="trailing" id="PxT-la-fJa"/>
+                                            <constraint firstItem="Xxa-Xs-L4E" firstAttribute="leading" secondItem="4NC-VG-QMJ" secondAttribute="leadingMargin" id="gVf-LZ-y1V"/>
+                                            <constraint firstAttribute="bottom" secondItem="Xxa-Xs-L4E" secondAttribute="bottom" constant="16" id="qVb-bY-fcz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4NC-VG-QMJ" firstAttribute="leading" secondItem="YJv-hi-Y8C" secondAttribute="leading" id="FRH-i6-sae"/>
+                                    <constraint firstItem="4NC-VG-QMJ" firstAttribute="trailing" secondItem="YJv-hi-Y8C" secondAttribute="trailing" id="gKy-uR-oEa"/>
+                                    <constraint firstItem="4NC-VG-QMJ" firstAttribute="centerX" secondItem="y7n-id-oud" secondAttribute="centerX" id="hHX-6f-Bpu"/>
+                                    <constraint firstItem="4NC-VG-QMJ" firstAttribute="width" secondItem="y7n-id-oud" secondAttribute="width" id="tPa-jY-cyj"/>
+                                    <constraint firstItem="4NC-VG-QMJ" firstAttribute="top" secondItem="YJv-hi-Y8C" secondAttribute="top" id="uCa-Lx-DLj"/>
+                                    <constraint firstItem="4NC-VG-QMJ" firstAttribute="bottom" secondItem="YJv-hi-Y8C" secondAttribute="bottom" id="wCh-JQ-EBb"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="YJv-hi-Y8C"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="y7n-id-oud"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="i8V-io-eta"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="i8V-io-eta" firstAttribute="bottom" secondItem="8mQ-eQ-Pop" secondAttribute="bottom" id="QkE-f9-rP2"/>
+                            <constraint firstItem="8mQ-eQ-Pop" firstAttribute="top" secondItem="o0R-Ec-OJ0" secondAttribute="top" id="TqQ-Kq-HDc"/>
+                            <constraint firstItem="8mQ-eQ-Pop" firstAttribute="leading" secondItem="o0R-Ec-OJ0" secondAttribute="leading" id="ia6-vW-Kkg"/>
+                            <constraint firstItem="i8V-io-eta" firstAttribute="trailing" secondItem="8mQ-eQ-Pop" secondAttribute="trailing" id="oZJ-5H-cTG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Spolupráce se zahraničím" largeTitleDisplayMode="always" id="UJt-F9-b65"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="CMy-wx-DJB" id="YqH-rM-hnZ"/>
+                        <outlet property="enableLabel" destination="kEF-GF-H2f" id="sFT-mq-lEt"/>
+                        <outlet property="enableSwitch" destination="ygr-CF-f2t" id="biX-P5-EyX"/>
+                        <outlet property="headlineLabel" destination="uxd-nb-zhB" id="ESe-xC-di5"/>
+                        <outlet property="scrollView" destination="8mQ-eQ-Pop" id="iDi-rs-IZv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5x1-N0-Wnk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2145" y="1353"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="EfgsPermission" width="130" height="130"/>
         <namedColor name="AlertRed">
             <color red="0.95294117647058818" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
