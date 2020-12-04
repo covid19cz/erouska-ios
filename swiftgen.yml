@@ -1,5 +1,5 @@
 ib:
-  inputs: BT-Tracking
+  inputs: eRouska
   outputs:
     - templateName: scenes-swift5
       params:
@@ -8,12 +8,12 @@ ib:
     - templateName: segues-swift5
       output: Generated/StoryboardSegue.swift
 strings:
-  inputs: [BT-Tracking/Resources/Base.lproj]
+  inputs: [eRouska/Resources/Base.lproj]
   outputs:
     - templateName: structured-swift5
       output: Generated/Strings.swift
 xcassets:
-  inputs: [BT-Tracking/Resources/Assets.xcassets]
+  inputs: [eRouska/Resources/Assets.xcassets]
   outputs:
     - templateName: swift5
       output: Generated/Assets.swift

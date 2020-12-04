@@ -5,7 +5,7 @@ options:
   postGenCommand: pod install
   groupSortPosition: top
   groupOrdering: 
-    - pattern: BT-Tracking
+    - pattern: eRouska
       order: [Interface, Services, Extensions, Resources, Supporting Files]
 
 settings:
@@ -19,11 +19,11 @@ targets:
       - App
     sources:
       - Generated
-      - path: BT-Tracking
+      - path: eRouska
         excludes:
           - "Supporting Files/Firebase Prod/*"
     entitlements:
-      path: BT-Tracking/Supporting Files/Entitlements/eRouska-Dev.entitlements
+      path: eRouska/Supporting Files/Entitlements/eRouska-Dev.entitlements
       properties:
         aps-environment: development
         com.apple.developer.associated-domains: [applinks:covid19cz.page.link]
@@ -41,7 +41,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska.dev'
-        INFOPLIST_FILE: BT-Tracking/Supporting Files/Info.plist
+        INFOPLIST_FILE: eRouska/Supporting Files/Info.plist
       configs:
         Debug:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
@@ -51,11 +51,11 @@ targets:
       - App
     sources:
       - Generated
-      - path: BT-Tracking
+      - path: eRouska
         excludes:
           - "Supporting Files/Firebase Dev/*"
     entitlements:
-      path: BT-Tracking/Supporting Files/Entitlements/eRouska-Prod.entitlements
+      path: eRouska/Supporting Files/Entitlements/eRouska-Prod.entitlements
       properties:
         aps-environment: development
         com.apple.developer.associated-domains: [applinks:covid19cz.page.link]
@@ -71,7 +71,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska'
-        INFOPLIST_FILE: BT-Tracking/Supporting Files/Info-Prod.plist
+        INFOPLIST_FILE: eRouska/Supporting Files/Info-Prod.plist
       configs:
         Debug:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG PROD
