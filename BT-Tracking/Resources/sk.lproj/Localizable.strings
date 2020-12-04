@@ -19,7 +19,7 @@
 "exposure_notification_continue" = "Zapnúť";
 "efgs_permission_title" = "Spolupráca so zahraničím";
 "efgs_permission_headline" = "Pomôžte v boji s COVID-19 aj pri cestách do zahraničia";
-"efgs_permission_body" = "COVID-19 nepozná hranice a vďaka spolupráci medzi krajinami Európskej únie vás eRouška môže informovať o možnom riziku nákazy.\n\nPovoľte si prosím Spoluprácu so zahraničím, ak ste boli v posledných 14 dňoch v niektorej z krajín Európskej únie alebo do nich jazdíte pravidelne. eRouška vás upozorní na možnosť stretnutia s nakazeným chorobou COVID-19.\n\nNastavenie môžete kedykoľvek zmeniť v aplikácii.";
+"efgs_permission_body" = "COVID-19 nepozná hranice a vďaka spolupráci medzi krajinami Európskej únie vás eRouška môže informovať o možnom riziku nákazy.\n\nPovoľte si prosím Spoluprácu so zahraničím, ak ste boli v posledných %@ dňoch v niektorej z krajín Európskej únie alebo do nich jazdíte pravidelne. eRouška vás upozorní na možnosť stretnutia s nakazeným chorobou COVID-19.\n\nNastavenie môžete kedykoľvek zmeniť v aplikácii.";
 "efgs_permission_switch" = "Povoliť spoluprácu so zahraničím";
 "privacy_title" = "Súkromie";
 "privacy_headline" = "Myslíme na vaše súkromie, odosielanie údajov máte vždy pod kontrolou";

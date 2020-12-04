@@ -61,7 +61,7 @@ private extension EFGSPermissionVC {
         navigationItem.backBarButtonItem?.title = L10n.back
 
         headlineLabel.text = L10n.efgsPermissionHeadline
-        bodyLabel.text = L10n.efgsPermissionBody + "\n\n" + viewModel.efgsCountries
+        bodyLabel.text = L10n.efgsPermissionBody(RemoteValues.efgsDays) + "\n\n" + viewModel.efgsCountries
         enableLabel.text = L10n.efgsPermissionSwitch
         continueButton.setTitle(L10n.newsButtonContinue)
     }

@@ -43,7 +43,7 @@ final class EFGSSettingsVC: UIViewController {
     @IBAction private func changeSettings() {
         if AppSettings.efgsEnabled {
             showAlert(
-                title: L10n.efgsSettingsAlertTitle,
+                title: L10n.efgsSettingsAlertTitle(RemoteValues.efgsDays),
                 message: nil,
                 okTitle: L10n.efgsSettingsAlertEnable,
                 okHandler: { [weak self] in
@@ -67,7 +67,7 @@ private extension EFGSSettingsVC {
         navigationItem.backBarButtonItem?.title = L10n.back
 
         headlineLabel.text = L10n.efgsSettingsHeadline
-        bodyLabel.text = L10n.efgsSettingsBody
+        bodyLabel.text = L10n.efgsSettingsBody(RemoteValues.efgsDays)
         enableLabel.text = L10n.efgsSettingsSwitch
     }
 

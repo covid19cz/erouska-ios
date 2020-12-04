@@ -248,8 +248,10 @@ internal enum L10n {
   internal static let diagnosisTitleBase = L10n.tr("Localizable", "diagnosis_title_base")
   /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu a chybě?
   internal static let diagnosisTitleError = L10n.tr("Localizable", "diagnosis_title_error")
-  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.
-  internal static let efgsPermissionBody = L10n.tr("Localizable", "efgs_permission_body")
+  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních %@ dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.
+  internal static func efgsPermissionBody(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "efgs_permission_body", String(describing: p1))
+  }
   /// Pomozte v boji s COVID-19 i při cestách do zahraničí
   internal static let efgsPermissionHeadline = L10n.tr("Localizable", "efgs_permission_headline")
   /// Povolit spolupráci se zahraničím
@@ -260,10 +262,14 @@ internal enum L10n {
   internal static let efgsSettingsAlertDisable = L10n.tr("Localizable", "efgs_settings_alert_disable")
   /// Ponechat zapnuté
   internal static let efgsSettingsAlertEnable = L10n.tr("Localizable", "efgs_settings_alert_enable")
-  /// Onemocnění COVID-19 se může projevit až 14 dní po setkání s nakaženou osobou. Spolupráci se zahraničím prosím vypněte nejdříve 14 dní po návratu.
-  internal static let efgsSettingsAlertTitle = L10n.tr("Localizable", "efgs_settings_alert_title")
-  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nAktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko. Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.
-  internal static let efgsSettingsBody = L10n.tr("Localizable", "efgs_settings_body")
+  /// Onemocnění COVID-19 se může projevit až 14 dní po setkání s nakaženou osobou. Spolupráci se zahraničím prosím vypněte nejdříve %@ dní po návratu.
+  internal static func efgsSettingsAlertTitle(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "efgs_settings_alert_title", String(describing: p1))
+  }
+  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nAktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko. Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.
+  internal static func efgsSettingsBody(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "efgs_settings_body", String(describing: p1))
+  }
   /// Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.
   internal static let efgsSettingsHeadline = L10n.tr("Localizable", "efgs_settings_headline")
   /// Povolit spolupráci se zahraničím
