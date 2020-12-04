@@ -47,6 +47,10 @@ struct ReportDownload {
 
 }
 
+enum ReportUploadError: Error {
+    case upload(String, String?)
+}
+
 struct Report: Encodable {
 
     /// Required and must have length >= 1 and <= 21 (`maxKeysPerPublish`)
@@ -110,7 +114,7 @@ struct ReportResult: Decodable {
     let insertedExposures: Int?
 
     /// On error, the error message will contain a message from the server
-    let errorMessage: String?
+    let error: String?
 
     /// Field will contain one of the constants defined in this file.
     /// The intent is that code can be used to show a localized error message on the device.

@@ -63,15 +63,15 @@ internal enum L10n {
     return L10n.tr("Localizable", "active_risky_encounter_head_positive", String(describing: p1))
   }
   /// Poslední aktualizace %@
-  internal static func activeRiskyEncounterLastUpdateNegative(_ p1: Any) -> String {
-    return L10n.tr("Localizable", "active_risky_encounter_last_update_negative", String(describing: p1))
+  internal static func activeRiskyEncounterLastUpdate(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "active_risky_encounter_last_update", String(describing: p1))
   }
   /// Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.
   internal static func activeRiskyEncounterTitlePositive(_ p1: Any) -> String {
     return L10n.tr("Localizable", "active_risky_encounter_title_positive", String(describing: p1))
   }
   /// Aktualizace probíhá jednou za 24 hodin.
-  internal static let activeRiskyEncounterUpdateIntervalNegative = L10n.tr("Localizable", "active_risky_encounter_update_interval_negative")
+  internal static let activeRiskyEncounterUpdateInterval = L10n.tr("Localizable", "active_risky_encounter_update_interval")
   /// Pokud je výsledek pozitivní, upozorněte ostatní.
   internal static let activeSendReportsBody = L10n.tr("Localizable", "active_send_reports_body")
   /// Anonymně upozornit ostatní
@@ -238,13 +238,13 @@ internal enum L10n {
   internal static let deadmanNotificaitonTitle = L10n.tr("Localizable", "deadman_notificaiton_title")
   /// Test
   internal static let debug = L10n.tr("Localizable", "debug")
-  /// Zrušit
+  /// Zavřít
   internal static let diagnosisCancel = L10n.tr("Localizable", "diagnosis_cancel")
   /// Chci přidat přílohu
   internal static let diagnosisSendAttachment = L10n.tr("Localizable", "diagnosis_send_attachment")
   /// Nechci přidat přílohu
   internal static let diagnosisSendWithoutattachment = L10n.tr("Localizable", "diagnosis_send_withoutattachment")
-  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.
+  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.
   internal static let diagnosisTitleBase = L10n.tr("Localizable", "diagnosis_title_base")
   /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu a chybě?
   internal static let diagnosisTitleError = L10n.tr("Localizable", "diagnosis_title_error")

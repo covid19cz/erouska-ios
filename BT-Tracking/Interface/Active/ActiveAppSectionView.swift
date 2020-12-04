@@ -71,7 +71,7 @@ final class ActiveAppSectionView: UIView {
         titleLabel.allowsDefaultTighteningForTruncation = true
         titleLabel.numberOfLines = 0
 
-        bodyLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        bodyLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         bodyLabel.allowsDefaultTighteningForTruncation = true
         bodyLabel.numberOfLines = 0
 

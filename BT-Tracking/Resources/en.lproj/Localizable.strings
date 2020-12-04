@@ -36,8 +36,8 @@
 "active_title_disabled_exposures" = "eRouška cannot communicate with other eRouška applications nearby. \nEnable COVID-19 Exposure Notifications by pressing \"Enable\".";
 "active_title_disabled_bluetooth" = "Enabling Bluetooth is necessary to log encounters with other eRouška users near you.";
 "active_risky_encounter_head_negative" = "No risky encounters in the past 14 days";
-"active_risky_encounter_last_update_negative" = "Last update on %@";
-"active_risky_encounter_update_interval_negative" = "Data is updated once every 24 hours.";
+"active_risky_encounter_last_update" = "Last update on %@";
+"active_risky_encounter_update_interval" = "Data is updated once every 24 hours.";
 "active_risky_encounter_head_positive" = "%@ risky encounters in the past 14 days";
 "active_risky_encounter_title_positive" = "On %@, you last encountered someone who tested positive for COVID-19.";
 "active_send_reports_head" = "Have you been tested for COVID-19?";

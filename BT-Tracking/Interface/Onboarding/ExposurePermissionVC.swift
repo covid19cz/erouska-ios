@@ -128,7 +128,11 @@ private extension ExposurePermissionVC {
             action: (title: L10n.dataSendErrorButton, handler: { [weak self] in
                 guard let self = self else { return }
                 if Diagnosis.canSendMail {
-                    self.diagnosis = Diagnosis(showFromController: self, errorMessage: "EN-\(code.rawValue)", fromError: true)
+                    self.diagnosis = Diagnosis(
+                        showFromController: self,
+                        screenName: "A2",
+                        error: .init(code: "\(code.rawValue)", message: error.localizedDescription)
+                    )
                 } else if let URL = URL(string: "mailto:info@erouska.cz") {
                     self.openURL(URL: URL)
                 }

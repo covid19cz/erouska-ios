@@ -20,16 +20,24 @@ final class Diagnosis: NSObject {
 
     private weak var showFromController: UIViewController?
 
-    init(showFromController: UIViewController, errorMessage: String? = nil, fromError: Bool) {
-        self.showFromController = showFromController
-        super.init()
+    private var screenName: String
 
-        presentQuestion(errorMessage: errorMessage, fromError: fromError)
+    struct ErrorReport {
+        let code: String
+        let message: String
     }
 
-    private func presentQuestion(errorMessage: String?, fromError: Bool) {
+    init(showFromController: UIViewController, screenName: String, error: ErrorReport? = nil) {
+        self.showFromController = showFromController
+        self.screenName = screenName
+        super.init()
+
+        presentQuestion(error: error)
+    }
+
+    private func presentQuestion(error: ErrorReport?) {
         let alert = UIAlertController(
-            title: fromError ? L10n.diagnosisTitleBase : L10n.diagnosisTitleError,
+            title: error == nil ? L10n.diagnosisTitleBase : L10n.diagnosisTitleError,
             message: "",
             preferredStyle: .alert
         )
@@ -38,7 +46,7 @@ final class Diagnosis: NSObject {
                 title: L10n.diagnosisSendAttachment,
                 style: .default,
                 handler: { [weak self] _ in
-                    self?.openMailController(diagnosisInfo: true, errorMessage: errorMessage)
+                    self?.openMailController(diagnosisInfo: true, error: error)
                 }
             )
         )
@@ -47,7 +55,7 @@ final class Diagnosis: NSObject {
                 title: L10n.diagnosisSendWithoutattachment,
                 style: .default,
                 handler: { [weak self] _ in
-                    self?.openMailController(diagnosisInfo: false)
+                    self?.openMailController(diagnosisInfo: false, error: error)
                 }
             )
         )
@@ -55,9 +63,8 @@ final class Diagnosis: NSObject {
         showFromController?.present(alert, animated: true, completion: nil)
     }
 
-    private func openMailController(diagnosisInfo: Bool, errorMessage: String? = nil) {
+    private func openMailController(diagnosisInfo: Bool, error: ErrorReport?) {
         let controller = MFMailComposeViewController()
-        controller.setSubject("Zpětná vazba z aplikace eRouška")
         controller.setToRecipients(["info@erouska.cz"])
         controller.mailComposeDelegate = self
 
@@ -65,7 +72,7 @@ final class Diagnosis: NSObject {
             UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
                 DispatchQueue.main.async {
                     controller.addAttachmentData(
-                        self.diagnosisText(errorMessage: errorMessage, notitificationSettings: settings).data(using: .utf8) ?? Data(),
+                        self.diagnosisText(error: error, notitificationSettings: settings).data(using: .utf8) ?? Data(),
                         mimeType: "text/plain",
                         fileName: "diagnosticke_informace.txt"
                     )
@@ -77,7 +84,7 @@ final class Diagnosis: NSObject {
         }
     }
 
-    private func diagnosisText(errorMessage: String?, notitificationSettings: UNNotificationSettings) -> String {
+    private func diagnosisText(error: ErrorReport?, notitificationSettings: UNNotificationSettings) -> String {
         let device = Device.current
         let exposureService = AppDelegate.dependency.exposureService
         let connection = try? Reachability().connection
@@ -101,10 +108,11 @@ final class Diagnosis: NSObject {
         Poslední stažení klíčů: \(lastKeys)
         Poslední notifikace rizikového setkání: \(exposureNotification)
         Poslední rizikové setkání z: \(lastExposure)
+        Obrazovka: \(screenName)
         """
 
-        if let error = errorMessage {
-            return "Kód chyby: \(error)\n" + diagnosisText
+        if let error = error {
+            return "Kód chyby: \(error.code)\n" + "Detail chyby: \(error.message)\n" + diagnosisText
         } else {
             return diagnosisText
         }

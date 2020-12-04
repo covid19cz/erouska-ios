@@ -36,8 +36,8 @@
 "active_title_disabled_exposures" = "eRouška momentálne nemôže komunikovať s inými eRouškami vo vašom okolí.\nZapnite Oznámenia o kontakte s COVID-19 pomocou tlačidla \"Zapnúť\".";
 "active_title_disabled_bluetooth" = "Zapnutý Bluetooth je dôležitý na zbieranie kontaktov s ostatnými eRouškami vo vašom okolí.";
 "active_risky_encounter_head_negative" = "Za posledných 14 dní žiadne rizikové stretnutie";
-"active_risky_encounter_last_update_negative" = "Posledná aktualizácia %@";
-"active_risky_encounter_update_interval_negative" = "Aktualizácia prebieha raz za 24 hodín.";
+"active_risky_encounter_last_update" = "Posledná aktualizácia %@";
+"active_risky_encounter_update_interval" = "Aktualizácia prebieha raz za 24 hodín.";
 "active_risky_encounter_head_positive" = "Za posledných 14 dní %@ rizikové stretnutia";
 "active_risky_encounter_title_positive" = "Naposledy %@ ste sa stretli s osobou, ktorej bolo potvrdené ochorenie COVID-19";
 "active_send_reports_head" = "Máte pozitívny výsledok COVID-19 testu?";
