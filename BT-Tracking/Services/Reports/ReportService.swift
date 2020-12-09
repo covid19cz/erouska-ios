@@ -8,7 +8,6 @@
 
 import Foundation
 import ExposureNotification
-import FirebaseStorage
 import FirebaseAuth
 import FirebaseCrashlytics
 import Alamofire
