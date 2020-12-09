@@ -24,6 +24,8 @@ final class EFGSSettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+
         enableSwitch.isOn = AppSettings.efgsEnabled
         setupStrings()
     }
@@ -38,6 +40,10 @@ final class EFGSSettingsVC: UIViewController {
         super.viewDidAppear(animated)
 
         setupLargeTitleAutoAdjustFont()
+    }
+
+    @IBAction private func closeAction() {
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction private func changeSettings() {
