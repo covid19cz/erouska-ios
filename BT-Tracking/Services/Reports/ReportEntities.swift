@@ -103,6 +103,8 @@ struct Report: Encodable {
         case revisionToken
         case padding
         case visitedCountries
+        case reportType
+        case consentToFederation
     }
 
 }
