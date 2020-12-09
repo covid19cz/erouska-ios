@@ -230,7 +230,7 @@ private extension AppDelegate {
             let navController = StoryboardScene.News.initialScene.instantiate()
             navController.modalPresentationStyle = .fullScreen
             rootViewController?.present(navController, animated: true)
-        } else if canPresentNews, !AppSettings.v2_3NewsLaunched {
+        } else if canPresentNews, !AppSettings.v2_3NewsLaunched, !AppSettings.lastExposureWarningNotDisplayed {
             AppSettings.v2_3NewsLaunched = true
             let navController = StoryboardScene.News.initialScene.instantiate()
             navController.modalPresentationStyle = .fullScreen
@@ -238,6 +238,8 @@ private extension AppDelegate {
             controller?.viewModel = .init(type: .efgs)
             rootViewController?.present(navController, animated: true)
         }
+
+        AppSettings.lastExposureWarningNotDisplayed = false
     }
 
     func setupBackgroundMode() {

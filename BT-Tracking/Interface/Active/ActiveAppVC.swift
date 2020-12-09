@@ -255,6 +255,7 @@ final class ActiveAppVC: UIViewController {
 
     @IBAction private func closeExposureBanner(_ sender: Any) {
         AppSettings.lastExposureWarningClosed = true
+        AppSettings.lastExposureWarningNotDisplayed = false
         exposureBannerView.isHidden = true
     }
 
