@@ -37,6 +37,7 @@ final class ReportService: ReportServicing {
     private var healthAuthority: String
 
     private var uploadURL: URL
+    private var firebaseURL: URL
 
     private var downloadBaseURL: URL
     private var downloadDestinationURL: URL {
@@ -51,6 +52,7 @@ final class ReportService: ReportServicing {
     init(configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
+        firebaseURL = configuration.firebaseURL
         downloadBaseURL = configuration.downloadsURL
         downloadIndex = configuration.downloadIndexName
     }
@@ -58,6 +60,7 @@ final class ReportService: ReportServicing {
     func updateConfiguration(_ configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
+        firebaseURL = configuration.firebaseURL
         downloadBaseURL = configuration.downloadsURL
         downloadIndex = configuration.downloadIndexName
     }
@@ -126,10 +129,13 @@ final class ReportService: ReportServicing {
             symptomOnsetInterval: nil,
             traveler: false,
             revisionToken: nil,
-            padding: randomBase64
+            padding: randomBase64,
+            visitedCountries: [],
+            reportType: .confirmedTest,
+            consentToFederation: false
         )
 
-        AF.request(uploadURL, method: .post, parameters: report, encoder: JSONParameterEncoder.default)
+        AF.request(firebaseURL.appendingPathComponent("PublishKeys"), method: .post, parameters: report, encoder: JSONParameterEncoder.default)
             .responseDecodable(of: ReportResult.self) { response in
                 #if DEBUG
                 print("Response upload")

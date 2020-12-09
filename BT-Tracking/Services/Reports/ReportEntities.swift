@@ -55,6 +55,14 @@ struct Report: Encodable {
     /// Random base64 encoded data to obscure the request size. The server will not process this data in any way.
     let padding: String
 
+    // MARK: - EFGS parameters
+
+    let visitedCountries: [String]
+
+    let reportType: ReportType
+
+    let consentToFederation: Bool
+
     private enum CodingKeys: String, CodingKey {
         case healthAuthority = "healthAuthorityID"
         case temporaryExposureKeys
@@ -64,6 +72,7 @@ struct Report: Encodable {
         case traveler
         case revisionToken
         case padding
+        case visitedCountries
     }
 
 }
@@ -81,6 +90,15 @@ struct ReportResult: Decodable {
     /// The intent is that code can be used to show a localized error message on the device.
     let code: String?
 
+}
+
+enum ReportType: String, Codable {
+    case unknown = "Unknown"
+    case confirmedTest = "ConfirmedTest"
+    case confirmedClinicalDiagnosis = "ConfirmedClinicalDiagnosis"
+    case selfReport = "SelfReport"
+    case recursive = "Recursive"
+    case revoked = "Revoked"
 }
 
 struct ReportKeys {
