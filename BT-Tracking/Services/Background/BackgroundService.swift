@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import BackgroundTasks
 import FirebaseFunctions
-import FirebaseAnalytics
 import FirebaseCrashlytics
 
 final class BackgroundService {
@@ -155,7 +154,7 @@ final class BackgroundService {
 private extension BackgroundService {
 
     func performTask(_ task: BGTask?) -> Progress {
-        Analytics.logEvent("key_export_download_started", parameters: nil)
+        Events.keyExportDownloadStarted.logEvent()
 
         isRunning = true
 
@@ -181,7 +180,7 @@ private extension BackgroundService {
                     self.isRunning = false
 
                     task?.setTaskCompleted(success: true)
-                    Analytics.logEvent("key_export_download_finished", parameters: nil)
+                    Events.keyExportDownloadFinished.logEvent()
                     return
                 }
 
@@ -197,7 +196,7 @@ private extension BackgroundService {
                         self.isRunning = false
 
                         task?.setTaskCompleted(success: true)
-                        Analytics.logEvent("key_export_download_finished", parameters: nil)
+                        Events.keyExportDownloadFinished.logEvent()
                     case .failure(let error):
                         reportFailure(error)
                     }

@@ -38,6 +38,9 @@
 		804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B204325458390007701F0 /* NewRiskEncounterVC.swift */; };
 		804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BE48924D9A11A00D40C07 /* ReportEntities.swift */; };
 		804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 804BE48C24D9A30A00D40C07 /* Alamofire */; };
+		804E171125828673009D5E24 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804E171025828673009D5E24 /* Analytics.swift */; };
+		804E171225828673009D5E24 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804E171025828673009D5E24 /* Analytics.swift */; };
+		804E1719258289B6009D5E24 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804E1718258289B6009D5E24 /* Main.swift */; };
 		805192A024AF8E2700765392 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8051929F24AF8E2700765392 /* RxCocoa */; };
 		805192A224AF8E2700765392 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A124AF8E2700765392 /* RxSwift */; };
 		805192A424AF8E2700765392 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A324AF8E2700765392 /* RxDataSources */; };
@@ -277,6 +280,8 @@
 		804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncounterHelpVM.swift; sourceTree = "<group>"; };
 		804B204325458390007701F0 /* NewRiskEncounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRiskEncounterVC.swift; sourceTree = "<group>"; };
 		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
+		804E171025828673009D5E24 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		804E1718258289B6009D5E24 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureService.swift; sourceTree = "<group>"; };
 		8053CCFB2538A2A000C1820E /* Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
 		8053CD002538A3C100C1820E /* ExposureRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRealm.swift; sourceTree = "<group>"; };
@@ -458,6 +463,14 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
+		804E1717258289AE009D5E24 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				804E1718258289B6009D5E24 /* Main.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		8051FDA1245ACD7900B2D5EA /* Exposure */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +517,7 @@
 		8054C0C9241FE66A008907B8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				804E1717258289AE009D5E24 /* Main */,
 				D6231CAF24EBC03A0023BDC8 /* Error */,
 				D65E57D124D04960000F2402 /* News */,
 				D6CD28DA24CF24DC005847AA /* Onboarding */,
@@ -545,6 +559,7 @@
 				805BE9752424DDE3001A93B3 /* Logger */,
 				80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
+				804E171025828673009D5E24 /* Analytics.swift */,
 				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
 			);
@@ -1175,6 +1190,7 @@
 				D6340C6B24C5A27700E550A1 /* Device.swift in Sources */,
 				80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */,
 				80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */,
+				804E171125828673009D5E24 /* Analytics.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				80BE3FCF2446028E00D0C810 /* InputValidation.swift in Sources */,
 				80C71D3D25248A2900999275 /* UnsupportedDeviceVC.swift in Sources */,
@@ -1206,6 +1222,7 @@
 				80C71D3525248A0200999275 /* StoryboardScene.swift in Sources */,
 				D6CD28E824CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
+				804E1719258289B6009D5E24 /* Main.swift in Sources */,
 				D63E443824DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				80D0B5E425401D37000C3FE5 /* HelpArticleVC.swift in Sources */,
@@ -1268,6 +1285,7 @@
 				8053CD092538A61C00C1820E /* ExposureList.swift in Sources */,
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
+				804E171225828673009D5E24 /* Analytics.swift in Sources */,
 				D6231CCC24F6610C0023BDC8 /* CurrentData.swift in Sources */,
 				802AFE4525135BC0004954AF /* Notifications.swift in Sources */,
 				80026D9924FE492600BBDB36 /* VerificationEntities.swift in Sources */,

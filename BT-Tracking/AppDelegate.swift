@@ -221,6 +221,10 @@ private extension AppDelegate {
         }
 
         window.rootViewController = rootViewController
+        if let controller = window.rootViewController as? UITabBarController {
+            controller.delegate = self
+            _ = controller.viewControllers?.first
+        }
 
         if shouldPresentNews, !AppSettings.v2_0NewsLaunched {
             AppSettings.v2_0NewsLaunched = true

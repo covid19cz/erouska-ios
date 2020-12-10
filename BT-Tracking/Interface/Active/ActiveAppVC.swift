@@ -171,6 +171,7 @@ final class ActiveAppVC: UIViewController {
     private func pauseScanning() {
         updateScanner(activate: false) { [weak self] in
             AppSettings.state = .paused
+            Events.tapPauseApp.logEvent()
             self?.updateViewModel()
         }
     }
@@ -178,6 +179,7 @@ final class ActiveAppVC: UIViewController {
     private func resumeScanning() {
         updateScanner(activate: true) { [weak self] in
             AppSettings.state = .enabled
+            Events.tapResumeApp.logEvent()
             self?.updateViewModel()
         }
     }
@@ -359,6 +361,7 @@ private extension ActiveAppVC {
         navigationItem.backBarButtonItem?.title = L10n.back
         navigationItem.rightBarButtonItems?.last?.title = L10n.shareApp
 
+        navigationController?.tabBarItem.tag = MainTab.active.rawValue
         navigationController?.tabBarItem.title = L10n.appName
         navigationController?.tabBarItem.image = viewModel.state.tabBarIcon.0
         navigationController?.tabBarItem.selectedImage = viewModel.state.tabBarIcon.1
