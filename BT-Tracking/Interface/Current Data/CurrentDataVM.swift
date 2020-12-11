@@ -11,7 +11,6 @@ import FirebaseFunctions
 import RealmSwift
 import RxSwift
 import Reachability
-import Alamofire
 
 final class CurrentDataVM {
 
@@ -135,26 +134,19 @@ private extension CurrentDataVM {
     func fetchAppCurrentData(in dispatchGroup: DispatchGroup) {
         dispatchGroup.enter()
 
-        // swiftlint:disable:next force_unwrapping
-        let url = URL(string: "DownloadMetrics", relativeTo: RemoteValues.serverConfiguration.appCurentDataURL)!
-        AF.request(url)
-            .validate(statusCode: 200..<300)
-            .responseDecodable(of: AppCurrentJsonData.self, decoder: jsonDecoder) { response in
-                #if DEBUG
-                debugPrint(response)
-                #endif
+        AppDelegate.dependency.functions.httpsCallable("DownloadMetrics").call([:]) { [weak self] result, error in
+            guard let self = self else { return }
 
-                switch response.result {
-                case .success(let appData):
-                    let realm = AppDelegate.dependency.realm
-                    try? realm.write {
-                        self.currentData?.update(with: appData.data)
-                    }
-                case .failure(let error):
-                    Log.log("Failed to get DownloadMetrics \(error)")
+            if let data = result?.data as? [String: Any] {
+                let realm = AppDelegate.dependency.realm
+                try? realm.write {
+                    self.currentData?.update(with: AppCurrentData(with: data))
                 }
-                dispatchGroup.leave()
+            } else if let error = error {
+                self.observableErrors.onNext(error)
             }
+            dispatchGroup.leave()
+        }
     }
 
     func sections(from currentData: CurrentDataRealm?) -> [Section] {
