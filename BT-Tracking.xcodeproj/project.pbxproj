@@ -70,6 +70,13 @@
 		8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF84244F3FFD005E8AA3 /* AboutVC.swift */; };
 		8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
 		8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
+		806897D5258377140040EBF0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 806897D4258377140040EBF0 /* FirebaseAnalytics */; };
+		806897D7258377140040EBF0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 806897D6258377140040EBF0 /* FirebaseAuth */; };
+		806897D9258377150040EBF0 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 806897D8258377150040EBF0 /* FirebaseCrashlytics */; };
+		806897DB258377150040EBF0 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 806897DA258377150040EBF0 /* FirebaseFunctions */; };
+		806897DD258377150040EBF0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 806897DC258377150040EBF0 /* FirebaseStorage */; };
+		806897E1258377F70040EBF0 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 806897E0258377F70040EBF0 /* FirebaseRemoteConfig */; };
+		806897E4258378070040EBF0 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804E1718258289B6009D5E24 /* Main.swift */; };
 		807053532427BA2500DC1034 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
 		8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDBF242A613F001D9DCD /* AppSettings.swift */; };
 		8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDC2242A6E93001D9DCD /* ContactsVC.swift */; };
@@ -435,6 +442,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				806897DB258377150040EBF0 /* FirebaseFunctions in Frameworks */,
+				806897D5258377140040EBF0 /* FirebaseAnalytics in Frameworks */,
+				806897D7258377140040EBF0 /* FirebaseAuth in Frameworks */,
 				805192A224AF8E2700765392 /* RxSwift in Frameworks */,
 				805192A624AF8E2700765392 /* RxKeyboard in Frameworks */,
 				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
@@ -442,10 +452,13 @@
 				800A5A69254857820054A68D /* SwiftyMarkdown in Frameworks */,
 				8082DC31254AD7A8006B872D /* RxRealm in Frameworks */,
 				805192A424AF8E2700765392 /* RxDataSources in Frameworks */,
+				806897E1258377F70040EBF0 /* FirebaseRemoteConfig in Frameworks */,
 				80F3131524E3FE8500A93CCD /* Zip in Frameworks */,
+				806897DD258377150040EBF0 /* FirebaseStorage in Frameworks */,
 				80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */,
 				805192AC24AF8E2700765392 /* Reachability in Frameworks */,
 				805192A024AF8E2700765392 /* RxCocoa in Frameworks */,
+				806897D9258377150040EBF0 /* FirebaseCrashlytics in Frameworks */,
 				80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */,
 				80F3131724E3FE9100A93CCD /* Alamofire in Frameworks */,
 			);
@@ -487,6 +500,7 @@
 			children = (
 				8054C0AF241D492F008907B8 /* BT-Tracking */,
 				8054C0AE241D492F008907B8 /* Products */,
+				806897D3258377140040EBF0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -599,6 +613,13 @@
 				8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */,
 			);
 			path = "Firebase Prod";
+			sourceTree = "<group>";
+		};
+		806897D3258377140040EBF0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8084DEF524AF86B0001FBB16 /* Reports */ = {
@@ -938,6 +959,12 @@
 				80F3131824E3FE9100A93CCD /* Crypto */,
 				800A5A68254857820054A68D /* SwiftyMarkdown */,
 				8082DC30254AD7A8006B872D /* RxRealm */,
+				806897D4258377140040EBF0 /* FirebaseAnalytics */,
+				806897D6258377140040EBF0 /* FirebaseAuth */,
+				806897D8258377150040EBF0 /* FirebaseCrashlytics */,
+				806897DA258377150040EBF0 /* FirebaseFunctions */,
+				806897DC258377150040EBF0 /* FirebaseStorage */,
+				806897E0258377F70040EBF0 /* FirebaseRemoteConfig */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska.app */;
@@ -1295,6 +1322,7 @@
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
 				8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */,
+				806897E4258378070040EBF0 /* Main.swift in Sources */,
 				804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
 				80591185246DB86B002CD687 /* ExposureService.swift in Sources */,
@@ -1502,7 +1530,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1528,7 +1556,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1553,7 +1581,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1580,7 +1608,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1812,6 +1840,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */;
 			productName = Reachability;
+		};
+		806897D4258377140040EBF0 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		806897D6258377140040EBF0 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		806897D8258377150040EBF0 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		806897DA258377150040EBF0 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		806897DC258377150040EBF0 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		806897E0258377F70040EBF0 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 		8082DC30254AD7A8006B872D /* RxRealm */ = {
 			isa = XCSwiftPackageProductDependency;
