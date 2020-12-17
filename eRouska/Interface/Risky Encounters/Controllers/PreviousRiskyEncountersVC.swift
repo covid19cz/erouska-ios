@@ -63,7 +63,7 @@ final class PreviousRiskyEncountersVC: UIViewController {
 
         switch StoryboardSegue.RiskyEncounters(segue) {
         case .showDetail:
-            let controller = segue.destination as? RiskyEncountersDetailVC
+            let controller = segue.destination as? RiskyEncountersV1DetailVC
             controller?.exposure = sender as? Exposure
         default:
             break
