@@ -86,7 +86,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
     case chatBotLink
 
     case appleServerConfiguration
-    case appleExposureConfiguration
+    case appleExposureConfigurationV1 = "appleExposureConfiguration"
+    case appleExposureConfigurationV2
 
     case efgsDays
     case efgsCountries
@@ -159,8 +160,62 @@ enum RemoteConfigValueKey: String, CaseIterable {
             #else
             return ServerConfiguration.development
             #endif
-        case .appleExposureConfiguration:
+        case .appleExposureConfigurationV1:
             return "{\"factorHigh\":0.17,\"factorStandard\":1,\"factorLow\":1.5,\"lowerThreshold\":55,\"higherThreshold\":63,\"triggerThreshold\":15}"
+        case .appleExposureConfigurationV2:
+            return """
+                {
+                \"immediateDurationWeight\":100,
+                \"nearDurationWeight\":100,
+                \"mediumDurationWeight\":100,
+                \"otherDurationWeight\":100,
+                \"infectiousnessForDaysSinceOnsetOfSymptoms\":{
+                \"unknown\":1,
+                \"-14\":1,
+                \"-13\":1,
+                \"-12\":1,
+                \"-11\":1,
+                \"-10\":1,
+                \"-9\":1,
+                \"-8\":1,
+                \"-7\":1,
+                \"-6\":1,
+                \"-5\":1,
+                \"-4\":1,
+                \"-3\":1,
+                \"-2\":1,
+                \"-1\":1,
+                \"0\":1,
+                \"1\":1,
+                \"2\":1,
+                \"3\":1,
+                \"4\":1,
+                \"5\":1,
+                \"6\":1,
+                \"7\":1,
+                \"8\":1,
+                \"9\":1,
+                \"10\":1,
+                \"11\":1,
+                \"12\":1,
+                \"13\":1,
+                \"14\":1
+                },
+                \"infectiousnessStandardWeight\":100,
+                \"infectiousnessHighWeight\":100,
+                \"reportTypeConfirmedTestWeight\":100,
+                \"reportTypeConfirmedClinicalDiagnosisWeight\":100,
+                \"reportTypeSelfReportedWeight\":100,
+                \"reportTypeRecursiveWeight\":100,
+                \"reportTypeNoneMap\":1,
+                \"minimumRiskScore\":0,
+                \"attenuationDurationThresholds\":[50, 70],
+                \"attenuationLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
+                \"daysSinceLastExposureLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
+                \"durationLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
+                \"transmissionRiskLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8]
+                }
+            """
 
         case .efgsDays:
             return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsDaysDefault")
@@ -310,17 +365,24 @@ struct RemoteValues {
             }
         }
 
-        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfiguration).data(using: .utf8) else {
-            return defaults()
-        }
-        do {
-            if #available(iOS 13.7, *) {
-                return try JSONDecoder().decode(ExposureConfigurationV2.self, from: json)
-            } else {
-                return try JSONDecoder().decode(ExposureConfigurationV1.self, from: json)
+        if #available(iOS 13.7, *) {
+            guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV2).data(using: .utf8) else {
+                return defaults()
             }
-        } catch {
-            return defaults()
+            do {
+                return try JSONDecoder().decode(ExposureConfigurationV2.self, from: json)
+            } catch {
+                return defaults()
+            }
+        } else {
+            guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV1).data(using: .utf8) else {
+                return defaults()
+            }
+            do {
+                return try JSONDecoder().decode(ExposureConfigurationV1.self, from: json)
+            } catch {
+                return defaults()
+            }
         }
     }
 

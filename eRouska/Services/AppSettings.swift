@@ -22,7 +22,7 @@ struct AppSettings {
         case lastProcessedFileNames
         case lastProcessedDate
         case lastUploadDate
-
+        
         case lastExposureWarningId
         case lastExposureWarningDate
         case lastExposureWarningClosed
