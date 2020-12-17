@@ -77,68 +77,95 @@ struct ExposureConfigurationV1: ExposureConfiguration, Decodable {
 
 struct ExposureConfigurationV2: ExposureConfiguration, Decodable {
 
-    let infectiousnessForDaysSinceOnsetOfSymptoms: [Int: UInt32]
+    // API V2 Keys
     let immediateDurationWeight: Double
     let nearDurationWeight: Double
     let mediumDurationWeight: Double
     let otherDurationWeight: Double
-    let attenuationDurationThresholds: [Int]
-
-    let reportTypeConfirmedClinicalDiagnosisWeight: Double
+    let infectiousnessForDaysSinceOnsetOfSymptoms: [String: Int]
+    let infectiousnessStandardWeight: Double
+    let infectiousnessHighWeight: Double
     let reportTypeConfirmedTestWeight: Double
-    let reportTypeRecursiveWeight: Double
+    let reportTypeConfirmedClinicalDiagnosisWeight: Double
     let reportTypeSelfReportedWeight: Double
-    let reportTypeNoneMap: UInt32
+    let reportTypeRecursiveWeight: Double
+    let reportTypeNoneMap: Int
+
+    // API V1 Keys
+    let minimumRiskScore: ENRiskScore
+    let attenuationDurationThresholds: [Int]
+    let attenuationLevelValues: [ENRiskLevelValue]
+    let daysSinceLastExposureLevelValues: [ENRiskLevelValue]
+    let durationLevelValues: [ENRiskLevelValue]
+    let transmissionRiskLevelValues: [ENRiskLevelValue]
 
     init() {
-        if #available(iOS 13.7, *) {
-            var infectiousness: [Int: UInt32] = [:]
-            for i in -14...(-3) {
-                infectiousness[i] = ENInfectiousness.none.rawValue
-            }
-            for i in -2...14 {
-                infectiousness[i] = ENInfectiousness.standard.rawValue
-            }
-            infectiousnessForDaysSinceOnsetOfSymptoms = infectiousness
-        } else {
-            infectiousnessForDaysSinceOnsetOfSymptoms = [:]
-        }
-
         immediateDurationWeight = 150
         nearDurationWeight = 100
         mediumDurationWeight = 17
         otherDurationWeight = 0
-        attenuationDurationThresholds = [55, 63, 75]
-
-        reportTypeConfirmedClinicalDiagnosisWeight = 100
-        reportTypeConfirmedTestWeight = 100
-        reportTypeRecursiveWeight = 100
-        reportTypeSelfReportedWeight = 100
-        if #available(iOS 13.7, *) {
-            reportTypeNoneMap = ENDiagnosisReportType.confirmedTest.rawValue
-        } else {
-            reportTypeNoneMap = 0
+        var infectiousness: [String: Int] = [:]
+        for i in -14...(-3) {
+            infectiousness[String(i)] = 0 // ENInfectiousness.none
         }
+        for i in -2...14 {
+            infectiousness[String(i)] = 1 // ENInfectiousness.standard
+        }
+        infectiousness["unknown"] = 0
+        infectiousnessForDaysSinceOnsetOfSymptoms = infectiousness
+        infectiousnessStandardWeight = 100
+        infectiousnessHighWeight = 100
+        reportTypeConfirmedTestWeight = 100
+        reportTypeConfirmedClinicalDiagnosisWeight = 100
+        reportTypeSelfReportedWeight = 100
+        reportTypeRecursiveWeight = 100
+        reportTypeNoneMap = 1 // ENDiagnosisReportType.confirmedTest.rawValue
+        minimumRiskScore = 0
+        attenuationDurationThresholds = [55, 63, 75]
+        attenuationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
+        daysSinceLastExposureLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
+        durationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
+        transmissionRiskLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
     }
 
     var configuration: ENExposureConfiguration {
         let configuration = ENExposureConfiguration()
         if #available(iOS 13.7, *) {
-            configuration.infectiousnessForDaysSinceOnsetOfSymptoms = infectiousnessForDaysSinceOnsetOfSymptoms as [NSNumber: NSNumber]
-
             configuration.immediateDurationWeight = immediateDurationWeight
             configuration.nearDurationWeight = nearDurationWeight
             configuration.mediumDurationWeight = mediumDurationWeight
             configuration.otherDurationWeight = otherDurationWeight
-            configuration.attenuationDurationThresholds = attenuationDurationThresholds as [NSNumber]
-
-            configuration.reportTypeConfirmedClinicalDiagnosisWeight = reportTypeConfirmedClinicalDiagnosisWeight
+            var infectiousnessForDaysSinceOnsetOfSymptoms: [Int: Int] = [:]
+            for (stringDay, infectiousness) in self.infectiousnessForDaysSinceOnsetOfSymptoms {
+                if stringDay == "unknown" {
+                    if #available(iOS 14.0, *) {
+                        infectiousnessForDaysSinceOnsetOfSymptoms[ENDaysSinceOnsetOfSymptomsUnknown] = infectiousness
+                    } else {
+                        // ENDaysSinceOnsetOfSymptomsUnknown is not available
+                        // in earlier versions of iOS; use an equivalent value
+                        infectiousnessForDaysSinceOnsetOfSymptoms[NSIntegerMax] = infectiousness
+                    }
+                } else if let day = Int(stringDay) {
+                    infectiousnessForDaysSinceOnsetOfSymptoms[day] = infectiousness
+                }
+            }
+            configuration.infectiousnessForDaysSinceOnsetOfSymptoms = infectiousnessForDaysSinceOnsetOfSymptoms as [NSNumber: NSNumber]
+            configuration.infectiousnessStandardWeight = infectiousnessStandardWeight
+            configuration.infectiousnessHighWeight = infectiousnessHighWeight
             configuration.reportTypeConfirmedTestWeight = reportTypeConfirmedTestWeight
-            configuration.reportTypeRecursiveWeight = reportTypeRecursiveWeight
+            configuration.reportTypeConfirmedClinicalDiagnosisWeight = reportTypeConfirmedClinicalDiagnosisWeight
             configuration.reportTypeSelfReportedWeight = reportTypeSelfReportedWeight
-            configuration.reportTypeNoneMap = ENDiagnosisReportType(rawValue: reportTypeNoneMap) ?? .confirmedTest
-            return configuration
+            configuration.reportTypeRecursiveWeight = reportTypeRecursiveWeight
+            if let reportTypeNoneMap = ENDiagnosisReportType(rawValue: UInt32(reportTypeNoneMap)) {
+                configuration.reportTypeNoneMap = reportTypeNoneMap
+            }
         }
+        configuration.minimumRiskScore = minimumRiskScore
+        configuration.attenuationLevelValues = attenuationLevelValues as [NSNumber]
+        configuration.daysSinceLastExposureLevelValues = daysSinceLastExposureLevelValues as [NSNumber]
+        configuration.durationLevelValues = durationLevelValues as [NSNumber]
+        configuration.transmissionRiskLevelValues = transmissionRiskLevelValues as [NSNumber]
+        configuration.metadata = ["attenuationDurationThresholds": attenuationDurationThresholds]
         return configuration
     }
 
