@@ -180,6 +180,7 @@ struct Exposure: Codable, Equatable {
     let transmissionRiskLevel: ENRiskLevel
     let attenuationValue: ENAttenuation
     var attenuationDurations: [Int]
+    var window: ExposureWindow?
 
     func computedThreshold(with configuration: ExposureConfiguration) -> Double {
         switch configuration {
@@ -201,9 +202,42 @@ struct Exposure: Codable, Equatable {
             totalRiskScore: 2,
             transmissionRiskLevel: 4,
             attenuationValue: 4,
-            attenuationDurations: [21, 1, 4, 5]
+            attenuationDurations: [21, 1, 4, 5],
+            window: nil
         )
     }
+
+}
+
+struct ExposureWindow: Codable, Equatable {
+    init(id: UUID, date: Date, calibrationConfidence: Int, diagnosisReportType: Int, infectiousness: Int, scanInstances: [ExposureWindow.Scan]) {
+        self.id = id
+        self.date = date
+        self.calibrationConfidence = calibrationConfidence
+        self.diagnosisReportType = diagnosisReportType
+        self.infectiousness = infectiousness
+        self.scanInstances = scanInstances
+    }
+
+
+    struct Scan: Codable, Equatable {
+        var minimumAttenuation: Int
+        var typicalAttenuation: Int
+        var secondsSinceLastScan: Int
+
+        init(minimumAttenuation: Int, typicalAttenuation: Int, secondsSinceLastScan: Int) {
+            self.minimumAttenuation = minimumAttenuation
+            self.typicalAttenuation = typicalAttenuation
+            self.secondsSinceLastScan = secondsSinceLastScan
+        }
+    }
+
+    var id: UUID
+    var date: Date
+    var calibrationConfidence: Int
+    var diagnosisReportType: Int
+    var infectiousness: Int
+    var scanInstances: [Scan]
 
 }
 

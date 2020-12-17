@@ -289,15 +289,31 @@ final class ExposureService: ExposureServicing {
             if let error = error {
                 finish(error: error)
             } else if let windows = windows {
-                finish(exposures: windows.map { window in
-                    Exposure(
+                finish(exposures: windows.map { info in
+                    let window = ExposureWindow(
                         id: UUID(),
-                        date: window.date,
+                        date: info.date,
+                        calibrationConfidence: Int(info.calibrationConfidence.rawValue),
+                        diagnosisReportType: Int(info.diagnosisReportType.rawValue),
+                        infectiousness: Int(info.infectiousness.rawValue),
+                        scanInstances: info.scanInstances.map {
+                            ExposureWindow.Scan(
+                                minimumAttenuation: Int($0.minimumAttenuation),
+                                typicalAttenuation: Int($0.typicalAttenuation),
+                                secondsSinceLastScan: Int($0.secondsSinceLastScan)
+                            )
+                        }
+                    )
+
+                    return Exposure(
+                        id: UUID(),
+                        date: info.date,
                         duration: 0,
                         totalRiskScore: 0,
                         transmissionRiskLevel: 0,
                         attenuationValue: 0,
-                        attenuationDurations: [0]
+                        attenuationDurations: [0],
+                        window: window
                     )
                 })
                 log("ExposureService Exposures windows \(windows)")
