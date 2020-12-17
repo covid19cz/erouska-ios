@@ -2,7 +2,6 @@ name: eRouska
 
 options:
   xcodeVersion: 1200
-  postGenCommand: pod install
   groupSortPosition: top
   groupOrdering: 
     - pattern: eRouska
@@ -40,6 +39,7 @@ targets:
       Release: [Configs/Dev-signing.xcconfig]
     settings:
       base:
+        OTHER_LDFLAGS: -ObjC
         PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska.dev'
         INFOPLIST_FILE: eRouska/Supporting Files/Info.plist
       configs:
@@ -70,6 +70,7 @@ targets:
       Release: [Configs/Prod-signing.xcconfig]
     settings:
       base:
+        OTHER_LDFLAGS: -ObjC
         PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska'
         INFOPLIST_FILE: eRouska/Supporting Files/Info-Prod.plist
       configs:
@@ -101,7 +102,7 @@ targetTemplates:
 
     postBuildScripts:
       - name: "Run Firebase Cashlytics"
-        script: "${PODS_ROOT}/FirebaseCrashlytics/run"
+        script: "${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run"
         inputFiles: [
           "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
           "$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)"
@@ -122,6 +123,16 @@ targetTemplates:
       - package: SwiftProtobuf
       - package: SwiftyMarkdown
       - package: Zip
+      - package: Firebase
+        product: FirebaseAnalytics 
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseFunctions
+      - package: Firebase
+        product: FirebaseRemoteConfig
 
 packages:
   Alamofire:
@@ -160,3 +171,6 @@ packages:
   Zip:
     url: https://github.com/marmelroy/Zip
     from: 2.0.0
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk.git
+    from: 7.2.0

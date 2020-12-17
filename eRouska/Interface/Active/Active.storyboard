@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -205,7 +205,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="mainStackView" destination="qcL-c9-sLJ" id="JkJ-Wz-Fuu"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
                         <segue destination="130-NA-7N7" kind="presentation" identifier="debugReports" id="qsX-ap-9zK"/>
-                        <segue destination="K8T-GX-Top" kind="show" identifier="travel" id="M7q-bm-fdy"/>
+                        <segue destination="qZl-kd-17d" kind="presentation" identifier="travel" id="ke9-wu-TdW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -230,16 +230,32 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
             </objects>
             <point key="canvasLocation" x="66" y="1389"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HgT-4x-1qB">
+            <objects>
+                <navigationController id="qZl-kd-17d" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Yux-Vs-7bI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="K8T-GX-Top" kind="relationship" relationship="rootViewController" id="caq-Nn-hcG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QcW-mb-gcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2145" y="1361"/>
+        </scene>
         <!--Spolupráce se zahraničím-->
         <scene sceneID="8jm-r8-Dbr">
             <objects>
                 <viewController id="K8T-GX-Top" customClass="EFGSSettingsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o0R-Ec-OJ0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mQ-eQ-Pop">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NC-VG-QMJ">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
@@ -278,9 +294,9 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMy-wx-DJB">
                                                         <rect key="frame" x="0.0" y="314.5" width="374" height="174.5"/>
-                                                        <mutableString key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
+                                                        <string key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
 Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.
-Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.</mutableString>
+Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -329,7 +345,7 @@ Využívání této funkce může způsobit vyšší objem stahovaných dat. Vyp
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5x1-N0-Wnk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2145" y="1353"/>
+            <point key="canvasLocation" x="3039" y="1361"/>
         </scene>
     </scenes>
     <resources>

@@ -40,6 +40,7 @@ final class ExposureList {
         guard !exposures.isEmpty else { return }
 
         AppSettings.lastExposureWarningDate = Date()
+        AppSettings.lastExposureWarningNotDisplayed = true
 
         let realm = AppDelegate.dependency.realm
         try realm.write {
