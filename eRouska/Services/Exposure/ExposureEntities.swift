@@ -111,7 +111,7 @@ struct ExposureConfigurationV2: ExposureConfiguration, Decodable {
         for i in -2...14 {
             infectiousness[String(i)] = 1 // ENInfectiousness.standard
         }
-        infectiousness["unknown"] = 0
+        infectiousness["unknown"] = 1
         infectiousnessForDaysSinceOnsetOfSymptoms = infectiousness
         infectiousnessStandardWeight = 100
         infectiousnessHighWeight = 100
