@@ -53,7 +53,7 @@ final class DownloadReportsVC: UITableViewController {
                 if let indexPath = self?.tableView.indexPathForSelectedRow {
                     self?.tableView.deselectRow(at: indexPath, animated: true)
                 }
-                self?.perform(segue: StoryboardSegue.RiskyEncounters.showDetail, sender: value)
+                self?.perform(segue: StoryboardSegue.RiskyEncounters.showDetailV1, sender: value)
             })
             .disposed(by: disposeBag)
     }

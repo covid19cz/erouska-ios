@@ -34,7 +34,8 @@ internal enum StoryboardSegue {
     case mainSymptoms
     case preventTransmission
     case previousRiskyEncounters
-    case showDetail
+    case showDetailV1
+    case showDetailV2
   }
   internal enum SendReports: String, SegueType {
     case result

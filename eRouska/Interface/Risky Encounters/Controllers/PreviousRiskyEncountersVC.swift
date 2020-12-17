@@ -50,7 +50,12 @@ final class PreviousRiskyEncountersVC: UIViewController {
                 if let indexPath = self?.tableView.indexPathForSelectedRow {
                     self?.tableView.deselectRow(at: indexPath, animated: true)
                 }
-                self?.perform(segue: StoryboardSegue.RiskyEncounters.showDetail, sender: value)
+
+                if let value = value.window {
+                    self?.perform(segue: StoryboardSegue.RiskyEncounters.showDetailV2, sender: value)
+                } else {
+                    self?.perform(segue: StoryboardSegue.RiskyEncounters.showDetailV1, sender: value)
+                }
                 #endif
             })
             .disposed(by: disposeBag)
@@ -62,9 +67,12 @@ final class PreviousRiskyEncountersVC: UIViewController {
         super.prepare(for: segue, sender: sender)
 
         switch StoryboardSegue.RiskyEncounters(segue) {
-        case .showDetail:
+        case .showDetailV1:
             let controller = segue.destination as? RiskyEncountersV1DetailVC
             controller?.exposure = sender as? Exposure
+        case .showDetailV2:
+            let controller = segue.destination as? RiskyEncountersV2DetailVC
+            controller?.exposure = sender as? ExposureWindow
         default:
             break
         }
