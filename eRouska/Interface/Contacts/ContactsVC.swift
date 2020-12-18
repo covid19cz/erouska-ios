@@ -24,6 +24,7 @@ final class ContactsVC: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        navigationController?.tabBarItem.tag = MainTab.contacts.rawValue
         navigationController?.tabBarItem.title = L10n.contactsTitle
         navigationController?.tabBarItem.image = Asset.contacts.image
     }
