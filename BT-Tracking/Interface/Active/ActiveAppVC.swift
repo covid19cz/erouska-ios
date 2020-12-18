@@ -468,6 +468,7 @@ private extension ActiveAppVC {
                 ) { [weak self] result in
                     guard let self = self else { return }
                     self.hideProgress()
+                    AppSettings.lastProcessedDate = Date()
 
                     switch result {
                     case .success(let exposures):
