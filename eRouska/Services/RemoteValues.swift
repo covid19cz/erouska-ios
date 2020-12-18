@@ -20,12 +20,15 @@ extension AppDelegate {
         RemoteConfig.remoteConfig().setDefaults(remoteDefaults)
     }
 
-    func fetchRemoteValues(background: Bool) -> Single<Void> {
+    func fetchRemoteValues(background: Bool, ignoreCache: Bool = false) -> Single<Void> {
         #if DEBUG
-        let fetchDuration: TimeInterval = 0
+        var fetchDuration: TimeInterval = 0
         #else
-        let fetchDuration: TimeInterval = background ? 1_800 : 3_600
+        var fetchDuration: TimeInterval = background ? 1_800 : 3_600
         #endif
+        if ignoreCache {
+            fetchDuration = 0
+        }
         return Single<Void>.create { single in
             RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { _, error in
                 if let error = error {

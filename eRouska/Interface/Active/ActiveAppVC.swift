@@ -228,6 +228,9 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: L10n.debug + " aktivace", style: .default, handler: { [weak self] _ in
             self?.debugCancelRegistrationAction()
         }))
+        controller.addAction(UIAlertAction(title: L10n.debug + " aktualizovat remote config", style: .default, handler: { [weak self] _ in
+            self?.debugRemoteConfigUpdate()
+        }))
         controller.addAction(UIAlertAction(title: L10n.debug + " rizikového setkání", style: .default, handler: { [weak self] _ in
             self?.debugInsertFakeExposure()
         }))
@@ -246,6 +249,15 @@ final class ActiveAppVC: UIViewController {
                 self?.debugSendResult(kind: .error("Nakej kod 123", "Naka zprava k chybe"))
             }))
             self?.present(controller, animated: true, completion: nil)
+        }))
+        controller.addAction(UIAlertAction(title: L10n.debug + " zobrazeni nastaveny vyhodnocovani", style: .default, handler: { [weak self] _ in
+            self?.showAlert(
+                title: "Nastaveni vyhodnoceni",
+                message: AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV2)
+            )
+        }))
+        controller.addAction(UIAlertAction(title: L10n.debug + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
+            self?.debugProcessReports()
         }))
         controller.addAction(UIAlertAction(title: L10n.close, style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
@@ -495,6 +507,16 @@ private extension ActiveAppVC {
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.prefersLargeTitles = true
         present(navController, animated: true, completion: nil)
+    }
+
+    func debugRemoteConfigUpdate() {
+        AppDelegate.shared.fetchRemoteValues(background: false, ignoreCache: true)
+            .subscribe(onSuccess: { _ in
+                let configuration = RemoteValues.serverConfiguration
+                AppDelegate.dependency.reporter.updateConfiguration(configuration)
+                AppDelegate.dependency.verification.updateConfiguration(configuration)
+            })
+            .disposed(by: disposeBag)
     }
 
     #endif
