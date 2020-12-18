@@ -25,6 +25,9 @@ final class ActiveAppVC: UIViewController {
     private let riskyEncountersSection = ActiveAppSectionView()
     private let sendReportsSection = ActiveAppSectionView()
 
+    private var dateToShow: Date?
+    private var numberOfRiskyEncounters: Int = 0
+
     // MARK: - Outlets
 
     @IBOutlet private weak var exposureBannerView: UIView!
@@ -70,32 +73,13 @@ final class ActiveAppVC: UIViewController {
             viewModel.riskyEncountersInTimeInterval
         ).subscribe(
             onNext: { [weak self] dateToShow, numberOfRiskyEncounters in
-                guard let self = self else { return }
-                let isPositive = dateToShow != nil
-
-                self.riskyEncountersSection.iconImageView.image = isPositive ? Asset.riskyEncountersPositive.image : Asset.riskyEncountersNegative.image
-                self.riskyEncountersSection.isPositive = isPositive
-                if let date = dateToShow {
-                    self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
-                    let parts: [String] = [
-                        L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateFormatter.string(from: date)),
-                        [
-                            AppSettings.lastProcessedDate.map {
-                                L10n.activeRiskyEncounterLastUpdate(DateFormatter.baseDateTimeFormatter.string(from: $0))
-                            },
-                            L10n.activeRiskyEncounterUpdateInterval
-                        ].compactMap { $0 }.joined(separator: "\n")
-                    ]
-                    self.riskyEncountersSection.bodyLabel.text = parts.joined(separator: "\n\n")
-                } else {
-                    self.riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
-                    self.riskyEncountersSection.bodyLabel.text = [
-                        AppSettings.lastProcessedDate.map {
-                            L10n.activeRiskyEncounterLastUpdate(DateFormatter.baseDateTimeFormatter.string(from: $0))
-                        },
-                        L10n.activeRiskyEncounterUpdateInterval
-                    ].compactMap { $0 }.joined(separator: "\n")
-                }
+                self?.dateToShow = dateToShow
+                self?.numberOfRiskyEncounters = numberOfRiskyEncounters
+                self?.updateRiskyEncounters(
+                    lastProcessedDate: AppSettings.lastProcessedDate,
+                    dateToShow: dateToShow,
+                    numberOfRiskyEncounters: numberOfRiskyEncounters
+                )
             }
         ).disposed(by: disposeBag)
 
@@ -289,6 +273,8 @@ final class ActiveAppVC: UIViewController {
 
     @objc private func applicationDidBecomeActive() {
         updateViewModel()
+        updateRiskyEncounters(lastProcessedDate: AppSettings.lastProcessedDate, dateToShow: dateToShow, numberOfRiskyEncounters: numberOfRiskyEncounters)
+        view.setNeedsLayout()
     }
 }
 
@@ -375,6 +361,34 @@ private extension ActiveAppVC {
         exposureTitleLabel.text = viewModel.exposureTitle
         exposureCloseButton.setTitle(L10n.close)
         exposureMoreInfoButton.setTitle(L10n.activeExposureMoreInfo)
+    }
+
+    func updateRiskyEncounters(lastProcessedDate: Date?, dateToShow: Date?, numberOfRiskyEncounters: Int) {
+        let isPositive = dateToShow != nil
+
+        riskyEncountersSection.iconImageView.image = isPositive ? Asset.riskyEncountersPositive.image : Asset.riskyEncountersNegative.image
+        riskyEncountersSection.isPositive = isPositive
+        if let date = dateToShow {
+            riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadPositive(numberOfRiskyEncounters)
+            let parts: [String] = [
+                L10n.activeRiskyEncounterTitlePositive(DateFormatter.baseDateFormatter.string(from: date)),
+                [
+                    lastProcessedDate.map {
+                        L10n.activeRiskyEncounterLastUpdate(DateFormatter.baseDateTimeFormatter.string(from: $0))
+                    },
+                    L10n.activeRiskyEncounterUpdateInterval
+                ].compactMap { $0 }.joined(separator: "\n")
+            ]
+            riskyEncountersSection.bodyLabel.text = parts.joined(separator: "\n\n")
+        } else {
+            riskyEncountersSection.titleLabel.text = L10n.activeRiskyEncounterHeadNegative
+            riskyEncountersSection.bodyLabel.text = [
+                lastProcessedDate.map {
+                    L10n.activeRiskyEncounterLastUpdate(DateFormatter.baseDateTimeFormatter.string(from: $0))
+                },
+                L10n.activeRiskyEncounterUpdateInterval
+            ].compactMap { $0 }.joined(separator: "\n")
+        }
     }
 
     func checkBackgroundModeIfNeeded() {
