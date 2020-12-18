@@ -29,6 +29,7 @@ final class CurrentDataVC: UIViewController {
         super.awakeFromNib()
 
         title = L10n.dataListTitle
+        tabBarItem.tag = MainTab.news.rawValue
         tabBarItem.title = L10n.dataListTitle
         tabBarItem.image = Asset.myData.image
     }
@@ -149,6 +150,7 @@ extension CurrentDataVC: UITableViewDelegate {
 
         guard indexPath.section == 0, let measuresURL = viewModel.measuresURL else { return }
         openURL(URL: measuresURL)
+        Events.tapNewsCurrentMeasures.logEvent()
     }
 
 }

@@ -24,6 +24,7 @@ final class HelpVC: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        navigationController?.tabBarItem.tag = MainTab.help.rawValue
         navigationController?.tabBarItem.title = L10n.helpTabTitle
         navigationController?.tabBarItem.image = Asset.help.image
     }
