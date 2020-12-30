@@ -114,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xE-1N-GXg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="371"/>
+            <point key="canvasLocation" x="1814" y="382"/>
         </scene>
         <!--Jak eRouška funguje-->
         <scene sceneID="jue-ad-OIT">
@@ -189,41 +189,43 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="howItWorksButtons" id="tH7-AZ-zJm" customClass="HowItWorksButtonsCell" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="601.66665649414062" width="375" height="134"/>
+                                <rect key="frame" x="0.0" y="601.66665649414062" width="375" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tH7-AZ-zJm" id="4eC-aK-rpD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD3-kl-hou" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="69" width="343" height="44"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="Ssr-XO-OlS"/>
-                                            </constraints>
-                                            <state key="normal" title="Zavřít"/>
-                                            <connections>
-                                                <action selector="toClose" destination="tH7-AZ-zJm" eventType="touchUpInside" id="VHZ-Ru-kWI"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG9-e5-6XV" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="10" width="343" height="44"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="qbu-0O-AYH"/>
-                                            </constraints>
-                                            <state key="normal" title="Napsat e-mail na podporu"/>
-                                            <connections>
-                                                <action selector="toAction" destination="tH7-AZ-zJm" eventType="touchUpInside" id="LhP-L5-Rjc"/>
-                                            </connections>
-                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="thf-At-0tz">
+                                            <rect key="frame" x="16" y="11" width="343" height="104"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG9-e5-6XV" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="qbu-0O-AYH"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Napsat e-mail na podporu"/>
+                                                    <connections>
+                                                        <action selector="toAction" destination="tH7-AZ-zJm" eventType="touchUpInside" id="LhP-L5-Rjc"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD3-kl-hou" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="60" width="343" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="Ssr-XO-OlS"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Zavřít"/>
+                                                    <connections>
+                                                        <action selector="toClose" destination="tH7-AZ-zJm" eventType="touchUpInside" id="VHZ-Ru-kWI"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="iD3-kl-hou" secondAttribute="bottom" constant="10" id="0MQ-jU-Un8"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ZG9-e5-6XV" secondAttribute="trailing" id="PEb-Lm-l51"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="iD3-kl-hou" secondAttribute="trailing" id="TBg-Wx-MhE"/>
-                                        <constraint firstItem="iD3-kl-hou" firstAttribute="top" secondItem="ZG9-e5-6XV" secondAttribute="bottom" constant="15" id="d7i-mz-stt"/>
-                                        <constraint firstItem="ZG9-e5-6XV" firstAttribute="leading" secondItem="4eC-aK-rpD" secondAttribute="leadingMargin" id="doG-q1-jYW"/>
-                                        <constraint firstItem="iD3-kl-hou" firstAttribute="leading" secondItem="4eC-aK-rpD" secondAttribute="leadingMargin" id="oIc-Tu-h6R"/>
-                                        <constraint firstItem="ZG9-e5-6XV" firstAttribute="top" secondItem="4eC-aK-rpD" secondAttribute="top" constant="10" id="pCB-VR-WwQ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="thf-At-0tz" secondAttribute="trailing" id="4wV-Fo-ok3"/>
+                                        <constraint firstItem="thf-At-0tz" firstAttribute="leading" secondItem="4eC-aK-rpD" secondAttribute="leadingMargin" id="N0d-RX-edv"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="thf-At-0tz" secondAttribute="bottom" constant="10" id="Vs6-7P-riY"/>
+                                        <constraint firstItem="thf-At-0tz" firstAttribute="top" secondItem="4eC-aK-rpD" secondAttribute="topMargin" id="uic-VV-FeL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -350,7 +352,7 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tz3-4J-BdV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2726" y="371"/>
+            <point key="canvasLocation" x="2726" y="381"/>
         </scene>
     </scenes>
     <resources>

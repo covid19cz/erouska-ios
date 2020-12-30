@@ -48,7 +48,11 @@ final class HowItWorksVC: UITableViewController {
     }
 
     private func closeAction() {
-        navigationController?.popViewController(animated: true)
+        if (navigationController?.viewControllers.count ?? 0) > 1 {
+            navigationController?.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
 
     // MARK: - UITableViewDataSource
@@ -65,7 +69,7 @@ final class HowItWorksVC: UITableViewController {
                 actionClosure: { [weak self] in
                     self?.mailAction()
                 },
-                closeTitle: L10n.howitworksClose, closeClosure: { [weak self] in
+                closeTitle: navigationController?.viewControllers.count == 1 ? L10n.howitworksClose : nil, closeClosure: { [weak self] in
                     self?.closeAction()
                 }
             )

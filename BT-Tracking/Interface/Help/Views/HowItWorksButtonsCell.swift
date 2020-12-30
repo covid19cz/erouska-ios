@@ -16,9 +16,15 @@ final class HowItWorksButtonsCell: UITableViewCell {
     private var actionClosure: CallbackVoid?
     private var closeClosure: CallbackVoid?
 
-    func config(with actionTitle: String, actionClosure: CallbackVoid?, closeTitle: String, closeClosure: CallbackVoid?) {
+    func config(with actionTitle: String, actionClosure: CallbackVoid?, closeTitle: String?, closeClosure: CallbackVoid?) {
         actionButton.setTitle(actionTitle)
         self.actionClosure = actionClosure
+
+        guard let closeTitle = closeTitle else {
+            closeButton.isHidden = true
+            return
+        }
+        closeButton.isHidden = false
         closeButton.setTitle(closeTitle)
         self.closeClosure = closeClosure
     }
