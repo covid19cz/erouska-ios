@@ -30,11 +30,8 @@ final class ActiveAppVC: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet private weak var exposureBannerView: UIView!
-    @IBOutlet private weak var exposureTitleLabel: UILabel!
-    @IBOutlet private weak var exposureCloseButton: Button!
-    @IBOutlet private weak var exposureMoreInfoButton: Button!
-
+    @IBOutlet private weak var howItWorksBannerView: ActiveBannerView!
+    @IBOutlet private weak var exposureBannerView: ActiveBannerView!
     @IBOutlet private weak var mainStackView: UIStackView!
 
     // MARK: -
@@ -83,12 +80,6 @@ final class ActiveAppVC: UIViewController {
             }
         ).disposed(by: disposeBag)
 
-        exposureBannerView.layer.cornerRadius = 9.0
-        exposureBannerView.layer.shadowColor = shadowColor
-        exposureBannerView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        exposureBannerView.layer.shadowRadius = 2
-        exposureBannerView.layer.shadowOpacity = 1
-
         AppDelegate.shared.openResultsCallback = { [weak self] in
             self?.riskyEncountersAction()
         }
@@ -105,6 +96,9 @@ final class ActiveAppVC: UIViewController {
         sendReportsSection.actionButton.setTitle(L10n.activeSendReportsButton)
         sendReportsSection.action = sendReportsAction
         [stateSection, riskyEncountersSection, sendReportsSection].forEach(mainStackView.addArrangedSubview)
+
+        howItWorksBannerView.style = .gray
+        howItWorksBannerView.isHidden = AppSettings.howItWorksClosed
 
         #if !PROD
         navigationItem.rightBarButtonItems?.insert(UIBarButtonItem(
@@ -232,6 +226,15 @@ final class ActiveAppVC: UIViewController {
     }
     #endif
 
+    @IBAction private func closeHowItWorksBanner(_ sender: Any) {
+        AppSettings.howItWorksClosed = true
+        howItWorksBannerView.isHidden = true
+    }
+
+    @IBAction private func howItWorksMoreInfo(_ sender: Any) {
+        perform(segue: StoryboardSegue.Active.howItWorks)
+    }
+
     @IBAction private func closeExposureBanner(_ sender: Any) {
         AppSettings.lastExposureWarningClosed = true
         exposureBannerView.isHidden = true
@@ -358,9 +361,8 @@ private extension ActiveAppVC {
         stateSection.bodyLabel.text = viewModel.state.text
         stateSection.actionButton.setTitle(viewModel.state.actionTitle)
 
-        exposureTitleLabel.text = viewModel.exposureTitle
-        exposureCloseButton.setTitle(L10n.close)
-        exposureMoreInfoButton.setTitle(L10n.activeExposureMoreInfo)
+        howItWorksBannerView.config(with: L10n.howitworksBannerTitle, closeTitle: L10n.howitworksClose, moreInfoTitle: L10n.howitworksBannerMoreInfo)
+        exposureBannerView.config(with: viewModel.exposureTitle, closeTitle: L10n.close, moreInfoTitle: L10n.activeExposureMoreInfo)
     }
 
     func updateRiskyEncounters(lastProcessedDate: Date?, dateToShow: Date?, numberOfRiskyEncounters: Int) {

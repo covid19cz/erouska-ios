@@ -84,6 +84,8 @@
 		8075FE4F2543323B00E72779 /* CurrentDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075FE4D2543323B00E72779 /* CurrentDataCell.swift */; };
 		807897832524804B0079BEA1 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807897822524804B0079BEA1 /* Assets.swift */; };
 		807897842524804B0079BEA1 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807897822524804B0079BEA1 /* Assets.swift */; };
+		8078B67B259CC7B50080D259 /* ActiveBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078B67A259CC7B50080D259 /* ActiveBannerView.swift */; };
+		8078B67C259CC7B50080D259 /* ActiveBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078B67A259CC7B50080D259 /* ActiveBannerView.swift */; };
 		80799BEB2423B89A002B04C5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
 		807D48E8253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */; };
 		807D48E9253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */; };
@@ -320,6 +322,7 @@
 		8075FE4D2543323B00E72779 /* CurrentDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataCell.swift; sourceTree = "<group>"; };
 		8078977B25247C550079BEA1 /* BT-Tracking-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BT-Tracking-Debug.entitlements"; sourceTree = "<group>"; };
 		807897822524804B0079BEA1 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		8078B67A259CC7B50080D259 /* ActiveBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveBannerView.swift; sourceTree = "<group>"; };
 		80799BEA2423B89A002B04C5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		807D48E7253DE1DD000C826E /* RiskyEncountersDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncountersDetailVC.swift; sourceTree = "<group>"; };
 		8083D8F4244640A0007FA4E9 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -631,6 +634,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8078B671259CC7500080D259 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD979AEA242565AF004001ED /* ActiveAppVC.swift */,
+				80B94554242B7B460052CD9F /* ActiveAppVM.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8078B672259CC7590080D259 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8078B67A259CC7B50080D259 /* ActiveBannerView.swift */,
+				D610103225448E47007B01CF /* ActiveAppSectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8084DEF524AF86B0001FBB16 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,9 +824,8 @@
 			isa = PBXGroup;
 			children = (
 				BD0191462424331900707341 /* Active.storyboard */,
-				BD979AEA242565AF004001ED /* ActiveAppVC.swift */,
-				80B94554242B7B460052CD9F /* ActiveAppVM.swift */,
-				D610103225448E47007B01CF /* ActiveAppSectionView.swift */,
+				8078B671259CC7500080D259 /* Controllers */,
+				8078B672259CC7590080D259 /* Views */,
 			);
 			path = Active;
 			sourceTree = "<group>";
@@ -1205,6 +1225,7 @@
 				801B54C0243C624700A5D81E /* KeychainService.swift in Sources */,
 				D6231C9F24E400B10023BDC8 /* RiskyEncountersListCell.swift in Sources */,
 				80BE3FC62445CCAC00D0C810 /* GradientView.swift in Sources */,
+				8078B67B259CC7B50080D259 /* ActiveBannerView.swift in Sources */,
 				D6231CBB24ED3AE50023BDC8 /* ContactCell.swift in Sources */,
 				D6231CA124E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				D6231CC824F52FB70023BDC8 /* CurrentDataVM.swift in Sources */,
@@ -1321,6 +1342,7 @@
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
 				D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */,
+				8078B67C259CC7B50080D259 /* ActiveBannerView.swift in Sources */,
 				80A408AA259CB20E00287CB7 /* HowItWorksButtonsCell.swift in Sources */,
 				D6231CB924EBC3630023BDC8 /* ErrorVM.swift in Sources */,
 				80CD54D02549C83F001D80B0 /* RiskyEncountersPositiveVC.swift in Sources */,

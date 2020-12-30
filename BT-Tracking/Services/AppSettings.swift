@@ -30,6 +30,8 @@ struct AppSettings {
         case lastLegacyDataFetchDate
         case currentDataLastFetchDate
 
+        case howItWorksClosed
+
         case activated = "activated2"
     }
 
@@ -187,12 +189,23 @@ struct AppSettings {
         }
     }
 
+    /// If user closed how it works banner
+    static var howItWorksClosed: Bool {
+        get {
+            bool(forKey: .howItWorksClosed)
+        }
+        set {
+            set(withKey: .howItWorksClosed, value: newValue)
+        }
+    }
+
     /// Cleanup data after logout
     static func deleteAllData() {
         KeychainService.token = nil
 
         activated = false
 
+        howItWorksClosed = false
         backgroundModeAlertShown = false
 
         state = nil

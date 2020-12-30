@@ -30,6 +30,10 @@ final class HowItWorksVC: UITableViewController {
         .init(title: L10n.HowitworksEntry6.title, body: L10n.HowitworksEntry6.body, icon: Asset.hitWDisplay)
     ]
 
+    private var isModal: Bool {
+        navigationController?.viewControllers.first == self
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,9 +41,17 @@ final class HowItWorksVC: UITableViewController {
         tableView.contentInset = .init(top: 10, left: 0, bottom: 0, right: 0)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if isModal {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        }
+    }
+
     // MARK: - Actions
 
-    private func mailAction() {
+    @IBAction private func mailAction() {
         if Diagnosis.canSendMail {
             diagnosis = Diagnosis(showFromController: self, screenName: "O1", error: nil)
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
@@ -47,11 +59,11 @@ final class HowItWorksVC: UITableViewController {
         }
     }
 
-    private func closeAction() {
-        if (navigationController?.viewControllers.count ?? 0) > 1 {
-            navigationController?.popViewController(animated: true)
-        } else {
+    @IBAction private func closeAction() {
+        if isModal {
             dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
         }
     }
 
@@ -69,7 +81,7 @@ final class HowItWorksVC: UITableViewController {
                 actionClosure: { [weak self] in
                     self?.mailAction()
                 },
-                closeTitle: navigationController?.viewControllers.count == 1 ? L10n.howitworksClose : nil, closeClosure: { [weak self] in
+                closeTitle: isModal ? L10n.howitworksClose : nil, closeClosure: { [weak self] in
                     self?.closeAction()
                 }
             )

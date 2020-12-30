@@ -186,3 +186,5 @@
 "howitworks_entry6.body" = "Těm, kteří mohli přijít do rizikového kontaktu s nakaženým se v aplikaci eRouška zobrazí upozonění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.";
 "howitworks_mail_support" = "Napsat e-mail na podporu";
 "howitworks_close" = "Zavřít";
+"howitworks_banner_title" = "Zajímá vás, jak eRouška funguje?";
+"howitworks_banner_more_info" = "Zjistit více";

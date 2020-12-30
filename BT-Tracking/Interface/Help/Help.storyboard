@@ -119,7 +119,7 @@
         <!--Jak eRouška funguje-->
         <scene sceneID="jue-ad-OIT">
             <objects>
-                <tableViewController id="YaD-3c-CcU" customClass="HowItWorksVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HowItWorksVC" id="YaD-3c-CcU" customClass="HowItWorksVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nHT-7c-rZn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -312,6 +312,10 @@ internal enum L10n {
   internal static let helpTabTitle = L10n.tr("Localizable", "help_tab_title")
   /// Jak to funguje
   internal static let helpTitle = L10n.tr("Localizable", "help_title")
+  /// Zjistit více
+  internal static let howitworksBannerMoreInfo = L10n.tr("Localizable", "howitworks_banner_more_info")
+  /// Zajímá vás, jak eRouška funguje?
+  internal static let howitworksBannerTitle = L10n.tr("Localizable", "howitworks_banner_title")
   /// Zavřít
   internal static let howitworksClose = L10n.tr("Localizable", "howitworks_close")
   /// eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19. Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.
