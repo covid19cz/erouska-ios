@@ -49,23 +49,18 @@ final class HelpVC: UIViewController {
 
         tableView.rx
             .modelSelected(HelpArticle.self)
-            .subscribe(onNext: { [weak self] value in
+            .subscribe(onNext: { [weak self] article in
                 let indexPath = self?.tableView.indexPathForSelectedRow
                 if let indexPath = indexPath {
                     self?.tableView.deselectRow(at: indexPath, animated: true)
                 }
-
-                if value.title == L10n.howitworksTitle {
-                    self?.perform(segue: StoryboardSegue.Help.howItWorks)
-                } else {
-                    self?.perform(segue: StoryboardSegue.Help.article, sender: value)
-                }
+                self?.openArticle(article)
             })
             .disposed(by: disposeBag)
 
         helpSearch = StoryboardScene.Help.helpSearchVC.instantiate()
         helpSearch.didSelectArticle = { [weak self] article in
-            self?.perform(segue: StoryboardSegue.Help.article, sender: article)
+            self?.openArticle(article)
         }
         viewModel.sections.asObservable().bind { [weak self] sections in
             self?.helpSearch.articles = sections
@@ -96,6 +91,16 @@ final class HelpVC: UIViewController {
         super.viewDidAppear(animated)
 
         viewModel.update()
+    }
+
+    // MARK: - Action
+
+    private func openArticle(_ article: HelpArticle) {
+        if article.title == L10n.howitworksTitle {
+            perform(segue: StoryboardSegue.Help.howItWorks)
+        } else {
+            perform(segue: StoryboardSegue.Help.article, sender: article)
+        }
     }
 
 }
