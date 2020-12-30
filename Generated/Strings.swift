@@ -312,6 +312,14 @@ internal enum L10n {
   internal static let helpTabTitle = L10n.tr("Localizable", "help_tab_title")
   /// Jak to funguje
   internal static let helpTitle = L10n.tr("Localizable", "help_title")
+  /// Zavřít
+  internal static let howitworksClose = L10n.tr("Localizable", "howitworks_close")
+  /// eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19. Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.
+  internal static let howitworksHeadline = L10n.tr("Localizable", "howitworks_headline")
+  /// Napsat e-mail na podporu
+  internal static let howitworksMailSupport = L10n.tr("Localizable", "howitworks_mail_support")
+  /// Jak eRouška funguje
+  internal static let howitworksTitle = L10n.tr("Localizable", "howitworks_title")
   /// Upozornění se vám zobrazilo nejdříve 24 hodin poté, co se nakažený dozvěděl pozitivní výsledek testu na COVID-19 a zadal ověřovací kód do eRoušky.\n\nRizikový kontakt vyhodnotíme v případě, že jste s nakaženým byli v kontaktu na vzdálenost kratší než 2 metry po dobu alespoň 15 minut.\n\nKvůli zachování anonymity nakaženého neznáme čas ani místo setkání.
   internal static let newRiskyEncountersBody = L10n.tr("Localizable", "new_risky_encounters_body")
   /// Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19
@@ -392,6 +400,48 @@ internal enum L10n {
   internal static let welcomeHelp = L10n.tr("Localizable", "welcome_help")
   /// Díky eRoušce ochráníte sebe i ostatní ve svém okolí
   internal static let welcomeTitle = L10n.tr("Localizable", "welcome_title")
+
+  internal enum HowitworksEntry1 {
+    /// Když se potkají telefony s aplikací eRouška, vymění si několik základních informací o setkání. Zaznamenají si den setkání, vzdálenost mezi sebou a anonymní označení telefonu. Tato setkání si pamatují 14 dní.
+    internal static let body = L10n.tr("Localizable", "howitworks_entry1.body")
+    /// Telefony s eRouškou čekají na setkání
+    internal static let title = L10n.tr("Localizable", "howitworks_entry1.title")
+  }
+
+  internal enum HowitworksEntry2 {
+    /// Pokud se u někoho prokáže onemocnění COVID-19, dostane automaticky SMS s ověřovacím kódem pro eRoušku. Zadáním kódu v aplikaci odemkne možnost anonymně varovat ostatní uživatele.
+    internal static let body = L10n.tr("Localizable", "howitworks_entry2.body")
+    /// Když se potvrdí COVID-19
+    internal static let title = L10n.tr("Localizable", "howitworks_entry2.title")
+  }
+
+  internal enum HowitworksEntry3 {
+    /// Po zadání a potvrzení kódu se z eRoušky odešlou informace o setkáních. Odesílají se všechna setkání, která telefon nakaženého zaznamenal od okamžiku, kdy byl podle dostupných informací nakažlivý.
+    internal static let body = L10n.tr("Localizable", "howitworks_entry3.body")
+    /// Varování ostatních eRoušek
+    internal static let title = L10n.tr("Localizable", "howitworks_entry3.title")
+  }
+
+  internal enum HowitworksEntry4 {
+    /// Ostatní eRoušky nejpozději následující den zkontrolují informace o nově nakažených a porovnají je s vlastním seznamem setkání.
+    internal static let body = L10n.tr("Localizable", "howitworks_entry4.body")
+    /// Kontrola setkání s nakaženými
+    internal static let title = L10n.tr("Localizable", "howitworks_entry4.title")
+  }
+
+  internal enum HowitworksEntry5 {
+    /// eRoušky vyhodnotí setkání jako rizikové v případě, že byly s nakaženým v kontaktu na vzdálenost bližší než 2 metry a po dobu alespoň 15 minut od okamžiku, kdy byl podle dostupných informací nakažlivý.
+    internal static let body = L10n.tr("Localizable", "howitworks_entry5.body")
+    /// Vyhodnocení rizikových setkání
+    internal static let title = L10n.tr("Localizable", "howitworks_entry5.title")
+  }
+
+  internal enum HowitworksEntry6 {
+    /// Těm, kteří mohli přijít do rizikového kontaktu s nakaženým se v aplikaci eRouška zobrazí upozonění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.
+    internal static let body = L10n.tr("Localizable", "howitworks_entry6.body")
+    /// Zobrazení varování
+    internal static let title = L10n.tr("Localizable", "howitworks_entry6.title")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

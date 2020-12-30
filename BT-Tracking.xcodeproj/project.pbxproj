@@ -130,6 +130,12 @@
 		809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9124AF8C3700D34CC9 /* RxKeyboard */; };
 		80A0AADC2541AAC700D35282 /* HelpSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */; };
 		80A0AADD2541AAC700D35282 /* HelpSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */; };
+		80A4089E259CA9ED00287CB7 /* HowItWorksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A4089D259CA9ED00287CB7 /* HowItWorksVC.swift */; };
+		80A4089F259CA9ED00287CB7 /* HowItWorksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A4089D259CA9ED00287CB7 /* HowItWorksVC.swift */; };
+		80A408A4259CB1BA00287CB7 /* HowItWorksEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A408A3259CB1BA00287CB7 /* HowItWorksEntryCell.swift */; };
+		80A408A5259CB1BA00287CB7 /* HowItWorksEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A408A3259CB1BA00287CB7 /* HowItWorksEntryCell.swift */; };
+		80A408A9259CB20E00287CB7 /* HowItWorksButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A408A8259CB20E00287CB7 /* HowItWorksButtonsCell.swift */; };
+		80A408AA259CB20E00287CB7 /* HowItWorksButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A408A8259CB20E00287CB7 /* HowItWorksButtonsCell.swift */; };
 		80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCA24AF8CBD0088D256 /* DeviceKit */; };
 		80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCD24AF8D0B0088D256 /* Reachability */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
@@ -322,6 +328,9 @@
 		8084DEEF24AF8425001FBB16 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		8084DEF624AF86C1001FBB16 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSearchVC.swift; sourceTree = "<group>"; };
+		80A4089D259CA9ED00287CB7 /* HowItWorksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksVC.swift; sourceTree = "<group>"; };
+		80A408A3259CB1BA00287CB7 /* HowItWorksEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksEntryCell.swift; sourceTree = "<group>"; };
+		80A408A8259CB20E00287CB7 /* HowItWorksButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksButtonsCell.swift; sourceTree = "<group>"; };
 		80B94554242B7B460052CD9F /* ActiveAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVM.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -631,6 +640,29 @@
 			path = Reports;
 			sourceTree = "<group>";
 		};
+		80A408A2259CB18200287CB7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				80A408A3259CB1BA00287CB7 /* HowItWorksEntryCell.swift */,
+				80A408A8259CB20E00287CB7 /* HowItWorksButtonsCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		80A408AF259CB50B00287CB7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8064DF84244F3FFD005E8AA3 /* AboutVC.swift */,
+				8064DF88244F4026005E8AA3 /* AboutVM.swift */,
+				80631A95242CA27800EB0B6C /* HelpVC.swift */,
+				80CA44DB244B3769008E22F8 /* HelpVM.swift */,
+				80D0B5E325401D37000C3FE5 /* HelpArticleVC.swift */,
+				80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */,
+				80A4089D259CA9ED00287CB7 /* HowItWorksVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		80A47E7E24309F1B001E5A79 /* Log List */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,12 +814,8 @@
 			isa = PBXGroup;
 			children = (
 				BDB07FBF24254A8F00834E79 /* Help.storyboard */,
-				80631A95242CA27800EB0B6C /* HelpVC.swift */,
-				80CA44DB244B3769008E22F8 /* HelpVM.swift */,
-				80D0B5E325401D37000C3FE5 /* HelpArticleVC.swift */,
-				80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */,
-				8064DF84244F3FFD005E8AA3 /* AboutVC.swift */,
-				8064DF88244F4026005E8AA3 /* AboutVM.swift */,
+				80A408AF259CB50B00287CB7 /* Controllers */,
+				80A408A2259CB18200287CB7 /* Views */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -1192,6 +1220,7 @@
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
 				80A0AADC2541AAC700D35282 /* HelpSearchVC.swift in Sources */,
 				80CCE5C624DD913200DC36EE /* VerificationEntities.swift in Sources */,
+				80A4089E259CA9ED00287CB7 /* HowItWorksVC.swift in Sources */,
 				C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */,
 				804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */,
 				D6231CA724E400C70023BDC8 /* MainSymptomsVM.swift in Sources */,
@@ -1215,6 +1244,7 @@
 				8054C0D824200E7C008907B8 /* FileLogController.swift in Sources */,
 				80D2345324E31DFF00F684AA /* SendReportsVC.swift in Sources */,
 				D6340C6B24C5A27700E550A1 /* Device.swift in Sources */,
+				80A408A9259CB20E00287CB7 /* HowItWorksButtonsCell.swift in Sources */,
 				80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */,
 				80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */,
 				804E171125828673009D5E24 /* Analytics.swift in Sources */,
@@ -1239,6 +1269,7 @@
 				8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */,
 				FF2F0DBC2449AFA60062A7F9 /* Color.swift in Sources */,
 				80D2C63E242AB44E00F9DBF4 /* TabBarController.swift in Sources */,
+				80A408A4259CB1BA00287CB7 /* HowItWorksEntryCell.swift in Sources */,
 				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
 				804B203F254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */,
 				D6231CCB24F6610C0023BDC8 /* CurrentData.swift in Sources */,
@@ -1290,6 +1321,7 @@
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
 				D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
 				8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */,
+				80A408AA259CB20E00287CB7 /* HowItWorksButtonsCell.swift in Sources */,
 				D6231CB924EBC3630023BDC8 /* ErrorVM.swift in Sources */,
 				80CD54D02549C83F001D80B0 /* RiskyEncountersPositiveVC.swift in Sources */,
 				8083D8B7244640A0007FA4E9 /* Data.swift in Sources */,
@@ -1322,6 +1354,7 @@
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
 				8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */,
+				80A4089F259CA9ED00287CB7 /* HowItWorksVC.swift in Sources */,
 				806897E4258378070040EBF0 /* Main.swift in Sources */,
 				804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
@@ -1348,6 +1381,7 @@
 				D6231CA824E400C70023BDC8 /* MainSymptomsVM.swift in Sources */,
 				D65E57DD24D05D73000F2402 /* NewsVC.swift in Sources */,
 				8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */,
+				80A408A5259CB1BA00287CB7 /* HowItWorksEntryCell.swift in Sources */,
 				8083D8D9244640A0007FA4E9 /* App.swift in Sources */,
 				D61DFE6124C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
 				D6231CC324F52CBC0023BDC8 /* CurrentDataVC.swift in Sources */,

@@ -44,7 +44,7 @@ final class HelpVM {
         self.lineProcessor.processEmptyStrings = MarkdownLineStyle.body
         let foundAttributes: [SwiftyLine] = lineProcessor.process(convertedMarkdown)
 
-        var sections: [Section] = []
+        var sections: [Section] = [.init(model: "", items: [.init(title: L10n.howitworksTitle, lines: [])])]
         var section: Section = .init(model: "", items: [])
         var helpArticle: HelpArticle = .init(title: "", lines: [])
 

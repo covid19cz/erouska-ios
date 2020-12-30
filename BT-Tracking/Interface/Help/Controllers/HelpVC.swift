@@ -39,6 +39,7 @@ final class HelpVC: UIViewController {
         view.backgroundColor = Asset.helpBackground.color
         tableView.backgroundColor = view.backgroundColor
         tableView.tableFooterView = UIView()
+        tableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
 
         setupDataSource()
 
@@ -49,10 +50,16 @@ final class HelpVC: UIViewController {
         tableView.rx
             .modelSelected(HelpArticle.self)
             .subscribe(onNext: { [weak self] value in
-                if let indexPath = self?.tableView.indexPathForSelectedRow {
+                let indexPath = self?.tableView.indexPathForSelectedRow
+                if let indexPath = indexPath {
                     self?.tableView.deselectRow(at: indexPath, animated: true)
                 }
-                self?.perform(segue: StoryboardSegue.Help.article, sender: value)
+
+                if value.title == L10n.howitworksTitle {
+                    self?.perform(segue: StoryboardSegue.Help.howItWorks)
+                } else {
+                    self?.perform(segue: StoryboardSegue.Help.article, sender: value)
+                }
             })
             .disposed(by: disposeBag)
 
