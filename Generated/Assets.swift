@@ -52,6 +52,7 @@ internal enum Asset {
   internal static let hitWCheck = ImageAsset(name: "HitWCheck")
   internal static let hitWDisplay = ImageAsset(name: "HitWDisplay")
   internal static let hitWExposure = ImageAsset(name: "HitWExposure")
+  internal static let hitWIcon = ImageAsset(name: "HitWIcon")
   internal static let hitWPhones = ImageAsset(name: "HitWPhones")
   internal static let hitWResult = ImageAsset(name: "HitWResult")
   internal static let iconsColor = ColorAsset(name: "IconsColor")

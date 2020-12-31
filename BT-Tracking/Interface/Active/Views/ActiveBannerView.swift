@@ -20,13 +20,19 @@ final class ActiveBannerView: UIView {
             case .red:
                 backgroundColor = Asset.alertRed.color
                 titleLabel.textColor = UIColor.white
-                closeButton.setTitleColor(Asset.alertRed.color, for: .normal)
-                moreInfoButton.setTitleColor(Asset.alertRed.color, for: .normal)
+
+                [closeButton, moreInfoButton].forEach {
+                    $0?.backgroundColor = UIColor.white
+                    $0?.setTitleColor(Asset.alertRed.color, for: .normal)
+                }
             case .gray:
-                backgroundColor = UIColor.systemGroupedBackground
+                backgroundColor = .secondarySystemGroupedBackground
                 titleLabel.textColor = UIColor.darkText
-                closeButton.setTitleColor(UIColor.darkText, for: .normal)
-                moreInfoButton.setTitleColor(UIColor.darkText, for: .normal)
+
+                [closeButton, moreInfoButton].forEach {
+                    $0?.backgroundColor = Button.Style.dashboard.backgroundColor
+                    $0?.setTitleColor(Button.Style.dashboard.textColor, for: .normal)
+                }
             }
         }
     }

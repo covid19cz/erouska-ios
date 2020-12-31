@@ -61,6 +61,7 @@ final class ActiveAppVC: UIViewController {
                     AppSettings.lastExposureWarningInfoDisplayed = false
                 }
                 self?.exposureBannerView.isHidden = exposure == nil || AppSettings.lastExposureWarningClosed == true
+                self?.howItWorksBannerView.isHidden = true
                 self?.view.setNeedsLayout()
             }
         ).disposed(by: disposeBag)
@@ -238,6 +239,9 @@ final class ActiveAppVC: UIViewController {
     @IBAction private func closeExposureBanner(_ sender: Any) {
         AppSettings.lastExposureWarningClosed = true
         exposureBannerView.isHidden = true
+        if !AppSettings.howItWorksClosed {
+            howItWorksBannerView.isHidden = false
+        }
     }
 
     @IBAction private func exposureMoreInfo(_ sender: Any) {
