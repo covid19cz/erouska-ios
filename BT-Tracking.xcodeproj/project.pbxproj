@@ -30,6 +30,13 @@
 		80182854258134E5000B0EE7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 80182853258134E5000B0EE7 /* FirebaseAuth */; };
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		801C8FE9253FFD56002F303F /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 801C8FE8253FFD56002F303F /* RxRealm */; };
+		802A64FF25A4B3E5000BF085 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802A64FE25A4B3E5000BF085 /* WidgetKit.framework */; };
+		802A650125A4B3E5000BF085 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802A650025A4B3E5000BF085 /* SwiftUI.framework */; };
+		802A650425A4B3E5000BF085 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A650325A4B3E5000BF085 /* Widget.swift */; };
+		802A650725A4B3E5000BF085 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802A650625A4B3E5000BF085 /* Assets.xcassets */; };
+		802A650925A4B3E5000BF085 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 802A650525A4B3E5000BF085 /* Widget.intentdefinition */; };
+		802A650A25A4B3E5000BF085 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 802A650525A4B3E5000BF085 /* Widget.intentdefinition */; };
+		802A650D25A4B3E5000BF085 /* eRouska Dev Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 802A64FD25A4B3E5000BF085 /* eRouska Dev Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		802AFE4425135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
 		802AFE4525135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
 		804B203F254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */; };
@@ -130,6 +137,12 @@
 		809F9D9224AF8C3700D34CC9 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D9124AF8C3700D34CC9 /* RxKeyboard */; };
 		80A0AADC2541AAC700D35282 /* HelpSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */; };
 		80A0AADD2541AAC700D35282 /* HelpSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */; };
+		80A8A13E25A4CB810082F97C /* ActiveAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A8A13D25A4CB810082F97C /* ActiveAppState.swift */; };
+		80A8A13F25A4CB810082F97C /* ActiveAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A8A13D25A4CB810082F97C /* ActiveAppState.swift */; };
+		80A8A14325A4CBB60082F97C /* ActiveAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A8A13D25A4CB810082F97C /* ActiveAppState.swift */; };
+		80A8A14725A4CBB90082F97C /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDBF242A613F001D9DCD /* AppSettings.swift */; };
+		80A8A14C25A4CD770082F97C /* AppSettings+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A8A14B25A4CD770082F97C /* AppSettings+Auth.swift */; };
+		80A8A14D25A4CD770082F97C /* AppSettings+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A8A14B25A4CD770082F97C /* AppSettings+Auth.swift */; };
 		80AB9BCB24AF8CBD0088D256 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCA24AF8CBD0088D256 /* DeviceKit */; };
 		80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB9BCD24AF8D0B0088D256 /* Reachability */; };
 		80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94554242B7B460052CD9F /* ActiveAppVM.swift */; };
@@ -140,6 +153,7 @@
 		80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */; };
 		80BE3FCF2446028E00D0C810 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCE2446028E00D0C810 /* InputValidation.swift */; };
 		80BE3FD124460DF600D0C810 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */; };
+		80BE545A25A4D35E00FD3359 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 802A650525A4B3E5000BF085 /* Widget.intentdefinition */; };
 		80BF9C262424D55800150108 /* SendResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF9C252424D55800150108 /* SendResultVC.swift */; };
 		80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */; };
 		80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */; };
@@ -279,10 +293,41 @@
 		FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		802A650B25A4B3E5000BF085 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8054C0A5241D492F008907B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 802A64FC25A4B3E5000BF085;
+			remoteInfo = "eRouska WidgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		802A650E25A4B3E5000BF085 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				802A650D25A4B3E5000BF085 /* eRouska Dev Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		4651F9B724505A7B0003D23D /* RemoteTitles.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RemoteTitles.strings; sourceTree = "<group>"; };
 		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		802A64FD25A4B3E5000BF085 /* eRouska Dev Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "eRouska Dev Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		802A64FE25A4B3E5000BF085 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		802A650025A4B3E5000BF085 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		802A650325A4B3E5000BF085 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		802A650525A4B3E5000BF085 /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
+		802A650625A4B3E5000BF085 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		802A650825A4B3E5000BF085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		802AFE4325135BC0004954AF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncounterHelpVM.swift; sourceTree = "<group>"; };
 		804B204325458390007701F0 /* NewRiskEncounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRiskEncounterVC.swift; sourceTree = "<group>"; };
@@ -322,6 +367,8 @@
 		8084DEEF24AF8425001FBB16 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		8084DEF624AF86C1001FBB16 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSearchVC.swift; sourceTree = "<group>"; };
+		80A8A13D25A4CB810082F97C /* ActiveAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppState.swift; sourceTree = "<group>"; };
+		80A8A14B25A4CD770082F97C /* AppSettings+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppSettings+Auth.swift"; sourceTree = "<group>"; };
 		80B94554242B7B460052CD9F /* ActiveAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVM.swift; sourceTree = "<group>"; };
 		80B94556242B96560052CD9F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		80BB47632422865B00F552FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -331,6 +378,7 @@
 		80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsBackgroundView.swift; sourceTree = "<group>"; };
 		80BE3FCE2446028E00D0C810 /* InputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
+		80BE546725A4D91C00FD3359 /* eRouska WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "eRouska WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		80BF0490251A33640074C96A /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80BF9C252424D55800150108 /* SendResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultVC.swift; sourceTree = "<group>"; };
 		80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundService.swift; sourceTree = "<group>"; };
@@ -413,6 +461,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		802A64FA25A4B3E5000BF085 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802A650125A4B3E5000BF085 /* SwiftUI.framework in Frameworks */,
+				802A64FF25A4B3E5000BF085 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8054C0AA241D492F008907B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -476,6 +533,17 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
+		802A650225A4B3E5000BF085 /* eRouska Widget */ = {
+			isa = PBXGroup;
+			children = (
+				802A650325A4B3E5000BF085 /* Widget.swift */,
+				802A650525A4B3E5000BF085 /* Widget.intentdefinition */,
+				802A650625A4B3E5000BF085 /* Assets.xcassets */,
+				802A650825A4B3E5000BF085 /* Info.plist */,
+			);
+			path = "eRouska Widget";
+			sourceTree = "<group>";
+		};
 		804E1717258289AE009D5E24 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,7 +566,9 @@
 		8054C0A4241D492F008907B8 = {
 			isa = PBXGroup;
 			children = (
+				80BE546725A4D91C00FD3359 /* eRouska WidgetExtension.entitlements */,
 				8054C0AF241D492F008907B8 /* BT-Tracking */,
+				802A650225A4B3E5000BF085 /* eRouska Widget */,
 				8054C0AE241D492F008907B8 /* Products */,
 				806897D3258377140040EBF0 /* Frameworks */,
 			);
@@ -509,6 +579,7 @@
 			children = (
 				8054C0AD241D492F008907B8 /* eRouska.app */,
 				8083D8F4244640A0007FA4E9 /* eRouska.app */,
+				802A64FD25A4B3E5000BF085 /* eRouska Dev Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -573,6 +644,7 @@
 				805BE9752424DDE3001A93B3 /* Logger */,
 				80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
+				80A8A14B25A4CD770082F97C /* AppSettings+Auth.swift */,
 				804E171025828673009D5E24 /* Analytics.swift */,
 				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
@@ -618,6 +690,8 @@
 		806897D3258377140040EBF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				802A64FE25A4B3E5000BF085 /* WidgetKit.framework */,
+				802A650025A4B3E5000BF085 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -774,6 +848,7 @@
 				BD979AEA242565AF004001ED /* ActiveAppVC.swift */,
 				80B94554242B7B460052CD9F /* ActiveAppVM.swift */,
 				D610103225448E47007B01CF /* ActiveAppSectionView.swift */,
+				80A8A13D25A4CB810082F97C /* ActiveAppState.swift */,
 			);
 			path = Active;
 			sourceTree = "<group>";
@@ -891,6 +966,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		802A64FC25A4B3E5000BF085 /* eRouska Dev Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 802A651125A4B3E5000BF085 /* Build configuration list for PBXNativeTarget "eRouska Dev Widget" */;
+			buildPhases = (
+				802A64F925A4B3E5000BF085 /* Sources */,
+				802A64FA25A4B3E5000BF085 /* Frameworks */,
+				802A64FB25A4B3E5000BF085 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "eRouska Dev Widget";
+			productName = "eRouska WidgetExtension";
+			productReference = 802A64FD25A4B3E5000BF085 /* eRouska Dev Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		8054C0AC241D492F008907B8 /* eRouska Dev */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska Dev" */;
@@ -900,10 +992,12 @@
 				8054C0AA241D492F008907B8 /* Frameworks */,
 				8054C0AB241D492F008907B8 /* Resources */,
 				80BE18C32434958200C4A9E6 /* Run Firebase Cashlytics */,
+				802A650E25A4B3E5000BF085 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				802A650C25A4B3E5000BF085 /* PBXTargetDependency */,
 			);
 			name = "eRouska Dev";
 			packageProductDependencies = (
@@ -976,10 +1070,13 @@
 		8054C0A5241D492F008907B8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = Covid19CZ;
 				TargetAttributes = {
+					802A64FC25A4B3E5000BF085 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					8054C0AC241D492F008907B8 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1140;
@@ -1020,12 +1117,21 @@
 			projectRoot = "";
 			targets = (
 				8054C0AC241D492F008907B8 /* eRouska Dev */,
+				802A64FC25A4B3E5000BF085 /* eRouska Dev Widget */,
 				8083D8A5244640A0007FA4E9 /* eRouska Prod */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		802A64FB25A4B3E5000BF085 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802A650725A4B3E5000BF085 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8054C0AB241D492F008907B8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1155,6 +1261,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		802A64F925A4B3E5000BF085 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802A650425A4B3E5000BF085 /* Widget.swift in Sources */,
+				802A650925A4B3E5000BF085 /* Widget.intentdefinition in Sources */,
+				80A8A14725A4CBB90082F97C /* AppSettings.swift in Sources */,
+				80A8A14325A4CBB60082F97C /* ActiveAppState.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8054C0A9241D492F008907B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1188,6 +1305,7 @@
 				8053CCFC2538A2A000C1820E /* Callback.swift in Sources */,
 				8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */,
 				80E7C2BD2551686F003DE8DC /* SendResultVM.swift in Sources */,
+				80A8A13E25A4CB810082F97C /* ActiveAppState.swift in Sources */,
 				80C5CECA24EAA2140011B53B /* BackgroundEntities.swift in Sources */,
 				8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */,
 				80A0AADC2541AAC700D35282 /* HelpSearchVC.swift in Sources */,
@@ -1234,6 +1352,7 @@
 				80C71D4125248BE400999275 /* Strings.swift in Sources */,
 				D6231CB524EBC0760023BDC8 /* ErrorVC.swift in Sources */,
 				FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */,
+				802A650A25A4B3E5000BF085 /* Widget.intentdefinition in Sources */,
 				80BB47642422865B00F552FC /* Button.swift in Sources */,
 				D65E57D324D04976000F2402 /* NewsVM.swift in Sources */,
 				8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */,
@@ -1252,6 +1371,7 @@
 				804E1719258289B6009D5E24 /* Main.swift in Sources */,
 				D63E443824DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
+				80A8A14C25A4CD770082F97C /* AppSettings+Auth.swift in Sources */,
 				80D0B5E425401D37000C3FE5 /* HelpArticleVC.swift in Sources */,
 				80C5CECC24EAB0140011B53B /* ServerConfiguration.swift in Sources */,
 				8054C0DD2420AF63008907B8 /* App.swift in Sources */,
@@ -1279,6 +1399,7 @@
 				8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */,
 				8082DC34254AD8A9006B872D /* RiskyEncountersNegativeView.swift in Sources */,
 				80D2345424E31DFF00F684AA /* SendReportsVC.swift in Sources */,
+				80A8A13F25A4CB810082F97C /* ActiveAppState.swift in Sources */,
 				8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */,
 				80026D9824FE492400BBDB36 /* VerificationService.swift in Sources */,
 				8053CCFD2538A2A000C1820E /* Callback.swift in Sources */,
@@ -1324,9 +1445,11 @@
 				8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */,
 				806897E4258378070040EBF0 /* Main.swift in Sources */,
 				804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
+				80BE545A25A4D35E00FD3359 /* Widget.intentdefinition in Sources */,
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
 				80591185246DB86B002CD687 /* ExposureService.swift in Sources */,
 				8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */,
+				80A8A14D25A4CD770082F97C /* AppSettings+Auth.swift in Sources */,
 				80CA44DD244B384F008E22F8 /* HelpVM.swift in Sources */,
 				8083D8CE244640A0007FA4E9 /* SendResultVC.swift in Sources */,
 				8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */,
@@ -1371,6 +1494,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		802A650C25A4B3E5000BF085 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 802A64FC25A4B3E5000BF085 /* eRouska Dev Widget */;
+			targetProxy = 802A650B25A4B3E5000BF085 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		8054C0B6241D492F008907B8 /* Debug.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1402,6 +1533,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		802A650F25A4B3E5000BF085 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "eRouska WidgetExtension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = PDX4N72JDU;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "eRouska Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "cz.covid19cz.erouska.dev.eRouska-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		802A651025A4B3E5000BF085 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "eRouska WidgetExtension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PDX4N72JDU;
+				INFOPLIST_FILE = "eRouska Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "cz.covid19cz.erouska.dev.eRouska-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		8054C0BF241D4932008907B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1525,6 +1714,7 @@
 		8054C0C2241D4932008907B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
@@ -1551,6 +1741,7 @@
 		8054C0C3241D4932008907B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
@@ -1629,6 +1820,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		802A651125A4B3E5000BF085 /* Build configuration list for PBXNativeTarget "eRouska Dev Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802A650F25A4B3E5000BF085 /* Debug */,
+				802A651025A4B3E5000BF085 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8054C0A8241D492F008907B8 /* Build configuration list for PBXProject "BT-Tracking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

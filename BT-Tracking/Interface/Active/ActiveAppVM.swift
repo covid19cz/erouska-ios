@@ -9,96 +9,93 @@
 import UIKit
 import RxSwift
 
-final class ActiveAppVM {
+extension ActiveAppState {
 
-    enum State: String {
-        case enabled
-        case paused
-        case disabledBluetooth = "disabled"
-        case disabledExposures
-
-        var tabBarIcon: (UIImage, UIImage) {
-            switch self {
-            case .enabled:
-                return (Asset.homeActive.image, Asset.homeActiveSelected.image)
-            case .paused:
-                return (Asset.homePaused.image, Asset.homePausedSelected.image)
-            case .disabledBluetooth, .disabledExposures:
-                return (Asset.homeDisabled.image, Asset.homePausedSelected.image)
-            }
-        }
-
-        var color: UIColor {
-            switch self {
-            case .enabled, .paused:
-                return .label
-            case .disabledBluetooth, .disabledExposures:
-                return Asset.alertRed.color
-            }
-        }
-
-        var image: UIImage {
-            switch self {
-            case .enabled:
-                return Asset.scanActive.image
-            case .paused:
-                return Asset.bluetoothPaused.image
-            case .disabledBluetooth:
-                return Asset.bluetoothOff.image
-            case .disabledExposures:
-                return Asset.exposuresOff.image
-            }
-        }
-
-        var headline: String {
-            switch self {
-            case .enabled:
-                return L10n.activeHeadEnabled
-            case .paused:
-                return L10n.activeHeadPaused
-            case .disabledBluetooth:
-                return L10n.activeHeadDisabledBluetooth
-            case .disabledExposures:
-                return L10n.activeHeadDisabledExposures
-            }
-        }
-
-        var text: String {
-            switch self {
-            case .enabled:
-                return L10n.activeTitleEnabled
-            case .paused:
-                return L10n.activeTitlePaused
-            case .disabledBluetooth:
-                return L10n.activeTitleDisabledBluetooth
-            case .disabledExposures:
-                return L10n.activeTitleDisabledExposures
-            }
-        }
-
-        var actionTitle: String {
-            switch self {
-            case .enabled:
-                return L10n.activeButtonEnabled
-            case .paused:
-                return L10n.activeButtonPaused
-            case .disabledBluetooth:
-                return L10n.activeButtonDisabledBluetooth
-            case .disabledExposures:
-                return L10n.activeButtonDisabledExposures
-            }
+    var tabBarIcon: (UIImage, UIImage) {
+        switch self {
+        case .enabled:
+            return (Asset.homeActive.image, Asset.homeActiveSelected.image)
+        case .paused:
+            return (Asset.homePaused.image, Asset.homePausedSelected.image)
+        case .disabledBluetooth, .disabledExposures:
+            return (Asset.homeDisabled.image, Asset.homePausedSelected.image)
         }
     }
+
+    var color: UIColor {
+        switch self {
+        case .enabled, .paused:
+            return .label
+        case .disabledBluetooth, .disabledExposures:
+            return Asset.alertRed.color
+        }
+    }
+
+    var image: UIImage {
+        switch self {
+        case .enabled:
+            return Asset.scanActive.image
+        case .paused:
+            return Asset.bluetoothPaused.image
+        case .disabledBluetooth:
+            return Asset.bluetoothOff.image
+        case .disabledExposures:
+            return Asset.exposuresOff.image
+        }
+    }
+
+    var headline: String {
+        switch self {
+        case .enabled:
+            return L10n.activeHeadEnabled
+        case .paused:
+            return L10n.activeHeadPaused
+        case .disabledBluetooth:
+            return L10n.activeHeadDisabledBluetooth
+        case .disabledExposures:
+            return L10n.activeHeadDisabledExposures
+        }
+    }
+
+    var text: String {
+        switch self {
+        case .enabled:
+            return L10n.activeTitleEnabled
+        case .paused:
+            return L10n.activeTitlePaused
+        case .disabledBluetooth:
+            return L10n.activeTitleDisabledBluetooth
+        case .disabledExposures:
+            return L10n.activeTitleDisabledExposures
+        }
+    }
+
+    var actionTitle: String {
+        switch self {
+        case .enabled:
+            return L10n.activeButtonEnabled
+        case .paused:
+            return L10n.activeButtonPaused
+        case .disabledBluetooth:
+            return L10n.activeButtonDisabledBluetooth
+        case .disabledExposures:
+            return L10n.activeButtonDisabledExposures
+        }
+    }
+
+}
+
+final class ActiveAppVM {
 
     var exposureTitle: String {
         RemoteValues.exposureBannerTitle
     }
 
-    var state: State {
+    var state: ActiveAppState {
         let state = try? observableState.value()
         return state ?? .disabledExposures
     }
-    private(set) var observableState: BehaviorSubject<State>
+    private(set) var observableState: BehaviorSubject<ActiveAppState>
     private(set) var exposureToShow: Observable<Exposure?>
     private let disposeBag = DisposeBag()
 
@@ -118,7 +115,7 @@ final class ActiveAppVM {
         riskyEncounterDateToShow = filteredRiskyEncounters.map { $0.last?.date }
         riskyEncountersInTimeInterval = filteredRiskyEncounters.map { $0.count }
 
-        observableState = BehaviorSubject<State>(value: .paused)
+        observableState = BehaviorSubject<ActiveAppState>(value: .paused)
 
         if let observable = try? ExposureList.lastObservable() {
             exposureToShow = observable
@@ -144,5 +141,6 @@ final class ActiveAppVM {
         @unknown default:
             return
         }
+        AppSettings.sharedState = state
     }
 }

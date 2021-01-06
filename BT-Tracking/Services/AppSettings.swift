@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import FirebaseAuth
+import WidgetKit
 
 struct AppSettings {
 
@@ -33,16 +33,41 @@ struct AppSettings {
         case activated = "activated2"
     }
 
+    static let shared = UserDefaults(suiteName: "group.erouska.dev")
+
     /// Firebase Region
     static let firebaseRegion = "europe-west1"
 
     /// Last application state (paused, running, ...)
-    static var state: ActiveAppVM.State? {
+    static var state: ActiveAppState? {
         get {
-            ActiveAppVM.State(rawValue: string(forKey: .appState))
+            ActiveAppState(rawValue: string(forKey: .appState))
         }
         set {
             set(withKey: .appState, value: newValue?.rawValue)
+            sharedState = newValue ?? .disabledExposures
+        }
+    }
+
+    /// Shared state to extension, unknown returns .disabledExposures
+    static var sharedState: ActiveAppState {
+        get {
+            guard let rawString = shared?.string(forKey: Keys.appState.rawValue) else {
+                return .disabledExposures
+            }
+            return ActiveAppState(rawValue: rawString) ?? .disabledExposures
+        }
+        set {
+            shared?.setValue(newValue.rawValue, forKey: Keys.appState.rawValue)
+            if #available(iOS 14.0, *) {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+            if sharedState != state {
+                if #available(iOS 14.0, *) {
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
+            }
+            shared?.synchronize()
         }
     }
 
@@ -185,22 +210,6 @@ struct AppSettings {
         set {
             set(withKey: .activated, value: newValue)
         }
-    }
-
-    /// Cleanup data after logout
-    static func deleteAllData() {
-        KeychainService.token = nil
-
-        activated = false
-
-        backgroundModeAlertShown = false
-
-        state = nil
-
-        lastProcessedFileName = nil
-        lastUploadDate = nil
-
-        try? Auth.auth().signOut()
     }
 
     // MARK: - Private

@@ -77,7 +77,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
-        if Auth.auth().canHandle(url) {
+        if url.scheme == "erosuka" {
+            switch url.path {
+            case "pause":
+                Self.dependency.exposureService.deactivate { error in
+                    if let error = error {
+                        log("AppDelegate: Failed to pause app \(error.localizedDescription)")
+                    }
+                }
+            case "resume":
+                Self.dependency.exposureService.activate { error in
+                    if let error = error {
+                        log("AppDelegate: Failed to active app \(error.localizedDescription)")
+                    }
+                }
+            default:
+                break
+            }
+            return true
+        } else if Auth.auth().canHandle(url) {
             return true
         } else {
             return false
@@ -268,4 +286,5 @@ private extension AppDelegate {
             })
             .disposed(by: bag)
     }
+
 }

@@ -10,17 +10,8 @@
 	</array>
 	<key>com.apple.developer.exposure-notification</key>
 	<true/>
-	<key>com.apple.developer.exposure-notification-test</key>
-	<true/>
-	<key>com.apple.developer.exposure-notification-test-skip-file-verification</key>
-	<true/>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
-	<key>com.apple.security.application-groups</key>
-	<array>
-		<string>group.erouska.dev</string>
-		<string>group.erouska</string>
-	</array>
 	<key>com.apple.security.automation.apple-events</key>
 	<true/>
 	<key>com.apple.security.device.bluetooth</key>

@@ -48,6 +48,18 @@
 				<string>com.googleusercontent.apps.1077972356575-rflvasannh2k4hh3475994j1dhk99qkh</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string></string>
+			<key>CFBundleURLName</key>
+			<string>eRouska</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>erouska</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
