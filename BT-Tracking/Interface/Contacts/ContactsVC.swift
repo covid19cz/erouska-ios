@@ -24,6 +24,7 @@ final class ContactsVC: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        navigationController?.tabBarItem.tag = MainTab.contacts.rawValue
         navigationController?.tabBarItem.title = L10n.contactsTitle
         navigationController?.tabBarItem.image = Asset.contacts.image
     }
@@ -48,7 +49,7 @@ final class ContactsVC: UIViewController {
 
     private func openLink(_ link: URL) {
         if link.absoluteString.hasSuffix("info@erouska.cz"), Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self)
+            diagnosis = Diagnosis(showFromController: self, screenName: "K1", error: nil)
         } else {
             openURL(URL: link)
         }

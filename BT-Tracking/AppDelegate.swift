@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "pushRegistrationToken": deviceToken.hexEncodedString()
         ]
 
-        Self.dependency.functions.httpsCallable("changePushToken").call(data) { _, error in
+        Self.dependency.functions.httpsCallable("ChangePushToken").call(data) { _, error in
             if let error = error {
                 log("AppDelegate: Failed to change push token \(error.localizedDescription)")
             }
@@ -153,6 +153,7 @@ private extension AppDelegate {
         FirebaseApp.configure()
         setupDefaultValues()
         updateRemoteValues()
+        ExposureList.cleanup()
 
         if AppSettings.lastLegacyDataFetchDate == nil {
             AppSettings.lastLegacyDataFetchDate = AppSettings.lastProcessedDate ?? Date()
@@ -220,6 +221,10 @@ private extension AppDelegate {
         }
 
         window.rootViewController = rootViewController
+        if let controller = window.rootViewController as? UITabBarController {
+            controller.delegate = self
+            _ = controller.viewControllers?.first
+        }
 
         if shouldPresentNews, !AppSettings.v2_0NewsLaunched {
             AppSettings.v2_0NewsLaunched = true

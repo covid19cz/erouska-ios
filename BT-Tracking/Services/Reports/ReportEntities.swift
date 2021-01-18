@@ -17,6 +17,10 @@ enum ReportError: String, Error {
     case stringEncodingFailure
 }
 
+enum ReportUploadError: Error {
+    case upload(String, String?)
+}
+
 struct Report: Encodable {
 
     /// Required and must have length >= 1 and <= 21 (`maxKeysPerPublish`)
@@ -28,7 +32,7 @@ struct Report: Encodable {
     /// The Verification Certificate from a verification server.
     let verificationPayload: String?
 
-    /// The device generated secret that is used to recalcualte the HMAC value, that is present in the verification payload.
+    /// The device generated secret that is used to recalculate the HMAC value, that is present in the verification payload.
     let hmacKey: String?
 
     /// An interval number that aligns with the symptom onset date.
@@ -51,6 +55,14 @@ struct Report: Encodable {
     /// Random base64 encoded data to obscure the request size. The server will not process this data in any way.
     let padding: String
 
+    // MARK: - EFGS parameters
+
+    let visitedCountries: [String]
+
+    let reportType: ReportType
+
+    let consentToFederation: Bool
+
     private enum CodingKeys: String, CodingKey {
         case healthAuthority = "healthAuthorityID"
         case temporaryExposureKeys
@@ -60,6 +72,7 @@ struct Report: Encodable {
         case traveler
         case revisionToken
         case padding
+        case visitedCountries
     }
 
 }
@@ -71,12 +84,21 @@ struct ReportResult: Decodable {
     let insertedExposures: Int?
 
     /// On error, the error message will contain a message from the server
-    let errorMessage: String?
+    let error: String?
 
     /// Field will contain one of the constants defined in this file.
     /// The intent is that code can be used to show a localized error message on the device.
     let code: String?
 
+}
+
+enum ReportType: String, Codable {
+    case unknown = "Unknown"
+    case confirmedTest = "ConfirmedTest"
+    case confirmedClinicalDiagnosis = "ConfirmedClinicalDiagnosis"
+    case selfReport = "SelfReport"
+    case recursive = "Recursive"
+    case revoked = "Revoked"
 }
 
 struct ReportKeys {

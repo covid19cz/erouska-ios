@@ -13,10 +13,12 @@ final class SendResultVC: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var closeButton: Button!
 
     var viewModel: SendResultVM = .standard
@@ -44,6 +46,9 @@ final class SendResultVC: UIViewController {
         } else {
             closeButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         }
+        buttonsView.connect(with: scrollView)
+
+        isModalInPresentation = true
     }
 
     // MARK: - Action
@@ -63,7 +68,11 @@ final class SendResultVC: UIViewController {
 
     @IBAction private func mailAction() {
         if Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self)
+            if case let .error(code, message) = viewModel {
+                diagnosis = Diagnosis(showFromController: self, screenName: "O1", error: .init(code: code, message: message ?? "None"))
+            } else {
+                diagnosis = Diagnosis(showFromController: self, screenName: "O1", error: nil)
+            }
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
             openURL(URL: URL)
         }

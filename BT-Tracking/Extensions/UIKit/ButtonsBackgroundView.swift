@@ -9,11 +9,11 @@
 import UIKit
 import RxSwift
 
-class ButtonsBackgroundView: UIView {
+final class ButtonsBackgroundView: UIView {
 
-    static var TopOffset: CGFloat = -44
+    static let TopOffset: CGFloat = -44
 
-    static var BottomMargin: CGFloat = 16
+    static let BottomMargin: CGFloat = 16
 
     var isGradientHidden: Bool = false {
         didSet {

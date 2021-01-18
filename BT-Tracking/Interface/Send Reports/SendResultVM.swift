@@ -11,7 +11,7 @@ import UIKit
 enum SendResultVM {
     case standard
     case noKeys
-    case error(String)
+    case error(String, String?) // error: code, message
 
     var title: String {
         switch self {
@@ -57,8 +57,8 @@ enum SendResultVM {
             return L10n.dataSendHeadline
         case .noKeys:
             return L10n.dataSendNokeysHeadline
-        case .error(let message):
-            return L10n.dataSendErrorHeadline(message)
+        case .error(let code, _):
+            return L10n.dataSendErrorHeadline(code)
         }
     }
 

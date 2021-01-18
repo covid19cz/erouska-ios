@@ -8,7 +8,6 @@
 
 import Foundation
 import ExposureNotification
-import FirebaseStorage
 import FirebaseAuth
 import FirebaseCrashlytics
 import Alamofire
@@ -38,6 +37,7 @@ final class ReportService: ReportServicing {
     private var healthAuthority: String
 
     private var uploadURL: URL
+    private var firebaseURL: URL
 
     private var downloadBaseURL: URL
     private var downloadDestinationURL: URL {
@@ -52,6 +52,7 @@ final class ReportService: ReportServicing {
     init(configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
+        firebaseURL = configuration.firebaseURL
         downloadBaseURL = configuration.downloadsURL
         downloadIndex = configuration.downloadIndexName
     }
@@ -59,6 +60,7 @@ final class ReportService: ReportServicing {
     func updateConfiguration(_ configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
         uploadURL = configuration.uploadURL
+        firebaseURL = configuration.firebaseURL
         downloadBaseURL = configuration.downloadsURL
         downloadIndex = configuration.downloadIndexName
     }
@@ -127,10 +129,13 @@ final class ReportService: ReportServicing {
             symptomOnsetInterval: nil,
             traveler: false,
             revisionToken: nil,
-            padding: randomBase64
+            padding: randomBase64,
+            visitedCountries: [],
+            reportType: .confirmedTest,
+            consentToFederation: false
         )
 
-        AF.request(uploadURL, method: .post, parameters: report, encoder: JSONParameterEncoder.default)
+        AF.request(firebaseURL.appendingPathComponent("PublishKeys"), method: .post, parameters: report, encoder: JSONParameterEncoder.default)
             .responseDecodable(of: ReportResult.self) { response in
                 #if DEBUG
                 print("Response upload")
@@ -138,8 +143,12 @@ final class ReportService: ReportServicing {
                 #endif
 
                 switch response.result {
-                case .success:
-                    reportSuccess()
+                case .success(let data):
+                    if let message = data.error, let code = data.code, code != "partial_failure" {
+                        reportFailure(ReportUploadError.upload(code, message))
+                    } else {
+                        reportSuccess()
+                    }
                 case .failure(let error):
                     reportFailure(error)
                 }
@@ -171,7 +180,7 @@ final class ReportService: ReportServicing {
         }
 
         let destinationURL = self.downloadDestinationURL
-        let destination: DownloadRequest.Destination = { temporaryURL, response in
+        let destination: DownloadRequest.Destination = { _, response in
             let url = destinationURL.appendingPathComponent(response.suggestedFilename ?? "Exposures.zip")
             return (url, [.removePreviousFile, .createIntermediateDirectories])
         }

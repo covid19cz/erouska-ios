@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P2s-fN-K6F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P2s-fN-K6F">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,7 +48,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="X3J-NQ-XNd" firstAttribute="leading" secondItem="4nN-XY-weG" secondAttribute="leadingMargin" id="0CE-ZG-fIr"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="X3J-NQ-XNd" secondAttribute="trailing" id="Lyr-qJ-s0b"/>
@@ -68,9 +70,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIE-D8-tLH" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="752" width="414" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8u-Qk-CYu" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8u-Qk-CYu" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="16" y="50" width="382" height="44"/>
-                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="nvE-xj-W5U"/>
                                         </constraints>
@@ -83,7 +85,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="N8u-Qk-CYu" secondAttribute="trailing" constant="16" id="0aH-lw-vOr"/>
                                     <constraint firstItem="N8u-Qk-CYu" firstAttribute="leading" secondItem="AIE-D8-tLH" secondAttribute="leading" constant="16" id="Uos-CB-QsU"/>
@@ -92,7 +94,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gBi-7k-Jog"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AIE-D8-tLH" firstAttribute="trailing" secondItem="gBi-7k-Jog" secondAttribute="trailing" id="31V-DH-tWH"/>
                             <constraint firstItem="AIE-D8-tLH" firstAttribute="leading" secondItem="gBi-7k-Jog" secondAttribute="leading" id="Kuo-UO-C4j"/>
@@ -102,13 +105,14 @@
                             <constraint firstItem="N8u-Qk-CYu" firstAttribute="top" secondItem="rfZ-qr-SLc" secondAttribute="bottom" id="r8M-0J-aVE"/>
                             <constraint firstItem="rfZ-qr-SLc" firstAttribute="trailing" secondItem="gBi-7k-Jog" secondAttribute="trailing" id="wDU-1X-LZJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gBi-7k-Jog"/>
                     </view>
                     <navigationItem key="navigationItem" id="Hsw-xQ-kWa"/>
                     <connections>
                         <outlet property="actionButton" destination="N8u-Qk-CYu" id="dut-1G-rJr"/>
+                        <outlet property="buttonsView" destination="AIE-D8-tLH" id="eJA-XK-Yj2"/>
                         <outlet property="headlineLabel" destination="LVl-4u-bFe" id="aPP-aO-nEk"/>
                         <outlet property="imageView" destination="3yh-Qx-bWt" id="w6x-Xb-ala"/>
+                        <outlet property="scrollView" destination="rfZ-qr-SLc" id="ILb-Yb-jqw"/>
                         <outlet property="textLabel" destination="LZ9-xd-SkZ" id="Q5P-py-3uI"/>
                         <segue destination="r7f-oX-bVv" kind="show" identifier="Help" id="sG6-i6-bPL"/>
                     </connections>
@@ -133,7 +137,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P2s-fN-K6F" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="23H-Og-2aq">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -148,5 +152,11 @@
     </scenes>
     <resources>
         <image name="Error" width="130" height="130"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

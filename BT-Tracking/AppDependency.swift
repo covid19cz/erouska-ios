@@ -19,8 +19,6 @@ final class AppDependency {
 
     private(set) lazy var exposureService: ExposureServicing = ExposureService()
 
-    private(set) lazy var countryCodes: CountryCodesServicing = CountryCodeService()
-
     private(set) lazy var reporter: ReportServicing = ReportService(configuration: RemoteValues.serverConfiguration)
 
     private(set) lazy var verification: VerificationServicing = VerificationService(configuration: RemoteValues.serverConfiguration)

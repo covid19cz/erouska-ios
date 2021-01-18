@@ -10,8 +10,9 @@ import Foundation
 import DeviceKit
 import MessageUI
 import Reachability
+import UserNotifications
 
-class Diagnosis: NSObject {
+final class Diagnosis: NSObject {
 
     static var canSendMail: Bool {
         MFMailComposeViewController.canSendMail()
@@ -19,16 +20,24 @@ class Diagnosis: NSObject {
 
     private weak var showFromController: UIViewController?
 
-    init(showFromController: UIViewController, errorMessage: String? = nil) {
-        self.showFromController = showFromController
-        super.init()
+    private var screenName: String
 
-        presentQuestion(errorMessage: errorMessage)
+    struct ErrorReport {
+        let code: String
+        let message: String
     }
 
-    private func presentQuestion(errorMessage: String?) {
+    init(showFromController: UIViewController, screenName: String, error: ErrorReport? = nil) {
+        self.showFromController = showFromController
+        self.screenName = screenName
+        super.init()
+
+        presentQuestion(error: error)
+    }
+
+    private func presentQuestion(error: ErrorReport?) {
         let alert = UIAlertController(
-            title: L10n.diagnosisTitle,
+            title: error == nil ? L10n.diagnosisTitleBase : L10n.diagnosisTitleError,
             message: "",
             preferredStyle: .alert
         )
@@ -37,7 +46,7 @@ class Diagnosis: NSObject {
                 title: L10n.diagnosisSendAttachment,
                 style: .default,
                 handler: { [weak self] _ in
-                    self?.openMailController(diagnosisInfo: true, errorMessage: errorMessage)
+                    self?.openMailController(diagnosisInfo: true, error: error)
                 }
             )
         )
@@ -46,7 +55,7 @@ class Diagnosis: NSObject {
                 title: L10n.diagnosisSendWithoutattachment,
                 style: .default,
                 handler: { [weak self] _ in
-                    self?.openMailController(diagnosisInfo: false)
+                    self?.openMailController(diagnosisInfo: false, error: error)
                 }
             )
         )
@@ -54,23 +63,28 @@ class Diagnosis: NSObject {
         showFromController?.present(alert, animated: true, completion: nil)
     }
 
-    private func openMailController(diagnosisInfo: Bool, errorMessage: String? = nil) {
+    private func openMailController(diagnosisInfo: Bool, error: ErrorReport?) {
         let controller = MFMailComposeViewController()
-        controller.setSubject("Zpětná vazba z aplikace eRouška")
         controller.setToRecipients(["info@erouska.cz"])
         controller.mailComposeDelegate = self
 
         if diagnosisInfo {
-            controller.addAttachmentData(
-                diagnosisText(errorMessage: errorMessage).data(using: .utf8) ?? Data(),
-                mimeType: "text/plain",
-                fileName: "diagnosticke_informace.txt"
-            )
+            UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
+                DispatchQueue.main.async {
+                    controller.addAttachmentData(
+                        self.diagnosisText(error: error, notitificationSettings: settings).data(using: .utf8) ?? Data(),
+                        mimeType: "text/plain",
+                        fileName: "diagnosticke_informace.txt"
+                    )
+                    self.showFromController?.present(controller, animated: true, completion: nil)
+                }
+            })
+        } else {
+            showFromController?.present(controller, animated: true, completion: nil)
         }
-        showFromController?.present(controller, animated: true, completion: nil)
     }
 
-    private func diagnosisText(errorMessage: String?) -> String {
+    private func diagnosisText(error: ErrorReport?, notitificationSettings: UNNotificationSettings) -> String {
         let device = Device.current
         let exposureService = AppDelegate.dependency.exposureService
         let connection = try? Reachability().connection
@@ -87,15 +101,18 @@ class Diagnosis: NSObject {
         Lokalizace: \(Locale.current.identifier)
         Bluetooth: \(exposureService.isBluetoothOn ? "ON" : "OFF")
         Exposure API: \(exposureService.isActive ? "ON" : "OFF")
+        Notifikace: \(notitificationSettings.authorizationStatus == .authorized) ? "ON" : "OFF")
+        Aktualizace na pozadí: \(UIApplication.shared.backgroundRefreshStatus == .available ? "ON" : "OFF")
         Internet: \(connection != .unavailable ? "ON" : "OFF")
         Low power mode: \(device.batteryState?.lowPowerMode == true ? "ON" : "OFF")
         Poslední stažení klíčů: \(lastKeys)
         Poslední notifikace rizikového setkání: \(exposureNotification)
         Poslední rizikové setkání z: \(lastExposure)
+        Obrazovka: \(screenName)
         """
 
-        if let error = errorMessage {
-            return "Kód chyby: \(error)\n" + diagnosisText
+        if let error = error {
+            return "Kód chyby: \(error.code)\n" + "Detail chyby: \(error.message)\n" + diagnosisText
         } else {
             return diagnosisText
         }

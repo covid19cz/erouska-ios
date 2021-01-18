@@ -57,18 +57,20 @@ internal enum L10n {
     return L10n.tr("Localizable", "active_risky_encounter_head_positive", String(describing: p1))
   }
   /// Poslední aktualizace %@
-  internal static func activeRiskyEncounterLastUpdateNegative(_ p1: Any) -> String {
-    return L10n.tr("Localizable", "active_risky_encounter_last_update_negative", String(describing: p1))
+  internal static func activeRiskyEncounterLastUpdate(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "active_risky_encounter_last_update", String(describing: p1))
   }
   /// Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19.
   internal static func activeRiskyEncounterTitlePositive(_ p1: Any) -> String {
     return L10n.tr("Localizable", "active_risky_encounter_title_positive", String(describing: p1))
   }
   /// Aktualizace probíhá jednou za 24 hodin.
-  internal static let activeRiskyEncounterUpdateIntervalNegative = L10n.tr("Localizable", "active_risky_encounter_update_interval_negative")
+  internal static let activeRiskyEncounterUpdateInterval = L10n.tr("Localizable", "active_risky_encounter_update_interval")
+  /// Pokud je výsledek pozitivní, upozorněte ostatní.
+  internal static let activeSendReportsBody = L10n.tr("Localizable", "active_send_reports_body")
   /// Anonymně upozornit ostatní
   internal static let activeSendReportsButton = L10n.tr("Localizable", "active_send_reports_button")
-  /// Máte pozitvní výsledek COVID-19 testu?
+  /// Byli jste na testu COVID-19?
   internal static let activeSendReportsHead = L10n.tr("Localizable", "active_send_reports_head")
   /// Zapnuté Bluetooth je důležité pro sbírání kontaktů s ostatními eRouškami ve vašem okolí.
   internal static let activeTitleDisabledBluetooth = L10n.tr("Localizable", "active_title_disabled_bluetooth")
@@ -220,7 +222,7 @@ internal enum L10n {
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Nepodařilo se nám odeslat data
   internal static let dataSendTitleError = L10n.tr("Localizable", "data_send_title_error")
-  /// Data jste úspěsně odeslali
+  /// Upozornění ostatním eRouškám jste odeslali
   internal static let dataSendTitleLabel = L10n.tr("Localizable", "data_send_title_label")
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19
   internal static let dataSendTitleNokeys = L10n.tr("Localizable", "data_send_title_nokeys")
@@ -230,14 +232,16 @@ internal enum L10n {
   internal static let deadmanNotificaitonTitle = L10n.tr("Localizable", "deadman_notificaiton_title")
   /// Test
   internal static let debug = L10n.tr("Localizable", "debug")
-  /// Zrušit
+  /// Zavřít
   internal static let diagnosisCancel = L10n.tr("Localizable", "diagnosis_cancel")
   /// Chci přidat přílohu
   internal static let diagnosisSendAttachment = L10n.tr("Localizable", "diagnosis_send_attachment")
   /// Nechci přidat přílohu
   internal static let diagnosisSendWithoutattachment = L10n.tr("Localizable", "diagnosis_send_withoutattachment")
-  /// Chcete do e-mailu přidat přílohu s anonymními informace o nastavení telefonu a chybě?
-  internal static let diagnosisTitle = L10n.tr("Localizable", "diagnosis_title")
+  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu? Tyto informace nám pomohou s řešením případné chyby.
+  internal static let diagnosisTitleBase = L10n.tr("Localizable", "diagnosis_title_base")
+  /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu a chybě?
+  internal static let diagnosisTitleError = L10n.tr("Localizable", "diagnosis_title_error")
   /// Chyba
   internal static let error = L10n.tr("Localizable", "error")
   /// Aktivaci aplikace nelze dokončit

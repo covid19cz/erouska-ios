@@ -121,4 +121,15 @@ struct AppCurrentData: Decodable {
         case notificationsTotal = "notifications_total"
     }
 
+    init(with data: [String: Any]) {
+        modified = data[CodingKeys.modified.rawValue] as? Int ?? 0
+        date = data[CodingKeys.date.rawValue] as? Date
+        activationsYesterday = data[CodingKeys.activationsYesterday.rawValue] as? Int ?? 0
+        activationsTotal = data[CodingKeys.activationsTotal.rawValue] as? Int ?? 0
+        keyPublishersYesterday = data[CodingKeys.keyPublishersYesterday.rawValue] as? Int ?? 0
+        keyPublishersTotal = data[CodingKeys.keyPublishersTotal.rawValue] as? Int ?? 0
+        notificationsYesterday = data[CodingKeys.notificationsYesterday.rawValue] as? Int ?? 0
+        notificationsTotal = data[CodingKeys.notificationsTotal.rawValue] as? Int ?? 0
+    }
+
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */; };
 		4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
 		4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
 		80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */; };
@@ -24,6 +23,11 @@
 		800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B6241D492F008907B8 /* Debug.storyboard */; };
 		800E611424DAE98B00C63567 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 800E611324DAE98B00C63567 /* Zip */; };
 		8015FD0F254D672300AD9AE4 /* RiskyEncountersPositiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E443A24DD8645007B6728 /* RiskyEncountersPositiveVC.swift */; };
+		8018284C258134E5000B0EE7 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 8018284B258134E5000B0EE7 /* FirebaseFunctions */; };
+		8018284E258134E5000B0EE7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8018284D258134E5000B0EE7 /* FirebaseAnalytics */; };
+		80182850258134E5000B0EE7 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8018284F258134E5000B0EE7 /* FirebaseCrashlytics */; };
+		80182852258134E5000B0EE7 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 80182851258134E5000B0EE7 /* FirebaseRemoteConfig */; };
+		80182854258134E5000B0EE7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 80182853258134E5000B0EE7 /* FirebaseAuth */; };
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		801C8FE9253FFD56002F303F /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 801C8FE8253FFD56002F303F /* RxRealm */; };
 		802AFE4425135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
@@ -34,6 +38,9 @@
 		804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B204325458390007701F0 /* NewRiskEncounterVC.swift */; };
 		804BE48A24D9A11A00D40C07 /* ReportEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804BE48924D9A11A00D40C07 /* ReportEntities.swift */; };
 		804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 804BE48C24D9A30A00D40C07 /* Alamofire */; };
+		804E171125828673009D5E24 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804E171025828673009D5E24 /* Analytics.swift */; };
+		804E171225828673009D5E24 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804E171025828673009D5E24 /* Analytics.swift */; };
+		804E1719258289B6009D5E24 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804E1718258289B6009D5E24 /* Main.swift */; };
 		805192A024AF8E2700765392 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8051929F24AF8E2700765392 /* RxCocoa */; };
 		805192A224AF8E2700765392 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A124AF8E2700765392 /* RxSwift */; };
 		805192A424AF8E2700765392 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 805192A324AF8E2700765392 /* RxDataSources */; };
@@ -57,18 +64,20 @@
 		8054C0E12420EEFF008907B8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
 		8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4649848424201E4600A858A9 /* FileLogger.swift */; };
 		80591185246DB86B002CD687 /* ExposureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */; };
-		805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE97824252AE6001A93B3 /* MulticastDelegate.swift */; };
-		80610BD024363D7B00E031C8 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80610BCF24363D7B00E031C8 /* Auth.swift */; };
-		80610BD9243B13AE00E031C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80610BD8243B13AE00E031C8 /* String.swift */; };
 		80631A96242CA27800EB0B6C /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A95242CA27800EB0B6C /* HelpVC.swift */; };
-		80631A98242CAB5000EB0B6C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A97242CAB5000EB0B6C /* Image.swift */; };
 		8064DF70244EF3C0005E8AA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */; };
 		8064DF85244F3FFD005E8AA3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF84244F3FFD005E8AA3 /* AboutVC.swift */; };
 		8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF84244F3FFD005E8AA3 /* AboutVC.swift */; };
 		8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
 		8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
+		806897D5258377140040EBF0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 806897D4258377140040EBF0 /* FirebaseAnalytics */; };
+		806897D7258377140040EBF0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 806897D6258377140040EBF0 /* FirebaseAuth */; };
+		806897D9258377150040EBF0 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 806897D8258377150040EBF0 /* FirebaseCrashlytics */; };
+		806897DB258377150040EBF0 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 806897DA258377150040EBF0 /* FirebaseFunctions */; };
+		806897DD258377150040EBF0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 806897DC258377150040EBF0 /* FirebaseStorage */; };
+		806897E1258377F70040EBF0 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 806897E0258377F70040EBF0 /* FirebaseRemoteConfig */; };
+		806897E4258378070040EBF0 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804E1718258289B6009D5E24 /* Main.swift */; };
 		807053532427BA2500DC1034 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
-		807053582427C5AA00DC1034 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053572427C5AA00DC1034 /* InfoCell.swift */; };
 		8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDBF242A613F001D9DCD /* AppSettings.swift */; };
 		8075EDC3242A6E93001D9DCD /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDC2242A6E93001D9DCD /* ContactsVC.swift */; };
 		8075FE4E2543323B00E72779 /* CurrentDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075FE4D2543323B00E72779 /* CurrentDataCell.swift */; };
@@ -83,14 +92,11 @@
 		8083D8AC244640A0007FA4E9 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A95242CA27800EB0B6C /* HelpVC.swift */; };
 		8083D8AF244640A0007FA4E9 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FD024460DF600D0C810 /* KeyboardHandler.swift */; };
 		8083D8B1244640A0007FA4E9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0E02420EEFF008907B8 /* Logger.swift */; };
-		8083D8B3244640A0007FA4E9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80631A97242CAB5000EB0B6C /* Image.swift */; };
 		8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppVC.swift */; };
 		8083D8B5244640A0007FA4E9 /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDC2242A6E93001D9DCD /* ContactsVC.swift */; };
 		8083D8B7244640A0007FA4E9 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807053522427BA2500DC1034 /* Data.swift */; };
 		8083D8B8244640A0007FA4E9 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		8083D8B9244640A0007FA4E9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FC52445CCAC00D0C810 /* GradientView.swift */; };
-		8083D8BA244640A0007FA4E9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80610BD8243B13AE00E031C8 /* String.swift */; };
-		8083D8BB244640A0007FA4E9 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805BE97824252AE6001A93B3 /* MulticastDelegate.swift */; };
 		8083D8BD244640A0007FA4E9 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
 		8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075EDBF242A613F001D9DCD /* AppSettings.swift */; };
 		8083D8C3244640A0007FA4E9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B94556242B96560052CD9F /* NavigationController.swift */; };
@@ -101,12 +107,9 @@
 		8083D8CF244640A0007FA4E9 /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
 		8083D8D0244640A0007FA4E9 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB47632422865B00F552FC /* Button.swift */; };
 		8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */; };
-		8083D8D4244640A0007FA4E9 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
 		8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE3FCA2445D01000D0C810 /* ButtonsBackgroundView.swift */; };
-		8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80610BCF24363D7B00E031C8 /* Auth.swift */; };
 		8083D8D8244640A0007FA4E9 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80799BEA2423B89A002B04C5 /* Controller.swift */; };
 		8083D8D9244640A0007FA4E9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8054C0DC2420AF63008907B8 /* App.swift */; };
-		8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		8083D8E4244640A0007FA4E9 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
 		8083D8E6244640A0007FA4E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0BB241D4932008907B8 /* LaunchScreen.storyboard */; };
 		8083D8E7244640A0007FA4E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
@@ -116,10 +119,8 @@
 		8083D8EC244640A0007FA4E9 /* SendReports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* SendReports.storyboard */; };
 		8083D9142446F779007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
-		8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodesService.swift */; };
 		8084DEF024AF8425001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
 		8084DEF124AF84F3001FBB16 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEEF24AF8425001FBB16 /* AppDependency.swift */; };
-		8084DEF324AF85F3001FBB16 /* CountryCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEED24AF8055001FBB16 /* CountryCodesService.swift */; };
 		8084DEF724AF86C1001FBB16 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* ReportService.swift */; };
 		8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084DEF624AF86C1001FBB16 /* ReportService.swift */; };
 		8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8091E08124CB3CDF00E0E877 /* AlamofireImage */; };
@@ -175,8 +176,6 @@
 		80E7C2BE2551686F003DE8DC /* SendResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7C2BC2551686F003DE8DC /* SendResultVM.swift */; };
 		80E7C2C32551701D003DE8DC /* Diagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7C2C22551701D003DE8DC /* Diagnosis.swift */; };
 		80E7C2C42551701D003DE8DC /* Diagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7C2C22551701D003DE8DC /* Diagnosis.swift */; };
-		80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96224290C1000E57601 /* SectionTitleCell.swift */; };
-		80ECB96624290DA900E57601 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ECB96524290DA900E57601 /* Collection.swift */; };
 		80ECB96C24292FB000E57601 /* SendReports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* SendReports.storyboard */; };
 		80F3131524E3FE8500A93CCD /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 80F3131424E3FE8500A93CCD /* Zip */; };
 		80F3131724E3FE9100A93CCD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 80F3131624E3FE9100A93CCD /* Alamofire */; };
@@ -188,11 +187,9 @@
 		80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 80FC71BD2477184000F86389 /* SwiftProtobuf */; };
 		80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
 		80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC71BF247718C700F86389 /* ExposureEntities.swift */; };
-		9033C80125A5023DB6B1BF45 /* Pods_eRouska_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB22CCC6748EFFF61D8FB629 /* Pods_eRouska_Dev.framework */; };
 		BD0191472424331900707341 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 		BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD979AEA242565AF004001ED /* ActiveAppVC.swift */; };
 		BDB07FC024254A8F00834E79 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB07FBF24254A8F00834E79 /* Help.storyboard */; };
-		BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB00D724261D5C00871FE4 /* Layout.swift */; };
 		C4E1A1B524311D3800108325 /* RemoteValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1A1B424311D3800108325 /* RemoteValues.swift */; };
 		D610103325448E47007B01CF /* ActiveAppSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610103225448E47007B01CF /* ActiveAppSectionView.swift */; };
 		D610103425448E47007B01CF /* ActiveAppSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610103225448E47007B01CF /* ActiveAppSectionView.swift */; };
@@ -227,8 +224,6 @@
 		D6231CB924EBC3630023BDC8 /* ErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CB724EBC3630023BDC8 /* ErrorVM.swift */; };
 		D6231CBB24ED3AE50023BDC8 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CBA24ED3AE50023BDC8 /* ContactCell.swift */; };
 		D6231CBC24ED3AE50023BDC8 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CBA24ED3AE50023BDC8 /* ContactCell.swift */; };
-		D6231CBE24F39BC90023BDC8 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CBD24F39BC90023BDC8 /* IntrinsicTableView.swift */; };
-		D6231CBF24F39BC90023BDC8 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CBD24F39BC90023BDC8 /* IntrinsicTableView.swift */; };
 		D6231CC224F52CBC0023BDC8 /* CurrentDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CC124F52CBB0023BDC8 /* CurrentDataVC.swift */; };
 		D6231CC324F52CBC0023BDC8 /* CurrentDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6231CC124F52CBB0023BDC8 /* CurrentDataVC.swift */; };
 		D6231CC524F52CD00023BDC8 /* CurrentData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6231CC424F52CD00023BDC8 /* CurrentData.storyboard */; };
@@ -285,17 +280,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.debug.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.debug.xcconfig"; sourceTree = "<group>"; };
-		36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.debug.xcconfig"; sourceTree = "<group>"; };
-		415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.release.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.release.xcconfig"; sourceTree = "<group>"; };
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		4651F9B724505A7B0003D23D /* RemoteTitles.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RemoteTitles.strings; sourceTree = "<group>"; };
-		7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BT-Tracking.debug.xcconfig"; path = "Target Support Files/Pods-BT-Tracking/Pods-BT-Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		802AFE4325135BC0004954AF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncounterHelpVM.swift; sourceTree = "<group>"; };
 		804B204325458390007701F0 /* NewRiskEncounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRiskEncounterVC.swift; sourceTree = "<group>"; };
 		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
+		804E171025828673009D5E24 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		804E1718258289B6009D5E24 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		8051FDA2245ACD8F00B2D5EA /* ExposureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureService.swift; sourceTree = "<group>"; };
 		8053CCFB2538A2A000C1820E /* Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
 		8053CD002538A3C100C1820E /* ExposureRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRealm.swift; sourceTree = "<group>"; };
@@ -311,16 +304,11 @@
 		8054C0D924200E91008907B8 /* LogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
 		8054C0DC2420AF63008907B8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		8054C0E02420EEFF008907B8 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		805BE97824252AE6001A93B3 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
-		80610BCF24363D7B00E031C8 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		80610BD8243B13AE00E031C8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		80631A95242CA27800EB0B6C /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
-		80631A97242CAB5000EB0B6C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8064DF84244F3FFD005E8AA3 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		8064DF88244F4026005E8AA3 /* AboutVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVM.swift; sourceTree = "<group>"; };
 		807053522427BA2500DC1034 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		807053572427C5AA00DC1034 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		8075EDBF242A613F001D9DCD /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		8075EDC2242A6E93001D9DCD /* ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
 		8075FE4D2543323B00E72779 /* CurrentDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataCell.swift; sourceTree = "<group>"; };
@@ -331,7 +319,6 @@
 		8083D8F4244640A0007FA4E9 /* eRouska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eRouska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8083D8F6244640CD007FA4E9 /* Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Prod.plist"; sourceTree = "<group>"; };
 		8083D9132446F779007FA4E9 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		8084DEED24AF8055001FBB16 /* CountryCodesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodesService.swift; sourceTree = "<group>"; };
 		8084DEEF24AF8425001FBB16 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		8084DEF624AF86C1001FBB16 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSearchVC.swift; sourceTree = "<group>"; };
@@ -370,20 +357,12 @@
 		80D5F7E62424B1540010EF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		80E7C2BC2551686F003DE8DC /* SendResultVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultVM.swift; sourceTree = "<group>"; };
 		80E7C2C22551701D003DE8DC /* Diagnosis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnosis.swift; sourceTree = "<group>"; };
-		80ECB96224290C1000E57601 /* SectionTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTitleCell.swift; sourceTree = "<group>"; };
-		80ECB96524290DA900E57601 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		80ECB96B24292FB000E57601 /* SendReports.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SendReports.storyboard; sourceTree = "<group>"; };
 		80FBE65225247974005D6C05 /* ExposureDiagnosisKeyFile.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureDiagnosisKeyFile.pb.swift; sourceTree = "<group>"; };
 		80FC71BF247718C700F86389 /* ExposureEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureEntities.swift; sourceTree = "<group>"; };
-		901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Prod.release.xcconfig"; path = "Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod.release.xcconfig"; sourceTree = "<group>"; };
-		991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.release.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.release.xcconfig"; sourceTree = "<group>"; };
-		A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0191462424331900707341 /* Active.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Active.storyboard; sourceTree = "<group>"; };
 		BD979AEA242565AF004001ED /* ActiveAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppVC.swift; sourceTree = "<group>"; };
 		BDB07FBF24254A8F00834E79 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
-		BDBB00D724261D5C00871FE4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		C4E1A1B424311D3800108325 /* RemoteValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteValues.swift; sourceTree = "<group>"; };
 		D610103225448E47007B01CF /* ActiveAppSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAppSectionView.swift; sourceTree = "<group>"; };
 		D61DFE5424C1A936002E1B2E /* ForceUpdate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForceUpdate.storyboard; sourceTree = "<group>"; };
@@ -402,7 +381,6 @@
 		D6231CB424EBC0760023BDC8 /* ErrorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVC.swift; sourceTree = "<group>"; };
 		D6231CB724EBC3630023BDC8 /* ErrorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVM.swift; sourceTree = "<group>"; };
 		D6231CBA24ED3AE50023BDC8 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
-		D6231CBD24F39BC90023BDC8 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		D6231CC124F52CBB0023BDC8 /* CurrentDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataVC.swift; sourceTree = "<group>"; };
 		D6231CC424F52CD00023BDC8 /* CurrentData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentData.storyboard; sourceTree = "<group>"; };
 		D6231CC724F52FB70023BDC8 /* CurrentDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataVM.swift; sourceTree = "<group>"; };
@@ -429,10 +407,6 @@
 		D6CD28DF24CF24DC005847AA /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		D6CD28E024CF24DC005847AA /* ExposurePermissionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposurePermissionVC.swift; sourceTree = "<group>"; };
 		D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstActivationVM.swift; sourceTree = "<group>"; };
-		DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Dev.release.xcconfig"; path = "Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev.release.xcconfig"; sourceTree = "<group>"; };
-		E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska Mac.debug.xcconfig"; path = "Target Support Files/Pods-eRouska Mac/Pods-eRouska Mac.debug.xcconfig"; sourceTree = "<group>"; };
-		F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eRouska.release.xcconfig"; path = "Target Support Files/Pods-eRouska/Pods-eRouska.release.xcconfig"; sourceTree = "<group>"; };
-		FB22CCC6748EFFF61D8FB629 /* Pods_eRouska_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eRouska_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
 		FFC4432524460D78002D2A6D /* MarkdownBackups.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = MarkdownBackups.strings; sourceTree = "<group>"; };
@@ -452,11 +426,15 @@
 				801C8FE9253FFD56002F303F /* RxRealm in Frameworks */,
 				809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */,
 				8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */,
+				80182852258134E5000B0EE7 /* FirebaseRemoteConfig in Frameworks */,
 				80AB9BCE24AF8D0B0088D256 /* Reachability in Frameworks */,
+				8018284E258134E5000B0EE7 /* FirebaseAnalytics in Frameworks */,
 				809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */,
+				80182854258134E5000B0EE7 /* FirebaseAuth in Frameworks */,
 				804BE48D24D9A30A00D40C07 /* Alamofire in Frameworks */,
+				80182850258134E5000B0EE7 /* FirebaseCrashlytics in Frameworks */,
+				8018284C258134E5000B0EE7 /* FirebaseFunctions in Frameworks */,
 				80FC71BC2477180400F86389 /* SwiftProtobuf in Frameworks */,
-				9033C80125A5023DB6B1BF45 /* Pods_eRouska_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +442,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F22951890188004EABDE6B0 /* Pods_eRouska_Prod.framework in Frameworks */,
+				806897DB258377150040EBF0 /* FirebaseFunctions in Frameworks */,
+				806897D5258377140040EBF0 /* FirebaseAnalytics in Frameworks */,
+				806897D7258377140040EBF0 /* FirebaseAuth in Frameworks */,
 				805192A224AF8E2700765392 /* RxSwift in Frameworks */,
 				805192A624AF8E2700765392 /* RxKeyboard in Frameworks */,
 				805192AA24AF8E2700765392 /* DeviceKit in Frameworks */,
@@ -472,10 +452,13 @@
 				800A5A69254857820054A68D /* SwiftyMarkdown in Frameworks */,
 				8082DC31254AD7A8006B872D /* RxRealm in Frameworks */,
 				805192A424AF8E2700765392 /* RxDataSources in Frameworks */,
+				806897E1258377F70040EBF0 /* FirebaseRemoteConfig in Frameworks */,
 				80F3131524E3FE8500A93CCD /* Zip in Frameworks */,
+				806897DD258377150040EBF0 /* FirebaseStorage in Frameworks */,
 				80DF5FB924CB579E00332D25 /* AlamofireImage in Frameworks */,
 				805192AC24AF8E2700765392 /* Reachability in Frameworks */,
 				805192A024AF8E2700765392 /* RxCocoa in Frameworks */,
+				806897D9258377150040EBF0 /* FirebaseCrashlytics in Frameworks */,
 				80FC71BE2477184000F86389 /* SwiftProtobuf in Frameworks */,
 				80F3131724E3FE9100A93CCD /* Alamofire in Frameworks */,
 			);
@@ -484,41 +467,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05740D8C6D5179F12E3E9CF4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7235650B7A53BA0BF25B7647 /* Pods-BT-Tracking.debug.xcconfig */,
-				415971C466B2F5E07A8A5EB4 /* Pods-BT-Tracking.release.xcconfig */,
-				C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */,
-				DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */,
-				E60DB5DABB22CA5C758C6FA2 /* Pods-eRouska Mac.debug.xcconfig */,
-				991241CFAA7965BDB46ED0CA /* Pods-eRouska Mac.release.xcconfig */,
-				36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */,
-				92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */,
-				0B99C6FAA6C5BEC2CCBF0416 /* Pods-eRouska.debug.xcconfig */,
-				F685DFC24E91427928A9A662 /* Pods-eRouska.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		46F21CA3242243F400C01DFA /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				807053542427C4E800DC1034 /* Cells */,
 				80A47E7E24309F1B001E5A79 /* Log List */,
 				8054C0B6241D492F008907B8 /* Debug.storyboard */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
 		};
-		5357F8D365121189A6E32250 /* Frameworks */ = {
+		804E1717258289AE009D5E24 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				A22C7753EB4725208A4E7D73 /* Pods_eRouska_Mac.framework */,
-				901543BFDFC98881AEBFBB13 /* Pods_eRouska_Prod.framework */,
-				FB22CCC6748EFFF61D8FB629 /* Pods_eRouska_Dev.framework */,
+				804E1718258289B6009D5E24 /* Main.swift */,
 			);
-			name = Frameworks;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		8051FDA1245ACD7900B2D5EA /* Exposure */ = {
@@ -537,8 +500,7 @@
 			children = (
 				8054C0AF241D492F008907B8 /* BT-Tracking */,
 				8054C0AE241D492F008907B8 /* Products */,
-				05740D8C6D5179F12E3E9CF4 /* Pods */,
-				5357F8D365121189A6E32250 /* Frameworks */,
+				806897D3258377140040EBF0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -569,6 +531,7 @@
 		8054C0C9241FE66A008907B8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				804E1717258289AE009D5E24 /* Main */,
 				D6231CAF24EBC03A0023BDC8 /* Error */,
 				D65E57D124D04960000F2402 /* News */,
 				D6CD28DA24CF24DC005847AA /* Onboarding */,
@@ -606,11 +569,11 @@
 				8084DEF524AF86B0001FBB16 /* Reports */,
 				80CCE5C224DD811700DC36EE /* Verification */,
 				80D2344E24E2F69000F684AA /* Background */,
-				8084DEEB24AF8030001FBB16 /* CountryCodes */,
 				80E7C2C12551700C003DE8DC /* Diagnosis */,
 				805BE9752424DDE3001A93B3 /* Logger */,
 				80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */,
 				8075EDBF242A613F001D9DCD /* AppSettings.swift */,
+				804E171025828673009D5E24 /* Analytics.swift */,
 				801B54BF243C624700A5D81E /* KeychainService.swift */,
 				C4E1A1B424311D3800108325 /* RemoteValues.swift */,
 			);
@@ -652,21 +615,11 @@
 			path = "Firebase Prod";
 			sourceTree = "<group>";
 		};
-		807053542427C4E800DC1034 /* Cells */ = {
+		806897D3258377140040EBF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				80ECB96224290C1000E57601 /* SectionTitleCell.swift */,
-				807053572427C5AA00DC1034 /* InfoCell.swift */,
 			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		8084DEEB24AF8030001FBB16 /* CountryCodes */ = {
-			isa = PBXGroup;
-			children = (
-				8084DEED24AF8055001FBB16 /* CountryCodesService.swift */,
-			);
-			path = CountryCodes;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8084DEF524AF86B0001FBB16 /* Reports */ = {
@@ -681,9 +634,9 @@
 		80A47E7E24309F1B001E5A79 /* Log List */ = {
 			isa = PBXGroup;
 			children = (
-				8054C0D524200BEC008907B8 /* LogSegmentController.swift */,
-				8054C0D924200E91008907B8 /* LogController.swift */,
 				8054C0D724200E7C008907B8 /* FileLogController.swift */,
+				8054C0D924200E91008907B8 /* LogController.swift */,
+				8054C0D524200BEC008907B8 /* LogSegmentController.swift */,
 			);
 			path = "Log List";
 			sourceTree = "<group>";
@@ -692,11 +645,7 @@
 			isa = PBXGroup;
 			children = (
 				8054C0DC2420AF63008907B8 /* App.swift */,
-				80ECB96524290DA900E57601 /* Collection.swift */,
 				807053522427BA2500DC1034 /* Data.swift */,
-				80631A97242CAB5000EB0B6C /* Image.swift */,
-				BDBB00D724261D5C00871FE4 /* Layout.swift */,
-				80610BD8243B13AE00E031C8 /* String.swift */,
 				80D2283D254577B100F06253 /* DateFormatter.swift */,
 			);
 			path = Base;
@@ -716,7 +665,6 @@
 				80B94556242B96560052CD9F /* NavigationController.swift */,
 				80D2C63D242AB44E00F9DBF4 /* TabBarController.swift */,
 				D6340C6A24C5A27700E550A1 /* Device.swift */,
-				D6231CBD24F39BC90023BDC8 /* IntrinsicTableView.swift */,
 				D64BE02224F79AE000B751B6 /* TextView.swift */,
 			);
 			path = UIKit;
@@ -725,10 +673,8 @@
 		80BE3FC92445CD0B00D0C810 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				80610BCF24363D7B00E031C8 /* Auth.swift */,
 				80BE3FCE2446028E00D0C810 /* InputValidation.swift */,
 				8083D9132446F779007FA4E9 /* Markdown.swift */,
-				805BE97824252AE6001A93B3 /* MulticastDelegate.swift */,
 				802AFE4325135BC0004954AF /* Notifications.swift */,
 				D6340C6124C1F46D00E550A1 /* Version.swift */,
 				8053CCFB2538A2A000C1820E /* Callback.swift */,
@@ -949,12 +895,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8054C0C1241D4932008907B8 /* Build configuration list for PBXNativeTarget "eRouska Dev" */;
 			buildPhases = (
-				E0A1723CD1B050C9925359D5 /* [CP] Check Pods Manifest.lock */,
 				80FBE64D252477B0005D6C05 /* Run Swift Gen & Lint */,
 				8054C0A9241D492F008907B8 /* Sources */,
 				8054C0AA241D492F008907B8 /* Frameworks */,
 				8054C0AB241D492F008907B8 /* Resources */,
-				B3246BD9487EB8B95419432C /* [CP] Embed Pods Frameworks */,
 				80BE18C32434958200C4A9E6 /* Run Firebase Cashlytics */,
 			);
 			buildRules = (
@@ -976,6 +920,11 @@
 				80D2345024E2FDD200F684AA /* Crypto */,
 				801C8FE8253FFD56002F303F /* RxRealm */,
 				80F9DD3225402CF500724E9A /* SwiftyMarkdown */,
+				8018284B258134E5000B0EE7 /* FirebaseFunctions */,
+				8018284D258134E5000B0EE7 /* FirebaseAnalytics */,
+				8018284F258134E5000B0EE7 /* FirebaseCrashlytics */,
+				80182851258134E5000B0EE7 /* FirebaseRemoteConfig */,
+				80182853258134E5000B0EE7 /* FirebaseAuth */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8054C0AD241D492F008907B8 /* eRouska.app */;
@@ -985,12 +934,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8083D8F1244640A0007FA4E9 /* Build configuration list for PBXNativeTarget "eRouska Prod" */;
 			buildPhases = (
-				8083D8A6244640A0007FA4E9 /* [CP] Check Pods Manifest.lock */,
 				80FBE64E252477D4005D6C05 /* Run Swift Gen & Lint */,
 				8083D8A7244640A0007FA4E9 /* Sources */,
 				8083D8E1244640A0007FA4E9 /* Frameworks */,
 				8083D8E3244640A0007FA4E9 /* Resources */,
-				8083D8EF244640A0007FA4E9 /* [CP] Embed Pods Frameworks */,
 				8083D8F0244640A0007FA4E9 /* Run Firebase Cashlytics */,
 			);
 			buildRules = (
@@ -1012,6 +959,12 @@
 				80F3131824E3FE9100A93CCD /* Crypto */,
 				800A5A68254857820054A68D /* SwiftyMarkdown */,
 				8082DC30254AD7A8006B872D /* RxRealm */,
+				806897D4258377140040EBF0 /* FirebaseAnalytics */,
+				806897D6258377140040EBF0 /* FirebaseAuth */,
+				806897D8258377150040EBF0 /* FirebaseCrashlytics */,
+				806897DA258377150040EBF0 /* FirebaseFunctions */,
+				806897DC258377150040EBF0 /* FirebaseStorage */,
+				806897E0258377F70040EBF0 /* FirebaseRemoteConfig */,
 			);
 			productName = "BT-Tracking";
 			productReference = 8083D8F4244640A0007FA4E9 /* eRouska.app */;
@@ -1060,6 +1013,7 @@
 				80D2344F24E2FDD200F684AA /* XCRemoteSwiftPackageReference "swift-crypto" */,
 				801C8FE7253FFD56002F303F /* XCRemoteSwiftPackageReference "RxRealm" */,
 				80F9DD3125402CF500724E9A /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */,
+				8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 8054C0AE241D492F008907B8 /* Products */;
 			projectDirPath = "";
@@ -1122,45 +1076,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8083D8A6244640A0007FA4E9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-eRouska Prod-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8083D8EF244640A0007FA4E9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eRouska Prod/Pods-eRouska Prod-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8083D8F0244640A0007FA4E9 /* Run Firebase Cashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1179,7 +1094,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+			shellScript = "${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n";
 		};
 		80BE18C32434958200C4A9E6 /* Run Firebase Cashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1199,7 +1114,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+			shellScript = "${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n";
 		};
 		80FBE64D252477B0005D6C05 /* Run Swift Gen & Lint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1237,45 +1152,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen\nelse\n    echo \"warning: SwiftGen not installed, download from https://github.com/realm/SwiftGen\"\nfi\n\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		B3246BD9487EB8B95419432C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eRouska Dev/Pods-eRouska Dev-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E0A1723CD1B050C9925359D5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-eRouska Dev-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1291,7 +1167,6 @@
 				8054C0E12420EEFF008907B8 /* Logger.swift in Sources */,
 				8083D9142446F779007FA4E9 /* Markdown.swift in Sources */,
 				80E7C2C32551701D003DE8DC /* Diagnosis.swift in Sources */,
-				80631A98242CAB5000EB0B6C /* Image.swift in Sources */,
 				807897832524804B0079BEA1 /* Assets.swift in Sources */,
 				D6231CB824EBC3630023BDC8 /* ErrorVM.swift in Sources */,
 				BD979AEB242565AF004001ED /* ActiveAppVC.swift in Sources */,
@@ -1309,9 +1184,7 @@
 				D6231CAD24E403340023BDC8 /* PreviousRiskyEncountersVC.swift in Sources */,
 				80D228242545727C00F06253 /* RiskyEncountersNegativeView.swift in Sources */,
 				80D2283E254577B100F06253 /* DateFormatter.swift in Sources */,
-				80610BD9243B13AE00E031C8 /* String.swift in Sources */,
 				8075FE4E2543323B00E72779 /* CurrentDataCell.swift in Sources */,
-				805BE97924252AE6001A93B3 /* MulticastDelegate.swift in Sources */,
 				8053CCFC2538A2A000C1820E /* Callback.swift in Sources */,
 				8053CD012538A3C100C1820E /* ExposureRealm.swift in Sources */,
 				80E7C2BD2551686F003DE8DC /* SendResultVM.swift in Sources */,
@@ -1325,7 +1198,6 @@
 				8054C0E22420EFE0008907B8 /* FileLogger.swift in Sources */,
 				80FBE65325247974005D6C05 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				D610103325448E47007B01CF /* ActiveAppSectionView.swift in Sources */,
-				D6231CBE24F39BC90023BDC8 /* IntrinsicTableView.swift in Sources */,
 				8051FDA3245ACD8F00B2D5EA /* ExposureService.swift in Sources */,
 				D65E57D924D056D6000F2402 /* NewsPageView.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
@@ -1335,7 +1207,6 @@
 				807D48E8253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */,
 				80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */,
 				D6CD28EA24CF24DD005847AA /* PrivacyVC.swift in Sources */,
-				8084DEEE24AF8055001FBB16 /* CountryCodesService.swift in Sources */,
 				80CCE5C424DD812900DC36EE /* VerificationService.swift in Sources */,
 				804B204425458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
 				D65E57E224D060DF000F2402 /* NewsPageVM.swift in Sources */,
@@ -1346,6 +1217,7 @@
 				D6340C6B24C5A27700E550A1 /* Device.swift in Sources */,
 				80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */,
 				80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */,
+				804E171125828673009D5E24 /* Analytics.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
 				80BE3FCF2446028E00D0C810 /* InputValidation.swift in Sources */,
 				80C71D3D25248A2900999275 /* UnsupportedDeviceVC.swift in Sources */,
@@ -1370,17 +1242,14 @@
 				80CA44DC244B3769008E22F8 /* HelpVM.swift in Sources */,
 				804B203F254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */,
 				D6231CCB24F6610C0023BDC8 /* CurrentData.swift in Sources */,
-				807053582427C5AA00DC1034 /* InfoCell.swift in Sources */,
 				80C5CEC824EAA1EF0011B53B /* BackgroundService.swift in Sources */,
 				D61DFE6024C1BD15002E1B2E /* ForceOSUpdateVC.swift in Sources */,
 				D6CD28EE24CF24DD005847AA /* FirstActivationVM.swift in Sources */,
-				80ECB96624290DA900E57601 /* Collection.swift in Sources */,
 				80BE3FCB2445D01000D0C810 /* ButtonsBackgroundView.swift in Sources */,
 				80C71D3525248A0200999275 /* StoryboardScene.swift in Sources */,
-				80ECB96424290C1000E57601 /* SectionTitleCell.swift in Sources */,
-				80610BD024363D7B00E031C8 /* Auth.swift in Sources */,
 				D6CD28E824CF24DD005847AA /* PrivacyVM.swift in Sources */,
 				D61DFE5C24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
+				804E1719258289B6009D5E24 /* Main.swift in Sources */,
 				D63E443824DD8640007B6728 /* RiskyEncountersPositiveVM.swift in Sources */,
 				80799BEB2423B89A002B04C5 /* Controller.swift in Sources */,
 				80D0B5E425401D37000C3FE5 /* HelpArticleVC.swift in Sources */,
@@ -1389,7 +1258,6 @@
 				D61DFE5724C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
 				802AFE4425135BC0004954AF /* Notifications.swift in Sources */,
 				D61DFE6324C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,
-				BDBB00D824261D5C00871FE4 /* Layout.swift in Sources */,
 				D6CD28E624CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
 				D6231CC224F52CBC0023BDC8 /* CurrentDataVC.swift in Sources */,
 				D6231CAB24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */,
@@ -1402,7 +1270,6 @@
 			files = (
 				800A5A5C254857360054A68D /* DateFormatter.swift in Sources */,
 				D6340C6324C1F46D00E550A1 /* Version.swift in Sources */,
-				D6231CBF24F39BC90023BDC8 /* IntrinsicTableView.swift in Sources */,
 				80D2345A24E320D700F684AA /* SendReportsVM.swift in Sources */,
 				D6231CAC24E403340023BDC8 /* PreviousRiskyEncountersVM.swift in Sources */,
 				80FC71C1247718C700F86389 /* ExposureEntities.swift in Sources */,
@@ -1419,7 +1286,6 @@
 				804B2040254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */,
 				8053CD022538A3C100C1820E /* ExposureRealm.swift in Sources */,
 				D6CD28E724CF24DD005847AA /* ExposurePermissionVM.swift in Sources */,
-				8083D8B3244640A0007FA4E9 /* Image.swift in Sources */,
 				800A5A5F2548573E0054A68D /* RiskyEncountersNegativeVC.swift in Sources */,
 				8083D8B4244640A0007FA4E9 /* ActiveAppVC.swift in Sources */,
 				D6231CA224E400B10023BDC8 /* RiskyEncountersListVC.swift in Sources */,
@@ -1436,10 +1302,8 @@
 				8083D8B9244640A0007FA4E9 /* GradientView.swift in Sources */,
 				80C71D3825248A0200999275 /* StoryboardSegue.swift in Sources */,
 				807D48E9253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */,
-				8083D8BA244640A0007FA4E9 /* String.swift in Sources */,
 				D65E57D424D04976000F2402 /* NewsVM.swift in Sources */,
 				D6340C6924C5977500E550A1 /* UnsupportedDeviceVM.swift in Sources */,
-				8083D8BB244640A0007FA4E9 /* MulticastDelegate.swift in Sources */,
 				807897842524804B0079BEA1 /* Assets.swift in Sources */,
 				8083D8BD244640A0007FA4E9 /* RemoteValues.swift in Sources */,
 				8083D8C0244640A0007FA4E9 /* AppSettings.swift in Sources */,
@@ -1448,6 +1312,7 @@
 				8053CD092538A61C00C1820E /* ExposureList.swift in Sources */,
 				8084DEF824AF872C001FBB16 /* ReportService.swift in Sources */,
 				D6CD28E924CF24DD005847AA /* PrivacyVM.swift in Sources */,
+				804E171225828673009D5E24 /* Analytics.swift in Sources */,
 				D6231CCC24F6610C0023BDC8 /* CurrentData.swift in Sources */,
 				802AFE4525135BC0004954AF /* Notifications.swift in Sources */,
 				80026D9924FE492600BBDB36 /* VerificationEntities.swift in Sources */,
@@ -1457,6 +1322,7 @@
 				8083D8C6244640A0007FA4E9 /* ActiveAppVM.swift in Sources */,
 				D6340C6C24C5A27700E550A1 /* Device.swift in Sources */,
 				8083D8C9244640A0007FA4E9 /* AppDelegate.swift in Sources */,
+				806897E4258378070040EBF0 /* Main.swift in Sources */,
 				804B204525458390007701F0 /* NewRiskEncounterVC.swift in Sources */,
 				8083D8CA244640A0007FA4E9 /* InputValidation.swift in Sources */,
 				80591185246DB86B002CD687 /* ExposureService.swift in Sources */,
@@ -1475,10 +1341,8 @@
 				D6CD28ED24CF24DD005847AA /* ExposurePermissionVC.swift in Sources */,
 				D6231CC924F52FB70023BDC8 /* CurrentDataVM.swift in Sources */,
 				D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */,
-				8083D8D4244640A0007FA4E9 /* Collection.swift in Sources */,
 				8084DEF124AF84F3001FBB16 /* AppDependency.swift in Sources */,
 				8083D8D5244640A0007FA4E9 /* ButtonsBackgroundView.swift in Sources */,
-				8083D8D7244640A0007FA4E9 /* Auth.swift in Sources */,
 				D6CD28EB24CF24DD005847AA /* PrivacyVC.swift in Sources */,
 				D6231CBC24ED3AE50023BDC8 /* ContactCell.swift in Sources */,
 				D6231CA824E400C70023BDC8 /* MainSymptomsVM.swift in Sources */,
@@ -1489,10 +1353,8 @@
 				D6231CC324F52CBC0023BDC8 /* CurrentDataVC.swift in Sources */,
 				D6231C9E24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */,
 				80026D9724FE492000BBDB36 /* BackgroundService.swift in Sources */,
-				8084DEF324AF85F3001FBB16 /* CountryCodesService.swift in Sources */,
 				80C71D3625248A0200999275 /* StoryboardScene.swift in Sources */,
 				D61DFE5824C1AFC7002E1B2E /* ForceUpdateVC.swift in Sources */,
-				8083D8E0244640A0007FA4E9 /* Layout.swift in Sources */,
 				800A5A652548575A0054A68D /* RiskyEncountersListCell.swift in Sources */,
 				D65E57E324D060DF000F2402 /* NewsPageVM.swift in Sources */,
 				D6340C6624C5976100E550A1 /* UnsupportedDeviceVC.swift in Sources */,
@@ -1596,6 +1458,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1651,6 +1514,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1660,7 +1524,6 @@
 		};
 		8054C0C2241D4932008907B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C292B4753AE901D95DBE5DA9 /* Pods-eRouska Dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1675,10 +1538,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
-				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
+				PROVISIONING_PROFILE_SPECIFIER = "eRouska DEV Development";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1687,7 +1550,6 @@
 		};
 		8054C0C3241D4932008907B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF0C0CB4ECD55B9604CF5A17 /* Pods-eRouska Dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1702,10 +1564,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
-				PROVISIONING_PROFILE_SPECIFIER = "eRouska.dev Development";
+				PROVISIONING_PROFILE_SPECIFIER = "eRouska DEV Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1713,7 +1575,6 @@
 		};
 		8083D8F2244640A0007FA4E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36B74F0ACDA2058DF8F78955 /* Pods-eRouska Prod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1728,7 +1589,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
@@ -1741,7 +1602,6 @@
 		};
 		8083D8F3244640A0007FA4E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92B6F3DD54AC70DE127D4736 /* Pods-eRouska Prod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1756,7 +1616,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
@@ -1805,6 +1665,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
+			};
+		};
+		8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.2.0;
 			};
 		};
 		801C8FE7253FFD56002F303F /* XCRemoteSwiftPackageReference "RxRealm" */ = {
@@ -1908,6 +1776,31 @@
 			package = 800E611224DAE98B00C63567 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
 		};
+		8018284B258134E5000B0EE7 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		8018284D258134E5000B0EE7 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		8018284F258134E5000B0EE7 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		80182851258134E5000B0EE7 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		80182853258134E5000B0EE7 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		801C8FE8253FFD56002F303F /* RxRealm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 801C8FE7253FFD56002F303F /* XCRemoteSwiftPackageReference "RxRealm" */;
@@ -1947,6 +1840,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 80AB9BCC24AF8D0B0088D256 /* XCRemoteSwiftPackageReference "Reachability.swift" */;
 			productName = Reachability;
+		};
+		806897D4258377140040EBF0 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		806897D6258377140040EBF0 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		806897D8258377150040EBF0 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		806897DA258377150040EBF0 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		806897DC258377150040EBF0 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		806897E0258377F70040EBF0 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8018284A258134E5000B0EE7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 		8082DC30254AD7A8006B872D /* RxRealm */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -24,10 +24,6 @@ struct HelpArticle: Equatable {
 
 final class HelpVM {
 
-    var chatbotLink: String {
-        RemoteValues.chatBotLink
-    }
-
     private let lineProcessor = SwiftyLineProcessor(
         rules: SwiftyMarkdown.lineRules,
         defaultRule: MarkdownLineStyle.body,
@@ -56,7 +52,7 @@ final class HelpVM {
             guard let style = attribute.lineStyle as? MarkdownLineStyle else { continue }
             switch style {
             case .h1:
-                if !section.items.isEmpty {
+                if !section.model.isEmpty {
                     section.items.append(helpArticle)
                     sections.append(section)
                     helpArticle = .init(title: "", lines: [])
@@ -70,6 +66,10 @@ final class HelpVM {
             default:
                 helpArticle.lines.append(attribute)
             }
+        }
+
+        if !section.items.contains(helpArticle) {
+            section.items.append(helpArticle)
         }
         sections.append(section)
 
