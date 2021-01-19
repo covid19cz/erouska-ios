@@ -201,8 +201,6 @@ struct AppSettings {
 
     /// Cleanup data after logout
     static func deleteAllData() {
-        KeychainService.token = nil
-
         activated = false
 
         howItWorksClosed = false

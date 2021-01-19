@@ -9,6 +9,7 @@
 import UIKit
 import ExposureNotification
 import FirebaseAuth
+import FirebaseCrashlytics
 import RxSwift
 
 final class ActiveAppVC: UIViewController {
@@ -528,8 +529,14 @@ private extension ActiveAppVC {
 
         try? ExposureList.add(exposures, detectionDate: Date())
 
-        let data = ["idToken": KeychainService.token]
-        AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+        Auth.auth().currentUser?.getIDToken(completion: { token, error in
+            if let token = token {
+                let data = ["idToken": token]
+                AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+            } else if let error = error {
+                Crashlytics.crashlytics().record(error: error)
+            }
+        })
 
         AppSettings.lastProcessedDate = Date()
     }

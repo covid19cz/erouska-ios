@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseFunctions
+import FirebaseCrashlytics
 import RealmSwift
 import RxSwift
 import Reachability
@@ -116,19 +118,28 @@ private extension CurrentDataVM {
 
     func fetchCurrentData(in dispatchGroup: DispatchGroup) {
         dispatchGroup.enter()
-        let data = ["idToken": KeychainService.token]
-        AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
-            guard let self = self else { return }
-            if let data = result?.data as? [String: Any] {
-                let realm = AppDelegate.dependency.realm
-                try? realm.write {
-                    self.currentData?.update(with: CovidCurrentData(with: data))
+
+        Auth.auth().currentUser?.getIDToken(completion: { token, error in
+            if let token = token {
+                let data = ["idToken": token]
+                AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
+                    guard let self = self else { return }
+                    if let data = result?.data as? [String: Any] {
+                        let realm = AppDelegate.dependency.realm
+                        try? realm.write {
+                            self.currentData?.update(with: CovidCurrentData(with: data))
+                        }
+                    } else if let error = error {
+                        self.observableErrors.onNext(error)
+                    }
+                    dispatchGroup.leave()
                 }
             } else if let error = error {
+                Crashlytics.crashlytics().record(error: error)
                 self.observableErrors.onNext(error)
+                dispatchGroup.leave()
             }
-            dispatchGroup.leave()
-        }
+        })
     }
 
     func fetchAppCurrentData(in dispatchGroup: DispatchGroup) {
@@ -143,6 +154,7 @@ private extension CurrentDataVM {
                     self.currentData?.update(with: AppCurrentData(with: data))
                 }
             } else if let error = error {
+                Crashlytics.crashlytics().record(error: error)
                 self.observableErrors.onNext(error)
             }
             dispatchGroup.leave()
