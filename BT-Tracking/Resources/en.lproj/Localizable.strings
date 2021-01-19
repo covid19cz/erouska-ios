@@ -166,6 +166,8 @@
 "current_data_measures_header" = "Information on current measures";
 "current_data_item_header" = "Current situation in numbers";
 "current_data_item_tests" = "%@ tests performed";
+"current_data_item_tests_pcr" = "%@ PCR tests performed";
+"current_data_item_tests_antigen" = "%@ antigen tests performed";
 "current_data_item_confirmed" = "%@ confirmed cases in total";
 "current_data_item_active" = "%@ active cases";
 "current_data_item_healthy" = "%@ cured individuals";

@@ -177,10 +177,18 @@ private extension CurrentDataVM {
             Section(header: L10n.currentDataItemHeader, selectableItems: false, items: [
                 Item(
                     iconAsset: Asset.CurrentData.testsPCR,
-                    title: L10n.currentDataItemTests(formattedValue(data.testsTotal)),
+                    title: L10n.currentDataItemTestsPcr(formattedValue(data.pcrTestsTotal)),
                     subtitle: L10n.currentDataAppFrom(
-                        formattedValue(data.testsIncrease, showSign: true),
-                        DateFormatter.baseDateFormatter.string(from: data.testsIncreaseDate ?? Date())
+                        formattedValue(data.pcrTestsIncrease, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.pcrTestsIncreaseDate ?? Date.distantFuture)
+                    )
+                ),
+                Item(
+                    iconAsset: Asset.CurrentData.testsAntigen,
+                    title: L10n.currentDataItemTestsAntigen(formattedValue(data.antigenTestsTotal)),
+                    subtitle: L10n.currentDataAppFrom(
+                        formattedValue(data.antigenTestsIncrease, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.antigenTestsDate ?? Date.distantFuture)
                     )
                 ),
                 Item(

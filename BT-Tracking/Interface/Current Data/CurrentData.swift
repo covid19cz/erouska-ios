@@ -14,6 +14,12 @@ final class CurrentDataRealm: Object {
     @objc dynamic var testsTotal: Int = 0
     @objc dynamic var testsIncrease: Int = 0
     @objc dynamic var testsIncreaseDate: Date?
+    @objc dynamic var pcrTestsTotal: Int = 0
+    @objc dynamic var pcrTestsIncrease: Int = 0
+    @objc dynamic var pcrTestsIncreaseDate: Date?
+    @objc dynamic var antigenTestsTotal: Int = 0
+    @objc dynamic var antigenTestsIncrease: Int = 0
+    @objc dynamic var antigenTestsDate: Date?
     @objc dynamic var confirmedCasesTotal: Int = 0
     @objc dynamic var confirmedCasesIncrease: Int = 0
     @objc dynamic var confirmedCasesIncreaseDate: Date?
@@ -34,6 +40,14 @@ final class CurrentDataRealm: Object {
         self.testsTotal = data.testsTotal
         self.testsIncrease = data.testsIncrease
         self.testsIncreaseDate = data.testsIncreaseDate
+
+        self.pcrTestsTotal = data.pcrTestsTotal
+        self.pcrTestsIncrease = data.pcrTestsIncrease
+        self.pcrTestsIncreaseDate = data.pcrTestsIncreaseDate
+
+        self.antigenTestsTotal = data.antigenTestsTotal
+        self.antigenTestsIncrease = data.antigenTestsIncrease
+        self.antigenTestsIncrease = data.antigenTestsIncrease
 
         self.confirmedCasesTotal = data.confirmedCasesTotal
         self.confirmedCasesIncrease = data.confirmedCasesIncrease
@@ -62,6 +76,12 @@ struct CovidCurrentData: Decodable {
     let testsTotal: Int
     let testsIncrease: Int
     let testsIncreaseDate: Date?
+    let pcrTestsTotal: Int
+    let pcrTestsIncrease: Int
+    let pcrTestsIncreaseDate: Date?
+    let antigenTestsTotal: Int
+    let antigenTestsIncrease: Int
+    let antigenTestsIncreaseDate: Date?
     let confirmedCasesTotal: Int
     let confirmedCasesIncrease: Int
     let confirmedCasesIncreaseDate: Date?
@@ -72,6 +92,8 @@ struct CovidCurrentData: Decodable {
 
     private enum CodingKeys: String, CodingKey {
         case testsTotal, testsIncrease, testsIncreaseDate
+        case pcrTestsTotal, pcrTestsIncrease, pcrTestsIncreaseDate
+        case antigenTestsTotal, antigenTestsIncrease, antigenTestsIncreaseDate = "antigenTestsDate"
         case confirmedCasesTotal, confirmedCasesIncrease, confirmedCasesIncreaseDate
         case activeCasesTotal, curedTotal, deceasedTotal, currentlyHospitalizedTotal
     }
@@ -84,6 +106,23 @@ struct CovidCurrentData: Decodable {
         } else {
             testsIncreaseDate = nil
         }
+
+        pcrTestsTotal = data[CodingKeys.pcrTestsTotal.rawValue] as? Int ?? 0
+        pcrTestsIncrease = data[CodingKeys.pcrTestsIncrease.rawValue] as? Int ?? 0
+        if let value = data[CodingKeys.pcrTestsIncreaseDate.rawValue] as? String {
+            pcrTestsIncreaseDate = DateFormatter.serverDateFormatter.date(from: value)
+        } else {
+            pcrTestsIncreaseDate = nil
+        }
+
+        antigenTestsTotal = data[CodingKeys.antigenTestsTotal.rawValue] as? Int ?? 0
+        antigenTestsIncrease = data[CodingKeys.antigenTestsIncrease.rawValue] as? Int ?? 0
+        if let value = data[CodingKeys.antigenTestsIncreaseDate.rawValue] as? String {
+            antigenTestsIncreaseDate = DateFormatter.serverDateFormatter.date(from: value)
+        } else {
+            antigenTestsIncreaseDate = nil
+        }
+
         confirmedCasesTotal = data[CodingKeys.confirmedCasesTotal.rawValue] as? Int ?? 0
         confirmedCasesIncrease = data[CodingKeys.confirmedCasesIncrease.rawValue] as? Int ?? 0
         if let value = data[CodingKeys.confirmedCasesIncreaseDate.rawValue] as? String {

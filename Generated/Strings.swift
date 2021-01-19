@@ -162,6 +162,14 @@ internal enum L10n {
   internal static func currentDataItemTests(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_tests", String(describing: p1))
   }
+  /// %@ provedených antigenních testů
+  internal static func currentDataItemTestsAntigen(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_item_tests_antigen", String(describing: p1))
+  }
+  /// %@ provedených PCR testů
+  internal static func currentDataItemTestsPcr(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_item_tests_pcr", String(describing: p1))
+  }
   /// Za včerejší den %@
   internal static func currentDataItemYesterday(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_yesterday", String(describing: p1))
