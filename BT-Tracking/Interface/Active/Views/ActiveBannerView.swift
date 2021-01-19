@@ -27,7 +27,7 @@ final class ActiveBannerView: UIView {
                 }
             case .gray:
                 backgroundColor = .secondarySystemGroupedBackground
-                titleLabel.textColor = UIColor.darkText
+                titleLabel.textColor = UIColor.label
 
                 [closeButton, moreInfoButton].forEach {
                     $0?.backgroundColor = Button.Style.dashboard.backgroundColor

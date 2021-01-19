@@ -200,7 +200,7 @@
                                                                                     <constraint firstAttribute="width" constant="66" id="awK-Q7-ajx"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Zajímá vás, jak eRouška funguje?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1P-iJ-dGT">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Zajímá vás, jak eRouška funguje?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1P-iJ-dGT">
                                                                                 <rect key="frame" x="79" y="0.0" width="267" height="284.5"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                                 <nil key="highlightedColor"/>
@@ -211,8 +211,11 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9xm-0b-jw0">
                                                                         <rect key="frame" x="0.0" y="299.5" width="346" height="32"/>
                                                                         <subviews>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4YY-Au-qAQ">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="224" height="32"/>
+                                                                            </view>
                                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbH-qQ-bff" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="32"/>
+                                                                                <rect key="frame" x="239" y="0.0" width="46" height="32"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="32" id="Fma-ED-udb"/>
@@ -226,7 +229,7 @@
                                                                                 </connections>
                                                                             </button>
                                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AY-Wp-OyU" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
-                                                                                <rect key="frame" x="61" y="0.0" width="46" height="32"/>
+                                                                                <rect key="frame" x="300" y="0.0" width="46" height="32"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="32" id="7hY-uK-A8a"/>
@@ -239,9 +242,6 @@
                                                                                     <action selector="howItWorksMoreInfo:" destination="SLc-31-c7B" eventType="touchUpInside" id="zD3-cZ-YYi"/>
                                                                                 </connections>
                                                                             </button>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4YY-Au-qAQ">
-                                                                                <rect key="frame" x="122" y="0.0" width="224" height="32"/>
-                                                                            </view>
                                                                         </subviews>
                                                                     </stackView>
                                                                 </subviews>
