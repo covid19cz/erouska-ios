@@ -176,7 +176,7 @@ private extension CurrentDataVM {
             ]),
             Section(header: L10n.currentDataItemHeader, selectableItems: false, items: [
                 Item(
-                    iconAsset: Asset.CurrentData.tests,
+                    iconAsset: Asset.CurrentData.testsPCR,
                     title: L10n.currentDataItemTests(formattedValue(data.testsTotal)),
                     subtitle: L10n.currentDataAppFrom(
                         formattedValue(data.testsIncrease, showSign: true),
