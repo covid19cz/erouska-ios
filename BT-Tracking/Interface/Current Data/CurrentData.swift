@@ -19,7 +19,7 @@ final class CurrentDataRealm: Object {
     @objc dynamic var pcrTestsIncreaseDate: Date?
     @objc dynamic var antigenTestsTotal: Int = 0
     @objc dynamic var antigenTestsIncrease: Int = 0
-    @objc dynamic var antigenTestsDate: Date?
+    @objc dynamic var antigenTestsIncreaseDate: Date?
     @objc dynamic var confirmedCasesTotal: Int = 0
     @objc dynamic var confirmedCasesIncrease: Int = 0
     @objc dynamic var confirmedCasesIncreaseDate: Date?
@@ -47,7 +47,7 @@ final class CurrentDataRealm: Object {
 
         self.antigenTestsTotal = data.antigenTestsTotal
         self.antigenTestsIncrease = data.antigenTestsIncrease
-        self.antigenTestsIncrease = data.antigenTestsIncrease
+        self.antigenTestsIncreaseDate = data.antigenTestsIncreaseDate
 
         self.confirmedCasesTotal = data.confirmedCasesTotal
         self.confirmedCasesIncrease = data.confirmedCasesIncrease

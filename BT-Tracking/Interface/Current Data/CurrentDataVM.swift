@@ -180,7 +180,7 @@ private extension CurrentDataVM {
                     title: L10n.currentDataItemTestsPcr(formattedValue(data.pcrTestsTotal)),
                     subtitle: L10n.currentDataAppFrom(
                         formattedValue(data.pcrTestsIncrease, showSign: true),
-                        DateFormatter.baseDateFormatter.string(from: data.pcrTestsIncreaseDate ?? Date.distantFuture)
+                        DateFormatter.baseDateFormatter.string(from: data.pcrTestsIncreaseDate ?? Date())
                     )
                 ),
                 Item(
@@ -188,7 +188,7 @@ private extension CurrentDataVM {
                     title: L10n.currentDataItemTestsAntigen(formattedValue(data.antigenTestsTotal)),
                     subtitle: L10n.currentDataAppFrom(
                         formattedValue(data.antigenTestsIncrease, showSign: true),
-                        DateFormatter.baseDateFormatter.string(from: data.antigenTestsDate ?? Date.distantFuture)
+                        DateFormatter.baseDateFormatter.string(from: data.antigenTestsIncreaseDate ?? Date())
                     )
                 ),
                 Item(
