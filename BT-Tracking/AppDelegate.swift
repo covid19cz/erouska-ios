@@ -181,7 +181,7 @@ private extension AppDelegate {
             return
         }
 
-        Self.dependency.exposureService.deactivate(callback: nil)
+        Self.dependency.exposure.deactivate(callback: nil)
 
         viewController.modalPresentationStyle = .fullScreen
         window?.rootViewController?.present(viewController, animated: true)

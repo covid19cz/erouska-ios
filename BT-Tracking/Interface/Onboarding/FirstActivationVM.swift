@@ -11,7 +11,7 @@ import Foundation
 struct FirstActivationVM {
 
     var exposureNotificationAuthorized: Bool {
-        AppDelegate.dependency.exposureService.authorizationStatus == .authorized
+        AppDelegate.dependency.exposure.authorizationStatus == .authorized
     }
 
 }

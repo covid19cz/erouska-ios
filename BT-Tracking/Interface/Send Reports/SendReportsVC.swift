@@ -223,7 +223,7 @@ private extension SendReportsVC {
             }
         }
 
-        let exposureService = AppDelegate.dependency.exposureService
+        let exposureService = AppDelegate.dependency.exposure
         switch type {
         case .test:
             exposureService.getTestDiagnosisKeys(callback: callback)

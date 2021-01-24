@@ -17,13 +17,15 @@ final class AppDependency {
 
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
 
-    private(set) lazy var exposureService: ExposureServicing = ExposureService()
+    private(set) lazy var exposure: ExposureServicing = ExposureService()
 
     private(set) lazy var reporter: ReportServicing = ReportService(configuration: RemoteValues.serverConfiguration)
 
     private(set) lazy var verification: VerificationServicing = VerificationService(configuration: RemoteValues.serverConfiguration)
 
-    private(set) lazy var background = BackgroundService(exposureService: exposureService, reporter: reporter)
+    private(set) lazy var background = BackgroundService(exposureService: exposure, reporter: reporter)
+
+    private(set) lazy var help = HelpService()
 
     let realm: Realm = {
         var oldV1Data: [String: ExposureDataV1] = [:]
