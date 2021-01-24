@@ -314,8 +314,8 @@ internal enum L10n {
   internal static let forceUpdateTitle = L10n.tr("Localizable", "force_update_title")
   /// Nápověda
   internal static let help = L10n.tr("Localizable", "help")
-  /// Napište Anežce – podpoře eRoušky
-  internal static let helpChatbot = L10n.tr("Localizable", "help_chatbot")
+  /// Napsat e-mail na podporu
+  internal static let helpSupport = L10n.tr("Localizable", "help_support")
   /// Nápověda
   internal static let helpTabTitle = L10n.tr("Localizable", "help_tab_title")
   /// Jak to funguje
@@ -330,6 +330,8 @@ internal enum L10n {
   internal static let howitworksHeadline = L10n.tr("Localizable", "howitworks_headline")
   /// Napsat e-mail na podporu
   internal static let howitworksMailSupport = L10n.tr("Localizable", "howitworks_mail_support")
+  /// Zjistěte více o tom, jak aplikace funguje
+  internal static let howitworksSubtitle = L10n.tr("Localizable", "howitworks_subtitle")
   /// Jak eRouška funguje
   internal static let howitworksTitle = L10n.tr("Localizable", "howitworks_title")
   /// Upozornění se vám zobrazilo nejdříve 24 hodin poté, co se nakažený dozvěděl pozitivní výsledek testu na COVID-19 a zadal ověřovací kód do eRoušky.\n\nRizikový kontakt vyhodnotíme v případě, že jste s nakaženým byli v kontaktu na vzdálenost kratší než 2 metry po dobu alespoň 15 minut.\n\nKvůli zachování anonymity nakaženého neznáme čas ani místo setkání.

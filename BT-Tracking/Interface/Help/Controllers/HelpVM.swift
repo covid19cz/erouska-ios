@@ -12,16 +12,6 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-struct HelpArticle: Equatable {
-    let id = UUID()
-    let title: String
-    var lines: [SwiftyLine]
-
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.id == rhs.id
-    }
-}
-
 final class HelpVM {
 
     private let lineProcessor = SwiftyLineProcessor(
@@ -30,50 +20,31 @@ final class HelpVM {
         frontMatterRules: SwiftyMarkdown.frontMatterRules
     )
 
-    typealias Section = SectionModel<String, HelpArticle>
+    typealias Section = SectionModel<String, HelpSection>
     let sections = BehaviorRelay<[Section]>(value: [])
 
-    init() {
+    private let helpService: HelpServicing
+
+    init(helpService: HelpServicing) {
+        self.helpService = helpService
         update()
     }
 
     func update() {
-        var convertedMarkdown = RemoteValues.helpMarkdown.replacingOccurrences(of: "\\n", with: "\u{0085}")
-        convertedMarkdown = convertedMarkdown.replacingOccurrences(of: "(.pdf)", with: "")
+        helpService.update()
 
-        self.lineProcessor.processEmptyStrings = MarkdownLineStyle.body
-        let foundAttributes: [SwiftyLine] = lineProcessor.process(convertedMarkdown)
-
-        var sections: [Section] = [.init(model: "", items: [.init(title: L10n.howitworksTitle, lines: [])])]
-        var section: Section = .init(model: "", items: [])
-        var helpArticle: HelpArticle = .init(title: "", lines: [])
-
-        for attribute in foundAttributes {
-            guard let style = attribute.lineStyle as? MarkdownLineStyle else { continue }
-            switch style {
-            case .h1:
-                if !section.model.isEmpty {
-                    section.items.append(helpArticle)
-                    sections.append(section)
-                    helpArticle = .init(title: "", lines: [])
-                }
-                section = .init(model: attribute.line, items: [])
-            case .h2:
-                if !helpArticle.lines.isEmpty {
-                    section.items.append(helpArticle)
-                }
-                helpArticle = HelpArticle(title: attribute.line, lines: [])
-            default:
-                helpArticle.lines.append(attribute)
-            }
-        }
-
-        if !section.items.contains(helpArticle) {
-            section.items.append(helpArticle)
-        }
-        sections.append(section)
-
-        self.sections.accept(sections)
+        var help = helpService.help
+        help.insert(
+            HelpSection(
+                title: L10n.howitworksTitle,
+                subtitle: L10n.howitworksSubtitle,
+                icon: "",
+                image: Asset.hitWIconSmall.image,
+                questions: []
+            ),
+            at: 0
+        )
+        sections.accept([.init(model: "", items: help)])
     }
 
 }

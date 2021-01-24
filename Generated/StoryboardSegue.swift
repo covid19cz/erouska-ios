@@ -20,8 +20,9 @@ internal enum StoryboardSegue {
     case help = "Help"
   }
   internal enum Help: String, SegueType {
-    case article
     case howItWorks
+    case question
+    case section
   }
   internal enum Onboarding: String, SegueType {
     case exposureNotification

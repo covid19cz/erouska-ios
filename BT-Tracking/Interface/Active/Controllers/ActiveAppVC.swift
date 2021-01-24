@@ -515,7 +515,7 @@ private extension ActiveAppVC {
     }
 
     func debugCancelRegistrationAction() {
-        AppDelegate.dependency.exposureService.deactivate { _ in
+        AppDelegate.dependency.exposure.deactivate { _ in
             AppSettings.deleteAllData()
             try? Auth.auth().signOut()
             AppDelegate.shared.updateInterface()
