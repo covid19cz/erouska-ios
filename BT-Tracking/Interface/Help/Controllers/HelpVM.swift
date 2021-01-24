@@ -20,7 +20,7 @@ final class HelpVM {
         frontMatterRules: SwiftyMarkdown.frontMatterRules
     )
 
-    typealias Section = SectionModel<HelpSection, HelpQuestion>
+    typealias Section = SectionModel<String, HelpSection>
     let sections = BehaviorRelay<[Section]>(value: [])
 
     private let helpService: HelpServicing
@@ -32,7 +32,19 @@ final class HelpVM {
 
     func update() {
         helpService.update()
-        sections.accept(helpService.help.map { .init(model: $0, items: $0.questions) })
+
+        var help = helpService.help
+        help.insert(
+            HelpSection(
+                title: L10n.howitworksTitle,
+                subtitle: L10n.howitworksSubtitle,
+                icon: "",
+                image: Asset.hitWIconSmall.image,
+                questions: []
+            ),
+            at: 0
+        )
+        sections.accept([.init(model: "", items: help)])
     }
 
 }

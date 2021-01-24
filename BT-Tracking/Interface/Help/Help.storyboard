@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7JY-JN-dnV">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -30,29 +32,67 @@
             <objects>
                 <viewController storyboardIdentifier="Help" id="7JY-JN-dnV" customClass="HelpVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xY9-LO-jVk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-Wq-mdf">
-                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="articleCell" textLabel="0VK-uX-CB2" style="IBUITableViewCellStyleDefault" id="5wR-7f-uYY">
-                                        <rect key="frame" x="0.0" y="55.5" width="600" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sectionCell" id="0RG-zv-uFs" customClass="HelpSectionCell" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="70.333335876464844"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5wR-7f-uYY" id="Ey7-j5-kks">
-                                            <rect key="frame" x="0.0" y="0.0" width="573" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0RG-zv-uFs" id="Jqt-N5-zhv">
+                                            <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="70.333335876464844"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="articleCell" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0VK-uX-CB2">
-                                                    <rect key="frame" x="16" y="0.0" width="549" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I7y-Ux-dMl">
+                                                    <rect key="frame" x="16" y="23.333333333333329" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="I7y-Ux-dMl" secondAttribute="height" id="9Vu-eL-xVW"/>
+                                                        <constraint firstAttribute="width" constant="24" id="DnJ-mi-2DG"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3d-lq-UFY">
+                                                    <rect key="frame" x="56" y="11.000000000000004" width="283.66666666666669" height="48.333333333333343"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEw-4t-wUh">
+                                                            <rect key="frame" x="0.0" y="5" width="283.66666666666669" height="20.333333333333332"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TW-zT-6RI">
+                                                            <rect key="frame" x="0.0" y="27.333333333333336" width="283.66666666666669" height="16"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="CEw-4t-wUh" firstAttribute="leading" secondItem="s3d-lq-UFY" secondAttribute="leading" id="17o-T4-TGL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="6TW-zT-6RI" secondAttribute="bottom" constant="5" id="Aad-wi-krd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="CEw-4t-wUh" secondAttribute="trailing" id="AcO-9i-I9z"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6TW-zT-6RI" secondAttribute="trailing" id="Pf3-PU-6n1"/>
+                                                        <constraint firstItem="6TW-zT-6RI" firstAttribute="leading" secondItem="s3d-lq-UFY" secondAttribute="leading" id="QRa-G5-4LW"/>
+                                                        <constraint firstItem="CEw-4t-wUh" firstAttribute="top" secondItem="s3d-lq-UFY" secondAttribute="top" constant="5" id="VfV-Rn-PTe"/>
+                                                        <constraint firstItem="6TW-zT-6RI" firstAttribute="top" secondItem="CEw-4t-wUh" secondAttribute="bottom" constant="2" id="yMD-hC-wcs"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="s3d-lq-UFY" firstAttribute="leading" secondItem="I7y-Ux-dMl" secondAttribute="trailing" constant="16" id="2Md-pX-De4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="s3d-lq-UFY" secondAttribute="trailing" id="70H-t6-2FM"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="s3d-lq-UFY" secondAttribute="bottom" id="MAg-xS-Ph5"/>
+                                                <constraint firstItem="I7y-Ux-dMl" firstAttribute="leading" secondItem="Jqt-N5-zhv" secondAttribute="leadingMargin" id="N53-XW-jch"/>
+                                                <constraint firstItem="I7y-Ux-dMl" firstAttribute="centerY" secondItem="Jqt-N5-zhv" secondAttribute="centerY" id="hqZ-6e-1zr"/>
+                                                <constraint firstItem="s3d-lq-UFY" firstAttribute="top" secondItem="Jqt-N5-zhv" secondAttribute="topMargin" id="mzc-ti-mky"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="iconView" destination="I7y-Ux-dMl" id="3xP-tS-k4i"/>
+                                            <outlet property="sectionLabel" destination="CEw-4t-wUh" id="RFV-VR-vdr"/>
+                                            <outlet property="subtitleLabel" destination="6TW-zT-6RI" id="Ocj-Eq-cgR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -76,24 +116,77 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="fIk-Wq-mdf" id="rHj-VS-lif"/>
-                        <segue destination="ASX-MV-kE1" kind="show" identifier="article" id="hoa-Ue-Gzf"/>
                         <segue destination="YaD-3c-CcU" kind="show" identifier="howItWorks" id="B0f-Yx-JG0"/>
+                        <segue destination="lqc-NI-TE4" kind="show" identifier="section" id="wAa-gh-eL8"/>
+                        <segue destination="ASX-MV-kE1" kind="show" identifier="question" id="cEt-ld-NvP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l7v-1Z-2VS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="853.60000000000002" y="564.53201970443354"/>
         </scene>
-        <!--Clanek-->
+        <!--Help SectionVC-->
+        <scene sceneID="La5-9b-pZf">
+            <objects>
+                <viewController storyboardIdentifier="HelpSection" id="lqc-NI-TE4" customClass="HelpSectionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KJs-vo-4iC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0Ds-fz-CyI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="questionCell" textLabel="fHS-jV-uQx" style="IBUITableViewCellStyleDefault" id="3ZP-Bb-if7">
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ZP-Bb-if7" id="sHW-sV-2wd">
+                                            <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="questionCell" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fHS-jV-uQx">
+                                                    <rect key="frame" x="16" y="0.0" width="323.66666666666669" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MWS-3r-PCh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MWS-3r-PCh" firstAttribute="trailing" secondItem="0Ds-fz-CyI" secondAttribute="trailing" id="Oha-vI-d2f"/>
+                            <constraint firstItem="MWS-3r-PCh" firstAttribute="bottom" secondItem="0Ds-fz-CyI" secondAttribute="bottom" id="RmC-U1-aaz"/>
+                            <constraint firstItem="0Ds-fz-CyI" firstAttribute="leading" secondItem="MWS-3r-PCh" secondAttribute="leading" id="bdb-FP-f7m"/>
+                            <constraint firstItem="0Ds-fz-CyI" firstAttribute="top" secondItem="KJs-vo-4iC" secondAttribute="top" id="v8h-Io-i4m"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="e9b-xU-Ycj"/>
+                    <connections>
+                        <outlet property="tableView" destination="0Ds-fz-CyI" id="H8S-ap-RTB"/>
+                        <segue destination="ASX-MV-kE1" kind="show" identifier="question" id="Koi-So-MWg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k1p-Sh-VEP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1814" y="381"/>
+        </scene>
+        <!--Otazka-->
         <scene sceneID="9NP-BB-P01">
             <objects>
-                <viewController storyboardIdentifier="HelpArticle" id="ASX-MV-kE1" customClass="HelpQuestionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpQuestion" id="ASX-MV-kE1" customClass="HelpQuestionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BO0-T0-6qD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vPv-zh-coA">
-                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="diD-QJ-ujQ"/>
@@ -105,33 +198,33 @@
                             <constraint firstItem="vPv-zh-coA" firstAttribute="top" secondItem="diD-QJ-ujQ" secondAttribute="top" id="NP8-E0-hvG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Clanek" largeTitleDisplayMode="never" id="M9m-vY-gbS"/>
+                    <navigationItem key="navigationItem" title="Otazka" largeTitleDisplayMode="never" id="M9m-vY-gbS"/>
                     <connections>
                         <outlet property="stackView" destination="vPv-zh-coA" id="ZP9-C9-zDV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xE-1N-GXg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="382"/>
+            <point key="canvasLocation" x="2682" y="381"/>
         </scene>
         <!--Jak eRouška funguje-->
         <scene sceneID="jue-ad-OIT">
             <objects>
                 <tableViewController storyboardIdentifier="HowItWorksVC" id="YaD-3c-CcU" customClass="HowItWorksVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nHT-7c-rZn">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="howItWorksText" textLabel="G29-hA-59C" style="IBUITableViewCellStyleDefault" id="u4E-8m-rBM">
-                                <rect key="frame" x="0.0" y="28" width="600" height="122"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="163"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u4E-8m-rBM" id="Ser-Lk-1ed">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G29-hA-59C">
-                                            <rect key="frame" x="20" y="0.0" width="560" height="122"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="163"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <string key="text">eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19.
 Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.</string>
@@ -143,23 +236,23 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="howItWorksEntry" id="xau-bm-npz" customClass="HowItWorksEntryCell" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="150" width="600" height="367"/>
+                                <rect key="frame" x="0.0" y="191" width="375" height="410.66665649414062"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xau-bm-npz" id="XK3-YO-wp1">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="367"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="410.66665649414062"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="HitWExposure" translatesAutoresizingMaskIntoConstraints="NO" id="dcF-o4-bzj">
-                                            <rect key="frame" x="20" y="10" width="560" height="198"/>
+                                            <rect key="frame" x="16" y="10" width="343" height="198"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Telefony s eRouškou čekají na setkání" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTR-63-mAO">
-                                            <rect key="frame" x="20" y="218" width="560" height="20.5"/>
+                                            <rect key="frame" x="16" y="218" width="343" height="20.333333333333343"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsZ-Yq-TyS">
-                                            <rect key="frame" x="20" y="248.5" width="560" height="108.5"/>
+                                            <rect key="frame" x="16" y="248.33333333333331" width="343" height="152.33333333333331"/>
                                             <string key="text">eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19.
 Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.</string>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -187,17 +280,17 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="howItWorksButtons" id="tH7-AZ-zJm" customClass="HowItWorksButtonsCell" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="517" width="600" height="136"/>
+                                <rect key="frame" x="0.0" y="601.66665649414062" width="375" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tH7-AZ-zJm" id="4eC-aK-rpD">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="136"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="thf-At-0tz">
-                                            <rect key="frame" x="20" y="11" width="560" height="104"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="104"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG9-e5-6XV" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="qbu-0O-AYH"/>
                                                     </constraints>
@@ -207,7 +300,7 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD3-kl-hou" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="60" width="560" height="44"/>
+                                                    <rect key="frame" x="0.0" y="60" width="343" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="Ssr-XO-OlS"/>
                                                     </constraints>
@@ -248,17 +341,17 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
             <objects>
                 <viewController storyboardIdentifier="About" id="y7d-j4-fB7" customClass="AboutVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YDT-xs-3tk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1S-K0-nhj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="10w-5O-iCm">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="158"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3eb-ph-g5q">
-                                                <rect key="frame" x="16" y="16" width="568" height="126"/>
+                                                <rect key="frame" x="16" y="16" width="343" height="214"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <string key="text">Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT). Předchozí verzi aplikace eRouška vytvořil ým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.</string>
                                                 <color key="textColor" systemColor="labelColor"/>
@@ -280,7 +373,7 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                 <viewLayoutGuide key="frameLayoutGuide" id="JxE-ML-aps"/>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verze: 2.1.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O30-yF-YoH">
-                                <rect key="frame" x="20" y="525" width="560" height="16"/>
+                                <rect key="frame" x="16" y="703.33333333333337" width="343" height="15.666666666666629"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -313,26 +406,26 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
             <objects>
                 <tableViewController storyboardIdentifier="HelpSearchVC" id="Ca6-s1-zC7" customClass="HelpSearchVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="muW-Zf-q6X">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchResult" textLabel="ChQ-bg-Zc2" detailTextLabel="u2R-Zc-3oU" style="IBUITableViewCellStyleSubtitle" id="9AA-SC-LfB">
-                                <rect key="frame" x="0.0" y="28" width="600" height="63.5"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="62.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9AA-SC-LfB" id="tFI-C0-ti7">
-                                    <rect key="frame" x="0.0" y="0.0" width="569" height="63.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="62.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ChQ-bg-Zc2">
-                                            <rect key="frame" x="20" y="9" width="35" height="20.5"/>
+                                            <rect key="frame" x="16" y="8.9999999999999982" width="35" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u2R-Zc-3oU">
-                                            <rect key="frame" x="20" y="32.5" width="58.5" height="20.5"/>
+                                            <rect key="frame" x="16.000000000000004" y="32.333333333333329" width="58.333333333333336" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
@@ -350,9 +443,12 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tz3-4J-BdV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2726" y="381"/>
+            <point key="canvasLocation" x="3562" y="381"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cEt-ld-NvP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="HitWExposure" width="316" height="198"/>
         <systemColor name="labelColor">

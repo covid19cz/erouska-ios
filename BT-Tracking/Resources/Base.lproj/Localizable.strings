@@ -92,7 +92,7 @@
 "contacts_about_body" = "Potřebujete poradit s aplikací nebo vás zajímá jak funguje? Podívejte se na web erouska.cz.";
 "contacts_about_button" = "Přejít na web erouska.cz";
 "help_title" = "Jak to funguje";
-"help_chatbot" = "Napište Anežce – podpoře eRoušky";
+"help_support" = "Napsat e-mail na podporu";
 "help_tab_title" = "Nápověda";
 "about_title" = "O aplikaci";
 "about_info" = "Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT). Předchozí verzi aplikace eRouška vytvořil tým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.\n\nDetailní informace o zpracování osobních údajů a další podmínky používání aplikace najdete v podmínkách používání.";
@@ -171,6 +171,7 @@
 "diagnosis_send_withoutattachment" = "Nechci přidat přílohu";
 "diagnosis_cancel" = "Zavřít";
 "howitworks_title" = "Jak eRouška funguje";
+"howitworks_subtitle" = "Zjistěte více o tom, jak aplikace funguje";
 "howitworks_headline" = "eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19. Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.";
 "howitworks_entry1.title" = "Telefony s eRouškou čekají na setkání";
 "howitworks_entry1.body" = "Když se potkají telefony s aplikací eRouška, vymění si několik základních informací o setkání. Zaznamenají si den setkání, vzdálenost mezi sebou a anonymní označení telefonu. Tato setkání si pamatují 14 dní.";

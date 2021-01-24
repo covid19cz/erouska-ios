@@ -28,10 +28,10 @@ private class HelpSearchItem: NSObject {
 
 final class HelpSearchVC: UITableViewController {
 
-    var articles: [HelpVM.Section] = [] {
+    var questions: [HelpSectionVC.Section] = [] {
         didSet {
             searchItems.removeAll()
-            for section in articles {
+            for section in questions {
                 for question in section.items {
                     searchItems.append(.init(question: question, kind: .title, line: question.question))
                     searchItems.append(contentsOf: question.lines.map { .init(question: question, kind: .line, line: $0.line) })
@@ -56,7 +56,7 @@ final class HelpSearchVC: UITableViewController {
         super.prepare(for: segue, sender: sender)
 
         switch StoryboardSegue.Help(segue) {
-        case .article:
+        case .question:
             guard let question = sender as? HelpQuestion else { return }
             let controller = segue.destination as? HelpQuestionVC
             controller?.title = question.question

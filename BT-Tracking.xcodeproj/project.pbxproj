@@ -128,6 +128,8 @@
 		8091E08224CB3CDF00E0E877 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8091E08124CB3CDF00E0E877 /* AlamofireImage */; };
 		809A1C0E25BD918900F27BA8 /* HelpSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A1C0D25BD918900F27BA8 /* HelpSectionVC.swift */; };
 		809A1C0F25BD918900F27BA8 /* HelpSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A1C0D25BD918900F27BA8 /* HelpSectionVC.swift */; };
+		809A1C1725BD9ADD00F27BA8 /* HelpSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A1C1625BD9ADD00F27BA8 /* HelpSectionCell.swift */; };
+		809A1C1825BD9ADD00F27BA8 /* HelpSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A1C1625BD9ADD00F27BA8 /* HelpSectionCell.swift */; };
 		809F9D8A24AF8BFB00D34CC9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8924AF8BFB00D34CC9 /* RxSwift */; };
 		809F9D8C24AF8BFB00D34CC9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8B24AF8BFB00D34CC9 /* RxCocoa */; };
 		809F9D8F24AF8C2900D34CC9 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 809F9D8E24AF8C2900D34CC9 /* RxDataSources */; };
@@ -337,6 +339,7 @@
 		8084DEEF24AF8425001FBB16 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		8084DEF624AF86C1001FBB16 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		809A1C0D25BD918900F27BA8 /* HelpSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSectionVC.swift; sourceTree = "<group>"; };
+		809A1C1625BD9ADD00F27BA8 /* HelpSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSectionCell.swift; sourceTree = "<group>"; };
 		80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSearchVC.swift; sourceTree = "<group>"; };
 		80A4089D259CA9ED00287CB7 /* HowItWorksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksVC.swift; sourceTree = "<group>"; };
 		80A408A3259CB1BA00287CB7 /* HowItWorksEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksEntryCell.swift; sourceTree = "<group>"; };
@@ -674,6 +677,7 @@
 		80A408A2259CB18200287CB7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				809A1C1625BD9ADD00F27BA8 /* HelpSectionCell.swift */,
 				80A408A3259CB1BA00287CB7 /* HowItWorksEntryCell.swift */,
 				80A408A8259CB20E00287CB7 /* HowItWorksButtonsCell.swift */,
 			);
@@ -688,8 +692,8 @@
 				80631A95242CA27800EB0B6C /* HelpVC.swift */,
 				80CA44DB244B3769008E22F8 /* HelpVM.swift */,
 				809A1C0D25BD918900F27BA8 /* HelpSectionVC.swift */,
-				80D0B5E325401D37000C3FE5 /* HelpQuestionVC.swift */,
 				80A0AADB2541AAC700D35282 /* HelpSearchVC.swift */,
+				80D0B5E325401D37000C3FE5 /* HelpQuestionVC.swift */,
 				80A4089D259CA9ED00287CB7 /* HowItWorksVC.swift */,
 			);
 			path = Controllers;
@@ -1273,6 +1277,7 @@
 				D65E57D924D056D6000F2402 /* NewsPageView.swift in Sources */,
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
 				D6231C9D24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */,
+				809A1C1725BD9ADD00F27BA8 /* HelpSectionCell.swift in Sources */,
 				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
 				D6231CA524E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				807D48E8253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */,
@@ -1371,6 +1376,7 @@
 				D6231CB924EBC3630023BDC8 /* ErrorVM.swift in Sources */,
 				80CD54D02549C83F001D80B0 /* RiskyEncountersPositiveVC.swift in Sources */,
 				8083D8B7244640A0007FA4E9 /* Data.swift in Sources */,
+				809A1C1825BD9ADD00F27BA8 /* HelpSectionCell.swift in Sources */,
 				80FBE65425247974005D6C05 /* ExposureDiagnosisKeyFile.pb.swift in Sources */,
 				809A1C0F25BD918900F27BA8 /* HelpSectionVC.swift in Sources */,
 				8075FE4F2543323B00E72779 /* CurrentDataCell.swift in Sources */,

@@ -14,6 +14,7 @@ final class HelpVC: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     private weak var helpSearch: HelpSearchVC!
+    private var diagnosis: Diagnosis?
 
     private let viewModel = HelpVM(helpService: AppDelegate.dependency.help)
     private let disposeBag = DisposeBag()
@@ -38,7 +39,20 @@ final class HelpVC: UIViewController {
 
         view.backgroundColor = Asset.helpBackground.color
         tableView.backgroundColor = view.backgroundColor
-        tableView.tableFooterView = UIView()
+
+        let view = UIView()
+        view.frame.size.height = 26
+        view.isUserInteractionEnabled = true
+
+        let button = UIButton(type: .system)
+        button.autoresizingMask = .flexibleWidth
+        button.frame.size.height = 26
+        button.setTitle(L10n.helpSupport)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        button.addTarget(self, action: #selector(writeToSupport), for: .touchUpInside)
+        view.addSubview(button)
+        tableView.tableFooterView = view
+
         tableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
 
         setupDataSource()
@@ -48,13 +62,13 @@ final class HelpVC: UIViewController {
             .disposed(by: disposeBag)
 
         tableView.rx
-            .modelSelected(HelpQuestion.self)
-            .subscribe(onNext: { [weak self] question in
+            .modelSelected(HelpSection.self)
+            .subscribe(onNext: { [weak self] section in
                 let indexPath = self?.tableView.indexPathForSelectedRow
                 if let indexPath = indexPath {
                     self?.tableView.deselectRow(at: indexPath, animated: true)
                 }
-                self?.openQuestion(question)
+                self?.openSection(section)
             })
             .disposed(by: disposeBag)
 
@@ -63,7 +77,7 @@ final class HelpVC: UIViewController {
             self?.openQuestion(question)
         }
         viewModel.sections.asObservable().bind { [weak self] sections in
-            self?.helpSearch.articles = sections
+            self?.helpSearch.questions = sections.first?.items.map { HelpSectionVC.Section(model: $0, items: $0.questions) } ?? []
         }.disposed(by: disposeBag)
 
         let searchController = UISearchController(searchResultsController: helpSearch)
@@ -77,7 +91,12 @@ final class HelpVC: UIViewController {
         super.prepare(for: segue, sender: sender)
 
         switch StoryboardSegue.Help(segue) {
-        case .article:
+        case .section:
+            guard let section = sender as? HelpSection else { return }
+            let controller = segue.destination as? HelpSectionVC
+            controller?.title = section.title
+            controller?.section = section
+        case .question:
             guard let question = sender as? HelpQuestion else { return }
             let controller = segue.destination as? HelpQuestionVC
             controller?.title = question.question
@@ -95,11 +114,28 @@ final class HelpVC: UIViewController {
 
     // MARK: - Action
 
-    private func openQuestion(_ question: HelpQuestion) {
-        if question.question == L10n.howitworksTitle {
+    private func openSection(_ section: HelpSection) {
+        if section.title == L10n.howitworksTitle {
             perform(segue: StoryboardSegue.Help.howItWorks)
         } else {
-            perform(segue: StoryboardSegue.Help.article, sender: question)
+            perform(segue: StoryboardSegue.Help.section, sender: section)
+        }
+    }
+
+    private func openQuestion(_ question: HelpQuestion) {
+        perform(segue: StoryboardSegue.Help.question, sender: question)
+    }
+
+    @IBAction private func writeToSupport() {
+        guard let url = URL(string: "mailto:info@erouska.cz") else { return }
+        openLink(url)
+    }
+
+    private func openLink(_ link: URL) {
+        if link.absoluteString.hasSuffix("info@erouska.cz"), Diagnosis.canSendMail {
+            diagnosis = Diagnosis(showFromController: self, screenName: "K1", error: nil)
+        } else {
+            openURL(URL: link)
         }
     }
 
@@ -111,14 +147,11 @@ private extension HelpVC {
         dataSource = RxTableViewSectionedReloadDataSource<HelpVM.Section>(configureCell: { [weak self] _, _, _, item in
             self?.configureCell(with: item) ?? UITableViewCell()
         })
-        dataSource.titleForHeaderInSection = { dataSource, index in
-            dataSource.sectionModels[index].model.title
-        }
     }
 
-    func configureCell(with item: HelpQuestion) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "articleCell") ?? UITableViewCell()
-        cell.textLabel?.text = item.question
+    func configureCell(with item: HelpSection) -> UITableViewCell? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "sectionCell") as? HelpSectionCell else { return nil }
+        cell.config(with: item.title, subtitle: item.subtitle, icon: item.icon, image: item.image)
         return cell
     }
 
