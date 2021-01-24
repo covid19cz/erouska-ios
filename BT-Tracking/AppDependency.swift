@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseFunctions
 import RealmSwift
+import SwiftyMarkdown
 
 final class AppDependency {
 
@@ -26,6 +27,16 @@ final class AppDependency {
     private(set) lazy var background = BackgroundService(exposureService: exposure, reporter: reporter)
 
     private(set) lazy var help = HelpService()
+
+    var lineProcessor: SwiftyLineProcessor {
+        let lineProcessor = SwiftyLineProcessor(
+            rules: SwiftyMarkdown.lineRules,
+            defaultRule: MarkdownLineStyle.body,
+            frontMatterRules: SwiftyMarkdown.frontMatterRules
+        )
+        lineProcessor.processEmptyStrings = MarkdownLineStyle.body
+        return lineProcessor
+    }
 
     let realm: Realm = {
         var oldV1Data: [String: ExposureDataV1] = [:]

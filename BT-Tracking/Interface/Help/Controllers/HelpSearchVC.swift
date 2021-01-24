@@ -15,12 +15,12 @@ private class HelpSearchItem: NSObject {
         case line
     }
 
-    let article: HelpArticle
+    let question: HelpQuestion
     @objc dynamic let kind: Kind
     @objc dynamic let line: String
 
-    init(article: HelpArticle, kind: Kind, line: String) {
-        self.article = article
+    init(question: HelpQuestion, kind: Kind, line: String) {
+        self.question = question
         self.kind = kind
         self.line = line
     }
@@ -32,16 +32,16 @@ final class HelpSearchVC: UITableViewController {
         didSet {
             searchItems.removeAll()
             for section in articles {
-                for article in section.items {
-                    searchItems.append(.init(article: article, kind: .title, line: article.title))
-                    searchItems.append(contentsOf: article.lines.map { .init(article: article, kind: .line, line: $0.line) })
+                for question in section.items {
+                    searchItems.append(.init(question: question, kind: .title, line: question.question))
+                    searchItems.append(contentsOf: question.lines.map { .init(question: question, kind: .line, line: $0.line) })
                 }
             }
         }
     }
 
-    typealias ArticleCallback = (_ article: HelpArticle) -> Void
-    var didSelectArticle: ArticleCallback?
+    typealias QuestionCallback = (_ quesntion: HelpQuestion) -> Void
+    var didSelectQuestion: QuestionCallback?
 
     private var searchText: String = ""
     private var searchItems: [HelpSearchItem] = []
@@ -57,10 +57,10 @@ final class HelpSearchVC: UITableViewController {
 
         switch StoryboardSegue.Help(segue) {
         case .article:
-            guard let article = sender as? HelpArticle else { return }
-            let controller = segue.destination as? HelpArticleVC
-            controller?.title = article.title
-            controller?.markdownLines = article.lines
+            guard let question = sender as? HelpQuestion else { return }
+            let controller = segue.destination as? HelpQuestionVC
+            controller?.title = question.question
+            controller?.markdownLines = question.lines
         default:
             break
         }
@@ -75,7 +75,7 @@ final class HelpSearchVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchResult") ?? UITableViewCell()
         let result = results[indexPath.row]
-        cell.textLabel?.attributedText = highlightedString(string: result.article.title)
+        cell.textLabel?.attributedText = highlightedString(string: result.question.question)
         if result.kind != .title {
             cell.detailTextLabel?.attributedText = highlightedString(string: result.line, startsFrom: 30)
         } else {
@@ -89,7 +89,7 @@ final class HelpSearchVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        didSelectArticle?(results[indexPath.row].article)
+        didSelectQuestion?(results[indexPath.row].question)
     }
 
 }
@@ -109,6 +109,7 @@ private extension HelpSearchVC {
             results = []
             return
         }
+        self.searchText = searchText
         let predicate = NSPredicate(format: "(line CONTAINS[cd] %@)", searchText)
 
         DispatchQueue.global(qos: .background).async { [weak self] in
@@ -116,7 +117,7 @@ private extension HelpSearchVC {
                 predicate.evaluate(with: $0)
             })
             results = results?.filter { item in
-                results?.first(where: { item.article.id == $0.article.id }) == item
+                results?.first(where: { item.question == $0.question }) == item
             }
 
             DispatchQueue.main.async {

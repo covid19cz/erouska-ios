@@ -15,7 +15,7 @@ final class HelpVC: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     private weak var helpSearch: HelpSearchVC!
 
-    private let viewModel = HelpVM()
+    private let viewModel = HelpVM(helpService: AppDelegate.dependency.help)
     private let disposeBag = DisposeBag()
     private var dataSource: RxTableViewSectionedReloadDataSource<HelpVM.Section>!
 
@@ -48,19 +48,19 @@ final class HelpVC: UIViewController {
             .disposed(by: disposeBag)
 
         tableView.rx
-            .modelSelected(HelpArticle.self)
-            .subscribe(onNext: { [weak self] article in
+            .modelSelected(HelpQuestion.self)
+            .subscribe(onNext: { [weak self] question in
                 let indexPath = self?.tableView.indexPathForSelectedRow
                 if let indexPath = indexPath {
                     self?.tableView.deselectRow(at: indexPath, animated: true)
                 }
-                self?.openArticle(article)
+                self?.openQuestion(question)
             })
             .disposed(by: disposeBag)
 
         helpSearch = StoryboardScene.Help.helpSearchVC.instantiate()
-        helpSearch.didSelectArticle = { [weak self] article in
-            self?.openArticle(article)
+        helpSearch.didSelectQuestion = { [weak self] question in
+            self?.openQuestion(question)
         }
         viewModel.sections.asObservable().bind { [weak self] sections in
             self?.helpSearch.articles = sections
@@ -78,10 +78,10 @@ final class HelpVC: UIViewController {
 
         switch StoryboardSegue.Help(segue) {
         case .article:
-            guard let article = sender as? HelpArticle else { return }
-            let controller = segue.destination as? HelpArticleVC
-            controller?.title = article.title
-            controller?.markdownLines = article.lines
+            guard let question = sender as? HelpQuestion else { return }
+            let controller = segue.destination as? HelpQuestionVC
+            controller?.title = question.question
+            controller?.markdownLines = question.lines
         default:
             break
         }
@@ -95,11 +95,11 @@ final class HelpVC: UIViewController {
 
     // MARK: - Action
 
-    private func openArticle(_ article: HelpArticle) {
-        if article.title == L10n.howitworksTitle {
+    private func openQuestion(_ question: HelpQuestion) {
+        if question.question == L10n.howitworksTitle {
             perform(segue: StoryboardSegue.Help.howItWorks)
         } else {
-            perform(segue: StoryboardSegue.Help.article, sender: article)
+            perform(segue: StoryboardSegue.Help.article, sender: question)
         }
     }
 
@@ -112,13 +112,13 @@ private extension HelpVC {
             self?.configureCell(with: item) ?? UITableViewCell()
         })
         dataSource.titleForHeaderInSection = { dataSource, index in
-            dataSource.sectionModels[index].model
+            dataSource.sectionModels[index].model.title
         }
     }
 
-    func configureCell(with item: HelpArticle) -> UITableViewCell {
+    func configureCell(with item: HelpQuestion) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "articleCell") ?? UITableViewCell()
-        cell.textLabel?.text = item.title
+        cell.textLabel?.text = item.question
         return cell
     }
 

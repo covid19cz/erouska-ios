@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7JY-JN-dnV">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -32,22 +30,22 @@
             <objects>
                 <viewController storyboardIdentifier="Help" id="7JY-JN-dnV" customClass="HelpVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xY9-LO-jVk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-Wq-mdf">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="articleCell" textLabel="0VK-uX-CB2" style="IBUITableViewCellStyleDefault" id="5wR-7f-uYY">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="600" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5wR-7f-uYY" id="Ey7-j5-kks">
-                                            <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="573" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="articleCell" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0VK-uX-CB2">
-                                                    <rect key="frame" x="16" y="0.0" width="323.66666666666669" height="43.666667938232422"/>
+                                                    <rect key="frame" x="16" y="0.0" width="549" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -89,13 +87,13 @@
         <!--Clanek-->
         <scene sceneID="9NP-BB-P01">
             <objects>
-                <viewController storyboardIdentifier="HelpArticle" id="ASX-MV-kE1" customClass="HelpArticleVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpArticle" id="ASX-MV-kE1" customClass="HelpQuestionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BO0-T0-6qD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vPv-zh-coA">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="diD-QJ-ujQ"/>
@@ -121,19 +119,19 @@
             <objects>
                 <tableViewController storyboardIdentifier="HowItWorksVC" id="YaD-3c-CcU" customClass="HowItWorksVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nHT-7c-rZn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="howItWorksText" textLabel="G29-hA-59C" style="IBUITableViewCellStyleDefault" id="u4E-8m-rBM">
-                                <rect key="frame" x="0.0" y="28" width="375" height="163"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="122"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u4E-8m-rBM" id="Ser-Lk-1ed">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G29-hA-59C">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="163"/>
+                                            <rect key="frame" x="20" y="0.0" width="560" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <string key="text">eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19.
 Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.</string>
@@ -145,23 +143,23 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="howItWorksEntry" id="xau-bm-npz" customClass="HowItWorksEntryCell" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="191" width="375" height="410.66665649414062"/>
+                                <rect key="frame" x="0.0" y="150" width="600" height="367"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xau-bm-npz" id="XK3-YO-wp1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="410.66665649414062"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="367"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="HitWExposure" translatesAutoresizingMaskIntoConstraints="NO" id="dcF-o4-bzj">
-                                            <rect key="frame" x="16" y="10" width="343" height="198"/>
+                                            <rect key="frame" x="20" y="10" width="560" height="198"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefony s eRouškou čekají na setkání" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTR-63-mAO">
-                                            <rect key="frame" x="16" y="218" width="343" height="20.333333333333343"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Telefony s eRouškou čekají na setkání" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTR-63-mAO">
+                                            <rect key="frame" x="20" y="218" width="560" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsZ-Yq-TyS">
-                                            <rect key="frame" x="16" y="248.33333333333331" width="343" height="152.33333333333331"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsZ-Yq-TyS">
+                                            <rect key="frame" x="20" y="248.5" width="560" height="108.5"/>
                                             <string key="text">eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19.
 Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.</string>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -189,17 +187,17 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="howItWorksButtons" id="tH7-AZ-zJm" customClass="HowItWorksButtonsCell" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="601.66665649414062" width="375" height="136"/>
+                                <rect key="frame" x="0.0" y="517" width="600" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tH7-AZ-zJm" id="4eC-aK-rpD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="thf-At-0tz">
-                                            <rect key="frame" x="16" y="11" width="343" height="104"/>
+                                            <rect key="frame" x="20" y="11" width="560" height="104"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG9-e5-6XV" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="qbu-0O-AYH"/>
                                                     </constraints>
@@ -209,7 +207,7 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD3-kl-hou" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="60" width="343" height="44"/>
+                                                    <rect key="frame" x="0.0" y="60" width="560" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="Ssr-XO-OlS"/>
                                                     </constraints>
@@ -250,17 +248,17 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
             <objects>
                 <viewController storyboardIdentifier="About" id="y7d-j4-fB7" customClass="AboutVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YDT-xs-3tk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1S-K0-nhj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="10w-5O-iCm">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="158"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3eb-ph-g5q">
-                                                <rect key="frame" x="16" y="16" width="343" height="214"/>
+                                                <rect key="frame" x="16" y="16" width="568" height="126"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <string key="text">Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT). Předchozí verzi aplikace eRouška vytvořil ým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.</string>
                                                 <color key="textColor" systemColor="labelColor"/>
@@ -282,7 +280,7 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                 <viewLayoutGuide key="frameLayoutGuide" id="JxE-ML-aps"/>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verze: 2.1.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O30-yF-YoH">
-                                <rect key="frame" x="16" y="703.33333333333337" width="343" height="15.666666666666629"/>
+                                <rect key="frame" x="20" y="525" width="560" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -315,26 +313,26 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
             <objects>
                 <tableViewController storyboardIdentifier="HelpSearchVC" id="Ca6-s1-zC7" customClass="HelpSearchVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="muW-Zf-q6X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchResult" textLabel="ChQ-bg-Zc2" detailTextLabel="u2R-Zc-3oU" style="IBUITableViewCellStyleSubtitle" id="9AA-SC-LfB">
-                                <rect key="frame" x="0.0" y="28" width="375" height="62.666667938232422"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="63.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9AA-SC-LfB" id="tFI-C0-ti7">
-                                    <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="62.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="569" height="63.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ChQ-bg-Zc2">
-                                            <rect key="frame" x="16" y="8.9999999999999982" width="35" height="20.333333333333332"/>
+                                            <rect key="frame" x="20" y="9" width="35" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u2R-Zc-3oU">
-                                            <rect key="frame" x="16.000000000000004" y="32.333333333333329" width="58.333333333333336" height="20.333333333333332"/>
+                                            <rect key="frame" x="20" y="32.5" width="58.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>

@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import FirebaseCrashlytics
 
 protocol HelpServicing {
 
     var help: Help { get }
 
-    func load()
+    func update()
 
 }
 
@@ -20,12 +21,16 @@ class HelpService: HelpServicing {
 
     private(set) var help: Help = []
 
-    func load() {
+    func update() {
         let data = RemoteValues.helpJson
         let decoder = JSONDecoder()
 
-        guard let help = try? decoder.decode(Help.self, from: data) else { return }
-        self.help = help
+        do {
+            let help = try decoder.decode(Help.self, from: data)
+            self.help = help
+        } catch {
+            Crashlytics.crashlytics().record(error: error)
+        }
     }
 
 }

@@ -7,17 +7,26 @@
 //
 
 import Foundation
+import SwiftyMarkdown
 
 struct HelpSection: Codable {
     let title: String
     let subtitle: String
     let icon: String
-    let question: [HelpQuestion]
+    let questions: [HelpQuestion]
 }
 
 struct HelpQuestion: Codable {
-    let quenstion: String
+    let question: String
     let answer: String
+
+    var lines: [SwiftyLine] {
+        AppDelegate.dependency.lineProcessor.process(answer)
+    }
+
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.question == rhs.question
+    }
 }
 
 typealias Help = [HelpSection]
