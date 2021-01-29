@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bzh-9z-YpA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bzh-9z-YpA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -211,28 +211,47 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                 <viewLayoutGuide key="frameLayoutGuide" id="2e9-tV-4A9"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5h1-J1-hAM" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="752" width="414" height="94"/>
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-pA-DIv" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="50" width="374" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="imW-cX-YzH"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <state key="normal" title="Ověřit a odeslat data">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sendReportsAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="uiY-Ba-5M6"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="65z-xZ-ioG">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-pA-DIv" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="imW-cX-YzH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Ověřit a odeslat data">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sendReportsAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="uiY-Ba-5M6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfd-vA-HPk" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="DBn-An-oQE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Nemám ověřovací kód">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="noCodeAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="U9m-0I-95p"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="kZu-pA-DIv" firstAttribute="top" secondItem="5h1-J1-hAM" secondAttribute="top" constant="50" id="Zqx-gN-ete"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="kZu-pA-DIv" secondAttribute="trailing" id="gCa-Jt-cgi"/>
-                                    <constraint firstItem="kZu-pA-DIv" firstAttribute="leading" secondItem="5h1-J1-hAM" secondAttribute="leadingMargin" id="vCs-ML-Nrr"/>
-                                    <constraint firstAttribute="bottom" secondItem="kZu-pA-DIv" secondAttribute="bottom" id="xsY-gX-DCL"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="65z-xZ-ioG" secondAttribute="trailing" id="9uC-pB-8V1"/>
+                                    <constraint firstAttribute="bottom" secondItem="65z-xZ-ioG" secondAttribute="bottom" id="Pqa-SH-QWp"/>
+                                    <constraint firstItem="65z-xZ-ioG" firstAttribute="top" secondItem="5h1-J1-hAM" secondAttribute="top" id="iph-av-a5E"/>
+                                    <constraint firstItem="65z-xZ-ioG" firstAttribute="leading" secondItem="5h1-J1-hAM" secondAttribute="leadingMargin" id="zl3-cg-5am"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -256,6 +275,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                         <outlet property="buttonsView" destination="5h1-J1-hAM" id="0dB-VC-lqa"/>
                         <outlet property="codeTextField" destination="JVW-2a-xGp" id="EIG-wa-I0I"/>
                         <outlet property="headlineLabel" destination="MjN-iy-0lg" id="b8d-JC-NmI"/>
+                        <outlet property="noCodeButton" destination="Qfd-vA-HPk" id="IEw-Sb-qBY"/>
                         <outlet property="scrollView" destination="0JF-YD-BYo" id="kId-FU-enZ"/>
                         <segue destination="DYf-Vd-0PA" kind="show" identifier="result" id="kRd-QM-Rd2"/>
                     </connections>

@@ -77,6 +77,7 @@
 "data_list_send_headline" = "If you test positive for COVID-19 you will receive an SMS message with the verification code for sending data.";
 "data_list_send_placeholder" = "Verification code (required)";
 "data_list_send_action_title" = "Verify and send data";
+"data_list_send_no_code_action_title" = "I don't have a verification code";
 "data_list_send_error_failed_title" = "Failed to send data";
 "data_list_send_error_failed_message" = "Check you internet connection and try again.";
 "data_list_send_error_file_title" = "Failed to create the encounter log";

@@ -226,6 +226,8 @@ internal enum L10n {
   internal static let dataListSendErrorWrongCodeTitle = L10n.tr("Localizable", "data_list_send_error_wrong_code_title")
   /// V případě potvrzené nákazy onemocněním COVID-19 obdržíte SMS zprávu obsahující ověřovací kód pro upozornění ostatních uživatelů eRoušky.
   internal static let dataListSendHeadline = L10n.tr("Localizable", "data_list_send_headline")
+  /// Nemám ověřovací kód
+  internal static let dataListSendNoCodeActionTitle = L10n.tr("Localizable", "data_list_send_no_code_action_title")
   /// Ověřovací kód (povinné)
   internal static let dataListSendPlaceholder = L10n.tr("Localizable", "data_list_send_placeholder")
   /// Upozornit ostatní

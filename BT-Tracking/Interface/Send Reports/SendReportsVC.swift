@@ -39,6 +39,7 @@ final class SendReportsVC: UIViewController {
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var actionButton: Button!
+    @IBOutlet private weak var noCodeButton: Button!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +97,10 @@ final class SendReportsVC: UIViewController {
         verifyCode(code.value)
     }
 
+    @IBAction private func noCodeAction() {
+        
+    }
+
     @IBAction private func closeAction() {
         dismiss(animated: true)
     }
@@ -141,6 +146,7 @@ private extension SendReportsVC {
         headlineLabel.text = L10n.dataListSendHeadline
         codeTextField.placeholder = L10n.dataListSendPlaceholder
         actionButton.setTitle(L10n.dataListSendActionTitle)
+        noCodeButton.setTitle(L10n.dataListSendNoCodeActionTitle)
     }
 
     // MARK: - Progress
