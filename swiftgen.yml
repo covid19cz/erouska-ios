@@ -8,7 +8,7 @@ ib:
     - templateName: segues-swift5
       output: Generated/StoryboardSegue.swift
 strings:
-  inputs: [BT-Tracking/Resources/Base.lproj]
+  inputs: [BT-Tracking/Resources/Base.lproj/Localizable.strings]
   outputs:
     - templateName: structured-swift5
       output: Generated/Strings.swift
