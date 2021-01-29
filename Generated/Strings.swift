@@ -16,7 +16,7 @@ internal enum L10n {
   internal static let aboutInfo = L10n.tr("Localizable", "about_info")
   /// podmínkách používání
   internal static let aboutInfoLink = L10n.tr("Localizable", "about_info_link")
-  /// Ou00a0aplikaci
+  /// O aplikaci
   internal static let aboutTitle = L10n.tr("Localizable", "about_title")
   /// Zavřít
   internal static let activeBackgroundModeCancel = L10n.tr("Localizable", "active_background_mode_cancel")

@@ -40,42 +40,45 @@
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sectionCell" id="0RG-zv-uFs" customClass="HelpSectionCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="70.333335876464844"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="71.333335876464844"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0RG-zv-uFs" id="Jqt-N5-zhv">
-                                            <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="70.333335876464844"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="71.333335876464844"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I7y-Ux-dMl">
-                                                    <rect key="frame" x="16" y="23.333333333333329" width="24" height="24"/>
+                                                    <rect key="frame" x="16" y="23.666666666666671" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="I7y-Ux-dMl" secondAttribute="height" id="9Vu-eL-xVW"/>
                                                         <constraint firstAttribute="width" constant="24" id="DnJ-mi-2DG"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3d-lq-UFY">
-                                                    <rect key="frame" x="56" y="11.000000000000004" width="283.66666666666669" height="48.333333333333343"/>
+                                                    <rect key="frame" x="56" y="11.000000000000004" width="283.66666666666669" height="49.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEw-4t-wUh">
-                                                            <rect key="frame" x="0.0" y="5" width="283.66666666666669" height="20.333333333333332"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TW-zT-6RI">
-                                                            <rect key="frame" x="0.0" y="27.333333333333336" width="283.66666666666669" height="16"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="3" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lpD-DL-KOp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="283.66666666666669" height="49.333333333333336"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEw-4t-wUh">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="33" height="25.666666666666668"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TW-zT-6RI">
+                                                                    <rect key="frame" x="0.0" y="12.333333333333332" width="45.333333333333336" height="37"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="CEw-4t-wUh" firstAttribute="leading" secondItem="s3d-lq-UFY" secondAttribute="leading" id="17o-T4-TGL"/>
-                                                        <constraint firstAttribute="bottom" secondItem="6TW-zT-6RI" secondAttribute="bottom" constant="5" id="Aad-wi-krd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="CEw-4t-wUh" secondAttribute="trailing" id="AcO-9i-I9z"/>
-                                                        <constraint firstAttribute="trailing" secondItem="6TW-zT-6RI" secondAttribute="trailing" id="Pf3-PU-6n1"/>
-                                                        <constraint firstItem="6TW-zT-6RI" firstAttribute="leading" secondItem="s3d-lq-UFY" secondAttribute="leading" id="QRa-G5-4LW"/>
-                                                        <constraint firstItem="CEw-4t-wUh" firstAttribute="top" secondItem="s3d-lq-UFY" secondAttribute="top" constant="5" id="VfV-Rn-PTe"/>
-                                                        <constraint firstItem="6TW-zT-6RI" firstAttribute="top" secondItem="CEw-4t-wUh" secondAttribute="bottom" constant="2" id="yMD-hC-wcs"/>
+                                                        <constraint firstItem="lpD-DL-KOp" firstAttribute="top" secondItem="s3d-lq-UFY" secondAttribute="top" id="6ba-uN-B7e"/>
+                                                        <constraint firstAttribute="bottom" secondItem="lpD-DL-KOp" secondAttribute="bottom" id="JMJ-xl-ZP6"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="evY-qW-RLM"/>
+                                                        <constraint firstItem="lpD-DL-KOp" firstAttribute="leading" secondItem="s3d-lq-UFY" secondAttribute="leading" id="iQu-Oz-jE2"/>
+                                                        <constraint firstAttribute="trailing" secondItem="lpD-DL-KOp" secondAttribute="trailing" id="qca-SH-Q9v"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -107,18 +110,13 @@
                             <constraint firstItem="fIk-Wq-mdf" firstAttribute="top" secondItem="lJW-ar-lRj" secondAttribute="top" id="xF3-En-CbC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Jak to funguje" largeTitleDisplayMode="always" id="XMX-lW-XTz">
-                        <barButtonItem key="rightBarButtonItem" title="O aplikaci" id="jdD-iU-eUi">
-                            <connections>
-                                <segue destination="y7d-j4-fB7" kind="show" id="pac-c2-jBb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Jak to funguje" largeTitleDisplayMode="always" id="XMX-lW-XTz"/>
                     <connections>
                         <outlet property="tableView" destination="fIk-Wq-mdf" id="rHj-VS-lif"/>
                         <segue destination="YaD-3c-CcU" kind="show" identifier="howItWorks" id="B0f-Yx-JG0"/>
                         <segue destination="lqc-NI-TE4" kind="show" identifier="section" id="wAa-gh-eL8"/>
                         <segue destination="ASX-MV-kE1" kind="show" identifier="question" id="cEt-ld-NvP"/>
+                        <segue destination="y7d-j4-fB7" kind="show" identifier="about" id="kie-4w-Jbz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l7v-1Z-2VS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -245,13 +243,13 @@ Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné 
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="HitWExposure" translatesAutoresizingMaskIntoConstraints="NO" id="dcF-o4-bzj">
                                             <rect key="frame" x="16" y="10" width="343" height="198"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Telefony s eRouškou čekají na setkání" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTR-63-mAO">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefony s eRouškou čekají na setkání" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTR-63-mAO">
                                             <rect key="frame" x="16" y="218" width="343" height="20.333333333333343"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsZ-Yq-TyS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsZ-Yq-TyS">
                                             <rect key="frame" x="16" y="248.33333333333331" width="343" height="152.33333333333331"/>
                                             <string key="text">eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19.
 Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.</string>

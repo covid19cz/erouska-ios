@@ -44,6 +44,16 @@ final class HelpVM {
             ),
             at: 0
         )
+        help.append(
+            HelpSection(
+                title: L10n.about,
+                subtitle: "",
+                icon: "",
+                image: Asset.about.image,
+                questions: []
+            )
+        )
+
         sections.accept([.init(model: "", items: help)])
     }
 

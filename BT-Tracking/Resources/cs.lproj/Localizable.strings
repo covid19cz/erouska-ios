@@ -118,7 +118,7 @@
 "help_title" = "Jak to funguje";
 "help_support" = "Napsat e-mail na podporu";
 "help_tab_title" = "Nápověda";
-"about_title" = "O\u00a0aplikaci";
+"about_title" = "O aplikaci";
 "about_info" = "Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT). Předchozí verzi aplikace eRouška vytvořil tým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.\n\nDetailní informace o zpracování osobních údajů a další podmínky používání aplikace najdete v podmínkách používání.";
 "about_info_link" = "podmínkách používání";
 "force_update_title" = "Důležitá aktualizace eRoušky";

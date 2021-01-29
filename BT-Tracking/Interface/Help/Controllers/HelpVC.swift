@@ -53,7 +53,7 @@ final class HelpVC: UIViewController {
         view.addSubview(button)
         tableView.tableFooterView = view
 
-        tableView.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = .init(top: 15, left: 0, bottom: 20, right: 0)
 
         setupDataSource()
 
@@ -117,6 +117,8 @@ final class HelpVC: UIViewController {
     private func openSection(_ section: HelpSection) {
         if section.title == L10n.howitworksTitle {
             perform(segue: StoryboardSegue.Help.howItWorks)
+        } else if section.title == L10n.about {
+            perform(segue: StoryboardSegue.Help.about)
         } else {
             perform(segue: StoryboardSegue.Help.section, sender: section)
         }

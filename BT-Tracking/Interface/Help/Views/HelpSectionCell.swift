@@ -18,6 +18,7 @@ class HelpSectionCell: UITableViewCell {
     func config(with title: String, subtitle: String, icon: String, image: UIImage?) {
         sectionLabel.text = title
         subtitleLabel.text = subtitle
+        subtitleLabel.isHidden = subtitle.isEmpty
         if let image = image {
             iconView.image = image
         } else if let url = URL(string: icon) {

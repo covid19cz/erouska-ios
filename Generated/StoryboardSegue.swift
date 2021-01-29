@@ -20,6 +20,7 @@ internal enum StoryboardSegue {
     case help = "Help"
   }
   internal enum Help: String, SegueType {
+    case about
     case howItWorks
     case question
     case section
