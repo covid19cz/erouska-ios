@@ -38,7 +38,9 @@ internal enum Asset {
     internal static let measures = ImageAsset(name: "CurrentData/Measures")
     internal static let notifications = ImageAsset(name: "CurrentData/Notifications")
     internal static let sentData = ImageAsset(name: "CurrentData/SentData")
-    internal static let tests = ImageAsset(name: "CurrentData/tests")
+    internal static let testsAntigen = ImageAsset(name: "CurrentData/TestsAntigen")
+    internal static let testsPCR = ImageAsset(name: "CurrentData/TestsPCR")
+    internal static let vaccination = ImageAsset(name: "CurrentData/Vaccination")
   }
   internal static let bluetoothOff = ImageAsset(name: "BluetoothOff")
   internal static let bluetoothPaused = ImageAsset(name: "BluetoothPaused")
