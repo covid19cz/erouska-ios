@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
-		4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4651F9B724505A7B0003D23D /* RemoteTitles.strings */; };
 		80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CECB24EAB0140011B53B /* ServerConfiguration.swift */; };
 		80026D9624FE492000BBDB36 /* BackgroundEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC924EAA2140011B53B /* BackgroundEntities.swift */; };
 		80026D9724FE492000BBDB36 /* BackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C5CEC724EAA1EF0011B53B /* BackgroundService.swift */; };
@@ -32,6 +30,10 @@
 		801C8FE9253FFD56002F303F /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 801C8FE8253FFD56002F303F /* RxRealm */; };
 		802AFE4425135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
 		802AFE4525135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
+		803669BA25C322B200EE2A96 /* Help.strings in Resources */ = {isa = PBXBuildFile; fileRef = 803669B525C322B200EE2A96 /* Help.strings */; };
+		803669BB25C322B200EE2A96 /* Help.strings in Resources */ = {isa = PBXBuildFile; fileRef = 803669B525C322B200EE2A96 /* Help.strings */; };
+		803669C525C322BC00EE2A96 /* RemoteConfig.strings in Resources */ = {isa = PBXBuildFile; fileRef = 803669C025C322BC00EE2A96 /* RemoteConfig.strings */; };
+		803669C625C322BC00EE2A96 /* RemoteConfig.strings in Resources */ = {isa = PBXBuildFile; fileRef = 803669C025C322BC00EE2A96 /* RemoteConfig.strings */; };
 		804B203F254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */; };
 		804B2040254581B1007701F0 /* RiskyEncounterHelpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */; };
 		804B204425458390007701F0 /* NewRiskEncounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B204325458390007701F0 /* NewRiskEncounterVC.swift */; };
@@ -117,7 +119,6 @@
 		8083D8E7244640A0007FA4E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8054C0B9241D4932008907B8 /* Assets.xcassets */; };
 		8083D8E8244640A0007FA4E9 /* Active.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0191462424331900707341 /* Active.storyboard */; };
 		8083D8E9244640A0007FA4E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80BE18BF2433C18200C4A9E6 /* Localizable.strings */; };
-		8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 		8083D8EC244640A0007FA4E9 /* SendReports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80ECB96B24292FB000E57601 /* SendReports.storyboard */; };
 		8083D9142446F779007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
 		8083D9152446F80A007FA4E9 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083D9132446F779007FA4E9 /* Markdown.swift */; };
@@ -292,14 +293,20 @@
 		FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F0DBB2449AFA60062A7F9 /* Color.swift */; };
 		FFC32EA5244B754B0008104C /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA44DF244B404F008E22F8 /* ContactsVM.swift */; };
 		FFC4432424460A36002D2A6D /* MarkdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4432324460A35002D2A6D /* MarkdownController.swift */; };
-		FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFC4432524460D78002D2A6D /* MarkdownBackups.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
-		4651F9B724505A7B0003D23D /* RemoteTitles.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RemoteTitles.strings; sourceTree = "<group>"; };
 		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		802AFE4325135BC0004954AF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		803669B625C322B200EE2A96 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Help.strings; sourceTree = "<group>"; };
+		803669B725C322B200EE2A96 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Help.strings; sourceTree = "<group>"; };
+		803669B825C322B200EE2A96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Help.strings; sourceTree = "<group>"; };
+		803669B925C322B200EE2A96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Help.strings; sourceTree = "<group>"; };
+		803669C125C322BC00EE2A96 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/RemoteConfig.strings; sourceTree = "<group>"; };
+		803669C225C322BC00EE2A96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/RemoteConfig.strings; sourceTree = "<group>"; };
+		803669C325C322BC00EE2A96 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/RemoteConfig.strings; sourceTree = "<group>"; };
+		803669C425C322BC00EE2A96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/RemoteConfig.strings; sourceTree = "<group>"; };
 		804B203E254581B1007701F0 /* RiskyEncounterHelpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskyEncounterHelpVM.swift; sourceTree = "<group>"; };
 		804B204325458390007701F0 /* NewRiskEncounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRiskEncounterVC.swift; sourceTree = "<group>"; };
 		804BE48924D9A11A00D40C07 /* ReportEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportEntities.swift; sourceTree = "<group>"; };
@@ -433,7 +440,6 @@
 		D6CD28E124CF24DC005847AA /* FirstActivationVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstActivationVM.swift; sourceTree = "<group>"; };
 		FF2F0DBB2449AFA60062A7F9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FFC4432324460A35002D2A6D /* MarkdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownController.swift; sourceTree = "<group>"; };
-		FFC4432524460D78002D2A6D /* MarkdownBackups.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = MarkdownBackups.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -953,9 +959,9 @@
 			isa = PBXGroup;
 			children = (
 				8054C0B9241D4932008907B8 /* Assets.xcassets */,
+				803669B525C322B200EE2A96 /* Help.strings */,
 				80BE18BF2433C18200C4A9E6 /* Localizable.strings */,
-				FFC4432524460D78002D2A6D /* MarkdownBackups.strings */,
-				4651F9B724505A7B0003D23D /* RemoteTitles.strings */,
+				803669C025C322BC00EE2A96 /* RemoteConfig.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1106,15 +1112,15 @@
 				D6231CB224EBC0510023BDC8 /* Error.storyboard in Resources */,
 				8054C0BD241D4932008907B8 /* LaunchScreen.storyboard in Resources */,
 				D6CD28E424CF24DC005847AA /* Onboarding.storyboard in Resources */,
+				803669C525C322BC00EE2A96 /* RemoteConfig.strings in Resources */,
 				8054C0BA241D4932008907B8 /* Assets.xcassets in Resources */,
 				D61DFE5524C1A936002E1B2E /* ForceUpdate.storyboard in Resources */,
 				D63E443524DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */,
 				BD0191472424331900707341 /* Active.storyboard in Resources */,
 				D65E57DF24D05D83000F2402 /* News.storyboard in Resources */,
-				4651F9B824505A7B0003D23D /* RemoteTitles.strings in Resources */,
 				80BE18C12433C18200C4A9E6 /* Localizable.strings in Resources */,
+				803669BA25C322B200EE2A96 /* Help.strings in Resources */,
 				D65E57D624D056C8000F2402 /* NewsPageView.xib in Resources */,
-				FFC4432624460D78002D2A6D /* MarkdownBackups.strings in Resources */,
 				D6231CC524F52CD00023BDC8 /* CurrentData.storyboard in Resources */,
 				80ECB96C24292FB000E57601 /* SendReports.storyboard in Resources */,
 				800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */,
@@ -1131,15 +1137,15 @@
 				D6CD28E524CF24DD005847AA /* Onboarding.storyboard in Resources */,
 				D61DFE5A24C1AFDA002E1B2E /* ForceUpdate.storyboard in Resources */,
 				D65E57D724D056C8000F2402 /* NewsPageView.xib in Resources */,
+				803669BB25C322B200EE2A96 /* Help.strings in Resources */,
 				D6231CC624F52CD00023BDC8 /* CurrentData.storyboard in Resources */,
 				8083D8E7244640A0007FA4E9 /* Assets.xcassets in Resources */,
 				8083D8E8244640A0007FA4E9 /* Active.storyboard in Resources */,
 				8083D8E9244640A0007FA4E9 /* Localizable.strings in Resources */,
 				8064DF70244EF3C0005E8AA3 /* GoogleService-Info.plist in Resources */,
 				D63E443624DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */,
-				4651F9B924505BE10003D23D /* RemoteTitles.strings in Resources */,
 				D65E57E024D05D83000F2402 /* News.storyboard in Resources */,
-				8083D8EB244640A0007FA4E9 /* MarkdownBackups.strings in Resources */,
+				803669C625C322BC00EE2A96 /* RemoteConfig.strings in Resources */,
 				D6231CB324EBC0510023BDC8 /* Error.storyboard in Resources */,
 				8083D8EC244640A0007FA4E9 /* SendReports.storyboard in Resources */,
 			);
@@ -1460,6 +1466,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		803669B525C322B200EE2A96 /* Help.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				803669B625C322B200EE2A96 /* cs */,
+				803669B725C322B200EE2A96 /* sk */,
+				803669B825C322B200EE2A96 /* en */,
+				803669B925C322B200EE2A96 /* Base */,
+			);
+			name = Help.strings;
+			sourceTree = "<group>";
+		};
+		803669C025C322BC00EE2A96 /* RemoteConfig.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				803669C125C322BC00EE2A96 /* cs */,
+				803669C225C322BC00EE2A96 /* Base */,
+				803669C325C322BC00EE2A96 /* sk */,
+				803669C425C322BC00EE2A96 /* en */,
+			);
+			name = RemoteConfig.strings;
+			sourceTree = "<group>";
+		};
 		8054C0B6241D492F008907B8 /* Debug.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1618,7 +1646,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1644,7 +1672,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1669,7 +1697,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1696,7 +1724,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;

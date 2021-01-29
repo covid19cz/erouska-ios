@@ -101,60 +101,60 @@ enum RemoteConfigValueKey: String, CaseIterable {
     var defaultValue: Any {
         switch self {
         case .shareAppDynamicLink:
-            return "https://covid19cz.page.link/share"
+            return defaultLocalValue(withKey: "shareAppDynamicLink")
 
         case .helpMarkdown:
-            return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpMarkdownBackup")
+            return localValue(forResource: "Help", withExtension: "strings", withKey: "helpMarkdown")
         case .helpJson:
             return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpJsonBackup")
 
         case .minSupportedVersion:
             return Version("2.1.0")
         case .unsupportedDeviceLink:
-            return "https://koronavirus.mzcr.cz"
+            return defaultLocalValue(withKey: "unsupportedDeviceLink")
         case .shouldCheckOSVersion:
             return true
 
         case .exposureBannerTitle:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "encounterWarningDefault")
+            return defaultLocalValue(withKey: "encounterWarning")
 
         case .riskyEncountersTitle:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersTitleDefault")
+            return defaultLocalValue(withKey: "riskyEncountersTitle")
         case .riskyEncountersWithSymptoms:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithSymptomsDefault")
+            return defaultLocalValue(withKey: "riskyEncountersWithSymptoms")
         case .riskyEncountersWithoutSymptoms:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "riskyEncountersWithoutSymptomsDefault")
+            return defaultLocalValue(withKey: "riskyEncountersWithoutSymptoms")
 
         case .symptomsContentJson:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "symptomsContentJsonDefault")
+            return defaultLocalValue(withKey: "symptomsContentJson")
         case .preventionContentJson:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "preventionContentJsonDefault")
+            return defaultLocalValue(withKey: "preventionContentJson")
         case .contactsContentJson:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "contactsContentJsonDefault")
+            return defaultLocalValue(withKey: "contactsContentJson")
         case .exposureHelpContentJson:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "exposureHelpContentJsonDefault")
+            return defaultLocalValue(withKey: "exposureHelpContentJson")
 
         case .currentMeasuresUrl:
-            return "https://koronavirus.mzcr.cz/aktualni-opatreni/"
+            return defaultLocalValue(withKey: "currentMeasuresUrl")
         case .conditionsOfUseUrl:
-            return "https://erouska.cz/podminky-pouzivani"
+            return defaultLocalValue(withKey: "conditionsOfUseUrl")
 
         case .noEncounterHeader:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterHeaderDefault")
+            return defaultLocalValue(withKey: "noEncounterHeader")
         case .noEncounterBody:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "noEncounterBodyDefault")
+            return defaultLocalValue(withKey: "noEncounterBody")
 
         case .exposureUITitle:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "exposureUITitleDefault")
+            return defaultLocalValue(withKey: "exposureUITitle")
         case .symptomsUITitle:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "symptomsUITitleDefault")
+            return defaultLocalValue(withKey: "symptomsUITitle")
         case .spreadPreventionUITitle:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "spreadPreventionUITitleDefault")
+            return defaultLocalValue(withKey: "spreadPreventionUITitle")
         case .recentExposuresUITitle:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "recentExposuresUITitleDefault")
+            return defaultLocalValue(withKey: "recentExposuresUITitle")
 
         case .chatBotLink:
-            return "https://erouska.cz/#chat-open"
+            return defaultLocalValue(withKey: "chatBotLink")
 
         case .verificationServerApiKey:
             return ""
@@ -166,8 +166,12 @@ enum RemoteConfigValueKey: String, CaseIterable {
             return ServerConfiguration.development
             #endif
         case .appleExposureConfiguration:
-            return "{\"factorHigh\":0.17,\"factorStandard\":1,\"factorLow\":1.5,\"lowerThreshold\":55,\"higherThreshold\":63,\"triggerThreshold\":15}"
+            return defaultLocalValue(withKey: "appleExposureConfiguration")
         }
+    }
+
+    private func defaultLocalValue(withKey key: String) -> String {
+        return localValue(forResource: "RemoteConfig", withExtension: "strings", withKey: key)
     }
 
     private func localValue(forResource resource: String, withExtension extension: String, withKey key: String) -> String {
