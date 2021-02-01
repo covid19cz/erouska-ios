@@ -28,6 +28,10 @@
 		80182854258134E5000B0EE7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 80182853258134E5000B0EE7 /* FirebaseAuth */; };
 		801B54C0243C624700A5D81E /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801B54BF243C624700A5D81E /* KeychainService.swift */; };
 		801C8FE9253FFD56002F303F /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 801C8FE8253FFD56002F303F /* RxRealm */; };
+		8020F24425C47A05000E0521 /* SendNoCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F24325C47A05000E0521 /* SendNoCodeVC.swift */; };
+		8020F24525C47A05000E0521 /* SendNoCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F24325C47A05000E0521 /* SendNoCodeVC.swift */; };
+		8020F24925C47A0C000E0521 /* SendNoCodeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F24825C47A0C000E0521 /* SendNoCodeVM.swift */; };
+		8020F24A25C47A0C000E0521 /* SendNoCodeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020F24825C47A0C000E0521 /* SendNoCodeVM.swift */; };
 		802AFE4425135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
 		802AFE4525135BC0004954AF /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802AFE4325135BC0004954AF /* Notifications.swift */; };
 		803669BA25C322B200EE2A96 /* Help.strings in Resources */ = {isa = PBXBuildFile; fileRef = 803669B525C322B200EE2A96 /* Help.strings */; };
@@ -282,6 +286,8 @@
 /* Begin PBXFileReference section */
 		4649848424201E4600A858A9 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		801B54BF243C624700A5D81E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		8020F24325C47A05000E0521 /* SendNoCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNoCodeVC.swift; sourceTree = "<group>"; };
+		8020F24825C47A0C000E0521 /* SendNoCodeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNoCodeVM.swift; sourceTree = "<group>"; };
 		802AFE4325135BC0004954AF /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		803669B625C322B200EE2A96 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Help.strings; sourceTree = "<group>"; };
 		803669B725C322B200EE2A96 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Help.strings; sourceTree = "<group>"; };
@@ -757,6 +763,8 @@
 				80D2345824E320D700F684AA /* SendReportsVM.swift */,
 				80BF9C252424D55800150108 /* SendResultVC.swift */,
 				80E7C2BC2551686F003DE8DC /* SendResultVM.swift */,
+				8020F24325C47A05000E0521 /* SendNoCodeVC.swift */,
+				8020F24825C47A0C000E0521 /* SendNoCodeVM.swift */,
 			);
 			path = "Send Reports";
 			sourceTree = "<group>";
@@ -1209,6 +1217,7 @@
 				8075EDC0242A613F001D9DCD /* AppSettings.swift in Sources */,
 				D6231C9D24E400B10023BDC8 /* RiskyEncountersListVM.swift in Sources */,
 				8054C0DA24200E91008907B8 /* LogController.swift in Sources */,
+				8020F24425C47A05000E0521 /* SendNoCodeVC.swift in Sources */,
 				D6231CA524E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				807D48E8253DE1DD000C826E /* RiskyEncountersDetailVC.swift in Sources */,
 				80FC71C0247718C700F86389 /* ExposureEntities.swift in Sources */,
@@ -1222,6 +1231,7 @@
 				80D2345324E31DFF00F684AA /* SendReportsVC.swift in Sources */,
 				D6340C6B24C5A27700E550A1 /* Device.swift in Sources */,
 				80CA44B6244ADA44008E22F8 /* Localization.swift in Sources */,
+				8020F24925C47A0C000E0521 /* SendNoCodeVM.swift in Sources */,
 				80B94555242B7B460052CD9F /* ActiveAppVM.swift in Sources */,
 				804E171125828673009D5E24 /* Analytics.swift in Sources */,
 				8054C0B1241D492F008907B8 /* AppDelegate.swift in Sources */,
@@ -1344,6 +1354,7 @@
 				8083D8D1244640A0007FA4E9 /* TabBarController.swift in Sources */,
 				D61DFE5D24C1B03F002E1B2E /* ForceUpdateVM.swift in Sources */,
 				FF2F0DBD2449AFA60062A7F9 /* Color.swift in Sources */,
+				8020F24525C47A05000E0521 /* SendNoCodeVC.swift in Sources */,
 				D6CD28ED24CF24DD005847AA /* ExposurePermissionVC.swift in Sources */,
 				D6231CC924F52FB70023BDC8 /* CurrentDataVM.swift in Sources */,
 				D6CD28EF24CF24DD005847AA /* FirstActivationVM.swift in Sources */,
@@ -1367,6 +1378,7 @@
 				D610103425448E47007B01CF /* ActiveAppSectionView.swift in Sources */,
 				D65E57DA24D056D6000F2402 /* NewsPageView.swift in Sources */,
 				80026D9524FE491300BBDB36 /* ServerConfiguration.swift in Sources */,
+				8020F24A25C47A0C000E0521 /* SendNoCodeVM.swift in Sources */,
 				80E7C2C42551701D003DE8DC /* Diagnosis.swift in Sources */,
 				D6231CA624E400C70023BDC8 /* PreventTransmissionVM.swift in Sources */,
 				D61DFE6424C1BD2C002E1B2E /* ForceOSUpdateVM.swift in Sources */,

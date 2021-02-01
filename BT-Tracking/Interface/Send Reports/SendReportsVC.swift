@@ -98,7 +98,7 @@ final class SendReportsVC: UIViewController {
     }
 
     @IBAction private func noCodeAction() {
-        
+        perform(segue: StoryboardSegue.SendReports.noCode)
     }
 
     @IBAction private func closeAction() {

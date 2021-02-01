@@ -34,6 +34,7 @@ internal enum StoryboardSegue {
     case showDetail
   }
   internal enum SendReports: String, SegueType {
+    case noCode
     case result
   }
 }

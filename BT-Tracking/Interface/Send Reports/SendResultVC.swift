@@ -11,6 +11,12 @@ import StoreKit
 
 final class SendResultVC: UIViewController {
 
+    // MARK: -
+
+    var viewModel: SendResultVM = .standard
+
+    private var diagnosis: Diagnosis?
+
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -20,10 +26,6 @@ final class SendResultVC: UIViewController {
     @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var closeButton: Button!
-
-    var viewModel: SendResultVM = .standard
-
-    private var diagnosis: Diagnosis?
 
     // MARK: -
 
