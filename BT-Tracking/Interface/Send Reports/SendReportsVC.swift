@@ -30,6 +30,8 @@ final class SendReportsVC: UIViewController {
 
     private var firstAppear: Bool = true
 
+    private var diagnosis: Diagnosis?
+
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -51,6 +53,10 @@ final class SendReportsVC: UIViewController {
 
         setupTextField()
         setupStrings()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.showVerifyError(.tokenError(.invalidRequest, .codeExpired))
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -115,6 +121,14 @@ final class SendReportsVC: UIViewController {
 
     private func resultErrorAction(code: String, message: String? = nil) {
         perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.error(code, message))
+    }
+
+    private func askForNewCodeAction() {
+        if Diagnosis.canSendMail {
+            diagnosis = Diagnosis(showFromController: self, screenName: .sendCode, kind: .error(nil))
+        } else if let URL = URL(string: "mailto:info@erouska.cz") {
+            openURL(URL: URL)
+        }
     }
 
 }
@@ -303,7 +317,8 @@ private extension SendReportsVC {
                     okHandler: { [weak self] in
                         self?.codeTextField.text = nil
                         self?.codeTextField.becomeFirstResponder()
-                    }
+                    },
+                    action: (L10n.dataListSendErrorExpiredCodeAction, { [weak self] in self?.askForNewCodeAction() })
                 )
             default:
                 resultErrorAction(code: "\(status.rawValue)-" + code.rawValue, message: error.localizedDescription)

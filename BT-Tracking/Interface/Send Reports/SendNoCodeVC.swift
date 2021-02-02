@@ -34,7 +34,7 @@ final class SendNoCodeVC: UIViewController {
 
     @IBAction private func supportAction() {
         if Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self, screenName: "O1", error: nil)
+            diagnosis = Diagnosis(showFromController: self, screenName: .sendNoCode, kind: .noCode)
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
             openURL(URL: URL)
         }

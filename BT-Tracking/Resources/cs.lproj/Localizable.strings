@@ -83,7 +83,8 @@
 "data_list_send_error_file_title" = "Nepodařilo se vytvořit soubor se setkáními";
 "data_list_send_error_wrong_code_title" = "Ověřovací kód není správně zadaný, zkuste to znovu.";
 "data_list_send_error_expired_code_title" = "Vypršela platnost ověřovacího kódu.";
-"data_list_send_error_expired_code_message" = "Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.";
+"data_list_send_error_expired_code_message" = "Platnost kódu vypršela nebo jste ho už jednou použili. Pro nový kód napište na info@erouska.cz.";
+"data_list_send_error_expired_code_action" = "Napsat e-mail";
 "data_list_send_error_framework_title" = "Nepodařilo se nám získat data.";
 "data_list_send_error_framework_message" = "Zkontrolujte, zda máte aktivované oznámení o kontaktech s nákazou.\nPřípadně kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
 "data_list_send_error_save_title" = "Nepodařilo se nám odeslat data na server.";

@@ -194,7 +194,9 @@ internal enum L10n {
   internal static let dataListSendErrorDisabledMessage = L10n.tr("Localizable", "data_list_send_error_disabled_message")
   /// Data nyní nemůžete odeslat
   internal static let dataListSendErrorDisabledTitle = L10n.tr("Localizable", "data_list_send_error_disabled_title")
-  /// Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.
+  /// Napsat e-mail
+  internal static let dataListSendErrorExpiredCodeAction = L10n.tr("Localizable", "data_list_send_error_expired_code_action")
+  /// Platnost kódu vypršela nebo jste ho už jednou použili. Pro nový kód napište na info@erouska.cz.
   internal static let dataListSendErrorExpiredCodeMessage = L10n.tr("Localizable", "data_list_send_error_expired_code_message")
   /// Vypršela platnost ověřovacího kódu.
   internal static let dataListSendErrorExpiredCodeTitle = L10n.tr("Localizable", "data_list_send_error_expired_code_title")

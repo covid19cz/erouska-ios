@@ -14,28 +14,53 @@ import UserNotifications
 
 final class Diagnosis: NSObject {
 
+    struct ErrorReport {
+        let code: String
+        let message: String
+    }
+
+    enum Kind {
+        case error(ErrorReport?)
+        case errorWithDiagnosis(ErrorReport?)
+        case noCode
+    }
+
+    enum ScreenName: String {
+        case exposurePermission = "A2"
+
+        case sendCode = "O1"
+        case sendCodeResult = "O4"
+        case sendNoCode = "O6"
+
+        case contact = "K1"
+    }
+
     static var canSendMail: Bool {
         MFMailComposeViewController.canSendMail()
     }
 
     private weak var showFromController: UIViewController?
 
-    private var screenName: String
+    private var screenName: ScreenName
+    private var kind: Kind
 
-    struct ErrorReport {
-        let code: String
-        let message: String
-    }
-
-    init(showFromController: UIViewController, screenName: String, error: ErrorReport? = nil) {
+    init(showFromController: UIViewController, screenName: ScreenName, kind: Kind) {
         self.showFromController = showFromController
         self.screenName = screenName
+        self.kind = kind
         super.init()
 
-        presentQuestion(error: error)
+        switch kind {
+        case .error(let error):
+            presentQuestion(error)
+        case .errorWithDiagnosis:
+            openMailController(diagnosisInfo: true)
+        default:
+            openMailController(diagnosisInfo: false)
+        }
     }
 
-    private func presentQuestion(error: ErrorReport?) {
+    private func presentQuestion(_ error: ErrorReport?) {
         let alert = UIAlertController(
             title: error == nil ? L10n.diagnosisTitleBase : L10n.diagnosisTitleError,
             message: "",
@@ -46,7 +71,7 @@ final class Diagnosis: NSObject {
                 title: L10n.diagnosisSendAttachment,
                 style: .default,
                 handler: { [weak self] _ in
-                    self?.openMailController(diagnosisInfo: true, error: error)
+                    self?.openMailController(diagnosisInfo: true)
                 }
             )
         )
@@ -55,7 +80,7 @@ final class Diagnosis: NSObject {
                 title: L10n.diagnosisSendWithoutattachment,
                 style: .default,
                 handler: { [weak self] _ in
-                    self?.openMailController(diagnosisInfo: false, error: error)
+                    self?.openMailController(diagnosisInfo: false)
                 }
             )
         )
@@ -63,10 +88,20 @@ final class Diagnosis: NSObject {
         showFromController?.present(alert, animated: true, completion: nil)
     }
 
-    private func openMailController(diagnosisInfo: Bool, error: ErrorReport?) {
+    private func openMailController(diagnosisInfo: Bool) {
         let controller = MFMailComposeViewController()
         controller.setToRecipients(["info@erouska.cz"])
         controller.mailComposeDelegate = self
+
+        let error: ErrorReport?
+        switch kind {
+        case .error(let object), .errorWithDiagnosis(let object):
+            error = object
+        case .noCode:
+            controller.setSubject("Nepřišla mi SMS s ověřovacím kódem")
+            controller.setMessageBody(noCodeText(), isHTML: false)
+            error = nil
+        }
 
         if diagnosisInfo {
             UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
@@ -82,6 +117,18 @@ final class Diagnosis: NSObject {
         } else {
             showFromController?.present(controller, animated: true, completion: nil)
         }
+    }
+
+    private func noCodeText() -> String {
+        return """
+        Milý týme eRoušky,
+        mám pozitivní test na COVID-19 a nepřišla mi SMS s ověřovacím kódem pro eRoušku.
+        Celé jméno uvedené na žádance o test:
+        Telefonní číslo uvedené na žádance o test:
+        Datum výsledku testů:
+        Odběrové místo / laboratoř, ze které mi přišly výsledky testu:
+        Typ testu (PCR/antigen):
+        """
     }
 
     private func diagnosisText(error: ErrorReport?, notitificationSettings: UNNotificationSettings) -> String {
