@@ -109,6 +109,7 @@ private extension HelpSearchVC {
             results = []
             return
         }
+        self.searchText = searchText
         let predicate = NSPredicate(format: "(line CONTAINS[cd] %@)", searchText)
 
         DispatchQueue.global(qos: .background).async { [weak self] in

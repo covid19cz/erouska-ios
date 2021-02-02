@@ -41,6 +41,10 @@ extension AppDelegate {
         }
     }
 
+    func remoteConfigBool(forKey key: RemoteConfigValueKey) -> Bool {
+        return RemoteConfig.remoteConfig()[key.keyValue].boolValue
+    }
+
     func remoteConfigInt(forKey key: RemoteConfigValueKey) -> Int {
         return RemoteConfig.remoteConfig()[key.keyValue].numberValue.intValue
     }
@@ -88,6 +92,7 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
     case appleServerConfiguration
     case appleExposureConfiguration
+    case appleIgnoreAndroid
 
     var keyValue: String {
         "v2_\(rawValue)"
@@ -160,6 +165,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
             #endif
         case .appleExposureConfiguration:
             return defaultLocalValue(withKey: "appleExposureConfiguration")
+        case .appleIgnoreAndroid:
+            return true
         }
     }
 
@@ -325,6 +332,10 @@ struct RemoteValues {
         } catch {
             return ExposureConfiguration()
         }
+    }
+
+    static var appleIgnoreAndroid: Bool {
+        AppDelegate.shared.remoteConfigBool(forKey: .appleIgnoreAndroid)
     }
 
 }

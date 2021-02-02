@@ -48,19 +48,29 @@ final class HelpVM {
         var section: Section = .init(model: "", items: [])
         var helpArticle: HelpArticle = .init(title: "", lines: [])
 
+        func addToSection(_ helpArticle: HelpArticle) {
+            if RemoteValues.appleIgnoreAndroid {
+                if !containesAndroid(helpArticle) {
+                    section.items.append(helpArticle)
+                }
+            } else {
+                section.items.append(helpArticle)
+            }
+        }
+
         for attribute in foundAttributes {
             guard let style = attribute.lineStyle as? MarkdownLineStyle else { continue }
             switch style {
             case .h1:
                 if !section.model.isEmpty {
-                    section.items.append(helpArticle)
+                    addToSection(helpArticle)
                     sections.append(section)
                     helpArticle = .init(title: "", lines: [])
                 }
                 section = .init(model: attribute.line, items: [])
             case .h2:
                 if !helpArticle.lines.isEmpty {
-                    section.items.append(helpArticle)
+                    addToSection(helpArticle)
                 }
                 helpArticle = HelpArticle(title: attribute.line, lines: [])
             default:
@@ -69,11 +79,20 @@ final class HelpVM {
         }
 
         if !section.items.contains(helpArticle) {
-            section.items.append(helpArticle)
+            addToSection(helpArticle)
         }
         sections.append(section)
 
         self.sections.accept(sections)
+    }
+
+    private func containesAndroid(_ article: HelpArticle) -> Bool {
+        if article.title.lowercased().contains("android") {
+            return true
+        } else if article.lines.contains(where: { $0.line.lowercased().contains("android") }) {
+            return true
+        }
+        return false
     }
 
 }
