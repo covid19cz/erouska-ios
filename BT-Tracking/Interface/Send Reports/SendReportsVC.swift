@@ -36,6 +36,7 @@ final class SendReportsVC: UIViewController {
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var footerLabel: UILabel!
     @IBOutlet private weak var codeTextField: UITextField!
 
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
@@ -47,16 +48,13 @@ final class SendReportsVC: UIViewController {
         super.viewDidLoad()
 
         codeTextField.textContentType = .oneTimeCode
+        footerLabel.isHidden = AppSettings.lastUploadDate == nil
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
 
         setupTextField()
         setupStrings()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.showVerifyError(.tokenError(.invalidRequest, .codeExpired))
-        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -158,6 +156,7 @@ private extension SendReportsVC {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
         headlineLabel.text = L10n.dataListSendHeadline
+        footerLabel.text = L10n.dataListSendFooter(DateFormatter.baseDateFormatter.string(from: AppSettings.lastUploadDate ?? Date()))
         codeTextField.placeholder = L10n.dataListSendPlaceholder
         actionButton.setTitle(L10n.dataListSendActionTitle)
         noCodeButton.setTitle(L10n.dataListSendNoCodeActionTitle)

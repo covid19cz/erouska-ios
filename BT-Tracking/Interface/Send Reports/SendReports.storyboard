@@ -263,10 +263,10 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-0T-yUk">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="171.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="204.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NvA-Qs-2jt">
-                                                <rect key="frame" x="20" y="10" width="374" height="145.5"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="178.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjN-iy-0lg">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="86.5"/>
@@ -275,8 +275,14 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naposledy jste upozornili ostatní 24. 12. 2020." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csA-eT-3hh">
+                                                        <rect key="frame" x="0.0" y="101.5" width="374" height="18"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ověřovací kód(povinné)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JVW-2a-xGp">
-                                                        <rect key="frame" x="0.0" y="101.5" width="374" height="44"/>
+                                                        <rect key="frame" x="0.0" y="134.5" width="374" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="gJJ-Bj-NMd"/>
                                                         </constraints>
@@ -373,6 +379,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                         <outlet property="buttonsBottomConstraint" destination="rVR-u2-a2j" id="wg6-3z-JH7"/>
                         <outlet property="buttonsView" destination="5h1-J1-hAM" id="0dB-VC-lqa"/>
                         <outlet property="codeTextField" destination="JVW-2a-xGp" id="EIG-wa-I0I"/>
+                        <outlet property="footerLabel" destination="csA-eT-3hh" id="Upb-Hb-vfm"/>
                         <outlet property="headlineLabel" destination="MjN-iy-0lg" id="b8d-JC-NmI"/>
                         <outlet property="noCodeButton" destination="Qfd-vA-HPk" id="IEw-Sb-qBY"/>
                         <outlet property="scrollView" destination="0JF-YD-BYo" id="kId-FU-enZ"/>
@@ -390,6 +397,9 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
         <namedColor name="AppEnabled">
             <color red="0.61176470588235299" green="0.792156862745098" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="separatorColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

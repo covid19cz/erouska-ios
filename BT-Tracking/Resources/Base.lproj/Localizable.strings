@@ -75,6 +75,7 @@
 "data_list_title" = "Aktuálně";
 "data_list_send_title" = "Upozornit ostatní";
 "data_list_send_headline" = "V případě potvrzené nákazy onemocněním COVID-19 obdržíte SMS zprávu obsahující ověřovací kód pro upozornění ostatních uživatelů eRoušky.";
+"data_list_send_footer" = "Naposledy jste upozornili ostatní %@.";
 "data_list_send_placeholder" = "Ověřovací kód (povinné)";
 "data_list_send_action_title" = "Ověřit a odeslat data";
 "data_list_send_no_code_action_title" = "Nemám ověřovací kód";
