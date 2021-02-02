@@ -1570,7 +1570,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1578,7 +1578,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.7;
+				MARKETING_VERSION = 2.2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska DEV Development";
@@ -1596,7 +1596,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1604,7 +1604,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.7;
+				MARKETING_VERSION = 2.2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska.dev;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska DEV Development";
@@ -1621,7 +1621,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking-Debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1629,7 +1629,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.7;
+				MARKETING_VERSION = 2.2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
@@ -1648,7 +1648,7 @@
 				CODE_SIGN_ENTITLEMENTS = "BT-Tracking/Supporting Files/BT-Tracking.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PDX4N72JDU;
 				INFOPLIST_FILE = "BT-Tracking/Supporting Files/Info-Prod.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1656,7 +1656,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.7;
+				MARKETING_VERSION = 2.2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = cz.covid19cz.erouska;
 				PRODUCT_NAME = eRouska;
 				PROVISIONING_PROFILE_SPECIFIER = "eRouska Development";
