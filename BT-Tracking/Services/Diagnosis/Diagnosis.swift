@@ -133,7 +133,7 @@ final class Diagnosis: NSObject {
 
     private func diagnosisText(error: ErrorReport?, notitificationSettings: UNNotificationSettings) -> String {
         let device = Device.current
-        let exposureService = AppDelegate.dependency.exposureService
+        let exposureService = AppDelegate.dependency.exposure
         let connection = try? Reachability().connection
 
         let formatter = DateFormatter.baseDateTimeFormatter

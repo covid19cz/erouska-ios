@@ -41,8 +41,16 @@ extension AppDelegate {
         }
     }
 
+    func remoteConfigBool(forKey key: RemoteConfigValueKey) -> Bool {
+        return RemoteConfig.remoteConfig()[key.keyValue].boolValue
+    }
+
     func remoteConfigInt(forKey key: RemoteConfigValueKey) -> Int {
         return RemoteConfig.remoteConfig()[key.keyValue].numberValue.intValue
+    }
+
+    func remoteConfigData(forKey key: RemoteConfigValueKey) -> Data {
+        return RemoteConfig.remoteConfig()[key.keyValue].dataValue
     }
 
     func remoteConfigString(forKey key: RemoteConfigValueKey) -> String {
@@ -54,6 +62,7 @@ enum RemoteConfigValueKey: String, CaseIterable {
     case shareAppDynamicLink
 
     case helpMarkdown
+    case helpJson
 
     case minSupportedVersion
     case unsupportedDeviceLink
@@ -88,6 +97,7 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
     case appleServerConfiguration
     case appleExposureConfiguration
+    case appleIgnoreAndroid
 
     var keyValue: String {
         "v2_\(rawValue)"
@@ -100,6 +110,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
         case .helpMarkdown:
             return localValue(forResource: "Help", withExtension: "strings", withKey: "helpMarkdown")
+        case .helpJson:
+            return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpJsonBackup")
 
         case .minSupportedVersion:
             return Version("2.1.0")
@@ -160,6 +172,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
             #endif
         case .appleExposureConfiguration:
             return defaultLocalValue(withKey: "appleExposureConfiguration")
+        case .appleIgnoreAndroid:
+            return true
         }
     }
 
@@ -190,6 +204,11 @@ struct RemoteValues {
     /// Help markdown
     static var helpMarkdown: String {
         AppDelegate.shared.remoteConfigString(forKey: .helpMarkdown)
+    }
+
+    /// Help in json and markdown
+    static var helpJson: Data {
+        AppDelegate.shared.remoteConfigData(forKey: .helpJson)
     }
 
     /// Min supported app version. Used for force update.
@@ -325,6 +344,10 @@ struct RemoteValues {
         } catch {
             return ExposureConfiguration()
         }
+    }
+
+    static var appleIgnoreAndroid: Bool {
+        AppDelegate.shared.remoteConfigBool(forKey: .appleIgnoreAndroid)
     }
 
 }

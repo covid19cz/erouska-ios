@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import BackgroundTasks
+import FirebaseAuth
 import FirebaseFunctions
 import FirebaseCrashlytics
 
@@ -223,8 +224,14 @@ private extension BackgroundService {
 
         try? ExposureList.add(exposures, detectionDate: Date())
 
-        let data = ["idToken": KeychainService.token]
-        AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+        Auth.auth().currentUser?.getIDToken(completion: { token, error in
+            if let token = token {
+                let data = ["idToken": token]
+                AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+            } else if let error = error {
+                Crashlytics.crashlytics().record(error: error)
+            }
+        })
 
         #if !PROD || DEBUG
 

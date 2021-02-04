@@ -178,10 +178,10 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
             </objects>
             <point key="canvasLocation" x="-1326" y="-31"/>
         </scene>
-        <!--Help-->
+        <!--HowItWorksVC-->
         <scene sceneID="Nzr-xG-ici">
             <objects>
-                <viewControllerPlaceholder storyboardName="Help" id="1kz-Ak-A0u" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="HowItWorksVC" id="1kz-Ak-A0u" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="wdB-M2-xGK"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Vp-hc-Yex" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

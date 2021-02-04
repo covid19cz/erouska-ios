@@ -1,5 +1,5 @@
 //
-//  HelpArticleVC.swift
+//  HelpQuestionVC.swift
 //  BT-Tracking
 //
 //  Created by Lukáš Foldýna on 21/10/2020.
@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import SwiftyMarkdown
 
-final class HelpArticleVC: MarkdownController {
+final class HelpQuestionVC: MarkdownController {
 
     @IBOutlet private weak var stackView: UIStackView!
 
