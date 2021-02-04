@@ -33,6 +33,9 @@ final class Diagnosis: NSObject {
         case sendNoCode = "O6"
 
         case contact = "K1"
+
+        case help = "N1"
+        case howItWorks = "N3"
     }
 
     static var canSendMail: Bool {
