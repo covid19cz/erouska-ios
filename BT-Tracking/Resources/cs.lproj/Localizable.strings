@@ -206,7 +206,7 @@
 "diagnosis_cancel" = "Zavřít";
 "howitworks_title" = "Jak eRouška funguje";
 "howitworks_subtitle" = "Zjistěte více o tom, jak aplikace funguje";
-"howitworks_headline" = "eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19. Při používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.";
+"howitworks_headline" = "eRouška vás upozorní na riziková setkání s ostatními uživateli eRoušky, které jste potkali v posledních 14 dnech a potvrdilo se u nich onemocnění COVID-19.\n\nPři používání aplikace eRouška nikdo nezná vaši polohu a žádné jiné údaje o vás nebo telefonu.";
 "howitworks_entry1.title" = "Telefony s eRouškou čekají na setkání";
 "howitworks_entry1.body" = "Když se potkají telefony s aplikací eRouška, vymění si několik základních informací o setkání. Zaznamenají si den setkání, vzdálenost mezi sebou a anonymní označení telefonu. Tato setkání si pamatují 14 dní.";
 "howitworks_entry2.title" = "Když se potvrdí COVID-19";
@@ -218,8 +218,8 @@
 "howitworks_entry5.title" = "Vyhodnocení rizikových setkání";
 "howitworks_entry5.body" = "eRoušky riziková setkání vyhodnotí v případě, že byly s nakaženým v kontaktu na vzdálenost bližší než 2 metry a po dobu alespoň 15 minut od okamžiku, kdy byl podle dostupných informací nakažlivým.";
 "howitworks_entry6.title" = "Zobrazení varování";
-"howitworks_entry6.body" = "Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozonění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.";
+"howitworks_entry6.body" = "Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozonění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.";
 "howitworks_mail_support" = "Napsat e-mail na podporu";
 "howitworks_close" = "Zavřít";
-"howitworks_banner_title" = "Máte další dotazy nebo vám eRouška nefunguje správně? Napište nám.";
+"howitworks_banner_title" = "Zajímá vás, jak eRouška funguje?";
 "howitworks_banner_more_info" = "Zjistit více";
