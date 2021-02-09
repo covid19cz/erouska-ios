@@ -93,7 +93,7 @@ struct CovidCurrentData: Decodable {
     private enum CodingKeys: String, CodingKey {
         case testsTotal, testsIncrease, testsIncreaseDate
         case pcrTestsTotal, pcrTestsIncrease, pcrTestsIncreaseDate
-        case antigenTestsTotal, antigenTestsIncrease, antigenTestsIncreaseDate = "antigenTestsDate"
+        case antigenTestsTotal, antigenTestsIncrease, antigenTestsIncreaseDate
         case confirmedCasesTotal, confirmedCasesIncrease, confirmedCasesIncreaseDate
         case activeCasesTotal, curedTotal, deceasedTotal, currentlyHospitalizedTotal
     }
