@@ -11,6 +11,12 @@ import StoreKit
 
 final class SendResultVC: UIViewController {
 
+    // MARK: -
+
+    var viewModel: SendResultVM = .standard
+
+    private var diagnosis: Diagnosis?
+
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -20,10 +26,6 @@ final class SendResultVC: UIViewController {
     @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var closeButton: Button!
-
-    var viewModel: SendResultVM = .standard
-
-    private var diagnosis: Diagnosis?
 
     // MARK: -
 
@@ -69,9 +71,9 @@ final class SendResultVC: UIViewController {
     @IBAction private func mailAction() {
         if Diagnosis.canSendMail {
             if case let .error(code, message) = viewModel {
-                diagnosis = Diagnosis(showFromController: self, screenName: "O1", error: .init(code: code, message: message ?? "None"))
+                diagnosis = Diagnosis(showFromController: self, screenName: .sendCodeResult, kind: .error(.init(code: code, message: message ?? "None")))
             } else {
-                diagnosis = Diagnosis(showFromController: self, screenName: "O1", error: nil)
+                diagnosis = Diagnosis(showFromController: self, screenName: .sendCodeResult, kind: .error(nil))
             }
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
             openURL(URL: URL)

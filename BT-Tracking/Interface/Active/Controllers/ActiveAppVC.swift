@@ -250,6 +250,9 @@ final class ActiveAppVC: UIViewController {
     }
 
     private func sendReportsAction() {
+        #if DEBUG
+        perform(segue: StoryboardSegue.Active.sendReport)
+        #else
         if viewModel.state == .disabledExposures {
             showAlert(
                 title: L10n.dataListSendErrorDisabledTitle,
@@ -260,6 +263,7 @@ final class ActiveAppVC: UIViewController {
         } else {
             perform(segue: StoryboardSegue.Active.sendReport)
         }
+        #endif
     }
 
     private func riskyEncountersAction() {

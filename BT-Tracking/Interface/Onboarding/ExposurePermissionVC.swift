@@ -130,8 +130,8 @@ private extension ExposurePermissionVC {
                 if Diagnosis.canSendMail {
                     self.diagnosis = Diagnosis(
                         showFromController: self,
-                        screenName: "A2",
-                        error: .init(code: "\(code.rawValue)", message: error.localizedDescription)
+                        screenName: .exposurePermission,
+                        kind: .error(.init(code: "\(code.rawValue)", message: error.localizedDescription))
                     )
                 } else if let URL = URL(string: "mailto:info@erouska.cz") {
                     self.openURL(URL: URL)

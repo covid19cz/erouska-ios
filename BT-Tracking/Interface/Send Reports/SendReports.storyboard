@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bzh-9z-YpA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bzh-9z-YpA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -134,7 +134,106 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSz-x2-r7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857.9710144927537" y="845.75892857142856"/>
+            <point key="canvasLocation" x="1874" y="648"/>
+        </scene>
+        <!--Nemám ověřovací kód-->
+        <scene sceneID="ANA-yI-FFq">
+            <objects>
+                <viewController id="beP-DC-myN" customClass="SendNoCodeVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M4F-vy-lBz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MO-EH-Xi8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GnK-33-yrA">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="v1z-1x-QMX">
+                                                <rect key="frame" x="20" y="10" width="374" height="542"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Máte pozitivní test a nepřišla vám SMS pro eRoušku? Napište si o náhradní kód na info@erouska.cz." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5l-ED-C6K">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="64.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-lk-QjB" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="84.5" width="374" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="z6l-t5-hDg"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <state key="normal" title="Napsat e-mail">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="sendReportsAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="UlN-2P-epa"/>
+                                                            <action selector="supportAction" destination="beP-DC-myN" eventType="touchUpInside" id="tfW-58-kpP"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQZ-76-9fe">
+                                                        <rect key="frame" x="0.0" y="148.5" width="374" height="1"/>
+                                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="Vpl-eJ-cIv"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIi-cv-g31">
+                                                        <rect key="frame" x="0.0" y="169.5" width="374" height="372.5"/>
+                                                        <string key="text">Zajímá vás, jak odesílání kódu funguje? V případě, že máte pozitivní výsledek testu na COVID-19, měl by vám přijít výsledek testu v SMS od testovací laboratoře. Ta výsledky současně odesílá do centrálního informačního systému Ministerstva zdravotnictví.
+Poté, co se informace z informačního systému propíšou do systému hygieny, se odesílají automatické SMS eRoušky s ověřovacími kódy.
+Pokud se výsledky z laboratoře nestihnou propsat do systému hygieny do 22:00, může vám SMS s ověřovacím kódem přijít až následující den.
+Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišla SMS s pozitivními výsledky z laboratoře, napište nám na info@erouska.cz.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="v1z-1x-QMX" firstAttribute="top" secondItem="GnK-33-yrA" secondAttribute="top" constant="10" id="PnC-CS-SZ0"/>
+                                            <constraint firstAttribute="bottom" secondItem="v1z-1x-QMX" secondAttribute="bottom" constant="16" id="ZVg-7t-Cvz"/>
+                                            <constraint firstItem="v1z-1x-QMX" firstAttribute="leading" secondItem="GnK-33-yrA" secondAttribute="leadingMargin" id="m3b-bu-TP4"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="v1z-1x-QMX" secondAttribute="trailing" id="qYK-xC-KPH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="bottom" secondItem="aLf-2m-rUC" secondAttribute="bottom" id="Scv-kc-t2K"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="top" secondItem="aLf-2m-rUC" secondAttribute="top" id="VYU-oF-846"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="centerX" secondItem="bRC-8B-c8i" secondAttribute="centerX" id="bnG-eC-6h5"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="width" secondItem="bRC-8B-c8i" secondAttribute="width" id="iNv-J8-1A4"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="leading" secondItem="aLf-2m-rUC" secondAttribute="leading" id="p9O-Ih-5w2"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="trailing" secondItem="aLf-2m-rUC" secondAttribute="trailing" id="seG-AP-qRR"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="aLf-2m-rUC"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="bRC-8B-c8i"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uEl-eA-Xg9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8MO-EH-Xi8" firstAttribute="top" secondItem="M4F-vy-lBz" secondAttribute="top" id="5ZL-rC-bff"/>
+                            <constraint firstItem="8MO-EH-Xi8" firstAttribute="leading" secondItem="uEl-eA-Xg9" secondAttribute="leading" id="bty-0g-7Au"/>
+                            <constraint firstItem="8MO-EH-Xi8" firstAttribute="trailing" secondItem="uEl-eA-Xg9" secondAttribute="trailing" id="dJA-0S-Dsr"/>
+                            <constraint firstItem="uEl-eA-Xg9" firstAttribute="bottom" secondItem="8MO-EH-Xi8" secondAttribute="bottom" id="tRZ-Xa-LTj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Nemám ověřovací kód" id="ShV-Au-GyT"/>
+                    <connections>
+                        <outlet property="actionButton" destination="LgL-lk-QjB" id="tmj-nN-Am7"/>
+                        <outlet property="bodyLabel" destination="ZIi-cv-g31" id="PeQ-bb-hqc"/>
+                        <outlet property="headlineLabel" destination="V5l-ED-C6K" id="7Dh-aS-YgF"/>
+                        <outlet property="scrollView" destination="8MO-EH-Xi8" id="bw4-ul-SKf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Tm-Lp-nvn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1873.913043478261" y="1326.5625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eLS-8v-LTC">
@@ -164,10 +263,10 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-0T-yUk">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="171.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="204.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NvA-Qs-2jt">
-                                                <rect key="frame" x="20" y="10" width="374" height="145.5"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="178.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjN-iy-0lg">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="86.5"/>
@@ -176,8 +275,14 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naposledy jste upozornili ostatní 24. 12. 2020." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csA-eT-3hh">
+                                                        <rect key="frame" x="0.0" y="101.5" width="374" height="18"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ověřovací kód(povinné)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JVW-2a-xGp">
-                                                        <rect key="frame" x="0.0" y="101.5" width="374" height="44"/>
+                                                        <rect key="frame" x="0.0" y="134.5" width="374" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="gJJ-Bj-NMd"/>
                                                         </constraints>
@@ -211,28 +316,47 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                 <viewLayoutGuide key="frameLayoutGuide" id="2e9-tV-4A9"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5h1-J1-hAM" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="752" width="414" height="94"/>
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-pA-DIv" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="50" width="374" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="imW-cX-YzH"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <state key="normal" title="Ověřit a odeslat data">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sendReportsAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="uiY-Ba-5M6"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="65z-xZ-ioG">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-pA-DIv" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="imW-cX-YzH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Ověřit a odeslat data">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sendReportsAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="uiY-Ba-5M6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfd-vA-HPk" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="DBn-An-oQE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Nemám ověřovací kód">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="noCodeAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="U9m-0I-95p"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="kZu-pA-DIv" firstAttribute="top" secondItem="5h1-J1-hAM" secondAttribute="top" constant="50" id="Zqx-gN-ete"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="kZu-pA-DIv" secondAttribute="trailing" id="gCa-Jt-cgi"/>
-                                    <constraint firstItem="kZu-pA-DIv" firstAttribute="leading" secondItem="5h1-J1-hAM" secondAttribute="leadingMargin" id="vCs-ML-Nrr"/>
-                                    <constraint firstAttribute="bottom" secondItem="kZu-pA-DIv" secondAttribute="bottom" id="xsY-gX-DCL"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="65z-xZ-ioG" secondAttribute="trailing" id="9uC-pB-8V1"/>
+                                    <constraint firstAttribute="bottom" secondItem="65z-xZ-ioG" secondAttribute="bottom" id="Pqa-SH-QWp"/>
+                                    <constraint firstItem="65z-xZ-ioG" firstAttribute="top" secondItem="5h1-J1-hAM" secondAttribute="top" id="iph-av-a5E"/>
+                                    <constraint firstItem="65z-xZ-ioG" firstAttribute="leading" secondItem="5h1-J1-hAM" secondAttribute="leadingMargin" id="zl3-cg-5am"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -255,9 +379,12 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                         <outlet property="buttonsBottomConstraint" destination="rVR-u2-a2j" id="wg6-3z-JH7"/>
                         <outlet property="buttonsView" destination="5h1-J1-hAM" id="0dB-VC-lqa"/>
                         <outlet property="codeTextField" destination="JVW-2a-xGp" id="EIG-wa-I0I"/>
+                        <outlet property="footerLabel" destination="csA-eT-3hh" id="Upb-Hb-vfm"/>
                         <outlet property="headlineLabel" destination="MjN-iy-0lg" id="b8d-JC-NmI"/>
+                        <outlet property="noCodeButton" destination="Qfd-vA-HPk" id="IEw-Sb-qBY"/>
                         <outlet property="scrollView" destination="0JF-YD-BYo" id="kId-FU-enZ"/>
                         <segue destination="DYf-Vd-0PA" kind="show" identifier="result" id="kRd-QM-Rd2"/>
+                        <segue destination="beP-DC-myN" kind="show" identifier="noCode" id="tRN-mY-xnM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAZ-K8-4FE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -270,6 +397,12 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
         <namedColor name="AppEnabled">
             <color red="0.61176470588235299" green="0.792156862745098" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

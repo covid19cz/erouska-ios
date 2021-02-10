@@ -53,7 +53,7 @@ final class HowItWorksVC: UITableViewController {
 
     @IBAction private func mailAction() {
         if Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self, screenName: "O1", error: nil)
+            diagnosis = Diagnosis(showFromController: self, screenName: .howItWorks, kind: .error(nil))
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
             openURL(URL: URL)
         }

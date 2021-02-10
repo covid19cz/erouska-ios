@@ -194,7 +194,9 @@ internal enum L10n {
   internal static let dataListSendErrorDisabledMessage = L10n.tr("Localizable", "data_list_send_error_disabled_message")
   /// Data nyní nemůžete odeslat
   internal static let dataListSendErrorDisabledTitle = L10n.tr("Localizable", "data_list_send_error_disabled_title")
-  /// Požádejte pracovníka hygienické stanice o zaslání nové SMS zprávy s ověřovacím kódem.
+  /// Napsat e-mail
+  internal static let dataListSendErrorExpiredCodeAction = L10n.tr("Localizable", "data_list_send_error_expired_code_action")
+  /// Platnost kódu vypršela nebo jste ho už jednou použili. Pro nový kód napište na info@erouska.cz.
   internal static let dataListSendErrorExpiredCodeMessage = L10n.tr("Localizable", "data_list_send_error_expired_code_message")
   /// Vypršela platnost ověřovacího kódu.
   internal static let dataListSendErrorExpiredCodeTitle = L10n.tr("Localizable", "data_list_send_error_expired_code_title")
@@ -224,8 +226,14 @@ internal enum L10n {
   internal static let dataListSendErrorTitle = L10n.tr("Localizable", "data_list_send_error_title")
   /// Ověřovací kód není správně zadaný, zkuste to znovu.
   internal static let dataListSendErrorWrongCodeTitle = L10n.tr("Localizable", "data_list_send_error_wrong_code_title")
+  /// Naposledy jste upozornili ostatní %@.
+  internal static func dataListSendFooter(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "data_list_send_footer", String(describing: p1))
+  }
   /// V případě potvrzené nákazy onemocněním COVID-19 obdržíte SMS zprávu obsahující ověřovací kód pro upozornění ostatních uživatelů eRoušky.
   internal static let dataListSendHeadline = L10n.tr("Localizable", "data_list_send_headline")
+  /// Nemám ověřovací kód
+  internal static let dataListSendNoCodeActionTitle = L10n.tr("Localizable", "data_list_send_no_code_action_title")
   /// Ověřovací kód (povinné)
   internal static let dataListSendPlaceholder = L10n.tr("Localizable", "data_list_send_placeholder")
   /// Upozornit ostatní
@@ -248,6 +256,14 @@ internal enum L10n {
   }
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19.
   internal static let dataSendHeadline = L10n.tr("Localizable", "data_send_headline")
+  /// Zajímá vás, jak odesílání kódu funguje?\n\nV případě, že máte pozitivní výsledek testu na COVID-19, měl by vám přijít výsledek testu v SMS od testovací laboratoře. Ta výsledky současně odesílá do centrálního informačního systému Ministerstva zdravotnictví.\n\nPoté, co se informace z informačního systému propíšou do systému hygieny, se odesílají automatické SMS eRoušky s ověřovacími kódy.\n\nPokud se výsledky z laboratoře nestihnou propsat do systému hygieny do 22:00, může vám SMS s ověřovacím kódem přijít až následující den.\n\nPokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišla SMS s pozitivními výsledky z laboratoře, napište nám na info@erouska.cz.
+  internal static let dataSendNoCodeBody = L10n.tr("Localizable", "data_send_no_code_body")
+  /// Napsat e-mail
+  internal static let dataSendNoCodeButton = L10n.tr("Localizable", "data_send_no_code_button")
+  /// Máte pozitivní test a nepřišla vám SMS pro eRoušku? Napište si o náhradní kód na info@erouska.cz.
+  internal static let dataSendNoCodeHeadline = L10n.tr("Localizable", "data_send_no_code_headline")
+  /// Nemám ověřovací kód
+  internal static let dataSendNoCodeTitle = L10n.tr("Localizable", "data_send_no_code_title")
   /// Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.\n\nŘiďte se prosím pokyny hygieniků a lékařů.
   internal static let dataSendNokeysBody = L10n.tr("Localizable", "data_send_nokeys_body")
   /// eRoušku zatím používáte jen chvíli a nemá zaznamenané žádné jiné eRoušky, proto nikoho ve vašem okolí neupozorní na rizikové setkání.

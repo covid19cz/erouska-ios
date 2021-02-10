@@ -30,20 +30,25 @@ final class SendReportsVC: UIViewController {
 
     private var firstAppear: Bool = true
 
+    private var diagnosis: Diagnosis?
+
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var footerLabel: UILabel!
     @IBOutlet private weak var codeTextField: UITextField!
 
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var actionButton: Button!
+    @IBOutlet private weak var noCodeButton: Button!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         codeTextField.textContentType = .oneTimeCode
+        footerLabel.isHidden = AppSettings.lastUploadDate == nil
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
@@ -96,6 +101,10 @@ final class SendReportsVC: UIViewController {
         verifyCode(code.value)
     }
 
+    @IBAction private func noCodeAction() {
+        perform(segue: StoryboardSegue.SendReports.noCode)
+    }
+
     @IBAction private func closeAction() {
         dismiss(animated: true)
     }
@@ -110,6 +119,14 @@ final class SendReportsVC: UIViewController {
 
     private func resultErrorAction(code: String, message: String? = nil) {
         perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.error(code, message))
+    }
+
+    private func askForNewCodeAction() {
+        if Diagnosis.canSendMail {
+            diagnosis = Diagnosis(showFromController: self, screenName: .sendCode, kind: .error(nil))
+        } else if let URL = URL(string: "mailto:info@erouska.cz") {
+            openURL(URL: URL)
+        }
     }
 
 }
@@ -139,8 +156,10 @@ private extension SendReportsVC {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
 
         headlineLabel.text = L10n.dataListSendHeadline
+        footerLabel.text = L10n.dataListSendFooter(DateFormatter.baseDateFormatter.string(from: AppSettings.lastUploadDate ?? Date()))
         codeTextField.placeholder = L10n.dataListSendPlaceholder
         actionButton.setTitle(L10n.dataListSendActionTitle)
+        noCodeButton.setTitle(L10n.dataListSendNoCodeActionTitle)
     }
 
     // MARK: - Progress
@@ -297,7 +316,8 @@ private extension SendReportsVC {
                     okHandler: { [weak self] in
                         self?.codeTextField.text = nil
                         self?.codeTextField.becomeFirstResponder()
-                    }
+                    },
+                    action: (L10n.dataListSendErrorExpiredCodeAction, { [weak self] in self?.askForNewCodeAction() })
                 )
             default:
                 resultErrorAction(code: "\(status.rawValue)-" + code.rawValue, message: error.localizedDescription)
