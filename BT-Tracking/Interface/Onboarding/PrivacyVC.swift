@@ -76,8 +76,7 @@ private extension PrivacyVC {
                 Auth.auth().signIn(withCustomToken: customToken) { [weak self] result, error in
                     if result != nil, result?.user.uid.isEmpty == false {
                         Auth.auth().currentUser?.getIDToken(completion: { token, error in
-                            if let token = token {
-                                KeychainService.token = token
+                            if token != nil {
                                 AppSettings.activated = true
                                 AppDelegate.shared.window?.rootViewController = StoryboardScene.Active.initialScene.instantiate()
                             } else {

@@ -49,6 +49,10 @@ extension AppDelegate {
         return RemoteConfig.remoteConfig()[key.keyValue].numberValue.intValue
     }
 
+    func remoteConfigData(forKey key: RemoteConfigValueKey) -> Data {
+        return RemoteConfig.remoteConfig()[key.keyValue].dataValue
+    }
+
     func remoteConfigString(forKey key: RemoteConfigValueKey) -> String {
         return RemoteConfig.remoteConfig()[key.keyValue].stringValue ?? ""
     }
@@ -58,6 +62,7 @@ enum RemoteConfigValueKey: String, CaseIterable {
     case shareAppDynamicLink
 
     case helpMarkdown
+    case helpJson
 
     case minSupportedVersion
     case unsupportedDeviceLink
@@ -105,6 +110,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
         case .helpMarkdown:
             return localValue(forResource: "Help", withExtension: "strings", withKey: "helpMarkdown")
+        case .helpJson:
+            return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpJsonBackup")
 
         case .minSupportedVersion:
             return Version("2.1.0")
@@ -197,6 +204,11 @@ struct RemoteValues {
     /// Help markdown
     static var helpMarkdown: String {
         AppDelegate.shared.remoteConfigString(forKey: .helpMarkdown)
+    }
+
+    /// Help in json and markdown
+    static var helpJson: Data {
+        AppDelegate.shared.remoteConfigData(forKey: .helpJson)
     }
 
     /// Min supported app version. Used for force update.

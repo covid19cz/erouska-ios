@@ -102,7 +102,7 @@ final class ActiveAppVM {
     private(set) var exposureToShow: Observable<Exposure?>
     private let disposeBag = DisposeBag()
 
-    let exposureService: ExposureServicing = AppDelegate.dependency.exposureService
+    let exposureService: ExposureServicing = AppDelegate.dependency.exposure
     let reporter: ReportServicing = AppDelegate.dependency.reporter
     let backgroundService = AppDelegate.dependency.background
     let riskyEncounterDateToShow: Observable<Date?>

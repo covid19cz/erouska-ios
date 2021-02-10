@@ -11,7 +11,7 @@ import Foundation
 struct ExposurePermissionVM {
 
     var exposureService: ExposureServicing {
-        AppDelegate.dependency.exposureService
+        AppDelegate.dependency.exposure
     }
 
 }

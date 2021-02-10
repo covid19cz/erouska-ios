@@ -12,20 +12,6 @@ import UIKit
 
 struct KeychainService {
 
-    static var token: String? {
-        get {
-            let value = stringValue(for: .token)
-            return value?.isEmpty == true ? nil : value
-        }
-        set {
-            if let value = newValue {
-                saveValue(with: .token, value: value)
-            } else {
-                removeValue(with: .token)
-            }
-        }
-    }
-
     // MARK: - Deprecated
     static var BUID: String? {
         get {

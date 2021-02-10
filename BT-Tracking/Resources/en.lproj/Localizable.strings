@@ -7,7 +7,7 @@
 "ok" = "OK";
 "error" = "Error";
 "debug" = "Test";
-"about" = "About";
+"about" = "About application";
 "close" = "Close";
 "turn_on" = "Enable";
 "version" = "version";
@@ -118,7 +118,7 @@
 "help_title" = "How it works";
 "help_chatbot" = "Chat with Anežka – eRouška support";
 "help_tab_title" = "Help";
-"about_title" = "About";
+"about_title" = "About application";
 "about_info" = "Starting with version 2.0, the eRouška application is developed by the Ministry of Health in collaboration with the National agency for communication and information technologies (NAKIT). Earlier versions of eRouška were developed by a team of volunteers from the COVID19CZ community. Most of original eRouška developers continue to work on newer versions in the NAKIT team.\n\nYou can find more information about personal data processing and other conditions of use in Terms and conditions.";
 "about_info_link" = "Terms and conditions";
 "force_update_title" = "Important eRouška update";
