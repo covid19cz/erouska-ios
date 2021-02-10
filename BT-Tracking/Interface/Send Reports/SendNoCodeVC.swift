@@ -29,7 +29,7 @@ final class SendNoCodeVC: UIViewController {
         title = L10n.dataSendNoCodeTitle
         headlineLabel.text = L10n.dataSendNoCodeHeadline
         bodyLabel.text = L10n.dataSendNoCodeBody
-        actionButton.setTitle(L10n.dataListSendNoCodeActionTitle)
+        actionButton.setTitle(L10n.dataSendNoCodeActionTitle)
     }
 
     @IBAction private func supportAction() {

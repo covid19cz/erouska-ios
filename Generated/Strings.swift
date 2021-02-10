@@ -256,6 +256,8 @@ internal enum L10n {
   }
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19.
   internal static let dataSendHeadline = L10n.tr("Localizable", "data_send_headline")
+  /// Napsat e-mail
+  internal static let dataSendNoCodeActionTitle = L10n.tr("Localizable", "data_send_no_code_action_title")
   /// Zajímá vás, jak odesílání kódu funguje?\n\nV případě, že máte pozitivní výsledek testu na COVID-19, měl by vám přijít výsledek testu v SMS od testovací laboratoře. Ta výsledky současně odesílá do centrálního informačního systému Ministerstva zdravotnictví.\n\nPoté, co se informace z informačního systému propíšou do systému hygieny, se odesílají automatické SMS eRoušky s ověřovacími kódy.\n\nPokud se výsledky z laboratoře nestihnou propsat do systému hygieny do 22:00, může vám SMS s ověřovacím kódem přijít až následující den.\n\nPokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišla SMS s pozitivními výsledky z laboratoře, napište nám na info@erouska.cz.
   internal static let dataSendNoCodeBody = L10n.tr("Localizable", "data_send_no_code_body")
   /// Napsat e-mail

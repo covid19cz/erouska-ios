@@ -78,7 +78,7 @@
 "data_list_send_footer" = "Naposledy jste upozornili ostatní %@.";
 "data_list_send_placeholder" = "Ověřovací kód (povinné)";
 "data_list_send_action_title" = "Ověřit a odeslat data";
-"data_list_send_no_code_action_title" = "Napsat e-mail";
+"data_list_send_no_code_action_title" = "Nemám ověřovací kód";
 "data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";
 "data_list_send_error_failed_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
 "data_list_send_error_file_title" = "Nepodařilo se vytvořit soubor se setkáními";
@@ -113,6 +113,7 @@
 "data_send_no_code_button" = "Napsat e-mail";
 "data_send_no_code_title" = "Nemám ověřovací kód";
 "data_send_no_code_body" = "Zajímá vás, jak odesílání kódu funguje?\n\nV případě, že máte pozitivní výsledek testu na COVID-19, měl by vám přijít výsledek testu v SMS od testovací laboratoře. Ta výsledky současně odesílá do centrálního informačního systému Ministerstva zdravotnictví.\n\nPoté, co se informace z informačního systému propíšou do systému hygieny, se odesílají automatické SMS eRoušky s ověřovacími kódy.\n\nPokud se výsledky z laboratoře nestihnou propsat do systému hygieny do 22:00, může vám SMS s ověřovacím kódem přijít až následující den.\n\nPokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišla SMS s pozitivními výsledky z laboratoře, napište nám na info@erouska.cz.";
+"data_send_no_code_action_title" = "Napsat e-mail";
 "contacts_title" = "Kontakty";
 "contacts_important_headline" = "Máte podezření na koronavirus?";
 "contacts_important_body" = "Zůstaňte doma a kontaktuje svého praktického lékaře nebo příslušnou hygienickou stanici.";
