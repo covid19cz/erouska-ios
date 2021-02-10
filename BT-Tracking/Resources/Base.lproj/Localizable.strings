@@ -78,7 +78,7 @@
 "data_list_send_footer" = "Naposledy jste upozornili ostatní %@.";
 "data_list_send_placeholder" = "Ověřovací kód (povinné)";
 "data_list_send_action_title" = "Ověřit a odeslat data";
-"data_list_send_no_code_action_title" = "Nemám ověřovací kód";
+"data_list_send_no_code_action_title" = "Napsat e-mail";
 "data_list_send_error_failed_title" = "Nepodařilo se nám odeslat data";
 "data_list_send_error_failed_message" = "Zkontrolujte připojení k internetu a zkuste to znovu.";
 "data_list_send_error_file_title" = "Nepodařilo se vytvořit soubor se setkáními";
