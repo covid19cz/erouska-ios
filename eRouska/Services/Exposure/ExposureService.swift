@@ -298,7 +298,7 @@ final class ExposureService: ExposureServicing {
             if let error = error {
                 finish(error: error)
             } else if let windows = windows {
-                finish(exposures: windows.map { info in
+                let exposures: [Exposure] = windows.map { info in
                     let window = ExposureWindow(
                         id: UUID(),
                         date: info.date,
@@ -324,7 +324,17 @@ final class ExposureService: ExposureServicing {
                         attenuationDurations: [0],
                         window: window
                     )
-                })
+                }
+
+                var filtred: [Date: Exposure] = [:]
+                for exposure in exposures {
+                    if let info = filtred[exposure.date], (info.window?.infectiousness ?? 0) < (exposure.window?.infectiousness ?? 0) {
+                        filtred[exposure.date] = exposure
+                    } else {
+                        filtred[exposure.date] = exposure
+                    }
+                }
+                finish(exposures: filtred.map({ $0.value }))
                 log("ExposureService Exposures windows \(windows)")
             } else {
                 finish(error: ExposureError.noData)
