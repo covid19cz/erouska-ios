@@ -117,6 +117,13 @@ final class ActiveAppVC: UIViewController {
             action: #selector(moreAction)
         ), at: 0)
         #endif
+
+        UserDefaults.standard.rx.observe(Bool.self, AppSettings.Keys.efgsEnabled.rawValue)
+            .subscribe(
+                onNext: { [weak self] _ in
+                    self?.updateViewModel()
+                }
+            ).disposed(by: disposeBag)
     }
 
     override func viewWillAppear(_ animated: Bool) {

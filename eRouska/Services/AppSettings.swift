@@ -11,7 +11,7 @@ import FirebaseAuth
 
 struct AppSettings {
 
-    private enum Keys: String {
+    enum Keys: String {
         case appState
         case appFirstTimeLaunched
 
