@@ -38,7 +38,13 @@ enum ExposureError: Error {
     }
 }
 
-struct ExposureConfiguration: Decodable {
+protocol ExposureConfiguration: Decodable {
+
+    var configuration: ENExposureConfiguration { get }
+
+}
+
+struct ExposureConfigurationV1: ExposureConfiguration, Decodable {
 
     let factorHigh: Double
     let factorStandard: Double
@@ -69,6 +75,102 @@ struct ExposureConfiguration: Decodable {
 
 }
 
+struct ExposureConfigurationV2: ExposureConfiguration, Decodable {
+
+    // API V2 Keys
+    let immediateDurationWeight: Double
+    let nearDurationWeight: Double
+    let mediumDurationWeight: Double
+    let otherDurationWeight: Double
+    let infectiousnessForDaysSinceOnsetOfSymptoms: [String: Int]
+    let infectiousnessStandardWeight: Double
+    let infectiousnessHighWeight: Double
+    let reportTypeConfirmedTestWeight: Double
+    let reportTypeConfirmedClinicalDiagnosisWeight: Double
+    let reportTypeSelfReportedWeight: Double
+    let reportTypeRecursiveWeight: Double
+    let reportTypeNoneMap: Int
+
+    // API V1 Keys
+    let minimumRiskScore: ENRiskScore
+    let attenuationDurationThresholds: [Int]
+    let attenuationLevelValues: [ENRiskLevelValue]
+    let daysSinceLastExposureLevelValues: [ENRiskLevelValue]
+    let durationLevelValues: [ENRiskLevelValue]
+    let transmissionRiskLevelValues: [ENRiskLevelValue]
+
+    init() {
+        immediateDurationWeight = 150
+        nearDurationWeight = 100
+        mediumDurationWeight = 17
+        otherDurationWeight = 0
+        var infectiousness: [String: Int] = [:]
+        for i in -14...(-3) {
+            infectiousness[String(i)] = 0 // ENInfectiousness.none
+        }
+        for i in -2...14 {
+            infectiousness[String(i)] = 1 // ENInfectiousness.standard
+        }
+        infectiousness["unknown"] = 1
+        infectiousnessForDaysSinceOnsetOfSymptoms = infectiousness
+        infectiousnessStandardWeight = 100
+        infectiousnessHighWeight = 100
+        reportTypeConfirmedTestWeight = 100
+        reportTypeConfirmedClinicalDiagnosisWeight = 100
+        reportTypeSelfReportedWeight = 100
+        reportTypeRecursiveWeight = 100
+        reportTypeNoneMap = 1 // ENDiagnosisReportType.confirmedTest.rawValue
+        minimumRiskScore = 0
+        attenuationDurationThresholds = [55, 63, 75]
+        attenuationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
+        daysSinceLastExposureLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
+        durationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
+        transmissionRiskLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
+    }
+
+    var configuration: ENExposureConfiguration {
+        let configuration = ENExposureConfiguration()
+        if #available(iOS 13.7, *) {
+            configuration.immediateDurationWeight = immediateDurationWeight
+            configuration.nearDurationWeight = nearDurationWeight
+            configuration.mediumDurationWeight = mediumDurationWeight
+            configuration.otherDurationWeight = otherDurationWeight
+            var infectiousnessForDaysSinceOnsetOfSymptoms: [Int: Int] = [:]
+            for (stringDay, infectiousness) in self.infectiousnessForDaysSinceOnsetOfSymptoms {
+                if stringDay == "unknown" {
+                    if #available(iOS 14.0, *) {
+                        infectiousnessForDaysSinceOnsetOfSymptoms[ENDaysSinceOnsetOfSymptomsUnknown] = infectiousness
+                    } else {
+                        // ENDaysSinceOnsetOfSymptomsUnknown is not available
+                        // in earlier versions of iOS; use an equivalent value
+                        infectiousnessForDaysSinceOnsetOfSymptoms[NSIntegerMax] = infectiousness
+                    }
+                } else if let day = Int(stringDay) {
+                    infectiousnessForDaysSinceOnsetOfSymptoms[day] = infectiousness
+                }
+            }
+            configuration.infectiousnessForDaysSinceOnsetOfSymptoms = infectiousnessForDaysSinceOnsetOfSymptoms as [NSNumber: NSNumber]
+            configuration.infectiousnessStandardWeight = infectiousnessStandardWeight
+            configuration.infectiousnessHighWeight = infectiousnessHighWeight
+            configuration.reportTypeConfirmedTestWeight = reportTypeConfirmedTestWeight
+            configuration.reportTypeConfirmedClinicalDiagnosisWeight = reportTypeConfirmedClinicalDiagnosisWeight
+            configuration.reportTypeSelfReportedWeight = reportTypeSelfReportedWeight
+            configuration.reportTypeRecursiveWeight = reportTypeRecursiveWeight
+            if let reportTypeNoneMap = ENDiagnosisReportType(rawValue: UInt32(reportTypeNoneMap)) {
+                configuration.reportTypeNoneMap = reportTypeNoneMap
+            }
+        }
+        configuration.minimumRiskScore = minimumRiskScore
+        configuration.attenuationLevelValues = attenuationLevelValues as [NSNumber]
+        configuration.daysSinceLastExposureLevelValues = daysSinceLastExposureLevelValues as [NSNumber]
+        configuration.durationLevelValues = durationLevelValues as [NSNumber]
+        configuration.transmissionRiskLevelValues = transmissionRiskLevelValues as [NSNumber]
+        configuration.metadata = ["attenuationDurationThresholds": attenuationDurationThresholds]
+        return configuration
+    }
+
+}
+
 struct Exposure: Codable, Equatable {
 
     let id: UUID
@@ -78,10 +180,18 @@ struct Exposure: Codable, Equatable {
     let transmissionRiskLevel: ENRiskLevel
     let attenuationValue: ENAttenuation
     var attenuationDurations: [Int]
+    var window: ExposureWindow?
 
     func computedThreshold(with configuration: ExposureConfiguration) -> Double {
-        return (Double(truncating: attenuationDurations[0] as NSNumber) * configuration.factorLow +
-            Double(truncating: attenuationDurations[1] as NSNumber) * configuration.factorHigh) / 60 // (minute)
+        switch configuration {
+        case let configuration as ExposureConfigurationV1:
+            return (Double(truncating: attenuationDurations[0] as NSNumber) * configuration.factorLow +
+                        Double(truncating: attenuationDurations[1] as NSNumber) * configuration.factorHigh) / 60 // (minute)
+        case is ExposureConfigurationV2:
+            return 0
+        default:
+            return 0
+        }
     }
 
     static func debugExposure(date: Date = Date()) -> Exposure {
@@ -92,9 +202,42 @@ struct Exposure: Codable, Equatable {
             totalRiskScore: 2,
             transmissionRiskLevel: 4,
             attenuationValue: 4,
-            attenuationDurations: [21, 1, 4, 5]
+            attenuationDurations: [21, 1, 4, 5],
+            window: nil
         )
     }
+
+}
+
+struct ExposureWindow: Codable, Equatable {
+    init(id: UUID, date: Date, calibrationConfidence: Int, diagnosisReportType: Int, infectiousness: Int, scanInstances: [ExposureWindow.Scan]) {
+        self.id = id
+        self.date = date
+        self.calibrationConfidence = calibrationConfidence
+        self.diagnosisReportType = diagnosisReportType
+        self.infectiousness = infectiousness
+        self.scanInstances = scanInstances
+    }
+
+
+    struct Scan: Codable, Equatable {
+        var minimumAttenuation: Int
+        var typicalAttenuation: Int
+        var secondsSinceLastScan: Int
+
+        init(minimumAttenuation: Int, typicalAttenuation: Int, secondsSinceLastScan: Int) {
+            self.minimumAttenuation = minimumAttenuation
+            self.typicalAttenuation = typicalAttenuation
+            self.secondsSinceLastScan = secondsSinceLastScan
+        }
+    }
+
+    var id: UUID
+    var date: Date
+    var calibrationConfidence: Int
+    var diagnosisReportType: Int
+    var infectiousness: Int
+    var scanInstances: [Scan]
 
 }
 

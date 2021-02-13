@@ -374,6 +374,8 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                         <outlet property="mainStackView" destination="qcL-c9-sLJ" id="JkJ-Wz-Fuu"/>
                         <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
                         <segue destination="oSq-aZ-OP9" kind="presentation" identifier="howItWorks" id="aUV-7U-YTw"/>
+                        <segue destination="edr-Ou-VND" kind="presentation" identifier="debugReports" id="DLS-7X-YtP"/>
+                        <segue destination="cc6-nw-2K9" kind="presentation" identifier="traveler" id="hpv-5A-jFQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -386,7 +388,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 <viewControllerPlaceholder storyboardName="SendReports" id="48F-yW-Dk4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-Tx-30g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1946" y="810"/>
+            <point key="canvasLocation" x="1978" y="265"/>
         </scene>
         <!--HowItWorksVC-->
         <scene sceneID="agx-I7-mSo">
@@ -396,7 +398,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buQ-rx-IIq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2823" y="1201"/>
+            <point key="canvasLocation" x="2828" y="737"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vAa-DO-szD">
@@ -413,10 +415,139 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUf-zP-ks6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2167" y="1201"/>
+            <point key="canvasLocation" x="2199" y="737"/>
+        </scene>
+        <!--DebugDownloadReportsNav-->
+        <scene sceneID="B8y-jW-8WW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Debug" referencedIdentifier="DebugDownloadReportsNav" id="edr-Ou-VND" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CU7-le-fV5"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vEg-Ta-fI7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2043" y="337"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kE5-8L-ji5">
+            <objects>
+                <navigationController id="cc6-nw-2K9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WB5-ZG-N2r"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="bxY-PT-hUM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="orb-Zh-2dN" kind="relationship" relationship="rootViewController" id="z6m-h3-FLe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GaY-pc-O7C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2199" y="1442"/>
+        </scene>
+        <!--Spolupráce se zahraničím-->
+        <scene sceneID="QzE-du-UI8">
+            <objects>
+                <viewController id="orb-Zh-2dN" customClass="EFGSSettingsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dSo-mX-Arq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya2-gH-Bmv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EyQ-Xk-mcp">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Sao-zk-K6J">
+                                                <rect key="frame" x="20" y="10" width="374" height="489"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EfgsPermission" translatesAutoresizingMaskIntoConstraints="NO" id="2dz-YX-i0q">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROb-KN-fyO">
+                                                        <rect key="frame" x="0.0" y="145" width="374" height="108.5"/>
+                                                        <string key="text">Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vgk-S9-IXe">
+                                                        <rect key="frame" x="0.0" y="268.5" width="374" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Povolit spolupráci se zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXk-gQ-FCJ">
+                                                                <rect key="frame" x="0.0" y="5.5" width="317" height="20.5"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KRI-mG-vAv">
+                                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                                <color key="onTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="0.38" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                <color key="thumbTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="changeSettings" destination="orb-Zh-2dN" eventType="valueChanged" id="eCP-k1-0Tg"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhp-bC-cMu">
+                                                        <rect key="frame" x="0.0" y="314.5" width="374" height="174.5"/>
+                                                        <string key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
+Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.
+Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Sao-zk-K6J" firstAttribute="leading" secondItem="EyQ-Xk-mcp" secondAttribute="leadingMargin" id="Asc-N4-fVu"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Sao-zk-K6J" secondAttribute="trailing" id="TDE-x0-7Uo"/>
+                                            <constraint firstItem="Sao-zk-K6J" firstAttribute="top" secondItem="EyQ-Xk-mcp" secondAttribute="top" constant="10" id="X11-RV-Ohe"/>
+                                            <constraint firstAttribute="bottom" secondItem="Sao-zk-K6J" secondAttribute="bottom" constant="16" id="heh-Rm-f5U"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="top" secondItem="RzC-Fg-EZ4" secondAttribute="top" id="3vJ-TD-5bp"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="width" secondItem="0CY-lJ-Tpd" secondAttribute="width" id="Mbf-x1-h3A"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="leading" secondItem="RzC-Fg-EZ4" secondAttribute="leading" id="Qqx-of-yWe"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="centerX" secondItem="0CY-lJ-Tpd" secondAttribute="centerX" id="RAp-6E-s2f"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="trailing" secondItem="RzC-Fg-EZ4" secondAttribute="trailing" id="gZa-mp-IPf"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="bottom" secondItem="RzC-Fg-EZ4" secondAttribute="bottom" id="tm5-KZ-YV3"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="RzC-Fg-EZ4"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="0CY-lJ-Tpd"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ofz-vS-sEu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ya2-gH-Bmv" firstAttribute="leading" secondItem="dSo-mX-Arq" secondAttribute="leading" id="ADp-h1-q9v"/>
+                            <constraint firstItem="Ya2-gH-Bmv" firstAttribute="top" secondItem="dSo-mX-Arq" secondAttribute="top" id="Am4-ok-VxO"/>
+                            <constraint firstItem="ofz-vS-sEu" firstAttribute="trailing" secondItem="Ya2-gH-Bmv" secondAttribute="trailing" id="Och-KV-HtX"/>
+                            <constraint firstItem="ofz-vS-sEu" firstAttribute="bottom" secondItem="Ya2-gH-Bmv" secondAttribute="bottom" id="kZm-WZ-mhm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Spolupráce se zahraničím" largeTitleDisplayMode="always" id="pHP-fi-2II"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="Xhp-bC-cMu" id="wi7-WO-La3"/>
+                        <outlet property="enableLabel" destination="xXk-gQ-FCJ" id="ilU-Oq-Dca"/>
+                        <outlet property="enableSwitch" destination="KRI-mG-vAv" id="iUU-j6-TUo"/>
+                        <outlet property="headlineLabel" destination="ROb-KN-fyO" id="DsW-BM-Qz0"/>
+                        <outlet property="scrollView" destination="Ya2-gH-Bmv" id="BKq-5e-xQ2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3s-lS-eC9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3039" y="1442"/>
         </scene>
     </scenes>
     <resources>
+        <image name="EfgsPermission" width="130" height="130"/>
         <image name="HitWIcon" width="66" height="59"/>
         <namedColor name="AlertRed">
             <color red="0.95294117647058818" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

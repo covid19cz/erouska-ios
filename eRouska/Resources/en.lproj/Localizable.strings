@@ -95,7 +95,7 @@
 "data_list_previous_header" = "Risky encounters discovered";
 "data_send_title" = "Sent";
 "data_send_error" = "Error";
-"data_send_title_label" = "Notifications to other eRouška users were successfully sent";
+"data_send_title_label" = "Data were successfully sent";
 "data_send_title_nokeys" = "Thank you for fighting against the spread of COVID-19";
 "data_send_title_error" = "Failed to send data";
 "data_send_headline" = "Thank you for fighting against the spread of COVID-19.";

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class RiskyEncountersDetailVC: UITableViewController {
+final class RiskyEncountersV1DetailVC: UITableViewController {
 
     private enum Row: Int, CaseIterable {
         case date
@@ -29,7 +29,7 @@ final class RiskyEncountersDetailVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Debug detail"
+        title = "Debug V1 Detail"
     }
 
     // MARK: - UITableViewDataSource

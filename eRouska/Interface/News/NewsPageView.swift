@@ -22,6 +22,17 @@ final class NewsPageView: UIView {
             } else {
                 bodyTextView.text = viewModel.body
             }
+
+            if let switchTitle = viewModel.switchTitle {
+                switchLabel.text = switchTitle
+                switchLabel.superview?.isHidden = false
+                headlineLabel.textAlignment = .left
+                bodyTextView.textAlignment = .left
+            } else {
+                switchLabel.superview?.isHidden = true
+                headlineLabel.textAlignment = .center
+                bodyTextView.textAlignment = .center
+            }
         }
     }
 
@@ -45,4 +56,19 @@ final class NewsPageView: UIView {
             bodyTextView.textContainer.lineFragmentPadding = 0
         }
     }
+    @IBOutlet private weak var switchLabel: UILabel!
+    @IBOutlet private weak var switchView: UISwitch!
+
+    // MARK: -
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        switchValueChange()
+    }
+
+    @IBAction private func switchValueChange() {
+        viewModel?.switchCallback?(switchView.isOn)
+    }
+
 }

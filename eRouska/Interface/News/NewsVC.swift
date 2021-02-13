@@ -10,7 +10,7 @@ import UIKit
 
 final class NewsVC: UIViewController {
 
-    private let viewModel = NewsVM()
+    var viewModel = NewsVM(type: .upgrade)
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var pagesStackView: UIStackView!
@@ -36,6 +36,7 @@ final class NewsVC: UIViewController {
             pagesStackView.addArrangedSubview(page)
         }
         pageControl.numberOfPages = viewModel.newsPages.count
+        pageControl.hidesForSinglePage = true
         updateView(for: 0)
     }
 

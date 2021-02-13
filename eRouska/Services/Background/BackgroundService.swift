@@ -162,55 +162,65 @@ private extension BackgroundService {
         // Notify the user if bluetooth is off
         showBluetoothOffUserNotificationIfNeeded()
 
-        func reportFailure(_ error: Error) {
+        func reportFailure(_ error: ReportError) {
             task?.setTaskCompleted(success: false)
             isRunning = false
             Log.log("BGTask: failed to detect exposures \(error)")
             Crashlytics.crashlytics().record(error: error)
         }
 
+        func reportSuccess() {
+            isRunning = false
+            task?.setTaskCompleted(success: true)
+
+            AppSettings.lastProcessedDate = Date()
+            Events.keyExportDownloadFinished.logEvent()
+        }
+
         // Perform the exposure detection
-        return reporter.downloadKeys(lastProcessedFileName: AppSettings.lastProcessedFileName) { result in
-            Log.log("BGTask: did download keys \(result)")
+        let keyURLs = AppSettings.efgsEnabled ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
+        return reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: AppSettings.lastProcessedFileNames) { report in
+            Log.log("BGTask: did download keys \(report)")
 
-            switch result {
-            case .success(let keys):
-                guard !keys.URLs.isEmpty else {
-                    AppSettings.lastProcessedDate = Date()
-
-                    self.isRunning = false
-
-                    task?.setTaskCompleted(success: true)
-                    Events.keyExportDownloadFinished.logEvent()
-                    return
+            var atLeastOneSuccess: Bool = false
+            var URLs: [URL] = []
+            for (_, success) in report.success {
+                guard !success.URLs.isEmpty else {
+                    atLeastOneSuccess = true
+                    continue
                 }
+                URLs.append(contentsOf: success.URLs)
+            }
 
-                self.exposureService.detectExposures(
-                    configuration: RemoteValues.exposureConfiguration,
-                    URLs: keys.URLs
-                ) { result in
-                    switch result {
-                    case .success(let exposures):
-                        AppSettings.lastProcessedDate = Date()
+            for (_, failure) in report.failures {
+                reportFailure(failure)
+            }
 
-                        self.handleExposures(exposures, lastProcessedFileName: keys.lastProcessedFileName)
-                        self.isRunning = false
-
-                        task?.setTaskCompleted(success: true)
-                        Events.keyExportDownloadFinished.logEvent()
-                    case .failure(let error):
-                        reportFailure(error)
+            if !URLs.isEmpty || atLeastOneSuccess {
+                if !URLs.isEmpty {
+                    self.exposureService.detectExposures(
+                        configuration: RemoteValues.exposureConfiguration,
+                        URLs: URLs
+                    ) { result in
+                        switch result {
+                        case .success(let exposures):
+                            self.handleExposures(exposures, countries: report.success)
+                            reportSuccess()
+                        case .failure(let error):
+                            reportFailure(.generalError(error))
+                        }
                     }
+                } else {
+                    self.handleExposures([], countries: report.success)
+                    reportSuccess()
                 }
-            case .failure(let error):
-                reportFailure(error)
             }
         }
     }
 
-    func handleExposures(_ exposures: [Exposure], lastProcessedFileName: String?) {
-        if let fileName = lastProcessedFileName {
-            AppSettings.lastProcessedFileName = fileName
+    func handleExposures(_ exposures: [Exposure], countries: ReportDownload.Success) {
+        for (code, success) in countries {
+            AppSettings.lastProcessedFileNames[code] = success.lastProcessedFileName
         }
 
         guard !exposures.isEmpty else {

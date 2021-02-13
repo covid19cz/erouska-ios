@@ -16,6 +16,7 @@ final class ExposureRealm: Object {
     @objc dynamic var detectedDate: Date
 
     @objc dynamic var dataV1: ExposureDataV1?
+    @objc dynamic var dataV2: ExposureDataV2?
 
     var attenuationDurations: List<Int> = .init() // legacy remove in future
 
@@ -40,8 +41,24 @@ final class ExposureRealm: Object {
         self.dataV1 = .init(exposure)
     }
 
+    convenience init(_ exposure: ExposureWindow, detectedDate: Date) {
+        self.init()
+
+        self.id = UUID().uuidString
+        self.date = exposure.date
+        self.detectedDate = detectedDate
+
+        self.dataV2 = .init(exposure)
+    }
+
     func toExposure() -> Exposure? {
-        return dataV1?.toExposure(date: date)
+        var exposure = dataV1?.toExposure(date: date)
+        exposure?.window = toWindowExposure()
+        return exposure
+    }
+
+    func toWindowExposure() -> ExposureWindow? {
+        return dataV2?.toExposure(date: date)
     }
 }
 
@@ -86,7 +103,71 @@ final class ExposureDataV1: Object {
             totalRiskScore: ENRiskScore(totalRiskScore),
             transmissionRiskLevel: ENRiskLevel(transmissionRiskLevel),
             attenuationValue: ENAttenuation(attenuationValue),
-            attenuationDurations: attenuationDurations.toArray()
+            attenuationDurations: attenuationDurations.toArray(),
+            window: nil
         )
     }
+
+}
+
+final class ExposureDataV2: Object {
+
+    @objc dynamic var id: String
+    @objc dynamic var calibrationConfidence: Int
+    @objc dynamic var diagnosisReportType: Int
+    @objc dynamic var infectiousness: Int
+    var minimumAttenuation: List<Int>
+    var typicalAttenuation: List<Int>
+    var secondsSinceLastScan: List<Int>
+
+    override class func primaryKey() -> String {
+        return "id"
+    }
+
+    required init() {
+        id = UUID().uuidString
+        calibrationConfidence = 0
+        diagnosisReportType = 0
+        infectiousness = 0
+        minimumAttenuation = List<Int>()
+        typicalAttenuation = List<Int>()
+        secondsSinceLastScan = List<Int>()
+        super.init()
+    }
+
+    convenience init(_ exposure: ExposureWindow) {
+        self.init()
+
+        calibrationConfidence = exposure.calibrationConfidence
+        diagnosisReportType = exposure.diagnosisReportType
+        infectiousness = exposure.infectiousness
+        for scan in exposure.scanInstances {
+            minimumAttenuation.append(scan.minimumAttenuation)
+            typicalAttenuation.append(scan.typicalAttenuation)
+            secondsSinceLastScan.append(scan.secondsSinceLastScan)
+        }
+    }
+
+    func toExposure(date: Date) -> ExposureWindow {
+        var scans: [ExposureWindow.Scan] = []
+        for (index, _) in minimumAttenuation.enumerated() {
+            scans.append(
+                .init(
+                    minimumAttenuation: minimumAttenuation[index],
+                    typicalAttenuation: typicalAttenuation[index],
+                    secondsSinceLastScan: secondsSinceLastScan[index]
+                )
+            )
+        }
+
+        return ExposureWindow(
+            id: UUID(uuidString: id) ?? UUID(),
+            date: date,
+            calibrationConfidence: calibrationConfidence,
+            diagnosisReportType: diagnosisReportType,
+            infectiousness: infectiousness,
+            scanInstances: scans
+        )
+    }
+
 }

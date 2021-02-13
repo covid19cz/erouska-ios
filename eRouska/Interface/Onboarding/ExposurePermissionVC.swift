@@ -96,10 +96,10 @@ private extension ExposurePermissionVC {
             completionHandler: { [weak self] granted, _ in
                 DispatchQueue.main.async { [weak self] in
                     if granted {
-                        self?.perform(segue: StoryboardSegue.Onboarding.privacy)
+                        self?.perform(segue: StoryboardSegue.Onboarding.efgsPermission)
                     } else {
                         self?.showPermissionDeniedAlert(cancelAction: { [weak self] in
-                            self?.perform(segue: StoryboardSegue.Onboarding.privacy)
+                            self?.perform(segue: StoryboardSegue.Onboarding.efgsPermission)
                         })
                     }
                 }

@@ -25,6 +25,7 @@ final class ActiveAppVC: UIViewController {
     private let stateSection = ActiveAppSectionView()
     private let riskyEncountersSection = ActiveAppSectionView()
     private let sendReportsSection = ActiveAppSectionView()
+    private let efgsSection = ActiveAppSectionView()
 
     private var dateToShow: Date?
     private var numberOfRiskyEncounters: Int = 0
@@ -97,7 +98,13 @@ final class ActiveAppVC: UIViewController {
         sendReportsSection.bodyLabel.text = L10n.activeSendReportsBody
         sendReportsSection.actionButton.setTitle(L10n.activeSendReportsButton)
         sendReportsSection.action = sendReportsAction
-        [stateSection, riskyEncountersSection, sendReportsSection].forEach(mainStackView.addArrangedSubview)
+
+        efgsSection.iconImageView.image = Asset.travel.image
+        efgsSection.titleLabel.text = viewModel.efgsText
+        efgsSection.isSelectable = true
+        efgsSection.action = efgsSettingsAction
+
+        [stateSection, riskyEncountersSection, sendReportsSection, efgsSection].forEach(mainStackView.addArrangedSubview)
 
         howItWorksBannerView.style = .gray
         howItWorksBannerView.isHidden = AppSettings.howItWorksClosed
@@ -203,6 +210,9 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: L10n.debug + " aktivace", style: .default, handler: { [weak self] _ in
             self?.debugCancelRegistrationAction()
         }))
+        controller.addAction(UIAlertAction(title: L10n.debug + " aktualizovat remote config", style: .default, handler: { [weak self] _ in
+            self?.debugRemoteConfigUpdate()
+        }))
         controller.addAction(UIAlertAction(title: L10n.debug + " rizikového setkání", style: .default, handler: { [weak self] _ in
             self?.debugInsertFakeExposure()
         }))
@@ -222,6 +232,15 @@ final class ActiveAppVC: UIViewController {
             }))
             self?.present(controller, animated: true, completion: nil)
         }))
+        controller.addAction(UIAlertAction(title: L10n.debug + " zobrazeni nastaveny vyhodnocovani", style: .default, handler: { [weak self] _ in
+            self?.showAlert(
+                title: "Nastaveni vyhodnoceni",
+                message: AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV2)
+            )
+        }))
+        controller.addAction(UIAlertAction(title: L10n.debug + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
+            self?.debugProcessReports()
+        }))
         controller.addAction(UIAlertAction(title: L10n.close, style: .cancel))
         controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true)
@@ -239,6 +258,7 @@ final class ActiveAppVC: UIViewController {
 
     @IBAction private func closeExposureBanner(_ sender: Any) {
         AppSettings.lastExposureWarningClosed = true
+        AppSettings.lastExposureWarningNotDisplayed = false
         exposureBannerView.isHidden = true
         if !AppSettings.howItWorksClosed {
             howItWorksBannerView.isHidden = false
@@ -281,6 +301,10 @@ final class ActiveAppVC: UIViewController {
         present(controller, animated: true, completion: nil)
     }
 
+    private func efgsSettingsAction() {
+        perform(segue: StoryboardSegue.Active.traveler)
+    }
+
     // MARK: -
 
     @objc private func applicationDidBecomeActive() {
@@ -294,6 +318,7 @@ private extension ActiveAppVC {
 
     func updateViewModel() {
         viewModel.updateStateIfNeeded()
+        efgsSection.titleLabel.text = viewModel.efgsText
     }
 
     func updateScanner(activate: Bool, completion: @escaping CallbackVoid) {
@@ -468,53 +493,10 @@ private extension ActiveAppVC {
     }
 
     func debugProcessReports() {
-        showProgress()
-
-        _ = viewModel.reporter.downloadKeys(lastProcessedFileName: nil) { [weak self] result in
-            switch result {
-            case .success(let keys):
-                self?.viewModel.exposureService.detectExposures(
-                    configuration: RemoteValues.exposureConfiguration,
-                    URLs: keys.URLs
-                ) { [weak self] result in
-                    guard let self = self else { return }
-                    self.hideProgress()
-                    AppSettings.lastProcessedDate = Date()
-
-                    switch result {
-                    case .success(let exposures):
-                        guard !exposures.isEmpty else {
-                            log("EXP: no exposures, skip!")
-                            self.showAlert(title: "Exposures", message: "No exposures detected, device is clear.")
-                            return
-                        }
-
-                        try? ExposureList.add(exposures, detectionDate: Date())
-
-                        var result = ""
-                        for exposure in exposures {
-                            let signals = exposure.attenuationDurations.map { "\($0)" }
-                            result += "EXP: \(DateFormatter.baseDateTimeFormatter.string(from: exposure.date))" +
-                                ", dur: \(exposure.duration), risk \(exposure.totalRiskScore), tran level: \(exposure.transmissionRiskLevel)\n"
-                                + "attenuation value: \(exposure.attenuationValue)\n"
-                                + "signal attenuations: \(signals.joined(separator: ", "))\n"
-                        }
-
-                        if result.isEmpty {
-                            result = "None"
-                        }
-
-                        log("EXP: \(exposures)")
-                        log("EXP: \(result)")
-                        self.showAlert(title: "Exposures", message: result)
-                    case .failure(let error):
-                        self.show(error: error)
-                    }
-                }
-            case .failure(let error):
-                self?.hideProgress()
-                self?.show(error: error)
-            }
+        if AppDelegate.dependency.reporter.isDownloading || AppDelegate.dependency.exposure.detectingExposures {
+            showAlert(title: "Stahovani reportu", message: "Bezi na pozadi, pockejte chvilku nez dobehne.")
+        } else {
+            perform(segue: StoryboardSegue.Active.debugReports)
         }
     }
 
@@ -559,6 +541,16 @@ private extension ActiveAppVC {
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.prefersLargeTitles = true
         present(navController, animated: true, completion: nil)
+    }
+
+    func debugRemoteConfigUpdate() {
+        AppDelegate.shared.fetchRemoteValues(background: false, ignoreCache: true)
+            .subscribe(onSuccess: { _ in
+                let configuration = RemoteValues.serverConfiguration
+                AppDelegate.dependency.reporter.updateConfiguration(configuration)
+                AppDelegate.dependency.verification.updateConfiguration(configuration)
+            })
+            .disposed(by: disposeBag)
     }
 
     #endif

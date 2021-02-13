@@ -22,7 +22,7 @@ struct ServerConfiguration: Codable {
             downloadsURL: URL(string: "https://storage.googleapis.com/exposure-notification-export-ejjud/")!,
             verificationURL: URL(string: "https://apiserver-eyrqoibmxa-ew.a.run.app")!,
             verificationAdminKey: "",
-            verificationDeviceKey: RemoteValues.verificationServerApiKey,
+            verificationDeviceKey: "",
             appCurentDataURL: URL(string: "https://europe-west1-erouska-key-server-dev.cloudfunctions.net")!,
             firebaseURL: URL(string: "https://europe-west1-erouska-key-server-dev.cloudfunctions.net")!
         )
@@ -38,7 +38,7 @@ struct ServerConfiguration: Codable {
             downloadsURL: URL(string: "https://storage.googleapis.com/exposure-notification-export-qhqcx/")!,
             verificationURL: URL(string: "https://apiserver-jyvw4xgota-ew.a.run.app")!,
             verificationAdminKey: "",
-            verificationDeviceKey: RemoteValues.verificationServerApiKey,
+            verificationDeviceKey: "",
             appCurentDataURL: URL(string: "https://europe-west1-daring-leaf-272223.cloudfunctions.net")!,
             firebaseURL: URL(string: "https://europe-west1-daring-leaf-272223.cloudfunctions.net")!
         )

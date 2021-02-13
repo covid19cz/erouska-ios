@@ -20,12 +20,15 @@ extension AppDelegate {
         RemoteConfig.remoteConfig().setDefaults(remoteDefaults)
     }
 
-    func fetchRemoteValues(background: Bool) -> Single<Void> {
+    func fetchRemoteValues(background: Bool, ignoreCache: Bool = false) -> Single<Void> {
         #if DEBUG
-        let fetchDuration: TimeInterval = 0
+        var fetchDuration: TimeInterval = 0
         #else
-        let fetchDuration: TimeInterval = background ? 1_800 : 3_600
+        var fetchDuration: TimeInterval = background ? 1_800 : 3_600
         #endif
+        if ignoreCache {
+            fetchDuration = 0
+        }
         return Single<Void>.create { single in
             RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { _, error in
                 if let error = error {
@@ -33,7 +36,9 @@ extension AppDelegate {
                     single(.error(error))
                     return
                 }
-                RemoteConfig.remoteConfig().activate()
+
+                RemoteConfig.remoteConfig().activate { _, _ in }
+
                 log("AppDelegate\(background ? " background" : ""): Retrieved values from the Firebase Remote Config!")
                 single(.success(()))
             }
@@ -92,12 +97,15 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
     case chatBotLink
 
-    /// Deprecated
-    case verificationServerApiKey
-
-    case appleServerConfiguration
-    case appleExposureConfiguration
     case appleIgnoreAndroid
+    case appleServerConfiguration
+    case appleExposureConfigurationV1 = "appleExposureConfiguration"
+    case appleExposureConfigurationV2
+
+    case efgsDays
+    case efgsCountries
+    case keyExportNonTravellerUrls
+    case keyExportEuTravellerUrls
 
     var keyValue: String {
         "v2_\(rawValue)"
@@ -161,19 +169,78 @@ enum RemoteConfigValueKey: String, CaseIterable {
         case .chatBotLink:
             return defaultLocalValue(withKey: "chatBotLink")
 
-        case .verificationServerApiKey:
-            return ""
-
         case .appleServerConfiguration:
             #if PROD
             return ServerConfiguration.production
             #else
             return ServerConfiguration.development
             #endif
-        case .appleExposureConfiguration:
+        case .appleExposureConfigurationV1:
             return defaultLocalValue(withKey: "appleExposureConfiguration")
         case .appleIgnoreAndroid:
             return true
+        case .appleExposureConfigurationV2:
+            return """
+                {
+                \"immediateDurationWeight\":100,
+                \"nearDurationWeight\":100,
+                \"mediumDurationWeight\":100,
+                \"otherDurationWeight\":100,
+                \"infectiousnessForDaysSinceOnsetOfSymptoms\":{
+                \"unknown\":1,
+                \"-14\":1,
+                \"-13\":1,
+                \"-12\":1,
+                \"-11\":1,
+                \"-10\":1,
+                \"-9\":1,
+                \"-8\":1,
+                \"-7\":1,
+                \"-6\":1,
+                \"-5\":1,
+                \"-4\":1,
+                \"-3\":1,
+                \"-2\":1,
+                \"-1\":1,
+                \"0\":1,
+                \"1\":1,
+                \"2\":1,
+                \"3\":1,
+                \"4\":1,
+                \"5\":1,
+                \"6\":1,
+                \"7\":1,
+                \"8\":1,
+                \"9\":1,
+                \"10\":1,
+                \"11\":1,
+                \"12\":1,
+                \"13\":1,
+                \"14\":1
+                },
+                \"infectiousnessStandardWeight\":100,
+                \"infectiousnessHighWeight\":100,
+                \"reportTypeConfirmedTestWeight\":100,
+                \"reportTypeConfirmedClinicalDiagnosisWeight\":100,
+                \"reportTypeSelfReportedWeight\":100,
+                \"reportTypeRecursiveWeight\":100,
+                \"reportTypeNoneMap\":1,
+                \"minimumRiskScore\":0,
+                \"attenuationDurationThresholds\":[50, 70],
+                \"attenuationLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
+                \"daysSinceLastExposureLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
+                \"durationLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
+                \"transmissionRiskLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8]
+                }
+            """
+
+        case .efgsDays:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsDaysDefault")
+        case .efgsCountries:
+            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsCountriesDefault")
+
+        case .keyExportNonTravellerUrls, .keyExportEuTravellerUrls:
+            return "{}"
         }
     }
 
@@ -242,44 +309,34 @@ struct RemoteValues {
     }
 
     static var symptomsContent: RiskyEncountersListContent? {
-        parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .symptomsContentJson), prevention: false)
+        parseRiskyEncountersListContent(from: .symptomsContentJson, prevention: false)
     }
 
     static var preventionContent: RiskyEncountersListContent? {
-        parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .preventionContentJson), prevention: true)
+        parseRiskyEncountersListContent(from: .preventionContentJson, prevention: true)
     }
 
     static var exposureHelpContent: RiskyEncountersListContent? {
-        parseRiskyEncountersListContent(from: AppDelegate.shared.remoteConfigString(forKey: .exposureHelpContentJson), prevention: false)
+        parseRiskyEncountersListContent(from: .exposureHelpContentJson, prevention: false)
     }
 
-    private static func parseRiskyEncountersListContent(from rawJson: String, prevention: Bool) -> RiskyEncountersListContent? {
-        guard let json = rawJson.data(using: .utf8) else { return nil }
-        do {
-            let remoteContent = try JSONDecoder().decode(RiskyEncountersListRemoteContent.self, from: json)
-            return RiskyEncountersListContent(
-                headline: prevention ? nil : remoteContent.title,
-                items: remoteContent.items.compactMap {
-                    guard let imageUrl = URL(string: $0.iconUrl) else { return nil }
-                    return AsyncImageTitleViewModel(imageUrl: imageUrl, title: $0.label)
-                },
-                footer: prevention ? remoteContent.title : nil
-            )
-        } catch {
-            return nil
-        }
+    private static func parseRiskyEncountersListContent(from key: RemoteConfigValueKey, prevention: Bool) -> RiskyEncountersListContent? {
+        guard let remoteContent = try? decodeValue(RiskyEncountersListRemoteContent.self, at: key) else { return nil }
+        return RiskyEncountersListContent(
+            headline: prevention ? nil : remoteContent.title,
+            items: remoteContent.items.compactMap {
+                guard let imageUrl = URL(string: $0.iconUrl) else { return nil }
+                return AsyncImageTitleViewModel(imageUrl: imageUrl, title: $0.label)
+            },
+            footer: prevention ? remoteContent.title : nil
+        )
     }
 
     static var contactsContent: [Contact] {
-        guard let json = AppDelegate.shared.remoteConfigString(forKey: .contactsContentJson).data(using: .utf8) else { return [] }
-        do {
-            return try JSONDecoder().decode([ContactContent].self, from: json).compactMap {
-                guard let link = URL(string: $0.link) else { return nil }
-                return Contact(title: $0.title, text: $0.text, linkTitle: $0.linkTitle, link: link)
-            }
-        } catch {
-            return []
-        }
+        (try? decodeValue([ContactContent].self, at: .contactsContentJson))?.compactMap {
+            guard let link = URL(string: $0.link) else { return nil }
+            return Contact(title: $0.title, text: $0.text, linkTitle: $0.linkTitle, link: link)
+        } ?? []
     }
 
     static var currentMeasuresUrl: String {
@@ -318,32 +375,64 @@ struct RemoteValues {
         AppDelegate.shared.remoteConfigString(forKey: .chatBotLink)
     }
 
-    static var verificationServerApiKey: String {
-        AppDelegate.shared.remoteConfigString(forKey: .verificationServerApiKey)
-    }
-
     static var serverConfiguration: ServerConfiguration {
         // swiftlint:disable force_cast
-        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleServerConfiguration).data(using: .utf8) else {
-            return RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
-        }
-        do {
-            return try JSONDecoder().decode(ServerConfiguration.self, from: json)
-        } catch {
-            return RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
-        }
+        (try? decodeValue(ServerConfiguration.self, at: .appleServerConfiguration))
+            ?? RemoteConfigValueKey.appleServerConfiguration.defaultValue as! ServerConfiguration
         // swiftlint:enable force_cast
     }
 
     static var exposureConfiguration: ExposureConfiguration {
-        guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfiguration).data(using: .utf8) else {
-            return ExposureConfiguration()
+        func defaults() -> ExposureConfiguration {
+            if #available(iOS 13.7, *) {
+                return ExposureConfigurationV2()
+            } else {
+                return ExposureConfigurationV1()
+            }
         }
-        do {
-            return try JSONDecoder().decode(ExposureConfiguration.self, from: json)
-        } catch {
-            return ExposureConfiguration()
+
+        if #available(iOS 13.7, *) {
+            guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV2).data(using: .utf8) else {
+                return defaults()
+            }
+            do {
+                return try JSONDecoder().decode(ExposureConfigurationV2.self, from: json)
+            } catch {
+                return defaults()
+            }
+        } else {
+            guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV1).data(using: .utf8) else {
+                return defaults()
+            }
+            do {
+                return try JSONDecoder().decode(ExposureConfigurationV1.self, from: json)
+            } catch {
+                return defaults()
+            }
         }
+    }
+
+    static var keyExportNonTravellerUrls: [ReportIndex] {
+        (try? decodeValue([ReportIndex].self, at: .keyExportNonTravellerUrls)) ?? []
+    }
+
+    static var keyExportEuTravellerUrls: [ReportIndex] {
+        (try? decodeValue([ReportIndex].self, at: .keyExportEuTravellerUrls)) ?? []
+    }
+
+    private static func decodeValue<T>(_ type: T.Type, at key: RemoteConfigValueKey) throws -> T? where T: Decodable {
+        guard let jsonData = AppDelegate.shared.remoteConfigString(forKey: key).data(using: .utf8) else {
+            return key.defaultValue as? T
+        }
+        return try JSONDecoder().decode(T.self, from: jsonData)
+    }
+
+    static var efgsDays: String {
+        AppDelegate.shared.remoteConfigString(forKey: .efgsDays)
+    }
+
+    static var efgsCountries: String {
+        AppDelegate.shared.remoteConfigString(forKey: .efgsCountries)
     }
 
     static var appleIgnoreAndroid: Bool {

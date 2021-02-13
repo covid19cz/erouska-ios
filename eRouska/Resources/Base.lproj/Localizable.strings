@@ -24,6 +24,13 @@
 "efgs_permission_headline" = "Pomozte v boji s COVID-19 i při cestách do zahraničí";
 "efgs_permission_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních %@ dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.";
 "efgs_permission_switch" = "Povolit spolupráci se zahraničím";
+"efgs_settings_title" = "Cesty do zahraničí";
+"efgs_settings_headline" = "Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.";
+"efgs_settings_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nAktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko. Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.";
+"efgs_settings_switch" = "Povolit spolupráci se zahraničím";
+"efgs_settings_alert_title" = "Onemocnění COVID-19 se může projevit až 14 dní po setkání s nakaženou osobou. Spolupráci se zahraničím prosím vypněte nejdříve %@ dní po návratu.";
+"efgs_settings_alert_enable" = "Ponechat zapnuté";
+"efgs_settings_alert_disable" = "Vypnout";
 "privacy_title" = "Soukromí";
 "privacy_headline" = "Myslíme na vaše soukromí, odesílání dat máte vždy pod kontrolou";
 "privacy_body" = "eRouška neobsahuje žádné vaše osobní údaje a sbírá pouze anonymní data o ostatních eRouškách, se kterými se setkáte.\n\nDetailní informace o zpracování osobních údajů a další podmínky používání aplikace najdete v podmínkách používání.";
@@ -161,6 +168,9 @@
 "new_risky_encounters_title" = "Naposledy %@ jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19";
 "new_risky_encounters_body" = "Upozornění se vám zobrazilo nejdříve 24 hodin poté, co se nakažený dozvěděl pozitivní výsledek testu na COVID-19 a zadal ověřovací kód do eRoušky.\n\nRizikový kontakt vyhodnotíme v případě, že jste s nakaženým byli v kontaktu na vzdálenost kratší než 2 metry po dobu alespoň 15 minut.\n\nKvůli zachování anonymity nakaženého neznáme čas ani místo setkání.";
 "new_risky_exposures_button" = "Jak postupovat dál";
+"news_travel_title" = "Pomozte v boji s COVID-19 i při cestách do zahraničí";
+"news_travel_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\n%@\n\nNastavení můžete kdykoliv změnit v aplikaci.";
+"news_travel_enable" = "Povolit spolupráci se zahraničím";
 "deadman_notificaiton_title" = "Otevřete aplikaci eRouška";
 "deadman_notificaiton_body" = "Zkontrolujete tak, zda jste se setkali s osobou, u níž bylo potvrzeno onemocnění COVID-19.";
 "exposure_activation_restricted_title" = "Bez možnosti zasílat oznámení bude funkčnost eRoušky omezená";

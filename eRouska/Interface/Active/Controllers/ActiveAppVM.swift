@@ -103,10 +103,16 @@ final class ActiveAppVM {
     private let disposeBag = DisposeBag()
 
     let exposureService: ExposureServicing = AppDelegate.dependency.exposure
-    let reporter: ReportServicing = AppDelegate.dependency.reporter
     let backgroundService = AppDelegate.dependency.background
     let riskyEncounterDateToShow: Observable<Date?>
     let riskyEncountersInTimeInterval: Observable<Int>
+
+    var efgsEnabled: Bool {
+        AppSettings.efgsEnabled
+    }
+    var efgsText: String {
+        L10n.efgsSettingsTitle + " (" + (efgsEnabled ? L10n.activeEfgsEnabled : L10n.activeEfgsDisabled).lowercased() + ")"
+    }
 
     init() {
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays

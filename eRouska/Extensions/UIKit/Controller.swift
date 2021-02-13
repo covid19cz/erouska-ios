@@ -96,4 +96,28 @@ extension UIViewController {
         (fromView ? view : view.window)?.subviews.first { $0.tag == UIViewController.progressTag }?.removeFromSuperview()
     }
 
+    func setupLargeTitleAutoAdjustFont() {
+        guard let navigationBar = navigationController?.navigationBar else {
+            return
+        }
+
+        func findLabel(in view: UIView) -> UILabel? {
+            if !view.subviews.isEmpty {
+                for subview in view.subviews {
+                    if let label = findLabel(in: subview) {
+                        return label
+                    }
+                }
+            }
+            return view as? UILabel
+        }
+
+        if let label = findLabel(in: navigationBar) {
+            if label.text == self.title {
+                label.adjustsFontSizeToFitWidth = true
+                label.minimumScaleFactor = 0.7
+            }
+        }
+    }
+
 }

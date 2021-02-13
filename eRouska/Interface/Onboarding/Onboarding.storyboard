@@ -171,7 +171,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                         <outlet property="howItWorksButton" destination="dlF-aM-41q" id="K5N-Se-fud"/>
                         <outlet property="scrollView" destination="24Z-Eg-bLm" id="rfg-mo-Dec"/>
                         <segue destination="dvc-aR-w5e" kind="show" identifier="exposureNotification" id="pLC-gk-Fi0"/>
-                        <segue destination="z8b-H4-SCk" kind="show" identifier="privacy" id="jn2-n4-hCy"/>
+                        <segue destination="7cZ-ub-3iS" kind="show" identifier="efgsPermission" id="mEz-Dl-kQ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTW-oV-yhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -296,8 +296,8 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                         <outlet property="continueButton" destination="nm7-9a-emx" id="Kuc-77-RYP"/>
                         <outlet property="headlineLabel" destination="6pG-LU-L7P" id="Ek4-21-zfT"/>
                         <outlet property="scrollView" destination="wMA-Rb-cNB" id="Rgk-Z5-ty9"/>
-                        <segue destination="z8b-H4-SCk" kind="show" identifier="privacy" id="q0K-IR-cSV"/>
                         <segue destination="ftw-ib-ah7" kind="show" identifier="unsupported" id="gTJ-5J-TQO"/>
+                        <segue destination="7cZ-ub-3iS" kind="show" identifier="efgsPermission" id="9oG-iN-o5P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qw-d5-W1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -312,7 +312,7 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skn-wB-dkH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="476"/>
+            <point key="canvasLocation" x="625" y="475"/>
         </scene>
         <!--UnsupportedDeviceVC-->
         <scene sceneID="yBo-fP-pYr">
@@ -441,15 +441,145 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jaJ-A0-QIZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="-31"/>
+            <point key="canvasLocation" x="1516" y="-31"/>
+        </scene>
+        <!--Spolupráce se zahraničím-->
+        <scene sceneID="klz-HF-aDf">
+            <objects>
+                <viewController id="7cZ-ub-3iS" customClass="EFGSPermissionVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nf4-aA-dzq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agw-Od-NFX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qiN-m4-kf0">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XXs-mM-Bdi">
+                                                <rect key="frame" x="20" y="10" width="374" height="489"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EfgsPermission" translatesAutoresizingMaskIntoConstraints="NO" id="79H-LH-vVT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pomozte v boji s COVID-19 i při cestách do zahraničí" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qjw-nw-wKY">
+                                                        <rect key="frame" x="0.0" y="145" width="374" height="42.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lef-zU-2x3">
+                                                        <rect key="frame" x="0.0" y="202.5" width="374" height="240.5"/>
+                                                        <string key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
+Povolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.
+Nastavení můžete kdykoliv změnit v aplikaci.
+Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gwT-dT-ZiJ">
+                                                        <rect key="frame" x="0.0" y="458" width="374" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Povolit spolupráci se zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59Z-h9-qv9">
+                                                                <rect key="frame" x="0.0" y="5.5" width="317" height="20.5"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-K3-POE">
+                                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                                <color key="onTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="0.38" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                <color key="thumbTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="XXs-mM-Bdi" firstAttribute="leading" secondItem="qiN-m4-kf0" secondAttribute="leadingMargin" id="CHj-sd-mQM"/>
+                                            <constraint firstAttribute="bottom" secondItem="XXs-mM-Bdi" secondAttribute="bottom" constant="16" id="Ck4-SR-nZ7"/>
+                                            <constraint firstItem="XXs-mM-Bdi" firstAttribute="top" secondItem="qiN-m4-kf0" secondAttribute="top" constant="10" id="dgA-zv-KBh"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="XXs-mM-Bdi" secondAttribute="trailing" id="zpH-Tq-CaH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qiN-m4-kf0" firstAttribute="leading" secondItem="Pyl-8C-Via" secondAttribute="leading" id="FRU-zk-rUs"/>
+                                    <constraint firstItem="qiN-m4-kf0" firstAttribute="trailing" secondItem="Pyl-8C-Via" secondAttribute="trailing" id="OL9-4g-uEg"/>
+                                    <constraint firstItem="qiN-m4-kf0" firstAttribute="centerX" secondItem="aOH-48-SKV" secondAttribute="centerX" id="Wjn-4q-fvk"/>
+                                    <constraint firstItem="qiN-m4-kf0" firstAttribute="top" secondItem="Pyl-8C-Via" secondAttribute="top" id="ggx-ny-mv2"/>
+                                    <constraint firstItem="qiN-m4-kf0" firstAttribute="width" secondItem="aOH-48-SKV" secondAttribute="width" id="glm-Tc-sNb"/>
+                                    <constraint firstItem="qiN-m4-kf0" firstAttribute="bottom" secondItem="Pyl-8C-Via" secondAttribute="bottom" id="wi6-sS-dKD"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Pyl-8C-Via"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="aOH-48-SKV"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="76p-qN-vc0" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="752" width="414" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5al-ub-lNy" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="50" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="L9e-Hn-IiM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <state key="normal" title="Pokračovat">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueAction:" destination="7cZ-ub-3iS" eventType="touchUpInside" id="rcK-bE-tG0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5al-ub-lNy" firstAttribute="leading" secondItem="76p-qN-vc0" secondAttribute="leadingMargin" id="Eyg-y7-xiD"/>
+                                    <constraint firstAttribute="bottom" secondItem="5al-ub-lNy" secondAttribute="bottom" constant="16" id="KAH-zM-Z77"/>
+                                    <constraint firstItem="5al-ub-lNy" firstAttribute="top" secondItem="76p-qN-vc0" secondAttribute="top" constant="50" id="o3h-3I-cp3"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="5al-ub-lNy" secondAttribute="trailing" id="ybK-X3-Dmv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Tps-FW-BIN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Agw-Od-NFX" firstAttribute="top" secondItem="Nf4-aA-dzq" secondAttribute="top" id="DP3-gc-OHT"/>
+                            <constraint firstItem="Tps-FW-BIN" firstAttribute="bottom" secondItem="76p-qN-vc0" secondAttribute="bottom" id="H6s-1E-RJw"/>
+                            <constraint firstItem="Agw-Od-NFX" firstAttribute="leading" secondItem="Nf4-aA-dzq" secondAttribute="leading" id="Trb-BD-orO"/>
+                            <constraint firstItem="76p-qN-vc0" firstAttribute="leading" secondItem="Tps-FW-BIN" secondAttribute="leading" id="XcM-rR-eod"/>
+                            <constraint firstItem="Tps-FW-BIN" firstAttribute="trailing" secondItem="Agw-Od-NFX" secondAttribute="trailing" id="k8J-EE-maX"/>
+                            <constraint firstItem="Tps-FW-BIN" firstAttribute="trailing" secondItem="76p-qN-vc0" secondAttribute="trailing" id="uur-xy-2MU"/>
+                            <constraint firstItem="Tps-FW-BIN" firstAttribute="bottom" secondItem="Agw-Od-NFX" secondAttribute="bottom" id="z4G-Px-Kps"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Spolupráce se zahraničím" id="4Fe-iU-Ov3"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="Lef-zU-2x3" id="DAR-sd-zmu"/>
+                        <outlet property="buttonsView" destination="76p-qN-vc0" id="Lr7-wY-z92"/>
+                        <outlet property="continueButton" destination="5al-ub-lNy" id="hWh-gz-Ryu"/>
+                        <outlet property="enableLabel" destination="59Z-h9-qv9" id="l6g-Sa-TFe"/>
+                        <outlet property="enableSwitch" destination="xVd-K3-POE" id="JrU-Rh-Dbg"/>
+                        <outlet property="headlineLabel" destination="Qjw-nw-wKY" id="aBX-3P-nJ9"/>
+                        <outlet property="scrollView" destination="Agw-Od-NFX" id="Bm3-9c-6Ly"/>
+                        <segue destination="z8b-H4-SCk" kind="show" identifier="privacy" id="dRn-G7-CEW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N8j-33-p4p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="624.63768115942037" y="-31.473214285714285"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="q0K-IR-cSV"/>
+        <segue reference="mEz-Dl-kQ9"/>
         <segue reference="L1U-uL-jOo"/>
         <segue reference="pLC-gk-Fi0"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="EfgsPermission" width="130" height="130"/>
         <image name="ExposureNotificationPermission" width="130" height="130"/>
         <image name="GDPR" width="130" height="130"/>
         <image name="MinLogo" width="328" height="29.5"/>

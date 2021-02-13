@@ -67,7 +67,8 @@ final class ActiveAppSectionView: UIView {
         addSubview(mainStack)
         isSelectable = false
 
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline).withSize(16)
+        titleLabel.allowsDefaultTighteningForTruncation = true
         titleLabel.numberOfLines = 0
 
         bodyLabel.font = UIFont.preferredFont(forTextStyle: .callout)

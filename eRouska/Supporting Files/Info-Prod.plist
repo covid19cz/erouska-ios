@@ -46,7 +46,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ENAPIVersion</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>ENDeveloperRegion</key>
 	<string>CZ</string>
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
