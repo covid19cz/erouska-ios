@@ -86,7 +86,7 @@ struct AppSettings {
     /// Last processed file name [country code: file name]
     static var lastProcessedFileNames: ReportServicing.ProcessedFileNames {
         get {
-            dictionary(forKey: .lastProcessedFileNames).mapValues { $0 as? String ?? "" }
+            dictionary(forKey: .lastProcessedFileNames).compactMapValues { $0 as? String }
         }
         set {
             set(withKey: .lastProcessedFileNames, value: newValue)
@@ -96,24 +96,20 @@ struct AppSettings {
     /// When was last processed time
     static var lastProcessedDate: Date? {
         get {
-            let rawValue = double(forKey: .lastProcessedDate)
-            guard rawValue != 0 else { return nil }
-            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+            date(forKey: .lastProcessedDate)
         }
         set {
-            set(withKey: .lastProcessedDate, value: newValue?.timeIntervalSince1970)
+            setDate(forKey: .lastProcessedDate, date: newValue)
         }
     }
 
     /// When it app last time uploaded keys
     static var lastUploadDate: Date? {
         get {
-            let rawValue = double(forKey: .lastUploadDate)
-            guard rawValue != 0 else { return nil }
-            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+            date(forKey: .lastUploadDate)
         }
         set {
-            set(withKey: .lastUploadDate, value: newValue?.timeIntervalSince1970)
+            setDate(forKey: .lastUploadDate, date: newValue)
         }
     }
 
@@ -130,12 +126,10 @@ struct AppSettings {
     /// When app last showed notification about exposure
     static var lastExposureWarningDate: Date? {
         get {
-            let rawValue = double(forKey: .lastExposureWarningDate)
-            guard rawValue != 0 else { return nil }
-            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+            date(forKey: .lastExposureWarningDate)
         }
         set {
-            set(withKey: .lastExposureWarningDate, value: newValue?.timeIntervalSince1970)
+            setDate(forKey: .lastExposureWarningDate, date: newValue)
         }
     }
 
@@ -192,24 +186,20 @@ struct AppSettings {
     /// Migrated from pre sectioned list date
     static var lastLegacyDataFetchDate: Date? {
         get {
-            let rawValue = double(forKey: .lastLegacyDataFetchDate)
-            guard rawValue != 0 else { return nil }
-            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+            date(forKey: .lastLegacyDataFetchDate)
         }
         set {
-            set(withKey: .lastLegacyDataFetchDate, value: newValue?.timeIntervalSince1970)
+            setDate(forKey: .lastLegacyDataFetchDate, date: newValue)
         }
     }
 
     /// Last time when app fetched current data
     static var currentDataLastFetchDate: Date? {
         get {
-            let rawValue = double(forKey: .currentDataLastFetchDate)
-            guard rawValue != 0 else { return nil }
-            return Date(timeIntervalSince1970: TimeInterval(rawValue))
+            date(forKey: .currentDataLastFetchDate)
         }
         set {
-            set(withKey: .currentDataLastFetchDate, value: newValue?.timeIntervalSince1970)
+            setDate(forKey: .currentDataLastFetchDate, date: newValue)
         }
     }
 
@@ -267,8 +257,18 @@ struct AppSettings {
         return UserDefaults.standard.dictionary(forKey: key.rawValue) ?? [:]
     }
 
+    private static func date(forKey key: Keys) -> Date? {
+        let rawValue = double(forKey: key)
+        guard rawValue != 0 else { return nil }
+        return Date(timeIntervalSince1970: TimeInterval(rawValue))
+    }
+
     private static func set(withKey key: Keys, value: Any?) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
+    }
+
+    private static func setDate(forKey key: Keys, date: Date?) {
+        set(withKey: key, value: date?.timeIntervalSince1970)
     }
 
 }

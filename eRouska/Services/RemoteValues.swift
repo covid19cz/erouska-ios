@@ -66,7 +66,6 @@ extension AppDelegate {
 enum RemoteConfigValueKey: String, CaseIterable {
     case shareAppDynamicLink
 
-    case helpMarkdown
     case helpJson
 
     case minSupportedVersion
@@ -113,61 +112,11 @@ enum RemoteConfigValueKey: String, CaseIterable {
 
     var defaultValue: Any {
         switch self {
-        case .shareAppDynamicLink:
-            return defaultLocalValue(withKey: "shareAppDynamicLink")
-
-        case .helpMarkdown:
-            return localValue(forResource: "Help", withExtension: "strings", withKey: "helpMarkdown")
         case .helpJson:
-            return localValue(forResource: "MarkdownBackups", withExtension: "strings", withKey: "helpJsonBackup")
+            return localValue(forResource: "Help", withExtension: "strings", withKey: "helpJson")
 
         case .minSupportedVersion:
             return Version("2.1.0")
-        case .unsupportedDeviceLink:
-            return defaultLocalValue(withKey: "unsupportedDeviceLink")
-        case .shouldCheckOSVersion:
-            return true
-
-        case .exposureBannerTitle:
-            return defaultLocalValue(withKey: "encounterWarning")
-
-        case .riskyEncountersTitle:
-            return defaultLocalValue(withKey: "riskyEncountersTitle")
-        case .riskyEncountersWithSymptoms:
-            return defaultLocalValue(withKey: "riskyEncountersWithSymptoms")
-        case .riskyEncountersWithoutSymptoms:
-            return defaultLocalValue(withKey: "riskyEncountersWithoutSymptoms")
-
-        case .symptomsContentJson:
-            return defaultLocalValue(withKey: "symptomsContentJson")
-        case .preventionContentJson:
-            return defaultLocalValue(withKey: "preventionContentJson")
-        case .contactsContentJson:
-            return defaultLocalValue(withKey: "contactsContentJson")
-        case .exposureHelpContentJson:
-            return defaultLocalValue(withKey: "exposureHelpContentJson")
-
-        case .currentMeasuresUrl:
-            return defaultLocalValue(withKey: "currentMeasuresUrl")
-        case .conditionsOfUseUrl:
-            return defaultLocalValue(withKey: "conditionsOfUseUrl")
-
-        case .noEncounterHeader:
-            return defaultLocalValue(withKey: "noEncounterHeader")
-        case .noEncounterBody:
-            return defaultLocalValue(withKey: "noEncounterBody")
-
-        case .exposureUITitle:
-            return defaultLocalValue(withKey: "exposureUITitle")
-        case .symptomsUITitle:
-            return defaultLocalValue(withKey: "symptomsUITitle")
-        case .spreadPreventionUITitle:
-            return defaultLocalValue(withKey: "spreadPreventionUITitle")
-        case .recentExposuresUITitle:
-            return defaultLocalValue(withKey: "recentExposuresUITitle")
-
-        case .chatBotLink:
-            return defaultLocalValue(withKey: "chatBotLink")
 
         case .appleServerConfiguration:
             #if PROD
@@ -175,8 +124,6 @@ enum RemoteConfigValueKey: String, CaseIterable {
             #else
             return ServerConfiguration.development
             #endif
-        case .appleExposureConfigurationV1:
-            return defaultLocalValue(withKey: "appleExposureConfiguration")
         case .appleIgnoreAndroid:
             return true
         case .appleExposureConfigurationV2:
@@ -234,13 +181,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
                 }
             """
 
-        case .efgsDays:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsDaysDefault")
-        case .efgsCountries:
-            return localValue(forResource: "RemoteTitles", withExtension: "strings", withKey: "efgsCountriesDefault")
-
-        case .keyExportNonTravellerUrls, .keyExportEuTravellerUrls:
-            return "{}"
+        default:
+            return defaultLocalValue(withKey: rawValue)
         }
     }
 
@@ -266,11 +208,6 @@ struct RemoteValues {
 
     static var shareAppDynamicLink: String {
         AppDelegate.shared.remoteConfigString(forKey: .shareAppDynamicLink).trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-
-    /// Help markdown
-    static var helpMarkdown: String {
-        AppDelegate.shared.remoteConfigString(forKey: .helpMarkdown)
     }
 
     /// Help in json and markdown
