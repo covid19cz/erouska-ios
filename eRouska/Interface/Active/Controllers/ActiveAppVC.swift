@@ -223,9 +223,6 @@ final class ActiveAppVC: UIViewController {
         controller.addAction(UIAlertAction(title: L10n.debug + " rizikového setkání", style: .default, handler: { [weak self] _ in
             self?.debugInsertFakeExposure()
         }))
-        controller.addAction(UIAlertAction(title: L10n.debug + " zkontrolovat reporty", style: .default, handler: { [weak self] _ in
-            self?.debugProcessReports()
-        }))
         controller.addAction(UIAlertAction(title: L10n.debug + " zobrazit vysledek odeslani", style: .default, handler: { [weak self] _ in
             let controller = UIAlertController(title: "Vysledek", message: nil, preferredStyle: .actionSheet)
             controller.addAction(UIAlertAction(title: "Odeslano", style: .default, handler: { [weak self] _ in

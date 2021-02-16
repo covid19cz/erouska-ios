@@ -48,6 +48,7 @@ final class ExposureRealm: Object {
         self.date = exposure.date
         self.detectedDate = detectedDate
 
+        self.dataV1 = .init()
         self.dataV2 = .init(exposure)
     }
 

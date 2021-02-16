@@ -46,16 +46,6 @@ final class DownloadReportsVC: UITableViewController {
         sections
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-
-        tableView.rx
-            .modelSelected(Exposure.self)
-            .subscribe(onNext: { [weak self] value in
-                if let indexPath = self?.tableView.indexPathForSelectedRow {
-                    self?.tableView.deselectRow(at: indexPath, animated: true)
-                }
-                self?.perform(segue: StoryboardSegue.RiskyEncounters.showDetailV1, sender: value)
-            })
-            .disposed(by: disposeBag)
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -150,7 +150,7 @@
         <!--Encounter Detail-->
         <scene sceneID="lw9-Gm-wfN">
             <objects>
-                <tableViewController id="G55-JD-Iya" customClass="RiskyEncountersV1DetailVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RiskyEncountersV1DetailVC" id="G55-JD-Iya" customClass="RiskyEncountersV1DetailVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="G5W-Za-AfG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -566,7 +566,7 @@ Kvůli zachování anonymity nakaženého neznáme čas ani místo setkání.</s
         <!--Encounter Detail-->
         <scene sceneID="C9W-Pm-G2X">
             <objects>
-                <tableViewController id="kt8-ps-MJu" customClass="RiskyEncountersV2DetailVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RiskyEncountersV2DetailVC" id="kt8-ps-MJu" customClass="RiskyEncountersV2DetailVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="G4h-vi-X4E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

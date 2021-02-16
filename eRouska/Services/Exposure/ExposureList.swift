@@ -44,7 +44,13 @@ final class ExposureList {
 
         let realm = AppDelegate.dependency.realm
         try realm.write {
-            exposures.sorted { $0.date < $1.date }.forEach { realm.add(ExposureRealm($0, detectedDate: detectionDate)) }
+            exposures.sorted { $0.date < $1.date }.forEach {
+                if let window = $0.window {
+                    realm.add(ExposureRealm(window, detectedDate: detectionDate))
+                } else {
+                    realm.add(ExposureRealm($0, detectedDate: detectionDate))
+                }
+            }
         }
     }
 
