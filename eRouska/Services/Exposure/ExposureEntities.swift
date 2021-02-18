@@ -210,13 +210,15 @@ struct Exposure: Codable, Equatable {
 }
 
 struct ExposureWindow: Codable, Equatable {
-    init(id: UUID, date: Date, calibrationConfidence: Int, diagnosisReportType: Int, infectiousness: Int, scanInstances: [ExposureWindow.Scan]) {
+    init(id: UUID, date: Date, calibrationConfidence: Int, diagnosisReportType: Int, infectiousness: Int,
+         scanInstances: [ExposureWindow.Scan], daySummary: DaySummary?) {
         self.id = id
         self.date = date
         self.calibrationConfidence = calibrationConfidence
         self.diagnosisReportType = diagnosisReportType
         self.infectiousness = infectiousness
         self.scanInstances = scanInstances
+        self.daySummary = daySummary
     }
 
 
@@ -232,12 +234,19 @@ struct ExposureWindow: Codable, Equatable {
         }
     }
 
+    struct DaySummary: Codable, Equatable {
+        var maximumScore: Double
+        var scoreSum: Double
+        var weightedDurationSum: TimeInterval
+    }
+
     var id: UUID
     var date: Date
     var calibrationConfidence: Int
     var diagnosisReportType: Int
     var infectiousness: Int
     var scanInstances: [Scan]
+    var daySummary: DaySummary?
 
 }
 

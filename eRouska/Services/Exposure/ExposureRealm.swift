@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import RealmSwift
 import ExposureNotification
 
@@ -121,6 +122,10 @@ final class ExposureDataV2: Object {
     var typicalAttenuation: List<Int>
     var secondsSinceLastScan: List<Int>
 
+    @objc dynamic var maximumScore: Double
+    @objc dynamic var scoreSum: Double
+    @objc dynamic var weightedDurationSum: Double
+
     override class func primaryKey() -> String {
         return "id"
     }
@@ -133,6 +138,9 @@ final class ExposureDataV2: Object {
         minimumAttenuation = List<Int>()
         typicalAttenuation = List<Int>()
         secondsSinceLastScan = List<Int>()
+        maximumScore = 0
+        scoreSum = 0
+        weightedDurationSum = 0
         super.init()
     }
 
@@ -147,6 +155,9 @@ final class ExposureDataV2: Object {
             typicalAttenuation.append(scan.typicalAttenuation)
             secondsSinceLastScan.append(scan.secondsSinceLastScan)
         }
+        maximumScore = exposure.daySummary?.maximumScore ?? 0
+        scoreSum = exposure.daySummary?.scoreSum ?? 0
+        weightedDurationSum = exposure.daySummary?.weightedDurationSum ?? 0
     }
 
     func toExposure(date: Date) -> ExposureWindow {
@@ -167,7 +178,8 @@ final class ExposureDataV2: Object {
             calibrationConfidence: calibrationConfidence,
             diagnosisReportType: diagnosisReportType,
             infectiousness: infectiousness,
-            scanInstances: scans
+            scanInstances: scans,
+            daySummary: .init(maximumScore: maximumScore, scoreSum: scoreSum, weightedDurationSum: weightedDurationSum)
         )
     }
 

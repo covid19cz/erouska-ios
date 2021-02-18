@@ -18,6 +18,10 @@ final class RiskyEncountersV2DetailVC: UITableViewController {
         case minimumAttenuation
         case typicalAttenuation
         case secondsSinceLastScan
+
+        case maximumScore
+        case scoreSum
+        case weightedDurationSum
     }
 
     var exposure: ExposureWindow?
@@ -64,6 +68,16 @@ final class RiskyEncountersV2DetailVC: UITableViewController {
         case .secondsSinceLastScan:
             cell.textLabel?.text = "Seconds Since Last Scan"
             cell.detailTextLabel?.text = exposure.scanInstances.map { String($0.secondsSinceLastScan) }.joined(separator: ", ")
+
+        case .maximumScore:
+            cell.textLabel?.text = "Highest score of all exposures (at day)"
+            cell.detailTextLabel?.text = "\(exposure.daySummary?.maximumScore ?? 0)"
+        case .scoreSum:
+            cell.textLabel?.text = "Sum of scores for all exposure (at day)"
+            cell.detailTextLabel?.text = "\(exposure.daySummary?.scoreSum ?? 0)"
+        case .weightedDurationSum:
+            cell.textLabel?.text = "Sum of exposure durations weighted by their attenuation (at day)"
+            cell.detailTextLabel?.text = "\(exposure.daySummary?.weightedDurationSum ?? 0)"
         default:
             break
         }

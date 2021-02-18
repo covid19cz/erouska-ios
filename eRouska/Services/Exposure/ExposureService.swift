@@ -299,6 +299,18 @@ final class ExposureService: ExposureServicing {
                 finish(error: error)
             } else if let windows = windows {
                 let exposures: [Exposure] = windows.map { info in
+                    let daySummary: ExposureWindow.DaySummary?
+
+                    if let summary = summary.daySummaries.first(where: { $0.date == info.date }) {
+                        daySummary = ExposureWindow.DaySummary(
+                            maximumScore: summary.daySummary.maximumScore,
+                            scoreSum: summary.daySummary.scoreSum,
+                            weightedDurationSum: summary.daySummary.weightedDurationSum
+                        )
+                    } else {
+                        daySummary = nil
+                    }
+
                     let window = ExposureWindow(
                         id: UUID(),
                         date: info.date,
@@ -311,7 +323,8 @@ final class ExposureService: ExposureServicing {
                                 typicalAttenuation: Int($0.typicalAttenuation),
                                 secondsSinceLastScan: Int($0.secondsSinceLastScan)
                             )
-                        }
+                        },
+                        daySummary: daySummary
                     )
 
                     return Exposure(

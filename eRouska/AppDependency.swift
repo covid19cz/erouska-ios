@@ -42,7 +42,7 @@ final class AppDependency {
         var oldV1Data: [String: ExposureDataV1] = [:]
 
         let configuration = Realm.Configuration(
-            schemaVersion: 10,
+            schemaVersion: 11,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 5 {
                     migration.enumerateObjects(ofType: ExposureRealm.className()) { oldObject, newObject in
