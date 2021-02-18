@@ -177,7 +177,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
                 \"attenuationLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
                 \"daysSinceLastExposureLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
                 \"durationLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
-                \"transmissionRiskLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8]
+                \"transmissionRiskLevelValues\":[1, 2, 3, 4, 5, 6, 7, 8],
+                \"minimumScore\":900
                 }
             """
 

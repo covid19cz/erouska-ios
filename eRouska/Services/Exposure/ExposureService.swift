@@ -287,7 +287,7 @@ final class ExposureService: ExposureServicing {
         }
         log("ExposureService getExposureInfo")
 
-        let daySummary = summary.daySummaries.filter { $0.daySummary.maximumScore > 900 }
+        let daySummary = summary.daySummaries.filter { Int($0.daySummary.maximumScore) >= configuration.minimumScore }
         guard !daySummary.isEmpty else {
             log("ExposureService no day with score at least 900")
             finish()

@@ -90,6 +90,7 @@ struct ExposureConfigurationV2: ExposureConfiguration, Decodable {
     let reportTypeSelfReportedWeight: Double
     let reportTypeRecursiveWeight: Double
     let reportTypeNoneMap: Int
+    let minimumScore: Int
 
     // API V1 Keys
     let minimumRiskScore: ENRiskScore
@@ -126,6 +127,7 @@ struct ExposureConfigurationV2: ExposureConfiguration, Decodable {
         daysSinceLastExposureLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
         durationLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
         transmissionRiskLevelValues = [1, 2, 3, 4, 5, 6, 7, 8]
+        minimumScore = 900
     }
 
     var configuration: ENExposureConfiguration {
