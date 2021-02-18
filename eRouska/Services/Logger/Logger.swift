@@ -9,25 +9,7 @@
 import Foundation
 
 func log(_ text: String) {
-    #if !PROD
-    DispatchQueue.main.async {
-        Log.log(text)
-        FileLogger.shared.writeLog(text)
-    }
-    #elseif DEBUG
+    #if DEBUG
     print(text)
     #endif
-}
-
-protocol LogDelegate: AnyObject {
-    func didLog(_ text: String)
-}
-
-struct Log {
-    static weak var delegate: LogDelegate?
-
-    static func log(_ text: String) {
-        delegate?.didLog(text)
-        print(text)
-    }
 }

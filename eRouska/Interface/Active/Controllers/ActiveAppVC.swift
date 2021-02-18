@@ -208,9 +208,6 @@ final class ActiveAppVC: UIViewController {
     #if !PROD
     @objc private func moreAction(sender: Any?) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: L10n.debug, style: .default, handler: { [weak self] _ in
-            self?.debugAction()
-        }))
         controller.addAction(UIAlertAction(title: L10n.debug + " novinky", style: .default, handler: { [weak self] _ in
             self?.debugShowNews()
         }))
@@ -490,11 +487,6 @@ private extension ActiveAppVC {
     // MARK: - Debug
 
     #if !PROD || DEBUG
-    func debugAction() {
-        let controller = StoryboardScene.Debug.tabBar.instantiate()
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
-    }
 
     func debugProcessReports() {
         if AppDelegate.dependency.reporter.isDownloading || AppDelegate.dependency.exposure.detectingExposures {

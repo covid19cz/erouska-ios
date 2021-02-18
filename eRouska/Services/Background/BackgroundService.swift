@@ -30,7 +30,7 @@ final class BackgroundService {
 
     func registerTask(with taskIdentifier: BackgroundTaskIdentifier) {
         BGTaskScheduler.shared.register(forTaskWithIdentifier: taskIdentifier.schedulerIdentifier, using: .main) { task in
-            Log.log("BGTask: Start background check")
+            log("BGTask: Start background check")
 
             let progress = self.performTask(task)
 
@@ -39,7 +39,7 @@ final class BackgroundService {
                 self.scheduleBackgroundTaskIfNeeded(next: false)
                 progress.cancel()
                 task.setTaskCompleted(success: false)
-                Log.log("AppDelegate: BG timeout")
+                log("AppDelegate: BG timeout")
             }
 
             // Schedule the next background task
@@ -63,13 +63,13 @@ final class BackgroundService {
             // start after next 8 hours
             let earliestBeginDate = Date(timeIntervalSinceNow: 8 * 60 * 60)
             taskRequest.earliestBeginDate = earliestBeginDate
-            Log.log("Background: Schedule next task to: \(earliestBeginDate)")
+            log("Background: Schedule next task to: \(earliestBeginDate)")
         }
 
         do {
             try BGTaskScheduler.shared.submit(taskRequest)
         } catch {
-            Log.log("Background: Unable to schedule background task: \(error)")
+            log("Background: Unable to schedule background task: \(error)")
         }
     }
 
@@ -80,7 +80,7 @@ final class BackgroundService {
 
         // bundleIdentifier is defined in Info.plist and can never be nil!
         guard let bundleID = Bundle.main.bundleIdentifier else {
-            Log.log("BGNotification: Could not access bundle identifier")
+            log("BGNotification: Could not access bundle identifier")
             return
         }
         let identifier = bundleID + ".notifications.bluetooth_off"
@@ -100,7 +100,7 @@ final class BackgroundService {
             notificationCenter.add(request) { error in
                 DispatchQueue.main.async {
                     if let error = error {
-                        Log.log("BGNotification: Error showing user notification \(error)")
+                        log("BGNotification: Error showing user notification \(error)")
                     }
                 }
             }
@@ -131,7 +131,7 @@ final class BackgroundService {
 
         // bundleIdentifier is defined in Info.plist and can never be nil!
         guard let bundleID = Bundle.main.bundleIdentifier else {
-            Log.log("BGNotification: Could not access bundle identifier")
+            log("BGNotification: Could not access bundle identifier")
             return
         }
 
@@ -144,7 +144,7 @@ final class BackgroundService {
         notificationCenter.add(request) { error in
             DispatchQueue.main.async {
                 if let error = error {
-                    Log.log("BGNotification: Error showing user notification \(error)")
+                    log("BGNotification: Error showing user notification \(error)")
                 }
             }
         }
@@ -165,7 +165,7 @@ private extension BackgroundService {
         func reportFailure(_ error: ReportError) {
             task?.setTaskCompleted(success: false)
             isRunning = false
-            Log.log("BGTask: failed to detect exposures \(error)")
+            log("BGTask: failed to detect exposures \(error)")
             Crashlytics.crashlytics().record(error: error)
         }
 
@@ -180,7 +180,7 @@ private extension BackgroundService {
         // Perform the exposure detection
         let keyURLs = AppSettings.efgsEnabled ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
         return reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: AppSettings.lastProcessedFileNames) { report in
-            Log.log("BGTask: did download keys \(report)")
+            log("BGTask: did download keys \(report)")
 
             var atLeastOneSuccess: Bool = false
             var URLs: [URL] = []
@@ -266,7 +266,7 @@ private extension BackgroundService {
 
     func showExposureNotification(result: String) {
         guard let bundleID = Bundle.main.bundleIdentifier else {
-            Log.log("BGNotification: Could not access bundle identifier")
+            log("BGNotification: Could not access bundle identifier")
             return
         }
 
@@ -278,7 +278,7 @@ private extension BackgroundService {
         UNUserNotificationCenter.current().add(request) { error in
             DispatchQueue.main.async {
                 if let error = error {
-                    Log.log("BGNotification: error showing error user notification \(error)")
+                    log("BGNotification: error showing error user notification \(error)")
                 }
             }
         }
