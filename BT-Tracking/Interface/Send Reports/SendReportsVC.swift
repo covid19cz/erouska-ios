@@ -47,11 +47,17 @@ final class SendReportsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if Device.current.diagonal < 4.1 {
+            navigationItem.largeTitleDisplayMode = .never
+        }
+
         codeTextField.textContentType = .oneTimeCode
         footerLabel.isHidden = AppSettings.lastUploadDate == nil
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
+
+        scrollView.contentInset.bottom = 20
 
         setupTextField()
         setupStrings()
@@ -66,14 +72,6 @@ final class SendReportsVC: UIViewController {
             controller?.viewModel = sender as? SendResultVM ?? .standard
         default:
             break
-        }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        if Device.current == .iPhoneSE {
-            navigationController?.navigationBar.prefersLargeTitles = false
         }
     }
 
