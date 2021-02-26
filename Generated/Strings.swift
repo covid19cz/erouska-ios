@@ -270,6 +270,16 @@ internal enum L10n {
   internal static let dataSendNokeysBody = L10n.tr("Localizable", "data_send_nokeys_body")
   /// eRoušku zatím používáte jen chvíli a nemá zaznamenané žádné jiné eRoušky, proto nikoho ve vašem okolí neupozorní na rizikové setkání.
   internal static let dataSendNokeysHeadline = L10n.tr("Localizable", "data_send_nokeys_headline")
+  /// Souhlasím
+  internal static let dataSendShareActionConfirm = L10n.tr("Localizable", "data_send_share_action_confirm")
+  /// Nesouhlasím
+  internal static let dataSendShareActionReject = L10n.tr("Localizable", "data_send_share_action_reject")
+  /// Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.
+  internal static let dataSendShareBody = L10n.tr("Localizable", "data_send_share_body")
+  /// Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?
+  internal static let dataSendShareHeadline = L10n.tr("Localizable", "data_send_share_headline")
+  /// Spolupráce se zahraničím
+  internal static let dataSendShareTitle = L10n.tr("Localizable", "data_send_share_title")
   /// Odesláno
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Nepodařilo se nám odeslat data
@@ -278,6 +288,16 @@ internal enum L10n {
   internal static let dataSendTitleLabel = L10n.tr("Localizable", "data_send_title_label")
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19
   internal static let dataSendTitleNokeys = L10n.tr("Localizable", "data_send_title_nokeys")
+  /// Ano, byl(a) jsem v zahraničí
+  internal static let dataSendTravelActionConfirm = L10n.tr("Localizable", "data_send_travel_action_confirm")
+  /// Nebyl(a) jsem v zhraničí
+  internal static let dataSendTravelActionReject = L10n.tr("Localizable", "data_send_travel_action_reject")
+  /// Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, ketré jste potkali při svých cestách do zahraničí.
+  internal static let dataSendTravelBody = L10n.tr("Localizable", "data_send_travel_body")
+  /// Cestovali jste v posledních 14 dnech do některé ze zemí Evropské unie?
+  internal static let dataSendTravelHeadline = L10n.tr("Localizable", "data_send_travel_headline")
+  /// Cesty do zahraničí
+  internal static let dataSendTravelTitle = L10n.tr("Localizable", "data_send_travel_title")
   /// Zkontrolujete tak, zda jste se setkali s osobou, u níž bylo potvrzeno onemocnění COVID-19.
   internal static let deadmanNotificaitonBody = L10n.tr("Localizable", "deadman_notificaiton_body")
   /// Otevřete aplikaci eRouška

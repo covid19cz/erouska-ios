@@ -23,8 +23,6 @@ final class SendReportsVC: BaseController, HasDependencies {
 
     // MARK: -
 
-    private let viewModel = SendReportsVM()
-
     private let code = BehaviorRelay<String>(value: "")
     private var isValid: Observable<Bool> {
         code.asObservable().map { phoneNumber -> Bool in
@@ -45,7 +43,7 @@ final class SendReportsVC: BaseController, HasDependencies {
 
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var actionButton: Button!
+    @IBOutlet private weak var verifyButton: Button!
     @IBOutlet private weak var noCodeButton: Button!
 
     override func viewDidLoad() {
@@ -68,16 +66,11 @@ final class SendReportsVC: BaseController, HasDependencies {
         case .result:
             let controller = segue.destination as? SendResultVC
             controller?.viewModel = sender as? SendResultVM ?? .standard
+        case .efgs:
+            let controller = segue.destination as? SendReportsTravelVC
+            controller?.verificationToken = sender as? String
         default:
             break
-        }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        if UIScreen.main.bounds.size.width == 320 {
-            navigationController?.navigationBar.prefersLargeTitles = false
         }
     }
 
@@ -93,7 +86,7 @@ final class SendReportsVC: BaseController, HasDependencies {
 
     // MARK: - Actions
 
-    @IBAction private func sendReportsAction() {
+    @IBAction private func verifyCodeAction() {
         guard let connection = try? Reachability().connection, connection != .unavailable else {
             showAlert(
                 title: L10n.dataListSendErrorFailedTitle,
@@ -113,12 +106,8 @@ final class SendReportsVC: BaseController, HasDependencies {
         dismiss(animated: true)
     }
 
-    private func resultAction() {
-        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.standard)
-    }
-
-    private func resultNoKeysAction() {
-        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.noKeys)
+    private func resultVerifyToken(_ token: String) {
+        perform(segue: StoryboardSegue.SendReports.efgs, sender: token)
     }
 
     private func resultErrorAction(code: String, message: String? = nil) {
@@ -152,7 +141,7 @@ private extension SendReportsVC {
 
         codeTextField.rx.text.orEmpty.bind(to: code).disposed(by: disposeBag)
 
-        isValid.bind(to: actionButton.rx.isEnabled).disposed(by: disposeBag)
+        isValid.bind(to: verifyButton.rx.isEnabled).disposed(by: disposeBag)
     }
 
     func setupStrings() {
@@ -162,7 +151,7 @@ private extension SendReportsVC {
         headlineLabel.text = L10n.dataListSendHeadline
         footerLabel.text = L10n.dataListSendFooter(DateFormatter.baseDateFormatter.string(from: AppSettings.lastUploadDate ?? Date()))
         codeTextField.placeholder = L10n.dataListSendPlaceholder
-        actionButton.setTitle(L10n.dataListSendActionTitle)
+        verifyButton.setTitle(L10n.dataListSendActionTitle)
         noCodeButton.setTitle(L10n.dataListSendNoCodeActionTitle)
     }
 
@@ -184,143 +173,18 @@ private extension SendReportsVC {
 
     // MARK: - Reports
 
-    enum ReportType {
-        case normal, test
-    }
-
     func verifyCode(_ code: String) {
         reportShowProgress()
 
         dependencies.verification.verify(with: code) { [weak self] result in
             switch result {
             case .success(let token):
-                if #available(iOS 13.7, *) {
-                    self?.askIfUserIsTraveler(token: token)
-                } else {
-                    self?.report(with: token)
-                }
+                log("SendReportsVC: code verified, received token \(token)")
+                self?.resultVerifyToken(token)
             case .failure(let error):
-                log("DataListVC: Failed to verify code \(error)")
+                log("SendReportsVC: Failed to verify code \(error)")
                 self?.reportHideProgress()
                 self?.showVerifyError(error)
-                Crashlytics.crashlytics().record(error: error)
-            }
-        }
-    }
-
-    func report(with token: String, traveler: Bool = false) {
-        #if DEBUG
-        debugAskForTypeOfKeys(token: token, traveler: traveler)
-        #else
-        sendReport(with: .normal, token: token, traveler: traveler)
-        #endif
-    }
-
-    func debugAskForTypeOfKeys(token: String, traveler: Bool) {
-        let controller = UIAlertController(title: "Který druh klíčů?", message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: "Test Keys", style: .default, handler: { [weak self] _ in
-            self?.sendReport(with: .test, token: token, traveler: traveler)
-        }))
-        controller.addAction(UIAlertAction(title: "Normal Keys", style: .default, handler: {[weak self]  _ in
-            self?.sendReport(with: .normal, token: token, traveler: traveler)
-        }))
-        controller.addAction(UIAlertAction(title: L10n.activeBackgroundModeCancel, style: .cancel, handler: nil))
-        present(controller, animated: true, completion: nil)
-    }
-
-    @available (iOS 13.7, *)
-    func askIfUserIsTraveler(token: String) {
-        dependencies.exposure.getUserTraveled { [weak self] result in
-            switch result {
-            case let .success(traveler):
-                self?.report(with: token, traveler: traveler)
-            case let .failure(error):
-                #if DEBUG
-                self?.show(error: error)
-                #endif
-                self?.report(with: token)
-            }
-        }
-    }
-
-    func sendReport(with type: ReportType, token: String, traveler: Bool) {
-        let callback: ExposureServicing.KeysCallback = { [weak self] result in
-            guard let self = self else { return }
-
-            switch result {
-            case .success(let keys):
-                guard !keys.isEmpty else {
-                    self.reportHideProgress()
-                    self.resultNoKeysAction()
-                    return
-                }
-                self.requestCertificate(keys: keys, token: token, traveler: traveler)
-            case .failure(let error):
-                log("DataListVC: Failed to get exposure keys \(error)")
-                self.reportHideProgress()
-
-                switch error {
-                case .noData:
-                    self.resultNoKeysAction()
-                default:
-                    self.resultErrorAction(code: error.localizedDescription)
-                }
-                Crashlytics.crashlytics().record(error: error)
-            }
-        }
-
-        switch type {
-        case .test:
-            dependencies.exposure.getTestDiagnosisKeys(callback: callback)
-        case .normal:
-            dependencies.exposure.getDiagnosisKeys(callback: callback)
-        }
-    }
-
-    func requestCertificate(keys: [ExposureDiagnosisKey], token: String, traveler: Bool) {
-        do {
-            let secret = Data.random(count: 32)
-            let hmacKey = try dependencies.reporter.calculateHmacKey(keys: keys, secret: secret)
-            dependencies.verification.requestCertificate(token: token, hmacKey: hmacKey) { result in
-                switch result {
-                case .success(let certificate):
-                    self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret, traveler: traveler)
-                case .failure(let error):
-                    log("DataListVC: Failed to get verification payload \(error)")
-                    self.reportHideProgress()
-                    self.resultErrorAction(code: error.localizedDescription)
-                    Crashlytics.crashlytics().record(error: error)
-                }
-            }
-        } catch {
-            log("DataListVC: Failed to get hmac for keys \(error)")
-            reportHideProgress()
-            resultErrorAction(code: error.localizedDescription)
-            Crashlytics.crashlytics().record(error: error)
-        }
-    }
-
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, traveler: Bool) {
-        dependencies.reporter.uploadKeys(
-            keys: keys,
-            verificationPayload: verificationPayload,
-            hmacSecret: hmacSecret,
-            efgs: AppSettings.efgsEnabled,
-            traveler: traveler
-        ) { [weak self] result in
-            self?.reportHideProgress()
-            switch result {
-            case .success:
-                self?.resultAction()
-            case .failure(let error):
-                if let error = error as? ReportUploadError {
-                    switch error {
-                    case .upload(let code, let message):
-                        self?.resultErrorAction(code: code, message: message)
-                    }
-                } else {
-                    self?.resultErrorAction(code: error.localizedDescription)
-                }
                 Crashlytics.crashlytics().record(error: error)
             }
         }

@@ -101,6 +101,19 @@
 "data_list_send_error_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
 "data_list_send_error_disabled_title" = "Data nyní nemůžete odeslat";
 "data_list_send_error_disabled_message" = "V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.";
+
+"data_send_travel_title" = "Cesty do zahraničí";
+"data_send_travel_headline" = "Cestovali jste v posledních 14 dnech do některé ze zemí Evropské unie?";
+"data_send_travel_body" = "Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, ketré jste potkali při svých cestách do zahraničí.";
+"data_send_travel_action_confirm" = "Ano, byl(a) jsem v zahraničí";
+"data_send_travel_action_reject" = "Nebyl(a) jsem v zhraničí";
+
+"data_send_share_title" = "Spolupráce se zahraničím";
+"data_send_share_headline" = "Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?";
+"data_send_share_body" = "Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.";
+"data_send_share_action_confirm" = "Souhlasím";
+"data_send_share_action_reject" = "Nesouhlasím";
+
 "data_list_previous_header" = "Riziková setkání zjištěná";
 "data_send_title" = "Odesláno";
 "data_send_error" = "Chyba";

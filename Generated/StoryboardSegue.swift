@@ -42,6 +42,8 @@ internal enum StoryboardSegue {
     case showDetailV2
   }
   internal enum SendReports: String, SegueType {
+    case agreement
+    case efgs
     case noCode
     case result
   }
