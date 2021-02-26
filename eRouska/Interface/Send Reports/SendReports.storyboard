@@ -404,21 +404,21 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XoF-h5-ID6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="161.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0jy-vs-ViM">
-                                                <rect key="frame" x="20" y="10" width="374" height="135.5"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="144"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cestovali jste v posledních 14 dnech do některé ze zemí Evropské unie?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qg-6X-VJH">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="42.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSG-oU-GWu">
-                                                        <rect key="frame" x="0.0" y="57.5" width="374" height="78"/>
+                                                        <rect key="frame" x="0.0" y="57.5" width="374" height="86.5"/>
                                                         <string key="text">Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, ketré jste potkali při svých cestách do zahraničí.</string>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -519,7 +519,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
             </objects>
             <point key="canvasLocation" x="1890" y="631"/>
         </scene>
-        <!--          Spolupráce se zahraničím-->
+        <!--Spolupráce se-->
         <scene sceneID="4eO-is-D2F">
             <objects>
                 <viewController id="2Aq-LP-pQl" customClass="SendReportsShareVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
@@ -531,21 +531,27 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCy-kU-Kg5">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="183.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="238"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OTT-2j-gND">
-                                                <rect key="frame" x="20" y="10" width="374" height="157.5"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="222"/>
                                                 <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iE8-AH-QSv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q9-GC-7EZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="64.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <rect key="frame" x="0.0" y="56" width="374" height="64.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOd-LV-C0F">
-                                                        <rect key="frame" x="0.0" y="79.5" width="374" height="78"/>
+                                                        <rect key="frame" x="0.0" y="135.5" width="374" height="86.5"/>
                                                         <string key="text">Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.</string>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -554,7 +560,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="OTT-2j-gND" firstAttribute="top" secondItem="YCy-kU-Kg5" secondAttribute="top" constant="10" id="9vf-Nd-F3G"/>
+                                            <constraint firstItem="OTT-2j-gND" firstAttribute="top" secondItem="YCy-kU-Kg5" secondAttribute="top" id="9vf-Nd-F3G"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="OTT-2j-gND" secondAttribute="trailing" id="J90-qs-5P4"/>
                                             <constraint firstItem="OTT-2j-gND" firstAttribute="leading" secondItem="YCy-kU-Kg5" secondAttribute="leadingMargin" id="QXu-aJ-vb2"/>
                                             <constraint firstAttribute="bottom" secondItem="OTT-2j-gND" secondAttribute="bottom" constant="16" id="ea1-bB-9TA"/>
@@ -630,7 +636,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="          Spolupráce se zahraničím" largeTitleDisplayMode="always" id="KTJ-8e-M2r"/>
+                    <navigationItem key="navigationItem" title="Spolupráce se" largeTitleDisplayMode="always" id="KTJ-8e-M2r"/>
                     <connections>
                         <outlet property="bodyLabel" destination="WOd-LV-C0F" id="o27-KK-U6d"/>
                         <outlet property="buttonsBottomConstraint" destination="6tS-rw-7zR" id="RkB-AV-qsN"/>
@@ -639,6 +645,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                         <outlet property="headlineLabel" destination="4q9-GC-7EZ" id="GwK-uE-JE0"/>
                         <outlet property="rejectButton" destination="Vdv-fT-G9M" id="il2-sU-dWo"/>
                         <outlet property="scrollView" destination="iVp-EE-BnC" id="lve-ue-s0g"/>
+                        <outlet property="titleLabel" destination="iE8-AH-QSv" id="q3e-hO-d4o"/>
                         <segue destination="DYf-Vd-0PA" kind="show" identifier="result" id="jX3-3S-N50"/>
                     </connections>
                 </viewController>

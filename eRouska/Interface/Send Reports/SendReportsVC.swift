@@ -180,6 +180,7 @@ private extension SendReportsVC {
             switch result {
             case .success(let token):
                 log("SendReportsVC: code verified, received token \(token)")
+                self?.reportHideProgress()
                 self?.resultVerifyToken(token)
             case .failure(let error):
                 log("SendReportsVC: Failed to verify code \(error)")

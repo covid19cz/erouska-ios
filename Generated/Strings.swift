@@ -278,8 +278,6 @@ internal enum L10n {
   internal static let dataSendShareBody = L10n.tr("Localizable", "data_send_share_body")
   /// Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?
   internal static let dataSendShareHeadline = L10n.tr("Localizable", "data_send_share_headline")
-  /// Spolupráce se zahraničím
-  internal static let dataSendShareTitle = L10n.tr("Localizable", "data_send_share_title")
   /// Odesláno
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Nepodařilo se nám odeslat data
@@ -518,6 +516,13 @@ internal enum L10n {
   internal static let welcomeHelp = L10n.tr("Localizable", "welcome_help")
   /// Díky eRoušce ochráníte sebe i ostatní ve svém okolí
   internal static let welcomeTitle = L10n.tr("Localizable", "welcome_title")
+
+  internal enum DataSendShareTitle {
+    /// Spolupráce se
+    internal static let part1 = L10n.tr("Localizable", "data_send_share_title.part1")
+    /// zahraničím
+    internal static let part2 = L10n.tr("Localizable", "data_send_share_title.part2")
+  }
 
   internal enum HowitworksEntry1 {
     /// Když se potkají telefony s aplikací eRouška, vymění si několik základních informací o setkání. Zaznamenají si den setkání, vzdálenost mezi sebou a anonymní označení telefonu. Tato setkání si pamatují 14 dní.

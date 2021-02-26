@@ -38,6 +38,7 @@ final class SendReportsTravelVC: BaseController, HasDependencies {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        isModalInPresentation = true
         navigationItem.hidesBackButton = true
 
         buttonsView.connect(with: scrollView)

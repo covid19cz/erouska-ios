@@ -29,6 +29,7 @@ final class SendReportsShareVC: BaseController, HasDependencies {
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var bodyLabel: UILabel!
 
@@ -39,6 +40,8 @@ final class SendReportsShareVC: BaseController, HasDependencies {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        isModalInPresentation = true
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
@@ -84,6 +87,7 @@ final class SendReportsShareVC: BaseController, HasDependencies {
             return
         }
 
+        showProgress()
         report(with: token)
     }
 
@@ -113,28 +117,13 @@ private extension SendReportsShareVC {
     // MARK: - Setup
 
     func setupStrings() {
-        title = L10n.dataSendShareTitle
+        title = L10n.DataSendShareTitle.part1
+        titleLabel.text = L10n.DataSendShareTitle.part2
 
         headlineLabel.text = L10n.dataSendShareHeadline
         bodyLabel.text = L10n.dataSendShareBody
         confirmButton.setTitle(L10n.dataSendShareActionConfirm)
         rejectButton.setTitle(L10n.dataSendShareActionReject)
-    }
-
-    // MARK: - Progress
-
-    func reportShowProgress() {
-        showProgress()
-
-        isModalInPresentation = true
-        navigationItem.setLeftBarButton(nil, animated: true)
-    }
-
-    func reportHideProgress() {
-        hideProgress()
-
-        isModalInPresentation = false
-        navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction)), animated: true)
     }
 
     // MARK: - Reports
@@ -170,14 +159,14 @@ private extension SendReportsShareVC {
             switch result {
             case .success(let keys):
                 guard !keys.isEmpty else {
-                    self.reportHideProgress()
+                    self.hideProgress()
                     self.resultNoKeysAction()
                     return
                 }
                 self.requestCertificate(keys: keys, token: token)
             case .failure(let error):
                 log("DataListVC: Failed to get exposure keys \(error)")
-                self.reportHideProgress()
+                self.hideProgress()
 
                 switch error {
                 case .noData:
@@ -208,14 +197,14 @@ private extension SendReportsShareVC {
                     self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret)
                 case .failure(let error):
                     log("SendReportsShareVC: Failed to get verification payload \(error)")
-                    self.reportHideProgress()
+                    self.hideProgress()
                     self.resultErrorAction(code: error.localizedDescription)
                     Crashlytics.crashlytics().record(error: error)
                 }
             }
         } catch {
             log("SendReportsShareVC: Failed to get hmac for keys \(error)")
-            reportHideProgress()
+            hideProgress()
             resultErrorAction(code: error.localizedDescription)
             Crashlytics.crashlytics().record(error: error)
         }
@@ -229,7 +218,7 @@ private extension SendReportsShareVC {
             efgs: shareData,
             traveler: traveler
         ) { [weak self] result in
-            self?.reportHideProgress()
+            self?.hideProgress()
             switch result {
             case .success:
                 self?.resultAction()
