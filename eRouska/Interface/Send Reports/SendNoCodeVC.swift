@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DeviceKit
 
 final class SendNoCodeVC: BaseController, HasDependencies {
 
@@ -31,6 +32,10 @@ final class SendNoCodeVC: BaseController, HasDependencies {
         super.viewDidLoad()
 
         title = L10n.dataSendNoCodeTitle
+        if Device.current.diagonal < 4.1 {
+            navigationItem.largeTitleDisplayMode = .never
+        }
+
         headlineLabel.text = L10n.dataSendNoCodeHeadline
         bodyLabel.text = L10n.dataSendNoCodeBody
         actionButton.setTitle(L10n.dataSendNoCodeActionTitle)

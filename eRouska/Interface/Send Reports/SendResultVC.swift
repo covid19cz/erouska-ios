@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DeviceKit
 import StoreKit
 
 final class SendResultVC: BaseController, HasDependencies {
@@ -41,6 +42,9 @@ final class SendResultVC: BaseController, HasDependencies {
         title = viewModel.title
         navigationItem.hidesBackButton = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        if Device.current.diagonal < 4.1 {
+            navigationItem.largeTitleDisplayMode = .never
+        }
 
         imageView.image = viewModel.image
         titleLabel.text = viewModel.titleLabel

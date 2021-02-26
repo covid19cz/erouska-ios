@@ -49,11 +49,17 @@ final class SendReportsVC: BaseController, HasDependencies {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if Device.current.diagonal < 4.1 {
+            navigationItem.largeTitleDisplayMode = .never
+        }
+
         codeTextField.textContentType = .oneTimeCode
         footerLabel.isHidden = AppSettings.lastUploadDate == nil
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
+
+        scrollView.contentInset.bottom = 20
 
         setupTextField()
         setupStrings()

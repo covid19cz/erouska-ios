@@ -42,6 +42,9 @@ final class SendReportsShareVC: BaseController, HasDependencies {
         super.viewDidLoad()
 
         isModalInPresentation = true
+        if Device.current.diagonal < 4.1 {
+            navigationItem.largeTitleDisplayMode = .never
+        }
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
@@ -117,8 +120,13 @@ private extension SendReportsShareVC {
     // MARK: - Setup
 
     func setupStrings() {
-        title = L10n.DataSendShareTitle.part1
-        titleLabel.text = L10n.DataSendShareTitle.part2
+        if Device.current.diagonal < 4.1 {
+            titleLabel.isHidden = true
+            title = L10n.DataSendShareTitle.part1 + " " + L10n.DataSendShareTitle.part2
+        } else {
+            title = L10n.DataSendShareTitle.part1
+            titleLabel.text = L10n.DataSendShareTitle.part2
+        }
 
         headlineLabel.text = L10n.dataSendShareHeadline
         bodyLabel.text = L10n.dataSendShareBody

@@ -40,6 +40,9 @@ final class SendReportsTravelVC: BaseController, HasDependencies {
 
         isModalInPresentation = true
         navigationItem.hidesBackButton = true
+        if Device.current.diagonal < 4.1 {
+            navigationItem.largeTitleDisplayMode = .never
+        }
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
