@@ -10,33 +10,44 @@ import Foundation
 import Firebase
 import FirebaseFunctions
 import RealmSwift
-import SwiftyMarkdown
 
-final class AppDependency {
+protocol HasDependencies: CanInjectDependencies {
+    associatedtype Dependencies
 
-    var deviceToken: Data?
+    var dependencies: Dependencies! { get set }
+}
+
+protocol CanInjectDependencies: class {
+    func injectDependencies()
+}
+
+extension HasDependencies {
+    func injectDependencies() {
+        self.dependencies = AppDependency.shared as? Dependencies
+    }
+}
+
+final class AppDependency: HasExposureService, HasExposureList, HasReportService, HasVerificationService, HasBackgroundService, HasHelpService, HasFunctions, HasRealm, HasOther, HasDiagnosis {
+
+    static let shared = AppDependency()
 
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
 
     private(set) lazy var exposure: ExposureServicing = ExposureService()
 
+    private(set) lazy var exposureList: ExposureListing = ExposureList(dependencies: self)
+
     private(set) lazy var reporter: ReportServicing = ReportService(configuration: RemoteValues.serverConfiguration)
 
     private(set) lazy var verification: VerificationServicing = VerificationService(configuration: RemoteValues.serverConfiguration)
 
-    private(set) lazy var background = BackgroundService(exposureService: exposure, reporter: reporter)
+    private(set) lazy var background: BackgroundServicing = BackgroundService(dependencies: self)
 
-    private(set) lazy var help = HelpService()
+    private(set) lazy var help: HelpServicing = HelpService()
 
-    var lineProcessor: SwiftyLineProcessor {
-        let lineProcessor = SwiftyLineProcessor(
-            rules: SwiftyMarkdown.lineRules,
-            defaultRule: MarkdownLineStyle.body,
-            frontMatterRules: SwiftyMarkdown.frontMatterRules
-        )
-        lineProcessor.processEmptyStrings = MarkdownLineStyle.body
-        return lineProcessor
-    }
+    private(set) lazy var diagnosis: Diagnosis = DiagnosisService(dependencies: self)
+
+    var deviceToken: Data?
 
     let realm: Realm = {
         var oldV1Data: [String: ExposureDataV1] = [:]

@@ -10,8 +10,18 @@ import Foundation
 
 struct FirstActivationVM {
 
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureService
+
+    private let dependencies: Dependencies!
+
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+    }
+
     var exposureNotificationAuthorized: Bool {
-        AppDelegate.dependency.exposure.authorizationStatus == .authorized
+        dependencies.exposure.authorizationStatus == .authorized
     }
 
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class RiskyEncountersV2DetailVC: UITableViewController {
+final class RiskyEncountersV2DetailVC: BaseTableViewController {
 
     private enum Row: Int, CaseIterable {
         case date

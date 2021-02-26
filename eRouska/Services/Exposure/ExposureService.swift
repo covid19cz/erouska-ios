@@ -10,6 +10,10 @@ import Foundation
 import ExposureNotification
 import RxSwift
 
+protocol HasExposureService {
+    var exposure: ExposureServicing { get }
+}
+
 protocol ExposureServicing: AnyObject {
 
     var readyToUse: Completable { get }
@@ -242,8 +246,10 @@ final class ExposureService: ExposureServicing {
                 } else if let exposures = exposures {
                     var filtred: [Date: ENExposureInfo] = [:]
                     for exposure in exposures {
-                        if let info = filtred[exposure.date], info.totalRiskScoreFullRange < exposure.totalRiskScoreFullRange {
-                            filtred[exposure.date] = exposure
+                        if let current = filtred[exposure.date] {
+                            if current.totalRiskScoreFullRange < exposure.totalRiskScoreFullRange {
+                                filtred[exposure.date] = exposure
+                            }
                         } else {
                             filtred[exposure.date] = exposure
                         }
@@ -287,8 +293,8 @@ final class ExposureService: ExposureServicing {
         }
         log("ExposureService getExposureInfo")
 
-        let daySummary = summary.daySummaries.filter { Int($0.daySummary.maximumScore) >= configuration.minimumScore }
-        guard !daySummary.isEmpty else {
+        let daySummaries = summary.daySummaries.filter { Int($0.daySummary.maximumScore) >= configuration.minimumScore }
+        guard !daySummaries.isEmpty else {
             log("ExposureService no day with score at least 900")
             finish()
             return
@@ -298,26 +304,21 @@ final class ExposureService: ExposureServicing {
             if let error = error {
                 finish(error: error)
             } else if let windows = windows {
-                let exposures: [Exposure] = windows.map { info in
-                    let daySummary: ExposureWindow.DaySummary?
-
-                    if let summary = summary.daySummaries.first(where: { $0.date == info.date }) {
-                        daySummary = ExposureWindow.DaySummary(
-                            maximumScore: summary.daySummary.maximumScore,
-                            scoreSum: summary.daySummary.scoreSum,
-                            weightedDurationSum: summary.daySummary.weightedDurationSum
-                        )
-                    } else {
-                        daySummary = nil
-                    }
+                let exposures: [Exposure] = windows.compactMap { window in
+                    guard let summary = daySummaries.first(where: { $0.date == window.date }) else { return nil }
+                    let daySummary = ExposureWindow.DaySummary(
+                        maximumScore: summary.daySummary.maximumScore,
+                        scoreSum: summary.daySummary.scoreSum,
+                        weightedDurationSum: summary.daySummary.weightedDurationSum
+                    )
 
                     let window = ExposureWindow(
                         id: UUID(),
-                        date: info.date,
-                        calibrationConfidence: Int(info.calibrationConfidence.rawValue),
-                        diagnosisReportType: Int(info.diagnosisReportType.rawValue),
-                        infectiousness: Int(info.infectiousness.rawValue),
-                        scanInstances: info.scanInstances.map {
+                        date: window.date,
+                        calibrationConfidence: Int(window.calibrationConfidence.rawValue),
+                        diagnosisReportType: Int(window.diagnosisReportType.rawValue),
+                        infectiousness: Int(window.infectiousness.rawValue),
+                        scanInstances: window.scanInstances.map {
                             ExposureWindow.Scan(
                                 minimumAttenuation: Int($0.minimumAttenuation),
                                 typicalAttenuation: Int($0.typicalAttenuation),
@@ -329,7 +330,7 @@ final class ExposureService: ExposureServicing {
 
                     return Exposure(
                         id: UUID(),
-                        date: info.date,
+                        date: window.date,
                         duration: 0,
                         totalRiskScore: 0,
                         transmissionRiskLevel: 0,
@@ -341,8 +342,10 @@ final class ExposureService: ExposureServicing {
 
                 var filtred: [Date: Exposure] = [:]
                 for exposure in exposures {
-                    if let info = filtred[exposure.date], (info.window?.infectiousness ?? 0) < (exposure.window?.infectiousness ?? 0) {
-                        filtred[exposure.date] = exposure
+                    if let current = filtred[exposure.date] {
+                        if (current.window?.infectiousness ?? 0) < (exposure.window?.infectiousness ?? 0) {
+                            filtred[exposure.date] = exposure
+                        }
                     } else {
                         filtred[exposure.date] = exposure
                     }

@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyMarkdown
 
-class MarkdownController: UIViewController {
+class MarkdownController: BaseController {
 
     // MARK: - Public Properties
 

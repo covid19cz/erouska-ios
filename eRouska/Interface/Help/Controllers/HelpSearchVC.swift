@@ -26,7 +26,7 @@ private class HelpSearchItem: NSObject {
     }
 }
 
-final class HelpSearchVC: UITableViewController {
+final class HelpSearchVC: BaseTableViewController {
 
     var questions: [HelpSectionVC.Section] = [] {
         didSet {

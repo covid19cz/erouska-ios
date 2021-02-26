@@ -10,7 +10,15 @@ import UIKit
 import RxSwift
 import Reachability
 
-final class CurrentDataVC: UIViewController {
+final class CurrentDataVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasRealm & HasFunctions
+
+    var dependencies: Dependencies!
+
+    // MARK: -
 
     @IBOutlet private weak var tableView: UITableView!
 
@@ -21,7 +29,7 @@ final class CurrentDataVC: UIViewController {
     @IBOutlet private weak var textLabel: UILabel!
     @IBOutlet private weak var actionButton: Button!
 
-    private let viewModel = CurrentDataVM()
+    private var viewModel: CurrentDataVM!
     private let disposeBag = DisposeBag()
     private var observer: NSObjectProtocol?
 
@@ -35,6 +43,8 @@ final class CurrentDataVC: UIViewController {
     }
 
     override func viewDidLoad() {
+        viewModel = CurrentDataVM(dependencies: dependencies)
+
         super.viewDidLoad()
 
         headlineLabel.text = L10n.errorUnknownHeadline

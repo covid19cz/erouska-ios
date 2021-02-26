@@ -14,6 +14,10 @@ import Alamofire
 import Zip
 import CryptoKit
 
+protocol HasReportService {
+    var reporter: ReportServicing { get }
+}
+
 protocol ReportServicing: AnyObject {
 
     func updateConfiguration(_ configuration: ServerConfiguration)

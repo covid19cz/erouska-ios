@@ -12,46 +12,66 @@ import MessageUI
 import Reachability
 import UserNotifications
 
-final class Diagnosis: NSObject {
+protocol HasDiagnosis {
+    var diagnosis: Diagnosis { get }
+}
 
-    struct ErrorReport {
-        let code: String
-        let message: String
-    }
+struct ErrorReport {
+    let code: String
+    let message: String
+}
 
-    enum Kind {
-        case error(ErrorReport?)
-        case errorWithDiagnosis(ErrorReport?)
-        case noCode
-    }
+enum Kind {
+    case error(ErrorReport?)
+    case errorWithDiagnosis(ErrorReport?)
+    case noCode
+}
 
-    enum ScreenName: String {
-        case exposurePermission = "A2"
+enum ScreenName: String {
+    case exposurePermission = "A2"
 
-        case sendCode = "O1"
-        case sendCodeResult = "O4"
-        case sendNoCode = "O6"
+    case sendCode = "O1"
+    case sendCodeResult = "O4"
+    case sendNoCode = "O6"
 
-        case contact = "K1"
+    case contact = "K1"
 
-        case help = "N1"
-        case howItWorks = "N3"
-    }
+    case help = "N1"
+    case howItWorks = "N3"
+}
 
-    static var canSendMail: Bool {
+protocol Diagnosis {
+    var canSendMail: Bool { get }
+
+    func present(fromController: UIViewController, screenName: ScreenName, kind: Kind)
+}
+
+final class DiagnosisService: NSObject, Diagnosis {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureService & HasExposureList
+
+    private let dependencies: Dependencies
+
+    // MARK: -
+
+    var canSendMail: Bool {
         MFMailComposeViewController.canSendMail()
     }
 
     private weak var showFromController: UIViewController?
+    private var screenName: ScreenName = .exposurePermission
+    private var kind: Kind = .noCode
 
-    private var screenName: ScreenName
-    private var kind: Kind
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+    }
 
-    init(showFromController: UIViewController, screenName: ScreenName, kind: Kind) {
-        self.showFromController = showFromController
+    func present(fromController: UIViewController, screenName: ScreenName, kind: Kind) {
+        self.showFromController = fromController
         self.screenName = screenName
         self.kind = kind
-        super.init()
 
         switch kind {
         case .error(let error):
@@ -63,7 +83,19 @@ final class Diagnosis: NSObject {
         }
     }
 
-    private func presentQuestion(_ error: ErrorReport?) {
+}
+
+extension DiagnosisService: MFMailComposeViewControllerDelegate {
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+
+}
+
+private extension DiagnosisService {
+
+    func presentQuestion(_ error: ErrorReport?) {
         let alert = UIAlertController(
             title: error == nil ? L10n.diagnosisTitleBase : L10n.diagnosisTitleError,
             message: "",
@@ -91,7 +123,7 @@ final class Diagnosis: NSObject {
         showFromController?.present(alert, animated: true, completion: nil)
     }
 
-    private func openMailController(diagnosisInfo: Bool) {
+    func openMailController(diagnosisInfo: Bool) {
         let controller = MFMailComposeViewController()
         controller.setToRecipients(["info@erouska.cz"])
         controller.mailComposeDelegate = self
@@ -122,7 +154,7 @@ final class Diagnosis: NSObject {
         }
     }
 
-    private func noCodeText() -> String {
+    func noCodeText() -> String {
         return """
         Milý týme eRoušky,
         mám pozitivní test na COVID-19 a nepřišla mi SMS s ověřovacím kódem pro eRoušku.
@@ -134,15 +166,15 @@ final class Diagnosis: NSObject {
         """
     }
 
-    private func diagnosisText(error: ErrorReport?, notitificationSettings: UNNotificationSettings) -> String {
+    func diagnosisText(error: ErrorReport?, notitificationSettings: UNNotificationSettings) -> String {
         let device = Device.current
-        let exposureService = AppDelegate.dependency.exposure
+        let exposureService = dependencies.exposure
         let connection = try? Reachability().connection
 
         let formatter = DateFormatter.baseDateTimeFormatter
         let lastKeys = AppSettings.lastProcessedDate.map(formatter.string) ?? "Nikdy"
         let exposureNotification = AppSettings.lastExposureWarningDate.map(formatter.string) ?? "Nikdy"
-        let lastExposure = (ExposureList.last?.date).map(formatter.string) ?? "Nikdy"
+        let lastExposure = (dependencies.exposureList.last?.date).map(formatter.string) ?? "Nikdy"
 
         let diagnosisText = """
         Verze aplikace: \(App.appVersion) (\(App.bundleBuild))
@@ -166,14 +198,6 @@ final class Diagnosis: NSObject {
         } else {
             return diagnosisText
         }
-    }
-
-}
-
-extension Diagnosis: MFMailComposeViewControllerDelegate {
-
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
     }
 
 }

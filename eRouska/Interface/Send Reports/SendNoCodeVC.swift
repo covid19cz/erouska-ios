@@ -8,13 +8,17 @@
 
 import UIKit
 
-final class SendNoCodeVC: UIViewController {
+final class SendNoCodeVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasDiagnosis
+
+    var dependencies: Dependencies!
 
     // MARK: -
 
     private let viewModel = SendNoCodeVM()
-
-    private var diagnosis: Diagnosis?
 
     // MARK: - Outlets
 
@@ -33,8 +37,8 @@ final class SendNoCodeVC: UIViewController {
     }
 
     @IBAction private func supportAction() {
-        if Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self, screenName: .sendNoCode, kind: .noCode)
+        if dependencies.diagnosis.canSendMail {
+            dependencies.diagnosis.present(fromController: self, screenName: .sendNoCode, kind: .noCode)
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
             openURL(URL: URL)
         }

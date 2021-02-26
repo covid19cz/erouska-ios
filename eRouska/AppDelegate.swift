@@ -35,8 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.delegate as! AppDelegate
     }
 
-    static let dependency = AppDependency()
-
     var openResultsCallback: CallbackVoid?
 
     // MARK: - UIApplicationDelegate
@@ -90,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         Auth.auth().setAPNSToken(deviceToken, type: .prod)
         #endif
-        Self.dependency.deviceToken = deviceToken
+        AppDependency.shared.deviceToken = deviceToken
 
         // update token on server
         Auth.auth().currentUser?.getIDToken(completion: { token, error in
@@ -100,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     "pushRegistrationToken": deviceToken.hexEncodedString()
                 ]
 
-                Self.dependency.functions.httpsCallable("ChangePushToken").call(data) { _, error in
+                AppDependency.shared.functions.httpsCallable("ChangePushToken").call(data) { _, error in
                     if let error = error {
                         log("AppDelegate: Failed to change push token \(error.localizedDescription)")
                     }
@@ -158,7 +156,7 @@ private extension AppDelegate {
         FirebaseApp.configure()
         setupDefaultValues()
         updateRemoteValues()
-        ExposureList.cleanup()
+        AppDependency.shared.exposureList.cleanup()
 
         if AppSettings.lastLegacyDataFetchDate == nil {
             AppSettings.lastLegacyDataFetchDate = AppSettings.lastProcessedDate ?? Date()
@@ -181,7 +179,7 @@ private extension AppDelegate {
             return
         }
 
-        Self.dependency.exposure.deactivate(callback: nil)
+        AppDependency.shared.exposure.deactivate(callback: nil)
 
         viewController.modalPresentationStyle = .fullScreen
         window?.rootViewController?.present(viewController, animated: true)
@@ -252,7 +250,7 @@ private extension AppDelegate {
     }
 
     func setupBackgroundMode() {
-        Self.dependency.background.scheduleBackgroundTaskIfNeeded()
+        AppDependency.shared.background.scheduleBackgroundTaskIfNeeded(next: false)
     }
 
     func clearKeychainIfNeeded() {
@@ -280,8 +278,8 @@ private extension AppDelegate {
                 self?.checkFetchedMinSupportedVersion()
 
                 let configuration = RemoteValues.serverConfiguration
-                Self.dependency.reporter.updateConfiguration(configuration)
-                Self.dependency.verification.updateConfiguration(configuration)
+                AppDependency.shared.reporter.updateConfiguration(configuration)
+                AppDependency.shared.verification.updateConfiguration(configuration)
             })
             .disposed(by: bag)
     }

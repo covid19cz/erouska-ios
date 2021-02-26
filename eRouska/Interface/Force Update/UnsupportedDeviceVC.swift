@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class UnsupportedDeviceVC: UIViewController {
+final class UnsupportedDeviceVC: BaseController {
 
     // MARK: -
 

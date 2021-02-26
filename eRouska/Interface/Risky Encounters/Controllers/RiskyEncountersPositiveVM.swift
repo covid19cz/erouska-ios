@@ -10,6 +10,15 @@ import Foundation
 import UIKit
 
 struct RiskyEncountersPositiveVM {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureList
+
+    private let dependencies: Dependencies
+
+    // MARK: -
+
     enum Sections {
         case encounter(Date), withSymptoms, withoutSymptoms
 
@@ -76,8 +85,9 @@ struct RiskyEncountersPositiveVM {
 
     let title = RemoteValues.exposureUITitle
 
-    init() {
-        let lastExposure = ExposureList.last
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+        let lastExposure = dependencies.exposureList.last
         sections = [Sections.encounter(lastExposure?.date ?? Date()), .withSymptoms, .withoutSymptoms]
     }
 }

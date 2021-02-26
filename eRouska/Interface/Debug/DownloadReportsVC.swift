@@ -11,7 +11,15 @@ import RxSwift
 import RxRelay
 import RxDataSources
 
-final class DownloadReportsVC: UITableViewController {
+final class DownloadReportsVC: BaseTableViewController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureService & HasReportService & HasExposureList
+
+    var dependencies: Dependencies!
+
+    // MARK: -
 
     typealias Section = SectionModel<String, String>
     private var sections: BehaviorRelay<[Section]>
@@ -82,7 +90,7 @@ final class DownloadReportsVC: UITableViewController {
         showProgress()
 
         let keyURLs = AppSettings.efgsEnabled ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
-        AppDelegate.dependency.reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: [:]) { [weak self] report in
+        dependencies.reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: [:]) { [weak self] report in
             self?.processKeys(report)
         }
     }
@@ -90,7 +98,7 @@ final class DownloadReportsVC: UITableViewController {
     private func processKeys(_ report: ReportDownload) {
         let dispatchGroup = DispatchGroup()
         let configuration = RemoteValues.exposureConfiguration
-        let exposureService = AppDelegate.dependency.exposure
+        let exposureService = dependencies.exposure
 
         var resultText: String = ""
 
@@ -122,7 +130,7 @@ final class DownloadReportsVC: UITableViewController {
                     break
                 }
 
-                try? ExposureList.add(exposures, detectionDate: Date())
+                try? self.dependencies.exposureList.add(exposures, detectionDate: Date())
 
                 for exposure in exposures {
                     let signals = exposure.attenuationDurations.map { "\($0)" }

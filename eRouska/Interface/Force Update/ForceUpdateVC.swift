@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ForceUpdateVC: UIViewController {
+final class ForceUpdateVC: BaseController {
 
     // MARK: -
 

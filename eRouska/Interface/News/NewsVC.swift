@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class NewsVC: UIViewController {
+final class NewsVC: BaseController {
 
     var viewModel = NewsVM(type: .upgrade)
 

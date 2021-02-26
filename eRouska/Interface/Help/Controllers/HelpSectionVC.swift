@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-final class HelpSectionVC: UIViewController {
+final class HelpSectionVC: BaseController {
 
     @IBOutlet private weak var tableView: UITableView!
     private weak var helpSearch: HelpSearchVC!

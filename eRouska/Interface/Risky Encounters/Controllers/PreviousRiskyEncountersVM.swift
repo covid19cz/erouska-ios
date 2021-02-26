@@ -14,15 +14,26 @@ import RxDataSources
 
 struct PreviousRiskyEncountersVM {
 
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureList
+
+    private let dependencies: Dependencies
+
+    // MARK: -
+
     let title = RemoteValues.recentExposuresUITitle
 
     typealias Section = SectionModel<String, Exposure>
 
     let sections: Observable<[Section]>
 
-    init() {
+
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+    
         let oldTestsDate = Date(timeIntervalSince1970: 0)
-        let grouped = Dictionary(grouping: ExposureList.exposures, by: { $0.detectedDate }).sorted(by: { $0.key > $1.key })
+        let grouped = Dictionary(grouping: dependencies.exposureList.exposures, by: { $0.detectedDate }).sorted(by: { $0.key > $1.key })
         sections = Observable.just(grouped.map { key, values -> Section in
             let title: String
             if key == oldTestsDate {

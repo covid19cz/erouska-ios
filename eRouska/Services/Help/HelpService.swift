@@ -8,10 +8,17 @@
 
 import Foundation
 import FirebaseCrashlytics
+import SwiftyMarkdown
+
+protocol HasHelpService {
+    var help: HelpServicing { get }
+}
 
 protocol HelpServicing {
 
     var help: Help { get }
+
+    var lineProcessor: SwiftyLineProcessor { get }
 
     func update()
 
@@ -20,6 +27,16 @@ protocol HelpServicing {
 class HelpService: HelpServicing {
 
     private(set) var help: Help = []
+
+    var lineProcessor: SwiftyLineProcessor {
+        let lineProcessor = SwiftyLineProcessor(
+            rules: SwiftyMarkdown.lineRules,
+            defaultRule: MarkdownLineStyle.body,
+            frontMatterRules: SwiftyMarkdown.frontMatterRules
+        )
+        lineProcessor.processEmptyStrings = MarkdownLineStyle.body
+        return lineProcessor
+    }
 
     func update() {
         let data = RemoteValues.helpJson

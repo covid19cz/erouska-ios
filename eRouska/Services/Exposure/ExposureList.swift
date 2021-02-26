@@ -11,14 +11,35 @@ import RealmSwift
 import RxSwift
 import RxRealm
 
-final class ExposureList {
+protocol HasExposureList {
+    var exposureList: ExposureListing { get }
+}
 
-    static var exposures: Results<ExposureRealm> {
-        let realm = AppDelegate.dependency.realm
-        return realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+protocol ExposureListing {
+    var exposures: Results<ExposureRealm> { get }
+
+    var last: Exposure? { get }
+
+    func lastObservable() throws -> Observable<Exposure?>
+    func add(_ exposures: [Exposure], detectionDate: Date) throws
+    func cleanup()
+}
+
+final class ExposureList: ExposureListing {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasRealm
+
+    var dependencies: Dependencies
+
+    // MARK: -
+
+    var exposures: Results<ExposureRealm> {
+        return dependencies.realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
     }
 
-    static var last: Exposure? {
+    var last: Exposure? {
         let exposures = self.exposures
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays
         let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
@@ -26,7 +47,11 @@ final class ExposureList {
         return exposures.last(where: { $0.date > showForDate })?.toExposure()
     }
 
-    static func lastObservable() throws -> Observable<Exposure?> {
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+    }
+
+    func lastObservable() throws -> Observable<Exposure?> {
         let exposures = self.exposures
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays
         let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
@@ -36,30 +61,28 @@ final class ExposureList {
         }
     }
 
-    static func add(_ exposures: [Exposure], detectionDate: Date) throws {
+    func add(_ exposures: [Exposure], detectionDate: Date) throws {
         guard !exposures.isEmpty else { return }
 
         AppSettings.lastExposureWarningDate = Date()
         AppSettings.lastExposureWarningNotDisplayed = true
 
-        let realm = AppDelegate.dependency.realm
-        try realm.write {
+        try dependencies.realm.write {
             exposures.sorted { $0.date < $1.date }.forEach {
                 if let window = $0.window {
-                    realm.add(ExposureRealm(window, detectedDate: detectionDate))
+                    dependencies.realm.add(ExposureRealm(window, detectedDate: detectionDate))
                 } else {
-                    realm.add(ExposureRealm($0, detectedDate: detectionDate))
+                    dependencies.realm.add(ExposureRealm($0, detectedDate: detectionDate))
                 }
             }
         }
     }
 
-    static func cleanup() {
-        let realm = AppDelegate.dependency.realm
-        try? realm.write {
+    func cleanup() {
+        try? dependencies.realm.write {
             exposures.forEach {
                 if $0.date.addingTimeInterval(14 * 24 * 60 * 60) < Date() {
-                    realm.delete($0)
+                    dependencies.realm.delete($0)
                 }
             }
         }

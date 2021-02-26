@@ -90,6 +90,14 @@ final class ActiveAppVM {
         }
     }
 
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasRealm & HasExposureService & HasExposureList
+
+    private let dependencies: Dependencies
+
+    // MARK: -
+
     var exposureTitle: String {
         RemoteValues.exposureBannerTitle
     }
@@ -102,8 +110,6 @@ final class ActiveAppVM {
     private(set) var exposureToShow: Observable<Exposure?>
     private let disposeBag = DisposeBag()
 
-    let exposureService: ExposureServicing = AppDelegate.dependency.exposure
-    let backgroundService = AppDelegate.dependency.background
     let riskyEncounterDateToShow: Observable<Date?>
     let riskyEncountersInTimeInterval: Observable<Int>
 
@@ -114,10 +120,11 @@ final class ActiveAppVM {
         L10n.efgsSettingsTitle + " (" + (efgsEnabled ? L10n.activeEfgsEnabled : L10n.activeEfgsDisabled).lowercased() + ")"
     }
 
-    init() {
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+
         let showForDays = RemoteValues.serverConfiguration.showExposureForDays
-        let realm = AppDelegate.dependency.realm
-        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+        let exposures = dependencies.realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
         let showForDate = Calendar.current.date(byAdding: .day, value: -showForDays, to: Date()) ?? Date()
         let riskyEncounters = Observable.collection(from: exposures)
         let filteredRiskyEncounters = riskyEncounters.map { $0.filter { $0.date > showForDate } }
@@ -126,19 +133,19 @@ final class ActiveAppVM {
 
         observableState = BehaviorSubject<State>(value: .paused)
 
-        if let observable = try? ExposureList.lastObservable() {
+        if let observable = try? dependencies.exposureList.lastObservable() {
             exposureToShow = observable
         } else {
             exposureToShow = .empty()
         }
-        exposureService.readyToUse
+        dependencies.exposure.readyToUse
             .subscribe { [weak self] _ in
                 self?.updateStateIfNeeded()
             }.disposed(by: disposeBag)
     }
 
     func updateStateIfNeeded() {
-        switch exposureService.status {
+        switch dependencies.exposure.status {
         case .active:
             observableState.onNext(.enabled)
         case .paused, .disabled:

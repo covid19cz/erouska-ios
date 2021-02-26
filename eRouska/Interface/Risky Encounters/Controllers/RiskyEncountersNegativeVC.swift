@@ -9,16 +9,26 @@
 import UIKit
 import RxSwift
 
-final class RiskyEncountersNegativeVC: UIViewController {
+final class RiskyEncountersNegativeVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasRealm
+
+    var dependencies: Dependencies!
+
+    // MARK: -
 
     @IBOutlet private weak var negativeView: RiskyEncountersNegativeView!
 
-    private let viewModel = RiskyEncountersNegativeVM()
+    private var viewModel: RiskyEncountersNegativeVM!
     private let disposeBag = DisposeBag()
 
     // MARK: -
 
     override func viewDidLoad() {
+        viewModel = RiskyEncountersNegativeVM(dependencies: dependencies)
+
         super.viewDidLoad()
 
         title = viewModel.title

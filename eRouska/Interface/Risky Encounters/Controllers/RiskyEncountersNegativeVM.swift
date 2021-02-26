@@ -13,6 +13,15 @@ import RxSwift
 import UIKit
 
 struct RiskyEncountersNegativeVM {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasRealm
+
+    private let dependencies: Dependencies
+
+    // MARK: -
+
     let shouldShowPreviousRiskyEncounters: Observable<Bool>
 
     let title = RemoteValues.exposureUITitle
@@ -22,10 +31,10 @@ struct RiskyEncountersNegativeVM {
 
     let previousRiskyEncountersButton = RemoteValues.recentExposuresUITitle
 
-    init() {
-        let realm = AppDelegate.dependency.realm
-        let exposures = realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
 
+        let exposures = dependencies.realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
         shouldShowPreviousRiskyEncounters = Observable.collection(from: exposures).map {
             !$0.isEmpty
         }

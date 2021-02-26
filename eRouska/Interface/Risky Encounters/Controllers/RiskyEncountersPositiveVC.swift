@@ -9,13 +9,21 @@
 import UIKit
 import RxSwift
 
-final class RiskyEncountersPositiveVC: UITableViewController {
+final class RiskyEncountersPositiveVC: BaseTableViewController, HasDependencies {
 
-    private let viewModel = RiskyEncountersPositiveVM()
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureList
+
+    var dependencies: Dependencies!
 
     // MARK: -
 
+    private var viewModel: RiskyEncountersPositiveVM!
+
     override func viewDidLoad() {
+        viewModel = RiskyEncountersPositiveVM(dependencies: dependencies)
+
         super.viewDidLoad()
 
         title = viewModel.title

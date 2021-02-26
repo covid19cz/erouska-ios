@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AboutVC: UIViewController {
+final class AboutVC: BaseController {
 
     private let viewModel = AboutVM()
 

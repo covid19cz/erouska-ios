@@ -10,13 +10,20 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-final class HelpVC: UIViewController {
+final class HelpVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasHelpService & HasDiagnosis
+
+    var dependencies: Dependencies!
+
+    // MARK: -
 
     @IBOutlet private weak var tableView: UITableView!
     private weak var helpSearch: HelpSearchVC!
-    private var diagnosis: Diagnosis?
 
-    private let viewModel = HelpVM(helpService: AppDelegate.dependency.help)
+    private var viewModel: HelpVM!
     private let disposeBag = DisposeBag()
     private var dataSource: RxTableViewSectionedReloadDataSource<HelpVM.Section>!
 
@@ -31,6 +38,8 @@ final class HelpVC: UIViewController {
     }
 
     override func viewDidLoad() {
+        viewModel = HelpVM(helpService: dependencies.help)
+
         super.viewDidLoad()
 
         title = L10n.helpTitle
@@ -134,8 +143,8 @@ final class HelpVC: UIViewController {
     }
 
     private func openLink(_ link: URL) {
-        if link.absoluteString.hasSuffix("info@erouska.cz"), Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self, screenName: .help, kind: .error(nil))
+        if link.absoluteString.hasSuffix("info@erouska.cz"), dependencies.diagnosis.canSendMail {
+            dependencies.diagnosis.present(fromController: self, screenName: .help, kind: .error(nil))
         } else {
             openURL(URL: link)
         }

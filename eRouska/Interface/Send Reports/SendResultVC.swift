@@ -9,7 +9,13 @@
 import UIKit
 import StoreKit
 
-final class SendResultVC: UIViewController {
+final class SendResultVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasDiagnosis
+
+    var dependencies: Dependencies!
 
     // MARK: -
 
@@ -69,11 +75,11 @@ final class SendResultVC: UIViewController {
     }
 
     @IBAction private func mailAction() {
-        if Diagnosis.canSendMail {
+        if dependencies.diagnosis.canSendMail {
             if case let .error(code, message) = viewModel {
-                diagnosis = Diagnosis(showFromController: self, screenName: .sendCodeResult, kind: .error(.init(code: code, message: message ?? "None")))
+                dependencies.diagnosis.present(fromController: self, screenName: .sendCodeResult, kind: .error(.init(code: code, message: message ?? "None")))
             } else {
-                diagnosis = Diagnosis(showFromController: self, screenName: .sendCodeResult, kind: .error(nil))
+                dependencies.diagnosis.present(fromController: self, screenName: .sendCodeResult, kind: .error(nil))
             }
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
             openURL(URL: URL)

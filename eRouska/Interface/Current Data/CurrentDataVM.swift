@@ -16,6 +16,14 @@ import Reachability
 
 final class CurrentDataVM {
 
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasRealm & HasFunctions
+
+    private let dependencies: Dependencies
+
+    // MARK: -
+
     var measuresURL: URL? {
         URL(string: RemoteValues.currentMeasuresUrl)
     }
@@ -48,18 +56,19 @@ final class CurrentDataVM {
         return formatter
     }()
 
-    init() {
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+
         needToUpdateView = BehaviorSubject<Void>(value: ())
         observableErrors = BehaviorSubject<Error?>(value: nil)
 
-        let realm = AppDelegate.dependency.realm
-        currentData = realm.objects(CurrentDataRealm.self).last
+        currentData = dependencies.realm.objects(CurrentDataRealm.self).last
         sections = sections(from: currentData)
 
         if currentData == nil {
             let currentData = CurrentDataRealm()
-            try? realm.write {
-                realm.add(currentData)
+            try? dependencies.realm.write {
+                dependencies.realm.add(currentData)
             }
             self.currentData = currentData
         }
@@ -122,11 +131,10 @@ private extension CurrentDataVM {
         Auth.auth().currentUser?.getIDToken(completion: { token, error in
             if let token = token {
                 let data = ["idToken": token]
-                AppDelegate.dependency.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
+                self.dependencies.functions.httpsCallable("GetCovidData").call(data) { [weak self] result, error in
                     guard let self = self else { return }
                     if let data = result?.data as? [String: Any] {
-                        let realm = AppDelegate.dependency.realm
-                        try? realm.write {
+                        try? self.dependencies.realm.write {
                             self.currentData?.update(with: CovidCurrentData(with: data))
                         }
                     } else if let error = error {
@@ -145,12 +153,11 @@ private extension CurrentDataVM {
     func fetchAppCurrentData(in dispatchGroup: DispatchGroup) {
         dispatchGroup.enter()
 
-        AppDelegate.dependency.functions.httpsCallable("DownloadMetrics").call([:]) { [weak self] result, error in
+        dependencies.functions.httpsCallable("DownloadMetrics").call([:]) { [weak self] result, error in
             guard let self = self else { return }
 
             if let data = result?.data as? [String: Any] {
-                let realm = AppDelegate.dependency.realm
-                try? realm.write {
+                try? self.dependencies.realm.write {
                     self.currentData?.update(with: AppCurrentData(with: data))
                 }
             } else if let error = error {

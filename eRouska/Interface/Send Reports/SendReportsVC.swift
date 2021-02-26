@@ -13,7 +13,13 @@ import RxRelay
 import DeviceKit
 import FirebaseCrashlytics
 
-final class SendReportsVC: UIViewController {
+final class SendReportsVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureService & HasVerificationService & HasReportService & HasDiagnosis
+
+    var dependencies: Dependencies!
 
     // MARK: -
 
@@ -29,8 +35,6 @@ final class SendReportsVC: UIViewController {
     private let disposeBag = DisposeBag()
 
     private var firstAppear: Bool = true
-
-    private var diagnosis: Diagnosis?
 
     // MARK: - Outlets
 
@@ -122,8 +126,8 @@ final class SendReportsVC: UIViewController {
     }
 
     private func askForNewCodeAction() {
-        if Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self, screenName: .sendCode, kind: .error(nil))
+        if dependencies.diagnosis.canSendMail {
+            dependencies.diagnosis.present(fromController: self, screenName: .sendCode, kind: .error(nil))
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
             openURL(URL: URL)
         }
@@ -187,7 +191,7 @@ private extension SendReportsVC {
     func verifyCode(_ code: String) {
         reportShowProgress()
 
-        AppDelegate.dependency.verification.verify(with: code) { [weak self] result in
+        dependencies.verification.verify(with: code) { [weak self] result in
             switch result {
             case .success(let token):
                 if #available(iOS 13.7, *) {
@@ -226,8 +230,7 @@ private extension SendReportsVC {
 
     @available (iOS 13.7, *)
     func askIfUserIsTraveler(token: String) {
-        let exposureService = AppDelegate.dependency.exposure
-        exposureService.getUserTraveled { [weak self] result in
+        dependencies.exposure.getUserTraveled { [weak self] result in
             switch result {
             case let .success(traveler):
                 self?.report(with: token, traveler: traveler)
@@ -266,20 +269,19 @@ private extension SendReportsVC {
             }
         }
 
-        let exposureService = AppDelegate.dependency.exposure
         switch type {
         case .test:
-            exposureService.getTestDiagnosisKeys(callback: callback)
+            dependencies.exposure.getTestDiagnosisKeys(callback: callback)
         case .normal:
-            exposureService.getDiagnosisKeys(callback: callback)
+            dependencies.exposure.getDiagnosisKeys(callback: callback)
         }
     }
 
     func requestCertificate(keys: [ExposureDiagnosisKey], token: String, traveler: Bool) {
         do {
             let secret = Data.random(count: 32)
-            let hmacKey = try AppDelegate.dependency.reporter.calculateHmacKey(keys: keys, secret: secret)
-            AppDelegate.dependency.verification.requestCertificate(token: token, hmacKey: hmacKey) { result in
+            let hmacKey = try dependencies.reporter.calculateHmacKey(keys: keys, secret: secret)
+            dependencies.verification.requestCertificate(token: token, hmacKey: hmacKey) { result in
                 switch result {
                 case .success(let certificate):
                     self.uploadKeys(keys: keys, verificationPayload: certificate, hmacSecret: secret, traveler: traveler)
@@ -299,7 +301,7 @@ private extension SendReportsVC {
     }
 
     func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, traveler: Bool) {
-        AppDelegate.dependency.reporter.uploadKeys(
+        dependencies.reporter.uploadKeys(
             keys: keys,
             verificationPayload: verificationPayload,
             hmacSecret: hmacSecret,

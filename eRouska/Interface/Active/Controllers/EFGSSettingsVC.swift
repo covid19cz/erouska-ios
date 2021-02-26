@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EFGSSettingsVC: UIViewController {
+final class EFGSSettingsVC: BaseController {
 
     // MARK: -
 

@@ -11,10 +11,19 @@ import RxSwift
 import RxRealm
 import RxDataSources
 
-final class PreviousRiskyEncountersVC: UIViewController {
+final class PreviousRiskyEncountersVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureList
+
+    var dependencies: Dependencies!
+
+    // MARK: -
+
     @IBOutlet private weak var tableView: UITableView!
 
-    private let viewModel = PreviousRiskyEncountersVM()
+    private var viewModel: PreviousRiskyEncountersVM!
     private let disposeBag = DisposeBag()
     private var dataSource: RxTableViewSectionedReloadDataSource<PreviousRiskyEncountersVM.Section>!
 
@@ -23,6 +32,7 @@ final class PreviousRiskyEncountersVC: UIViewController {
 
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
+        viewModel = PreviousRiskyEncountersVM(dependencies: dependencies)
         setupDataSource()
     }
 
@@ -31,6 +41,7 @@ final class PreviousRiskyEncountersVC: UIViewController {
 
         super.init(coder: coder)
 
+        viewModel = PreviousRiskyEncountersVM(dependencies: dependencies)
         setupDataSource()
     }
 

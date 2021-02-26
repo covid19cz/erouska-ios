@@ -8,7 +8,13 @@
 
 import UIKit
 
-final class NewRiskEncounterVC: UIViewController {
+final class NewRiskEncounterVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureList
+
+    var dependencies: Dependencies!
 
     // MARK: -
 
@@ -32,10 +38,9 @@ final class NewRiskEncounterVC: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let viewController = segue.destination as? RiskyEncountersListVC else { return }
-
         switch StoryboardSegue.RiskyEncounters(segue) {
         case .help:
+            guard let viewController = segue.destination as? RiskyEncountersListVC else { return }
             viewController.viewModel = RiskyEncounterHelpVM()
         default:
             break
@@ -51,7 +56,7 @@ private extension NewRiskEncounterVC {
         navigationItem.backBarButtonItem?.title = L10n.back
         navigationItem.rightBarButtonItem?.title = L10n.help
 
-        let date = DateFormatter.baseDateFormatter.string(from: ExposureList.last?.date ?? Date())
+        let date = DateFormatter.baseDateFormatter.string(from: dependencies.exposureList.last?.date ?? Date())
         headlineLabel.text = L10n.newRiskyEncountersTitle(date)
         bodyLabel.text = L10n.newRiskyEncountersBody
         continueButton.setTitle(L10n.newRiskyExposuresButton)

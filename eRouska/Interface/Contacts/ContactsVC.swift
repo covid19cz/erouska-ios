@@ -8,12 +8,17 @@
 
 import UIKit
 
-final class ContactsVC: UIViewController {
+final class ContactsVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasDiagnosis
+
+    var dependencies: Dependencies!
 
     // MARK: -
 
     private let viewModel = ContactsVM()
-    private var diagnosis: Diagnosis?
 
     // MARK: - Outlets
 
@@ -48,8 +53,8 @@ final class ContactsVC: UIViewController {
     // MARK: - Actions
 
     private func openLink(_ link: URL) {
-        if link.absoluteString.hasSuffix("info@erouska.cz"), Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self, screenName: .contact, kind: .error(nil))
+        if link.absoluteString.hasSuffix("info@erouska.cz"), dependencies.diagnosis.canSendMail {
+            dependencies.diagnosis.present(fromController: self, screenName: .contact, kind: .error(nil))
         } else {
             openURL(URL: link)
         }

@@ -10,8 +10,4 @@ import Foundation
 
 struct ExposurePermissionVM {
 
-    var exposureService: ExposureServicing {
-        AppDelegate.dependency.exposure
-    }
-
 }

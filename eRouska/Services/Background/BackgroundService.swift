@@ -13,18 +13,39 @@ import FirebaseAuth
 import FirebaseFunctions
 import FirebaseCrashlytics
 
-final class BackgroundService {
+protocol HasBackgroundService {
+    var background: BackgroundServicing { get }
+}
 
-    let exposureService: ExposureServicing
-    let reporter: ReportServicing
+protocol BackgroundServicing {
+
+    var isRunning: Bool { get }
+
+    var taskIdentifier: BackgroundTaskIdentifier { get }
+
+    func registerTask(with taskIdentifier: BackgroundTaskIdentifier)
+    func performTask()
+
+    func scheduleBackgroundTaskIfNeeded(next: Bool)
+
+}
+
+final class BackgroundService: BackgroundServicing {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureService & HasExposureList & HasReportService & HasFunctions
+
+    private let dependencies: Dependencies
+
+    // MARK: -
+
     private(set) var isRunning: Bool = false
 
     let taskIdentifier = BackgroundTaskIdentifier.exposureNotification
 
-    init(exposureService: ExposureServicing, reporter: ReportServicing) {
-        self.exposureService = exposureService
-        self.reporter = reporter
-
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
         registerTask(with: taskIdentifier)
     }
 
@@ -52,10 +73,10 @@ final class BackgroundService {
         _ = self.performTask(nil)
     }
 
-    func scheduleBackgroundTaskIfNeeded(next: Bool = false) {
+    func scheduleBackgroundTaskIfNeeded(next: Bool) {
         Self.scheduleDeadmanNotification()
 
-        guard exposureService.authorizationStatus == .authorized else { return }
+        guard dependencies.exposure.authorizationStatus == .authorized else { return }
         let taskRequest = BGProcessingTaskRequest(identifier: taskIdentifier.schedulerIdentifier)
         taskRequest.requiresNetworkConnectivity = true
         taskRequest.requiresExternalPower = false
@@ -85,7 +106,7 @@ final class BackgroundService {
         }
         let identifier = bundleID + ".notifications.bluetooth_off"
 
-        if exposureService.authorizationStatus == .authorized, !exposureService.isBluetoothOn {
+        if dependencies.exposure.authorizationStatus == .authorized, !dependencies.exposure.isBluetoothOn {
             let content = UNMutableNotificationContent()
             content.title = L10n.bluetoothOffTitle
             content.body = L10n.bluetoothOffBody
@@ -179,7 +200,7 @@ private extension BackgroundService {
 
         // Perform the exposure detection
         let keyURLs = AppSettings.efgsEnabled ? RemoteValues.keyExportEuTravellerUrls : RemoteValues.keyExportNonTravellerUrls
-        return reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: AppSettings.lastProcessedFileNames) { report in
+        return dependencies.reporter.downloadKeys(exportURLs: keyURLs, lastProcessedFileNames: AppSettings.lastProcessedFileNames) { report in
             log("BGTask: did download keys \(report)")
 
             var atLeastOneSuccess: Bool = false
@@ -198,7 +219,7 @@ private extension BackgroundService {
 
             if !URLs.isEmpty || atLeastOneSuccess {
                 if !URLs.isEmpty {
-                    self.exposureService.detectExposures(
+                    self.dependencies.exposure.detectExposures(
                         configuration: RemoteValues.exposureConfiguration,
                         URLs: URLs
                     ) { result in
@@ -232,12 +253,12 @@ private extension BackgroundService {
             return
         }
 
-        try? ExposureList.add(exposures, detectionDate: Date())
+        try? dependencies.exposureList.add(exposures, detectionDate: Date())
 
         Auth.auth().currentUser?.getIDToken(completion: { token, error in
             if let token = token {
                 let data = ["idToken": token]
-                AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+                self.dependencies.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
             } else if let error = error {
                 Crashlytics.crashlytics().record(error: error)
             }

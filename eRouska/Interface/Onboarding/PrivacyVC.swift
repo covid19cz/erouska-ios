@@ -10,7 +10,13 @@ import UIKit
 import FirebaseAuth
 import FirebaseFunctions
 
-final class PrivacyVC: UIViewController {
+final class PrivacyVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasOther & HasFunctions
+
+    var dependencies: Dependencies!
 
     // MARK: -
 
@@ -67,10 +73,10 @@ private extension PrivacyVC {
             "manufacturer": "apple",
             "model": UIDevice.current.modelName,
             "locale": Locale.current.languageCode ?? "",
-            "pushRegistrationToken": AppDelegate.dependency.deviceToken?.hexEncodedString() ?? "💩"
+            "pushRegistrationToken": dependencies.deviceToken?.hexEncodedString() ?? "💩"
         ]
 
-        viewModel.functions.httpsCallable("RegisterEhrid").call(request) { [weak self] result, error in
+        dependencies.functions.httpsCallable("RegisterEhrid").call(request) { [weak self] result, error in
             self?.hideProgress()
             if let customToken = (result?.data as? [String: Any])?["customToken"] as? String {
                 Auth.auth().signIn(withCustomToken: customToken) { [weak self] result, error in

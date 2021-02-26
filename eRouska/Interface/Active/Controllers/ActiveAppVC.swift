@@ -12,9 +12,17 @@ import FirebaseAuth
 import FirebaseCrashlytics
 import RxSwift
 
-final class ActiveAppVC: UIViewController {
+final class ActiveAppVC: BaseController, HasDependencies {
 
-    private let viewModel = ActiveAppVM()
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureService & HasExposureList & HasReportService & HasVerificationService & HasRealm & HasBackgroundService & HasFunctions
+
+    var dependencies: Dependencies!
+
+    // MARK: -
+
+    private var viewModel: ActiveAppVM!
     private let disposeBag = DisposeBag()
     private var firstAppear = true
 
@@ -47,6 +55,8 @@ final class ActiveAppVC: UIViewController {
     }
 
     override func viewDidLoad() {
+        viewModel = ActiveAppVM(dependencies: dependencies)
+
         super.viewDidLoad()
 
         viewModel.observableState.subscribe(
@@ -147,7 +157,7 @@ final class ActiveAppVC: UIViewController {
 
         if firstAppear {
             firstAppear = false
-            viewModel.backgroundService.performTask()
+            dependencies.background.performTask()
         }
     }
 
@@ -197,7 +207,7 @@ final class ActiveAppVC: UIViewController {
         case .disabledBluetooth:
             openBluetoothSettings()
         case .disabledExposures:
-            if viewModel.exposureService.authorizationStatus == .unknown {
+            if dependencies.exposure.authorizationStatus == .unknown {
                 resumeScanning()
             } else {
                 openSettings()
@@ -288,10 +298,10 @@ final class ActiveAppVC: UIViewController {
     }
 
     private func riskyEncountersAction() {
-        let exposure = ExposureList.last
+        let lastExposure = dependencies.exposureList.last
         let controller: UIViewController
 
-        if exposure == nil {
+        if lastExposure == nil {
             controller = StoryboardScene.RiskyEncounters.riskyEncountersNegativeNav.instantiate()
         } else if !AppSettings.lastExposureWarningInfoDisplayed {
             controller = StoryboardScene.RiskyEncounters.newRiskEncounterNav.instantiate()
@@ -324,7 +334,7 @@ private extension ActiveAppVC {
 
     func updateScanner(activate: Bool, completion: @escaping CallbackVoid) {
         if activate {
-            viewModel.exposureService.activate { [weak self] error in
+            dependencies.exposure.activate { [weak self] error in
                 guard let self = self else { return }
 
                 if let error = error {
@@ -339,7 +349,7 @@ private extension ActiveAppVC {
                 completion()
             }
         } else {
-            viewModel.exposureService.deactivate { [weak self] error in
+            dependencies.exposure.deactivate { [weak self] error in
                 if let error = error {
                     self?.showExposureUnknownError(error, activation: false)
                     log("ActiveAppVC: failed to disable exposures \(error)")
@@ -354,8 +364,8 @@ private extension ActiveAppVC {
         case .notAuthorized, .notEnabled:
             break
         case .unsupported:
-            viewModel.exposureService.deactivate { [weak self] _ in
-                self?.viewModel.exposureService.activate { [weak self] error in
+            dependencies.exposure.deactivate { [weak self] _ in
+                self?.dependencies.exposure.activate { [weak self] error in
                     guard let error = error else { return }
                     switch error {
                     case .activationError(let code):
@@ -473,14 +483,7 @@ private extension ActiveAppVC {
     }
 
     func openBluetoothSettings() {
-        let url: URL?
-        if !viewModel.exposureService.isBluetoothOn {
-            url = URL(string: UIApplication.openSettingsURLString)
-        } else {
-            url = URL(string: UIApplication.openSettingsURLString)
-        }
-
-        guard let URL = url, UIApplication.shared.canOpenURL(URL) else { return }
+        guard let URL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(URL) else { return }
         UIApplication.shared.open(URL)
     }
 
@@ -489,7 +492,7 @@ private extension ActiveAppVC {
     #if !PROD || DEBUG
 
     func debugProcessReports() {
-        if AppDelegate.dependency.reporter.isDownloading || AppDelegate.dependency.exposure.detectingExposures {
+        if dependencies.reporter.isDownloading || dependencies.exposure.detectingExposures {
             showAlert(title: "Stahovani reportu", message: "Bezi na pozadi, pockejte chvilku nez dobehne.")
         } else {
             perform(segue: StoryboardSegue.Active.debugReports)
@@ -497,7 +500,7 @@ private extension ActiveAppVC {
     }
 
     func debugCancelRegistrationAction() {
-        AppDelegate.dependency.exposure.deactivate { _ in
+        dependencies.exposure.deactivate { _ in
             AppSettings.deleteAllData()
             try? Auth.auth().signOut()
             AppDelegate.shared.updateInterface()
@@ -509,12 +512,12 @@ private extension ActiveAppVC {
             Exposure.debugExposure()
         ]
 
-        try? ExposureList.add(exposures, detectionDate: Date())
+        try? dependencies.exposureList.add(exposures, detectionDate: Date())
 
         Auth.auth().currentUser?.getIDToken(completion: { token, error in
             if let token = token {
                 let data = ["idToken": token]
-                AppDelegate.dependency.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
+                self.dependencies.functions.httpsCallable("RegisterNotification").call(data) { _, _ in }
             } else if let error = error {
                 Crashlytics.crashlytics().record(error: error)
             }
@@ -543,8 +546,8 @@ private extension ActiveAppVC {
         AppDelegate.shared.fetchRemoteValues(background: false, ignoreCache: true)
             .subscribe(onSuccess: { _ in
                 let configuration = RemoteValues.serverConfiguration
-                AppDelegate.dependency.reporter.updateConfiguration(configuration)
-                AppDelegate.dependency.verification.updateConfiguration(configuration)
+                self.dependencies.reporter.updateConfiguration(configuration)
+                self.dependencies.verification.updateConfiguration(configuration)
             })
             .disposed(by: disposeBag)
     }

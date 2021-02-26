@@ -14,6 +14,5 @@ struct PrivacyVM {
     var bodyLink: String {
         RemoteValues.conditionsOfUseUrl
     }
-
-    let functions: Functions = AppDelegate.dependency.functions
+    
 }

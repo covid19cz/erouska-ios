@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EFGSPermissionVC: UIViewController {
+final class EFGSPermissionVC: BaseController {
 
     // MARK: -
 

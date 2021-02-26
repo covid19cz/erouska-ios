@@ -9,6 +9,10 @@
 import Foundation
 import Alamofire
 
+protocol HasVerificationService {
+    var verification: VerificationServicing { get }
+}
+
 protocol VerificationServicing: AnyObject {
 
     func updateConfiguration(_ configuration: ServerConfiguration)

@@ -8,7 +8,8 @@
 
 import UIKit
 
-final class RiskyEncountersListVC: UIViewController {
+final class RiskyEncountersListVC: BaseController {
+
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var footerLabel: UILabel!
@@ -43,6 +44,7 @@ final class RiskyEncountersListVC: UIViewController {
             footer.frame.size.height = footer.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0)).height
         }
     }
+
 }
 
 extension RiskyEncountersListVC: UITableViewDataSource {
@@ -58,4 +60,5 @@ extension RiskyEncountersListVC: UITableViewDataSource {
         }
         return cell ?? UITableViewCell()
     }
+    
 }

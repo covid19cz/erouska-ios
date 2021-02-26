@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ErrorVC: UIViewController {
+final class ErrorVC: BaseController {
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!

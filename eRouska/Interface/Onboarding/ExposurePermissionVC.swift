@@ -10,13 +10,17 @@ import UIKit
 import ExposureNotification
 import UserNotifications
 
-final class ExposurePermissionVC: UIViewController {
+final class ExposurePermissionVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureService & HasDiagnosis
+
+    var dependencies: Dependencies!
 
     // MARK: -
 
     private let viewModel = ExposurePermissionVM()
-
-    private var diagnosis: Diagnosis?
 
     // MARK: - Outlets
 
@@ -58,7 +62,7 @@ private extension ExposurePermissionVC {
     // MARK: - Request permission
 
     func requestExposurePermission() {
-        viewModel.exposureService.activate { [weak self] error in
+        dependencies.exposure.activate { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 log("ExposurePermissionVC: failed to active exposures \(error)")
@@ -127,9 +131,10 @@ private extension ExposurePermissionVC {
             okHandler: { self.requestNotificationPermission() },
             action: (title: L10n.dataSendErrorButton, handler: { [weak self] in
                 guard let self = self else { return }
-                if Diagnosis.canSendMail {
-                    self.diagnosis = Diagnosis(
-                        showFromController: self,
+
+                if self.dependencies.diagnosis.canSendMail {
+                    self.dependencies.diagnosis.present(
+                        fromController: self,
                         screenName: .exposurePermission,
                         kind: .error(.init(code: "\(code.rawValue)", message: error.localizedDescription))
                     )

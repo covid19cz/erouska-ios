@@ -9,11 +9,17 @@
 import UIKit
 import UserNotifications
 
-final class FirstActivationVC: UIViewController {
+final class FirstActivationVC: BaseController, HasDependencies {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasExposureService
+
+    var dependencies: Dependencies!
 
     // MARK: -
 
-    private let viewModel = FirstActivationVM()
+    private var viewModel: FirstActivationVM!
 
     // MARK: - Outlets
 
@@ -27,6 +33,8 @@ final class FirstActivationVC: UIViewController {
     // MARK: -
 
     override func viewDidLoad() {
+        viewModel = FirstActivationVM(dependencies: dependencies)
+
         super.viewDidLoad()
 
         buttonsView.connect(with: scrollView)

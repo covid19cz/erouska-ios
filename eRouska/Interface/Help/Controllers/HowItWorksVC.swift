@@ -8,27 +8,17 @@
 
 import UIKit
 
-struct HowItWorksEntry {
+final class HowItWorksVC: BaseTableViewController, HasDependencies {
 
-    let title: String?
-    let body: String
-    let icon: ImageAsset?
+    // MARK: - Dependencies
 
-}
+    typealias Dependencies = HasDiagnosis
 
-final class HowItWorksVC: UITableViewController {
+    var dependencies: Dependencies!
 
-    private var diagnosis: Diagnosis?
+    // MARK: -
 
-    private var entries: [HowItWorksEntry] = [
-        .init(title: nil, body: L10n.howitworksHeadline, icon: nil),
-        .init(title: L10n.HowitworksEntry1.title, body: L10n.HowitworksEntry1.body, icon: Asset.hitWPhones),
-        .init(title: L10n.HowitworksEntry2.title, body: L10n.HowitworksEntry2.body, icon: Asset.hitWExposure),
-        .init(title: L10n.HowitworksEntry3.title, body: L10n.HowitworksEntry3.body, icon: Asset.hItWNotifications),
-        .init(title: L10n.HowitworksEntry4.title, body: L10n.HowitworksEntry4.body, icon: Asset.hitWCheck),
-        .init(title: L10n.HowitworksEntry5.title, body: L10n.HowitworksEntry5.body, icon: Asset.hitWResult),
-        .init(title: L10n.HowitworksEntry6.title, body: L10n.HowitworksEntry6.body, icon: Asset.hitWDisplay)
-    ]
+    private let viewModel = HowItWorksVM()
 
     private var isModal: Bool {
         navigationController?.viewControllers.first == self
@@ -52,8 +42,8 @@ final class HowItWorksVC: UITableViewController {
     // MARK: - Actions
 
     @IBAction private func mailAction() {
-        if Diagnosis.canSendMail {
-            diagnosis = Diagnosis(showFromController: self, screenName: .howItWorks, kind: .error(nil))
+        if dependencies.diagnosis.canSendMail {
+            dependencies.diagnosis.present(fromController: self, screenName: .howItWorks, kind: .error(nil))
         } else if let URL = URL(string: "mailto:info@erouska.cz") {
             openURL(URL: URL)
         }
@@ -70,11 +60,11 @@ final class HowItWorksVC: UITableViewController {
     // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entries.count + 1
+        return viewModel.entries.count + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row >= entries.count {
+        if indexPath.row >= viewModel.entries.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "howItWorksButtons") as? HowItWorksButtonsCell
             cell?.config(
                 with: L10n.howitworksMailSupport,
@@ -87,7 +77,7 @@ final class HowItWorksVC: UITableViewController {
             )
             return cell ?? UITableViewCell()
         }
-        let entry = entries[indexPath.row]
+        let entry = viewModel.entries[indexPath.row]
 
         if let title = entry.title, let icon = entry.icon {
             let cell = tableView.dequeueReusableCell(withIdentifier: "howItWorksEntry") as? HowItWorksEntryCell

@@ -44,7 +44,7 @@ struct HelpQuestion: Decodable {
     let answer: String
 
     var lines: [SwiftyLine] {
-        AppDelegate.dependency.lineProcessor.process(answer)
+        AppDependency.shared.help.lineProcessor.process(answer)
     }
 
     static func == (lhs: Self, rhs: Self) -> Bool {
