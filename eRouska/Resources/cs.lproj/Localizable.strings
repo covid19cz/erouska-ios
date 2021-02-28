@@ -243,7 +243,7 @@
 "howitworks_entry5.title" = "Vyhodnocení rizikových setkání";
 "howitworks_entry5.body" = "eRoušky riziková setkání vyhodnotí v případě, že byly s nakaženým v kontaktu na vzdálenost bližší než 2 metry a po dobu alespoň 15 minut od okamžiku, kdy byl podle dostupných informací nakažlivým.";
 "howitworks_entry6.title" = "Zobrazení varování";
-"howitworks_entry6.body" = "Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozonění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.";
+"howitworks_entry6.body" = "Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozornění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.";
 "howitworks_mail_support" = "Napsat e-mail na podporu";
 "howitworks_close" = "Zavřít";
 "howitworks_banner_title" = "Zajímá vás, jak eRouška funguje?";
