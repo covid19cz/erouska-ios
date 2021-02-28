@@ -15,7 +15,7 @@ struct SendReport: Codable {
     let verificationTokenDate: Date
 
     var symptoms: Bool = false
-    var symptomsDate = Date()
+    var symptomsDate: Date?
     var traveler: Bool = false
     var consentToFederation: Bool = false
 

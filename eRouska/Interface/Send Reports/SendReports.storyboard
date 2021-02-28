@@ -690,6 +690,9 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                                                 <rect key="frame" x="325" y="0.0" width="51" height="31"/>
                                                                 <color key="onTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="0.38" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                 <color key="thumbTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="symptomSwitchChanged" destination="EXM-NH-L2k" eventType="valueChanged" id="w6H-G5-IPW"/>
+                                                                </connections>
                                                             </switch>
                                                         </subviews>
                                                     </stackView>
@@ -802,6 +805,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                         <outlet property="continueButton" destination="6H0-kN-Ubh" id="dZ8-LA-QZU"/>
                         <outlet property="dateLabel" destination="hFH-t4-kMQ" id="kCD-vG-n3F"/>
                         <outlet property="datePicker" destination="eGf-as-D8d" id="pOu-kU-dL7"/>
+                        <outlet property="dateStackView" destination="YHv-W9-j9R" id="ZIw-Wz-Ez8"/>
                         <outlet property="enableLabel" destination="7hj-N4-TqB" id="eXd-Uh-egY"/>
                         <outlet property="enableSwitch" destination="c5U-zi-5RH" id="uZX-W9-6jr"/>
                         <outlet property="headlineLabel" destination="lzb-gB-H5c" id="lAh-uh-nDy"/>

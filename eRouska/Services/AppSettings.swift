@@ -231,8 +231,7 @@ struct AppSettings {
             guard let data = data(forKey: .sendReport) else { return nil }
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            // swiftlint:disable:next force_try
-            return try! decoder.decode(SendReport.self, from: data)
+            return try? decoder.decode(SendReport.self, from: data)
         }
         set {
             let encoder = JSONEncoder()

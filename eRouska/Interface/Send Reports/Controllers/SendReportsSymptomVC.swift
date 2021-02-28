@@ -31,6 +31,7 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
     @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var enableLabel: UILabel!
     @IBOutlet private weak var enableSwitch: UISwitch!
+    @IBOutlet private weak var dateStackView: UIStackView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var datePicker: UIDatePicker!
 
@@ -48,7 +49,7 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
         }
 
         let currentTime = Date.timeIntervalSinceReferenceDate
-        datePicker.minimumDate = Date(timeIntervalSinceReferenceDate: currentTime - 10 * 24 * 60 * 60)
+        datePicker.minimumDate = Date(timeIntervalSinceReferenceDate: currentTime - 13 * 24 * 60 * 60)
         datePicker.maximumDate = Date()
 
         buttonsView.connect(with: scrollView)
@@ -70,7 +71,7 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
         log("SendReportSymptomVC: data: \(datePicker.date), symptoms: \(enableSwitch.isOn ? "YES" : "NO")")
 
         sendReport?.symptoms = enableSwitch.isOn
-        sendReport?.symptomsDate = datePicker.date
+        sendReport?.symptomsDate = enableSwitch.isOn ? datePicker.date : nil
 
         if AppSettings.efgsEnabled {
             sendReport?.traveler = true
@@ -82,6 +83,10 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
 
             perform(segue: StoryboardSegue.SendReports.efgs)
         }
+    }
+
+    @IBAction private func symptomSwitchChanged() {
+        dateStackView.isHidden = !enableSwitch.isOn
     }
 
 }
