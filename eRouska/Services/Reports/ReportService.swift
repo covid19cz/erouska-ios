@@ -27,7 +27,8 @@ protocol ReportServicing: AnyObject {
     typealias UploadKeysCallback = (Result<Bool, Error>) -> Void
 
     var isUploading: Bool { get }
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, efgs: Bool, traveler: Bool, callback: @escaping UploadKeysCallback)
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, efgs: Bool,
+                    traveler: Bool, callback: @escaping UploadKeysCallback)
 
     typealias ProcessedFileNames = [String: String]
     typealias DownloadKeysCallback = (ReportDownload) -> Void
@@ -101,7 +102,8 @@ final class ReportService: ReportServicing {
 
     private(set) var isUploading: Bool = false
 
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, efgs: Bool, traveler: Bool, callback: @escaping UploadKeysCallback) {
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, efgs: Bool,
+                    traveler: Bool, callback: @escaping UploadKeysCallback) {
         guard !isUploading else {
             callback(.failure(ReportError.alreadyRunning))
             return

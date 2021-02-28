@@ -44,9 +44,9 @@ final class RiskyEncountersV2DetailVC: BaseTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell()
         cell.detailTextLabel?.numberOfLines = 0
 
-        guard let exposure = exposure else { return cell }
+        guard let exposure = exposure, let row = Row(rawValue: indexPath.row) else { return cell }
 
-        switch Row(rawValue: indexPath.row) {
+        switch row {
         case .date:
             cell.textLabel?.text = "Date"
             cell.detailTextLabel?.text = DateFormatter.baseDateFormatter.string(from: exposure.date)
@@ -68,7 +68,6 @@ final class RiskyEncountersV2DetailVC: BaseTableViewController {
         case .secondsSinceLastScan:
             cell.textLabel?.text = "Seconds Since Last Scan"
             cell.detailTextLabel?.text = exposure.scanInstances.map { String($0.secondsSinceLastScan) }.joined(separator: ", ")
-
         case .maximumScore:
             cell.textLabel?.text = "Highest score of all exposures (at day)"
             cell.detailTextLabel?.text = "\(exposure.daySummary?.maximumScore ?? 0)"
@@ -78,8 +77,6 @@ final class RiskyEncountersV2DetailVC: BaseTableViewController {
         case .weightedDurationSum:
             cell.textLabel?.text = "Sum of exposure durations weighted by their attenuation (at day)"
             cell.detailTextLabel?.text = "\(exposure.daySummary?.weightedDurationSum ?? 0)"
-        default:
-            break
         }
         return cell
     }

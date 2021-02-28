@@ -162,7 +162,7 @@ final class ExposureDataV2: Object {
 
     func toExposure(date: Date) -> ExposureWindow {
         var scans: [ExposureWindow.Scan] = []
-        for (index, _) in minimumAttenuation.enumerated() {
+        for index in minimumAttenuation.indices {
             scans.append(
                 .init(
                     minimumAttenuation: minimumAttenuation[index],

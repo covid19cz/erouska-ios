@@ -42,9 +42,9 @@ final class RiskyEncountersV1DetailVC: BaseTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell()
         cell.detailTextLabel?.numberOfLines = 0
 
-        guard let exposure = exposure else { return cell }
+        guard let exposure = exposure, let row = Row(rawValue: indexPath.row) else { return cell }
 
-        switch Row(rawValue: indexPath.row) {
+        switch row {
         case .date:
             cell.textLabel?.text = "Date"
             cell.detailTextLabel?.text = DateFormatter.baseDateFormatter.string(from: exposure.date)
@@ -66,8 +66,6 @@ final class RiskyEncountersV1DetailVC: BaseTableViewController {
         case .computedThreshold:
             cell.textLabel?.text = "Computed Threshold"
             cell.detailTextLabel?.text = "\(exposure.computedThreshold(with: configuration))"
-        default:
-            break
         }
         return cell
     }

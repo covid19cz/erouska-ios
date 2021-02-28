@@ -22,7 +22,7 @@ struct AppSettings {
         case lastProcessedFileNames
         case lastProcessedDate
         case lastUploadDate
-        
+
         case lastExposureWarningId
         case lastExposureWarningDate
         case lastExposureWarningClosed
@@ -38,6 +38,8 @@ struct AppSettings {
         case howItWorksClosed
 
         case activated = "activated2"
+
+        case sendReport
     }
 
     /// Firebase Region
@@ -224,6 +226,22 @@ struct AppSettings {
         }
     }
 
+    static var sendReport: SendReport? {
+        get {
+            guard let data = data(forKey: .sendReport) else { return nil }
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            // swiftlint:disable:next force_try
+            return try! decoder.decode(SendReport.self, from: data)
+        }
+        set {
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+            // swiftlint:disable:next force_try
+            set(withKey: .sendReport, value: try! encoder.encode(newValue))
+        }
+    }
+
     /// Cleanup data after logout
     static func deleteAllData() {
         activated = false
@@ -255,6 +273,10 @@ struct AppSettings {
 
     private static func dictionary(forKey key: Keys) -> [String: Any] {
         return UserDefaults.standard.dictionary(forKey: key.rawValue) ?? [:]
+    }
+
+    private static func data(forKey key: Keys) -> Data? {
+        return UserDefaults.standard.data(forKey: key.rawValue)
     }
 
     private static func date(forKey key: Keys) -> Date? {

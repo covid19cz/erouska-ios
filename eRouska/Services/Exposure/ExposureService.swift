@@ -219,7 +219,8 @@ final class ExposureService: ExposureServicing {
         }
     }
 
-    private func processDetectedExposuresV1(configuration: ExposureConfigurationV1, summary: ENExposureDetectionSummary, URLs: [URL], callback: @escaping DetectCallback) {
+    private func processDetectedExposuresV1(configuration: ExposureConfigurationV1, summary: ENExposureDetectionSummary,
+                                            URLs: [URL], callback: @escaping DetectCallback) {
         func finish(error: Error? = nil, exposures: [Exposure] = []) {
             finishDetectingExposures(URLs: URLs, error: error, exposures: exposures, callback: callback)
         }
@@ -278,7 +279,8 @@ final class ExposureService: ExposureServicing {
     }
 
     @available(iOS 13.7, *)
-    private func processDetectedExposuresV2(configuration: ExposureConfigurationV2, summary: ENExposureDetectionSummary, URLs: [URL], callback: @escaping DetectCallback) {
+    private func processDetectedExposuresV2(configuration: ExposureConfigurationV2, summary: ENExposureDetectionSummary,
+                                            URLs: [URL], callback: @escaping DetectCallback) {
         func finish(error: Error? = nil, exposures: [Exposure] = []) {
             finishDetectingExposures(URLs: URLs, error: error, exposures: exposures, callback: callback)
         }

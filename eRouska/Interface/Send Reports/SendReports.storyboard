@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bzh-9z-YpA">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,46 +15,46 @@
             <objects>
                 <viewController storyboardIdentifier="SendResultVC" id="DYf-Vd-0PA" userLabel="Aplikace je aktivní" customClass="SendResultVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="obQ-Xn-QYg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ypa-Zz-KEW">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="584"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Bb-fN-QKh">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="344.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="388.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-Ye-sGl">
-                                                <rect key="frame" x="20" y="0.0" width="560" height="344.5"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="388.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0l-Ah-UvZ" userLabel="Space View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="5" id="AyS-cJ-DC6"/>
                                                         </constraints>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="1000" image="Ok" translatesAutoresizingMaskIntoConstraints="NO" id="Xpr-3X-RXk">
-                                                        <rect key="frame" x="0.0" y="20" width="560" height="130"/>
+                                                        <rect key="frame" x="0.0" y="20" width="374" height="130"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="130" id="p2Y-oI-A2v"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Data jste úspěsně odeslali" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrs-gT-kFO">
-                                                        <rect key="frame" x="0.0" y="165" width="560" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="165" width="374" height="20.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <color key="textColor" name="AppEnabled"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" text="Děkujeme, že pomáháte bojovat proti šíření koronaviru. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBc-JL-Q8y">
-                                                        <rect key="frame" x="0.0" y="200.5" width="560" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="200.5" width="374" height="42.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                         <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ee-su-jfJ">
-                                                        <rect key="frame" x="0.0" y="236" width="560" height="108.5"/>
+                                                        <rect key="frame" x="0.0" y="258" width="374" height="130.5"/>
                                                         <string key="text">Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.
 
 Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygieniků.</string>
@@ -83,10 +85,10 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                 <viewLayoutGuide key="frameLayoutGuide" id="oHC-g8-voJ"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujY-Zk-KgB" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="490" width="600" height="110"/>
+                                <rect key="frame" x="0.0" y="752" width="414" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhX-e8-dHF" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="50" width="568" height="44"/>
+                                        <rect key="frame" x="16" y="50" width="382" height="44"/>
                                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="dHL-VO-8GB"/>
@@ -139,26 +141,26 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
             <objects>
                 <viewController id="beP-DC-myN" customClass="SendReportsNoCodeVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M4F-vy-lBz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MO-EH-Xi8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GnK-33-yrA">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="392"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="v1z-1x-QMX">
-                                                <rect key="frame" x="20" y="10" width="560" height="366"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="542"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Máte pozitivní test a nepřišla vám SMS pro eRoušku? Napište si o náhradní kód na info@erouska.cz." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5l-ED-C6K">
-                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="42.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="64.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-lk-QjB" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="62.5" width="560" height="44"/>
+                                                        <rect key="frame" x="0.0" y="84.5" width="374" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="z6l-t5-hDg"/>
                                                         </constraints>
@@ -172,14 +174,14 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQZ-76-9fe">
-                                                        <rect key="frame" x="0.0" y="126.5" width="560" height="1"/>
+                                                        <rect key="frame" x="0.0" y="148.5" width="374" height="1"/>
                                                         <color key="backgroundColor" systemColor="separatorColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Vpl-eJ-cIv"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIi-cv-g31">
-                                                        <rect key="frame" x="0.0" y="147.5" width="560" height="218.5"/>
+                                                        <rect key="frame" x="0.0" y="169.5" width="374" height="372.5"/>
                                                         <string key="text">Zajímá vás, jak odesílání kódu funguje? V případě, že máte pozitivní výsledek testu na COVID-19, měl by vám přijít výsledek testu v SMS od testovací laboratoře. Ta výsledky současně odesílá do centrálního informačního systému Ministerstva zdravotnictví.
 Poté, co se informace z informačního systému propíšou do systému hygieny, se odesílají automatické SMS eRoušky s ověřovacími kódy.
 Pokud se výsledky z laboratoře nestihnou propsat do systému hygieny do 22:00, může vám SMS s ověřovacím kódem přijít až následující den.
@@ -254,33 +256,33 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
             <objects>
                 <viewController id="zvy-kc-9kj" customClass="SendReportsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yg9-Ss-Qfx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JF-YD-BYo">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-0T-yUk">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="182.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="204.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NvA-Qs-2jt">
-                                                <rect key="frame" x="20" y="10" width="560" height="156.5"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="178.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjN-iy-0lg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="64.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="86.5"/>
                                                         <string key="text">V případě potvrzené nákazy virem COVID-19 vás bude kontaktovat pracovník hygienické stanice. Odešle vám SMS zprávu obsahující ověřovací kód pro povolení odeslání dat.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naposledy jste upozornili ostatní 24. 12. 2020." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csA-eT-3hh">
-                                                        <rect key="frame" x="0.0" y="79.5" width="560" height="18"/>
+                                                        <rect key="frame" x="0.0" y="101.5" width="374" height="18"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ověřovací kód(povinné)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JVW-2a-xGp">
-                                                        <rect key="frame" x="0.0" y="112.5" width="560" height="44"/>
+                                                        <rect key="frame" x="0.0" y="134.5" width="374" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="gJJ-Bj-NMd"/>
                                                         </constraints>
@@ -314,13 +316,13 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                 <viewLayoutGuide key="frameLayoutGuide" id="2e9-tV-4A9"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5h1-J1-hAM" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="481" width="600" height="103"/>
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="65z-xZ-ioG">
-                                        <rect key="frame" x="20" y="0.0" width="560" height="103"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-pA-DIv" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="imW-cX-YzH"/>
                                                 </constraints>
@@ -333,7 +335,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfd-vA-HPk" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="59" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="DBn-An-oQE"/>
                                                 </constraints>
@@ -395,26 +397,26 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
             <objects>
                 <viewController id="TVg-hZ-c43" customClass="SendReportsTravelVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jdW-0F-dJl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khc-IL-f0T">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XoF-h5-ID6">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="148"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0jy-vs-ViM">
-                                                <rect key="frame" x="20" y="10" width="560" height="122"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="144"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cestovali jste v posledních 14 dnech do některé ze zemí Evropské unie?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qg-6X-VJH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="42.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="42.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSG-oU-GWu">
-                                                        <rect key="frame" x="0.0" y="57.5" width="560" height="64.5"/>
+                                                        <rect key="frame" x="0.0" y="57.5" width="374" height="86.5"/>
                                                         <string key="text">Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, ketré jste potkali při svých cestách do zahraničí.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -444,13 +446,13 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                 <viewLayoutGuide key="frameLayoutGuide" id="3Y2-Yc-GOM"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yPf-X6-9YI" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="481" width="600" height="103"/>
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MxE-jk-QYK">
-                                        <rect key="frame" x="20" y="0.0" width="560" height="103"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dES-Fp-twH" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="IOV-uL-sFJ"/>
                                                 </constraints>
@@ -463,7 +465,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDX-BT-fXs" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="59" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="NhD-kw-adV"/>
                                                 </constraints>
@@ -511,6 +513,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                         <outlet property="rejectButton" destination="rDX-BT-fXs" id="dBx-0N-PYH"/>
                         <outlet property="scrollView" destination="Khc-IL-f0T" id="Pcl-rO-R3x"/>
                         <segue destination="2Aq-LP-pQl" kind="show" identifier="agreement" id="G4v-x7-xg4"/>
+                        <segue destination="DYf-Vd-0PA" kind="show" identifier="result" id="Gi9-vB-EHr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7L-5j-Hkx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -522,32 +525,32 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
             <objects>
                 <viewController id="2Aq-LP-pQl" customClass="SendReportsShareVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aVX-ZE-GLh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVp-EE-BnC">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCy-kU-Kg5">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="194"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="238"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OTT-2j-gND">
-                                                <rect key="frame" x="20" y="0.0" width="560" height="178"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="222"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iE8-AH-QSv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="41"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q9-GC-7EZ">
-                                                        <rect key="frame" x="0.0" y="56" width="560" height="42.5"/>
+                                                        <rect key="frame" x="0.0" y="56" width="374" height="64.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOd-LV-C0F">
-                                                        <rect key="frame" x="0.0" y="113.5" width="560" height="64.5"/>
+                                                        <rect key="frame" x="0.0" y="135.5" width="374" height="86.5"/>
                                                         <string key="text">Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -577,13 +580,13 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                 <viewLayoutGuide key="frameLayoutGuide" id="lef-Re-dYH"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIh-gQ-hF1" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="481" width="600" height="103"/>
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WAG-uA-Epp">
-                                        <rect key="frame" x="20" y="0.0" width="560" height="103"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hU-Up-w86" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="OLM-UY-11t"/>
                                                 </constraints>
@@ -596,7 +599,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdv-fT-G9M" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="59" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="wKu-T2-7ad"/>
                                                 </constraints>
@@ -656,58 +659,58 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
             <objects>
                 <viewController id="EXM-NH-L2k" customClass="SendReportsSymptomVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I6N-q9-LIu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7p-Si-JMR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3f-49-HiG">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="253"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="275"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ick-4b-1Wx">
-                                                <rect key="frame" x="20" y="10" width="560" height="227"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="249"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzb-gB-H5c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="64.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="86.5"/>
                                                         <string key="text">Vyplňte prosím datum prvních příznaků. Upřesníme tak období, kdy jste někoho mohli nakazit a upozorníme ostatní eRoušky, které jste v tomto období potkali.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wA3-Bc-ByS">
-                                                        <rect key="frame" x="0.0" y="79.5" width="560" height="31"/>
+                                                        <rect key="frame" x="0.0" y="101.5" width="374" height="31"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mám příznaky onemocnění COVID-19" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hj-N4-TqB">
-                                                                <rect key="frame" x="0.0" y="5.5" width="503" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="5.5" width="317" height="20.5"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5U-zi-5RH">
-                                                                <rect key="frame" x="511" y="0.0" width="51" height="31"/>
+                                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
                                                                 <color key="onTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="0.38" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                 <color key="thumbTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             </switch>
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kašel, teplota, dušnost, bolest v krku, bolest hlavy nebo ztráta čichu a chuti." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffF-wW-2Nf">
-                                                        <rect key="frame" x="0.0" y="125.5" width="560" height="42.5"/>
+                                                        <rect key="frame" x="0.0" y="147.5" width="374" height="42.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YHv-W9-j9R">
-                                                        <rect key="frame" x="0.0" y="183" width="560" height="44"/>
+                                                        <rect key="frame" x="0.0" y="205" width="374" height="44"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum prvních příznaků" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-t4-kMQ">
-                                                                <rect key="frame" x="0.0" y="12" width="181.5" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="12" width="0.0" height="20.5"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjj-FR-h55">
-                                                                <rect key="frame" x="189.5" y="0.0" width="370.5" height="44"/>
+                                                                <rect key="frame" x="8" y="0.0" width="366" height="44"/>
                                                                 <subviews>
                                                                     <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-as-D8d">
                                                                         <rect key="frame" x="0.0" y="0.0" width="176" height="44"/>
@@ -748,13 +751,13 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                 <viewLayoutGuide key="frameLayoutGuide" id="cYQ-Og-gCB"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="muP-aU-926" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="540" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="802" width="414" height="44"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ec9-sd-bwi">
-                                        <rect key="frame" x="20" y="0.0" width="560" height="44"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6H0-kN-Ubh" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="eW2-qM-CzN"/>
                                                 </constraints>
@@ -813,7 +816,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nb0-kU-MAE"/>
+        <segue reference="Gi9-vB-EHr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Ok" width="130" height="130"/>

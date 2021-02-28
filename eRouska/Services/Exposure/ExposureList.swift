@@ -36,7 +36,7 @@ final class ExposureList: ExposureListing {
     // MARK: -
 
     var exposures: Results<ExposureRealm> {
-        return dependencies.realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+        dependencies.realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
     }
 
     var last: Exposure? {

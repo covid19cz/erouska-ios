@@ -28,10 +28,9 @@ struct PreviousRiskyEncountersVM {
 
     let sections: Observable<[Section]>
 
-
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
-    
+
         let oldTestsDate = Date(timeIntervalSince1970: 0)
         let grouped = Dictionary(grouping: dependencies.exposureList.exposures, by: { $0.detectedDate }).sorted(by: { $0.key > $1.key })
         sections = Observable.just(grouped.map { key, values -> Section in

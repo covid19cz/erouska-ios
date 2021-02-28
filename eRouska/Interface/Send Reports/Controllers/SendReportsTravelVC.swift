@@ -6,17 +6,9 @@
 //
 
 import UIKit
-import Reachability
-import RxSwift
-import RxRelay
 import DeviceKit
-import FirebaseCrashlytics
 
-final class SendReportsTravelVC: BaseController, SendReporting {
-
-    // MARK: -
-
-    var sendReport: SendReport?
+final class SendReportsTravelVC: SendReportingVC {
 
     // MARK: - Outlets
 
@@ -35,7 +27,6 @@ final class SendReportsTravelVC: BaseController, SendReporting {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        isModalInPresentation = true
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
         }
@@ -59,6 +50,8 @@ final class SendReportsTravelVC: BaseController, SendReporting {
         log("SendReportsTravelVC: confirmed as traveler")
 
         sendReport?.traveler = true
+        AppSettings.sendReport = sendReport
+
         perform(segue: StoryboardSegue.SendReports.agreement)
     }
 
@@ -66,7 +59,10 @@ final class SendReportsTravelVC: BaseController, SendReporting {
         log("SendReportsTravelVC: rejected as traveler")
 
         sendReport?.traveler = true
-        perform(segue: StoryboardSegue.SendReports.agreement)
+        sendReport?.shareToEFGS = false
+        AppSettings.sendReport = sendReport
+
+        report()
     }
 
 }

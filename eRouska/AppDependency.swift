@@ -27,7 +27,7 @@ extension HasDependencies {
     }
 }
 
-final class AppDependency: HasExposureService, HasExposureList, HasReportService, HasVerificationService, HasBackgroundService, HasHelpService, HasFunctions, HasRealm, HasOther, HasDiagnosis {
+final class AppDependency {
 
     static let shared = AppDependency()
 
@@ -91,3 +91,14 @@ final class AppDependency: HasExposureService, HasExposureList, HasReportService
         return realm
     }()
 }
+
+extension AppDependency: HasExposureService { }
+extension AppDependency: HasExposureList { }
+extension AppDependency: HasReportService { }
+extension AppDependency: HasVerificationService { }
+extension AppDependency: HasBackgroundService { }
+extension AppDependency: HasHelpService { }
+extension AppDependency: HasFunctions { }
+extension AppDependency: HasRealm { }
+extension AppDependency: HasDiagnosis { }
+extension AppDependency: HasOther { }

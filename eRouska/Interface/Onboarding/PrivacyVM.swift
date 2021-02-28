@@ -14,5 +14,5 @@ struct PrivacyVM {
     var bodyLink: String {
         RemoteValues.conditionsOfUseUrl
     }
-    
+
 }

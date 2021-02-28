@@ -223,7 +223,6 @@ struct ExposureWindow: Codable, Equatable {
         self.daySummary = daySummary
     }
 
-
     struct Scan: Codable, Equatable {
         var minimumAttenuation: Int
         var typicalAttenuation: Int

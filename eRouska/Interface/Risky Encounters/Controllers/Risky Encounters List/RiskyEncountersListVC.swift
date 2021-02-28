@@ -60,5 +60,5 @@ extension RiskyEncountersListVC: UITableViewDataSource {
         }
         return cell ?? UITableViewCell()
     }
-    
+
 }
