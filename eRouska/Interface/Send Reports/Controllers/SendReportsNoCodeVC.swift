@@ -1,5 +1,5 @@
 //
-//  SendReportNoCodeVC.swift
+//  SendReportsNoCodeVC.swift
 //  BT-Tracking
 //
 //  Created by Lukáš Foldýna on 29.01.2021.
@@ -9,7 +9,7 @@
 import UIKit
 import DeviceKit
 
-final class SendReportNoCodeVC: BaseController, HasDependencies {
+final class SendReportsNoCodeVC: BaseController, HasDependencies {
 
     // MARK: - Dependencies
 

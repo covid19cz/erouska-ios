@@ -13,6 +13,12 @@ import RxRelay
 import DeviceKit
 import FirebaseCrashlytics
 
+protocol SendReporting: UIViewController {
+
+    var sendReport: SendReport? { get set }
+
+}
+
 final class SendReportsVC: BaseController, HasDependencies {
 
     // MARK: - Dependencies
@@ -72,11 +78,9 @@ final class SendReportsVC: BaseController, HasDependencies {
         case .result:
             let controller = segue.destination as? SendResultVC
             controller?.viewModel = sender as? SendResultVM ?? .standard
-        case .symptoms:
-            let controller = segue.destination as? SendReportsTravelVC
-            controller?.verificationToken = sender as? String
         default:
-            break
+            let controller = segue.destination as? SendReporting
+            controller?.sendReport = sender as? SendReport
         }
     }
 
@@ -93,7 +97,7 @@ final class SendReportsVC: BaseController, HasDependencies {
     // MARK: - Actions
 
     @IBAction private func verifyCodeAction() {
-        resultVerifyToken("1dddd")
+        resultVerify(SendReport(verificationCode: codeTextField.text ?? "", verificationToken: "1234ABCD", verificationTokenDate: Date()))
 
         /*
         guard let connection = try? Reachability().connection, connection != .unavailable else {
@@ -115,8 +119,8 @@ final class SendReportsVC: BaseController, HasDependencies {
         dismiss(animated: true)
     }
 
-    private func resultVerifyToken(_ token: String) {
-        perform(segue: StoryboardSegue.SendReports.symptoms, sender: token)
+    private func resultVerify(_ sendReport: SendReport) {
+        perform(segue: StoryboardSegue.SendReports.symptoms, sender: sendReport)
     }
 
     private func resultErrorAction(code: String, message: String? = nil) {
@@ -184,13 +188,14 @@ private extension SendReportsVC {
 
     func verifyCode(_ code: String) {
         reportShowProgress()
+        let verificationTokenDate = Date()
 
         dependencies.verification.verify(with: code) { [weak self] result in
             switch result {
             case .success(let token):
                 log("SendReportsVC: code verified, received token \(token)")
                 self?.reportHideProgress()
-                self?.resultVerifyToken(token)
+                self?.resultVerify(SendReport(verificationCode: code, verificationToken: token, verificationTokenDate: verificationTokenDate))
             case .failure(let error):
                 log("SendReportsVC: Failed to verify code \(error)")
                 self?.reportHideProgress()

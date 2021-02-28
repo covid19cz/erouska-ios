@@ -12,7 +12,7 @@ import RxRelay
 import DeviceKit
 import FirebaseCrashlytics
 
-final class SendReportsSymptomVC: BaseController, HasDependencies {
+final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies {
 
     // MARK: - Dependencies
 
@@ -22,7 +22,7 @@ final class SendReportsSymptomVC: BaseController, HasDependencies {
 
     // MARK: -
 
-    var verificationToken: String? = nil
+    var sendReport: SendReport?
 
     // MARK: - Outlets
 
@@ -60,20 +60,18 @@ final class SendReportsSymptomVC: BaseController, HasDependencies {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 
-        switch StoryboardSegue.SendReports(segue) {
-        case .efgs:
-            let controller = segue.destination as? SendReportsSymptomVC
-            controller?.verificationToken = verificationToken
-        default:
-            break
-        }
+        let controller = segue.destination as? SendReporting
+        controller?.sendReport = sendReport
     }
 
     // MARK: - Actions
 
     @IBAction private func continueAction() {
         log("SendReportSymptomVC: data: \(datePicker.date), symptoms: \(enableSwitch.isOn ? "YES" : "NO")")
-        perform(segue: StoryboardSegue.SendReports.efgs, sender: true)
+
+        sendReport?.symptoms = enableSwitch.isOn
+        sendReport?.symptomsDate = datePicker.date
+        perform(segue: StoryboardSegue.SendReports.efgs)
     }
 
 }

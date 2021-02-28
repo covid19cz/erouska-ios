@@ -12,11 +12,11 @@ import RxRelay
 import DeviceKit
 import FirebaseCrashlytics
 
-final class SendReportsTravelVC: BaseController {
+final class SendReportsTravelVC: BaseController, SendReporting {
 
     // MARK: -
 
-    var verificationToken: String? = nil
+    var sendReport: SendReport?
 
     // MARK: - Outlets
 
@@ -49,26 +49,24 @@ final class SendReportsTravelVC: BaseController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 
-        switch StoryboardSegue.SendReports(segue) {
-        case .agreement:
-            let controller = segue.destination as? SendReportsShareVC
-            controller?.traveler = sender as? Bool ?? false
-            controller?.verificationToken = verificationToken
-        default:
-            break
-        }
+        let controller = segue.destination as? SendReporting
+        controller?.sendReport = sendReport
     }
 
     // MARK: - Actions
 
     @IBAction private func confirmAction() {
         log("SendReportsTravelVC: confirmed as traveler")
-        perform(segue: StoryboardSegue.SendReports.agreement, sender: true)
+
+        sendReport?.traveler = true
+        perform(segue: StoryboardSegue.SendReports.agreement)
     }
 
     @IBAction private func rejectAction() {
         log("SendReportsTravelVC: rejected as traveler")
-        perform(segue: StoryboardSegue.SendReports.agreement, sender: false)
+
+        sendReport?.traveler = true
+        perform(segue: StoryboardSegue.SendReports.agreement)
     }
 
 }

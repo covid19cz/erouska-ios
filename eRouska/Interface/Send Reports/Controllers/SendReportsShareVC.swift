@@ -12,7 +12,7 @@ import RxRelay
 import DeviceKit
 import FirebaseCrashlytics
 
-final class SendReportsShareVC: BaseController, HasDependencies {
+final class SendReportsShareVC: BaseController, SendReporting, HasDependencies {
 
     // MARK: - Dependencies
 
@@ -22,9 +22,7 @@ final class SendReportsShareVC: BaseController, HasDependencies {
 
     // MARK: -
 
-    var verificationToken: String? = nil
-    var traveler: Bool = false
-    var shareData: Bool = false
+    var sendReport: SendReport?
 
     // MARK: - Outlets
 
@@ -67,12 +65,12 @@ final class SendReportsShareVC: BaseController, HasDependencies {
     // MARK: - Actions
 
     @IBAction private func confirmAction() {
-        shareData = true
+        sendReport?.shareToEFGS = true
         report()
     }
 
     @IBAction private func rejectAction() {
-        shareData = false
+        sendReport?.shareToEFGS = false
         report()
     }
 
@@ -85,7 +83,7 @@ final class SendReportsShareVC: BaseController, HasDependencies {
             return
         }
 
-        guard let token = verificationToken else {
+        guard let token = sendReport?.verificationToken else {
             resultErrorAction(code: "777", message: "No verification token")
             return
         }
@@ -223,8 +221,8 @@ private extension SendReportsShareVC {
             keys: keys,
             verificationPayload: verificationPayload,
             hmacSecret: hmacSecret,
-            efgs: shareData,
-            traveler: traveler
+            efgs: sendReport?.shareToEFGS ?? false,
+            traveler: sendReport?.traveler ?? false
         ) { [weak self] result in
             self?.hideProgress()
             switch result {
