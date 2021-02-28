@@ -1,5 +1,5 @@
 //
-//  SendReportSymptomVC.swift
+//  SendReportsSymptomVC.swift
 //  eRouska
 //
 //  Created by Lukáš Foldýna on 28.02.2021.
@@ -12,7 +12,7 @@ import RxRelay
 import DeviceKit
 import FirebaseCrashlytics
 
-final class SendReportSymptomVC: BaseController, HasDependencies {
+final class SendReportsSymptomVC: BaseController, HasDependencies {
 
     // MARK: - Dependencies
 
@@ -62,7 +62,7 @@ final class SendReportSymptomVC: BaseController, HasDependencies {
 
         switch StoryboardSegue.SendReports(segue) {
         case .efgs:
-            let controller = segue.destination as? SendReportSymptomVC
+            let controller = segue.destination as? SendReportsSymptomVC
             controller?.verificationToken = verificationToken
         default:
             break
@@ -78,7 +78,7 @@ final class SendReportSymptomVC: BaseController, HasDependencies {
 
 }
 
-private extension SendReportSymptomVC {
+private extension SendReportsSymptomVC {
 
     // MARK: - Setup
 

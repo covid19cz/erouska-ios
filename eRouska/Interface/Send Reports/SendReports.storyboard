@@ -139,7 +139,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
         <!--Nemám ověřovací kód-->
         <scene sceneID="ANA-yI-FFq">
             <objects>
-                <viewController id="beP-DC-myN" customClass="SendNoCodeVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="beP-DC-myN" customClass="SendReportNoCodeVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M4F-vy-lBz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -656,7 +656,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
         <!--          Datum prvních příznaků-->
         <scene sceneID="qyI-k6-6Ey">
             <objects>
-                <viewController id="EXM-NH-L2k" customClass="SendReportSymptomVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EXM-NH-L2k" customClass="SendReportsSymptomVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I6N-q9-LIu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
