@@ -115,6 +115,13 @@
 "data_send_share_action_confirm" = "Souhlasím";
 "data_send_share_action_reject" = "Nesouhlasím";
 
+"data_send_symptoms_title" = "Datum prvních příznaků";
+"data_send_symptoms_headline" = "Vyplňte prosím datum prvních příznaků. Upřesníme tak období, kdy jste někoho mohli nakazit a upozorníme ostatní eRoušky, které jste v tomto období potkali.";
+"data_send_symptoms_enable" = "Mám příznaky onemocnění COVID-19";
+"data_send_symptoms_date" = "Datum prvních příznaků";
+"data_send_symptoms_body" = "Kašel, teplota, dušnost, bolest v krku, bolest hlavy nebo ztráta čichu a chuti.";
+"data_send_symptoms_action_continue" = "Pokračovat";
+
 "data_list_previous_header" = "Riziková setkání zjištěná";
 "data_send_title" = "Odesláno";
 "data_send_error" = "Chyba";

@@ -278,6 +278,18 @@ internal enum L10n {
   internal static let dataSendShareBody = L10n.tr("Localizable", "data_send_share_body")
   /// Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?
   internal static let dataSendShareHeadline = L10n.tr("Localizable", "data_send_share_headline")
+  /// Pokračovat
+  internal static let dataSendSymptomsActionContinue = L10n.tr("Localizable", "data_send_symptoms_action_continue")
+  /// Kašel, teplota, dušnost, bolest v krku, bolest hlavy nebo ztráta čichu a chuti.
+  internal static let dataSendSymptomsBody = L10n.tr("Localizable", "data_send_symptoms_body")
+  /// Datum prvních příznaků
+  internal static let dataSendSymptomsDate = L10n.tr("Localizable", "data_send_symptoms_date")
+  /// Mám příznaky onemocnění COVID-19
+  internal static let dataSendSymptomsEnable = L10n.tr("Localizable", "data_send_symptoms_enable")
+  /// Vyplňte prosím datum prvních příznaků. Upřesníme tak období, kdy jste někoho mohli nakazit a upozorníme ostatní eRoušky, které jste v tomto období potkali.
+  internal static let dataSendSymptomsHeadline = L10n.tr("Localizable", "data_send_symptoms_headline")
+  /// Datum prvních příznaků
+  internal static let dataSendSymptomsTitle = L10n.tr("Localizable", "data_send_symptoms_title")
   /// Odesláno
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Nepodařilo se nám odeslat data
@@ -560,7 +572,7 @@ internal enum L10n {
   }
 
   internal enum HowitworksEntry6 {
-    /// Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozonění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.
+    /// Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozornění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.
     internal static let body = L10n.tr("Localizable", "howitworks_entry6.body")
     /// Zobrazení varování
     internal static let title = L10n.tr("Localizable", "howitworks_entry6.title")

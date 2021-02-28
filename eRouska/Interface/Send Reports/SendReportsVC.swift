@@ -17,7 +17,7 @@ final class SendReportsVC: BaseController, HasDependencies {
 
     // MARK: - Dependencies
 
-    typealias Dependencies = HasExposureService & HasVerificationService & HasReportService & HasDiagnosis
+    typealias Dependencies = HasVerificationService & HasDiagnosis
 
     var dependencies: Dependencies!
 
@@ -72,7 +72,7 @@ final class SendReportsVC: BaseController, HasDependencies {
         case .result:
             let controller = segue.destination as? SendResultVC
             controller?.viewModel = sender as? SendResultVM ?? .standard
-        case .efgs:
+        case .symptoms:
             let controller = segue.destination as? SendReportsTravelVC
             controller?.verificationToken = sender as? String
         default:
@@ -93,6 +93,9 @@ final class SendReportsVC: BaseController, HasDependencies {
     // MARK: - Actions
 
     @IBAction private func verifyCodeAction() {
+        resultVerifyToken("1dddd")
+
+        /*
         guard let connection = try? Reachability().connection, connection != .unavailable else {
             showAlert(
                 title: L10n.dataListSendErrorFailedTitle,
@@ -101,7 +104,7 @@ final class SendReportsVC: BaseController, HasDependencies {
             return
         }
         view.endEditing(true)
-        verifyCode(code.value)
+        verifyCode(code.value)*/
     }
 
     @IBAction private func noCodeAction() {
@@ -113,7 +116,7 @@ final class SendReportsVC: BaseController, HasDependencies {
     }
 
     private func resultVerifyToken(_ token: String) {
-        perform(segue: StoryboardSegue.SendReports.efgs, sender: token)
+        perform(segue: StoryboardSegue.SendReports.symptoms, sender: token)
     }
 
     private func resultErrorAction(code: String, message: String? = nil) {
