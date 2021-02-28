@@ -1,5 +1,5 @@
 //
-//  SendReportsShareVC.swift
+//  SendReportsFederationVC.swift
 //  eRouska
 //
 //  Created by Lukáš Foldýna on 26.02.2021.
@@ -8,17 +8,9 @@
 import UIKit
 import DeviceKit
 
-final class SendReportsShareVC: SendReportingVC {
+final class SendReportsFederationVC: SendReportingVC {
 
     // MARK: -
-
-    enum Kind {
-        case efgsYes
-        case efgsNo
-    }
-
-    var kind: Kind = .efgsNo
-
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -79,7 +71,7 @@ final class SendReportsShareVC: SendReportingVC {
 
 }
 
-private extension SendReportsShareVC {
+private extension SendReportsFederationVC {
 
     // MARK: - Setup
 
@@ -92,7 +84,7 @@ private extension SendReportsShareVC {
             titleLabel.text = L10n.DataSendShareTitle.part2
         }
 
-        headlineLabel.text = L10n.dataSendShareHeadline
+        headlineLabel.text = sendReport?.traveler == true ? L10n.DataSendShareHeadline.a : L10n.DataSendShareHeadline.b
         bodyLabel.text = L10n.dataSendShareBody
         confirmButton.setTitle(L10n.dataSendShareActionConfirm)
         rejectButton.setTitle(L10n.dataSendShareActionReject)

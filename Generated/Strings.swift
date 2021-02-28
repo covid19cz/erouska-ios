@@ -276,8 +276,6 @@ internal enum L10n {
   internal static let dataSendShareActionReject = L10n.tr("Localizable", "data_send_share_action_reject")
   /// Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.
   internal static let dataSendShareBody = L10n.tr("Localizable", "data_send_share_body")
-  /// Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?
-  internal static let dataSendShareHeadline = L10n.tr("Localizable", "data_send_share_headline")
   /// Pokračovat
   internal static let dataSendSymptomsActionContinue = L10n.tr("Localizable", "data_send_symptoms_action_continue")
   /// Kašel, teplota, dušnost, bolest v krku, bolest hlavy nebo ztráta čichu a chuti.
@@ -528,6 +526,13 @@ internal enum L10n {
   internal static let welcomeHelp = L10n.tr("Localizable", "welcome_help")
   /// Díky eRoušce ochráníte sebe i ostatní ve svém okolí
   internal static let welcomeTitle = L10n.tr("Localizable", "welcome_title")
+
+  internal enum DataSendShareHeadline {
+    /// Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?
+    internal static let a = L10n.tr("Localizable", "data_send_share_headline.a")
+    /// Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice?
+    internal static let b = L10n.tr("Localizable", "data_send_share_headline.b")
+  }
 
   internal enum DataSendShareTitle {
     /// Spolupráce se

@@ -395,7 +395,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
         <!--          Cesty do zahraničí-->
         <scene sceneID="g14-l1-G7N">
             <objects>
-                <viewController id="TVg-hZ-c43" customClass="SendReportsTravelVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TVg-hZ-c43" customClass="SendReportsTravelerVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jdW-0F-dJl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -522,7 +522,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
         <!--Spolupráce se-->
         <scene sceneID="4eO-is-D2F">
             <objects>
-                <viewController id="2Aq-LP-pQl" customClass="SendReportsShareVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2Aq-LP-pQl" customClass="SendReportsFederationVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aVX-ZE-GLh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

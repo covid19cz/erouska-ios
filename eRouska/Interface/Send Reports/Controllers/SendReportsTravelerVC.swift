@@ -12,7 +12,7 @@ import RxRelay
 import DeviceKit
 import FirebaseCrashlytics
 
-final class SendReportsTravelVC: BaseController, SendReporting {
+final class SendReportsTravelerVC: BaseController, SendReporting {
 
     // MARK: -
 
@@ -74,7 +74,7 @@ final class SendReportsTravelVC: BaseController, SendReporting {
 
 }
 
-private extension SendReportsTravelVC {
+private extension SendReportsTravelerVC {
 
     // MARK: - Setup
 

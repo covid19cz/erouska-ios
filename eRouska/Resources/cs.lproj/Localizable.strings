@@ -110,7 +110,8 @@
 
 "data_send_share_title.part1" = "Spolupráce se";
 "data_send_share_title.part2" = "zahraničím";
-"data_send_share_headline" = "Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?";
+"data_send_share_headline.a" = "Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?";
+"data_send_share_headline.b" = "Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice?";
 "data_send_share_body" = "Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.";
 "data_send_share_action_confirm" = "Souhlasím";
 "data_send_share_action_reject" = "Nesouhlasím";
