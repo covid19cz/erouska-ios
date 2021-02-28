@@ -17,7 +17,7 @@ struct SendReport: Codable {
     var symptoms: Bool = false
     var symptomsDate = Date()
     var traveler: Bool = false
-    var shareToEFGS: Bool = false
+    var consentToFederation: Bool = false
 
     var isExpired: Bool {
         guard let jwt = try? decode(jwt: verificationToken), !jwt.expired, let date = jwt.expiresAt else { return true }

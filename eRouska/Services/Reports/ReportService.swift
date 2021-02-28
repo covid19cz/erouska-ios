@@ -27,8 +27,8 @@ protocol ReportServicing: AnyObject {
     typealias UploadKeysCallback = (Result<Bool, Error>) -> Void
 
     var isUploading: Bool { get }
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, efgs: Bool,
-                    traveler: Bool, callback: @escaping UploadKeysCallback)
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, traveler: Bool,
+                    consentToFederation: Bool, symptomsDate: Date?, callback: @escaping UploadKeysCallback)
 
     typealias ProcessedFileNames = [String: String]
     typealias DownloadKeysCallback = (ReportDownload) -> Void
@@ -59,6 +59,9 @@ final class ReportService: ReportServicing {
     private var downloadSuccess: ReportDownload.Success = [:]
     private var downloadFailure: ReportDownload.Failure = [:]
     private var lastProcessedFileNames: ProcessedFileNames = [:]
+
+    private var defaultEFGSList: [String] = ["BE", "GR", "LT", "PT", "BG", "ES", "LU", "RO", "FR", "HU", "SI", "DK", "HR", "MT", "SK",
+                                             "DE", "IT", "NL", "FI", "EE", "CY", "AT", "SE", "IE", "LV", "PL", "IS", "NO", "LI", "CH"]
 
     init(configuration: ServerConfiguration) {
         healthAuthority = configuration.healthAuthority
@@ -102,8 +105,8 @@ final class ReportService: ReportServicing {
 
     private(set) var isUploading: Bool = false
 
-    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, efgs: Bool,
-                    traveler: Bool, callback: @escaping UploadKeysCallback) {
+    func uploadKeys(keys: [ExposureDiagnosisKey], verificationPayload: String, hmacSecret: Data, traveler: Bool,
+                    consentToFederation: Bool, symptomsDate: Date?, callback: @escaping UploadKeysCallback) {
         guard !isUploading else {
             callback(.failure(ReportError.alreadyRunning))
             return
@@ -136,13 +139,13 @@ final class ReportService: ReportServicing {
             healthAuthority: healthAuthority,
             verificationPayload: verificationPayload,
             hmacKey: hmacSecret.base64EncodedString(),
-            symptomOnsetInterval: nil,
+            symptomOnsetInterval: symptomsDate?.timeIntervalSince1970,
             traveler: traveler,
             revisionToken: nil,
             padding: randomBase64,
-            visitedCountries: [],
+            visitedCountries: traveler ? defaultEFGSList : [],
             reportType: .confirmedTest,
-            consentToFederation: efgs
+            consentToFederation: consentToFederation
         )
 
         AF.request(firebaseURL.appendingPathComponent("PublishKeys"), method: .post, parameters: report, encoder: JSONParameterEncoder.default)

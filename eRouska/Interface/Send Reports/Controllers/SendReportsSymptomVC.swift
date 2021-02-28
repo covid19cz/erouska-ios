@@ -71,9 +71,17 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
 
         sendReport?.symptoms = enableSwitch.isOn
         sendReport?.symptomsDate = datePicker.date
-        AppSettings.sendReport = sendReport
 
-        perform(segue: StoryboardSegue.SendReports.efgs)
+        if AppSettings.efgsEnabled {
+            sendReport?.traveler = true
+            AppSettings.sendReport = sendReport
+
+            perform(segue: StoryboardSegue.SendReports.agreement)
+        } else {
+            AppSettings.sendReport = sendReport
+
+            perform(segue: StoryboardSegue.SendReports.efgs)
+        }
     }
 
 }

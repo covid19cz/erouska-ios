@@ -513,7 +513,6 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                         <outlet property="rejectButton" destination="rDX-BT-fXs" id="dBx-0N-PYH"/>
                         <outlet property="scrollView" destination="Khc-IL-f0T" id="Pcl-rO-R3x"/>
                         <segue destination="2Aq-LP-pQl" kind="show" identifier="agreement" id="G4v-x7-xg4"/>
-                        <segue destination="DYf-Vd-0PA" kind="show" identifier="result" id="Gi9-vB-EHr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7L-5j-Hkx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -808,6 +807,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                         <outlet property="headlineLabel" destination="lzb-gB-H5c" id="lAh-uh-nDy"/>
                         <outlet property="scrollView" destination="H7p-Si-JMR" id="Oin-l4-2qg"/>
                         <segue destination="TVg-hZ-c43" kind="show" identifier="efgs" id="f5d-Ko-tzX"/>
+                        <segue destination="2Aq-LP-pQl" kind="show" identifier="agreement" id="0JR-Dj-CKf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gb-ny-A3E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -816,7 +816,8 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gi9-vB-EHr"/>
+        <segue reference="0JR-Dj-CKf"/>
+        <segue reference="nb0-kU-MAE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Ok" width="130" height="130"/>

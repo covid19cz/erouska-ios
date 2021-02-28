@@ -10,6 +10,15 @@ import DeviceKit
 
 final class SendReportsShareVC: SendReportingVC {
 
+    // MARK: -
+
+    enum Kind {
+        case efgsYes
+        case efgsNo
+    }
+
+    var kind: Kind = .efgsNo
+
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -51,14 +60,14 @@ final class SendReportsShareVC: SendReportingVC {
     // MARK: - Actions
 
     @IBAction private func confirmAction() {
-        sendReport?.shareToEFGS = true
+        sendReport?.consentToFederation = true
         AppSettings.sendReport = sendReport
 
         report()
     }
 
     @IBAction private func rejectAction() {
-        sendReport?.shareToEFGS = false
+        sendReport?.consentToFederation = false
         AppSettings.sendReport = sendReport
 
         report()

@@ -6,9 +6,17 @@
 //
 
 import UIKit
+import Reachability
+import RxSwift
+import RxRelay
 import DeviceKit
+import FirebaseCrashlytics
 
-final class SendReportsTravelVC: SendReportingVC {
+final class SendReportsTravelVC: BaseController, SendReporting {
+
+    // MARK: -
+
+    var sendReport: SendReport?
 
     // MARK: - Outlets
 
@@ -59,10 +67,9 @@ final class SendReportsTravelVC: SendReportingVC {
         log("SendReportsTravelVC: rejected as traveler")
 
         sendReport?.traveler = true
-        sendReport?.shareToEFGS = false
         AppSettings.sendReport = sendReport
 
-        report()
+        perform(segue: StoryboardSegue.SendReports.agreement)
     }
 
 }

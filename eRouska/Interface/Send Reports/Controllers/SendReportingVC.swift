@@ -160,8 +160,9 @@ private extension SendReportingVC {
             keys: keys,
             verificationPayload: verificationPayload,
             hmacSecret: hmacSecret,
-            efgs: sendReport?.shareToEFGS ?? false,
-            traveler: sendReport?.traveler ?? false
+            traveler: sendReport?.traveler ?? false,
+            consentToFederation: sendReport?.consentToFederation ?? false,
+            symptomsDate: sendReport?.symptomsDate
         ) { [weak self] result in
             self?.hideProgress()
             switch result {
