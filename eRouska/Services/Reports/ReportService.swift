@@ -134,12 +134,18 @@ final class ReportService: ReportServicing {
 
         let randomInt = Int.random(in: 0...100)
         let randomBase64 = Data.random(count: randomInt + 100).base64EncodedString()
+
+        var symptomOnsetInterval: TimeInterval?
+        if let timeInterval = symptomsDate?.timeIntervalSince1970 {
+            symptomOnsetInterval = timeInterval / 600
+        }
+
         let report = Report(
             temporaryExposureKeys: keys,
             healthAuthority: healthAuthority,
             verificationPayload: verificationPayload,
             hmacKey: hmacSecret.base64EncodedString(),
-            symptomOnsetInterval: symptomsDate?.timeIntervalSince1970,
+            symptomOnsetInterval: symptomOnsetInterval,
             traveler: traveler,
             revisionToken: nil,
             padding: randomBase64,

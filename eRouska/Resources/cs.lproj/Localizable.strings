@@ -104,7 +104,7 @@
 
 "data_send_travel_title" = "Cesty do zahraničí";
 "data_send_travel_headline" = "Cestovali jste v posledních 14 dnech do některé ze zemí Evropské unie?";
-"data_send_travel_body" = "Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, ketré jste potkali při svých cestách do zahraničí.";
+"data_send_travel_body" = "Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, které jste potkali při svých cestách do zahraničí.";
 "data_send_travel_action_confirm" = "Ano, byl(a) jsem v zahraničí";
 "data_send_travel_action_reject" = "Nebyl(a) jsem v zhraničí";
 

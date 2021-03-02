@@ -16,6 +16,7 @@ enum ExposureError: Error {
     case unknown
     case alreadyRunning
     case error(Error)
+    case exposureError(ENError.Code)
     case activationError(ENError.Code)
 
     var key: String {
@@ -34,6 +35,8 @@ enum ExposureError: Error {
             return "error"
         case .activationError:
             return "activationError"
+        case .exposureError:
+            return "exposureError"
         }
     }
 }

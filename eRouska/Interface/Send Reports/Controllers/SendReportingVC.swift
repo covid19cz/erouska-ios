@@ -90,10 +90,12 @@ private extension SendReportingVC {
         controller.addAction(UIAlertAction(title: "Test Keys", style: .default, handler: { [weak self] _ in
             self?.sendReport(with: .test, token: token)
         }))
-        controller.addAction(UIAlertAction(title: "Normal Keys", style: .default, handler: {[weak self]  _ in
+        controller.addAction(UIAlertAction(title: "Normal Keys", style: .default, handler: { [weak self]  _ in
             self?.sendReport(with: .normal, token: token)
         }))
-        controller.addAction(UIAlertAction(title: L10n.activeBackgroundModeCancel, style: .cancel, handler: nil))
+        controller.addAction(UIAlertAction(title: L10n.activeBackgroundModeCancel, style: .cancel, handler: { [weak self] _ in
+            self?.hideProgress()
+        }))
         present(controller, animated: true, completion: nil)
     }
 
@@ -116,6 +118,14 @@ private extension SendReportingVC {
                 switch error {
                 case .noData:
                     self.resultNoKeysAction()
+                    return
+                case let .exposureError(code):
+                    if code == .notAuthorized {
+                        // user denied
+                        return
+                    } else {
+                        self.resultErrorAction(code: error.localizedDescription)
+                    }
                 default:
                     self.resultErrorAction(code: error.localizedDescription)
                 }

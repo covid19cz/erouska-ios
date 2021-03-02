@@ -417,7 +417,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSG-oU-GWu">
                                                         <rect key="frame" x="0.0" y="57.5" width="374" height="86.5"/>
-                                                        <string key="text">Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, ketré jste potkali při svých cestách do zahraničí.</string>
+                                                        <string key="text">Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, které jste potkali při svých cestách do zahraničí.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
@@ -705,26 +705,27 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YHv-W9-j9R">
                                                         <rect key="frame" x="0.0" y="205" width="374" height="44"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum prvních příznaků" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-t4-kMQ">
-                                                                <rect key="frame" x="0.0" y="12" width="0.0" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum prvních příznaků" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-t4-kMQ">
+                                                                <rect key="frame" x="0.0" y="12" width="236" height="20.5"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjj-FR-h55">
-                                                                <rect key="frame" x="8" y="0.0" width="366" height="44"/>
+                                                                <rect key="frame" x="244" y="0.0" width="130" height="44"/>
                                                                 <subviews>
                                                                     <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-as-D8d">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="176" height="44"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="44"/>
                                                                     </datePicker>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="eGf-as-D8d" secondAttribute="trailing" id="56P-qK-juq"/>
+                                                                    <constraint firstItem="eGf-as-D8d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tjj-FR-h55" secondAttribute="leading" priority="500" id="KrC-bo-o84"/>
                                                                     <constraint firstAttribute="bottom" secondItem="eGf-as-D8d" secondAttribute="bottom" id="MXO-Bv-r8K"/>
+                                                                    <constraint firstAttribute="width" constant="130" id="i7Z-qQ-gOU"/>
                                                                     <constraint firstAttribute="height" constant="44" id="qyq-GG-GwA"/>
                                                                     <constraint firstItem="eGf-as-D8d" firstAttribute="top" secondItem="tjj-FR-h55" secondAttribute="top" id="rhL-Cr-2xA"/>
-                                                                    <constraint firstItem="eGf-as-D8d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tjj-FR-h55" secondAttribute="leading" id="wo8-BW-6lS"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -821,7 +822,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="0JR-Dj-CKf"/>
-        <segue reference="nb0-kU-MAE"/>
+        <segue reference="jX3-3S-N50"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Ok" width="130" height="130"/>

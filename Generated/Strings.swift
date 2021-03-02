@@ -188,7 +188,7 @@ internal enum L10n {
   internal static let currentDataMeasuresHeader = L10n.tr("Localizable", "current_data_measures_header")
   /// Riziková setkání zjištěná
   internal static let dataListPreviousHeader = L10n.tr("Localizable", "data_list_previous_header")
-  /// Ověřit a odeslat data
+  /// Ověřit
   internal static let dataListSendActionTitle = L10n.tr("Localizable", "data_list_send_action_title")
   /// V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.
   internal static let dataListSendErrorDisabledMessage = L10n.tr("Localizable", "data_list_send_error_disabled_message")
@@ -300,7 +300,7 @@ internal enum L10n {
   internal static let dataSendTravelActionConfirm = L10n.tr("Localizable", "data_send_travel_action_confirm")
   /// Nebyl(a) jsem v zhraničí
   internal static let dataSendTravelActionReject = L10n.tr("Localizable", "data_send_travel_action_reject")
-  /// Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, ketré jste potkali při svých cestách do zahraničí.
+  /// Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, které jste potkali při svých cestách do zahraničí.
   internal static let dataSendTravelBody = L10n.tr("Localizable", "data_send_travel_body")
   /// Cestovali jste v posledních 14 dnech do některé ze zemí Evropské unie?
   internal static let dataSendTravelHeadline = L10n.tr("Localizable", "data_send_travel_headline")

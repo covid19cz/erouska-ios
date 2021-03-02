@@ -52,6 +52,7 @@ final class SendReportsFederationVC: SendReportingVC {
     // MARK: - Actions
 
     @IBAction private func confirmAction() {
+        log("SendReportsTravelVC: confirmed consentToFederation")
         sendReport?.consentToFederation = true
         AppSettings.sendReport = sendReport
 
@@ -59,6 +60,7 @@ final class SendReportsFederationVC: SendReportingVC {
     }
 
     @IBAction private func rejectAction() {
+        log("SendReportsTravelVC: rejected consentToFederation")
         sendReport?.consentToFederation = false
         AppSettings.sendReport = sendReport
 

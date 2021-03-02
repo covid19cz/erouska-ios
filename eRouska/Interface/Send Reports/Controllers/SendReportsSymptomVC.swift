@@ -42,8 +42,6 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        isModalInPresentation = true
-        navigationItem.hidesBackButton = true
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
         }

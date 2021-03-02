@@ -56,7 +56,6 @@ final class SendReportsTravelerVC: BaseController, SendReporting {
 
     @IBAction private func confirmAction() {
         log("SendReportsTravelVC: confirmed as traveler")
-
         sendReport?.traveler = true
         AppSettings.sendReport = sendReport
 
@@ -65,8 +64,7 @@ final class SendReportsTravelerVC: BaseController, SendReporting {
 
     @IBAction private func rejectAction() {
         log("SendReportsTravelVC: rejected as traveler")
-
-        sendReport?.traveler = true
+        sendReport?.traveler = false
         AppSettings.sendReport = sendReport
 
         perform(segue: StoryboardSegue.SendReports.agreement)

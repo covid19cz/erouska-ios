@@ -169,7 +169,9 @@ final class ExposureService: ExposureServicing {
 
     private func keysCallback(_ callback: @escaping KeysCallback) -> ENGetDiagnosisKeysHandler {
         return { keys, error in
-            if let error = error {
+            if let error = error, let code = ENError.Code(rawValue: (error as NSError).code) {
+                callback(.failure(ExposureError.exposureError(code)))
+            } else if let error = error {
                 callback(.failure(ExposureError.error(error)))
             } else if keys?.isEmpty == true {
                 callback(.failure(ExposureError.noData))
