@@ -107,13 +107,13 @@ final class SendReportsVC: BaseController, HasDependencies {
             return
         }
 
-        verify(verifyCode)
+        //verify(verifyCode)
 
-        /*
+
         // swiftlint:disable:next line_length
         let verificationToken = "eyJhbGciOiJFUzI1NiIsImtpZCI6IjU0NzE0ZWRkLTM3MDktNDJhNy1hZWJjLTJjMzljZjY3ZWY3YSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJkaWFnbm9zaXMtdmVyaWZpY2F0aW9uLWV4YW1wbGUiLCJleHAiOjE2MTQ2MDA0MTAsImp0aSI6Ii9yMFEwTVVMZzRwRXVxWEhJRVVRTUFQTG1xb3NJZTc0cEE4dHByZGJEQWliY0RIMmZqZGErS1E0TWREVExLaWx4TlUrc2hmaVR0U2hjVEFnWVVQazFUYktzek80bnBqZDk0ZUorZkpWR0lZMGlEazFnMjl2a2UyNkRocGxxSFBaIiwiaWF0IjoxNjE0NTE0MDEwLCJpc3MiOiJkaWFnbm9zaXMtdmVyaWZpY2F0aW9uLWV4YW1wbGUiLCJzdWIiOiJjb25maXJtZWQuLiJ9.dgZFHaeC0tKQHmDTUT8APOFjtGmb6sftHwWo7XVSB34faVZdvDyCKrEhi8kUmI5gagr52Imra1anw0e0Li5s6Q"
         resultVerify(SendReport(verificationCode: verifyCode, verificationToken: verificationToken, verificationTokenDate: Date()))
-        */
+        
     }
 
     @IBAction private func noCodeAction() {

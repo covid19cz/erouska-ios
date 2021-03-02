@@ -830,9 +830,9 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                         <outlet property="newDateLabel" destination="hFH-t4-kMQ" id="hfD-ei-Jbi"/>
                         <outlet property="newDatePicker" destination="eGf-as-D8d" id="Qv5-Z8-A7o"/>
                         <outlet property="newDateStackView" destination="YHv-W9-j9R" id="hNf-cd-bs8"/>
-                        <outlet property="oldDateLabel" destination="awX-UI-8Nd" id="3KL-zF-OpW"/>
-                        <outlet property="oldDatePicker" destination="awX-UI-8Nd" id="Q3g-hZ-hkP"/>
-                        <outlet property="oldDateStackView" destination="awX-UI-8Nd" id="vwQ-7f-Fa9"/>
+                        <outlet property="oldDateLabel" destination="ozg-Hv-ChP" id="4Fo-rI-b54"/>
+                        <outlet property="oldDatePicker" destination="0HJ-Vr-yuX" id="1SV-Ki-t3X"/>
+                        <outlet property="oldDateStackView" destination="awX-UI-8Nd" id="qz8-24-vWx"/>
                         <outlet property="scrollView" destination="H7p-Si-JMR" id="Oin-l4-2qg"/>
                         <outlet property="titleLabel" destination="fPE-G7-YOy" id="zyx-tX-YdB"/>
                         <segue destination="TVg-hZ-c43" kind="show" identifier="efgs" id="f5d-Ko-tzX"/>
