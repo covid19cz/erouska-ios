@@ -76,7 +76,7 @@
 "data_list_send_title" = "Upozorniť ostatných";
 "data_list_send_headline" = "V prípade potvrdenej nákazy ochorením COVID-19 obdržíte SMS správu obsahujúcu overovací kód, aby ste mohli upozotniť ostatných užívateľov eRoušky.";
 "data_list_send_placeholder" = "Overovací kód (povinné)";
-"data_list_send_action_title" = "Overiť a odoslať údaje";
+"data_list_send_action_title" = "Overiť";
 "data_list_send_no_code_action_title" = "Nemám ověřovací kód";
 "data_list_send_error_failed_title" = "Nepodarilo sa nám odoslať dáta";
 "data_list_send_error_failed_message" = "Skontrolujte pripojenie k internetu a skúste to znova.";
