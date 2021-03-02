@@ -286,8 +286,6 @@ internal enum L10n {
   internal static let dataSendSymptomsEnable = L10n.tr("Localizable", "data_send_symptoms_enable")
   /// Vyplňte prosím datum prvních příznaků. Upřesníme tak období, kdy jste někoho mohli nakazit a upozorníme ostatní eRoušky, které jste v tomto období potkali.
   internal static let dataSendSymptomsHeadline = L10n.tr("Localizable", "data_send_symptoms_headline")
-  /// Datum prvních příznaků
-  internal static let dataSendSymptomsTitle = L10n.tr("Localizable", "data_send_symptoms_title")
   /// Odesláno
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Nepodařilo se nám odeslat data
@@ -539,6 +537,13 @@ internal enum L10n {
     internal static let part1 = L10n.tr("Localizable", "data_send_share_title.part1")
     /// zahraničím
     internal static let part2 = L10n.tr("Localizable", "data_send_share_title.part2")
+  }
+
+  internal enum DataSendSymptomsTitle {
+    /// Datum prvních
+    internal static let part1 = L10n.tr("Localizable", "data_send_symptoms_title.part1")
+    /// příznaků
+    internal static let part2 = L10n.tr("Localizable", "data_send_symptoms_title.part2")
   }
 
   internal enum HowitworksEntry1 {

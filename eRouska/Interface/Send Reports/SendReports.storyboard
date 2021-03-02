@@ -653,7 +653,7 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
             </objects>
             <point key="canvasLocation" x="3832" y="631"/>
         </scene>
-        <!--          Datum prvních příznaků-->
+        <!--          Datum prvních-->
         <scene sceneID="qyI-k6-6Ey">
             <objects>
                 <viewController id="EXM-NH-L2k" customClass="SendReportsSymptomVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
@@ -665,20 +665,26 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3f-49-HiG">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="275"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="580.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ick-4b-1Wx">
-                                                <rect key="frame" x="20" y="10" width="374" height="249"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="564.5"/>
                                                 <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="příznaků" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPE-G7-YOy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzb-gB-H5c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="86.5"/>
+                                                        <rect key="frame" x="0.0" y="56" width="374" height="86.5"/>
                                                         <string key="text">Vyplňte prosím datum prvních příznaků. Upřesníme tak období, kdy jste někoho mohli nakazit a upozorníme ostatní eRoušky, které jste v tomto období potkali.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wA3-Bc-ByS">
-                                                        <rect key="frame" x="0.0" y="101.5" width="374" height="31"/>
+                                                        <rect key="frame" x="0.0" y="157.5" width="374" height="31"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mám příznaky onemocnění COVID-19" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hj-N4-TqB">
                                                                 <rect key="frame" x="0.0" y="5.5" width="317" height="20.5"/>
@@ -697,16 +703,16 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kašel, teplota, dušnost, bolest v krku, bolest hlavy nebo ztráta čichu a chuti." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffF-wW-2Nf">
-                                                        <rect key="frame" x="0.0" y="147.5" width="374" height="42.5"/>
+                                                        <rect key="frame" x="0.0" y="203.5" width="374" height="42.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YHv-W9-j9R">
-                                                        <rect key="frame" x="0.0" y="205" width="374" height="44"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YHv-W9-j9R">
+                                                        <rect key="frame" x="0.0" y="261" width="374" height="44"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum prvních příznaků" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-t4-kMQ">
-                                                                <rect key="frame" x="0.0" y="12" width="236" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="236" height="44"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -730,13 +736,27 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                                                             </view>
                                                         </subviews>
                                                     </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="awX-UI-8Nd" userLabel="Date Old Stack View">
+                                                        <rect key="frame" x="0.0" y="320" width="374" height="244.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum prvních příznaků" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozg-Hv-ChP">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="0HJ-Vr-yuX">
+                                                                <rect key="frame" x="0.0" y="28.5" width="374" height="216"/>
+                                                            </datePicker>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Ick-4b-1Wx" secondAttribute="bottom" constant="16" id="HhX-59-uBo"/>
-                                            <constraint firstItem="Ick-4b-1Wx" firstAttribute="top" secondItem="o3f-49-HiG" secondAttribute="top" constant="10" id="LZ4-sy-BuP"/>
+                                            <constraint firstItem="Ick-4b-1Wx" firstAttribute="top" secondItem="o3f-49-HiG" secondAttribute="top" id="LZ4-sy-BuP"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Ick-4b-1Wx" secondAttribute="trailing" id="gas-mH-KMf"/>
                                             <constraint firstItem="Ick-4b-1Wx" firstAttribute="leading" secondItem="o3f-49-HiG" secondAttribute="leadingMargin" id="hCB-Q0-sSS"/>
                                         </constraints>
@@ -798,19 +818,23 @@ Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišl
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="          Datum prvních příznaků" largeTitleDisplayMode="always" id="pAo-lo-kUM"/>
+                    <navigationItem key="navigationItem" title="          Datum prvních" largeTitleDisplayMode="always" id="pAo-lo-kUM"/>
                     <connections>
                         <outlet property="bodyLabel" destination="ffF-wW-2Nf" id="WUW-Qe-Xxc"/>
                         <outlet property="buttonsBottomConstraint" destination="b6u-5U-dp9" id="Rgk-k0-fjS"/>
                         <outlet property="buttonsView" destination="muP-aU-926" id="sLD-Iw-6JZ"/>
                         <outlet property="continueButton" destination="6H0-kN-Ubh" id="dZ8-LA-QZU"/>
-                        <outlet property="dateLabel" destination="hFH-t4-kMQ" id="kCD-vG-n3F"/>
-                        <outlet property="datePicker" destination="eGf-as-D8d" id="pOu-kU-dL7"/>
-                        <outlet property="dateStackView" destination="YHv-W9-j9R" id="ZIw-Wz-Ez8"/>
                         <outlet property="enableLabel" destination="7hj-N4-TqB" id="eXd-Uh-egY"/>
                         <outlet property="enableSwitch" destination="c5U-zi-5RH" id="uZX-W9-6jr"/>
                         <outlet property="headlineLabel" destination="lzb-gB-H5c" id="lAh-uh-nDy"/>
+                        <outlet property="newDateLabel" destination="hFH-t4-kMQ" id="hfD-ei-Jbi"/>
+                        <outlet property="newDatePicker" destination="eGf-as-D8d" id="Qv5-Z8-A7o"/>
+                        <outlet property="newDateStackView" destination="YHv-W9-j9R" id="hNf-cd-bs8"/>
+                        <outlet property="oldDateLabel" destination="awX-UI-8Nd" id="3KL-zF-OpW"/>
+                        <outlet property="oldDatePicker" destination="awX-UI-8Nd" id="Q3g-hZ-hkP"/>
+                        <outlet property="oldDateStackView" destination="awX-UI-8Nd" id="vwQ-7f-Fa9"/>
                         <outlet property="scrollView" destination="H7p-Si-JMR" id="Oin-l4-2qg"/>
+                        <outlet property="titleLabel" destination="fPE-G7-YOy" id="zyx-tX-YdB"/>
                         <segue destination="TVg-hZ-c43" kind="show" identifier="efgs" id="f5d-Ko-tzX"/>
                         <segue destination="2Aq-LP-pQl" kind="show" identifier="agreement" id="0JR-Dj-CKf"/>
                     </connections>

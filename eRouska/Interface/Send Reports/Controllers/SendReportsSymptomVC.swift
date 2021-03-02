@@ -27,13 +27,22 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var enableLabel: UILabel!
     @IBOutlet private weak var enableSwitch: UISwitch!
-    @IBOutlet private weak var dateStackView: UIStackView!
-    @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var datePicker: UIDatePicker!
+
+    @IBOutlet private weak var newDateStackView: UIStackView!
+    @IBOutlet private weak var newDateLabel: UILabel!
+    @IBOutlet private weak var newDatePicker: UIDatePicker!
+
+    @IBOutlet private weak var oldDateStackView: UIStackView!
+    @IBOutlet private weak var oldDateLabel: UILabel!
+    @IBOutlet private weak var oldDatePicker: UIDatePicker!
+
+    private weak var dateLabel: UILabel!
+    private weak var datePicker: UIDatePicker!
 
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
@@ -41,6 +50,16 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if #available(iOS 14, *) {
+            oldDateStackView.isHidden = true
+            dateLabel = newDateLabel
+            datePicker = newDatePicker
+        } else {
+            newDateStackView.isHidden = true
+            dateLabel = oldDateLabel
+            datePicker = oldDatePicker
+        }
 
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
@@ -84,7 +103,11 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
     }
 
     @IBAction private func symptomSwitchChanged() {
-        dateStackView.isHidden = !enableSwitch.isOn
+        if #available(iOS 14, *) {
+            newDateStackView.isHidden = !enableSwitch.isOn
+        } else {
+            oldDateStackView.isHidden = !enableSwitch.isOn
+        }
     }
 
 }
@@ -94,7 +117,8 @@ private extension SendReportsSymptomVC {
     // MARK: - Setup
 
     func setupStrings() {
-        title = L10n.dataSendSymptomsTitle
+        title = L10n.DataSendSymptomsTitle.part1
+        titleLabel.text = L10n.DataSendSymptomsTitle.part2
 
         headlineLabel.text = L10n.dataSendSymptomsHeadline
         enableLabel.text = L10n.dataSendSymptomsEnable
