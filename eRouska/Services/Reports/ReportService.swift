@@ -135,9 +135,9 @@ final class ReportService: ReportServicing {
         let randomInt = Int.random(in: 0...100)
         let randomBase64 = Data.random(count: randomInt + 100).base64EncodedString()
 
-        var symptomOnsetInterval: TimeInterval?
+        var symptomOnsetInterval: Int?
         if let timeInterval = symptomsDate?.timeIntervalSince1970 {
-            symptomOnsetInterval = timeInterval / 600
+            symptomOnsetInterval = Int(timeInterval / 600)
         }
 
         let report = Report(

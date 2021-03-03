@@ -71,7 +71,7 @@ struct Report: Encodable {
     ///  - Will be used to calculate the days +/- symptom onset for provided keys.
     ///  - MUST be no more than 14 days ago.
     ///  - Does not have to be within range of any of the provided keys (i.e. future key uploads)
-    let symptomOnsetInterval: TimeInterval?
+    let symptomOnsetInterval: Int?
 
     /// Set to true if the TEKs in this publish set are consider to be the
     /// keys of a "traveler" who has left the home region represented by this server
