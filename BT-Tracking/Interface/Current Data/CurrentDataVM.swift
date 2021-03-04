@@ -192,6 +192,14 @@ private extension CurrentDataVM {
                     )
                 ),
                 Item(
+                    iconAsset: Asset.CurrentData.vaccination,
+                    title: L10n.currentDataItemVaccination(formattedValue(data.vaccinationsTotal)),
+                    subtitle: L10n.currentDataAppFrom(
+                        formattedValue(data.vaccinationsIncrease, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.vaccinationsIncreaseDate ?? Date())
+                    )
+                ),
+                Item(
                     iconAsset: Asset.CurrentData.covid,
                     title: L10n.currentDataItemConfirmed(formattedValue(data.confirmedCasesTotal)),
                     subtitle: L10n.currentDataAppFrom(

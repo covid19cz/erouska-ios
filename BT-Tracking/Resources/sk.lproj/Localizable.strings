@@ -195,6 +195,7 @@
 "current_data_item_healthy" = "%@ vyliečených";
 "current_data_item_deaths" = "%@ úmrtí";
 "current_data_item_hospitalized" = "%@ aktuálne hospitalizovaných";
+"current_data_item_vaccination" = "%@ vykázaných očkování";
 "current_data_item_yesterday" = "Za včerajší deň %@";
 "current_data_app_header" = "eRouška v číslach";
 "current_data_app_activations" = "%@ aktivovaných aplikácií";

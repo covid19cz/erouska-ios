@@ -216,6 +216,7 @@
 "current_data_item_healthy" = "%@ cured individuals";
 "current_data_item_deaths" = "%@ deceased";
 "current_data_item_hospitalized" = "%@ currently hospitalized";
+"current_data_item_vaccination" = "%@ vaccinations";
 "current_data_item_yesterday" = "%@ yesterday";
 "current_data_app_header" = "eRouška in numbers";
 "current_data_app_activations" = "%@ applications activated";

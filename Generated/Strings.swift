@@ -170,6 +170,10 @@ internal enum L10n {
   internal static func currentDataItemHospitalized(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_hospitalized", String(describing: p1))
   }
+  /// %@ provedených testů
+  internal static func currentDataItemTests(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_item_tests", String(describing: p1))
+  }
   /// %@ provedených antigenních testů
   internal static func currentDataItemTestsAntigen(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_tests_antigen", String(describing: p1))
@@ -177,6 +181,10 @@ internal enum L10n {
   /// %@ provedených PCR testů
   internal static func currentDataItemTestsPcr(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_tests_pcr", String(describing: p1))
+  }
+  /// %@ vykázaných očkování
+  internal static func currentDataItemVaccination(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_item_vaccination", String(describing: p1))
   }
   /// Za včerejší den %@
   internal static func currentDataItemYesterday(_ p1: Any) -> String {
@@ -270,6 +278,24 @@ internal enum L10n {
   internal static let dataSendNokeysBody = L10n.tr("Localizable", "data_send_nokeys_body")
   /// eRoušku zatím používáte jen chvíli a nemá zaznamenané žádné jiné eRoušky, proto nikoho ve vašem okolí neupozorní na rizikové setkání.
   internal static let dataSendNokeysHeadline = L10n.tr("Localizable", "data_send_nokeys_headline")
+  /// Souhlasím
+  internal static let dataSendShareActionConfirm = L10n.tr("Localizable", "data_send_share_action_confirm")
+  /// Nesouhlasím
+  internal static let dataSendShareActionReject = L10n.tr("Localizable", "data_send_share_action_reject")
+  /// Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.
+  internal static let dataSendShareBody = L10n.tr("Localizable", "data_send_share_body")
+  /// Pokračovat
+  internal static let dataSendSymptomsActionContinue = L10n.tr("Localizable", "data_send_symptoms_action_continue")
+  /// Kašel, teplota, dušnost, bolest v krku, bolest hlavy nebo ztráta čichu a chuti.
+  internal static let dataSendSymptomsBody = L10n.tr("Localizable", "data_send_symptoms_body")
+  /// Datum prvních příznaků
+  internal static let dataSendSymptomsDate = L10n.tr("Localizable", "data_send_symptoms_date")
+  /// Mám příznaky onemocnění COVID-19
+  internal static let dataSendSymptomsEnable = L10n.tr("Localizable", "data_send_symptoms_enable")
+  /// Vyplňte prosím datum prvních příznaků. Upřesníme tak období, kdy jste někoho mohli nakazit a upozorníme ostatní eRoušky, které jste v tomto období potkali.
+  internal static let dataSendSymptomsHeadline = L10n.tr("Localizable", "data_send_symptoms_headline")
+  /// Datum prvních příznaků
+  internal static let dataSendSymptomsTitle = L10n.tr("Localizable", "data_send_symptoms_title")
   /// Odesláno
   internal static let dataSendTitle = L10n.tr("Localizable", "data_send_title")
   /// Nepodařilo se nám odeslat data
@@ -278,6 +304,16 @@ internal enum L10n {
   internal static let dataSendTitleLabel = L10n.tr("Localizable", "data_send_title_label")
   /// Děkujeme, že pomáháte bojovat proti šíření onemocnění COVID-19
   internal static let dataSendTitleNokeys = L10n.tr("Localizable", "data_send_title_nokeys")
+  /// Ano, byl(a) jsem v zahraničí
+  internal static let dataSendTravelActionConfirm = L10n.tr("Localizable", "data_send_travel_action_confirm")
+  /// Nebyl(a) jsem v zhraničí
+  internal static let dataSendTravelActionReject = L10n.tr("Localizable", "data_send_travel_action_reject")
+  /// Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, ketré jste potkali při svých cestách do zahraničí.
+  internal static let dataSendTravelBody = L10n.tr("Localizable", "data_send_travel_body")
+  /// Cestovali jste v posledních 14 dnech do některé ze zemí Evropské unie?
+  internal static let dataSendTravelHeadline = L10n.tr("Localizable", "data_send_travel_headline")
+  /// Cesty do zahraničí
+  internal static let dataSendTravelTitle = L10n.tr("Localizable", "data_send_travel_title")
   /// Zkontrolujete tak, zda jste se setkali s osobou, u níž bylo potvrzeno onemocnění COVID-19.
   internal static let deadmanNotificaitonBody = L10n.tr("Localizable", "deadman_notificaiton_body")
   /// Otevřete aplikaci eRouška
@@ -376,7 +412,7 @@ internal enum L10n {
   internal static let exposureNotificationHeadline = L10n.tr("Localizable", "exposure_notification_headline")
   /// Oznámení
   internal static let exposureNotificationTitle = L10n.tr("Localizable", "exposure_notification_title")
-  /// Nejnovější verze operačního systému iOS (13.5 nebo novější) je nezbytná pro aktivaci oznámení o setkání s osobou, u které bylo potvrzeno onemocnění COVID-19.
+  /// Nejnovější verze operačního systému iOS je nezbytná pro aktivaci oznámení o setkání s osobou, u které bylo potvrzeno onemocnění COVID-19.
   internal static let forceOsUpdateBody = L10n.tr("Localizable", "force_os_update_body")
   /// Aktualizujte telefon na nejnovější verzi iOS
   internal static let forceOsUpdateTitle = L10n.tr("Localizable", "force_os_update_title")
@@ -388,6 +424,8 @@ internal enum L10n {
   internal static let forceUpdateTitle = L10n.tr("Localizable", "force_update_title")
   /// Nápověda
   internal static let help = L10n.tr("Localizable", "help")
+  /// Napište Anežce – podpoře eRoušky
+  internal static let helpChatbot = L10n.tr("Localizable", "help_chatbot")
   /// Napsat e-mail na podporu
   internal static let helpSupport = L10n.tr("Localizable", "help_support")
   /// Nápověda
@@ -488,7 +526,7 @@ internal enum L10n {
   internal static let unsupportedDeviceTitle = L10n.tr("Localizable", "unsupported_device_title")
   /// verze
   internal static let version = L10n.tr("Localizable", "version")
-  /// Pokračovat k aktivaci
+  /// Pokračovat k aktivaci
   internal static let welcomeActivation = L10n.tr("Localizable", "welcome_activation")
   /// Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí onemocnění COVID-19, eRouška vyhodnotí, zda se jedná o rizikový kontakt a upozorní vás.\n\nKdyž se potvrdí nákaza u vás, eRouška upozorní všechny ostatní uživatele aplikace, se kterými jste se potkali.
   internal static let welcomeBody = L10n.tr("Localizable", "welcome_body")
@@ -498,6 +536,20 @@ internal enum L10n {
   internal static let welcomeHelp = L10n.tr("Localizable", "welcome_help")
   /// Díky eRoušce ochráníte sebe i ostatní ve svém okolí
   internal static let welcomeTitle = L10n.tr("Localizable", "welcome_title")
+
+  internal enum DataSendShareHeadline {
+    /// Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?
+    internal static let a = L10n.tr("Localizable", "data_send_share_headline.a")
+    /// Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice?
+    internal static let b = L10n.tr("Localizable", "data_send_share_headline.b")
+  }
+
+  internal enum DataSendShareTitle {
+    /// Spolupráce se
+    internal static let part1 = L10n.tr("Localizable", "data_send_share_title.part1")
+    /// zahraničím
+    internal static let part2 = L10n.tr("Localizable", "data_send_share_title.part2")
+  }
 
   internal enum HowitworksEntry1 {
     /// Když se potkají telefony s aplikací eRouška, vymění si několik základních informací o setkání. Zaznamenají si den setkání, vzdálenost mezi sebou a anonymní označení telefonu. Tato setkání si pamatují 14 dní.
@@ -535,7 +587,7 @@ internal enum L10n {
   }
 
   internal enum HowitworksEntry6 {
-    /// Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozonění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.
+    /// Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozornění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.
     internal static let body = L10n.tr("Localizable", "howitworks_entry6.body")
     /// Zobrazení varování
     internal static let title = L10n.tr("Localizable", "howitworks_entry6.title")
