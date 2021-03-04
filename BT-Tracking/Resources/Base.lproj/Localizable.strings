@@ -12,7 +12,7 @@
 "turn_on" = "Zapnout";
 "version" = "verze";
 "welcome_help" = "Jak to funguje";
-"welcome_activation" = "Pokračovat k aktivaci";
+"welcome_activation" = "Pokračovat k aktivaci";
 "welcome_title" = "Díky eRoušce ochráníte sebe i ostatní ve svém okolí";
 "welcome_body" = "Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí onemocnění COVID-19, eRouška vyhodnotí, zda se jedná o rizikový kontakt a upozorní vás.\n\nKdyž se potvrdí nákaza u vás, eRouška upozorní všechny ostatní uživatele aplikace, se kterými jste se potkali.";
 "welcome_body_more" = "Více o nezávislých auditech";
@@ -24,6 +24,13 @@
 "efgs_permission_headline" = "Pomozte v boji s COVID-19 i při cestách do zahraničí";
 "efgs_permission_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních %@ dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.";
 "efgs_permission_switch" = "Povolit spolupráci se zahraničím";
+"efgs_settings_title" = "Cesty do zahraničí";
+"efgs_settings_headline" = "Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.";
+"efgs_settings_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nAktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko. Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.";
+"efgs_settings_switch" = "Povolit spolupráci se zahraničím";
+"efgs_settings_alert_title" = "Onemocnění COVID-19 se může projevit až 14 dní po setkání s nakaženou osobou. Spolupráci se zahraničím prosím vypněte nejdříve %@ dní po návratu.";
+"efgs_settings_alert_enable" = "Ponechat zapnuté";
+"efgs_settings_alert_disable" = "Vypnout";
 "privacy_title" = "Soukromí";
 "privacy_headline" = "Myslíme na vaše soukromí, odesílání dat máte vždy pod kontrolou";
 "privacy_body" = "eRouška neobsahuje žádné vaše osobní údaje a sbírá pouze anonymní data o ostatních eRouškách, se kterými se setkáte.\n\nDetailní informace o zpracování osobních údajů a další podmínky používání aplikace najdete v podmínkách používání.";
@@ -39,13 +46,6 @@
 "active_title_disabled_exposures" = "eRouška nyní nemůže komunikovat s jinými eRouškami ve vašem okolí.\nZapněte Oznámení o kontaktu s COVID-19 pomocí tlačítka \"Zapnout\".";
 "active_title_disabled_bluetooth" = "Zapnuté Bluetooth je důležité pro sbírání kontaktů s ostatními eRouškami ve vašem okolí.";
 "active_risky_encounter_head_negative" = "Za posledních 14 dní žádné rizikové setkání";
-"efgs_settings_title" = "Cesty do zahraničí";
-"efgs_settings_headline" = "Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.";
-"efgs_settings_body" = "COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nAktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko. Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.";
-"efgs_settings_switch" = "Povolit spolupráci se zahraničím";
-"efgs_settings_alert_title" = "Onemocnění COVID-19 se může projevit až 14 dní po setkání s nakaženou osobou. Spolupráci se zahraničím prosím vypněte nejdříve %@ dní po návratu.";
-"efgs_settings_alert_enable" = "Ponechat zapnuté";
-"efgs_settings_alert_disable" = "Vypnout";
 "active_risky_encounter_last_update" = "Poslední aktualizace %@";
 "active_risky_encounter_update_interval" = "Aktualizace probíhá jednou za 24 hodin.";
 "active_risky_encounter_last_update_negative" = "Poslední aktualizace %@";
@@ -94,6 +94,28 @@
 "data_list_send_error_message" = "Kontaktujte prosím podporu na info@erouska.cz a do e-mailu uveďte následující kód chyby: %@.";
 "data_list_send_error_disabled_title" = "Data nyní nemůžete odeslat";
 "data_list_send_error_disabled_message" = "V sekci Nastavení svého zařízení zapněte Oznámení o kontaktu s COVID-19 a odesílání dat bude možné.";
+
+"data_send_travel_title" = "Cesty do zahraničí";
+"data_send_travel_headline" = "Cestovali jste v posledních 14 dnech do některé ze zemí Evropské unie?";
+"data_send_travel_body" = "Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, ketré jste potkali při svých cestách do zahraničí.";
+"data_send_travel_action_confirm" = "Ano, byl(a) jsem v zahraničí";
+"data_send_travel_action_reject" = "Nebyl(a) jsem v zhraničí";
+
+"data_send_share_title.part1" = "Spolupráce se";
+"data_send_share_title.part2" = "zahraničím";
+"data_send_share_headline.a" = "Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?";
+"data_send_share_headline.b" = "Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice?";
+"data_send_share_body" = "Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.";
+"data_send_share_action_confirm" = "Souhlasím";
+"data_send_share_action_reject" = "Nesouhlasím";
+
+"data_send_symptoms_title" = "Datum prvních příznaků";
+"data_send_symptoms_headline" = "Vyplňte prosím datum prvních příznaků. Upřesníme tak období, kdy jste někoho mohli nakazit a upozorníme ostatní eRoušky, které jste v tomto období potkali.";
+"data_send_symptoms_enable" = "Mám příznaky onemocnění COVID-19";
+"data_send_symptoms_date" = "Datum prvních příznaků";
+"data_send_symptoms_body" = "Kašel, teplota, dušnost, bolest v krku, bolest hlavy nebo ztráta čichu a chuti.";
+"data_send_symptoms_action_continue" = "Pokračovat";
+
 "data_list_previous_header" = "Riziková setkání zjištěná";
 "data_send_title" = "Odesláno";
 "data_send_error" = "Chyba";
@@ -111,7 +133,6 @@
 "data_send_no_code_title" = "Nemám ověřovací kód";
 "data_send_no_code_headline" = "Máte pozitivní test a nepřišla vám SMS pro eRoušku? Napište si o náhradní kód na info@erouska.cz.";
 "data_send_no_code_button" = "Napsat e-mail";
-"data_send_no_code_title" = "Nemám ověřovací kód";
 "data_send_no_code_body" = "Zajímá vás, jak odesílání kódu funguje?\n\nV případě, že máte pozitivní výsledek testu na COVID-19, měl by vám přijít výsledek testu v SMS od testovací laboratoře. Ta výsledky současně odesílá do centrálního informačního systému Ministerstva zdravotnictví.\n\nPoté, co se informace z informačního systému propíšou do systému hygieny, se odesílají automatické SMS eRoušky s ověřovacími kódy.\n\nPokud se výsledky z laboratoře nestihnou propsat do systému hygieny do 22:00, může vám SMS s ověřovacím kódem přijít až následující den.\n\nPokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišla SMS s pozitivními výsledky z laboratoře, napište nám na info@erouska.cz.";
 "data_send_no_code_action_title" = "Napsat e-mail";
 "contacts_title" = "Kontakty";
@@ -126,6 +147,7 @@
 "contacts_about_button" = "Přejít na web erouska.cz";
 "help_title" = "Jak to funguje";
 "help_support" = "Napsat e-mail na podporu";
+"help_chatbot" = "Napište Anežce – podpoře eRoušky";
 "help_tab_title" = "Nápověda";
 "about_title" = "O aplikaci";
 "about_info" = "Aplikaci eRouška od verze 2.0 vyvíjí Ministerstvo zdravotnictví ve spolupráci s Národní agenturou pro komunikační a informační technologie (NAKIT). Předchozí verzi aplikace eRouška vytvořil tým dobrovolníků v rámci komunitní aktivity COVID19CZ. Většina z původních autorů eRoušky pokračuje na vývoji nových verzí v týmu NAKIT.\n\nDetailní informace o zpracování osobních údajů a další podmínky používání aplikace najdete v podmínkách používání.";
@@ -188,6 +210,7 @@
 "current_data_item_header" = "Aktuální situace v číslech";
 "current_data_item_tests_pcr" = "%@ provedených PCR testů";
 "current_data_item_tests_antigen" = "%@ provedených antigenních testů";
+"current_data_item_tests" = "%@ provedených testů";
 "current_data_item_confirmed" = "%@ celkem potvrzených případů";
 "current_data_item_active" = "%@ aktivních případů";
 "current_data_item_healthy" = "%@ vyléčených";
@@ -219,7 +242,7 @@
 "howitworks_entry5.title" = "Vyhodnocení rizikových setkání";
 "howitworks_entry5.body" = "eRoušky riziková setkání vyhodnotí v případě, že byly s nakaženým v kontaktu na vzdálenost bližší než 2 metry a po dobu alespoň 15 minut od okamžiku, kdy byl podle dostupných informací nakažlivým.";
 "howitworks_entry6.title" = "Zobrazení varování";
-"howitworks_entry6.body" = "Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozonění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.";
+"howitworks_entry6.body" = "Těm, kteří mohli přijít do rizikového kontaktu s nakaženým, se v aplikaci eRouška zobrazí upozornění. To navede uživatele, jak má dále postupovat a jaká hygienická opatření má dodržovat.\n\nMáte další dotazy nebo vám eRouška nefunguje správně? Napište nám.";
 "howitworks_mail_support" = "Napsat e-mail na podporu";
 "howitworks_close" = "Zavřít";
 "howitworks_banner_title" = "Zajímá vás, jak eRouška funguje?";
