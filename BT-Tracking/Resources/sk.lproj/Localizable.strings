@@ -135,7 +135,7 @@
 "force_update_body" = "Je pripravená dôležitá aktualizácia eRoušky. Ak chcete pokračovať v jej používaní, aktualizujte aplikáciu na najnovšiu verziu.";
 "force_update_button" = "Aktualizovať";
 "force_os_update_title" = "Aktualizovať telefón na najnovšiu verziu iOS";
-"force_os_update_body" = "Najnovšia verzia operačného systému iOS (13.5 alebo novšia) je nevyhnutná pre aktiváciu oznámení o stretnutí s osobou, u ktorej nebola preukázaná nákaza vírusom COVID-19.";
+"force_os_update_body" = "Najnovšia verzia operačného systému iOS je nevyhnutná pre aktiváciu oznámení o stretnutí s osobou, u ktorej nebola preukázaná nákaza vírusom COVID-19.";
 "unsupported_device_title" = "Vaše zariadenie nepodporuje iOS 13.5 alebo novšiu verziu";
 "unsupported_device_body" = "Najnovšia verzia operačného systému iOS (13.5 alebo novšia) je nevyhnutná pre ďalšie fungovanie eRoušky.";
 "unsupported_device_button" = "Ďalšie informácie";

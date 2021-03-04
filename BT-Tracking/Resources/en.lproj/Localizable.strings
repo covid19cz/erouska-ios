@@ -156,7 +156,7 @@
 "force_update_body" = "There is an important eRouška update. If you wish to continue using it, please update the app.";
 "force_update_button" = "Update";
 "force_os_update_title" = "Update phone to the newest iOS version";
-"force_os_update_body" = "The latest version of iOS (13.5 and higher) is needed to enable Exposure Notifications about risky encounters.";
+"force_os_update_body" = "The latest version of iOS is needed to enable Exposure Notifications about risky encounters.";
 "unsupported_device_title" = "Your device does not support iOS 13.5 or higher";
 "unsupported_device_body" = "The latest version of iOS (13.5 and higher) is needed for eRouška to work.";
 "unsupported_device_button" = "More information";
