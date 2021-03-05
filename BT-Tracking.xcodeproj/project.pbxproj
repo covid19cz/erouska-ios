@@ -76,6 +76,8 @@
 		8064DF86244F3FFD005E8AA3 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF84244F3FFD005E8AA3 /* AboutVC.swift */; };
 		8064DF89244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
 		8064DF8A244F4026005E8AA3 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064DF88244F4026005E8AA3 /* AboutVM.swift */; };
+		8067436025F29A59009120BF /* HelpJson.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8067435E25F29A59009120BF /* HelpJson.strings */; };
+		8067436125F29A59009120BF /* HelpJson.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8067435E25F29A59009120BF /* HelpJson.strings */; };
 		806897D5258377140040EBF0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 806897D4258377140040EBF0 /* FirebaseAnalytics */; };
 		806897D7258377140040EBF0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 806897D6258377140040EBF0 /* FirebaseAuth */; };
 		806897D9258377150040EBF0 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 806897D8258377150040EBF0 /* FirebaseCrashlytics */; };
@@ -337,6 +339,10 @@
 		8064DF6D244EF3B7005E8AA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8064DF84244F3FFD005E8AA3 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		8064DF88244F4026005E8AA3 /* AboutVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVM.swift; sourceTree = "<group>"; };
+		8067435F25F29A59009120BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/HelpJson.strings; sourceTree = "<group>"; };
+		8067436625F29A62009120BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/HelpJson.strings; sourceTree = "<group>"; };
+		8067436725F29A68009120BF /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/HelpJson.strings; sourceTree = "<group>"; };
+		8067436825F29A6F009120BF /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/HelpJson.strings; sourceTree = "<group>"; };
 		807053522427BA2500DC1034 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		8075EDBF242A613F001D9DCD /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		8075EDC2242A6E93001D9DCD /* ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
@@ -968,6 +974,7 @@
 			children = (
 				8054C0B9241D4932008907B8 /* Assets.xcassets */,
 				803669B525C322B200EE2A96 /* Help.strings */,
+				8067435E25F29A59009120BF /* HelpJson.strings */,
 				80BE18BF2433C18200C4A9E6 /* Localizable.strings */,
 				803669C025C322BC00EE2A96 /* RemoteConfig.strings */,
 			);
@@ -1131,6 +1138,7 @@
 				D65E57D624D056C8000F2402 /* NewsPageView.xib in Resources */,
 				D6231CC524F52CD00023BDC8 /* CurrentData.storyboard in Resources */,
 				80ECB96C24292FB000E57601 /* SendReports.storyboard in Resources */,
+				8067436025F29A59009120BF /* HelpJson.strings in Resources */,
 				800DD2D62428F49800E6CAEA /* Debug.storyboard in Resources */,
 				D63A264424DB023100C34CCF /* GoogleService-Info.plist in Resources */,
 			);
@@ -1154,6 +1162,7 @@
 				D63E443624DD85D8007B6728 /* RiskyEncounters.storyboard in Resources */,
 				D65E57E024D05D83000F2402 /* News.storyboard in Resources */,
 				803669C625C322BC00EE2A96 /* RemoteConfig.strings in Resources */,
+				8067436125F29A59009120BF /* HelpJson.strings in Resources */,
 				D6231CB324EBC0510023BDC8 /* Error.storyboard in Resources */,
 				8083D8EC244640A0007FA4E9 /* SendReports.storyboard in Resources */,
 			);
@@ -1514,6 +1523,17 @@
 				8054C0BC241D4932008907B8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8067435E25F29A59009120BF /* HelpJson.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8067435F25F29A59009120BF /* Base */,
+				8067436625F29A62009120BF /* en */,
+				8067436725F29A68009120BF /* sk */,
+				8067436825F29A6F009120BF /* cs */,
+			);
+			name = HelpJson.strings;
 			sourceTree = "<group>";
 		};
 		80BE18BF2433C18200C4A9E6 /* Localizable.strings */ = {
