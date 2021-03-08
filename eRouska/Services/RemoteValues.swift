@@ -227,7 +227,7 @@ struct RemoteValues {
     }
 
     static var shouldCheckOSVersion: Bool {
-        AppDelegate.shared.remoteConfigInt(forKey: .shouldCheckOSVersion) == 1
+        AppDelegate.shared.remoteConfigBool(forKey: .shouldCheckOSVersion)
     }
 
     static var exposureBannerTitle: String {

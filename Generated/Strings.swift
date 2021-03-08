@@ -170,6 +170,10 @@ internal enum L10n {
   internal static func currentDataItemHospitalized(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_hospitalized", String(describing: p1))
   }
+  /// %@ provedených testů
+  internal static func currentDataItemTests(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_item_tests", String(describing: p1))
+  }
   /// %@ provedených antigenních testů
   internal static func currentDataItemTestsAntigen(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_tests_antigen", String(describing: p1))
@@ -177,6 +181,10 @@ internal enum L10n {
   /// %@ provedených PCR testů
   internal static func currentDataItemTestsPcr(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_tests_pcr", String(describing: p1))
+  }
+  /// %@ vykázaných očkování
+  internal static func currentDataItemVaccination(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_item_vaccination", String(describing: p1))
   }
   /// Za včerejší den %@
   internal static func currentDataItemYesterday(_ p1: Any) -> String {
@@ -402,7 +410,7 @@ internal enum L10n {
   internal static let exposureNotificationHeadline = L10n.tr("Localizable", "exposure_notification_headline")
   /// Oznámení
   internal static let exposureNotificationTitle = L10n.tr("Localizable", "exposure_notification_title")
-  /// Nejnovější verze operačního systému iOS (13.5 nebo novější) je nezbytná pro aktivaci oznámení o setkání s osobou, u které bylo potvrzeno onemocnění COVID-19.
+  /// Nejnovější verze operačního systému iOS je nezbytná pro aktivaci oznámení o setkání s osobou, u které bylo potvrzeno onemocnění COVID-19.
   internal static let forceOsUpdateBody = L10n.tr("Localizable", "force_os_update_body")
   /// Aktualizujte telefon na nejnovější verzi iOS
   internal static let forceOsUpdateTitle = L10n.tr("Localizable", "force_os_update_title")
@@ -414,6 +422,8 @@ internal enum L10n {
   internal static let forceUpdateTitle = L10n.tr("Localizable", "force_update_title")
   /// Nápověda
   internal static let help = L10n.tr("Localizable", "help")
+  /// Napište Anežce – podpoře eRoušky
+  internal static let helpChatbot = L10n.tr("Localizable", "help_chatbot")
   /// Napsat e-mail na podporu
   internal static let helpSupport = L10n.tr("Localizable", "help_support")
   /// Nápověda
@@ -514,7 +524,7 @@ internal enum L10n {
   internal static let unsupportedDeviceTitle = L10n.tr("Localizable", "unsupported_device_title")
   /// verze
   internal static let version = L10n.tr("Localizable", "version")
-  /// Pokračovat k aktivaci
+  /// Pokračovat k aktivaci
   internal static let welcomeActivation = L10n.tr("Localizable", "welcome_activation")
   /// Aplikace bude nepřetržitě monitorovat vaše okolí a zaznamenávat všechny ostatní telefony s aplikací eRouška, ke kterým se přiblížíte.\n\nPokud se u majitele kteréhokoliv z nich potvrdí onemocnění COVID-19, eRouška vyhodnotí, zda se jedná o rizikový kontakt a upozorní vás.\n\nKdyž se potvrdí nákaza u vás, eRouška upozorní všechny ostatní uživatele aplikace, se kterými jste se potkali.
   internal static let welcomeBody = L10n.tr("Localizable", "welcome_body")

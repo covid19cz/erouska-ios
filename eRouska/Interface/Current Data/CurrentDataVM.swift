@@ -183,6 +183,14 @@ private extension CurrentDataVM {
             ]),
             Section(header: L10n.currentDataItemHeader, selectableItems: false, items: [
                 Item(
+                    iconAsset: Asset.CurrentData.vaccination,
+                    title: L10n.currentDataItemVaccination(formattedValue(data.vaccinationsTotal)),
+                    subtitle: L10n.currentDataAppFrom(
+                        formattedValue(data.vaccinationsIncrease, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.vaccinationsIncreaseDate ?? Date())
+                    )
+                ),
+                Item(
                     iconAsset: Asset.CurrentData.testsPCR,
                     title: L10n.currentDataItemTestsPcr(formattedValue(data.pcrTestsTotal)),
                     subtitle: L10n.currentDataAppFrom(
