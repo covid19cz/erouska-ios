@@ -93,17 +93,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Self.dependency.deviceToken = deviceToken
 
         // update token on server
-        guard let token = KeychainService.token else { return }
-        let data: [String: Any] = [
-            "idToken": token,
-            "pushRegistrationToken": deviceToken.hexEncodedString()
-        ]
+        Auth.auth().currentUser?.getIDToken(completion: { token, error in
+            if let token = token {
+                let data: [String: Any] = [
+                    "idToken": token,
+                    "pushRegistrationToken": deviceToken.hexEncodedString()
+                ]
 
-        Self.dependency.functions.httpsCallable("ChangePushToken").call(data) { _, error in
-            if let error = error {
-                log("AppDelegate: Failed to change push token \(error.localizedDescription)")
+                Self.dependency.functions.httpsCallable("ChangePushToken").call(data) { _, error in
+                    if let error = error {
+                        log("AppDelegate: Failed to change push token \(error.localizedDescription)")
+                    }
+                }
+            } else if let error = error {
+                Crashlytics.crashlytics().record(error: error)
             }
-        }
+        })
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable: Any],
@@ -176,7 +181,7 @@ private extension AppDelegate {
             return
         }
 
-        Self.dependency.exposureService.deactivate(callback: nil)
+        Self.dependency.exposure.deactivate(callback: nil)
 
         viewController.modalPresentationStyle = .fullScreen
         window?.rootViewController?.present(viewController, animated: true)
@@ -204,9 +209,9 @@ private extension AppDelegate {
             rootViewController = StoryboardScene.Active.initialScene.instantiate()
 
             // refresh token
-            Auth.auth().currentUser?.getIDToken(completion: { token, _ in
-                if let token = token {
-                    KeychainService.token = token
+            Auth.auth().currentUser?.getIDToken(completion: { _, error in
+                if let error = error {
+                    Crashlytics.crashlytics().record(error: error)
                 }
             })
         } else {

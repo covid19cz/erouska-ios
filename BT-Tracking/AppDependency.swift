@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseFunctions
 import RealmSwift
+import SwiftyMarkdown
 
 final class AppDependency {
 
@@ -17,19 +18,31 @@ final class AppDependency {
 
     private(set) lazy var functions = Functions.functions(region: AppSettings.firebaseRegion)
 
-    private(set) lazy var exposureService: ExposureServicing = ExposureService()
+    private(set) lazy var exposure: ExposureServicing = ExposureService()
 
     private(set) lazy var reporter: ReportServicing = ReportService(configuration: RemoteValues.serverConfiguration)
 
     private(set) lazy var verification: VerificationServicing = VerificationService(configuration: RemoteValues.serverConfiguration)
 
-    private(set) lazy var background = BackgroundService(exposureService: exposureService, reporter: reporter)
+    private(set) lazy var background = BackgroundService(exposureService: exposure, reporter: reporter)
+
+    private(set) lazy var help = HelpService()
+
+    var lineProcessor: SwiftyLineProcessor {
+        let lineProcessor = SwiftyLineProcessor(
+            rules: SwiftyMarkdown.lineRules,
+            defaultRule: MarkdownLineStyle.body,
+            frontMatterRules: SwiftyMarkdown.frontMatterRules
+        )
+        lineProcessor.processEmptyStrings = MarkdownLineStyle.body
+        return lineProcessor
+    }
 
     let realm: Realm = {
         var oldV1Data: [String: ExposureDataV1] = [:]
 
         let configuration = Realm.Configuration(
-            schemaVersion: 7,
+            schemaVersion: 10,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 5 {
                     migration.enumerateObjects(ofType: ExposureRealm.className()) { oldObject, newObject in

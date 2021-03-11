@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,7 +44,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="vD6-PC-tsh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3PM-Ps-vnU" secondAttribute="top" constant="10" id="D8u-Pv-RQC"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="vD6-PC-tsh" secondAttribute="trailing" id="Ffz-lE-VCP"/>
@@ -69,7 +70,7 @@
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vNa-h1-ngn" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="752" width="414" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4G-8w-gU6" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4G-8w-gU6" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="20" y="50" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="l9U-S2-8U3"/>
@@ -92,7 +93,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="yaP-o2-79n"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3iS-La-Lcw" firstAttribute="top" secondItem="HKm-eC-DHO" secondAttribute="top" id="6ag-IJ-B4f"/>
                             <constraint firstItem="yaP-o2-79n" firstAttribute="trailing" secondItem="3iS-La-Lcw" secondAttribute="trailing" id="7Z6-SZ-CUs"/>
@@ -102,7 +104,6 @@
                             <constraint firstItem="3iS-La-Lcw" firstAttribute="bottom" secondItem="F4G-8w-gU6" secondAttribute="top" id="qut-J6-Ucq"/>
                             <constraint firstItem="vNa-h1-ngn" firstAttribute="leading" secondItem="yaP-o2-79n" secondAttribute="leading" id="tNh-Xo-tRB"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="yaP-o2-79n"/>
                     </view>
                     <connections>
                         <outlet property="bodyLabel" destination="yYK-4e-zBz" id="yI6-fh-87o"/>
@@ -144,7 +145,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E60-ti-qbL">
                                                         <rect key="frame" x="0.0" y="249.5" width="374" height="86.5"/>
-                                                        <string key="text">Nejnovější verze operačního systému iOS (13.5 nebo novější) je nezbytná pro aktivaci oznámení o setkání s osobou, u které byla prokázana nákaza virem COVID-19.</string>
+                                                        <string key="text">Nejnovější verze operačního systému iOS je nezbytná pro aktivaci oznámení o setkání s osobou, u které bylo potvrzeno onemocnění COVID-19.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -152,7 +153,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="H9H-dF-TpZ" secondAttribute="bottom" constant="16" id="9S2-wR-QS5"/>
                                             <constraint firstItem="H9H-dF-TpZ" firstAttribute="centerY" secondItem="5o7-6M-Lbu" secondAttribute="centerY" id="Zlx-UJ-KQ6"/>
@@ -178,7 +179,7 @@
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2a8-6l-kCO" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="752" width="414" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-r4-qbV" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTc-r4-qbV" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="20" y="50" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="NCe-1H-cBl"/>
@@ -201,7 +202,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="cVl-tx-pgU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cVl-tx-pgU" firstAttribute="trailing" secondItem="7gR-gk-fQs" secondAttribute="trailing" id="1GW-1K-OtZ"/>
                             <constraint firstItem="7gR-gk-fQs" firstAttribute="top" secondItem="DNr-uD-K3L" secondAttribute="top" id="48U-K1-5Oi"/>
@@ -211,7 +213,6 @@
                             <constraint firstItem="2a8-6l-kCO" firstAttribute="leading" secondItem="cVl-tx-pgU" secondAttribute="leading" id="rFl-m1-1t2"/>
                             <constraint firstItem="7gR-gk-fQs" firstAttribute="bottom" secondItem="vTc-r4-qbV" secondAttribute="top" id="ucX-YJ-ssV"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="cVl-tx-pgU"/>
                     </view>
                     <connections>
                         <outlet property="bodyLabel" destination="E60-ti-qbL" id="noZ-1S-gBv"/>
@@ -260,7 +261,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="adJ-aH-I6U" firstAttribute="centerX" secondItem="KVM-Is-41J" secondAttribute="centerX" id="Brw-Hd-MHS"/>
                                             <constraint firstItem="adJ-aH-I6U" firstAttribute="leading" secondItem="KVM-Is-41J" secondAttribute="leadingMargin" id="SG8-US-Q1V"/>
@@ -286,7 +287,7 @@
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t98-Uz-2tB" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="752" width="414" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5g-K0-yvQ" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5g-K0-yvQ" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
                                         <rect key="frame" x="20" y="50" width="374" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="vsO-GX-W0D"/>
@@ -309,7 +310,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="e1i-dD-oJQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="x4y-rw-Gh0" firstAttribute="leading" secondItem="e1i-dD-oJQ" secondAttribute="leading" id="D25-e1-PHA"/>
                             <constraint firstItem="e1i-dD-oJQ" firstAttribute="bottom" secondItem="t98-Uz-2tB" secondAttribute="bottom" id="G2f-UW-wsV"/>
@@ -319,7 +321,6 @@
                             <constraint firstItem="t98-Uz-2tB" firstAttribute="leading" secondItem="e1i-dD-oJQ" secondAttribute="leading" id="eED-8n-71t"/>
                             <constraint firstItem="e1i-dD-oJQ" firstAttribute="trailing" secondItem="t98-Uz-2tB" secondAttribute="trailing" id="mtE-vp-ypP"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="e1i-dD-oJQ"/>
                     </view>
                     <connections>
                         <outlet property="bodyLabel" destination="xko-VO-u5v" id="PpW-gE-OwE"/>
@@ -337,5 +338,8 @@
     <resources>
         <image name="ForceOSUpdate" width="200" height="199"/>
         <image name="ForceUpdate" width="200" height="199"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

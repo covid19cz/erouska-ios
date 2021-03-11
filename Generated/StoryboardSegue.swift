@@ -13,13 +13,17 @@ import UIKit
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 internal enum StoryboardSegue {
   internal enum Active: String, SegueType {
+    case howItWorks
     case sendReport
   }
   internal enum Error: String, SegueType {
     case help = "Help"
   }
   internal enum Help: String, SegueType {
-    case article
+    case about
+    case howItWorks
+    case question
+    case section
   }
   internal enum Onboarding: String, SegueType {
     case exposureNotification
@@ -34,6 +38,7 @@ internal enum StoryboardSegue {
     case showDetail
   }
   internal enum SendReports: String, SegueType {
+    case noCode
     case result
   }
 }

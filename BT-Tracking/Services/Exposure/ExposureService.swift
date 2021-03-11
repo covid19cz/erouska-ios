@@ -205,7 +205,16 @@ final class ExposureService: ExposureServicing {
                         if let error = error {
                             finish(error: error)
                         } else if let exposures = exposures {
-                            finish(exposures: exposures.map {
+                            var filtred: [Date: ENExposureInfo] = [:]
+                            for exposure in exposures {
+                                if let info = filtred[exposure.date], info.totalRiskScoreFullRange < exposure.totalRiskScoreFullRange {
+                                    filtred[exposure.date] = exposure
+                                } else {
+                                    filtred[exposure.date] = exposure
+                                }
+                            }
+
+                            finish(exposures: filtred.values.map {
                                 Exposure(
                                     id: UUID(),
                                     date: $0.date,
