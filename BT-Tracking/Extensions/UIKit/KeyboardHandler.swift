@@ -16,13 +16,15 @@ struct KeyboardHandler {
     let scrollView: UIScrollView
     let buttonsView: ButtonsBackgroundView
     let buttonsBottomConstraint: NSLayoutConstraint
-    let disposeBag = DisposeBag()
+    var bottomInset: CGFloat = 0
+    private let disposeBag = DisposeBag()
 
-    init(in view: UIView, scrollView: UIScrollView, buttonsView: ButtonsBackgroundView, buttonsBottomConstraint: NSLayoutConstraint) {
+    init(in view: UIView, scrollView: UIScrollView, buttonsView: ButtonsBackgroundView, buttonsBottomConstraint: NSLayoutConstraint, bottomInset: CGFloat = 0) {
         self.view = view
         self.scrollView = scrollView
         self.buttonsView = buttonsView
         self.buttonsBottomConstraint = buttonsBottomConstraint
+        self.bottomInset = bottomInset
     }
 
     func setup() {
@@ -43,7 +45,7 @@ struct KeyboardHandler {
             }
             let adjustedHeight = keyboardVisibleHeight - self.view.safeAreaInsets.bottom
             self.buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin + adjustedHeight
-            self.scrollView.contentInset.bottom = adjustedHeight + self.buttonsView.defaultContentInset.bottom
+            self.scrollView.contentInset.bottom = adjustedHeight + self.buttonsView.defaultContentInset.bottom + bottomInset
             self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset
 
             DispatchQueue.main.async {

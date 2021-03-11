@@ -57,7 +57,7 @@ final class SendReportsVC: UIViewController {
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
 
-        scrollView.contentInset.bottom = 20
+        scrollView.contentInset.bottom = buttonsView.frame.height
 
         setupTextField()
         setupStrings()
@@ -142,7 +142,13 @@ private extension SendReportsVC {
     // MARK: - Setup
 
     func setupTextField() {
-        keyboardHandler = KeyboardHandler(in: view, scrollView: scrollView, buttonsView: buttonsView, buttonsBottomConstraint: buttonsBottomConstraint)
+        keyboardHandler = KeyboardHandler(
+            in: view,
+            scrollView: scrollView,
+            buttonsView: buttonsView,
+            buttonsBottomConstraint: buttonsBottomConstraint,
+            bottomInset: buttonsView.frame.height - 30
+        )
 
         codeTextField.rx.text.orEmpty.bind(to: code).disposed(by: disposeBag)
 
