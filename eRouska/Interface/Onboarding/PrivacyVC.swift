@@ -46,7 +46,6 @@ final class PrivacyVC: BaseController, HasDependencies {
 
         bodyTextView.textContainerInset = .zero
         bodyTextView.textContainer.lineFragmentPadding = 0
-
         bodyTextView.hyperLink(
             originalText: L10n.privacyBody,
             hyperLink: L10n.privacyBodyLink,

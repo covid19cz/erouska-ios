@@ -90,16 +90,16 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
         sendReport?.symptoms = enableSwitch.isOn
         sendReport?.symptomsDate = enableSwitch.isOn ? datePicker.date : nil
 
+        AppSettings.sendReport = sendReport
+        let segue: StoryboardSegue.SendReports
+
         if AppSettings.efgsEnabled {
             sendReport?.traveler = true
-            AppSettings.sendReport = sendReport
-
-            perform(segue: StoryboardSegue.SendReports.agreement)
+            segue = .agreement
         } else {
-            AppSettings.sendReport = sendReport
-
-            perform(segue: StoryboardSegue.SendReports.efgs)
+            segue = .efgs
         }
+        perform(segue: segue)
     }
 
     @IBAction private func symptomSwitchChanged() {

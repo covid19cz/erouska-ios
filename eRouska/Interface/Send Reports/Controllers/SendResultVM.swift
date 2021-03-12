@@ -11,11 +11,12 @@ import UIKit
 enum SendResultVM {
     case standard
     case noKeys
+    case codeInvalid
     case error(String, String?) // error: code, message
 
     var title: String {
         switch self {
-        case .standard, .noKeys:
+        case .standard, .noKeys, .codeInvalid:
             return L10n.dataSendTitle
         case .error:
             return L10n.dataSendError
@@ -28,6 +29,8 @@ enum SendResultVM {
             return L10n.dataSendTitleLabel
         case .noKeys:
             return L10n.dataSendTitleNokeys
+        case .codeInvalid:
+            return L10n.dataSendTitleInvalidCode
         case .error:
             return L10n.dataSendTitleError
         }
@@ -35,7 +38,7 @@ enum SendResultVM {
 
     var titleLabelColor: UIColor {
         switch self {
-        case .standard, .noKeys:
+        case .standard, .noKeys, .codeInvalid:
             return Asset.appEnabled.color
         case .error:
             return Asset.alertRed.color
@@ -44,7 +47,7 @@ enum SendResultVM {
 
     var image: UIImage? {
         switch self {
-        case .standard, .noKeys:
+        case .standard, .noKeys, .codeInvalid:
             return Asset.ok.image
         case .error:
             return Asset.error.image
@@ -57,6 +60,8 @@ enum SendResultVM {
             return L10n.dataSendHeadline
         case .noKeys:
             return L10n.dataSendNokeysHeadline
+        case .codeInvalid:
+            return L10n.dataSendInvalidCodeHeadline
         case .error(let code, _):
             return L10n.dataSendErrorHeadline(code)
         }
@@ -68,6 +73,8 @@ enum SendResultVM {
             return L10n.dataSendBody
         case .noKeys:
             return L10n.dataSendNokeysBody
+        case .codeInvalid:
+            return L10n.dataSendInvalidCodeBody
         case .error:
             return L10n.dataSendErrorBody
         }
@@ -75,7 +82,7 @@ enum SendResultVM {
 
     var buttonTitle: String {
         switch self {
-        case .standard, .noKeys:
+        case .standard, .noKeys, .codeInvalid:
             return L10n.dataSendCloseButton
         case .error:
             return L10n.dataSendErrorButton

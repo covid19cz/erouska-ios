@@ -129,6 +129,10 @@ final class SendReportsVC: BaseController, HasDependencies {
         perform(segue: StoryboardSegue.SendReports.symptoms, sender: sendReport)
     }
 
+    private func resultInvalidCode() {
+        perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.codeInvalid)
+    }
+
     private func resultErrorAction(code: String, message: String? = nil) {
         perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.error(code, message))
     }

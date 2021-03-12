@@ -456,27 +456,24 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EyQ-Xk-mcp">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="370"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Sao-zk-K6J">
-                                                <rect key="frame" x="20" y="10" width="374" height="489"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="344"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EfgsPermission" translatesAutoresizingMaskIntoConstraints="NO" id="2dz-YX-i0q">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
-                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROb-KN-fyO">
-                                                        <rect key="frame" x="0.0" y="145" width="374" height="108.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="108.5"/>
                                                         <string key="text">Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.</string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vgk-S9-IXe">
-                                                        <rect key="frame" x="0.0" y="268.5" width="374" height="31"/>
+                                                        <rect key="frame" x="0.0" y="123.5" width="374" height="31"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Povolit spolupráci se zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXk-gQ-FCJ">
                                                                 <rect key="frame" x="0.0" y="5.5" width="317" height="20.5"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -491,7 +488,7 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhp-bC-cMu">
-                                                        <rect key="frame" x="0.0" y="314.5" width="374" height="174.5"/>
+                                                        <rect key="frame" x="0.0" y="169.5" width="374" height="174.5"/>
                                                         <mutableString key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
 Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.
 Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.</mutableString>
@@ -547,7 +544,6 @@ Využívání této funkce může způsobit vyšší objem stahovaných dat. Vyp
         </scene>
     </scenes>
     <resources>
-        <image name="EfgsPermission" width="130" height="130"/>
         <image name="HitWIcon" width="66" height="59"/>
         <namedColor name="AlertRed">
             <color red="0.95294117647058818" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
