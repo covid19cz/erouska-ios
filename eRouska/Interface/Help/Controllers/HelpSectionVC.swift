@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import DeviceKit
 
 final class HelpSectionVC: BaseController {
 
@@ -35,6 +36,10 @@ final class HelpSectionVC: BaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if Device.current.diagonal < 4.1 {
+            navigationItem.largeTitleDisplayMode = .never
+        }
 
         title = section?.title
         navigationItem.rightBarButtonItem?.title = L10n.about

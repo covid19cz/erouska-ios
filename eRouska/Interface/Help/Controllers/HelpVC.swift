@@ -62,6 +62,7 @@ final class HelpVC: BaseController, HasDependencies {
         view.addSubview(button)
         tableView.tableFooterView = view
 
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.contentInset = .init(top: 15, left: 0, bottom: 20, right: 0)
 
         setupDataSource()
