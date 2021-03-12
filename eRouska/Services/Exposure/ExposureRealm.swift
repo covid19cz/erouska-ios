@@ -25,7 +25,7 @@ final class ExposureRealm: Object {
         return "id"
     }
 
-    required init() {
+    override required init() {
         id = UUID().uuidString
         date = Date()
         detectedDate = Date()
@@ -77,7 +77,7 @@ final class ExposureDataV1: Object {
         return "id"
     }
 
-    required init() {
+    override required init() {
         id = UUID().uuidString
         duration = 0
         totalRiskScore = 0
@@ -130,7 +130,7 @@ final class ExposureDataV2: Object {
         return "id"
     }
 
-    required init() {
+    override required init() {
         id = UUID().uuidString
         calibrationConfidence = 0
         diagnosisReportType = 0

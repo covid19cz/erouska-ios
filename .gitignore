@@ -98,4 +98,4 @@ xcshareddata
 *.xcworkspace
 *.xcodeproj
 Configs/*.xcconfig
-BT-Tracking/Supporting\ Files/Entitlements/*
+eRouska/Supporting\ Files/Entitlements/*

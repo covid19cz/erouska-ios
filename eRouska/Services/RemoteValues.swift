@@ -33,7 +33,7 @@ extension AppDelegate {
             RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { _, error in
                 if let error = error {
                     log("AppDelegate\(background ? " background" : ""): Got an error fetching remote values \(error)")
-                    single(.error(error))
+                    single(.failure(error))
                     return
                 }
 

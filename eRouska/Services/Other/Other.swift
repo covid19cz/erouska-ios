@@ -16,7 +16,7 @@ protocol HasOther {
 }
 
 protocol HasFunctions {
-    var functions: Functions { get }
+    var functions: FirebaseFunctions.Functions { get }
 }
 
 protocol HasRealm {
