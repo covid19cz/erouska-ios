@@ -492,9 +492,9 @@ Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhp-bC-cMu">
                                                         <rect key="frame" x="0.0" y="314.5" width="374" height="174.5"/>
-                                                        <string key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
+                                                        <mutableString key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
 Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.
-Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.</string>
+Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.</mutableString>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

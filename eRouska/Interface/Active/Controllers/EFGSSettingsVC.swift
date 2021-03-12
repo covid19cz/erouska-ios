@@ -73,7 +73,7 @@ private extension EFGSSettingsVC {
         navigationItem.backBarButtonItem?.title = L10n.back
 
         headlineLabel.text = L10n.efgsSettingsHeadline
-        bodyLabel.text = L10n.efgsSettingsBody(RemoteValues.efgsDays)
+        bodyLabel.text = L10n.efgsSettingsBody(RemoteValues.efgsCountries, RemoteValues.efgsDays)
         enableLabel.text = L10n.efgsSettingsSwitch
     }
 
