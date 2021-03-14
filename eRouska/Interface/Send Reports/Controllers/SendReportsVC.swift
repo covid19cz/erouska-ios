@@ -104,10 +104,9 @@ final class SendReportsVC: BaseController, HasDependencies {
 
         if let report = AppSettings.sendReport, report.verificationCode == verifyCode, !report.isExpired {
             resultVerify(report)
-            return
+        } else {
+            verify(verifyCode)
         }
-
-        verify(verifyCode)
 
         /*
         // swiftlint:disable:next line_length
@@ -131,6 +130,7 @@ final class SendReportsVC: BaseController, HasDependencies {
 
     private func resultInvalidCode() {
         perform(segue: StoryboardSegue.SendReports.result, sender: SendResultVM.codeInvalid)
+        resetCode()
     }
 
     private func resultErrorAction(code: String, message: String? = nil) {
@@ -184,6 +184,11 @@ private extension SendReportsVC {
         noCodeButton.setTitle(L10n.dataListSendNoCodeActionTitle)
     }
 
+    func resetCode() {
+        codeTextField.text = nil
+        codeTextField.becomeFirstResponder()
+    }
+
     // MARK: - Progress
 
     func reportShowProgress() {
@@ -226,20 +231,22 @@ private extension SendReportsVC {
         case let .tokenError(status, code):
             switch code {
             case .codeInvalid:
-                showAlert(
-                    title: L10n.dataListSendErrorWrongCodeTitle,
-                    okHandler: { [weak self] in
-                        self?.codeTextField.text = nil
-                        self?.codeTextField.becomeFirstResponder()
-                    }
-                )
+                if AppSettings.sendReport == nil {
+                    resultInvalidCode()
+                } else {
+                    showAlert(
+                        title: L10n.dataListSendErrorWrongCodeTitle,
+                        okHandler: { [weak self] in
+                            self?.resetCode()
+                        }
+                    )
+                }
             case .codeExpired, .codeNotFound:
                 showAlert(
                     title: L10n.dataListSendErrorExpiredCodeTitle,
                     message: L10n.dataListSendErrorExpiredCodeMessage,
                     okHandler: { [weak self] in
-                        self?.codeTextField.text = nil
-                        self?.codeTextField.becomeFirstResponder()
+                        self?.resetCode()
                     },
                     action: (L10n.dataListSendErrorExpiredCodeAction, { [weak self] in self?.askForNewCodeAction() })
                 )

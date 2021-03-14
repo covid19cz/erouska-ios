@@ -103,6 +103,7 @@
 "data_send_share_headline.a" = "Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?";
 "data_send_share_headline.b" = "Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice?";
 "data_send_share_body" = "Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.";
+"data_send_share_body_link" = "souhlasu se zpracováním osobních údajů";
 "data_send_share_action_confirm" = "Souhlasím";
 "data_send_share_action_reject" = "Nesouhlasím";
 
@@ -130,6 +131,7 @@
 "data_send_error_headline" = "Kontaktujte prosím podporu na e-mailu info@erouska.cz a uveďte následující kód chyby: %@.";
 "data_send_error_body" = "Po stisknutí tlačítka “Napsat e-mail na podporu” vytvoříme přílohu e-mailu s anonymními informacemi o nastavení telefonu (například zapnuté Bluetooth, typ telefonu) a chybě. Tyto informace nám pomohou s řešením chyby.";
 "data_send_close_button" = "Zavřít";
+"data_send_try_again_button" = "Zkusit znovu";
 "data_send_error_button" = "Napsat e-mail na podporu";
 "data_send_no_code_title" = "Nemám ověřovací kód";
 "data_send_no_code_headline" = "Máte pozitivní test a nepřišla vám SMS pro eRoušku? Napište si o náhradní kód na info@erouska.cz.";

@@ -16,8 +16,10 @@ enum SendResultVM {
 
     var title: String {
         switch self {
-        case .standard, .noKeys, .codeInvalid:
+        case .standard, .noKeys:
             return L10n.dataSendTitle
+        case .codeInvalid:
+            return L10n.dataListSendTitle
         case .error:
             return L10n.dataSendError
         }
@@ -30,7 +32,7 @@ enum SendResultVM {
         case .noKeys:
             return L10n.dataSendTitleNokeys
         case .codeInvalid:
-            return L10n.dataSendTitleInvalidCode
+            return L10n.dataSendInvalidCodeHeadline
         case .error:
             return L10n.dataSendTitleError
         }
@@ -38,18 +40,18 @@ enum SendResultVM {
 
     var titleLabelColor: UIColor {
         switch self {
-        case .standard, .noKeys, .codeInvalid:
+        case .standard, .noKeys:
             return Asset.appEnabled.color
-        case .error:
+        case .error, .codeInvalid:
             return Asset.alertRed.color
         }
     }
 
     var image: UIImage? {
         switch self {
-        case .standard, .noKeys, .codeInvalid:
+        case .standard, .noKeys:
             return Asset.ok.image
-        case .error:
+        case .error, .codeInvalid:
             return Asset.error.image
         }
     }
@@ -61,7 +63,7 @@ enum SendResultVM {
         case .noKeys:
             return L10n.dataSendNokeysHeadline
         case .codeInvalid:
-            return L10n.dataSendInvalidCodeHeadline
+            return L10n.dataSendInvalidCodeBody
         case .error(let code, _):
             return L10n.dataSendErrorHeadline(code)
         }
@@ -74,7 +76,7 @@ enum SendResultVM {
         case .noKeys:
             return L10n.dataSendNokeysBody
         case .codeInvalid:
-            return L10n.dataSendInvalidCodeBody
+            return ""
         case .error:
             return L10n.dataSendErrorBody
         }
@@ -82,10 +84,21 @@ enum SendResultVM {
 
     var buttonTitle: String {
         switch self {
-        case .standard, .noKeys, .codeInvalid:
+        case .standard, .noKeys:
             return L10n.dataSendCloseButton
+        case .codeInvalid:
+            return L10n.dataSendTryAgainButton
         case .error:
             return L10n.dataSendErrorButton
+        }
+    }
+
+    var actionTitle: String? {
+        switch self {
+        case .codeInvalid:
+            return L10n.dataSendErrorButton
+        default:
+            return nil
         }
     }
 }

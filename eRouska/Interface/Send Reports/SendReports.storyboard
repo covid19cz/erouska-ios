@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ypa-Zz-KEW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Bb-fN-QKh">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="388.5"/>
@@ -84,35 +84,55 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                 <viewLayoutGuide key="contentLayoutGuide" id="Ysa-dm-N8g"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="oHC-g8-voJ"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujY-Zk-KgB" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="752" width="414" height="110"/>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujY-Zk-KgB" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="759" width="414" height="103"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhX-e8-dHF" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="50" width="382" height="44"/>
-                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="dHL-VO-8GB"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="Close Button">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                        </state>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Rdx-uM-ObE">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhX-e8-dHF" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="dHL-VO-8GB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <state key="normal" title="Close Button">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfh-v5-wrG" userLabel="Action Button" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="5dK-Ty-h0Y"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Ověřit a odeslat data">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="mailAction" destination="DYf-Vd-0PA" eventType="touchUpInside" id="AXU-u0-BY3"/>
+                                                    <action selector="verifyCodeAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="Ith-WX-9t9"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="UhX-e8-dHF" secondAttribute="trailing" constant="16" id="RbI-mg-tLV"/>
-                                    <constraint firstItem="UhX-e8-dHF" firstAttribute="top" secondItem="ujY-Zk-KgB" secondAttribute="top" constant="50" id="r0a-Og-0Ef"/>
-                                    <constraint firstAttribute="bottom" secondItem="UhX-e8-dHF" secondAttribute="bottom" constant="16" id="utE-uQ-r0g"/>
-                                    <constraint firstItem="UhX-e8-dHF" firstAttribute="leading" secondItem="ujY-Zk-KgB" secondAttribute="leading" constant="16" id="zYw-hx-agt"/>
+                                    <constraint firstItem="Rdx-uM-ObE" firstAttribute="top" secondItem="ujY-Zk-KgB" secondAttribute="top" id="BZ2-y5-YXw"/>
+                                    <constraint firstItem="Rdx-uM-ObE" firstAttribute="leading" secondItem="ujY-Zk-KgB" secondAttribute="leadingMargin" id="GNx-3L-RZR"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Rdx-uM-ObE" secondAttribute="trailing" id="MC6-mZ-2pF"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rdx-uM-ObE" secondAttribute="bottom" id="t3g-bo-cnX"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Es3-Ia-z2R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Es3-Ia-z2R" firstAttribute="bottom" secondItem="ypa-Zz-KEW" secondAttribute="bottom" id="7sL-lG-xwb"/>
                             <constraint firstItem="ypa-Zz-KEW" firstAttribute="top" secondItem="obQ-Xn-QYg" secondAttribute="top" id="OhC-1w-oEe"/>
-                            <constraint firstItem="ypa-Zz-KEW" firstAttribute="bottom" secondItem="UhX-e8-dHF" secondAttribute="bottom" id="P0b-tg-9Z0"/>
                             <constraint firstItem="ujY-Zk-KgB" firstAttribute="trailing" secondItem="Es3-Ia-z2R" secondAttribute="trailing" id="S86-fk-fW0"/>
                             <constraint firstItem="ypa-Zz-KEW" firstAttribute="leading" secondItem="Es3-Ia-z2R" secondAttribute="leading" id="TXt-O7-lJc"/>
                             <constraint firstItem="Es3-Ia-z2R" firstAttribute="bottom" secondItem="ujY-Zk-KgB" secondAttribute="bottom" id="YAF-z1-1Wq"/>
@@ -123,6 +143,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Odesláno" largeTitleDisplayMode="always" id="Yey-Fh-VuT"/>
                     <connections>
+                        <outlet property="actionButton" destination="rfh-v5-wrG" id="9LR-Qz-HCA"/>
                         <outlet property="bodyLabel" destination="8Ee-su-jfJ" id="jvm-nI-phf"/>
                         <outlet property="buttonsView" destination="ujY-Zk-KgB" id="bWo-Gf-n61"/>
                         <outlet property="closeButton" destination="UhX-e8-dHF" id="nxd-nG-v8O"/>

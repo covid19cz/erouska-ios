@@ -33,6 +33,7 @@ final class SendResultVC: BaseController, HasDependencies {
     @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var closeButton: Button!
+    @IBOutlet private weak var actionButton: Button!
 
     // MARK: -
 
@@ -53,17 +54,32 @@ final class SendResultVC: BaseController, HasDependencies {
         bodyLabel.text = viewModel.body
         closeButton.setTitle(viewModel.buttonTitle)
 
-        if case .error = viewModel {
-            closeButton.addTarget(self, action: #selector(mailAction), for: .touchUpInside)
+        if let title = viewModel.actionTitle {
+            actionButton.setTitle(title)
         } else {
-            closeButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
+            actionButton.isHidden = true
         }
+
+        let closeSelector: Selector
+        if case .codeInvalid = viewModel {
+            closeSelector = #selector(backAction)
+        } else if case .error = viewModel {
+            closeSelector = #selector(mailAction)
+        } else {
+            closeSelector = #selector(closeAction)
+        }
+        closeButton.addTarget(self, action: closeSelector, for: .touchUpInside)
+
         buttonsView.connect(with: scrollView)
 
         isModalInPresentation = true
     }
 
     // MARK: - Action
+
+    @IBAction private func backAction() {
+        navigationController?.popViewController(animated: true)
+    }
 
     @IBAction private func closeAction() {
         dismiss(animated: true, completion: { [weak self] in

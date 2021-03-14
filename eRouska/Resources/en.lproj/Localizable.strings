@@ -130,6 +130,7 @@
 "data_send_error_headline" = "Please contact support at info@erouska.cz and mention this error code in the email: %@.";
 "data_send_error_body" = "When you press \"Email support\" we will create an email attachment with anonymous information about your device's settings (such as enabled Bluetooth, phone type etc.) and the error. This information will help us troubleshoot.";
 "data_send_close_button" = "Close";
+"data_send_try_again_button" = "Try Again";
 "data_send_error_button" = "Email support";
 "data_send_no_code_title" = "I do not have the verification code";
 "data_send_no_code_headline" = "Have you tested positive but have not received your eRouška code in an SMS? Request your code at info@erouska.cz.";

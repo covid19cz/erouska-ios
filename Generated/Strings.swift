@@ -288,6 +288,8 @@ internal enum L10n {
   internal static let dataSendShareActionReject = L10n.tr("Localizable", "data_send_share_action_reject")
   /// Sdílení dat se zeměmi EU je anonymní a odesláním dat do zahraničí souhlasíte s jejich zpracováním zeměmi Evropské unie podle souhlasu se zpracováním osobních údajů.
   internal static let dataSendShareBody = L10n.tr("Localizable", "data_send_share_body")
+  /// souhlasu se zpracováním osobních údajů
+  internal static let dataSendShareBodyLink = L10n.tr("Localizable", "data_send_share_body_link")
   /// Pokračovat
   internal static let dataSendSymptomsActionContinue = L10n.tr("Localizable", "data_send_symptoms_action_continue")
   /// Kašel, teplota, dušnost, bolest v krku, bolest hlavy nebo ztráta čichu a chuti.
@@ -318,6 +320,8 @@ internal enum L10n {
   internal static let dataSendTravelHeadline = L10n.tr("Localizable", "data_send_travel_headline")
   /// Cesty do zahraničí
   internal static let dataSendTravelTitle = L10n.tr("Localizable", "data_send_travel_title")
+  /// Zkusit znovu
+  internal static let dataSendTryAgainButton = L10n.tr("Localizable", "data_send_try_again_button")
   /// Zkontrolujete tak, zda jste se setkali s osobou, u níž bylo potvrzeno onemocnění COVID-19.
   internal static let deadmanNotificaitonBody = L10n.tr("Localizable", "deadman_notificaiton_body")
   /// Otevřete aplikaci eRouška
