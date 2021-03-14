@@ -85,7 +85,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                                 <viewLayoutGuide key="frameLayoutGuide" id="oHC-g8-voJ"/>
                             </scrollView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujY-Zk-KgB" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="759" width="414" height="103"/>
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Rdx-uM-ObE">
                                         <rect key="frame" x="20" y="0.0" width="374" height="103"/>
@@ -135,7 +135,7 @@ Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygi
                             <constraint firstItem="ypa-Zz-KEW" firstAttribute="top" secondItem="obQ-Xn-QYg" secondAttribute="top" id="OhC-1w-oEe"/>
                             <constraint firstItem="ujY-Zk-KgB" firstAttribute="trailing" secondItem="Es3-Ia-z2R" secondAttribute="trailing" id="S86-fk-fW0"/>
                             <constraint firstItem="ypa-Zz-KEW" firstAttribute="leading" secondItem="Es3-Ia-z2R" secondAttribute="leading" id="TXt-O7-lJc"/>
-                            <constraint firstItem="Es3-Ia-z2R" firstAttribute="bottom" secondItem="ujY-Zk-KgB" secondAttribute="bottom" id="YAF-z1-1Wq"/>
+                            <constraint firstItem="Es3-Ia-z2R" firstAttribute="bottom" secondItem="ujY-Zk-KgB" secondAttribute="bottom" constant="16" id="YAF-z1-1Wq"/>
                             <constraint firstItem="ypa-Zz-KEW" firstAttribute="trailing" secondItem="Es3-Ia-z2R" secondAttribute="trailing" id="ujf-TB-IcM"/>
                             <constraint firstItem="ujY-Zk-KgB" firstAttribute="leading" secondItem="Es3-Ia-z2R" secondAttribute="leading" id="vnx-CF-v8p"/>
                         </constraints>
