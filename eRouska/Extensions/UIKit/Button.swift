@@ -24,7 +24,7 @@ class Button: UIButton {
             case .clear:
                 return .clear
             case .disabled:
-                return .clear
+                return .systemBackground
             case .exposureBanner:
                 return .white
             case .dashboard:
