@@ -18,10 +18,6 @@ final class PrivacyVC: BaseController, HasDependencies {
 
     var dependencies: Dependencies!
 
-    // MARK: -
-
-    private let viewModel = PrivacyVM()
-
     // MARK: - Outlets
 
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -49,7 +45,7 @@ final class PrivacyVC: BaseController, HasDependencies {
         bodyTextView.hyperLink(
             originalText: L10n.privacyBody,
             hyperLink: L10n.privacyBodyLink,
-            urlString: viewModel.bodyLink
+            urlString: RemoteValues.conditionsOfUseUrl
         )
     }
 

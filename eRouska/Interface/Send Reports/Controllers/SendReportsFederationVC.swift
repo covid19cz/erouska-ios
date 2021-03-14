@@ -16,7 +16,7 @@ final class SendReportsFederationVC: SendReportingVC {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var headlineLabel: UILabel!
-    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var bodyTextView: UITextView!
 
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var buttonsBottomConstraint: NSLayoutConstraint!
@@ -30,6 +30,9 @@ final class SendReportsFederationVC: SendReportingVC {
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
         }
+
+        bodyTextView.textContainerInset = .zero
+        bodyTextView.textContainer.lineFragmentPadding = 0
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin
@@ -87,7 +90,11 @@ private extension SendReportsFederationVC {
         }
 
         headlineLabel.text = sendReport?.traveler == true ? L10n.DataSendShareHeadline.a : L10n.DataSendShareHeadline.b
-        bodyLabel.text = L10n.dataSendShareBody
+        bodyTextView.hyperLink(
+            originalText: L10n.dataSendShareBody,
+            hyperLink: L10n.dataSendShareBodyLink,
+            urlString: RemoteValues.conditionsOfUseUrl
+        )
         confirmButton.setTitle(L10n.dataSendShareActionConfirm)
         rejectButton.setTitle(L10n.dataSendShareActionReject)
     }
