@@ -144,7 +144,7 @@ extension CurrentDataVC: UITableViewDelegate {
             let header = tableView.dequeueReusableCell(withIdentifier: "HeaderCell")
             header?.textLabel?.text = headerTitle
             header?.textLabel?.font = UIFont.preferredFont(forTextStyle: .subheadline)
-            header?.textLabel?.textColor = .secondaryLabel
+            header?.textLabel?.textColor = .secondaryTextLabel
             return header
         } else {
             return nil

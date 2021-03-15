@@ -47,7 +47,7 @@ final class DownloadReportsVC: BaseTableViewController, HasDependencies {
         super.viewDidLoad()
 
         title = L10n.debug + " zkontrolovat reporty"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        setupCloseButton(#selector(closeAction))
         tableView.dataSource = nil
         tableView.delegate = nil
 

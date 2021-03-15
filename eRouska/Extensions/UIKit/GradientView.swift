@@ -33,7 +33,7 @@ final class GradientView: UIView {
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 0, y: 1)
         layer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        backgroundColor = .systemBackground
+        backgroundColor = .background
     }
 
     override func layoutSubviews() {

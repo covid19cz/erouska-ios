@@ -35,7 +35,7 @@ final class HowItWorksVC: BaseTableViewController, HasDependencies {
         super.viewWillAppear(animated)
 
         if isModal {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+            setupCloseButton(#selector(closeAction))
         }
     }
 

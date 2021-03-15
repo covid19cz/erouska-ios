@@ -175,7 +175,7 @@ private extension SendReportsVC {
 
     func setupStrings() {
         title = L10n.dataListSendTitle
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        setupCloseButton(#selector(closeAction))
 
         headlineLabel.text = L10n.dataListSendHeadline
         footerLabel.text = L10n.dataListSendFooter(DateFormatter.baseDateFormatter.string(from: AppSettings.lastUploadDate ?? Date()))
@@ -194,15 +194,19 @@ private extension SendReportsVC {
     func reportShowProgress() {
         showProgress()
 
-        isModalInPresentation = true
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = true
+        }
         navigationItem.setLeftBarButton(nil, animated: true)
     }
 
     func reportHideProgress() {
         hideProgress()
 
-        isModalInPresentation = false
-        navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction)), animated: true)
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = false
+        }
+        setupCloseButton(#selector(closeAction))
     }
 
     // MARK: - Reports

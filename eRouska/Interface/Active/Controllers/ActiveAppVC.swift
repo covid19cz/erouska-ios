@@ -27,7 +27,11 @@ final class ActiveAppVC: BaseController, HasDependencies {
     private var firstAppear = true
 
     private var shadowColor: CGColor {
-        UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+        if #available(iOS 13.0, *) {
+            return UIColor.textLabel.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+        } else {
+            return UIColor.textLabel.withAlphaComponent(0.2).cgColor
+        }
     }
 
     private let stateSection = ActiveAppSectionView()
@@ -164,9 +168,11 @@ final class ActiveAppVC: BaseController, HasDependencies {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
-        guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
-        [exposureBannerView, stateSection, riskyEncountersSection, sendReportsSection].forEach {
-            $0.layer.shadowColor = shadowColor
+        if #available(iOS 13.0, *) {
+            guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else { return }
+            [exposureBannerView, stateSection, riskyEncountersSection, sendReportsSection].forEach {
+                $0.layer.shadowColor = shadowColor
+            }
         }
     }
 

@@ -32,7 +32,7 @@ final class ActiveAppSectionView: UIView {
     }
     var isPositive = false {
         didSet {
-            titleLabel.textColor = isPositive ? Asset.alertRed.color : .label
+            titleLabel.textColor = isPositive ? Asset.alertRed.color : .textLabel
         }
     }
     var action: CallbackVoid?
@@ -56,9 +56,13 @@ final class ActiveAppSectionView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .secondarySystemGroupedBackground
+        backgroundColor = .secondaryGroupedBackground
         layer.cornerRadius = 12.0
-        layer.shadowColor = UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+        if #available(iOS 13.0, *) {
+            layer.shadowColor = UIColor.textLabel.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+        } else {
+            layer.shadowColor = UIColor.textLabel.withAlphaComponent(0.2).cgColor
+        }
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowRadius = 2
         layer.shadowOpacity = 1

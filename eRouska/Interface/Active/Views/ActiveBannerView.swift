@@ -26,8 +26,8 @@ final class ActiveBannerView: UIView {
                     $0?.setTitleColor(Asset.alertRed.color, for: .normal)
                 }
             case .gray:
-                backgroundColor = .secondarySystemGroupedBackground
-                titleLabel.textColor = UIColor.label
+                backgroundColor = .secondaryGroupedBackground
+                titleLabel.textColor = .textLabel
 
                 [closeButton, moreInfoButton].forEach {
                     $0?.backgroundColor = Button.Style.dashboard.backgroundColor
@@ -38,7 +38,11 @@ final class ActiveBannerView: UIView {
     }
 
     private var shadowColor: CGColor {
-        UIColor.label.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+        if #available(iOS 13.0, *) {
+            return UIColor.textLabel.resolvedColor(with: traitCollection).withAlphaComponent(0.2).cgColor
+        } else {
+            return UIColor.textLabel.withAlphaComponent(0.2).cgColor
+        }
     }
 
     @IBOutlet private weak var titleLabel: UILabel!

@@ -8,9 +8,9 @@ options:
       order: [Interface, Services, Extensions, Resources, Supporting Files]
 
 settings:
-  IPHONEOS_DEPLOYMENT_TARGET: "13.5"
-  MARKETING_VERSION: "2.3.0"
-  CURRENT_PROJECT_VERSION: "4"
+  IPHONEOS_DEPLOYMENT_TARGET: "12.5"
+  MARKETING_VERSION: "2.4.0"
+  CURRENT_PROJECT_VERSION: "1"
 
 targets:
   eRouska Dev:
@@ -96,7 +96,7 @@ targetTemplates:
     platform: iOS
     settings:
       base:
-        TARGETED_DEVICE_FAMILY: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
         PRODUCT_MODULE_NAME: eRouska
         PRODUCT_NAME: eRouska
         CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES

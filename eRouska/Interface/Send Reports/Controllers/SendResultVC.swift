@@ -42,7 +42,7 @@ final class SendResultVC: BaseController, HasDependencies {
 
         title = viewModel.title
         navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        setupCloseButton(#selector(closeAction))
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
         }
@@ -72,7 +72,9 @@ final class SendResultVC: BaseController, HasDependencies {
 
         buttonsView.connect(with: scrollView)
 
-        isModalInPresentation = true
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = true
+        }
     }
 
     // MARK: - Action

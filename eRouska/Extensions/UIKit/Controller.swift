@@ -53,6 +53,14 @@ extension UIViewController {
         }
     }
 
+    func setupCloseButton(_ selector: Selector) {
+        if #available(iOS 13.0, *) {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: selector)
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.close, style: .plain, target: self, action: selector)
+        }
+    }
+
     private static let progressTag = 42
 
     /// shows overlay over current UIViewController's window, if it has one
@@ -74,7 +82,13 @@ extension UIViewController {
         overlay.translatesAutoresizingMaskIntoConstraints = false
         overlay.tag = UIViewController.progressTag
 
-        let activityIndicator = UIActivityIndicatorView(style: .large)
+        let activityIndicator: UIActivityIndicatorView
+        if #available(iOS 13.0, *) {
+            activityIndicator = UIActivityIndicatorView(style: .large)
+        } else {
+            activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+            activityIndicator.tintColor = .black
+        }
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.startAnimating()
         overlay.addSubview(activityIndicator)

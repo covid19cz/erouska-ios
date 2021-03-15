@@ -26,7 +26,10 @@ final class SendReportsFederationVC: SendReportingVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        isModalInPresentation = true
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = true
+        }
+
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
         }

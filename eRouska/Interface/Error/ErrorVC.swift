@@ -30,7 +30,7 @@ final class ErrorVC: BaseController {
         super.viewDidLoad()
 
         title = L10n.errorTitle
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
+        setupCloseButton(#selector(close))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.help, style: .plain, target: self, action: #selector(showHelp))
 
         headlineLabel.text = viewModel?.headline
@@ -38,7 +38,9 @@ final class ErrorVC: BaseController {
         actionButton.setTitle(viewModel?.actionTitle ?? "", for: .normal)
         buttonsView.connect(with: scrollView)
 
-        isModalInPresentation = true
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = true
+        }
     }
 
     @IBAction private func action() {

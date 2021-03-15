@@ -24,7 +24,7 @@ class Button: UIButton {
             case .clear:
                 return .clear
             case .disabled:
-                return .systemBackground
+                return .background
             case .exposureBanner:
                 return .white
             case .dashboard:
@@ -89,7 +89,11 @@ class Button: UIButton {
         case .filled, .exposureBanner, .dashboard:
             return nil
         case .clear, .disabled:
-            return UIColor(named: "ButtonBorder")?.resolvedColor(with: traitCollection).withAlphaComponent(0.12) ?? UIColor.clear
+            if #available(iOS 13.0, *) {
+                return UIColor(named: "ButtonBorder")?.resolvedColor(with: traitCollection).withAlphaComponent(0.12) ?? UIColor.clear
+            } else {
+                return UIColor(named: "ButtonBorder")?.withAlphaComponent(0.12) ?? UIColor.clear
+            }
         }
     }
 

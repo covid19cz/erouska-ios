@@ -32,7 +32,7 @@ final class RiskyEncountersNegativeVC: BaseController, HasDependencies {
         super.viewDidLoad()
 
         title = viewModel.title
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeAction))
+        setupCloseButton(#selector(closeAction))
         navigationItem.rightBarButtonItem?.title = L10n.help
 
         negativeView.setup(

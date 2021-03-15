@@ -20,7 +20,7 @@ extension UITextView {
         )
         attributedOriginalText.addAttribute(
             .foregroundColor,
-            value: textColor ?? .label,
+            value: textColor ?? UIColor.textLabel,
             range: NSRange(location: 0, length: attributedOriginalText.length)
         )
         attributedOriginalText.addAttribute(

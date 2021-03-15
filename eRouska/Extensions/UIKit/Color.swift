@@ -17,4 +17,36 @@ extension UIColor {
             alpha: 1
         )
     }
+
+    static var textLabel: UIColor {
+        if #available(iOS 13.0, *) {
+            return .label
+        } else {
+            return .black
+        }
+    }
+
+    static var secondaryTextLabel: UIColor {
+        if #available(iOS 13.0, *) {
+            return .secondaryLabel
+        } else {
+            return UIColor(white: 0.5, alpha: 0)
+        }
+    }
+
+    static var background: UIColor {
+        if #available(iOS 13.0, *) {
+            return .systemBackground
+        } else {
+            return .white
+        }
+    }
+
+    static var secondaryGroupedBackground: UIColor {
+        if #available(iOS 13.0, *) {
+            return .secondarySystemGroupedBackground
+        } else {
+            return .groupTableViewBackground
+        }
+    }
 }
