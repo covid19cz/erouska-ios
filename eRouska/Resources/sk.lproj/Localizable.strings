@@ -26,7 +26,7 @@
 "efgs_permission_switch" = "Povoliť spoluprácu so zahraničím";
 "efgs_settings_title" = "Cesty do zahraničia";
 "efgs_settings_headline" = "Povoľte spoluprácu so zahraničím, ak sa chystáte navštíviť niektoré z krajín Európskej únie alebo do nich jazdíte pravidelne. eRouška vás upozorňuje na možnosť stretnutia s človekom nakazeným ochorením COVID-19.";
-"efgs_settings_body" = "COVID-19 nepozná hranice a vďaka spolupráci medzi krajinami Európskej únie vás eRouška môže informovať o možnom riziku nákazy.\n\nAktuálne s eRouškou spolupracuje %@ Využívanie tejto funkcie môže spôsobiť vyšší objem sťahovaných údajov. Vypnite ju %@ dní po návrate do zahraničia.";
+"efgs_settings_body" = "COVID-19 nepozná hranice a vďaka spolupráci medzi krajinami Európskej únie vás eRouška môže informovať o možnom riziku nákazy.\n\n%@\n\nVyužívanie tejto funkcie môže spôsobiť vyšší objem sťahovaných údajov. Vypnite ju %@ dní po návrate do zahraničia.";
 "efgs_settings_switch" = "Povoliť spoluprácu so zahraničím";
 "efgs_settings_alert_title" = "Ochorenie COVID-19 sa môže prejaviť až 14 dní po stretnutí s nakazenou osobou. Spoluprácu so zahraničím prosím vypnite najskôr %@ dní po návrate.";
 "efgs_settings_alert_enable" = "Ponechať zapnuté";

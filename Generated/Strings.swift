@@ -358,7 +358,7 @@ internal enum L10n {
   internal static func efgsSettingsAlertTitle(_ p1: Any) -> String {
     return L10n.tr("Localizable", "efgs_settings_alert_title", String(describing: p1))
   }
-  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nAktuálně s eRouškou spolupracuje %@ Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.
+  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\n%@\n\nVyužívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.
   internal static func efgsSettingsBody(_ p1: Any, _ p2: Any) -> String {
     return L10n.tr("Localizable", "efgs_settings_body", String(describing: p1), String(describing: p2))
   }
