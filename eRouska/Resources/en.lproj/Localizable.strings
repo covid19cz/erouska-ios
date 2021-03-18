@@ -26,7 +26,7 @@
 "efgs_permission_switch" = "Enable Cross-border cooperation";
 "efgs_settings_title" = "Cross-border travel";
 "efgs_settings_headline" = "Enable Cross-border cooperation if you have visited an EU country in the past 14 days or you travel regularly. eRouška will notify you if you encounter someone with COVID-19.";
-"efgs_settings_body" = "COVID-19 does not respect borders. Thanks to cooperation of EU countries, eRouška can warn you against risk of infection.\n\n\ne%@\n\nThis feature may require more data to be downloaded. Disable it %@ days after you return from abroad.";
+"efgs_settings_body" = "COVID-19 does not respect borders. Thanks to cooperation of EU countries, eRouška can warn you against risk of infection.\n\n\n%@\n\nThis feature may require more data to be downloaded. Disable it %@ days after you return from abroad.";
 "efgs_settings_switch" = "Enable cross-border cooperation";
 "efgs_settings_alert_title" = "You may not experience COVID-19 symptoms until 14 days after you met an infected individual. Please do not disable Cross-border cooperation until %@ days after you return from abroad.";
 "efgs_settings_alert_enable" = "Keep enabled";
