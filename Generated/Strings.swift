@@ -340,7 +340,7 @@ internal enum L10n {
   internal static let diagnosisTitleBase = L10n.tr("Localizable", "diagnosis_title_base")
   /// Chcete do e-mailu přidat přílohu s anonymními informacemi o nastavení telefonu a chybě?
   internal static let diagnosisTitleError = L10n.tr("Localizable", "diagnosis_title_error")
-  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních %@ dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\nNastavení můžete kdykoliv změnit v aplikaci.
+  /// COVID-19 nezná hranice a díky spolupráci mezi evropskými státy vás eRouška může upozornit na riziková setkání i v případě, že jste se potkali s cizinci, kteří používají podobné aplikace jiných států.\n\nPovolte upozornění na zahraniční riziková setkání, pokud jste byli v posledních %@ dnech v zahraničí nebo tam jezdíte pravidelně.\n\nNastavení můžete kdykoliv změnit v aplikaci.
   internal static func efgsPermissionBody(_ p1: Any) -> String {
     return L10n.tr("Localizable", "efgs_permission_body", String(describing: p1))
   }
@@ -358,15 +358,15 @@ internal enum L10n {
   internal static func efgsSettingsAlertTitle(_ p1: Any) -> String {
     return L10n.tr("Localizable", "efgs_settings_alert_title", String(describing: p1))
   }
-  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\n%@\n\nVyužívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.
+  /// COVID-19 nezná hranice a díky spolupráci mezi evropskými státy vás eRouška může upozornit na riziková setkání i v případě, že jste se potkali s cizinci, kteří používají podobné aplikace jiných států.\n\nAktuálně s %@\n\nVyužívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.
   internal static func efgsSettingsBody(_ p1: Any, _ p2: Any) -> String {
     return L10n.tr("Localizable", "efgs_settings_body", String(describing: p1), String(describing: p2))
   }
-  /// Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.
+  /// Povolte upozornění na zahraniční riziková setkání, pokud se chystáte do zahraničí nebo tam jezdíte pravidelně.
   internal static let efgsSettingsHeadline = L10n.tr("Localizable", "efgs_settings_headline")
-  /// Povolit spolupráci se zahraničím
+  /// Upozorňovat na zahraniční riziková setkání
   internal static let efgsSettingsSwitch = L10n.tr("Localizable", "efgs_settings_switch")
-  /// Cesty do zahraničí
+  /// Spolupráce se zahraničím
   internal static let efgsSettingsTitle = L10n.tr("Localizable", "efgs_settings_title")
   /// Chyba
   internal static let error = L10n.tr("Localizable", "error")

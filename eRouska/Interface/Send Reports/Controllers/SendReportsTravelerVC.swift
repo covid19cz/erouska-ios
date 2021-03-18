@@ -38,6 +38,7 @@ final class SendReportsTravelerVC: BaseController, SendReporting {
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
         }
+        navigationItem.backBarButtonItem?.title = L10n.back
 
         buttonsView.connect(with: scrollView)
         buttonsBottomConstraint.constant = ButtonsBackgroundView.BottomMargin

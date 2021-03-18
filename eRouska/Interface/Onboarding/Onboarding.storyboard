@@ -455,10 +455,10 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qiN-m4-kf0">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="528.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XXs-mM-Bdi">
-                                                <rect key="frame" x="20" y="10" width="374" height="489"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="502.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EfgsPermission" translatesAutoresizingMaskIntoConstraints="NO" id="79H-LH-vVT">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="130"/>
@@ -470,17 +470,16 @@ Několik nezávislých auditů garantuje, že aplikace neodesílá vaše osobní
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lef-zU-2x3">
-                                                        <rect key="frame" x="0.0" y="202.5" width="374" height="240.5"/>
-                                                        <string key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
-Povolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.
-Nastavení můžete kdykoliv změnit v aplikaci.
-Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.</string>
+                                                        <rect key="frame" x="0.0" y="202.5" width="374" height="196.5"/>
+                                                        <mutableString key="text">COVID-19 nezná hranice a díky spolupráci mezi evropskými státy vás eRouška může upozornit na riziková setkání i v případě, že jste se potkali s cizinci, kteří používají podobné aplikace jiných států.
+Povolte upozornění na zahraniční riziková setkání, pokud jste byli v posledních 14 dnech v zahraničí nebo tam jezdíte pravidelně.
+Nastavení můžete kdykoliv změnit v aplikaci.</mutableString>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gwT-dT-ZiJ">
-                                                        <rect key="frame" x="0.0" y="458" width="374" height="31"/>
+                                                        <rect key="frame" x="0.0" y="414" width="374" height="31"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Povolit spolupráci se zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59Z-h9-qv9">
                                                                 <rect key="frame" x="0.0" y="5.5" width="317" height="20.5"/>
@@ -495,6 +494,12 @@ Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakous
                                                             </switch>
                                                         </subviews>
                                                     </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQL-xs-Tsn">
+                                                        <rect key="frame" x="0.0" y="460" width="374" height="42.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -561,6 +566,7 @@ Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakous
                         <outlet property="bodyLabel" destination="Lef-zU-2x3" id="DAR-sd-zmu"/>
                         <outlet property="buttonsView" destination="76p-qN-vc0" id="Lr7-wY-z92"/>
                         <outlet property="continueButton" destination="5al-ub-lNy" id="hWh-gz-Ryu"/>
+                        <outlet property="countriesLabel" destination="BQL-xs-Tsn" id="42M-IT-g4O"/>
                         <outlet property="enableLabel" destination="59Z-h9-qv9" id="l6g-Sa-TFe"/>
                         <outlet property="enableSwitch" destination="xVd-K3-POE" id="JrU-Rh-Dbg"/>
                         <outlet property="headlineLabel" destination="Qjw-nw-wKY" id="aBX-3P-nJ9"/>
@@ -574,7 +580,7 @@ Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakous
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mEz-Dl-kQ9"/>
+        <segue reference="9oG-iN-o5P"/>
         <segue reference="L1U-uL-jOo"/>
         <segue reference="pLC-gk-Fi0"/>
     </inferredMetricsTieBreakers>

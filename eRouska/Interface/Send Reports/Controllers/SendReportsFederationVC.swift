@@ -30,6 +30,7 @@ final class SendReportsFederationVC: SendReportingVC {
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
         }
+        navigationItem.backBarButtonItem?.title = L10n.back
 
         bodyTextView.textContainerInset = .zero
         bodyTextView.textContainer.lineFragmentPadding = 0

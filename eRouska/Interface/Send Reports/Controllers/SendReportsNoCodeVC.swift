@@ -31,6 +31,7 @@ final class SendReportsNoCodeVC: BaseController, HasDependencies {
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
         }
+        navigationItem.backBarButtonItem?.title = L10n.back
 
         headlineLabel.text = L10n.dataSendNoCodeHeadline
         bodyLabel.text = L10n.dataSendNoCodeBody

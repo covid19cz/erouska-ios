@@ -21,6 +21,8 @@ targets:
       - path: eRouska
         excludes:
           - Supporting Files/Firebase Prod/*
+          - Supporting Files/Info.plist
+          - Supporting Files/Info-Prod.plist
           - Configs
     entitlements:
       path: eRouska/Supporting Files/Entitlements/eRouska-Debug.entitlements
@@ -59,6 +61,8 @@ targets:
       - path: eRouska
         excludes:
           - Supporting Files/Firebase Dev/*
+          - Supporting Files/Info.plist
+          - Supporting Files/Info-Prod.plist
           - Configs
     entitlements:
       path: eRouska/Supporting Files/Entitlements/eRouska-Relese.entitlements
@@ -96,7 +100,7 @@ targetTemplates:
     platform: iOS
     settings:
       base:
-        TARGETED_DEVICE_FAMILY: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
         PRODUCT_MODULE_NAME: eRouska
         PRODUCT_NAME: eRouska
         CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
