@@ -20,10 +20,10 @@
 "efgs_permission_title" = "Spolupráce se zahraničím";
 "efgs_permission_headline" = "Pomozte v boji s COVID-19 i při cestách do zahraničí";
 "efgs_permission_body" = "COVID-19 nezná hranice a díky spolupráci mezi evropskými státy vás eRouška může upozornit na riziková setkání i v případě, že jste se potkali s cizinci, kteří používají podobné aplikace jiných států.\n\nPovolte upozornění na zahraniční riziková setkání, pokud jste byli v posledních %@ dnech v zahraničí nebo tam jezdíte pravidelně.\n\nNastavení můžete kdykoliv změnit v aplikaci.";
-"efgs_permission_switch" = "Povolit spolupráci se zahraničím";
+"efgs_permission_switch" = "Upozorňovat na zahraniční riziková setkání";
 "efgs_settings_title" = "Spolupráce se zahraničím";
 "efgs_settings_headline" = "Povolte upozornění na zahraniční riziková setkání, pokud se chystáte do zahraničí nebo tam jezdíte pravidelně.";
-"efgs_settings_body" = "COVID-19 nezná hranice a díky spolupráci mezi evropskými státy vás eRouška může upozornit na riziková setkání i v případě, že jste se potkali s cizinci, kteří používají podobné aplikace jiných států.\n\nAktuálně s %@\n\nVyužívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.";
+"efgs_settings_body" = "COVID-19 nezná hranice a díky spolupráci mezi evropskými státy vás eRouška může upozornit na riziková setkání i v případě, že jste se potkali s cizinci, kteří používají podobné aplikace jiných států.\n\n%@\n\nVyužívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji %@ dní po návratu ze zahraničí.";
 "efgs_settings_switch" = "Upozorňovat na zahraniční riziková setkání";
 "efgs_settings_alert_title" = "Onemocnění COVID-19 se může projevit až 14 dní po setkání s nakaženou osobou. Spolupráci se zahraničím prosím vypněte nejdříve %@ dní po návratu.";
 "efgs_settings_alert_enable" = "Ponechat zapnuté";
