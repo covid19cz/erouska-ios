@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +22,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yYt-gs-0bx">
-                                    <rect key="frame" x="20" y="234" width="374" height="428.5"/>
+                                    <rect key="frame" x="20" y="188.5" width="374" height="519"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ForceUpdate" translatesAutoresizingMaskIntoConstraints="NO" id="5xo-u1-8gi">
                                             <rect key="frame" x="16" y="16" width="342" height="199"/>
@@ -41,31 +41,44 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vD-V7-e3n">
-                                            <rect key="frame" x="16" y="362.5" width="342" height="50"/>
+                                            <rect key="frame" x="16" y="362.5" width="342" height="83"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4R-uu-OFo">
-                                                    <rect key="frame" x="0.0" y="5" width="283" height="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Upozorňovat na zahraniční riziková setkání" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4R-uu-OFo">
+                                                    <rect key="frame" x="0.0" y="5" width="282" height="73"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU6-o9-B2x">
-                                                    <rect key="frame" x="293" y="2" width="51" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hni-dy-DeA">
+                                                    <rect key="frame" x="292" y="26" width="52" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="2Cb-gY-kDj"/>
+                                                    </constraints>
+                                                    <color key="onTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="0.38" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <color key="thumbTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="switchValueChange" destination="iN0-l3-epB" eventType="valueChanged" id="9XU-BM-UGY"/>
+                                                        <action selector="switchValueChange" destination="iN0-l3-epB" eventType="valueChanged" id="C9E-0c-cvC"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="X4R-uu-OFo" secondAttribute="bottom" constant="20" id="Sf0-D8-YRf"/>
-                                                <constraint firstItem="fU6-o9-B2x" firstAttribute="centerY" secondItem="X4R-uu-OFo" secondAttribute="centerY" id="WnA-fi-GXe"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Hni-dy-DeA" secondAttribute="bottom" constant="2" id="C9f-tu-GSE"/>
+                                                <constraint firstAttribute="bottom" secondItem="X4R-uu-OFo" secondAttribute="bottom" constant="5" id="Sf0-D8-YRf"/>
                                                 <constraint firstItem="X4R-uu-OFo" firstAttribute="top" secondItem="4vD-V7-e3n" secondAttribute="top" constant="5" id="atz-m9-icu"/>
-                                                <constraint firstItem="fU6-o9-B2x" firstAttribute="leading" secondItem="X4R-uu-OFo" secondAttribute="trailing" constant="10" id="c3v-N3-MxC"/>
+                                                <constraint firstItem="Hni-dy-DeA" firstAttribute="centerY" secondItem="X4R-uu-OFo" secondAttribute="centerY" id="fpt-FM-7J6"/>
                                                 <constraint firstItem="X4R-uu-OFo" firstAttribute="leading" secondItem="4vD-V7-e3n" secondAttribute="leading" id="ilD-lW-Zxh"/>
-                                                <constraint firstAttribute="trailing" secondItem="fU6-o9-B2x" secondAttribute="trailing" id="nDk-AY-RZg"/>
+                                                <constraint firstItem="Hni-dy-DeA" firstAttribute="leading" secondItem="X4R-uu-OFo" secondAttribute="trailing" constant="10" id="qrZ-yt-n9Q"/>
+                                                <constraint firstItem="Hni-dy-DeA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4vD-V7-e3n" secondAttribute="topMargin" constant="2" id="ubw-Q5-JIr"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hni-dy-DeA" secondAttribute="trailing" id="wF3-nz-1LP"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxu-Hu-aMv">
+                                            <rect key="frame" x="16" y="460.5" width="342" height="42.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                                 </stackView>
@@ -104,11 +117,12 @@
             </constraints>
             <connections>
                 <outlet property="bodyTextView" destination="8KR-gi-cHo" id="SF1-ar-I3l"/>
+                <outlet property="footerLabel" destination="uxu-Hu-aMv" id="3M6-fJ-o5b"/>
                 <outlet property="headlineLabel" destination="oXP-pI-Too" id="aDm-Fd-qQJ"/>
                 <outlet property="imageView" destination="5xo-u1-8gi" id="U55-Ed-X16"/>
                 <outlet property="scrollView" destination="krq-aB-fo7" id="XlP-fr-qlv"/>
                 <outlet property="switchLabel" destination="X4R-uu-OFo" id="Cjn-TQ-90x"/>
-                <outlet property="switchView" destination="fU6-o9-B2x" id="vHO-1C-if3"/>
+                <outlet property="switchView" destination="Hni-dy-DeA" id="1GW-xM-d3q"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="141.96428571428569"/>
         </view>

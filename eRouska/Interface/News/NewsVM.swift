@@ -10,10 +10,13 @@ import Foundation
 
 struct NewsVM {
 
-    let newsPages: [NewsPageVM]
+    let type: NewsType
+    var newsPages: [NewsPageVM] {
+        type.pages
+    }
 
     init(type: NewsType) {
-        newsPages = type.pages
+        self.type = type
     }
 
 }
@@ -54,33 +57,26 @@ enum NewsType {
                     bodyLinkTitle: L10n.newsPrivacyBodyLink,
                     bodyLink: RemoteValues.conditionsOfUseUrl
                 ),
-                NewsPageVM(
-                    imageAsset: Asset.newsTravel,
-                    headline: L10n.newsTravelTitle,
-                    body: L10n.newsTravelBody(RemoteValues.efgsCountries),
-                    bodyLinkTitle: L10n.newsPrivacyBodyLink,
-                    bodyLink: RemoteValues.conditionsOfUseUrl,
-                    switchTitle: L10n.newsTravelEnable,
-                    switchCallback: { isOn in
-                        AppSettings.efgsEnabled = isOn
-                    }
-                )
+                efgsPage
             ]
         case .efgs:
-            return [
-                NewsPageVM(
-                    imageAsset: Asset.newsTravel,
-                    headline: L10n.newsTravelTitle,
-                    body: L10n.newsTravelBody(RemoteValues.efgsCountries),
-                    bodyLinkTitle: L10n.newsPrivacyBodyLink,
-                    bodyLink: RemoteValues.conditionsOfUseUrl,
-                    switchTitle: L10n.newsTravelEnable,
-                    switchCallback: { isOn in
-                        AppSettings.efgsEnabled = isOn
-                    }
-                )
-            ]
+            return [efgsPage]
         }
+    }
+
+    private var efgsPage: NewsPageVM {
+        NewsPageVM(
+            imageAsset: Asset.newsTravel,
+            headline: L10n.newsTravelTitle,
+            body: L10n.newsTravelBody(RemoteValues.efgsDays),
+            bodyLinkTitle: L10n.newsPrivacyBodyLink,
+            bodyLink: RemoteValues.conditionsOfUseUrl,
+            switchTitle: L10n.newsTravelEnable,
+            switchCallback: { isOn in
+                AppSettings.efgsEnabled = isOn
+            },
+            footer: RemoteValues.efgsCountries
+        )
     }
 
 }

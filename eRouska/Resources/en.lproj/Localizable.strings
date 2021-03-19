@@ -1,5 +1,5 @@
 "news_travel_title" = "Help to fight against COVID-19 when abroad";
-"news_travel_body" = "COVID-19 does not respect borders. Thanks to cooperation of EU countries, eRouška can warn you against risk of infection.\n\nPlease enable Cross-border cooperation if you have visited an EU country in the past 14 days or you travel regularly. eRouška will notify you if you encounter someone with COVID-19.\n\n%@\n\nYou can change the settings anytime.";
+"news_travel_body" = "COVID-19 does not respect borders. Thanks to cooperation of EU countries, eRouška can warn you against risk of infection.\n\nPlease enable Cross-border cooperation if you have visited an EU country in the past 14 days or you travel regularly. eRouška will notify you if you encounter someone with COVID-19.\n\nYou can change the settings anytime.";
 "news_travel_enable" = "Enable cross-border cooperation";
 "app_name" = "eRouška";
 "help" = "Help";

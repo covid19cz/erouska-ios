@@ -490,11 +490,11 @@ internal enum L10n {
   internal static let newsToTheWorldBody = L10n.tr("Localizable", "news_to_the_world_body")
   /// eRouška se chystá do světa
   internal static let newsToTheWorldTitle = L10n.tr("Localizable", "news_to_the_world_title")
-  /// COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.\n\nPovolte si prosím Spolupráci se zahraničím, pokud jste byli v posledních 14 dnech v některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým nemocí COVID-19.\n\n%@\n\nNastavení můžete kdykoliv změnit v aplikaci.
+  /// COVID-19 nezná hranice a díky spolupráci mezi evropskými státy vás eRouška může upozornit na riziková setkání i v případě, že jste se potkali s cizinci, kteří používají podobné aplikace jiných států.\n\nPovolte upozornění na zahraniční riziková setkání, pokud jste byli v posledních %@ dnech v zahraničí nebo tam jezdíte pravidelně.\n\nNastavení můžete kdykoliv změnit v aplikaci.
   internal static func newsTravelBody(_ p1: Any) -> String {
     return L10n.tr("Localizable", "news_travel_body", String(describing: p1))
   }
-  /// Povolit spolupráci se zahraničím
+  /// Upozorňovat na zahraniční riziková setkání
   internal static let newsTravelEnable = L10n.tr("Localizable", "news_travel_enable")
   /// Pomozte v boji s COVID-19 i při cestách do zahraničí
   internal static let newsTravelTitle = L10n.tr("Localizable", "news_travel_title")

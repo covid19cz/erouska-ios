@@ -22,7 +22,7 @@ final class NewsVC: BaseController {
         super.viewDidLoad()
 
         title = L10n.newsTitle
-        actionButton.setTitle(L10n.newsButtonClose)
+        updateView(for: 0)
 
         let nib = UINib(nibName: "NewsPageView", bundle: nil)
         pagesStackView.arrangedSubviews.forEach {
@@ -51,6 +51,14 @@ final class NewsVC: BaseController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if viewModel.type == .efgs {
+            navigationController?.setNavigationBarHidden(true, animated: false)
+        }
+    }
+
     @IBAction private func actionButtonPressed(_ sender: Any) {
         if pageControl.currentPage == viewModel.newsPages.count - 1 {
             dismiss(animated: true, completion: nil)
@@ -65,7 +73,11 @@ final class NewsVC: BaseController {
     }
 
     private func updateView(for page: Int) {
-        actionButton.setTitle(page == viewModel.newsPages.count - 1 ? L10n.newsButtonClose : L10n.newsButtonContinue)
+        if viewModel.type == .efgs {
+            actionButton.setTitle(L10n.newsButtonContinue)
+        } else {
+            actionButton.setTitle(page == viewModel.newsPages.count - 1 ? L10n.newsButtonClose : L10n.newsButtonContinue)
+        }
     }
 
     private func scrollToPage(at index: Int) {

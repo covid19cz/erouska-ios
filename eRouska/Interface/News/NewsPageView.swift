@@ -28,11 +28,18 @@ final class NewsPageView: UIView {
                 switchLabel.superview?.isHidden = false
                 headlineLabel.textAlignment = .left
                 bodyTextView.textAlignment = .left
+                footerLabel.textAlignment = .left
+
+                switchValueChange()
             } else {
                 switchLabel.superview?.isHidden = true
                 headlineLabel.textAlignment = .center
                 bodyTextView.textAlignment = .center
+                footerLabel.textAlignment = .center
             }
+
+            footerLabel.text = viewModel.footer
+            footerLabel.isHidden = viewModel.footer == nil
         }
     }
 
@@ -58,14 +65,9 @@ final class NewsPageView: UIView {
     }
     @IBOutlet private weak var switchLabel: UILabel!
     @IBOutlet private weak var switchView: UISwitch!
+    @IBOutlet private weak var footerLabel: UILabel!
 
     // MARK: -
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        switchValueChange()
-    }
 
     @IBAction private func switchValueChange() {
         viewModel?.switchCallback?(switchView.isOn)
