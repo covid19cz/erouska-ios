@@ -246,13 +246,6 @@ private extension AppDelegate {
             rootViewController?.present(navController, animated: true)
         }
 
-        AppSettings.v2_3NewsLaunched = true
-        let navController = StoryboardScene.News.initialScene.instantiate()
-        navController.modalPresentationStyle = .fullScreen
-        let controller = navController.topViewController as? NewsVC
-        controller?.viewModel = .init(type: .efgs)
-        rootViewController?.present(navController, animated: true)
-
         AppSettings.lastExposureWarningNotDisplayed = false
     }
 
