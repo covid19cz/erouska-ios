@@ -104,7 +104,7 @@ whitelist_rules:
   - type_name
   - unused_setter_value
 included:
-  - BT-Tracking
+  - eRouska
 force_cast: error
 force_unwrapping: error
 function_body_length:

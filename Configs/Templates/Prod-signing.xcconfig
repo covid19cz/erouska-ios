@@ -1,0 +1,3 @@
+CODE_SIGN_IDENTITY = iPhone Developer
+DEVELOPMENT_TEAM = TODO: Set proper development team
+PROVISIONING_PROFILE_SPECIFIER = TODO: Set proper provisioning profile
