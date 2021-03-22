@@ -17,6 +17,15 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<TabBarController>(storyboard: Active.self)
   }
+  internal enum Contacts: StoryboardType {
+    internal static let storyboardName = "Contacts"
+
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Contacts.self)
+
+    internal static let contacts = SceneType<ContactsVC>(storyboard: Contacts.self, identifier: "Contacts")
+
+    internal static let contactsNav = SceneType<UIKit.UINavigationController>(storyboard: Contacts.self, identifier: "ContactsNav")
+  }
   internal enum CurrentData: StoryboardType {
     internal static let storyboardName = "CurrentData"
 
@@ -25,9 +34,7 @@ internal enum StoryboardScene {
   internal enum Debug: StoryboardType {
     internal static let storyboardName = "Debug"
 
-    internal static let initialScene = InitialSceneType<TabBarController>(storyboard: Debug.self)
-
-    internal static let tabBar = SceneType<TabBarController>(storyboard: Debug.self, identifier: "TabBar")
+    internal static let debugDownloadReportsNav = SceneType<UIKit.UINavigationController>(storyboard: Debug.self, identifier: "DebugDownloadReportsNav")
   }
   internal enum Error: StoryboardType {
     internal static let storyboardName = "Error"
@@ -89,6 +96,10 @@ internal enum StoryboardScene {
     internal static let riskyEncountersNegativeNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersNegativeNav")
 
     internal static let riskyEncountersPositiveNav = SceneType<UIKit.UINavigationController>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersPositiveNav")
+
+    internal static let riskyEncountersV1DetailVC = SceneType<RiskyEncountersV1DetailVC>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersV1DetailVC")
+
+    internal static let riskyEncountersV2DetailVC = SceneType<RiskyEncountersV2DetailVC>(storyboard: RiskyEncounters.self, identifier: "RiskyEncountersV2DetailVC")
   }
   internal enum SendReports: StoryboardType {
     internal static let storyboardName = "SendReports"

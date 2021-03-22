@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Wd-sH-aiC">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="YWR-rg-48V">
+            <objects>
+                <tabBarController id="6Wd-sH-aiC" customClass="TabBarController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iCY-JL-jXM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="8pR-j1-IZY" kind="relationship" relationship="viewControllers" id="Ba7-2w-sYV"/>
+                        <segue destination="Ecq-qf-QeQ" kind="relationship" relationship="viewControllers" id="jGg-vn-Hoi"/>
+                        <segue destination="v9g-l9-1nr" kind="relationship" relationship="viewControllers" id="BMz-eG-eV7"/>
+                        <segue destination="S3U-Wy-NaO" kind="relationship" relationship="viewControllers" id="A6t-X9-5nb"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ww7-jz-Cgw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-917" y="1300"/>
+        </scene>
+        <!--eRouška-->
+        <scene sceneID="cWO-yu-PwA">
+            <objects>
+                <navigationController id="8pR-j1-IZY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="eRouška" id="VoJ-0E-pnm"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9Gy-y2-tgV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SLc-31-c7B" kind="relationship" relationship="rootViewController" id="lJh-M1-ZKO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgF-We-scY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="314" y="893"/>
+        </scene>
+        <!--CurrentData-->
+        <scene sceneID="DC3-Ek-JEO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CurrentData" id="Ecq-qf-QeQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="gkc-Au-Szg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ph2-fL-JIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88" y="1304"/>
+        </scene>
+        <!--HelpNavigation-->
+        <scene sceneID="P4F-IN-7fN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="HelpNavigation" id="S3U-Wy-NaO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Nbu-nk-wz1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sDq-r7-6Eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102" y="1465"/>
+        </scene>
+        <!--Kontakty-->
+        <scene sceneID="n01-Tj-cda">
+            <objects>
+                <navigationController id="v9g-l9-1nr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Kontakty" id="UZH-Dl-Ge4"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iGG-Be-Xf5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="d1M-LT-4V3" kind="relationship" relationship="rootViewController" id="LxZ-Or-eOW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mcg-y6-Jkz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="312" y="1864"/>
+        </scene>
+        <!--ContactsVC-->
+        <scene sceneID="EQV-Fr-ji0">
+            <objects>
+                <viewController id="d1M-LT-4V3" customClass="ContactsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k3E-fX-T2T">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="snT-dK-zmg">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" rowHeight="210" id="5bm-Aw-0OQ" customClass="ContactCell" customModule="eRouska" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="210"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5bm-Aw-0OQ" id="2xQ-vr-Teu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-fU-DpV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Máte podezření na koronavirus?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7N-dW-0In">
+                                                            <rect key="frame" x="16" y="16" width="382" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zůstaňte doma a kontaktuje svého praktického lékaře nebo příslušnou hygienickou stanici." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVJ-mQ-3P0">
+                                                            <rect key="frame" x="16" y="52.5" width="382" height="42.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-QQ-KxS">
+                                                            <rect key="frame" x="16" y="111" width="382" height="67"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                            <state key="normal" title="Důležité kontakty"/>
+                                                            <connections>
+                                                                <action selector="openLink" destination="5bm-Aw-0OQ" eventType="touchUpInside" id="Ua9-Kc-Tfo"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <edgeInsets key="layoutMargins" top="16" left="16" bottom="32" right="16"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Noe-fU-DpV" secondAttribute="bottom" id="2Qj-wH-EDV"/>
+                                                <constraint firstItem="Noe-fU-DpV" firstAttribute="leading" secondItem="2xQ-vr-Teu" secondAttribute="leading" id="3Ma-mC-phB"/>
+                                                <constraint firstItem="Noe-fU-DpV" firstAttribute="top" secondItem="2xQ-vr-Teu" secondAttribute="top" id="uCK-KS-ub5"/>
+                                                <constraint firstAttribute="trailing" secondItem="Noe-fU-DpV" secondAttribute="trailing" id="we9-Xh-Yk6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bodyLabel" destination="MVJ-mQ-3P0" id="bWt-Ua-oHP"/>
+                                            <outlet property="button" destination="ft6-QQ-KxS" id="K0W-VD-Jyg"/>
+                                            <outlet property="headlineLabel" destination="g7N-dW-0In" id="sim-Dt-YP2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="d1M-LT-4V3" id="jzs-OF-e4P"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="W1I-Z4-IfU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="snT-dK-zmg" firstAttribute="leading" secondItem="W1I-Z4-IfU" secondAttribute="leading" id="HU4-T7-g4d"/>
+                            <constraint firstItem="W1I-Z4-IfU" firstAttribute="trailing" secondItem="snT-dK-zmg" secondAttribute="trailing" id="MUT-On-hA8"/>
+                            <constraint firstItem="snT-dK-zmg" firstAttribute="top" secondItem="W1I-Z4-IfU" secondAttribute="top" id="cDn-5s-Rce"/>
+                            <constraint firstItem="W1I-Z4-IfU" firstAttribute="bottom" secondItem="snT-dK-zmg" secondAttribute="bottom" id="p7U-LJ-j0w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nja-ff-DBc"/>
+                    <connections>
+                        <outlet property="tableView" destination="snT-dK-zmg" id="4DG-bl-SGG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hwz-YG-gnu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1213" y="1864"/>
+        </scene>
+        <!--Aplikace je aktivní-->
+        <scene sceneID="fsH-bj-obm">
+            <objects>
+                <viewController id="SLc-31-c7B" userLabel="Aplikace je aktivní" customClass="ActiveAppVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hh6-32-Hb4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWN-IR-79w">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRX-7H-oZ1">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="647"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qcL-c9-sLJ">
+                                                <rect key="frame" x="20" y="20" width="374" height="607"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DS7-QE-13z" userLabel="How it Works Banner" customClass="ActiveBannerView" customModule="eRouska" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="359.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="eu6-kv-IYi">
+                                                                <rect key="frame" x="14" y="14" width="346" height="331.5"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="ATH-A6-Omk">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="284.5"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HitWIcon" translatesAutoresizingMaskIntoConstraints="NO" id="caN-qh-j0K">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="66" height="284.5"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="66" id="awK-Q7-ajx"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Zajímá vás, jak eRouška funguje?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1P-iJ-dGT">
+                                                                                <rect key="frame" x="79" y="0.0" width="267" height="284.5"/>
+                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                                <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9xm-0b-jw0">
+                                                                        <rect key="frame" x="0.0" y="299.5" width="346" height="32"/>
+                                                                        <subviews>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4YY-Au-qAQ">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="224" height="32"/>
+                                                                            </view>
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbH-qQ-bff" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                                <rect key="frame" x="239" y="0.0" width="46" height="32"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="32" id="Fma-ED-udb"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <state key="normal" title="Button">
+                                                                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                                                                </state>
+                                                                                <connections>
+                                                                                    <action selector="closeHowItWorksBanner:" destination="SLc-31-c7B" eventType="touchUpInside" id="w1i-ve-8gK"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AY-Wp-OyU" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                                <rect key="frame" x="300" y="0.0" width="46" height="32"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="32" id="7hY-uK-A8a"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <state key="normal" title="Button">
+                                                                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                                                                </state>
+                                                                                <connections>
+                                                                                    <action selector="howItWorksMoreInfo:" destination="SLc-31-c7B" eventType="touchUpInside" id="zD3-cZ-YYi"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="eu6-kv-IYi" secondAttribute="trailing" constant="14" id="2UC-L2-CAB"/>
+                                                            <constraint firstItem="eu6-kv-IYi" firstAttribute="leading" secondItem="DS7-QE-13z" secondAttribute="leading" constant="14" id="2qZ-Ss-jYp"/>
+                                                            <constraint firstItem="eu6-kv-IYi" firstAttribute="top" secondItem="DS7-QE-13z" secondAttribute="top" constant="14" id="CQy-hb-eLE"/>
+                                                            <constraint firstAttribute="bottom" secondItem="eu6-kv-IYi" secondAttribute="bottom" constant="14" id="cxJ-ZK-bdb"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="closeButton" destination="bbH-qQ-bff" id="sGm-2E-GMy"/>
+                                                            <outlet property="moreInfoButton" destination="5AY-Wp-OyU" id="pKe-SN-TtS"/>
+                                                            <outlet property="titleLabel" destination="q1P-iJ-dGT" id="xIH-3A-Rkf"/>
+                                                        </connections>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlx-RT-boE" customClass="ActiveBannerView" customModule="eRouska" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="379.5" width="374" height="227.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="e2P-se-2W0">
+                                                                <rect key="frame" x="14" y="14" width="346" height="199.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5Y-jp-bR1">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="152.5"/>
+                                                                        <string key="text">Aplikace monitoruje okolí a pracuje na pozadí. Neukončujte ji přejetím nahoru v přepínači aplikací a pracujte s telefonem jako obvykle.
+Na rušných místech lépe rozpoznává ostatní eRoušky, pokud ji necháte na obrazovce a telefon nezamknete.</string>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
+                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6J6-PZ-jWb">
+                                                                        <rect key="frame" x="0.0" y="167.5" width="346" height="32"/>
+                                                                        <subviews>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-ty-mbL">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="224" height="32"/>
+                                                                            </view>
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQp-na-S8Q" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                                <rect key="frame" x="239" y="0.0" width="46" height="32"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="32" id="k0g-3E-s5h"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <state key="normal" title="Button">
+                                                                                    <color key="titleColor" red="0.87058823529999996" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                </state>
+                                                                                <connections>
+                                                                                    <action selector="closeExposureBanner:" destination="SLc-31-c7B" eventType="touchUpInside" id="d6g-sI-WDp"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocf-F5-uU9" customClass="ExposureBannerButton" customModule="eRouska" customModuleProvider="target">
+                                                                                <rect key="frame" x="300" y="0.0" width="46" height="32"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="32" id="qrd-JC-Ug0"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <state key="normal" title="Button">
+                                                                                    <color key="titleColor" red="0.87058823529999996" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                </state>
+                                                                                <connections>
+                                                                                    <action selector="exposureMoreInfo:" destination="SLc-31-c7B" eventType="touchUpInside" id="Lvg-0J-LaK"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" name="AlertRed"/>
+                                                        <constraints>
+                                                            <constraint firstItem="e2P-se-2W0" firstAttribute="leading" secondItem="Rlx-RT-boE" secondAttribute="leading" constant="14" id="RVL-j6-LJn"/>
+                                                            <constraint firstAttribute="bottom" secondItem="e2P-se-2W0" secondAttribute="bottom" constant="14" id="aZj-lm-mSC"/>
+                                                            <constraint firstItem="e2P-se-2W0" firstAttribute="top" secondItem="Rlx-RT-boE" secondAttribute="top" constant="14" id="hgy-Ad-OBJ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="e2P-se-2W0" secondAttribute="trailing" constant="14" id="vey-a9-gst"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="closeButton" destination="OQp-na-S8Q" id="9lw-IY-NHk"/>
+                                                            <outlet property="moreInfoButton" destination="Ocf-F5-uU9" id="3ak-v6-45r"/>
+                                                            <outlet property="titleLabel" destination="I5Y-jp-bR1" id="p1S-ex-ziv"/>
+                                                        </connections>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="qcL-c9-sLJ" secondAttribute="trailing" id="FxJ-Bi-YAJ"/>
+                                            <constraint firstItem="qcL-c9-sLJ" firstAttribute="top" secondItem="SRX-7H-oZ1" secondAttribute="top" constant="20" id="HAw-Km-4dC"/>
+                                            <constraint firstAttribute="bottom" secondItem="qcL-c9-sLJ" secondAttribute="bottom" constant="20" id="m65-Ku-T0K"/>
+                                            <constraint firstItem="qcL-c9-sLJ" firstAttribute="leading" secondItem="SRX-7H-oZ1" secondAttribute="leadingMargin" id="tZe-Xg-srA"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SRX-7H-oZ1" firstAttribute="leading" secondItem="kTX-CN-gQf" secondAttribute="leading" id="2xf-YH-cyc"/>
+                                    <constraint firstItem="SRX-7H-oZ1" firstAttribute="width" secondItem="ggr-sE-XeN" secondAttribute="width" id="Psz-gj-GL4"/>
+                                    <constraint firstItem="SRX-7H-oZ1" firstAttribute="bottom" secondItem="kTX-CN-gQf" secondAttribute="bottom" id="oag-bo-VCY"/>
+                                    <constraint firstItem="SRX-7H-oZ1" firstAttribute="centerX" secondItem="kTX-CN-gQf" secondAttribute="centerX" id="xGi-HH-Cuz"/>
+                                    <constraint firstItem="SRX-7H-oZ1" firstAttribute="top" secondItem="kTX-CN-gQf" secondAttribute="top" id="zMN-JJ-iVS"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="kTX-CN-gQf"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ggr-sE-XeN"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IN0-jh-QW1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aWN-IR-79w" firstAttribute="top" secondItem="hh6-32-Hb4" secondAttribute="top" id="5oC-zr-nLn"/>
+                            <constraint firstItem="IN0-jh-QW1" firstAttribute="trailing" secondItem="aWN-IR-79w" secondAttribute="trailing" id="7W4-9u-9Mw"/>
+                            <constraint firstItem="aWN-IR-79w" firstAttribute="leading" secondItem="IN0-jh-QW1" secondAttribute="leading" id="WSN-C2-bgf"/>
+                            <constraint firstItem="IN0-jh-QW1" firstAttribute="bottom" secondItem="aWN-IR-79w" secondAttribute="bottom" id="qiv-M4-naR"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="eRouška" id="Jwh-Bn-MMw">
+                        <barButtonItem key="backBarButtonItem" title="Zpět" id="45a-ir-C72"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sdílet aplikaci" id="Pfj-dc-ty6">
+                            <connections>
+                                <action selector="shareAppAction" destination="SLc-31-c7B" id="7Q8-CQ-HVr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="exposureBannerView" destination="Rlx-RT-boE" id="cWu-7H-i1a"/>
+                        <outlet property="howItWorksBannerView" destination="DS7-QE-13z" id="f5W-v3-cPZ"/>
+                        <outlet property="mainStackView" destination="qcL-c9-sLJ" id="JkJ-Wz-Fuu"/>
+                        <segue destination="48F-yW-Dk4" kind="presentation" identifier="sendReport" id="cXY-OD-JrZ"/>
+                        <segue destination="oSq-aZ-OP9" kind="presentation" identifier="howItWorks" id="aUV-7U-YTw"/>
+                        <segue destination="edr-Ou-VND" kind="presentation" identifier="debugReports" id="DLS-7X-YtP"/>
+                        <segue destination="cc6-nw-2K9" kind="presentation" identifier="traveler" id="hpv-5A-jFQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LjF-19-hsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1213.0434782608697" y="891.96428571428567"/>
+        </scene>
+        <!--SendReports-->
+        <scene sceneID="ICw-CE-1Wd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SendReports" id="48F-yW-Dk4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-Tx-30g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1978" y="265"/>
+        </scene>
+        <!--HowItWorksVC-->
+        <scene sceneID="agx-I7-mSo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Help" referencedIdentifier="HowItWorksVC" id="Duv-l7-4bI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="YCR-UN-ecO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="buQ-rx-IIq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2828" y="737"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vAa-DO-szD">
+            <objects>
+                <navigationController id="oSq-aZ-OP9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CEx-Lm-kjw"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQm-xT-Wsj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Duv-l7-4bI" kind="relationship" relationship="rootViewController" id="axf-BC-KcI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DUf-zP-ks6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2199" y="737"/>
+        </scene>
+        <!--DebugDownloadReportsNav-->
+        <scene sceneID="B8y-jW-8WW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Debug" referencedIdentifier="DebugDownloadReportsNav" id="edr-Ou-VND" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CU7-le-fV5"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vEg-Ta-fI7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2043" y="337"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kE5-8L-ji5">
+            <objects>
+                <navigationController id="cc6-nw-2K9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WB5-ZG-N2r"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="bxY-PT-hUM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="orb-Zh-2dN" kind="relationship" relationship="rootViewController" id="z6m-h3-FLe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GaY-pc-O7C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2199" y="1442"/>
+        </scene>
+        <!--Spolupráce se zahraničím-->
+        <scene sceneID="QzE-du-UI8">
+            <objects>
+                <viewController id="orb-Zh-2dN" customClass="EFGSSettingsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dSo-mX-Arq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya2-gH-Bmv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EyQ-Xk-mcp">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="370"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Sao-zk-K6J">
+                                                <rect key="frame" x="20" y="10" width="374" height="344"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROb-KN-fyO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="108.5"/>
+                                                        <string key="text">Povolte spolupráci se zahraničím, pokud se chystáte do některé ze zemí Evropské unie nebo do nich jezdíte pravidelně. eRouška vás upozorní na možnost setkání s nakaženým onemocnění COVID-19.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vgk-S9-IXe">
+                                                        <rect key="frame" x="0.0" y="123.5" width="374" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Povolit spolupráci se zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXk-gQ-FCJ">
+                                                                <rect key="frame" x="0.0" y="5.5" width="317" height="20.5"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KRI-mG-vAv">
+                                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                                <color key="onTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="0.38" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                <color key="thumbTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="changeSettings" destination="orb-Zh-2dN" eventType="valueChanged" id="eCP-k1-0Tg"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhp-bC-cMu">
+                                                        <rect key="frame" x="0.0" y="169.5" width="374" height="174.5"/>
+                                                        <string key="text">COVID-19 nezná hranice a díky spolupráci mezi zeměmi Evropské unie vás eRouška může informovat o možném riziku nákazy.
+Aktuálně s eRouškou spolupracuje Dánsko, Litva, Lotyšsko, Německo a Rakousko.
+Využívání této funkce může způsobit vyšší objem stahovaných dat. Vypněte ji 14 dní po návratu ze zahraničí.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Sao-zk-K6J" firstAttribute="leading" secondItem="EyQ-Xk-mcp" secondAttribute="leadingMargin" id="Asc-N4-fVu"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Sao-zk-K6J" secondAttribute="trailing" id="TDE-x0-7Uo"/>
+                                            <constraint firstItem="Sao-zk-K6J" firstAttribute="top" secondItem="EyQ-Xk-mcp" secondAttribute="top" constant="10" id="X11-RV-Ohe"/>
+                                            <constraint firstAttribute="bottom" secondItem="Sao-zk-K6J" secondAttribute="bottom" constant="16" id="heh-Rm-f5U"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="top" secondItem="RzC-Fg-EZ4" secondAttribute="top" id="3vJ-TD-5bp"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="width" secondItem="0CY-lJ-Tpd" secondAttribute="width" id="Mbf-x1-h3A"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="leading" secondItem="RzC-Fg-EZ4" secondAttribute="leading" id="Qqx-of-yWe"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="centerX" secondItem="0CY-lJ-Tpd" secondAttribute="centerX" id="RAp-6E-s2f"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="trailing" secondItem="RzC-Fg-EZ4" secondAttribute="trailing" id="gZa-mp-IPf"/>
+                                    <constraint firstItem="EyQ-Xk-mcp" firstAttribute="bottom" secondItem="RzC-Fg-EZ4" secondAttribute="bottom" id="tm5-KZ-YV3"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="RzC-Fg-EZ4"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="0CY-lJ-Tpd"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ofz-vS-sEu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ya2-gH-Bmv" firstAttribute="leading" secondItem="dSo-mX-Arq" secondAttribute="leading" id="ADp-h1-q9v"/>
+                            <constraint firstItem="Ya2-gH-Bmv" firstAttribute="top" secondItem="dSo-mX-Arq" secondAttribute="top" id="Am4-ok-VxO"/>
+                            <constraint firstItem="ofz-vS-sEu" firstAttribute="trailing" secondItem="Ya2-gH-Bmv" secondAttribute="trailing" id="Och-KV-HtX"/>
+                            <constraint firstItem="ofz-vS-sEu" firstAttribute="bottom" secondItem="Ya2-gH-Bmv" secondAttribute="bottom" id="kZm-WZ-mhm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Spolupráce se zahraničím" largeTitleDisplayMode="always" id="pHP-fi-2II"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="Xhp-bC-cMu" id="wi7-WO-La3"/>
+                        <outlet property="enableLabel" destination="xXk-gQ-FCJ" id="ilU-Oq-Dca"/>
+                        <outlet property="enableSwitch" destination="KRI-mG-vAv" id="iUU-j6-TUo"/>
+                        <outlet property="headlineLabel" destination="ROb-KN-fyO" id="DsW-BM-Qz0"/>
+                        <outlet property="scrollView" destination="Ya2-gH-Bmv" id="BKq-5e-xQ2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3s-lS-eC9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3039" y="1442"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="HitWIcon" width="66" height="59"/>
+        <namedColor name="AlertRed">
+            <color red="0.95294117647058818" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

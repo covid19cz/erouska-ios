@@ -1,0 +1,42 @@
+//
+//  RiskyEncountersNegativeVM.swift
+//  eRouska Dev
+//
+//  Created by Lukáš Foldýna on 25/10/2020.
+//  Copyright © 2020 Covid19CZ. All rights reserved.
+//
+
+import Foundation
+import RealmSwift
+import RxRealm
+import RxSwift
+import UIKit
+
+struct RiskyEncountersNegativeVM {
+
+    // MARK: - Dependencies
+
+    typealias Dependencies = HasRealm
+
+    private let dependencies: Dependencies
+
+    // MARK: -
+
+    let shouldShowPreviousRiskyEncounters: Observable<Bool>
+
+    let title = RemoteValues.exposureUITitle
+
+    let negativeTitle = RemoteValues.noEncounterHeader
+    let negativeBody = RemoteValues.noEncounterBody
+
+    let previousRiskyEncountersButton = RemoteValues.recentExposuresUITitle
+
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+
+        let exposures = dependencies.realm.objects(ExposureRealm.self).sorted(byKeyPath: "date")
+        shouldShowPreviousRiskyEncounters = Observable.collection(from: exposures).map {
+            !$0.isEmpty
+        }
+    }
+}
