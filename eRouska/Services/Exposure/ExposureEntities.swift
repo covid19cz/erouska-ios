@@ -135,36 +135,36 @@ struct ExposureConfigurationV2: ExposureConfiguration, Decodable {
 
     var configuration: ENExposureConfiguration {
         let configuration = ENExposureConfiguration()
-        if #available(iOS 13.7, *) {
-            configuration.immediateDurationWeight = immediateDurationWeight
-            configuration.nearDurationWeight = nearDurationWeight
-            configuration.mediumDurationWeight = mediumDurationWeight
-            configuration.otherDurationWeight = otherDurationWeight
-            var infectiousnessForDaysSinceOnsetOfSymptoms: [Int: Int] = [:]
-            for (stringDay, infectiousness) in self.infectiousnessForDaysSinceOnsetOfSymptoms {
-                if stringDay == "unknown" {
-                    if #available(iOS 14.0, *) {
-                        infectiousnessForDaysSinceOnsetOfSymptoms[ENDaysSinceOnsetOfSymptomsUnknown] = infectiousness
-                    } else {
-                        // ENDaysSinceOnsetOfSymptomsUnknown is not available
-                        // in earlier versions of iOS; use an equivalent value
-                        infectiousnessForDaysSinceOnsetOfSymptoms[NSIntegerMax] = infectiousness
-                    }
-                } else if let day = Int(stringDay) {
-                    infectiousnessForDaysSinceOnsetOfSymptoms[day] = infectiousness
+
+        configuration.immediateDurationWeight = immediateDurationWeight
+        configuration.nearDurationWeight = nearDurationWeight
+        configuration.mediumDurationWeight = mediumDurationWeight
+        configuration.otherDurationWeight = otherDurationWeight
+        var infectiousnessForDaysSinceOnsetOfSymptoms: [Int: Int] = [:]
+        for (stringDay, infectiousness) in self.infectiousnessForDaysSinceOnsetOfSymptoms {
+            if stringDay == "unknown" {
+                if #available(iOS 14.0, *) {
+                    infectiousnessForDaysSinceOnsetOfSymptoms[ENDaysSinceOnsetOfSymptomsUnknown] = infectiousness
+                } else {
+                    // ENDaysSinceOnsetOfSymptomsUnknown is not available
+                    // in earlier versions of iOS; use an equivalent value
+                    infectiousnessForDaysSinceOnsetOfSymptoms[NSIntegerMax] = infectiousness
                 }
-            }
-            configuration.infectiousnessForDaysSinceOnsetOfSymptoms = infectiousnessForDaysSinceOnsetOfSymptoms as [NSNumber: NSNumber]
-            configuration.infectiousnessStandardWeight = infectiousnessStandardWeight
-            configuration.infectiousnessHighWeight = infectiousnessHighWeight
-            configuration.reportTypeConfirmedTestWeight = reportTypeConfirmedTestWeight
-            configuration.reportTypeConfirmedClinicalDiagnosisWeight = reportTypeConfirmedClinicalDiagnosisWeight
-            configuration.reportTypeSelfReportedWeight = reportTypeSelfReportedWeight
-            configuration.reportTypeRecursiveWeight = reportTypeRecursiveWeight
-            if let reportTypeNoneMap = ENDiagnosisReportType(rawValue: UInt32(reportTypeNoneMap)) {
-                configuration.reportTypeNoneMap = reportTypeNoneMap
+            } else if let day = Int(stringDay) {
+                infectiousnessForDaysSinceOnsetOfSymptoms[day] = infectiousness
             }
         }
+        configuration.infectiousnessForDaysSinceOnsetOfSymptoms = infectiousnessForDaysSinceOnsetOfSymptoms as [NSNumber: NSNumber]
+        configuration.infectiousnessStandardWeight = infectiousnessStandardWeight
+        configuration.infectiousnessHighWeight = infectiousnessHighWeight
+        configuration.reportTypeConfirmedTestWeight = reportTypeConfirmedTestWeight
+        configuration.reportTypeConfirmedClinicalDiagnosisWeight = reportTypeConfirmedClinicalDiagnosisWeight
+        configuration.reportTypeSelfReportedWeight = reportTypeSelfReportedWeight
+        configuration.reportTypeRecursiveWeight = reportTypeRecursiveWeight
+        if let reportTypeNoneMap = ENDiagnosisReportType(rawValue: UInt32(reportTypeNoneMap)) {
+            configuration.reportTypeNoneMap = reportTypeNoneMap
+        }
+
         configuration.minimumRiskScore = minimumRiskScore
         configuration.attenuationLevelValues = attenuationLevelValues as [NSNumber]
         configuration.daysSinceLastExposureLevelValues = daysSinceLastExposureLevelValues as [NSNumber]

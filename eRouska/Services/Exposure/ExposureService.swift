@@ -21,6 +21,7 @@ protocol ExposureServicing: AnyObject {
     // Activation
     typealias Callback = (Error?) -> Void
 
+    var isAvailable: Bool { get }
     var isActive: Bool { get }
     var isEnabled: Bool { get }
 
@@ -50,6 +51,9 @@ protocol ExposureServicing: AnyObject {
     // Bluetooth
     var isBluetoothOn: Bool { get }
 
+    // Background service for iOS 12.5
+    func setLaunchActivityHandler(activityHandler: @escaping ENActivityHandler)
+
 }
 
 final class ExposureService: ExposureServicing {
@@ -59,6 +63,10 @@ final class ExposureService: ExposureServicing {
     typealias Callback = (Error?) -> Void
 
     private var manager: ENManager
+
+    var isAvailable: Bool {
+        NSClassFromString("ENManager") != nil
+    }
 
     var isActive: Bool {
         [ENStatus.active, .paused].contains(manager.exposureNotificationStatus)
@@ -206,12 +214,7 @@ final class ExposureService: ExposureServicing {
                     // Removed support
                     finish(error: ExposureError.noData)
                 case let configuration as ExposureConfigurationV2:
-                    if #available(iOS 13.7, *) {
-                        self.processDetectedExposuresV2(configuration: configuration, summary: summary, URLs: URLs, callback: callback)
-                    } else {
-                        log("ExposureService Lower iOS version for V2 than is required!")
-                        finish()
-                    }
+                    self.processDetectedExposuresV2(configuration: configuration, summary: summary, URLs: URLs, callback: callback)
                 default:
                     log("ExposureService Unknown exposure configuration version")
                     finish()
@@ -222,7 +225,6 @@ final class ExposureService: ExposureServicing {
         }
     }
 
-    @available(iOS 13.7, *)
     private func processDetectedExposuresV2(configuration: ExposureConfigurationV2, summary: ENExposureDetectionSummary,
                                             URLs: [URL], callback: @escaping DetectCallback) {
         func finish(error: Error? = nil, exposures: [Exposure] = []) {
@@ -319,6 +321,12 @@ final class ExposureService: ExposureServicing {
 
     var isBluetoothOn: Bool {
         manager.exposureNotificationStatus != .bluetoothOff
+    }
+
+    // MARK: - Background
+
+    func setLaunchActivityHandler(activityHandler: @escaping ENActivityHandler) {
+        manager.setLaunchActivityHandler(activityHandler: activityHandler)
     }
 
 }

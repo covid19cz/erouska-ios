@@ -171,7 +171,7 @@ private extension AppDelegate {
         var viewController: UIViewController
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
             viewController = StoryboardScene.ForceUpdate.unsupportedDeviceVC.instantiate()
-        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(RemoteValues.serverConfiguration.minSupportedVersion) {
+        } else if RemoteValues.shouldCheckOSVersion, !versionCheck() {
             viewController = StoryboardScene.ForceUpdate.forceOSUpdateVC.instantiate()
         } else if RemoteValues.minSupportedVersion > App.appVersion {
             viewController = StoryboardScene.ForceUpdate.forceUpdateVC.instantiate()
@@ -198,7 +198,7 @@ private extension AppDelegate {
         if RemoteValues.shouldCheckOSVersion, !isDeviceSupported() {
             rootViewController = StoryboardScene.ForceUpdate.unsupportedDeviceVC.instantiate()
             presentingAnyForceUpdateScreen = true
-        } else if RemoteValues.shouldCheckOSVersion, Version.currentOSVersion < Version(RemoteValues.serverConfiguration.minSupportedVersion) {
+        } else if RemoteValues.shouldCheckOSVersion, !versionCheck() {
             rootViewController = StoryboardScene.ForceUpdate.forceOSUpdateVC.instantiate()
             presentingAnyForceUpdateScreen = true
         } else if RemoteValues.minSupportedVersion > App.appVersion {
@@ -249,6 +249,16 @@ private extension AppDelegate {
         AppSettings.lastExposureWarningNotDisplayed = false
     }
 
+    func versionCheck() -> Bool {
+        if #available(iOS 13, *) {
+            return Version.currentOSVersion >= Version(RemoteValues.serverConfiguration.minSupportedVersion)
+        } else if #available(iOS 12.5, *) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     func setupBackgroundMode() {
         AppDependency.shared.background.scheduleBackgroundTaskIfNeeded(next: false)
     }
@@ -266,7 +276,7 @@ private extension AppDelegate {
         if model.hasPrefix("iPhone") {
             // List of supported devices from https://support.apple.com/cs-cz/guide/iphone/iphe3fa5df43/13.0/ios/13.0
             let modelNumber = String(model[model.index(model.startIndex, offsetBy: 6)...])
-            return Double(modelNumber.replacingOccurrences(of: ",", with: ".")) ?? 0 >= 8.0
+            return Double(modelNumber.replacingOccurrences(of: ",", with: ".")) ?? 0 >= 6.0
         }
         return false
         #endif

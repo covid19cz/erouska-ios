@@ -329,7 +329,7 @@ struct RemoteValues {
             }
         }
 
-        if #available(iOS 13.7, *) {
+        func v2() -> ExposureConfiguration {
             guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV2).data(using: .utf8) else {
                 return defaults()
             }
@@ -338,7 +338,9 @@ struct RemoteValues {
             } catch {
                 return defaults()
             }
-        } else {
+        }
+
+        func v1() -> ExposureConfiguration {
             guard let json = AppDelegate.shared.remoteConfigString(forKey: .appleExposureConfigurationV1).data(using: .utf8) else {
                 return defaults()
             }
@@ -347,6 +349,14 @@ struct RemoteValues {
             } catch {
                 return defaults()
             }
+        }
+
+        if #available(iOS 13.7, *) {
+            return v2()
+        } else if #available(iOS 13.5, *) {
+            return v1()
+        } else {
+            return v2()
         }
     }
 

@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseCrashlytics
 import Alamofire
 import Zip
-import CryptoKit
+import Crypto
 
 protocol HasReportService {
     var reporter: ReportServicing { get }

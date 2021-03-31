@@ -50,47 +50,60 @@ final class BackgroundService: BackgroundServicing {
     }
 
     func registerTask(with taskIdentifier: BackgroundTaskIdentifier) {
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: taskIdentifier.schedulerIdentifier, using: .main) { task in
-            log("BGTask: Start background check")
+        if #available(iOS 13, *) {
+            BGTaskScheduler.shared.register(forTaskWithIdentifier: taskIdentifier.schedulerIdentifier, using: .main) { task in
+                log("BGTask: Start background check")
 
-            let progress = self.performTask(task)
+                let progress = self.performTask { success in
+                    task.setTaskCompleted(success: success)
+                }
 
-            // Handle running out of time
-            task.expirationHandler = {
-                self.scheduleBackgroundTaskIfNeeded(next: false)
-                progress.cancel()
-                task.setTaskCompleted(success: false)
-                log("AppDelegate: BG timeout")
+                // Handle running out of time
+                task.expirationHandler = {
+                    self.scheduleBackgroundTaskIfNeeded(next: false)
+                    progress.cancel()
+                    task.setTaskCompleted(success: false)
+                    log("AppDelegate: BG timeout")
+                }
+
+                // Schedule the next background task
+                self.scheduleBackgroundTaskIfNeeded(next: true)
             }
-
-            // Schedule the next background task
-            self.scheduleBackgroundTaskIfNeeded(next: true)
         }
     }
 
     func performTask() {
         guard !isRunning else { return }
-        _ = self.performTask(nil)
+        _ = self.performTask(callback: nil)
     }
 
     func scheduleBackgroundTaskIfNeeded(next: Bool) {
         Self.scheduleDeadmanNotification()
 
-        guard dependencies.exposure.authorizationStatus == .authorized else { return }
-        let taskRequest = BGProcessingTaskRequest(identifier: taskIdentifier.schedulerIdentifier)
-        taskRequest.requiresNetworkConnectivity = true
-        taskRequest.requiresExternalPower = false
-        if next {
-            // start after next 8 hours
-            let earliestBeginDate = Date(timeIntervalSinceNow: 8 * 60 * 60)
-            taskRequest.earliestBeginDate = earliestBeginDate
-            log("Background: Schedule next task to: \(earliestBeginDate)")
-        }
+        if #available(iOS 13, *) {
+            guard dependencies.exposure.authorizationStatus == .authorized else { return }
+            let taskRequest = BGProcessingTaskRequest(identifier: taskIdentifier.schedulerIdentifier)
+            taskRequest.requiresNetworkConnectivity = true
+            taskRequest.requiresExternalPower = false
+            if next {
+                // start after next 8 hours
+                let earliestBeginDate = Date(timeIntervalSinceNow: 8 * 60 * 60)
+                taskRequest.earliestBeginDate = earliestBeginDate
+                log("Background: Schedule next task to: \(earliestBeginDate)")
+            }
 
-        do {
-            try BGTaskScheduler.shared.submit(taskRequest)
-        } catch {
-            log("Background: Unable to schedule background task: \(error)")
+            do {
+                try BGTaskScheduler.shared.submit(taskRequest)
+            } catch {
+                log("Background: Unable to schedule background task: \(error)")
+            }
+        } else {
+            dependencies.exposure.setLaunchActivityHandler { activityFlags in
+                if activityFlags.contains(.periodicRun) {
+                    log("Background: Periodic activity callback called (iOS 12.5)")
+                    self.performTask()
+                }
+            }
         }
     }
 
@@ -175,7 +188,9 @@ final class BackgroundService: BackgroundServicing {
 
 private extension BackgroundService {
 
-    func performTask(_ task: BGTask?) -> Progress {
+    typealias TaskCallback = (_ success: Bool) -> Void
+
+    func performTask(callback: TaskCallback?) -> Progress {
         Events.keyExportDownloadStarted.logEvent()
 
         isRunning = true
@@ -184,15 +199,15 @@ private extension BackgroundService {
         showBluetoothOffUserNotificationIfNeeded()
 
         func reportFailure(_ error: ReportError) {
-            task?.setTaskCompleted(success: false)
+            callback?(false)
             isRunning = false
             log("BGTask: failed to detect exposures \(error)")
             Crashlytics.crashlytics().record(error: error)
         }
 
         func reportSuccess() {
+            callback?(true)
             isRunning = false
-            task?.setTaskCompleted(success: true)
 
             AppSettings.lastProcessedDate = Date()
             Events.keyExportDownloadFinished.logEvent()

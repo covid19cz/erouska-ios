@@ -236,8 +236,7 @@ struct AppSettings {
         set {
             let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .iso8601
-            // swiftlint:disable:next force_try
-            set(withKey: .sendReport, value: try! encoder.encode(newValue))
+            set(withKey: .sendReport, value: try? encoder.encode(newValue))
         }
     }
 

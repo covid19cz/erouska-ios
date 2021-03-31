@@ -124,12 +124,20 @@ final class ActiveAppVC: BaseController, HasDependencies {
         howItWorksBannerView.isHidden = AppSettings.howItWorksClosed
 
         #if !PROD
-        navigationItem.rightBarButtonItems?.insert(UIBarButtonItem(
-            image: UIImage(systemName: "ellipsis.circle.fill"),
-            style: .plain,
-            target: self,
-            action: #selector(moreAction)
-        ), at: 0)
+        if #available(iOS 12, *) {
+            navigationItem.rightBarButtonItems?.insert(UIBarButtonItem(
+                barButtonSystemItem: .action,
+                target: self,
+                action: #selector(moreAction)
+            ), at: 0)
+        } else {
+            navigationItem.rightBarButtonItems?.insert(UIBarButtonItem(
+                image: UIImage(systemName: "ellipsis.circle.fill"),
+                style: .plain,
+                target: self,
+                action: #selector(moreAction)
+            ), at: 0)
+        }
         #endif
 
         UserDefaults.standard.rx.observe(Bool.self, AppSettings.Keys.efgsEnabled.rawValue)
