@@ -210,9 +210,12 @@ final class ExposureService: ExposureServicing {
                 log("ExposureService summary \(summary)")
 
                 switch configuration {
-                case is ExposureConfigurationV1:
-                    // Removed support
-                    finish(error: ExposureError.noData)
+                case let configuration as ExposureConfigurationV1:
+                    if #available(iOS 13.5, *) {
+                        self.processDetectedExposuresV1(configuration: configuration, summary: summary, URLs: URLs, callback: callback)
+                    } else {
+                        finish(error: ExposureError.noData)
+                    }
                 case let configuration as ExposureConfigurationV2:
                     self.processDetectedExposuresV2(configuration: configuration, summary: summary, URLs: URLs, callback: callback)
                 default:
@@ -222,6 +225,66 @@ final class ExposureService: ExposureServicing {
             } else {
                 finish(error: ExposureError.noData)
             }
+        }
+    }
+
+    @available(iOS 13.5, *)
+    private func processDetectedExposuresV1(configuration: ExposureConfigurationV1, summary: ENExposureDetectionSummary,
+                                            URLs: [URL], callback: @escaping DetectCallback) {
+        func finish(error: Error? = nil, exposures: [Exposure] = []) {
+            finishDetectingExposures(URLs: URLs, error: error, exposures: exposures, callback: callback)
+        }
+
+        let computedThreshold: Double = (Double(truncating: summary.attenuationDurations[0]) * configuration.factorLow +
+                                            Double(truncating: summary.attenuationDurations[1]) * configuration.factorHigh) / 60 // (minute)
+
+        let threshold = "computed threshold: \(computedThreshold)"
+        let factors = "(low: \(configuration.factorLow) high: \(configuration.factorHigh)) required \(configuration.triggerThreshold)"
+        log("ExposureService Summary for day \(summary.daysSinceLastExposure) : \(summary.debugDescription) " + threshold + " " + factors)
+
+        if computedThreshold >= Double(configuration.triggerThreshold) {
+            log("ExposureService Summary meets requirements")
+
+            guard summary.matchedKeyCount != 0 else {
+                finish()
+                return
+            }
+            log("ExposureService getExposureInfo")
+
+            self.manager.getExposureInfo(summary: summary, userExplanation: L10n.exposureDetectedTitle) { exposures, error in
+                if let error = error {
+                    finish(error: error)
+                } else if let exposures = exposures {
+                    var filtred: [Date: ENExposureInfo] = [:]
+                    for exposure in exposures {
+                        if let current = filtred[exposure.date] {
+                            if current.totalRiskScoreFullRange < exposure.totalRiskScoreFullRange {
+                                filtred[exposure.date] = exposure
+                            }
+                        } else {
+                            filtred[exposure.date] = exposure
+                        }
+                    }
+
+                    finish(exposures: filtred.values.map {
+                        Exposure(
+                            id: UUID(),
+                            date: $0.date,
+                            duration: $0.duration,
+                            totalRiskScore: $0.totalRiskScore,
+                            transmissionRiskLevel: $0.transmissionRiskLevel,
+                            attenuationValue: $0.attenuationValue,
+                            attenuationDurations: $0.attenuationDurations.map { $0.intValue }
+                        )
+                    })
+                    log("ExposureService Exposures \(exposures)")
+                } else {
+                    finish(error: ExposureError.noData)
+                }
+            }
+        } else {
+            log("ExposureService Summary does not meet requirements")
+            finish()
         }
     }
 
