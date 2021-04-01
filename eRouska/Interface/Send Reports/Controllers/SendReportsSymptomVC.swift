@@ -64,6 +64,7 @@ final class SendReportsSymptomVC: BaseController, SendReporting, HasDependencies
         if Device.current.diagonal < 4.1 {
             navigationItem.largeTitleDisplayMode = .never
         }
+        navigationItem.backBarButtonItem?.title = L10n.back
 
         let currentTime = Date.timeIntervalSinceReferenceDate
         datePicker.minimumDate = Date(timeIntervalSinceReferenceDate: currentTime - 13 * 24 * 60 * 60)

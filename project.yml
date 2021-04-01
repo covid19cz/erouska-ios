@@ -21,6 +21,8 @@ targets:
       - path: eRouska
         excludes:
           - Supporting Files/Firebase Prod/*
+          - Supporting Files/Info.plist
+          - Supporting Files/Info-Prod.plist
           - Configs
     entitlements:
       path: eRouska/Supporting Files/Entitlements/eRouska-Debug.entitlements
@@ -59,6 +61,8 @@ targets:
       - path: eRouska
         excludes:
           - Supporting Files/Firebase Dev/*
+          - Supporting Files/Info.plist
+          - Supporting Files/Info-Prod.plist
           - Configs
     entitlements:
       path: eRouska/Supporting Files/Entitlements/eRouska-Relese.entitlements

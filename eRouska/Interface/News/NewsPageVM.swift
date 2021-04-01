@@ -17,9 +17,10 @@ struct NewsPageVM {
     let switchTitle: String?
     typealias SwitchCallback = (_ isOn: Bool) -> Void
     let switchCallback: SwitchCallback?
+    let footer: String?
 
     init(imageAsset: ImageAsset, headline: String, body: String, bodyLinkTitle: String? = nil, bodyLink: String? = nil,
-         switchTitle: String? = nil, switchCallback: SwitchCallback? = nil) {
+         switchTitle: String? = nil, switchCallback: SwitchCallback? = nil, footer: String? = nil) {
         self.imageAsset = imageAsset
         self.headline = headline
         self.body = body
@@ -27,5 +28,6 @@ struct NewsPageVM {
         self.bodyLink = bodyLink
         self.switchTitle = switchTitle
         self.switchCallback = switchCallback
+        self.footer = footer
     }
 }

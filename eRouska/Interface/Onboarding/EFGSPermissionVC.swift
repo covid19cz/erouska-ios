@@ -21,6 +21,7 @@ final class EFGSPermissionVC: BaseController {
     @IBOutlet private weak var bodyLabel: UILabel!
     @IBOutlet private weak var enableLabel: UILabel!
     @IBOutlet private weak var enableSwitch: UISwitch!
+    @IBOutlet private weak var countriesLabel: UILabel!
     @IBOutlet private weak var buttonsView: ButtonsBackgroundView!
     @IBOutlet private weak var continueButton: RoundedButtonFilled!
 
@@ -61,8 +62,9 @@ private extension EFGSPermissionVC {
         navigationItem.backBarButtonItem?.title = L10n.back
 
         headlineLabel.text = L10n.efgsPermissionHeadline
-        bodyLabel.text = L10n.efgsPermissionBody(RemoteValues.efgsDays) + "\n\n" + viewModel.efgsCountries
+        bodyLabel.text = L10n.efgsPermissionBody(RemoteValues.efgsDays)
         enableLabel.text = L10n.efgsPermissionSwitch
+        countriesLabel.text = RemoteValues.efgsCountries
         continueButton.setTitle(L10n.newsButtonContinue)
     }
 }

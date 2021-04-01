@@ -9,6 +9,7 @@
 import UIKit
 
 final class ActiveAppSectionView: UIView {
+    let efgs: Bool
     let iconImageView = UIImageView()
     let titleLabel = UILabel()
     let disclosureIndicator = UIImageView()
@@ -39,7 +40,15 @@ final class ActiveAppSectionView: UIView {
 
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(buttonAction))
 
+    init(efgs: Bool) {
+        self.efgs = efgs
+        super.init(frame: .zero)
+
+        setup()
+    }
+
     override init(frame: CGRect) {
+        self.efgs = false
         super.init(frame: frame)
 
         setup()
@@ -97,6 +106,13 @@ final class ActiveAppSectionView: UIView {
 
         mainStack.setCustomSpacing(10, after: titleStack)
         mainStack.setCustomSpacing(16, after: bodyLabel)
+
+        if efgs {
+            let efgsStack = UIStackView(arrangedSubviews: [titleLabel, bodyLabel])
+            efgsStack.axis = .vertical
+            efgsStack.spacing = 5
+            titleStack.insertArrangedSubview(efgsStack, at: 1)
+        }
 
         NSLayoutConstraint.activate([
             mainStack.topAnchor.constraint(equalTo: topAnchor),

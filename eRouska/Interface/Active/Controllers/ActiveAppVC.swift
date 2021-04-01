@@ -37,7 +37,7 @@ final class ActiveAppVC: BaseController, HasDependencies {
     private let stateSection = ActiveAppSectionView()
     private let riskyEncountersSection = ActiveAppSectionView()
     private let sendReportsSection = ActiveAppSectionView()
-    private let efgsSection = ActiveAppSectionView()
+    private let efgsSection = ActiveAppSectionView(efgs: true)
 
     private var dateToShow: Date?
     private var numberOfRiskyEncounters: Int = 0
@@ -114,7 +114,8 @@ final class ActiveAppVC: BaseController, HasDependencies {
         sendReportsSection.action = sendReportsAction
 
         efgsSection.iconImageView.image = Asset.travel.image
-        efgsSection.titleLabel.text = viewModel.efgsText
+        efgsSection.titleLabel.text = viewModel.efgsTitle
+        efgsSection.bodyLabel.text = viewModel.efgsBody
         efgsSection.isSelectable = true
         efgsSection.action = efgsSettingsAction
 
@@ -343,7 +344,8 @@ private extension ActiveAppVC {
 
     func updateViewModel() {
         viewModel.updateStateIfNeeded()
-        efgsSection.titleLabel.text = viewModel.efgsText
+        efgsSection.titleLabel.text = viewModel.efgsTitle
+        efgsSection.bodyLabel.text = viewModel.efgsBody
     }
 
     func updateScanner(activate: Bool, completion: @escaping CallbackVoid) {
