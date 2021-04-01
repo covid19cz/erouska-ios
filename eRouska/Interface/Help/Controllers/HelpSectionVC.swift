@@ -77,6 +77,9 @@ final class HelpSectionVC: BaseController {
 
         let searchController = UISearchController(searchResultsController: helpSearch)
         searchController.searchResultsUpdater = helpSearch
+        searchController.hidesNavigationBarDuringPresentation = true
+
+        definesPresentationContext = true
 
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false

@@ -92,6 +92,9 @@ final class HelpVC: BaseController, HasDependencies {
 
         let searchController = UISearchController(searchResultsController: helpSearch)
         searchController.searchResultsUpdater = helpSearch
+        searchController.hidesNavigationBarDuringPresentation = true
+
+        definesPresentationContext = true
 
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
