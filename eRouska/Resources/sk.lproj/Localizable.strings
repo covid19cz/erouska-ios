@@ -214,7 +214,8 @@
 "current_data_footer" = "Posledná aktualizácia %@";
 "current_data_measures" = "Aktuálne opatrenia";
 "current_data_measures_header" = "Informácie o aktuálnych opatreniach";
-"current_data_item_header" = "Aktuálna situácia v číslach";
+"current_data_item_covid_header" = "Aktuálna situácia v číslach";
+"current_data_item_vaccination_header" = "Očkování";
 "current_data_item_tests_pcr" = "%@ vykonaných PCR testov";
 "current_data_item_tests_antigen" = "%@ vykonaných antigénnych testov";
 "current_data_item_tests" = "%@ vykonaných testov";
@@ -224,6 +225,8 @@
 "current_data_item_deaths" = "%@ úmrtí";
 "current_data_item_hospitalized" = "%@ aktuálne hospitalizovaných";
 "current_data_item_vaccination" = "%@ vykázaných očkovaní";
+"current_data_item_vaccination_first_dose" = "%@ očkovaných první dávkou";
+"current_data_item_vaccination_second_dose" = "%@ osob s ukončeným očkováním";
 "current_data_item_yesterday" = "Za včerajší deň %@";
 "current_data_app_header" = "eRouška v číslach";
 "current_data_app_activations" = "%@ aktivovaných aplikácií";
