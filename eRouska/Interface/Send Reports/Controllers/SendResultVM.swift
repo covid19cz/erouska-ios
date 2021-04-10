@@ -102,3 +102,16 @@ enum SendResultVM {
         }
     }
 }
+
+extension SendResultVM: Equatable {
+
+    static func == (lhs: SendResultVM, rhs: SendResultVM) -> Bool {
+        switch (lhs, rhs) {
+        case (.standard, .standard), (.noKeys, .noKeys), (.codeInvalid, .codeInvalid), (.error, .error):
+            return true
+        default:
+            return false
+        }
+    }
+
+}

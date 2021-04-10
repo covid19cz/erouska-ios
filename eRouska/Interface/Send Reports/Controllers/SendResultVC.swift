@@ -98,6 +98,8 @@ final class SendResultVC: BaseController, HasDependencies {
         if dependencies.diagnosis.canSendMail {
             if case let .error(code, message) = viewModel {
                 dependencies.diagnosis.present(fromController: self, screenName: .sendCodeResult, kind: .error(.init(code: code, message: message ?? "None")))
+            } else if viewModel == .codeInvalid {
+                dependencies.diagnosis.present(fromController: self, screenName: .sendWrongCode, kind: .noCode)
             } else {
                 dependencies.diagnosis.present(fromController: self, screenName: .sendCodeResult, kind: .error(nil))
             }

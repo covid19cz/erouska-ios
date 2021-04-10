@@ -25,6 +25,7 @@ enum Kind {
     case error(ErrorReport?)
     case errorWithDiagnosis(ErrorReport?)
     case noCode
+    case wrongCode
 }
 
 enum ScreenName: String {
@@ -33,6 +34,7 @@ enum ScreenName: String {
     case sendCode = "O1"
     case sendCodeResult = "O4"
     case sendNoCode = "O6"
+    case sendWrongCode = "O7"
 
     case contact = "K1"
 
@@ -136,6 +138,10 @@ private extension DiagnosisService {
             controller.setSubject("Nepřišla mi SMS s ověřovacím kódem")
             controller.setMessageBody(noCodeText(), isHTML: false)
             error = nil
+        case .wrongCode:
+            controller.setSubject("Zadaný kód není platný")
+            controller.setMessageBody(wrongCodeText(), isHTML: false)
+            error = nil
         }
 
         if diagnosisInfo {
@@ -158,6 +164,18 @@ private extension DiagnosisService {
         return """
         Milý týme eRoušky,
         mám pozitivní test na COVID-19 a nepřišla mi SMS s ověřovacím kódem pro eRoušku.
+        Celé jméno uvedené na žádance o test:
+        Telefonní číslo uvedené na žádance o test:
+        Datum výsledku testů:
+        Odběrové místo / laboratoř, ze které mi přišly výsledky testu:
+        Typ testu (PCR/antigen):
+        """
+    }
+
+    func wrongCodeText() -> String {
+        return """
+        Milý týme eRoušky,
+        mám pozitivní test na COVID-19 a nedaří se mi zadat správně ověřovací kód pro eRoušku. Jak mám dále postupovat?
         Celé jméno uvedené na žádance o test:
         Telefonní číslo uvedené na žádance o test:
         Datum výsledku testů:
