@@ -199,10 +199,13 @@ struct Exposure: Codable, Equatable {
         }
     }
 
-    static func debugExposure(date: Date = Date()) -> Exposure {
+    static func debugExposure(date: Date? = nil) -> Exposure {
+        let components = Calendar.current.dateComponents([Calendar.Component.year, Calendar.Component.month, Calendar.Component.day], from: Date())
+        let defaultDate = Calendar.current.date(from: components)
+
         return Self(
             id: UUID(),
-            date: date,
+            date: date ?? defaultDate ?? Date(),
             duration: 213,
             totalRiskScore: 2,
             transmissionRiskLevel: 4,
