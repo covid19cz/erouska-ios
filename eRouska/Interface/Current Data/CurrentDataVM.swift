@@ -192,7 +192,7 @@ private extension CurrentDataVM {
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.firstDose,
-                    title: L10n.currentDataItemVaccination(formattedValue(data.vaccinationsTotalFirstDose)),
+                    title: L10n.currentDataItemVaccinationFirstDose(formattedValue(data.vaccinationsTotalFirstDose)),
                     subtitle: L10n.currentDataAppFrom(
                         formattedValue(data.vaccinationsDailyFirstDose, showSign: true),
                         DateFormatter.baseDateFormatter.string(from: data.vaccinationsDailyDosesDate ?? Date())
@@ -200,7 +200,7 @@ private extension CurrentDataVM {
                 ),
                 Item(
                     iconAsset: Asset.CurrentData.secondDose,
-                    title: L10n.currentDataItemVaccination(formattedValue(data.vaccinationsTotalSecondDose)),
+                    title: L10n.currentDataItemVaccinationSecondDose(formattedValue(data.vaccinationsTotalSecondDose)),
                     subtitle: L10n.currentDataAppFrom(
                         formattedValue(data.vaccinationsDailySecondDose, showSign: true),
                         DateFormatter.baseDateFormatter.string(from: data.vaccinationsDailyDosesDate ?? Date())
