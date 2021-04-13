@@ -99,7 +99,7 @@ final class SendResultVC: BaseController, HasDependencies {
             if case let .error(code, message) = viewModel {
                 dependencies.diagnosis.present(fromController: self, screenName: .sendCodeResult, kind: .error(.init(code: code, message: message ?? "None")))
             } else if viewModel == .codeInvalid {
-                dependencies.diagnosis.present(fromController: self, screenName: .sendWrongCode, kind: .noCode)
+                dependencies.diagnosis.present(fromController: self, screenName: .sendWrongCode, kind: .wrongCode)
             } else {
                 dependencies.diagnosis.present(fromController: self, screenName: .sendCodeResult, kind: .error(nil))
             }

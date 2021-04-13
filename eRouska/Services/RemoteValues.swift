@@ -106,6 +106,8 @@ enum RemoteConfigValueKey: String, CaseIterable {
     case keyExportNonTravellerUrls
     case keyExportEuTravellerUrls
 
+    case howItWorksEvalContent
+
     var keyValue: String {
         "v2_\(rawValue)"
     }
@@ -356,6 +358,10 @@ struct RemoteValues {
 
     static var keyExportEuTravellerUrls: [ReportIndex] {
         (try? decodeValue([ReportIndex].self, at: .keyExportEuTravellerUrls)) ?? []
+    }
+
+    static var howItWorksEvalContent: String {
+        AppDelegate.shared.remoteConfigString(forKey: .howItWorksEvalContent)
     }
 
     private static func decodeValue<T>(_ type: T.Type, at key: RemoteConfigValueKey) throws -> T? where T: Decodable {
