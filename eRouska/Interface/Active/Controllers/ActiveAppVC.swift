@@ -156,7 +156,7 @@ final class ActiveAppVC: BaseController, HasDependencies {
 
         checkBackgroundModeIfNeeded()
 
-        if firstAppear {
+        if let date = AppSettings.lastProcessedDate, !Calendar.current.isDateInToday(date) {
             firstAppear = false
             dependencies.background.performTask()
         }

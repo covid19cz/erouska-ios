@@ -15,7 +15,7 @@
 "exposureUITitle" = "Risky encounters";
 "chatBotLink" = "https://erouska.cz/caste-dotazy";
 "noEncounterBody" = "We will notify you about a risky encounter in a notification";
-"noEncounterHeader" = "You have not encountered anyone with COVID-19 in the past 14 days";
+"noEncounterHeader" = "You have not encountered anyone known to have COVID-19 in the past 14 days.";
 "conditionsOfUseUrl" = "https://erouska.cz/podminky-pouzivani";
 "riskyEncountersWithoutSymptoms" = "You don't have to stay at home if you are not experiencing any symptoms of COVID-19 infection. Behave responsibly and watch your health status.";
 "riskyEncountersWithSymptoms" = "If you experienced respiratory symptoms within 14 days after encountering an infected person, call your general practitioner and follow their instructions. If you experience serious health problems call 155.";
@@ -44,7 +44,7 @@
 "diagnosisKeysDataMappingLimitDays" = "7";
 "infectiousnessWhenDaysSinceOnsetMissing" = "1";
 "reportTypeWhenMissing" = "1";
-"noEncounterCardTitle" = "You have not encountered anyone with COVID-19 in the past 14 days";
+"noEncounterCardTitle" = "You have not encountered anyone known to have COVID-19 in the past 14 days.";
 "encounterUpdateFrequency" = "Data update once every %d hours.";
 "dbCleanupDays" = "15";
 "selfCheckerPeriodHours" = "4";

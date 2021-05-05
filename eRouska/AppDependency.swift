@@ -17,7 +17,7 @@ protocol HasDependencies: CanInjectDependencies {
     var dependencies: Dependencies! { get set }
 }
 
-protocol CanInjectDependencies: class {
+protocol CanInjectDependencies: AnyObject {
     func injectDependencies()
 }
 
