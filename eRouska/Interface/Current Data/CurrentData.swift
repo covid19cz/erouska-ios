@@ -36,6 +36,12 @@ final class CurrentDataRealm: Object {
     @objc dynamic var vaccinationsIncrease: Int = 0
     @objc dynamic var vaccinationsIncreaseDate: Date?
 
+    @objc dynamic var vaccinationsTotalFirstDose: Int = 0
+    @objc dynamic var vaccinationsDailyFirstDose: Int = 0
+    @objc dynamic var vaccinationsTotalSecondDose: Int = 0
+    @objc dynamic var vaccinationsDailySecondDose: Int = 0
+    @objc dynamic var vaccinationsDailyDosesDate: Date?
+
     @objc dynamic var appDate: Date?
     @objc dynamic var activationsYesterday: Int = 0
     @objc dynamic var activationsTotal: Int = 0
@@ -64,6 +70,12 @@ final class CurrentDataRealm: Object {
         self.vaccinationsTotal = data.vaccinationsTotal
         self.vaccinationsIncrease = data.vaccinationsIncrease
         self.vaccinationsIncreaseDate = data.vaccinationsIncreaseDate
+
+        self.vaccinationsTotalFirstDose = data.vaccinationsTotalFirstDose
+        self.vaccinationsDailyFirstDose = data.vaccinationsDailyFirstDose
+        self.vaccinationsTotalSecondDose = data.vaccinationsTotalSecondDose
+        self.vaccinationsDailySecondDose = data.vaccinationsDailySecondDose
+        self.vaccinationsDailyDosesDate = data.vaccinationsDailyDosesDate
 
         self.activeCasesTotal = data.activeCasesTotal
         self.curedTotal = data.curedTotal
@@ -110,6 +122,12 @@ struct CovidCurrentData: Decodable {
     let vaccinationsIncrease: Int
     let vaccinationsIncreaseDate: Date?
 
+    let vaccinationsTotalFirstDose: Int
+    let vaccinationsDailyFirstDose: Int
+    let vaccinationsTotalSecondDose: Int
+    let vaccinationsDailySecondDose: Int
+    let vaccinationsDailyDosesDate: Date?
+
     private enum CodingKeys: String, CodingKey {
         case testsTotal, testsIncrease, testsIncreaseDate
         case pcrTestsTotal, pcrTestsIncrease, pcrTestsIncreaseDate
@@ -117,6 +135,8 @@ struct CovidCurrentData: Decodable {
         case confirmedCasesTotal, confirmedCasesIncrease, confirmedCasesIncreaseDate
         case activeCasesTotal, curedTotal, deceasedTotal, currentlyHospitalizedTotal
         case vaccinationsTotal, vaccinationsIncrease, vaccinationsIncreaseDate
+        case vaccinationsTotalFirstDose, vaccinationsDailyFirstDose, vaccinationsTotalSecondDose
+        case vaccinationsDailySecondDose, vaccinationsDailyDosesDate
     }
 
     init(with data: [String: Any]) {
@@ -162,6 +182,16 @@ struct CovidCurrentData: Decodable {
             vaccinationsIncreaseDate = DateFormatter.serverDateFormatter.date(from: value)
         } else {
             vaccinationsIncreaseDate = nil
+        }
+
+        vaccinationsTotalFirstDose = data[CodingKeys.vaccinationsTotalFirstDose.rawValue] as? Int ?? 0
+        vaccinationsDailyFirstDose = data[CodingKeys.vaccinationsDailyFirstDose.rawValue] as? Int ?? 0
+        vaccinationsTotalSecondDose = data[CodingKeys.vaccinationsTotalSecondDose.rawValue] as? Int ?? 0
+        vaccinationsDailySecondDose = data[CodingKeys.vaccinationsDailySecondDose.rawValue] as? Int ?? 0
+        if let value = data[CodingKeys.vaccinationsDailyDosesDate.rawValue] as? String {
+            vaccinationsDailyDosesDate = DateFormatter.serverDateFormatter.date(from: value)
+        } else {
+            vaccinationsDailyDosesDate = nil
         }
     }
 

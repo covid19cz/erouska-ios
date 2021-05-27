@@ -181,7 +181,7 @@ private extension CurrentDataVM {
                     title: L10n.currentDataMeasures
                 ),
             ]),
-            Section(header: L10n.currentDataItemHeader, selectableItems: false, items: [
+            Section(header: L10n.currentDataItemVaccinationHeader, selectableItems: false, items: [
                 Item(
                     iconAsset: Asset.CurrentData.vaccination,
                     title: L10n.currentDataItemVaccination(formattedValue(data.vaccinationsTotal)),
@@ -190,6 +190,24 @@ private extension CurrentDataVM {
                         DateFormatter.baseDateFormatter.string(from: data.vaccinationsIncreaseDate ?? Date())
                     )
                 ),
+                Item(
+                    iconAsset: Asset.CurrentData.firstDose,
+                    title: L10n.currentDataItemVaccinationFirstDose(formattedValue(data.vaccinationsTotalFirstDose)),
+                    subtitle: L10n.currentDataAppFrom(
+                        formattedValue(data.vaccinationsDailyFirstDose, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.vaccinationsDailyDosesDate ?? Date())
+                    )
+                ),
+                Item(
+                    iconAsset: Asset.CurrentData.secondDose,
+                    title: L10n.currentDataItemVaccinationSecondDose(formattedValue(data.vaccinationsTotalSecondDose)),
+                    subtitle: L10n.currentDataAppFrom(
+                        formattedValue(data.vaccinationsDailySecondDose, showSign: true),
+                        DateFormatter.baseDateFormatter.string(from: data.vaccinationsDailyDosesDate ?? Date())
+                    )
+                )
+            ]),
+            Section(header: L10n.currentDataItemCovidHeader, selectableItems: false, items: [
                 Item(
                     iconAsset: Asset.CurrentData.testsPCR,
                     title: L10n.currentDataItemTestsPcr(formattedValue(data.pcrTestsTotal)),

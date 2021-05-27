@@ -23,7 +23,7 @@ struct HowItWorksVM {
         .init(title: L10n.HowitworksEntry2.title, body: L10n.HowitworksEntry2.body, icon: Asset.hitWExposure),
         .init(title: L10n.HowitworksEntry3.title, body: L10n.HowitworksEntry3.body, icon: Asset.hItWNotifications),
         .init(title: L10n.HowitworksEntry4.title, body: L10n.HowitworksEntry4.body, icon: Asset.hitWCheck),
-        .init(title: L10n.HowitworksEntry5.title, body: L10n.HowitworksEntry5.body, icon: Asset.hitWResult),
+        .init(title: L10n.HowitworksEntry5.title, body: RemoteValues.howItWorksEvalContent, icon: Asset.hitWResult),
         .init(title: L10n.HowitworksEntry6.title, body: L10n.HowitworksEntry6.body, icon: Asset.hitWDisplay)
     ]
 

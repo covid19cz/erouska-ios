@@ -17,7 +17,7 @@ protocol HasDependencies: CanInjectDependencies {
     var dependencies: Dependencies! { get set }
 }
 
-protocol CanInjectDependencies: class {
+protocol CanInjectDependencies: AnyObject {
     func injectDependencies()
 }
 
@@ -53,7 +53,7 @@ final class AppDependency {
         var oldV1Data: [String: ExposureDataV1] = [:]
 
         let configuration = Realm.Configuration(
-            schemaVersion: 12,
+            schemaVersion: 13,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 5 {
                     migration.enumerateObjects(ofType: ExposureRealm.className()) { oldObject, newObject in

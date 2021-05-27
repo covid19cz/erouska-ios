@@ -256,6 +256,7 @@ private extension BackgroundService {
 
     func handleExposures(_ exposures: [Exposure], countries: ReportDownload.Success) {
         for (code, success) in countries {
+            guard success.lastProcessedFileName != nil else { continue }
             AppSettings.lastProcessedFileNames[code] = success.lastProcessedFileName
         }
 

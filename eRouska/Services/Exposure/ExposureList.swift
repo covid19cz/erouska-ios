@@ -70,8 +70,18 @@ final class ExposureList: ExposureListing {
         try dependencies.realm.write {
             exposures.sorted { $0.date < $1.date }.forEach {
                 if let window = $0.window {
+                    let index = dependencies.realm.objects(ExposureRealm.self).index(
+                        matching: "date == %@ AND dataV2.maximumScore == %@ AND dataV2.infectiousness == %@",
+                        $0.date, window.daySummary?.maximumScore ?? 0, window.infectiousness
+                    )
+                    guard index == nil else { return }
                     dependencies.realm.add(ExposureRealm(window, detectedDate: detectionDate))
                 } else {
+                    let index = dependencies.realm.objects(ExposureRealm.self).index(
+                        matching: "date == %@ AND dataV1.totalRiskScore == %@",
+                        $0.date, $0.totalRiskScore
+                    )
+                    guard index == nil else { return }
                     dependencies.realm.add(ExposureRealm($0, detectedDate: detectionDate))
                 }
             }

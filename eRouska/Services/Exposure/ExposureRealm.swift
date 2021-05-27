@@ -32,6 +32,7 @@ final class ExposureRealm: Object {
         super.init()
     }
 
+    /// V1 init
     convenience init(_ exposure: Exposure, detectedDate: Date) {
         self.init()
 
@@ -42,15 +43,16 @@ final class ExposureRealm: Object {
         self.dataV1 = .init(exposure)
     }
 
-    convenience init(_ exposure: ExposureWindow, detectedDate: Date) {
+    /// V2 init
+    convenience init(_ exposureWindow: ExposureWindow, detectedDate: Date) {
         self.init()
 
         self.id = UUID().uuidString
-        self.date = exposure.date
+        self.date = exposureWindow.date
         self.detectedDate = detectedDate
 
         self.dataV1 = .init()
-        self.dataV2 = .init(exposure)
+        self.dataV2 = .init(exposureWindow)
     }
 
     func toExposure() -> Exposure? {

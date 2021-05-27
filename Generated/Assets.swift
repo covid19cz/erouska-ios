@@ -29,8 +29,10 @@ internal enum Asset {
   internal static let helpBackground = ColorAsset(name: "HelpBackground")
   internal enum CurrentData {
     internal static let activations = ImageAsset(name: "CurrentData/Activations")
+    internal static let firstDose = ImageAsset(name: "CurrentData/FirstDose")
     internal static let measures = ImageAsset(name: "CurrentData/Measures")
     internal static let notifications = ImageAsset(name: "CurrentData/Notifications")
+    internal static let secondDose = ImageAsset(name: "CurrentData/SecondDose")
     internal static let sentData = ImageAsset(name: "CurrentData/SentData")
     internal static let testsAntigen = ImageAsset(name: "CurrentData/TestsAntigen")
     internal static let testsPCR = ImageAsset(name: "CurrentData/TestsPCR")

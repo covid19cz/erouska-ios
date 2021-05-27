@@ -156,12 +156,12 @@ internal enum L10n {
   internal static func currentDataItemConfirmed(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_confirmed", String(describing: p1))
   }
+  /// Aktuální situace v číslech
+  internal static let currentDataItemCovidHeader = L10n.tr("Localizable", "current_data_item_covid_header")
   /// %@ úmrtí
   internal static func currentDataItemDeaths(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_deaths", String(describing: p1))
   }
-  /// Aktuální situace v číslech
-  internal static let currentDataItemHeader = L10n.tr("Localizable", "current_data_item_header")
   /// %@ vyléčených
   internal static func currentDataItemHealthy(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_healthy", String(describing: p1))
@@ -185,6 +185,16 @@ internal enum L10n {
   /// %@ vykázaných očkování
   internal static func currentDataItemVaccination(_ p1: Any) -> String {
     return L10n.tr("Localizable", "current_data_item_vaccination", String(describing: p1))
+  }
+  /// %@ očkovaných první dávkou
+  internal static func currentDataItemVaccinationFirstDose(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_item_vaccination_first_dose", String(describing: p1))
+  }
+  /// Očkování
+  internal static let currentDataItemVaccinationHeader = L10n.tr("Localizable", "current_data_item_vaccination_header")
+  /// %@ osob s ukončeným očkováním
+  internal static func currentDataItemVaccinationSecondDose(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "current_data_item_vaccination_second_dose", String(describing: p1))
   }
   /// Za včerejší den %@
   internal static func currentDataItemYesterday(_ p1: Any) -> String {

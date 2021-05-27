@@ -311,6 +311,9 @@ final class ReportService: ReportServicing {
             parsedURLs = index.split(separator: "\n").compactMap { URL(string: url + String($0)) ?? baseURL }
         } else {
             baseURL.deleteLastPathComponent()
+            #if PROD
+            baseURL.deleteLastPathComponent()
+            #endif
             parsedURLs = index.split(separator: "\n").compactMap { baseURL.appendingPathComponent(String($0)) }
         }
         var remoteURLs: [URL] = []
