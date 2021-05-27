@@ -18,4 +18,21 @@ final class NavigationController: UINavigationController {
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setNavigationBarToWhite()
+    }
+
+    private func setNavigationBarToWhite() {
+        if #available(iOS 13, *) {
+            return
+        }
+        view.backgroundColor = .white
+
+        navigationBar.barTintColor = .white
+        navigationBar.isTranslucent = false
+        navigationBar.shadowImage = UIImage()
+    }
+
 }

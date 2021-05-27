@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oe9-A2-FLU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oe9-A2-FLU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--Navigation Controller-->
         <scene sceneID="MGu-Cd-FGC">
             <objects>
-                <navigationController storyboardIdentifier="RiskyEncountersPositiveNav" id="oe9-A2-FLU" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RiskyEncountersPositiveNav" id="oe9-A2-FLU" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="nre-R2-B1h">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -35,7 +35,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="textCell" textLabel="HIt-L1-UCw" rowHeight="60" style="IBUITableViewCellStyleDefault" id="0M7-Q8-DCW">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="49.5" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0M7-Q8-DCW" id="mge-q0-OA1">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -52,14 +52,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="buttonCell" textLabel="KZt-Tu-xA6" imageView="XwA-Jg-18z" rowHeight="60" style="IBUITableViewCellStyleDefault" id="tZU-wK-S6m">
-                                <rect key="frame" x="0.0" y="115.5" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="109.5" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tZU-wK-S6m" id="BNk-BJ-JQ3">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KZt-Tu-xA6">
-                                            <rect key="frame" x="59" y="0.0" width="316" height="60"/>
+                                            <rect key="frame" x="59" y="0.0" width="317.5" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
@@ -108,14 +108,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PreviousRiskyEncountersCell" textLabel="DVU-fc-hFb" style="IBUITableViewCellStyleDefault" id="AJa-6t-yNw">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AJa-6t-yNw" id="pJY-Dr-9Nb">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DVU-fc-hFb">
-                                                    <rect key="frame" x="20" y="0.0" width="355" height="60"/>
+                                                    <rect key="frame" x="20" y="0.0" width="356.5" height="60"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -157,7 +157,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="default" textLabel="R8h-QC-dtu" detailTextLabel="qQJ-mF-Vx4" style="IBUITableViewCellStyleSubtitle" id="n2R-x5-yfT">
-                                <rect key="frame" x="20" y="55.5" width="374" height="55.5"/>
+                                <rect key="frame" x="20" y="49.5" width="374" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n2R-x5-yfT" id="mev-gs-ayN">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="55.5"/>
@@ -222,7 +222,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iRb-VF-3aL">
-                                    <rect key="frame" x="0.0" y="183.5" width="414" height="51.5"/>
+                                    <rect key="frame" x="0.0" y="176.50000034679067" width="414" height="51.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAY-hI-b6J">
                                             <rect key="frame" x="16" y="16" width="39.5" height="19.5"/>
@@ -241,7 +241,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RiskyEncountersListCell" rowHeight="76" id="oPh-tW-CYU" customClass="RiskyEncountersListCell" customModule="eRouska" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="79.5" width="414" height="76"/>
+                                        <rect key="frame" x="0.0" y="76" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oPh-tW-CYU" id="5QH-83-YC8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
@@ -307,7 +307,7 @@
         <!--Navigation Controller-->
         <scene sceneID="s33-Sx-rgr">
             <objects>
-                <navigationController storyboardIdentifier="RiskyEncountersNegativeNav" id="z4X-fg-bqu" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RiskyEncountersNegativeNav" id="z4X-fg-bqu" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="hGI-RL-0SH">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -434,7 +434,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GoZ-Vi-4eP">
             <objects>
-                <navigationController storyboardIdentifier="NewRiskEncounterNav" id="beN-GA-VHf" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NewRiskEncounterNav" id="beN-GA-VHf" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="KxJ-q8-c13">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -459,22 +459,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lxs-Mp-vRy">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="424.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="371.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Se-c0-yql">
-                                                <rect key="frame" x="20" y="10" width="374" height="398.5"/>
+                                                <rect key="frame" x="20" y="10" width="374" height="345.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Exposure" translatesAutoresizingMaskIntoConstraints="NO" id="weO-0N-h5Y">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="129.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naposledy 10. 10. 2020 jste se setkali s osobou u které bylo potvrzeno onemocnění COVID-19" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGT-wm-Ro0">
-                                                        <rect key="frame" x="0.0" y="144.5" width="374" height="42.5"/>
+                                                        <rect key="frame" x="0.0" y="144.5" width="374" height="36"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdV-p0-ASu">
-                                                        <rect key="frame" x="0.0" y="202" width="374" height="196.5"/>
+                                                        <rect key="frame" x="0.0" y="195.5" width="374" height="150"/>
                                                         <string key="text">Upozornění se vám zobrazilo nejdříve 24 hodin poté, co se nakažený dozvěděl pozitivní výsledek testu na COVID-19 a zadal ověřovací kód do eRoušky.
 Rizikový kontakt vyhodnotíme v případě, že jste s nakaženým byli v kontaktu na vzdálenost kratší než 2 metry po dobu alespoň 15 minut .
 Kvůli zachování anonymity nakaženého neznáme čas ani místo setkání.</string>
@@ -573,7 +573,7 @@ Kvůli zachování anonymity nakaženého neznáme čas ani místo setkání.</s
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="default" textLabel="bCb-8A-gep" detailTextLabel="kfy-eL-eAu" style="IBUITableViewCellStyleSubtitle" id="VQb-2E-RCK">
-                                <rect key="frame" x="20" y="55.5" width="374" height="55.5"/>
+                                <rect key="frame" x="20" y="49.5" width="374" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQb-2E-RCK" id="x9Q-Sx-Awg">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="55.5"/>
@@ -612,7 +612,7 @@ Kvůli zachování anonymity nakaženého neznáme čas ani místo setkání.</s
     <inferredMetricsTieBreakers>
         <segue reference="PyK-7q-jJ5"/>
         <segue reference="eup-6Z-D2X"/>
-        <segue reference="tkb-Az-yCu"/>
+        <segue reference="UaD-7y-bdu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Exposure" width="130" height="129.5"/>
