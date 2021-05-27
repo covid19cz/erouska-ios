@@ -156,8 +156,8 @@ packages:
     url: https://github.com/Alamofire/AlamofireImage
     from: 4.1.0
   swift-crypto:
-    url: https://github.com/apple/swift-crypto
-    from: 1.1.5
+    url: https://github.com/augard/swift-crypto
+    branch: main
   DeviceKit:
     url: https://github.com/devicekit/DeviceKit
     from: 4.3.0
