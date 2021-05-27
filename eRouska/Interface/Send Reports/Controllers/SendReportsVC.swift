@@ -78,6 +78,17 @@ final class SendReportsVC: BaseController, HasDependencies {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if #available(iOS 13, *) {
+        } else {
+            navigationController?.navigationBar.barTintColor = .white
+            navigationController?.navigationBar.isTranslucent = false
+            navigationController?.navigationBar.shadowImage = UIImage()
+        }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
