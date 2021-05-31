@@ -29,7 +29,6 @@ targets:
       properties:
         aps-environment: development
         com.apple.developer.associated-domains: [applinks:covid19cz.page.link]
-        com.apple.security.app-sandbox: true
         com.apple.security.automation.apple-events: true
         com.apple.security.device.bluetooth: true
         com.apple.security.network.client: true
@@ -37,9 +36,12 @@ targets:
         com.apple.developer.exposure-notification: true
         com.apple.developer.exposure-notification-test: true
         com.apple.developer.exposure-notification-test-skip-file-verification: true
+        com.apple.security.application-groups: ["group.erouska.dev"]
     configFiles:
       Debug: Configs/Dev-signing.xcconfig
       Release: Configs/Dev-signing.xcconfig
+    dependencies:
+      - target: Widget Dev
     settings:
       base:
         OTHER_LDFLAGS: -ObjC
@@ -51,7 +53,36 @@ targets:
           CODE_SIGN_ENTITLEMENTS: eRouska/Supporting Files/Entitlements/eRouska-Debug.entitlements
         Release:
           CODE_SIGN_ENTITLEMENTS: eRouska/Supporting Files/Entitlements/eRouska-Relese.entitlements
-          
+
+  Widget Dev:
+    type: app-extension
+    deploymentTarget: 14.0
+    platform: iOS
+    settings:
+      TARGETED_DEVICE_FAMILY: "1,2"
+      PRODUCT_MODULE_NAME: eRouska-Widget-Dev
+      PRODUCT_NAME: eRouska-Widget-Dev
+      CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+      DEVELOPMENT_TEAM: PDX4N72JDU
+    sources:
+      - path: eRouska Widget
+      - path: eRouska/Services/AppSettings.swift
+      - path: eRouska/Interface/Active/Controllers/ActiveAppState.swift
+    settings:
+      base:
+        DEVELOPMENT_TEAM: PDX4N72JDU
+        OTHER_LDFLAGS: -ObjC
+        PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska.dev.eRouska-Widget'
+        INFOPLIST_FILE: eRouska Widget/Info.plist
+        APPLICATION_EXTENSION_API_ONLY: YES
+        CODE_SIGN_ENTITLEMENTS: eRouska Widget/Widget.entitlements
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "DEBUG TARGET_IS_EXTENSION"
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+        Release:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "TARGET_IS_EXTENSION"
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: ""
 
   eRouska Prod:
     templates:
@@ -69,15 +100,17 @@ targets:
       properties:
         aps-environment: development
         com.apple.developer.associated-domains: [applinks:covid19cz.page.link]
-        com.apple.security.app-sandbox: true
         com.apple.security.automation.apple-events: true
         com.apple.security.device.bluetooth: true
         com.apple.security.network.client: true
         com.apple.security.network.server: true
         com.apple.developer.exposure-notification: true
+        com.apple.security.application-groups: ["group.erouska"]
     configFiles:
       Debug: Configs/Prod-signing.xcconfig
       Release: Configs/Prod-signing.xcconfig
+    dependencies:
+      - target: Widget Prod
     settings:
       base:
         OTHER_LDFLAGS: -ObjC
@@ -90,6 +123,30 @@ targets:
         Release:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: PROD
           CODE_SIGN_ENTITLEMENTS: eRouska/Supporting Files/Entitlements/eRouska-Relese.entitlements
+
+  Widget Prod:
+    type: app-extension
+    deploymentTarget: 14.0
+    platform: iOS
+    sources:
+      - path: eRouska Widget
+      - path: eRouska/Services/AppSettings.swift
+      - path: eRouska/Interface/Active/Controllers/ActiveAppState.swift
+    settings:
+      base:
+        DEVELOPMENT_TEAM: PDX4N72JDU
+        OTHER_LDFLAGS: -ObjC
+        PRODUCT_BUNDLE_IDENTIFIER: 'cz.covid19cz.erouska.eRouska-Widget'
+        INFOPLIST_FILE: eRouska Widget/Info.plist
+        APPLICATION_EXTENSION_API_ONLY: YES
+        CODE_SIGN_ENTITLEMENTS: eRouska Widget/Widget.entitlements
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "DEBUG TARGET_IS_EXTENSION"
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG PROD
+        Release:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "TARGET_IS_EXTENSION"
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: PROD
 
 targetTemplates:
   App:

@@ -455,7 +455,7 @@ Využívání této funkce může způsobit vyšší objem stahovaných dat. Vyp
     <resources>
         <image name="HitWIcon" width="66" height="59"/>
         <namedColor name="AlertRed">
-            <color red="0.95294117647058818" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.95300000905990601" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -42,7 +42,13 @@ struct AppSettings {
         case sendReport
     }
 
-    static let shared = UserDefaults(suiteName: "group.erouska.dev")
+    static var shared: UserDefaults? {
+        #if PROD
+        UserDefaults(suiteName: "group.erouska")
+        #else
+        UserDefaults(suiteName: "group.erouska.dev")
+        #endif
+    }
 
     /// Firebase Region
     static let firebaseRegion = "europe-west1"
@@ -107,16 +113,6 @@ struct AppSettings {
         }
         set {
             set(withKey: .efgsEnabled, value: newValue)
-        }
-    }
-
-    /// Last processed file name [country code: file name]
-    static var lastProcessedFileNames: ReportServicing.ProcessedFileNames {
-        get {
-            dictionary(forKey: .lastProcessedFileNames).compactMapValues { $0 as? String }
-        }
-        set {
-            set(withKey: .lastProcessedFileNames, value: newValue)
         }
     }
 
@@ -251,53 +247,39 @@ struct AppSettings {
         }
     }
 
-    static var sendReport: SendReport? {
-        get {
-            guard let data = data(forKey: .sendReport) else { return nil }
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            return try? decoder.decode(SendReport.self, from: data)
-        }
-        set {
-            let encoder = JSONEncoder()
-            encoder.dateEncodingStrategy = .iso8601
-            set(withKey: .sendReport, value: try? encoder.encode(newValue))
-        }
-    }
-
     // MARK: - Private
 
-    private static func bool(forKey key: Keys) -> Bool {
+    static func bool(forKey key: Keys) -> Bool {
         return UserDefaults.standard.bool(forKey: key.rawValue)
     }
 
-    private static func double(forKey key: Keys) -> Double {
+    static func double(forKey key: Keys) -> Double {
         return UserDefaults.standard.double(forKey: key.rawValue)
     }
 
-    private static func string(forKey key: Keys) -> String {
+    static func string(forKey key: Keys) -> String {
         return UserDefaults.standard.string(forKey: key.rawValue) ?? ""
     }
 
-    private static func dictionary(forKey key: Keys) -> [String: Any] {
+    static func dictionary(forKey key: Keys) -> [String: Any] {
         return UserDefaults.standard.dictionary(forKey: key.rawValue) ?? [:]
     }
 
-    private static func data(forKey key: Keys) -> Data? {
+    static func data(forKey key: Keys) -> Data? {
         return UserDefaults.standard.data(forKey: key.rawValue)
     }
 
-    private static func date(forKey key: Keys) -> Date? {
+    static func date(forKey key: Keys) -> Date? {
         let rawValue = double(forKey: key)
         guard rawValue != 0 else { return nil }
         return Date(timeIntervalSince1970: TimeInterval(rawValue))
     }
 
-    private static func set(withKey key: Keys, value: Any?) {
+    static func set(withKey key: Keys, value: Any?) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
 
-    private static func setDate(forKey key: Keys, date: Date?) {
+    static func setDate(forKey key: Keys, date: Date?) {
         set(withKey: key, value: date?.timeIntervalSince1970)
     }
 
