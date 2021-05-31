@@ -75,15 +75,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
-        if url.scheme == "erosuka" {
-            switch url.path {
-            case "pause":
+        if url.scheme == "erouska" {
+            switch url.absoluteString {
+            case "erouska://pause":
                 AppDependency.shared.exposure.deactivate { error in
                     if let error = error {
                         log("AppDelegate: Failed to pause app \(error.localizedDescription)")
                     }
                 }
-            case "resume":
+            case "erouska://resume":
                 AppDependency.shared.exposure.activate { error in
                     if let error = error {
                         log("AppDelegate: Failed to active app \(error.localizedDescription)")
