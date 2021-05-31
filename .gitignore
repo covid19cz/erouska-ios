@@ -59,9 +59,6 @@ playground.xcworkspace
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
 Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
 
 # Carthage
 #
@@ -93,8 +90,12 @@ fastlane/test_output
 
 iOSInjectionProject/
 xcschememanagement.plist
-/BT-Tracking.xcodeproj/xcshareddata
 xcshareddata
 
 # DS_Store
 **/.DS_Store
+
+*.xcworkspace
+*.xcodeproj
+Configs/*.xcconfig
+eRouska/Supporting\ Files/Entitlements/*

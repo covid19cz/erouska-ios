@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bzh-9z-YpA">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Aplikace je aktivní-->
+        <scene sceneID="oJp-dl-J5f">
+            <objects>
+                <viewController storyboardIdentifier="SendResultVC" id="DYf-Vd-0PA" userLabel="Aplikace je aktivní" customClass="SendResultVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="obQ-Xn-QYg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ypa-Zz-KEW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Bb-fN-QKh">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="322"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-Ye-sGl">
+                                                <rect key="frame" x="20" y="0.0" width="374" height="322"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0l-Ah-UvZ" userLabel="Space View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="5" id="AyS-cJ-DC6"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="1000" image="Ok" translatesAutoresizingMaskIntoConstraints="NO" id="Xpr-3X-RXk">
+                                                        <rect key="frame" x="0.0" y="20" width="374" height="130"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="130" id="p2Y-oI-A2v"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Data jste úspěsně odeslali" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrs-gT-kFO">
+                                                        <rect key="frame" x="0.0" y="165" width="374" height="17"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <color key="textColor" name="AppEnabled"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" text="Děkujeme, že pomáháte bojovat proti šíření koronaviru. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBc-JL-Q8y">
+                                                        <rect key="frame" x="0.0" y="197" width="374" height="17"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <string key="userLabel">Tato aplikace vytváří seznam telefonů ve vašem okolí.  Když se potvrdí nákaza koronavirem u některého z majitelů telefonů, které byly ve vaší blízkosti, může vás kontaktovat hygienická stanice.  Když se potvrdí nákaza u vás, hygienická stanice může kontaktovat všechny ostatní uživatele aplikace, kteří s vámi potenciálně přišli do styku.</string>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ee-su-jfJ">
+                                                        <rect key="frame" x="0.0" y="229" width="374" height="93"/>
+                                                        <string key="text">Spolupracujte prosím s pracovníky hygienické stanice na dohledání všech osob, se kterými jste byli v kontaktu.
+
+Zůstaňte v karanténě, omezte styk s rodinou a plňte pokyny lékařů a hygieniků.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="bI2-Ye-sGl" firstAttribute="top" secondItem="6Bb-fN-QKh" secondAttribute="top" id="FoT-ta-4Q7"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="bI2-Ye-sGl" secondAttribute="trailing" id="NA1-8Z-N1U"/>
+                                            <constraint firstAttribute="bottom" secondItem="bI2-Ye-sGl" secondAttribute="bottom" id="Stp-gj-IRd"/>
+                                            <constraint firstItem="bI2-Ye-sGl" firstAttribute="leading" secondItem="6Bb-fN-QKh" secondAttribute="leadingMargin" id="gp6-N6-TyK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6Bb-fN-QKh" firstAttribute="bottom" secondItem="Ysa-dm-N8g" secondAttribute="bottom" id="3pL-A7-1W6"/>
+                                    <constraint firstItem="6Bb-fN-QKh" firstAttribute="width" secondItem="oHC-g8-voJ" secondAttribute="width" id="MNF-Qc-enM"/>
+                                    <constraint firstItem="6Bb-fN-QKh" firstAttribute="centerX" secondItem="Ysa-dm-N8g" secondAttribute="centerX" id="N3m-Rc-Pyv"/>
+                                    <constraint firstItem="6Bb-fN-QKh" firstAttribute="top" secondItem="Ysa-dm-N8g" secondAttribute="top" id="QOg-Qb-MUf"/>
+                                    <constraint firstItem="6Bb-fN-QKh" firstAttribute="leading" secondItem="Ysa-dm-N8g" secondAttribute="leading" id="eub-BI-DXp"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Ysa-dm-N8g"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="oHC-g8-voJ"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujY-Zk-KgB" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Rdx-uM-ObE">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhX-e8-dHF" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="dHL-VO-8GB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <state key="normal" title="Close Button">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfh-v5-wrG" userLabel="Action Button" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="5dK-Ty-h0Y"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Ověřit a odeslat data">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="mailAction" destination="DYf-Vd-0PA" eventType="touchUpInside" id="AXU-u0-BY3"/>
+                                                    <action selector="verifyCodeAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="Ith-WX-9t9"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Rdx-uM-ObE" firstAttribute="top" secondItem="ujY-Zk-KgB" secondAttribute="top" id="BZ2-y5-YXw"/>
+                                    <constraint firstItem="Rdx-uM-ObE" firstAttribute="leading" secondItem="ujY-Zk-KgB" secondAttribute="leadingMargin" id="GNx-3L-RZR"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Rdx-uM-ObE" secondAttribute="trailing" id="MC6-mZ-2pF"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rdx-uM-ObE" secondAttribute="bottom" id="t3g-bo-cnX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Es3-Ia-z2R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Es3-Ia-z2R" firstAttribute="bottom" secondItem="ypa-Zz-KEW" secondAttribute="bottom" id="7sL-lG-xwb"/>
+                            <constraint firstItem="ypa-Zz-KEW" firstAttribute="top" secondItem="obQ-Xn-QYg" secondAttribute="top" id="OhC-1w-oEe"/>
+                            <constraint firstItem="ujY-Zk-KgB" firstAttribute="trailing" secondItem="Es3-Ia-z2R" secondAttribute="trailing" id="S86-fk-fW0"/>
+                            <constraint firstItem="ypa-Zz-KEW" firstAttribute="leading" secondItem="Es3-Ia-z2R" secondAttribute="leading" id="TXt-O7-lJc"/>
+                            <constraint firstItem="Es3-Ia-z2R" firstAttribute="bottom" secondItem="ujY-Zk-KgB" secondAttribute="bottom" constant="16" id="YAF-z1-1Wq"/>
+                            <constraint firstItem="ypa-Zz-KEW" firstAttribute="trailing" secondItem="Es3-Ia-z2R" secondAttribute="trailing" id="ujf-TB-IcM"/>
+                            <constraint firstItem="ujY-Zk-KgB" firstAttribute="leading" secondItem="Es3-Ia-z2R" secondAttribute="leading" id="vnx-CF-v8p"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Odesláno" largeTitleDisplayMode="always" id="Yey-Fh-VuT"/>
+                    <connections>
+                        <outlet property="actionButton" destination="rfh-v5-wrG" id="9LR-Qz-HCA"/>
+                        <outlet property="bodyLabel" destination="8Ee-su-jfJ" id="jvm-nI-phf"/>
+                        <outlet property="buttonsView" destination="ujY-Zk-KgB" id="bWo-Gf-n61"/>
+                        <outlet property="closeButton" destination="UhX-e8-dHF" id="nxd-nG-v8O"/>
+                        <outlet property="headlineLabel" destination="RBc-JL-Q8y" id="OiH-AT-sgf"/>
+                        <outlet property="imageView" destination="Xpr-3X-RXk" id="uhx-FI-7MH"/>
+                        <outlet property="scrollView" destination="ypa-Zz-KEW" id="ru3-Ht-13g"/>
+                        <outlet property="titleLabel" destination="wrs-gT-kFO" id="2km-27-ie5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PSz-x2-r7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4912" y="846"/>
+        </scene>
+        <!--Nemám ověřovací kód-->
+        <scene sceneID="ANA-yI-FFq">
+            <objects>
+                <viewController id="beP-DC-myN" customClass="SendReportsNoCodeVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M4F-vy-lBz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MO-EH-Xi8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GnK-33-yrA">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="431"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="v1z-1x-QMX">
+                                                <rect key="frame" x="20" y="10" width="374" height="405"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Máte pozitivní test a nepřišla vám SMS pro eRoušku? Napište si o náhradní kód na info@erouska.cz." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5l-ED-C6K">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-lk-QjB" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="56" width="374" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="z6l-t5-hDg"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <state key="normal" title="Napsat e-mail">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="supportAction" destination="beP-DC-myN" eventType="touchUpInside" id="tfW-58-kpP"/>
+                                                            <action selector="verifyCodeAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="UlN-2P-epa"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQZ-76-9fe">
+                                                        <rect key="frame" x="0.0" y="120" width="374" height="1"/>
+                                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="Vpl-eJ-cIv"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIi-cv-g31">
+                                                        <rect key="frame" x="0.0" y="141" width="374" height="264"/>
+                                                        <string key="text">Zajímá vás, jak odesílání kódu funguje? V případě, že máte pozitivní výsledek testu na COVID-19, měl by vám přijít výsledek testu v SMS od testovací laboratoře. Ta výsledky současně odesílá do centrálního informačního systému Ministerstva zdravotnictví.
+Poté, co se informace z informačního systému propíšou do systému hygieny, se odesílají automatické SMS eRoušky s ověřovacími kódy.
+Pokud se výsledky z laboratoře nestihnou propsat do systému hygieny do 22:00, může vám SMS s ověřovacím kódem přijít až následující den.
+Pokud vám SMS eRoušky nepřišla ani následující den poté, co vám přišla SMS s pozitivními výsledky z laboratoře, napište nám na info@erouska.cz.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="v1z-1x-QMX" firstAttribute="top" secondItem="GnK-33-yrA" secondAttribute="top" constant="10" id="PnC-CS-SZ0"/>
+                                            <constraint firstAttribute="bottom" secondItem="v1z-1x-QMX" secondAttribute="bottom" constant="16" id="ZVg-7t-Cvz"/>
+                                            <constraint firstItem="v1z-1x-QMX" firstAttribute="leading" secondItem="GnK-33-yrA" secondAttribute="leadingMargin" id="m3b-bu-TP4"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="v1z-1x-QMX" secondAttribute="trailing" id="qYK-xC-KPH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="bottom" secondItem="aLf-2m-rUC" secondAttribute="bottom" id="Scv-kc-t2K"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="top" secondItem="aLf-2m-rUC" secondAttribute="top" id="VYU-oF-846"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="centerX" secondItem="bRC-8B-c8i" secondAttribute="centerX" id="bnG-eC-6h5"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="width" secondItem="bRC-8B-c8i" secondAttribute="width" id="iNv-J8-1A4"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="leading" secondItem="aLf-2m-rUC" secondAttribute="leading" id="p9O-Ih-5w2"/>
+                                    <constraint firstItem="GnK-33-yrA" firstAttribute="trailing" secondItem="aLf-2m-rUC" secondAttribute="trailing" id="seG-AP-qRR"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="aLf-2m-rUC"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="bRC-8B-c8i"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uEl-eA-Xg9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8MO-EH-Xi8" firstAttribute="top" secondItem="M4F-vy-lBz" secondAttribute="top" id="5ZL-rC-bff"/>
+                            <constraint firstItem="8MO-EH-Xi8" firstAttribute="leading" secondItem="uEl-eA-Xg9" secondAttribute="leading" id="bty-0g-7Au"/>
+                            <constraint firstItem="8MO-EH-Xi8" firstAttribute="trailing" secondItem="uEl-eA-Xg9" secondAttribute="trailing" id="dJA-0S-Dsr"/>
+                            <constraint firstItem="uEl-eA-Xg9" firstAttribute="bottom" secondItem="8MO-EH-Xi8" secondAttribute="bottom" id="tRZ-Xa-LTj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Nemám ověřovací kód" id="ShV-Au-GyT"/>
+                    <connections>
+                        <outlet property="actionButton" destination="LgL-lk-QjB" id="tmj-nN-Am7"/>
+                        <outlet property="bodyLabel" destination="ZIi-cv-g31" id="PeQ-bb-hqc"/>
+                        <outlet property="headlineLabel" destination="V5l-ED-C6K" id="7Dh-aS-YgF"/>
+                        <outlet property="scrollView" destination="8MO-EH-Xi8" id="bw4-ul-SKf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Tm-Lp-nvn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1873.913043478261" y="1326.5625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eLS-8v-LTC">
+            <objects>
+                <navigationController storyboardIdentifier="SendReportNav" id="Bzh-9z-YpA" customClass="NavigationController" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="N5Z-GI-g8d">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zvy-kc-9kj" kind="relationship" relationship="rootViewController" id="Ypc-de-7Vt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hpE-fX-Sqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10" y="847"/>
+        </scene>
+        <!--Odeslat data-->
+        <scene sceneID="4vg-im-RmD">
+            <objects>
+                <viewController id="zvy-kc-9kj" customClass="SendReportsVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yg9-Ss-Qfx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JF-YD-BYo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-0T-yUk">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="188.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NvA-Qs-2jt">
+                                                <rect key="frame" x="20" y="10" width="374" height="162.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjN-iy-0lg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="74"/>
+                                                        <string key="text">V případě potvrzené nákazy virem COVID-19 vás bude kontaktovat pracovník hygienické stanice. Odešle vám SMS zprávu obsahující ověřovací kód pro povolení odeslání dat.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naposledy jste upozornili ostatní 24. 12. 2020." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csA-eT-3hh">
+                                                        <rect key="frame" x="0.0" y="89" width="374" height="14.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ověřovací kód(povinné)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JVW-2a-xGp">
+                                                        <rect key="frame" x="0.0" y="118.5" width="374" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="gJJ-Bj-NMd"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" textContentType="one-time-code"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="zvy-kc-9kj" id="MDH-mC-0bS"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="NvA-Qs-2jt" firstAttribute="top" secondItem="dEO-0T-yUk" secondAttribute="top" constant="10" id="HpI-Xc-gSO"/>
+                                            <constraint firstAttribute="bottom" secondItem="NvA-Qs-2jt" secondAttribute="bottom" constant="16" id="Ieh-F2-0kb"/>
+                                            <constraint firstItem="NvA-Qs-2jt" firstAttribute="leading" secondItem="dEO-0T-yUk" secondAttribute="leadingMargin" id="Mi9-E3-MYW"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="NvA-Qs-2jt" secondAttribute="trailing" id="iTv-1W-kaa"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="centerX" secondItem="2e9-tV-4A9" secondAttribute="centerX" id="5Oh-sR-1bh"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="width" secondItem="2e9-tV-4A9" secondAttribute="width" id="6J6-0F-bCQ"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="trailing" secondItem="7fL-Ov-c9N" secondAttribute="trailing" id="AdH-TZ-cRT"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="leading" secondItem="7fL-Ov-c9N" secondAttribute="leading" id="Ux8-nB-CQ5"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="top" secondItem="7fL-Ov-c9N" secondAttribute="top" id="YZk-65-YRb"/>
+                                    <constraint firstItem="dEO-0T-yUk" firstAttribute="bottom" secondItem="7fL-Ov-c9N" secondAttribute="bottom" id="sTr-H5-xje"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="7fL-Ov-c9N"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="2e9-tV-4A9"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5h1-J1-hAM" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="65z-xZ-ioG">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-pA-DIv" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="imW-cX-YzH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Ověřit a odeslat data">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="verifyCodeAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="uiY-Ba-5M6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfd-vA-HPk" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="DBn-An-oQE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Nemám ověřovací kód">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="noCodeAction" destination="zvy-kc-9kj" eventType="touchUpInside" id="U9m-0I-95p"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="65z-xZ-ioG" secondAttribute="trailing" id="9uC-pB-8V1"/>
+                                    <constraint firstAttribute="bottom" secondItem="65z-xZ-ioG" secondAttribute="bottom" id="Pqa-SH-QWp"/>
+                                    <constraint firstItem="65z-xZ-ioG" firstAttribute="top" secondItem="5h1-J1-hAM" secondAttribute="top" id="iph-av-a5E"/>
+                                    <constraint firstItem="65z-xZ-ioG" firstAttribute="leading" secondItem="5h1-J1-hAM" secondAttribute="leadingMargin" id="zl3-cg-5am"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BfJ-zc-yQn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BfJ-zc-yQn" firstAttribute="trailing" secondItem="5h1-J1-hAM" secondAttribute="trailing" id="DUn-Ng-wnW"/>
+                            <constraint firstItem="0JF-YD-BYo" firstAttribute="leading" secondItem="BfJ-zc-yQn" secondAttribute="leading" id="Ml4-pz-x0j"/>
+                            <constraint firstItem="5h1-J1-hAM" firstAttribute="leading" secondItem="BfJ-zc-yQn" secondAttribute="leading" id="mJd-dh-RgV"/>
+                            <constraint firstItem="BfJ-zc-yQn" firstAttribute="bottom" secondItem="5h1-J1-hAM" secondAttribute="bottom" constant="16" id="rVR-u2-a2j"/>
+                            <constraint firstItem="0JF-YD-BYo" firstAttribute="top" secondItem="yg9-Ss-Qfx" secondAttribute="top" id="uqC-Pj-MF9"/>
+                            <constraint firstItem="BfJ-zc-yQn" firstAttribute="bottom" secondItem="0JF-YD-BYo" secondAttribute="bottom" id="xaG-ya-5Tt"/>
+                            <constraint firstItem="0JF-YD-BYo" firstAttribute="trailing" secondItem="BfJ-zc-yQn" secondAttribute="trailing" id="yTN-uQ-i4p"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Odeslat data" largeTitleDisplayMode="always" id="d5t-5h-yU0"/>
+                    <connections>
+                        <outlet property="buttonsBottomConstraint" destination="rVR-u2-a2j" id="wg6-3z-JH7"/>
+                        <outlet property="buttonsView" destination="5h1-J1-hAM" id="0dB-VC-lqa"/>
+                        <outlet property="codeTextField" destination="JVW-2a-xGp" id="EIG-wa-I0I"/>
+                        <outlet property="footerLabel" destination="csA-eT-3hh" id="Upb-Hb-vfm"/>
+                        <outlet property="headlineLabel" destination="MjN-iy-0lg" id="b8d-JC-NmI"/>
+                        <outlet property="noCodeButton" destination="Qfd-vA-HPk" id="IEw-Sb-qBY"/>
+                        <outlet property="scrollView" destination="0JF-YD-BYo" id="kId-FU-enZ"/>
+                        <outlet property="verifyButton" destination="kZu-pA-DIv" id="HeK-ug-ubo"/>
+                        <segue destination="beP-DC-myN" kind="show" identifier="noCode" id="tRN-mY-xnM"/>
+                        <segue destination="DYf-Vd-0PA" kind="show" identifier="result" id="nb0-kU-MAE"/>
+                        <segue destination="EXM-NH-L2k" kind="show" identifier="symptoms" id="jYL-Sg-UnZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAZ-K8-4FE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="846"/>
+        </scene>
+        <!--          Cesty do zahraničí-->
+        <scene sceneID="g14-l1-G7N">
+            <objects>
+                <viewController id="TVg-hZ-c43" customClass="SendReportsTravelerVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jdW-0F-dJl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khc-IL-f0T">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XoF-h5-ID6">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0jy-vs-ViM">
+                                                <rect key="frame" x="20" y="10" width="374" height="106"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cestovali jste v posledních 14 dnech do některé ze zemí Evropské unie?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qg-6X-VJH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSG-oU-GWu">
+                                                        <rect key="frame" x="0.0" y="51" width="374" height="55"/>
+                                                        <string key="text">Díky spolupráci mezi zeměmi Evropské unie můžete upozornit o riziku možné nákazy i uživatele zahraničních aplikací, které jste potkali při svých cestách do zahraničí.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="0jy-vs-ViM" secondAttribute="bottom" constant="16" id="Rce-ac-7FF"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="0jy-vs-ViM" secondAttribute="trailing" id="jja-C5-QIP"/>
+                                            <constraint firstItem="0jy-vs-ViM" firstAttribute="top" secondItem="XoF-h5-ID6" secondAttribute="top" constant="10" id="mSG-61-yn3"/>
+                                            <constraint firstItem="0jy-vs-ViM" firstAttribute="leading" secondItem="XoF-h5-ID6" secondAttribute="leadingMargin" id="uhl-d3-Wg6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XoF-h5-ID6" firstAttribute="centerX" secondItem="3Y2-Yc-GOM" secondAttribute="centerX" id="0QX-AE-moX"/>
+                                    <constraint firstItem="XoF-h5-ID6" firstAttribute="width" secondItem="3Y2-Yc-GOM" secondAttribute="width" id="PFA-zx-uVX"/>
+                                    <constraint firstItem="XoF-h5-ID6" firstAttribute="bottom" secondItem="BgK-6W-t4t" secondAttribute="bottom" id="Qyy-mW-SNC"/>
+                                    <constraint firstItem="XoF-h5-ID6" firstAttribute="leading" secondItem="BgK-6W-t4t" secondAttribute="leading" id="dCf-JX-nvO"/>
+                                    <constraint firstItem="XoF-h5-ID6" firstAttribute="trailing" secondItem="BgK-6W-t4t" secondAttribute="trailing" id="ilI-H9-Jya"/>
+                                    <constraint firstItem="XoF-h5-ID6" firstAttribute="top" secondItem="BgK-6W-t4t" secondAttribute="top" id="w1D-Pt-scv"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="BgK-6W-t4t"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="3Y2-Yc-GOM"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yPf-X6-9YI" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MxE-jk-QYK">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dES-Fp-twH" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="IOV-uL-sFJ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Ano, byl(a) jsem v zahraničí">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="confirmAction" destination="TVg-hZ-c43" eventType="touchUpInside" id="hK1-QJ-s8p"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDX-BT-fXs" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="NhD-kw-adV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Nebyl(a) jsem v zhraničí">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rejectAction" destination="TVg-hZ-c43" eventType="touchUpInside" id="59P-5c-Rdm"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="MxE-jk-QYK" firstAttribute="leading" secondItem="yPf-X6-9YI" secondAttribute="leadingMargin" id="0NX-Uy-Sl3"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="MxE-jk-QYK" secondAttribute="trailing" id="GNI-5c-gMQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="MxE-jk-QYK" secondAttribute="bottom" id="MST-6Q-HlQ"/>
+                                    <constraint firstItem="MxE-jk-QYK" firstAttribute="top" secondItem="yPf-X6-9YI" secondAttribute="top" id="MhG-41-XyS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="F1O-ce-cZJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Khc-IL-f0T" firstAttribute="leading" secondItem="F1O-ce-cZJ" secondAttribute="leading" id="5XD-TZ-olB"/>
+                            <constraint firstItem="yPf-X6-9YI" firstAttribute="leading" secondItem="F1O-ce-cZJ" secondAttribute="leading" id="G1d-7G-IZW"/>
+                            <constraint firstItem="Khc-IL-f0T" firstAttribute="top" secondItem="jdW-0F-dJl" secondAttribute="top" id="GOV-O6-BRD"/>
+                            <constraint firstItem="F1O-ce-cZJ" firstAttribute="bottom" secondItem="Khc-IL-f0T" secondAttribute="bottom" id="KAa-6z-CRr"/>
+                            <constraint firstItem="F1O-ce-cZJ" firstAttribute="trailing" secondItem="yPf-X6-9YI" secondAttribute="trailing" id="Pcl-E7-17u"/>
+                            <constraint firstItem="Khc-IL-f0T" firstAttribute="trailing" secondItem="F1O-ce-cZJ" secondAttribute="trailing" id="YBx-B4-9lg"/>
+                            <constraint firstItem="F1O-ce-cZJ" firstAttribute="bottom" secondItem="yPf-X6-9YI" secondAttribute="bottom" constant="16" id="uBB-DP-8mZ"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="          Cesty do zahraničí" largeTitleDisplayMode="always" id="hyU-vc-U3j"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="XSG-oU-GWu" id="0v0-LJ-ECh"/>
+                        <outlet property="buttonsBottomConstraint" destination="uBB-DP-8mZ" id="dxi-Mg-daJ"/>
+                        <outlet property="buttonsView" destination="yPf-X6-9YI" id="obs-tV-ZNR"/>
+                        <outlet property="confirmButton" destination="dES-Fp-twH" id="Deu-Fo-gYe"/>
+                        <outlet property="headlineLabel" destination="6Qg-6X-VJH" id="QEd-bR-Ym2"/>
+                        <outlet property="rejectButton" destination="rDX-BT-fXs" id="dBx-0N-PYH"/>
+                        <outlet property="scrollView" destination="Khc-IL-f0T" id="Pcl-rO-R3x"/>
+                        <segue destination="2Aq-LP-pQl" kind="show" identifier="agreement" id="G4v-x7-xg4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S7L-5j-Hkx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2848" y="631"/>
+        </scene>
+        <!--Spolupráce se-->
+        <scene sceneID="4eO-is-D2F">
+            <objects>
+                <viewController id="2Aq-LP-pQl" customClass="SendReportsFederationVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aVX-ZE-GLh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVp-EE-BnC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCy-kU-Kg5">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="348"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OTT-2j-gND">
+                                                <rect key="frame" x="20" y="0.0" width="374" height="332"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zahraničím" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iE8-AH-QSv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Souhlasíte s upozorněním uživatelů zahraničních aplikací, které jste potkali v České republice i v zahraničí?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q9-GC-7EZ">
+                                                        <rect key="frame" x="0.0" y="56" width="374" height="55"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-ZS-oXb">
+                                                        <rect key="frame" x="0.0" y="126" width="374" height="206"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="OTT-2j-gND" firstAttribute="top" secondItem="YCy-kU-Kg5" secondAttribute="top" id="9vf-Nd-F3G"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="OTT-2j-gND" secondAttribute="trailing" id="J90-qs-5P4"/>
+                                            <constraint firstItem="OTT-2j-gND" firstAttribute="leading" secondItem="YCy-kU-Kg5" secondAttribute="leadingMargin" id="QXu-aJ-vb2"/>
+                                            <constraint firstAttribute="bottom" secondItem="OTT-2j-gND" secondAttribute="bottom" constant="16" id="ea1-bB-9TA"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YCy-kU-Kg5" firstAttribute="centerX" secondItem="lef-Re-dYH" secondAttribute="centerX" id="6Nu-o3-a09"/>
+                                    <constraint firstItem="YCy-kU-Kg5" firstAttribute="leading" secondItem="hVa-p9-eQ2" secondAttribute="leading" id="C4Z-Zn-dDJ"/>
+                                    <constraint firstItem="YCy-kU-Kg5" firstAttribute="width" secondItem="lef-Re-dYH" secondAttribute="width" id="LLC-WV-DPv"/>
+                                    <constraint firstItem="YCy-kU-Kg5" firstAttribute="top" secondItem="hVa-p9-eQ2" secondAttribute="top" id="b0S-02-9tG"/>
+                                    <constraint firstItem="YCy-kU-Kg5" firstAttribute="trailing" secondItem="hVa-p9-eQ2" secondAttribute="trailing" id="bKD-EZ-b35"/>
+                                    <constraint firstItem="YCy-kU-Kg5" firstAttribute="bottom" secondItem="hVa-p9-eQ2" secondAttribute="bottom" id="rR9-uk-dju"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="hVa-p9-eQ2"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="lef-Re-dYH"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIh-gQ-hF1" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="743" width="414" height="103"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WAG-uA-Epp">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="103"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hU-Up-w86" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="OLM-UY-11t"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Souhlasím">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="confirmAction" destination="2Aq-LP-pQl" eventType="touchUpInside" id="V0M-HD-Ibd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdv-fT-G9M" customClass="RoundedButtonClear" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="59" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="wKu-T2-7ad"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Nesouhlasím">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rejectAction" destination="2Aq-LP-pQl" eventType="touchUpInside" id="pTs-xD-2NR"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="WAG-uA-Epp" firstAttribute="leading" secondItem="qIh-gQ-hF1" secondAttribute="leadingMargin" id="Cb7-GV-83u"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="WAG-uA-Epp" secondAttribute="trailing" id="fIi-SS-pTp"/>
+                                    <constraint firstAttribute="bottom" secondItem="WAG-uA-Epp" secondAttribute="bottom" id="jd1-qa-h3s"/>
+                                    <constraint firstItem="WAG-uA-Epp" firstAttribute="top" secondItem="qIh-gQ-hF1" secondAttribute="top" id="pSu-cG-7yv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XVO-Dm-5rT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XVO-Dm-5rT" firstAttribute="bottom" secondItem="qIh-gQ-hF1" secondAttribute="bottom" constant="16" id="6tS-rw-7zR"/>
+                            <constraint firstItem="XVO-Dm-5rT" firstAttribute="trailing" secondItem="qIh-gQ-hF1" secondAttribute="trailing" id="NBu-fY-4k3"/>
+                            <constraint firstItem="XVO-Dm-5rT" firstAttribute="bottom" secondItem="iVp-EE-BnC" secondAttribute="bottom" id="Tss-7c-jqu"/>
+                            <constraint firstItem="iVp-EE-BnC" firstAttribute="leading" secondItem="XVO-Dm-5rT" secondAttribute="leading" id="cJH-kO-yIX"/>
+                            <constraint firstItem="iVp-EE-BnC" firstAttribute="top" secondItem="aVX-ZE-GLh" secondAttribute="top" id="nlD-oV-XHf"/>
+                            <constraint firstItem="qIh-gQ-hF1" firstAttribute="leading" secondItem="XVO-Dm-5rT" secondAttribute="leading" id="rer-dJ-T4v"/>
+                            <constraint firstItem="iVp-EE-BnC" firstAttribute="trailing" secondItem="XVO-Dm-5rT" secondAttribute="trailing" id="umf-Ye-p29"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Spolupráce se" largeTitleDisplayMode="always" id="KTJ-8e-M2r"/>
+                    <connections>
+                        <outlet property="bodyTextView" destination="Ggd-ZS-oXb" id="L9d-Sv-JF9"/>
+                        <outlet property="buttonsBottomConstraint" destination="6tS-rw-7zR" id="RkB-AV-qsN"/>
+                        <outlet property="buttonsView" destination="qIh-gQ-hF1" id="a5u-ZS-tw5"/>
+                        <outlet property="confirmButton" destination="8hU-Up-w86" id="w2o-iq-bpN"/>
+                        <outlet property="headlineLabel" destination="4q9-GC-7EZ" id="GwK-uE-JE0"/>
+                        <outlet property="rejectButton" destination="Vdv-fT-G9M" id="il2-sU-dWo"/>
+                        <outlet property="scrollView" destination="iVp-EE-BnC" id="lve-ue-s0g"/>
+                        <outlet property="titleLabel" destination="iE8-AH-QSv" id="q3e-hO-d4o"/>
+                        <segue destination="DYf-Vd-0PA" kind="show" identifier="result" id="jX3-3S-N50"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9cf-Ld-IcO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3832" y="631"/>
+        </scene>
+        <!--          Datum prvních-->
+        <scene sceneID="qyI-k6-6Ey">
+            <objects>
+                <viewController id="EXM-NH-L2k" customClass="SendReportsSymptomVC" customModule="eRouska" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I6N-q9-LIu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7p-Si-JMR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3f-49-HiG">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="539"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ick-4b-1Wx">
+                                                <rect key="frame" x="20" y="0.0" width="374" height="523"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="příznaků" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPE-G7-YOy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzb-gB-H5c">
+                                                        <rect key="frame" x="0.0" y="56" width="374" height="55"/>
+                                                        <string key="text">Vyplňte prosím datum prvních příznaků. Upřesníme tak období, kdy jste někoho mohli nakazit a upozorníme ostatní eRoušky, které jste v tomto období potkali.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wA3-Bc-ByS">
+                                                        <rect key="frame" x="0.0" y="126" width="374" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mám příznaky onemocnění COVID-19" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hj-N4-TqB">
+                                                                <rect key="frame" x="0.0" y="7" width="317" height="17"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5U-zi-5RH">
+                                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                                <color key="onTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="0.38" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                <color key="thumbTintColor" red="0.15686274510000001" green="0.4549019608" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="symptomSwitchChanged" destination="EXM-NH-L2k" eventType="valueChanged" id="w6H-G5-IPW"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kašel, teplota, dušnost, bolest v krku, bolest hlavy nebo ztráta čichu a chuti." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffF-wW-2Nf">
+                                                        <rect key="frame" x="0.0" y="172" width="374" height="36"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YHv-W9-j9R">
+                                                        <rect key="frame" x="0.0" y="223" width="374" height="44"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum prvních příznaků" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-t4-kMQ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="236" height="44"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjj-FR-h55">
+                                                                <rect key="frame" x="244" y="0.0" width="130" height="44"/>
+                                                                <subviews>
+                                                                    <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="eGf-as-D8d">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="183" height="44"/>
+                                                                    </datePicker>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="eGf-as-D8d" secondAttribute="trailing" id="56P-qK-juq"/>
+                                                                    <constraint firstItem="eGf-as-D8d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tjj-FR-h55" secondAttribute="leading" priority="500" id="KrC-bo-o84"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="eGf-as-D8d" secondAttribute="bottom" id="MXO-Bv-r8K"/>
+                                                                    <constraint firstAttribute="width" constant="130" id="i7Z-qQ-gOU"/>
+                                                                    <constraint firstAttribute="height" constant="44" id="qyq-GG-GwA"/>
+                                                                    <constraint firstItem="eGf-as-D8d" firstAttribute="top" secondItem="tjj-FR-h55" secondAttribute="top" id="rhL-Cr-2xA"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="awX-UI-8Nd" userLabel="Date Old Stack View">
+                                                        <rect key="frame" x="0.0" y="282" width="374" height="241"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum prvních příznaků" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozg-Hv-ChP">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="0HJ-Vr-yuX">
+                                                                <rect key="frame" x="0.0" y="25" width="374" height="216"/>
+                                                            </datePicker>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Ick-4b-1Wx" secondAttribute="bottom" constant="16" id="HhX-59-uBo"/>
+                                            <constraint firstItem="Ick-4b-1Wx" firstAttribute="top" secondItem="o3f-49-HiG" secondAttribute="top" id="LZ4-sy-BuP"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Ick-4b-1Wx" secondAttribute="trailing" id="gas-mH-KMf"/>
+                                            <constraint firstItem="Ick-4b-1Wx" firstAttribute="leading" secondItem="o3f-49-HiG" secondAttribute="leadingMargin" id="hCB-Q0-sSS"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="o3f-49-HiG" firstAttribute="trailing" secondItem="dhH-kq-lf5" secondAttribute="trailing" id="Tep-61-fkt"/>
+                                    <constraint firstItem="o3f-49-HiG" firstAttribute="centerX" secondItem="cYQ-Og-gCB" secondAttribute="centerX" id="UCz-ap-o2B"/>
+                                    <constraint firstItem="o3f-49-HiG" firstAttribute="leading" secondItem="dhH-kq-lf5" secondAttribute="leading" id="WPd-O2-7po"/>
+                                    <constraint firstItem="o3f-49-HiG" firstAttribute="bottom" secondItem="dhH-kq-lf5" secondAttribute="bottom" id="YpU-dZ-wqJ"/>
+                                    <constraint firstItem="o3f-49-HiG" firstAttribute="top" secondItem="dhH-kq-lf5" secondAttribute="top" id="aO3-Y7-lZy"/>
+                                    <constraint firstItem="o3f-49-HiG" firstAttribute="width" secondItem="cYQ-Og-gCB" secondAttribute="width" id="vuD-Sv-Reg"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="dhH-kq-lf5"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="cYQ-Og-gCB"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="muP-aU-926" customClass="ButtonsBackgroundView" customModule="eRouska" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="802" width="414" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ec9-sd-bwi">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6H0-kN-Ubh" userLabel="Action Button" customClass="RoundedButtonFilled" customModule="eRouska" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="eW2-qM-CzN"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <state key="normal" title="Pokračovat">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="continueAction" destination="EXM-NH-L2k" eventType="touchUpInside" id="Ksm-tU-SU5"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ec9-sd-bwi" firstAttribute="top" secondItem="muP-aU-926" secondAttribute="top" id="E56-m9-J7c"/>
+                                    <constraint firstItem="ec9-sd-bwi" firstAttribute="leading" secondItem="muP-aU-926" secondAttribute="leadingMargin" id="I6s-ad-KcI"/>
+                                    <constraint firstAttribute="bottom" secondItem="ec9-sd-bwi" secondAttribute="bottom" id="OXe-p3-onA"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="ec9-sd-bwi" secondAttribute="trailing" id="ofm-og-qjD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BZl-WT-HuR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BZl-WT-HuR" firstAttribute="bottom" secondItem="H7p-Si-JMR" secondAttribute="bottom" id="81P-iv-SKD"/>
+                            <constraint firstItem="H7p-Si-JMR" firstAttribute="top" secondItem="I6N-q9-LIu" secondAttribute="top" id="Kyf-fk-XMc"/>
+                            <constraint firstItem="H7p-Si-JMR" firstAttribute="trailing" secondItem="BZl-WT-HuR" secondAttribute="trailing" id="S6n-EJ-qrO"/>
+                            <constraint firstItem="BZl-WT-HuR" firstAttribute="bottom" secondItem="muP-aU-926" secondAttribute="bottom" constant="16" id="b6u-5U-dp9"/>
+                            <constraint firstItem="H7p-Si-JMR" firstAttribute="leading" secondItem="BZl-WT-HuR" secondAttribute="leading" id="lsF-ai-j9j"/>
+                            <constraint firstItem="BZl-WT-HuR" firstAttribute="trailing" secondItem="muP-aU-926" secondAttribute="trailing" id="mwo-pN-G6Y"/>
+                            <constraint firstItem="muP-aU-926" firstAttribute="leading" secondItem="BZl-WT-HuR" secondAttribute="leading" id="tSn-op-4sM"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="          Datum prvních" largeTitleDisplayMode="always" id="pAo-lo-kUM"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="ffF-wW-2Nf" id="WUW-Qe-Xxc"/>
+                        <outlet property="buttonsBottomConstraint" destination="b6u-5U-dp9" id="Rgk-k0-fjS"/>
+                        <outlet property="buttonsView" destination="muP-aU-926" id="sLD-Iw-6JZ"/>
+                        <outlet property="continueButton" destination="6H0-kN-Ubh" id="dZ8-LA-QZU"/>
+                        <outlet property="enableLabel" destination="7hj-N4-TqB" id="eXd-Uh-egY"/>
+                        <outlet property="enableSwitch" destination="c5U-zi-5RH" id="uZX-W9-6jr"/>
+                        <outlet property="headlineLabel" destination="lzb-gB-H5c" id="lAh-uh-nDy"/>
+                        <outlet property="newDateLabel" destination="hFH-t4-kMQ" id="hfD-ei-Jbi"/>
+                        <outlet property="newDatePicker" destination="eGf-as-D8d" id="Qv5-Z8-A7o"/>
+                        <outlet property="newDateStackView" destination="YHv-W9-j9R" id="hNf-cd-bs8"/>
+                        <outlet property="oldDateLabel" destination="ozg-Hv-ChP" id="4Fo-rI-b54"/>
+                        <outlet property="oldDatePicker" destination="0HJ-Vr-yuX" id="1SV-Ki-t3X"/>
+                        <outlet property="oldDateStackView" destination="awX-UI-8Nd" id="qz8-24-vWx"/>
+                        <outlet property="scrollView" destination="H7p-Si-JMR" id="Oin-l4-2qg"/>
+                        <outlet property="titleLabel" destination="fPE-G7-YOy" id="zyx-tX-YdB"/>
+                        <segue destination="TVg-hZ-c43" kind="show" identifier="efgs" id="f5d-Ko-tzX"/>
+                        <segue destination="2Aq-LP-pQl" kind="show" identifier="agreement" id="0JR-Dj-CKf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8gb-ny-A3E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1873.913043478261" y="630.80357142857144"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0JR-Dj-CKf"/>
+        <segue reference="nb0-kU-MAE"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="Ok" width="130" height="130"/>
+        <namedColor name="AppEnabled">
+            <color red="0.61176470588235299" green="0.792156862745098" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
