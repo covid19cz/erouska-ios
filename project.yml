@@ -38,8 +38,8 @@ targets:
         com.apple.developer.exposure-notification-test: true
         com.apple.developer.exposure-notification-test-skip-file-verification: true
     configFiles:
-      Debug: Configs/Dev-signing.xcconfig
-      Release: Configs/Dev-signing.xcconfig
+      Debug: Configs/Templates/Dev-signing.xcconfig
+      Release: Configs/Templates/Dev-signing.xcconfig
     settings:
       base:
         OTHER_LDFLAGS: -ObjC
@@ -76,8 +76,8 @@ targets:
         com.apple.security.network.server: true
         com.apple.developer.exposure-notification: true
     configFiles:
-      Debug: Configs/Prod-signing.xcconfig
-      Release: Configs/Prod-signing.xcconfig
+      Debug: Configs/Templates/Prod-signing.xcconfig
+      Release: Configs/Templates/Prod-signing.xcconfig
     settings:
       base:
         OTHER_LDFLAGS: -ObjC
