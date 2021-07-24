@@ -77,6 +77,8 @@ struct VerificationCertificate: Decodable {
         case hmacInvalid = "hmac_invalid"
         /// Internal processing error, may be successful on retry.
         case internalError = "500"
+        /// Unknown error
+        case unknown = ""
     }
 
     let certificate: String?
